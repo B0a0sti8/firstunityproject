@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D _Rigidbody; // get access to rigidbody
 
-    private void Awake()
+    private void Awake() // Awake() runs before Start()
     {
         _Rigidbody = GetComponent<Rigidbody2D>();
     }
