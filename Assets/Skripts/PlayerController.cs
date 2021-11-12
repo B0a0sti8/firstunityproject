@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     Vector2 _Movement; // declare variable
 
     Rigidbody2D _Rigidbody; // get access to rigidbody
+    public Animator animator; // Zugriff auf die Animationen
 
     private void Awake() // Awake() runs before Start()
     {
@@ -24,5 +25,12 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         _Rigidbody.velocity = _Movement * _Speed;
+    }
+
+    void Update()       // Ändert Animation je nach Bewegung
+    {
+        animator.SetFloat("Horizontal", _Movement.x);
+        animator.SetFloat("Vertical", _Movement.y);
+        animator.SetFloat("SpeedAnim", _Movement.sqrMagnitude);
     }
 }
