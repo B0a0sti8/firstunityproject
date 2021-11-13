@@ -13,7 +13,7 @@ public class RangedEnemyAI : MonoBehaviour
     public float agroTime = 3.0f;
 
     private int currentWypoint = 0;
-    private bool reachedTarget = false;
+    private bool targetReached = false;
     private Path path;
     private Seeker seeker;
     private Rigidbody2D rb2d;
@@ -78,23 +78,21 @@ public class RangedEnemyAI : MonoBehaviour
         {
             return;
         }
-        if (currentWypoint + unitRange >= path.vectorPath.Count && TargetInSight())
+        if ((currentWypoint + unitRange >= path.vectorPath.Count && TargetInSight())
+            || (currentWypoint >= path.vectorPath.Count && !TargetInSight()))
         {
-            reachedTarget = true;
+            targetReached = true;
             return;
-        }
-        else
+        } else
         {
-            reachedTarget = false;
+            targetReached = false;
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWypoint] - rb2d.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
-
         rb2d.AddForce(force);
+
         float distance = Vector2.Distance(rb2d.position, path.vectorPath[currentWypoint]);
-
-
         if (distance < nextWypointDistance)
         {
             currentWypoint++;
@@ -114,7 +112,6 @@ public class RangedEnemyAI : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Player"))
             {
                 inSight = true;
-                Debug.Log("Hit");
             }
             else
             {
