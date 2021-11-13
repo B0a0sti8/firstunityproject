@@ -4832,7 +4832,7 @@ GameObject:
   - component: {fileID: 469839927}
   - component: {fileID: 469839929}
   - component: {fileID: 469839928}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Health Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5274,7 +5274,7 @@ GameObject:
   - component: {fileID: 777513356}
   - component: {fileID: 777513358}
   - component: {fileID: 777513357}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Health Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5412,7 +5412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842559102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -54.7, y: 3.18, z: 0}
+  m_LocalPosition: {x: -24.46, y: 9.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1586687117}
@@ -5469,7 +5469,7 @@ GameObject:
   - component: {fileID: 961696936}
   - component: {fileID: 961696935}
   - component: {fileID: 961696934}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Canvas World Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5574,7 +5574,7 @@ GameObject:
   - component: {fileID: 1020289653}
   - component: {fileID: 1020289654}
   - component: {fileID: 1020289647}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Charakter animiert
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -5766,7 +5766,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020289645}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -5786,7 +5786,7 @@ GameObject:
   - component: {fileID: 1027963236}
   - component: {fileID: 1027963238}
   - component: {fileID: 1027963237}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Health Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6350,7 +6350,7 @@ GameObject:
   - component: {fileID: 1398433374}
   - component: {fileID: 1398433376}
   - component: {fileID: 1398433375}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6510,7 +6510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.00078554597, y: 0}
   m_AnchorMax: {x: 0.00078554597, y: 0}
-  m_AnchoredPosition: {x: 257.5, y: 176.1}
+  m_AnchoredPosition: {x: 148.2, y: 48.6}
   m_SizeDelta: {x: 51.601074, y: 8.601013}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1434849163
@@ -6603,7 +6603,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 20
   m_WholeNumbers: 1
-  m_Value: 14
+  m_Value: 20
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6942,7 +6942,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586687116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.37, y: 5.73, z: 0}
+  m_LocalPosition: {x: 0.07, y: 0.088, z: 0}
   m_LocalScale: {x: 2.3144, y: 2.4325, z: 1}
   m_Children: []
   m_Father: {fileID: 842559106}
