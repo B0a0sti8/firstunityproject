@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TestItem
   m_EditorClassIdentifier: 
   name: Krapfen
-  icon: {fileID: 0}
+  icon: {fileID: -1067379361997448076, guid: 129547efa46c7c54991dfce0eac5b34e, type: 3}
   isDefaultItem: 0
