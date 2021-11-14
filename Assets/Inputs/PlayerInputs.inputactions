@@ -22,9 +22,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "CharacterInteract",
+                    "name": "Inventory",
                     "type": "Button",
-                    "id": "a75205ef-01a8-49f9-b94b-18a618242651",
+                    "id": "43dd622e-b875-4e7f-a7da-e316679f508d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -110,12 +110,12 @@
                 },
                 {
                     "name": "",
-                    "id": "d78dd0f5-7852-4c42-9af2-6dd88f23a21c",
-                    "path": "<Mouse>/rightButton",
+                    "id": "0db1c25a-f234-4b17-bd86-6243c00346f3",
+                    "path": "<Keyboard>/i",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CharacterInteract",
+                    "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
