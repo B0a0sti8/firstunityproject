@@ -1,19 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class RangedEnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
     public Transform target;
     public float speed = 200f;
     public float nextWypointDistance;
     public float unitRange = 6f;
     public float agroRange = 12f;
-    public float agroTime = 3.0f;
+    public float agroTime = 2.0f;
 
     private int currentWypoint = 0;
-    private bool targetReached = false;
     private Path path;
     private Seeker seeker;
     private Rigidbody2D rb2d;
@@ -38,8 +36,11 @@ public class RangedEnemyAI : MonoBehaviour
         float distaceToTarget = Vector2.Distance(transform.position, target.position);
         if (distaceToTarget < agroRange && TargetInSight())
         {
-            StopCoroutine(ceasePathfindingCoroutine);
-            runningCeasePathfindingCoroutine = false;
+            if (runningCeasePathfindingCoroutine)
+            {
+                StopCoroutine(ceasePathfindingCoroutine);
+                runningCeasePathfindingCoroutine = false;
+            }
 
             if (!runningUpdatePathCoroutine)
             {
@@ -78,14 +79,10 @@ public class RangedEnemyAI : MonoBehaviour
         {
             return;
         }
-        if ((currentWypoint + unitRange >= path.vectorPath.Count && TargetInSight())
+        if ((unitRange >= Vector2.Distance(rb2d.position, target.position) && TargetInSight())
             || (currentWypoint >= path.vectorPath.Count && !TargetInSight()))
         {
-            targetReached = true;
             return;
-        } else
-        {
-            targetReached = false;
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWypoint] - rb2d.position).normalized;
