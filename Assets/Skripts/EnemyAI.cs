@@ -119,6 +119,18 @@ public class EnemyAI : MonoBehaviour
         return inSight;
     }
 
+    void OnDrawGizmosSelected()
+    {
+        Vector2 direction = ((Vector2)target.position - rb2d.position).normalized * agroRange;
+        Gizmos.DrawRay(rb2d.position, direction);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(rb2d.position, unitRange);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(rb2d.position, agroRange);
+    }
+
     IEnumerator CeasePathfinding()
     {
         yield return new WaitForSeconds(agroTime);
