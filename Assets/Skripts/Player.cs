@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private void OnTakeDamage(InputValue value)
     {
         TakeDamage(20);
+        FindObjectOfType<AudioManager>().Play("Oof");
     }
 
     //void Update()
@@ -36,4 +37,5 @@ public class Player : MonoBehaviour
 
         healthBar.SetHealth(currentHealth);
     }
+
 }

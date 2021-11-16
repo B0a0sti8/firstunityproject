@@ -139,6 +139,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Overlay",
+            "id": "a78dda9e-bf35-40bf-bd2f-8a250db741b9",
+            "actions": [
+                {
+                    "name": "PauseMenu",
+                    "type": "Button",
+                    "id": "e5f82fad-5957-4507-acf1-ddd3321daea6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bfb941fe-eb43-4b91-9911-08068d768a3c",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
