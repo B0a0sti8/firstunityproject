@@ -20,6 +20,11 @@ public class CharacterStats : MonoBehaviour
         damage -= armor.GetValue();
         damage = Mathf.Clamp(damage, 0, float.MaxValue);
 
+        if (Random.Range(0, 100) <= Mathf.Clamp(evade.GetValue(), 0, 100))
+        {
+            return;
+        }
+
         currentHealth -= damage;
 
         if (currentHealth <= 0)
