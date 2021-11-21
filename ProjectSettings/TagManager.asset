@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - WeaponSkillCD
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,6 @@ TagManager:
   - Borders
   - Interactable
   - Action
-  - 
   - 
   - 
   - 
