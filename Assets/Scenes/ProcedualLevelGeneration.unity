@@ -182,9 +182,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTile: {fileID: 11400000, guid: f3522755ed42e2842b6214b1f3fa7bbe, type: 2}
   groundMap: {fileID: 397518849}
-  deviationRate: 0
-  roomRate: 0
-  maxRouteLength: 20
+  deviationRate: 10
+  roomRate: 10
+  maxRouteLength: 100
   maxRoutes: 20
 --- !u!1 &140876109
 GameObject:

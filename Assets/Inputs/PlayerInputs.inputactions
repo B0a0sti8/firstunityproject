@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "EquipmentWindow",
+                    "type": "Button",
+                    "id": "82d1f1de-a72f-4383-aab4-4add7ad5a420",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -135,6 +143,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ChangeScene",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a62a82da-e913-46ca-b2d7-cd4e7a0ee86c",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipmentWindow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
