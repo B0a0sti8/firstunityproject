@@ -24696,7 +24696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2985879261512430859, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
       propertyPath: SceneName
-      value: SampleScene
+      value: Dungeon1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
