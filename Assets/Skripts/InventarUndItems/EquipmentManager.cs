@@ -32,7 +32,7 @@ public class EquipmentManager : MonoBehaviour
 
 	public Equipment[] defaultWear;
 
-	Equipment[] currentEquipment;
+	public Equipment[] currentEquipment;
 
 	// Callback for when an item is equipped
 	public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
@@ -80,16 +80,17 @@ public class EquipmentManager : MonoBehaviour
 
 		}
 
+		currentEquipment[slotIndex] = newItem;
+
 		// An item has been equipped so we trigger the callback
 		if (onEquipmentChanged != null)
 			onEquipmentChanged.Invoke(newItem, oldItem);
 
-		currentEquipment[slotIndex] = newItem;
 		Debug.Log(newItem.name + " equipped!");
 
 	}
 
-	void Unequip(int slotIndex)
+	public void Unequip(int slotIndex)
 	{
 		if (currentEquipment[slotIndex] != null)
 		{
