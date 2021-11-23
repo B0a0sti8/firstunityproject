@@ -31,6 +31,7 @@ public class InventorySlot : MonoBehaviour
     public void OnRemoveButton()
     {
         Inventory.instance.Remove(item);    // Wenn Button gedrückt, entferne Item
+        Debug.Log("HI");
     }
 
     public void UseItem()

@@ -30,7 +30,7 @@ public class InventoryUI : MonoBehaviour
 
     void UpdateUI ()        //Updated das UI
     {
-        Debug.Log("Updating UI");
+        Debug.Log("Updating UI, Inventory");
         for (int i = 0; i < slots.Length; i++)      // Geht alle Slots durch
         {
             if (i < inventory.items.Count)          // Solange die Zählvariable kleiner ist, als die Anzahl der Items im Inventar

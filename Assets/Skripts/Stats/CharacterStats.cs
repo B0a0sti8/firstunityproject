@@ -8,14 +8,14 @@ public class CharacterStats : MonoBehaviour
     public Stat armor;
     public Stat evade;
 
-    float currentHealth;
+    public float currentHealth;
 
     private void Spawn()
     {
         currentHealth = health.GetValue();
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         damage -= armor.GetValue();
         damage = Mathf.Clamp(damage, 0, float.MaxValue);
@@ -37,5 +37,4 @@ public class CharacterStats : MonoBehaviour
     {
         // To be overwritten in Child Class
     }
-
 }
