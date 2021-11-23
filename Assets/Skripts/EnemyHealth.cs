@@ -5,44 +5,38 @@ using UnityEngine.InputSystem;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth;
+    public float currentHealth;
 
     public HealthBar healthBar; // drag in the healthbar (either HUD or following)
+    public EnemyStats enemyStats;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        maxHealth = enemyStats.health.GetValue();
+        currentHealth = enemyStats.currentHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthBar.SetMaxHealth(maxHealth);
-        healthBar.SetHealth(currentHealth);
-
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
-
-        if (currentHealth < 0)
-        {
-            currentHealth = 0;
-        }
+        healthBar.SetMaxHealth((int)maxHealth);
+        healthBar.SetHealth((int)currentHealth);
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
     }
 
-    private void OnTakeDamage(InputValue value)
-    {
-        TakeDamage(5);
-        FindObjectOfType<AudioManager>().Play("Oof");
-    }
+
+
+    /*
 
     void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
-        // healthBar.SetHealth(currentHealth);
     }
+    private void OnTakeDamage(InputValue value)
+    {
+        TakeDamage(5);
+        FindObjectOfType<AudioManager>().Play("Oof");
+    }*/
 }
