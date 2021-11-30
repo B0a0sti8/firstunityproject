@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class TestSkill : SkillPrefab
 {
-    public override void UseSkill()
+    public override void SkillEffect()
     {
-        base.UseSkill();
-        //Debug.Log("Alles hat gepasst #fuckyeah #lol #hashtag");
+        base.SkillEffect();
+        // Play Animation
+        // Play Soundeffect
+        // Skilleffect
     }
 }

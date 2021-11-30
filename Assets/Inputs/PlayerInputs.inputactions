@@ -261,6 +261,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "TestSkill",
+                    "type": "Button",
+                    "id": "8bbdbea0-9824-4b55-9ef2-a7da51e11590",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -360,6 +368,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "BigAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cea8d577-6f45-4c32-be6c-920f295fa703",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestSkill",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - WeaponSkillCD
   - WeaponSkillCDText
+  - GlobalCooldownSkill
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Interactable
   - Action
   - Enemy
-  - 
+  - Ally
   - 
   - 
   - 

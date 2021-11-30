@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 48254467}
   - component: {fileID: 48254468}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UnitRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -818,13 +818,14 @@ GameObject:
   - component: {fileID: 133253430}
   - component: {fileID: 133253429}
   - component: {fileID: 133253428}
+  - component: {fileID: 133253431}
   m_Layer: 5
-  m_Name: SkillButton 6
-  m_TagString: Untagged
+  m_Name: SkillButton 6 TestSkill
+  m_TagString: GlobalCooldownSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &133253427
 RectTransform:
   m_ObjectHideFlags: 0
@@ -888,7 +889,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 133253429}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 133253431}
+        m_TargetAssemblyTypeName: SkillPrefab, Assembly-CSharp
+        m_MethodName: ConditionCheck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &133253429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -927,6 +940,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133253426}
   m_CullTransparentMesh: 1
+--- !u!114 &133253431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133253426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7951b4df8850b4aacffbf8c2d46421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSkillSkript: {fileID: 1020289645}
+  hasGlobalCooldown: 1
+  needsTargetEnemy: 1
+  needsTargetAlly: 0
+  interactionCharacter: {fileID: 1020289647}
+  skillRange: 5
+  saTime: 0.5
+  gcdTime: 1.5
+  gcEarlyTime: 0.5
 --- !u!1 &146457463
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,7 +972,7 @@ GameObject:
   - component: {fileID: 146457464}
   - component: {fileID: 146457466}
   - component: {fileID: 146457465}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Health Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1207,7 +1241,7 @@ GameObject:
   - component: {fileID: 179248285}
   - component: {fileID: 179248284}
   - component: {fileID: 179248283}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Canvas World Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1610,7 +1644,7 @@ GameObject:
   - component: {fileID: 236371720}
   - component: {fileID: 236371722}
   - component: {fileID: 236371721}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Health Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2108,7 +2142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 264231043}
   - component: {fileID: 264231044}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AgroRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2324,7 +2358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 270429167}
   - component: {fileID: 270429168}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UnitRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2506,7 +2540,7 @@ GameObject:
   - component: {fileID: 311784018}
   - component: {fileID: 311784020}
   - component: {fileID: 311784019}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Health Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2790,7 +2824,7 @@ GameObject:
   - component: {fileID: 333917838}
   - component: {fileID: 333917840}
   - component: {fileID: 333917839}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Health Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9200,7 +9234,7 @@ GameObject:
   - component: {fileID: 640675368}
   - component: {fileID: 640675370}
   - component: {fileID: 640675369}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Health Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9310,6 +9344,8 @@ RectTransform:
   - {fileID: 1649037214}
   - {fileID: 1010643334}
   - {fileID: 2095590556}
+  - {fileID: 1596944535}
+  - {fileID: 1092498872}
   m_Father: {fileID: 950919040}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9402,7 +9438,7 @@ MonoBehaviour:
   buttonGainLife: {fileID: 1750341986}
   buttonGainLifeHot: {fileID: 1649037215}
   buttonOverHeal: {fileID: 1591168481}
-  globalCountDown: {fileID: 651411259}
+  globalCountDown: {fileID: 0}
   globalCoolDownTime: 2
 --- !u!114 &651411257
 MonoBehaviour:
@@ -9449,6 +9485,19 @@ MonoBehaviour:
   actionSkills: {fileID: 651411256}
   actionSkill_BigAttack: {fileID: 450577098}
   actionSkill_EnergyDrain: {fileID: 1587519041}
+--- !u!114 &651411259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651411251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed5063d05181314684a22845dec15f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testSkill: {fileID: 133253431}
 --- !u!1 &656279934
 GameObject:
   m_ObjectHideFlags: 0
@@ -9460,7 +9509,7 @@ GameObject:
   - component: {fileID: 656279935}
   - component: {fileID: 656279937}
   - component: {fileID: 656279936}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10589,7 +10638,8 @@ GameObject:
   - component: {fileID: 842559108}
   - component: {fileID: 842559107}
   - component: {fileID: 842559103}
-  m_Layer: 0
+  - component: {fileID: 842559104}
+  m_Layer: 9
   m_Name: RangedEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10614,6 +10664,20 @@ MonoBehaviour:
   unitRange: 8
   agroRange: 14
   agroTime: 2
+--- !u!114 &842559104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842559102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb29c55773684a46bd0232f0cedaa8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionTransform: {fileID: 842559106}
+  radius: 30
 --- !u!114 &842559105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11401,6 +11465,7 @@ GameObject:
   - component: {fileID: 1020289654}
   - component: {fileID: 1020289655}
   - component: {fileID: 1020289647}
+  - component: {fileID: 1020289656}
   m_Layer: 8
   m_Name: Charakter animiert
   m_TagString: Player
@@ -11698,6 +11763,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1020289656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020289645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb29c55773684a46bd0232f0cedaa8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionTransform: {fileID: 1020289652}
+  radius: 3
 --- !u!1 &1027963235
 GameObject:
   m_ObjectHideFlags: 0
@@ -12121,7 +12200,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 651411252}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13854,7 +13933,8 @@ GameObject:
   - component: {fileID: 1496911560}
   - component: {fileID: 1496911561}
   - component: {fileID: 1496911567}
-  m_Layer: 0
+  - component: {fileID: 1496911566}
+  m_Layer: 9
   m_Name: MeleeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13983,6 +14063,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1496911566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496911559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb29c55773684a46bd0232f0cedaa8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionTransform: {fileID: 1496911563}
+  radius: 30
 --- !u!114 &1496911567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14154,7 +14248,7 @@ GameObject:
   - component: {fileID: 1534910721}
   - component: {fileID: 1534910723}
   - component: {fileID: 1534910722}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Health Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14378,7 +14472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1586687117}
   - component: {fileID: 1586687118}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Charakter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14774,7 +14868,7 @@ GameObject:
   - component: {fileID: 1596921913}
   - component: {fileID: 1596921912}
   - component: {fileID: 1596921911}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Canvas World Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14892,7 +14986,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 651411252}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15156,7 +15250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1608672541}
   - component: {fileID: 1608672542}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AgroRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36478,7 +36572,7 @@ GameObject:
   - component: {fileID: 1853794255}
   - component: {fileID: 1853794257}
   - component: {fileID: 1853794256}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37489,7 +37583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2049142362}
   - component: {fileID: 2049142363}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Charakter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
