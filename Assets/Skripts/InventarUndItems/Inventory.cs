@@ -36,7 +36,7 @@ public class Inventory : MonoBehaviour
     {
         if (!item.isDefaultItem)
         {
-            if (items.Count >= space)   // Falls Inventar voll ist wir Rückmeldung gegeben
+            if (items.Count >= space)   // Falls Inventar voll ist wird Rückmeldung gegeben
             {
                 Debug.Log("Not enough room.");
                 return false;

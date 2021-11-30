@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "EquipmentWindow",
+                    "type": "Button",
+                    "id": "82d1f1de-a72f-4383-aab4-4add7ad5a420",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -135,6 +143,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ChangeScene",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a62a82da-e913-46ca-b2d7-cd4e7a0ee86c",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipmentWindow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -242,6 +261,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "TestSkill",
+                    "type": "Button",
+                    "id": "8bbdbea0-9824-4b55-9ef2-a7da51e11590",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -341,6 +368,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "BigAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cea8d577-6f45-4c32-be6c-920f295fa703",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestSkill",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -22,8 +22,8 @@ public class InteractionCharacter : MonoBehaviour // Sorry Marcus, ist echt nich
     void Update()
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)       // Wenn linke Maustaste gedrückt
-        {
-            RemoveFocus();      // Nichts mehr anvisieren (Händler, Gegner, Item etc. können anvisiert werden)
+        {//!!!!!!!!!!!!
+            //RemoveFocus();      // Nichts mehr anvisieren (Händler, Gegner, Item etc. können anvisiert werden)
         }
 
         if (Mouse.current.rightButton.wasPressedThisFrame)  // Wenn rechte Maustaste gedrückt
