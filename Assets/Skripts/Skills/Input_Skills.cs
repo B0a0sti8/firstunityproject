@@ -8,6 +8,6 @@ public class Input_Skills : MonoBehaviour
     public TestSkill testSkill;
     private void OnTestSkill()
     {
-        testSkill.ConditionCheck();
+        testSkill.StartSkillChecks();
     }
 }
