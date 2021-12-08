@@ -170,6 +170,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "DPSMeterReset",
+                    "type": "Button",
+                    "id": "eba938a3-d08d-4a0e-a7b0-373a5cfce6c2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -183,6 +191,17 @@
                     "action": "PauseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e9698fbb-47d1-40cc-a548-25fd6c6e9ebd",
+                    "path": "<Keyboard>/period",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DPSMeterReset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -191,31 +210,7 @@
             "id": "c30310bf-a672-4e02-a358-873331f36a83",
             "actions": [
                 {
-                    "name": "SpeedBoost",
-                    "type": "Button",
-                    "id": "8cc3dd5d-8671-4b8b-8944-36825a275e41",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "GainLife",
-                    "type": "Button",
-                    "id": "540066f6-d07c-4d0e-95d1-b0cf5ede4f38",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "GainLifeHot",
-                    "type": "Button",
-                    "id": "7472381d-61df-47ce-8d24-ea417ba7a717",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Attack1",
+                    "name": "TestAttack1",
                     "type": "Button",
                     "id": "923189ec-5cc4-4106-a1f7-12380feecb75",
                     "expectedControlType": "Button",
@@ -223,7 +218,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Attack2",
+                    "name": "TestAttack2",
                     "type": "Button",
                     "id": "65da724e-dba2-40fe-9225-f7f933a235af",
                     "expectedControlType": "Button",
@@ -231,7 +226,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Attack3",
+                    "name": "TestAttack3",
                     "type": "Button",
                     "id": "4f8ded02-c86f-4e06-811b-eabeac032749",
                     "expectedControlType": "Button",
@@ -239,7 +234,15 @@
                     "interactions": ""
                 },
                 {
-                    "name": "EnergyDrain",
+                    "name": "TestBigAttack",
+                    "type": "Button",
+                    "id": "6118bfbb-a481-48ab-a451-ce821b558f66",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TestEnergyDrain",
                     "type": "Button",
                     "id": "6f834f5d-80a0-41bb-934e-79f5ba9506ce",
                     "expectedControlType": "Button",
@@ -247,7 +250,15 @@
                     "interactions": ""
                 },
                 {
-                    "name": "OverHeal",
+                    "name": "TestSkill",
+                    "type": "Button",
+                    "id": "8bbdbea0-9824-4b55-9ef2-a7da51e11590",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TestOverHeal",
                     "type": "Button",
                     "id": "45f00b21-4a2b-4547-b21b-4b7a109d5df6",
                     "expectedControlType": "Button",
@@ -255,9 +266,25 @@
                     "interactions": ""
                 },
                 {
-                    "name": "BigAttack",
+                    "name": "TestGainLife",
                     "type": "Button",
-                    "id": "6118bfbb-a481-48ab-a451-ce821b558f66",
+                    "id": "540066f6-d07c-4d0e-95d1-b0cf5ede4f38",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TestGainLifeHot",
+                    "type": "Button",
+                    "id": "7472381d-61df-47ce-8d24-ea417ba7a717",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TestSpeedBoost",
+                    "type": "Button",
+                    "id": "8cc3dd5d-8671-4b8b-8944-36825a275e41",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -266,34 +293,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "fbc47173-743b-4b9d-908d-184b13c904ad",
-                    "path": "<Keyboard>/q",
+                    "id": "c058496e-d9c4-4af1-b2cc-3ec97faf3693",
+                    "path": "<Keyboard>/7",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SpeedBoost",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3814b783-7f7a-435a-b12a-d805a4cb9bd6",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GainLife",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "503c1ad5-96d8-431f-9e8a-bb05ad7aaa27",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GainLifeHot",
+                    "action": "TestOverHeal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -304,7 +309,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack1",
+                    "action": "TestAttack1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -315,7 +320,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack2",
+                    "action": "TestAttack2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -326,29 +331,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e5443c08-dd7a-429b-bfd4-46237de3c382",
-                    "path": "<Keyboard>/5",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "EnergyDrain",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c058496e-d9c4-4af1-b2cc-3ec97faf3693",
-                    "path": "<Keyboard>/7",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OverHeal",
+                    "action": "TestAttack3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -359,7 +342,62 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "BigAttack",
+                    "action": "TestBigAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e5443c08-dd7a-429b-bfd4-46237de3c382",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestEnergyDrain",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fbc47173-743b-4b9d-908d-184b13c904ad",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestSpeedBoost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "503c1ad5-96d8-431f-9e8a-bb05ad7aaa27",
+                    "path": "<Keyboard>/9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestGainLifeHot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3814b783-7f7a-435a-b12a-d805a4cb9bd6",
+                    "path": "<Keyboard>/8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestGainLife",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cea8d577-6f45-4c32-be6c-920f295fa703",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestSkill",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

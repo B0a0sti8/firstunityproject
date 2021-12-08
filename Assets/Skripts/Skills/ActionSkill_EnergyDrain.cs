@@ -9,34 +9,40 @@ public class ActionSkill_EnergyDrain : MonoBehaviour
 
     // public PlayerController playerController; // drag in Character to access PlayerController skript (for speed)
 
-    bool noCooldown = true;
+    public ActionSkills actionSkills;
 
+    bool noCooldown = true;
+    
     public CountDown countDown;
 
     public void EnergyDrain()
     {
-        if (noCooldown)
+        if (!actionSkills.skillAnimationOn)
         {
-            noCooldown = false;
-            //////////
-            Debug.Log("Activate EnergyDrain: 300 Damage");
-            player.currentHealth += 30;
-            //////////
-            gameObject.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
-            countDown.timeLeft = 60;
-            StartCoroutine(WaitCooldown(60)); // Cooldown time
-            IEnumerator WaitCooldown(float time)
+            if (noCooldown)
             {
-                yield return new WaitForSeconds(time);
-                noCooldown = true;
-                gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                actionSkills.skillAnimationOn = true;
+                noCooldown = false;
+                //////////
+                Debug.Log("Activate EnergyDrain: 300 Damage");
+                player.currentHealth += 30;
+                //////////
+                gameObject.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
+                countDown.timeLeft = 60;
+                StartCoroutine(WaitCooldown(60)); // Cooldown time
+                IEnumerator WaitCooldown(float time)
+                {
+                    yield return new WaitForSeconds(time);
+                    noCooldown = true;
+                    gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                }
+                FindObjectOfType<AudioManager>().Play("HoverClick");
             }
-            FindObjectOfType<AudioManager>().Play("HoverClick");
-        }
-        else
-        {
-            Debug.Log("Skill is currently on cooldown");
-            FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+            else
+            {
+                Debug.Log("Skill is currently on cooldown");
+                FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+            }
         }
     }
 }
