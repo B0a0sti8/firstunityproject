@@ -12,3 +12,10 @@ public class TestSkill : SkillPrefab
         // Skilleffect
     }
 }
+
+// create skill skript
+// create input
+// add to Input_Skills
+// add skill skript to button + adjust settings
+// drag button in Input_Skills skript
+// add On Click () event to button (drag in button, choose StartSkillChecks)
