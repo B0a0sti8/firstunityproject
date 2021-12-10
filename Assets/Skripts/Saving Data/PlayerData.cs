@@ -15,8 +15,8 @@ public class PlayerData
     // Constructor (acts as setup-functions for the class)
     public PlayerData (Player player) // "Player" = name of Skript
     {
-        maxHealth = player.maxHealth;
-        currentHealth = player.currentHealth;
+        //maxHealth = player.maxHealth;
+        //currentHealth = player.currentHealth;
 
         position = new float[3];
         position[0] = player.transform.position.x;

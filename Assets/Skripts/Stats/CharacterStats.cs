@@ -1,40 +1,44 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
+    public Stat maxHealth;
+    public float currentHealth;
 
-    public Stat health;
     public Stat damage;
     public Stat armor;
     public Stat evade;
 
-    public float currentHealth;
-
-    private void Spawn()
-    {
-        currentHealth = health.GetValue();
-    }
+    public bool isAlive;
 
     public virtual void TakeDamage(float damage)
     {
+        //Debug.Log("damage: " + damage);
         damage -= armor.GetValue();
         damage = Mathf.Clamp(damage, 0, float.MaxValue);
-
+        //Debug.Log(evade.GetValue());
         if (Random.Range(0, 100) <= Mathf.Clamp(evade.GetValue(), 0, 100))
         {
-            return;
+            Debug.Log("MISS");
         }
-
-        currentHealth -= damage;
-
-        if (currentHealth <= 0)
+        else
         {
-            Die();
+            FindObjectOfType<AudioManager>().Play("Oof");
+            currentHealth -= damage;
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }
 
     public virtual void Die()
     {
+        FindObjectOfType<AudioManager>().Play("OoOof");
+        //Debug.Log("He dead");
+        isAlive = false;
         // To be overwritten in Child Class
     }
 }

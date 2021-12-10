@@ -11,7 +11,7 @@ public class TestEnergyDrain : SkillPrefab
         // Play Soundeffect
         // Skilleffect
         Debug.Log("Activate EnergyDrain: 200 Damage");
-        player.currentHealth += 30;
+        playerStats.currentHealth += 30;
         GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += 200f;
     }
 }
