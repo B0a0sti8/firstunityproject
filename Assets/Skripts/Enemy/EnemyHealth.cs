@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = enemyStats.health.GetValue();
+        maxHealth = enemyStats.maxHealth.GetValue();
         currentHealth = enemyStats.currentHealth;
     }
 

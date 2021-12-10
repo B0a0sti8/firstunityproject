@@ -9,12 +9,14 @@ public class SkillPrefab : MonoBehaviour
     public MasterChecks masterChecks;
 
     public GameObject PLAYER; // drag in player to acces player (for position in rangeCheck)
-    [HideInInspector]
-    public Player player; // drag in Character to access Player skript (for health)
+    //[HideInInspector]
+    //public Player player; // drag in Character to access Player skript (for health)
     [HideInInspector]
     public PlayerController playerController; // drag in Character to access PlayerController skript (for speed)
     [HideInInspector]
     public InteractionCharacter interactionCharacter; // focus skript
+    [HideInInspector]
+    public PlayerStats playerStats;
 
     public bool needsTargetEnemy;
     public bool needsTargetAlly;
@@ -39,20 +41,27 @@ public class SkillPrefab : MonoBehaviour
 
     public void StartSkillChecks() // snjens beginnt sein abenteuer
     {
-        ConditionCheck();
+        if (PLAYER.GetComponent<PlayerStats>().isAlive)
+        {
+            ConditionCheck();
+        }
+        else
+        {
+            Debug.Log("ERROR: You are dead!");
+        }
     }
 
     public virtual void ConditionCheck() // checks for conditions (Mana, Aufladungen, ...)
     {
         if (needsMana)
         {
-            if (player.currentMana >= manaCost)
+            if (playerStats.currentMana >= manaCost)
             {
                 TargetCheck();
             }
             else
             {
-                Debug.Log("ERROR: not enough mana (Current: " + player.currentMana + ", Needed: " + manaCost + ")");
+                Debug.Log("ERROR: not enough mana (Current: " + playerStats.currentMana + ", Needed: " + manaCost + ")");
             }
         }
         else
@@ -209,7 +218,7 @@ public class SkillPrefab : MonoBehaviour
                 Debug.Log("... Use SuperInstant");
                 ownCooldownActive = true;
                 ownCooldownTimeLeft = ownCooldownTime;
-                if (needsMana) { player.currentMana -= manaCost; }
+                if (needsMana) { playerStats.currentMana -= manaCost; }
                 SkillEffect();
             }
         }
@@ -275,7 +284,7 @@ public class SkillPrefab : MonoBehaviour
 
         if (needsMana)
         {
-            player.currentMana -= manaCost;
+            playerStats.currentMana -= manaCost;
         }
 
         SkillEffect();
@@ -316,8 +325,10 @@ public class SkillPrefab : MonoBehaviour
 
         PLAYER = GameObject.Find("PLAYER");
         interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
-        player = PLAYER.GetComponent<Player>();
+        //player = PLAYER.GetComponent<Player>();
         playerController = PLAYER.GetComponent<PlayerController>();
+
+        playerStats = PLAYER.GetComponent<PlayerStats>();
 
         globalCooldownSkills = GameObject.FindGameObjectsWithTag("GlobalCooldownSkill");
         //textGameObjects = GameObject.FindGameObjectsWithTag("WeaponSkillCDText");

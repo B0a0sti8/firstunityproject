@@ -11,7 +11,8 @@ public class TestAttack1 : SkillPrefab
         // Play Soundeffect
         // Skilleffect
         Debug.Log("Attack1");
-        GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += 100f;
-        //player.currentMana -= 100;
+        GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += 100f; // DPS-Meter
+
+        interactionCharacter.focus.gameObject.GetComponent<EnemyStats>().TakeDamage(100);
     }
 }

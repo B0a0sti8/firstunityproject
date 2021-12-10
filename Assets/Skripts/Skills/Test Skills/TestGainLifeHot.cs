@@ -18,7 +18,7 @@ public class TestGainLifeHot : SkillPrefab
         for (int i = 0; i < 5; i++)
         {
             yield return new WaitForSeconds(time);
-            player.currentHealth += healing;
+            playerStats.currentHealth += healing;
         }
     }
 }

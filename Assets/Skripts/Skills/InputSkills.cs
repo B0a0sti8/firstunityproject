@@ -33,7 +33,7 @@ public class InputSkills : MonoBehaviour
 
     private void OnEnergyDrain()
     {
-        actionSkill_EnergyDrain.EnergyDrain();
+        //actionSkill_EnergyDrain.EnergyDrain();
     }
 
     private void OnBigAttack()

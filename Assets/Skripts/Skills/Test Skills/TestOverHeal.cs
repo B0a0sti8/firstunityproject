@@ -10,13 +10,13 @@ public class TestOverHeal : SkillPrefab
         // Play Animation
         // Play Soundeffect
         // Skilleffect
-        player.maxHealth += 50;
-        player.currentHealth += 50;
-        StartCoroutine(Wait(30));
-        IEnumerator Wait(float time)
-        {
-            yield return new WaitForSeconds(time);
-            player.maxHealth -= 50;
-        }
+        //playerStats.maxHealth.GetValue() += 50;
+        playerStats.currentHealth += 50;
+        //StartCoroutine(Wait(30));
+        //IEnumerator Wait(float time)
+        //{
+        //    yield return new WaitForSeconds(time);
+        //    player.maxHealth -= 50;
+        //}
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ActionSkill_EnergyDrain : MonoBehaviour
 {
+    /*
+
     public Player player; // drag in Character to access Player skript (for health)
 
     // public PlayerController playerController; // drag in Character to access PlayerController skript (for speed)
@@ -45,4 +47,6 @@ public class ActionSkill_EnergyDrain : MonoBehaviour
             }
         }
     }
+
+    */
 }

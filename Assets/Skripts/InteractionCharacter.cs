@@ -21,6 +21,14 @@ public class InteractionCharacter : MonoBehaviour // Sorry Marcus, ist echt nich
 
     void Update()
     {
+        if (focus != null)
+        {
+            if (!focus.GetComponent<CharacterStats>().isAlive)
+            {
+                focus = null;
+            }
+        }
+
         if (Mouse.current.leftButton.wasPressedThisFrame)       // Wenn linke Maustaste gedrückt
         {//!!!!!!!!!!!!
             //RemoveFocus();      // Nichts mehr anvisieren (Händler, Gegner, Item etc. können anvisiert werden)
