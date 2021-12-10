@@ -5,11 +5,6 @@ using UnityEngine.InputSystem;
 
 public class Input_Skills : MonoBehaviour
 {
-    //public bool masterSkillAnimationActive;
-    //public bool masterIsSkillInQueue;
-    //public bool masterGlobalCooldownActive;
-
-
     public TestSkill testSkill;
     private void OnTestSkill()
     {

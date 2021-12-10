@@ -127,7 +127,7 @@ public class ActionSkills : MonoBehaviour
                 skillAnimationOn = true;
                 noCooldownGainLife = false;
                 //////////
-                player.currentHealth += 20;
+                //player.currentHealth += 20;
                 //////////
                 buttonGainLife.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
                 countDownGainLife.timeLeft = 10;
@@ -231,13 +231,13 @@ public class ActionSkills : MonoBehaviour
                 skillAnimationOn = true;
                 noCooldownOverHeal = false;
                 //////////
-                player.maxHealth += 50;
-                player.currentHealth += 50;
+                //player.maxHealth += 50;
+                //player.currentHealth += 50;
                 StartCoroutine(Wait(30));
                 IEnumerator Wait(float time)
                 {
                     yield return new WaitForSeconds(time);
-                    player.maxHealth -= 50;
+                    //player.maxHealth -= 50;
                 }
                 //////////
                 buttonOverHeal.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
@@ -460,7 +460,7 @@ public class ActionSkills : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             yield return new WaitForSeconds(time);
-            player.currentHealth += healing;
+            //player.currentHealth += healing;
         }
     }
 

@@ -10,6 +10,6 @@ public class TestGainLife : SkillPrefab
         // Play Animation
         // Play Soundeffect
         // Skilleffect
-        player.currentHealth += 20;
+        playerStats.currentHealth += 20;
     }
 }
