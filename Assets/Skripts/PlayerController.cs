@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D _Rigidbody; // get access to rigidbody
     public Animator animator; // Zugriff auf die Animationen
 
+    PhotonView view;
+
+    public void Start()
+    {
+        view = GetComponent<PhotonView>();
+    }
+
     private void Awake() // Awake() runs before Start()
     {
         _Rigidbody = GetComponent<Rigidbody2D>();
@@ -19,7 +27,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnMovement(InputValue value) // OnMovement = On + name of action-input 
     {
-        _Movement = value.Get<Vector2>();
+        if (view.IsMine)
+        {
+            _Movement = value.Get<Vector2>();
+        }
     }
 
     private void FixedUpdate()
