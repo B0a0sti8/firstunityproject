@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class EnemyStats : CharacterStats
 {
@@ -41,6 +42,7 @@ public class EnemyStats : CharacterStats
         }
     }
 
+    [PunRPC]
     public override void TakeDamage(float damage)
     {
         Debug.Log("Enemy takes damage " + damage);

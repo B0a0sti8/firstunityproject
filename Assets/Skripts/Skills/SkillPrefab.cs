@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro; //unnötig?
+using Photon.Pun;
 
 public class SkillPrefab : MonoBehaviour
 {
@@ -284,14 +285,16 @@ public class SkillPrefab : MonoBehaviour
 
         if (needsMana)
         {
-            playerStats.currentMana -= manaCost;
+            //playerStats.currentMana -= manaCost;
+            //playerStats.RemoveMana(manaCost);
+            playerStats.GetComponent<PhotonView>().RPC("ManageMana", RpcTarget.All, -manaCost);
         }
-
         SkillEffect();
     }
 
     public virtual void SkillEffect() // overridden by each skill seperately
     {
+        
     }
 
 
@@ -323,7 +326,8 @@ public class SkillPrefab : MonoBehaviour
     {
         masterChecks = GameObject.Find("Canvas Action Skills").GetComponent<MasterChecks>();
 
-        PLAYER = GameObject.Find("PLAYER");
+        PLAYER = gameObject.transform.parent.gameObject.transform.parent.gameObject; //GameObject.Find("PLAYER");
+        Debug.Log(gameObject.transform.parent.gameObject.transform.parent.gameObject);
         interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
         //player = PLAYER.GetComponent<Player>();
         playerController = PLAYER.GetComponent<PlayerController>();
