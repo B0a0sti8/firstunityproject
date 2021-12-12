@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class CharacterStats : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class CharacterStats : MonoBehaviour
     public Stat evade;
 
     public bool isAlive;
+
 
     public virtual void TakeDamage(float damage)
     {
