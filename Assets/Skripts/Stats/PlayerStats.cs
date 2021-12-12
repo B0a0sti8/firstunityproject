@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerStats : CharacterStats
 {
@@ -54,16 +55,32 @@ public class PlayerStats : CharacterStats
 		if (tickEveryXSecondsTimer >= tickEveryXSeconds)
 		{
 			tickEveryXSecondsTimer = 0f;
-			currentMana += 25;
+				GetComponent<PhotonView>().RPC("ManageMana", RpcTarget.All, 25);
 		}
 	}
 
+	[PunRPC]
 	public override void TakeDamage(float damage)
 	{
 		Debug.Log("Player takes damage " + damage);
 		base.TakeDamage(damage);
 		FindObjectOfType<AudioManager>().Play("Oof");
 	}
+
+	[PunRPC]
+	public void ManageMana(int manaCost)
+    {
+		if (GetComponent<PhotonView>().IsMine)
+		{
+			Debug.Log("Meins");
+			currentMana += manaCost;
+		}
+		else
+		{
+			Debug.Log("Nich so meins");
+		}
+	}
+
 
 	public override void Die()
 	{
@@ -72,14 +89,16 @@ public class PlayerStats : CharacterStats
 		base.Die();
 	}
 
-
-
 	private void OnTakeDamage() // when pressing SPACE
 	{
         if (isAlive)
         {
-			Debug.Log("Space-Damage");
-			gameObject.GetComponent<PlayerStats>().TakeDamage(5);
+            if (GetComponent<PhotonView>().IsMine)
+            {
+				Debug.Log("Space-Damage");
+				//gameObject.GetComponent<PlayerStats>().TakeDamage(5);
+				gameObject.GetComponent<PlayerStats>().GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, 5f);
+			}
 		}
 	}
 
