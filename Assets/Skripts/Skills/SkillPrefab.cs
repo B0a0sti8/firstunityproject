@@ -7,6 +7,8 @@ using Photon.Pun;
 
 public class SkillPrefab : MonoBehaviour
 {
+    public PhotonView photonView;
+
     public MasterChecks masterChecks;
 
     public GameObject PLAYER; // drag in player to acces player (for position in rangeCheck)
@@ -233,12 +235,12 @@ public class SkillPrefab : MonoBehaviour
     {
         if (!hasGlobalCooldown || (hasGlobalCooldown && !masterChecks.masterGCActive)) // no GC trouble
         {
-            Debug.Log("Wait for OwnCooldown / Animation ...  " + ownCooldownTimeLeft + " / " + masterChecks.masterAnimTimeLeft);
+            //Debug.Log("Wait for OwnCooldown / Animation ...  " + ownCooldownTimeLeft + " / " + masterChecks.masterAnimTimeLeft);
             StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterAnimTimeLeft)));
         }
         else if (masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime) // GC early cast
         {
-            Debug.Log("Wait for OwnCooldown / GlobalCooldown / Animation ...  " + ownCooldownTimeLeft + " / " + masterChecks.masterGCTimeLeft + " / " + masterChecks.masterAnimTimeLeft);
+            //Debug.Log("Wait for OwnCooldown / GlobalCooldown / Animation ...  " + ownCooldownTimeLeft + " / " + masterChecks.masterGCTimeLeft + " / " + masterChecks.masterAnimTimeLeft);
             StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterGCTimeLeft, masterChecks.masterAnimTimeLeft)));
         }
         else // hasGlobalCooldown && globalCooldownActive // GC active (too early)
@@ -285,10 +287,9 @@ public class SkillPrefab : MonoBehaviour
 
         if (needsMana)
         {
-            //playerStats.currentMana -= manaCost;
-            //playerStats.RemoveMana(manaCost);
-            playerStats.GetComponent<PhotonView>().RPC("ManageMana", RpcTarget.All, -manaCost);
+            playerStats.ManageManaRPC(-manaCost);
         }
+
         SkillEffect();
     }
 
@@ -327,7 +328,7 @@ public class SkillPrefab : MonoBehaviour
         masterChecks = GameObject.Find("Canvas Action Skills").GetComponent<MasterChecks>();
 
         PLAYER = gameObject.transform.parent.gameObject.transform.parent.gameObject; //GameObject.Find("PLAYER");
-        Debug.Log(gameObject.transform.parent.gameObject.transform.parent.gameObject);
+
         interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
         //player = PLAYER.GetComponent<Player>();
         playerController = PLAYER.GetComponent<PlayerController>();
