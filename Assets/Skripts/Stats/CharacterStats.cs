@@ -34,6 +34,8 @@ public class CharacterStats : MonoBehaviour
                 Die();
             }
         }
+
+        FindObjectOfType<AudioManager>().Play("Oof");
     }
 
     public virtual void Die()
