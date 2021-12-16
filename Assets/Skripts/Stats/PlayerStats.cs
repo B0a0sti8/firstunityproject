@@ -3,10 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+// tasten-input wird bei BEIDEN AUSGELÖST
+// button-input wird bei dem ausgelöst, dessen Button über dem anderen liegt!
+// Beides gelöst durch, generelles deaktivieren von "Canvas Action Skills"
+
+// master-skripts werden noch bei beiden ausgeführt
+
+// öffentliche variablen benötigt (z.B speed, mana, health)
+
 public class PlayerStats : CharacterStats
 {
-	public int maxMana = 1000;
-	public int currentMana;
+	public PhotonView photonView;
+
+	[Header("Mana")]
+	public float maxMana = 1000;
+	public float currentMana;
 	[HideInInspector]
 	public ManaBar manaBar;
 
@@ -15,6 +26,11 @@ public class PlayerStats : CharacterStats
 
 	void Start()
 	{
+        if (photonView.IsMine)
+        {
+			gameObject.transform.Find("Canvas Action Skills").gameObject.SetActive(true);
+        }
+
 		currentHealth = maxHealth.GetValue();
 		currentMana = maxMana;
 		manaBar = gameObject.transform.Find("Canvas World Space").transform.GetChild(1).GetComponent<ManaBar>();
@@ -29,19 +45,17 @@ public class PlayerStats : CharacterStats
 		// updates Bars on Canvas
 		gameObject.transform.Find("Canvas World Space").transform.GetChild(0).GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
 		gameObject.transform.Find("Canvas World Space").transform.GetChild(0).GetComponent<HealthBar>().SetHealth((int)currentHealth);
-
 		if (currentHealth > maxHealth.GetValue())
 		{
 			currentHealth = maxHealth.GetValue();
 		}
-
 		if (currentHealth < 0)
 		{
 			currentHealth = 0;
 		}
 
-		manaBar.SetMaxMana(maxMana);
-		manaBar.SetMana(currentMana);
+		manaBar.SetMaxMana((int)maxMana);
+		manaBar.SetMana((int)currentMana);
 		if (currentMana > maxMana)
 		{
 			currentMana = maxMana;
@@ -55,32 +69,38 @@ public class PlayerStats : CharacterStats
 		if (tickEveryXSecondsTimer >= tickEveryXSeconds)
 		{
 			tickEveryXSecondsTimer = 0f;
-				GetComponent<PhotonView>().RPC("ManageMana", RpcTarget.All, 25);
-		}
+
+			ManageManaRPC(25);
+        }
 	}
 
 	[PunRPC]
 	public override void TakeDamage(float damage)
 	{
-		Debug.Log("Player takes damage " + damage);
 		base.TakeDamage(damage);
-		FindObjectOfType<AudioManager>().Play("Oof");
+	}
+
+	public void TakeDamageRPC(float damage)
+    {
+		if (photonView.IsMine)
+		{
+			photonView.RPC("TakeDamage", RpcTarget.All, damage);
+		}
 	}
 
 	[PunRPC]
-	public void ManageMana(int manaCost)
+	private void ManageMana(float manaCost)
     {
-		if (GetComponent<PhotonView>().IsMine)
-		{
-			Debug.Log("Meins");
-			currentMana += manaCost;
-		}
-		else
-		{
-			Debug.Log("Nich so meins");
-		}
+		currentMana += manaCost;
 	}
 
+	public void ManageManaRPC(float manaCost)
+	{
+		if (photonView.IsMine)
+		{
+			photonView.RPC("ManageMana", RpcTarget.All, manaCost);
+		}
+	}
 
 	public override void Die()
 	{
@@ -93,14 +113,13 @@ public class PlayerStats : CharacterStats
 	{
         if (isAlive)
         {
-            if (GetComponent<PhotonView>().IsMine)
-            {
-				Debug.Log("Space-Damage");
-				//gameObject.GetComponent<PlayerStats>().TakeDamage(5);
-				gameObject.GetComponent<PlayerStats>().GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, 5f);
-			}
+			ManageManaRPC(-100);
+
+			TakeDamageRPC(20f);
 		}
 	}
+
+
 
 	//void Start()
 	//{
