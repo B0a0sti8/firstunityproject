@@ -298,8 +298,6 @@ public class SkillPrefab : MonoBehaviour
         
     }
 
-
-
     void Update()
     {
         if (ownCooldownTimeLeft > 0)

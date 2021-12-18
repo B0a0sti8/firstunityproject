@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class CharacterStats : MonoBehaviour
+public class CharacterStats : MonoBehaviourPunCallbacks
 {
     public Stat maxHealth;
     public float currentHealth;
@@ -13,6 +13,7 @@ public class CharacterStats : MonoBehaviour
     public Stat evade;
 
     public bool isAlive;
+
 
 
     public virtual void TakeDamage(float damage)
