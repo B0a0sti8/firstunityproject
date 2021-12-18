@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class EnemyStats : CharacterStats
+public class EnemyStats : CharacterStats, IPunObservable
 {
     //public bool isBoss;
     //public float hitboxRadius;
@@ -18,6 +18,19 @@ public class EnemyStats : CharacterStats
     //public float movementSpeed;
     public float modAttackSpeed;
     public float baseAttackSpeed = 2f;
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        // Reihenfolge der gesendeten und empfangenen Komponenten muss gleich sein
+        if (stream.IsWriting)
+        {
+            stream.SendNext(currentHealth);
+        }
+        else if (stream.IsReading)
+        {
+            currentHealth = (float)stream.ReceiveNext();
+        }
+    }
 
     void Start()
     {
