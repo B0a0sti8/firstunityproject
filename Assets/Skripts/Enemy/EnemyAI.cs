@@ -6,6 +6,10 @@ using System;
 public class EnemyAI : MonoBehaviour
 {
     public bool hasAttackSkript;
+    public bool hasTarget = false;
+    GameObject[] potentialTargets;
+    GameObject[] viableTargets;
+    float[] targetDistances;
 
     public EnemyAttack ownEnemyAttack;
 
@@ -38,32 +42,38 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        float distaceToTarget = Vector2.Distance(transform.position, target.position); // enemy <-> enemy's target (player)
-        //float distaceToTarget = Vector2.Distance(transform.position, playerTransform.position); // enemy <-> enemy's target (player)
-        if (distaceToTarget < agroRange && TargetInSight())
-        {
-            //target = playerTransform;
 
-            if (runningCeasePathfindingCoroutine) // ???
-            {
-                StopCoroutine(ceasePathfindingCoroutine);
-                runningCeasePathfindingCoroutine = false;
-                //Debug.Log("ERROR 1 lolsos");
-            }
+        SearchTargets(); // Sucht nach vernünftigem Target: 1. Sucht alle Spieler, 2. Prüft Entfernung und Insight, 3. Sucht nächstgelegenen Spieler
 
-            if (!runningUpdatePathCoroutine)
-            {
-                updatePathCoroutine = StartCoroutine(InvokePathfinding());
-                runningUpdatePathCoroutine = true;
-                //Debug.Log("ERROR 2 lol? sooos");
-            }
-        }
-        else if (!runningCeasePathfindingCoroutine)
+        if (hasTarget)
         {
-            ceasePathfindingCoroutine = StartCoroutine(CeasePathfinding());
-            runningCeasePathfindingCoroutine = true;
+            float distaceToTarget = Vector2.Distance(transform.position, target.position); // enemy <-> enemy's target (player)
+                                                                                           //float distaceToTarget = Vector2.Distance(transform.position, playerTransform.position); // enemy <-> enemy's target (player)
+            if (distaceToTarget < agroRange && TargetInSight(target))
+            {
+                //target = playerTransform;
+
+                if (runningCeasePathfindingCoroutine) // ???
+                {
+                    StopCoroutine(ceasePathfindingCoroutine);
+                    runningCeasePathfindingCoroutine = false;
+                    //Debug.Log("ERROR 1 lolsos");
+                }
+
+                if (!runningUpdatePathCoroutine)
+                {
+                    updatePathCoroutine = StartCoroutine(InvokePathfinding());
+                    runningUpdatePathCoroutine = true;
+                    //Debug.Log("ERROR 2 lol? sooos");
+                }
+            }
+            else if (!runningCeasePathfindingCoroutine)
+            {
+                ceasePathfindingCoroutine = StartCoroutine(CeasePathfinding());
+                runningCeasePathfindingCoroutine = true;
+            }
+            FollowPath();
         }
-        FollowPath();
     }
 
     void UpdatePath()
@@ -98,9 +108,9 @@ public class EnemyAI : MonoBehaviour
         {
             return;
         }
-       
-        if ((unitRange >= Vector2.Distance(rb2d.position, target.position) && TargetInSight())
-            || (currentWypoint >= path.vectorPath.Count && !TargetInSight()))
+
+        if ((unitRange >= Vector2.Distance(rb2d.position, target.position) && TargetInSight(target))
+            || (currentWypoint >= path.vectorPath.Count && !TargetInSight(target)))
         {
             if (hasAttackSkript) // auto-attack target
             {
@@ -153,7 +163,7 @@ public class EnemyAI : MonoBehaviour
         //}
     }
 
-    bool TargetInSight()
+    bool TargetInSight(Transform target)
     {
         bool inSight = false;
         Vector2 direction = ((Vector2)target.position - rb2d.position).normalized;
@@ -202,14 +212,14 @@ public class EnemyAI : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-       /* Vector2 direction = ((Vector2)target.position - rb2d.position).normalized * agroRange;
-        Gizmos.DrawRay(rb2d.position, direction);
+        /* Vector2 direction = ((Vector2)target.position - rb2d.position).normalized * agroRange;
+         Gizmos.DrawRay(rb2d.position, direction);
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(rb2d.position, unitRange);
+         Gizmos.color = Color.red;
+         Gizmos.DrawWireSphere(rb2d.position, unitRange);
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(rb2d.position, agroRange); */
+         Gizmos.color = Color.green;
+         Gizmos.DrawWireSphere(rb2d.position, agroRange); */
     }
 
     IEnumerator CeasePathfinding()
@@ -230,6 +240,42 @@ public class EnemyAI : MonoBehaviour
         {
             yield return new WaitForSeconds(0.2f);
             UpdatePath();
+        }
+    }
+
+    private void SearchTargets()
+    {
+        potentialTargets = GameObject.FindGameObjectsWithTag("Player");
+
+        float targetDist;
+
+        int n = 0;
+        foreach (GameObject gObj in potentialTargets)
+        {
+            targetDist = Vector2.Distance(transform.position, gObj.transform.position);
+            if (targetDist <= agroRange && TargetInSight(gObj.transform))
+            {
+                viableTargets[n] = gObj;
+                n += 1;
+            }
+        }
+
+        int m = 0;
+        foreach (GameObject gObj in viableTargets)
+        {
+            targetDistances[m] = Vector2.Distance(transform.position, gObj.transform.position);
+            m += 1;
+        }
+
+        int minIndex = Array.IndexOf(targetDistances, Mathf.Min(targetDistances));
+        target = viableTargets[minIndex].transform;
+        if(target != null)
+        {
+            hasTarget = true;
+        }
+        else
+        {
+            hasTarget = false;
         }
     }
 }

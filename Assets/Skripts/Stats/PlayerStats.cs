@@ -11,9 +11,9 @@ using Photon.Pun;
 
 // öffentliche variablen benötigt (z.B speed, mana, health)
 
-public class PlayerStats : CharacterStats
+public class PlayerStats : CharacterStats, IPunObservable
 {
-	public PhotonView photonView;
+	public PhotonView view;
 
 	[Header("Mana")]
 	public float maxMana = 1000;
@@ -24,12 +24,29 @@ public class PlayerStats : CharacterStats
 	float tickEveryXSeconds = 1f; // gain mana every 1 second
 	float tickEveryXSecondsTimer = 0f;
 
+
+
+	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+	{
+		// Reihenfolge der gesendeten und empfangenen Komponenten muss gleich sein
+		if (stream.IsWriting)
+		{
+			stream.SendNext(currentHealth);
+			stream.SendNext(currentMana);
+		}
+		else if (stream.IsReading)
+		{
+			currentHealth = (float)stream.ReceiveNext();
+			currentMana = (float)stream.ReceiveNext();
+		}
+	}
+
 	void Start()
 	{
-        if (photonView.IsMine)
-        {
+		if (view.IsMine)
+		{
 			gameObject.transform.Find("Canvas Action Skills").gameObject.SetActive(true);
-        }
+		}
 
 		currentHealth = maxHealth.GetValue();
 		currentMana = maxMana;
@@ -71,7 +88,7 @@ public class PlayerStats : CharacterStats
 			tickEveryXSecondsTimer = 0f;
 
 			ManageManaRPC(25);
-        }
+		}
 	}
 
 	[PunRPC]
@@ -81,10 +98,10 @@ public class PlayerStats : CharacterStats
 	}
 
 	public void TakeDamageRPC(float damage)
-    {
-		if (photonView.IsMine)
+	{
+		if (view.IsMine)
 		{
-			photonView.RPC("TakeDamage", RpcTarget.All, damage);
+			view.RPC("TakeDamage", RpcTarget.All, damage);
 		}
 	}
 
@@ -96,9 +113,9 @@ public class PlayerStats : CharacterStats
 
 	public void ManageManaRPC(float manaCost)
 	{
-		if (photonView.IsMine)
+		if (view.IsMine)
 		{
-			photonView.RPC("ManageMana", RpcTarget.All, manaCost);
+			view.RPC("ManageMana", RpcTarget.All, manaCost);
 		}
 	}
 
@@ -119,12 +136,6 @@ public class PlayerStats : CharacterStats
 		}
 	}
 
-
-
-	//void Start()
-	//{
-	//    EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
-	//}
 
 	void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
 	{
