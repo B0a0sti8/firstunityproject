@@ -122,7 +122,7 @@ public class PlayerStats : CharacterStats, IPunObservable
 	public override void Die()
 	{
 		gameObject.GetComponent<SpriteRenderer>().flipY = true;
-		Destroy(gameObject, 1f);
+		//Destroy(gameObject, 1f);
 		base.Die();
 	}
 
