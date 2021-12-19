@@ -6,16 +6,19 @@ using System;
 public class EnemyAI : MonoBehaviour
 {
     public bool hasAttackSkript;
+
     public bool hasTarget = false;
     GameObject[] potentialTargets;
     GameObject[] viableTargets;
     float[] targetDistances;
+    bool setTargetToNull = false;
 
     public EnemyAttack ownEnemyAttack;
 
     //public Transform playerTransform;
 
-    public Transform target;
+    public Transform target = null;
+
     public float speed = 200f;
     public float nextWypointDistance;
     public float unitRange = 6f;
@@ -40,20 +43,23 @@ public class EnemyAI : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
+
+    // nur master kann gegner verschieben!
+    // Spieler können sich gegenseitig kaum verschieben!
+
     void Update()
     {
-
-        SearchTargets(); // Sucht nach vernünftigem Target: 1. Sucht alle Spieler, 2. Prüft Entfernung und Insight, 3. Sucht nächstgelegenen Spieler
+        SearchTargets(); // Sucht nach vernünftigem Target: 1. Sucht alle Spieler, 2. Prüft Entfernung und InSight, 3. Sucht nächstgelegenen Spieler
 
         if (hasTarget)
         {
             float distaceToTarget = Vector2.Distance(transform.position, target.position); // enemy <-> enemy's target (player)
-                                                                                           //float distaceToTarget = Vector2.Distance(transform.position, playerTransform.position); // enemy <-> enemy's target (player)
-            if (distaceToTarget < agroRange && TargetInSight(target))
+            //float distaceToTarget = Vector2.Distance(transform.position, playerTransform.position); // enemy <-> enemy's target (player)
+            if (distaceToTarget < agroRange && TargetInSight(target) && target.GetComponent<PlayerStats>().isAlive == true)
             {
                 //target = playerTransform;
 
-                if (runningCeasePathfindingCoroutine) // ???
+                if (runningCeasePathfindingCoroutine)
                 {
                     StopCoroutine(ceasePathfindingCoroutine);
                     runningCeasePathfindingCoroutine = false;
@@ -69,10 +75,25 @@ public class EnemyAI : MonoBehaviour
             }
             else if (!runningCeasePathfindingCoroutine)
             {
-                ceasePathfindingCoroutine = StartCoroutine(CeasePathfinding());
+                if (target.GetComponent<PlayerStats>().isAlive == false)
+                {
+                    ceasePathfindingCoroutine = StartCoroutine(CeasePathfinding(0f));
+                }
+                else
+                {
+                    ceasePathfindingCoroutine = StartCoroutine(CeasePathfinding(agroTime));
+                }
                 runningCeasePathfindingCoroutine = true;
             }
-            FollowPath();
+
+            if (target.GetComponent<PlayerStats>().isAlive == false) // target is dead
+            {
+                target = null;
+            }
+            else // target is alive
+            {
+                FollowPath();
+            }
         }
     }
 
@@ -84,11 +105,8 @@ public class EnemyAI : MonoBehaviour
 
             //if (target != null)
             //{
+            //    //Debug.Log("Update Path");
             //    seeker.StartPath(rb2d.position, target.position, OnPathComplete);
-            //}
-            //else
-            //{
-            //    Debug.Log("UpdatePath() but target == null");
             //}
         }
     }
@@ -222,15 +240,16 @@ public class EnemyAI : MonoBehaviour
          Gizmos.DrawWireSphere(rb2d.position, agroRange); */
     }
 
-    IEnumerator CeasePathfinding()
+    IEnumerator CeasePathfinding(float aggroTime)
     {
-        yield return new WaitForSeconds(agroTime);
+        yield return new WaitForSeconds(aggroTime);
         if (runningUpdatePathCoroutine)
         {
             StopCoroutine(updatePathCoroutine);
             runningUpdatePathCoroutine = false;
-
-            //target = null;
+            Debug.Log("UpdatePath stopped?");
+            target = null;
+            setTargetToNull = false;
         }
     }
 
@@ -247,29 +266,39 @@ public class EnemyAI : MonoBehaviour
     {
         potentialTargets = GameObject.FindGameObjectsWithTag("Player");
 
-        float targetDist;
+        viableTargets = new GameObject[10]; // 10 = number of players possible
 
-        int n = 0;
-        foreach (GameObject gObj in potentialTargets)
+        targetDistances = new float[10];
+        for (int i = 0; i < 10; i++)
         {
-            targetDist = Vector2.Distance(transform.position, gObj.transform.position);
-            if (targetDist <= agroRange && TargetInSight(gObj.transform))
+            targetDistances[i] = Mathf.Infinity;
+        }
+
+        //float targetDist;
+        int n = 0;
+        foreach (GameObject potTar in potentialTargets)
+        {
+            float targetDist = Vector2.Distance(gameObject.transform.position, potTar.transform.position);
+            if (targetDist <= agroRange && TargetInSight(potTar.transform) && potTar.GetComponent<PlayerStats>().isAlive == true)
             {
-                viableTargets[n] = gObj;
+                viableTargets[n] = potTar;
+                targetDistances[n] = targetDist;
                 n += 1;
             }
         }
 
-        int m = 0;
-        foreach (GameObject gObj in viableTargets)
+        if (viableTargets[0] != null)
         {
-            targetDistances[m] = Vector2.Distance(transform.position, gObj.transform.position);
-            m += 1;
+            int minIndex = Array.IndexOf(targetDistances, Mathf.Min(targetDistances));
+            target = viableTargets[minIndex].transform;
+        }
+        else
+        {
+            setTargetToNull = true;
+            //target = null;
         }
 
-        int minIndex = Array.IndexOf(targetDistances, Mathf.Min(targetDistances));
-        target = viableTargets[minIndex].transform;
-        if(target != null)
+        if (target != null)
         {
             hasTarget = true;
         }
@@ -277,5 +306,24 @@ public class EnemyAI : MonoBehaviour
         {
             hasTarget = false;
         }
+
+        //if (viableTargets[0] != null)
+        //{
+        //    int m = 0;
+        //    foreach (GameObject viaTar in viableTargets)
+        //    {
+        //        if (viaTar != null)
+        //        {
+        //            targetDistances[m] = Vector2.Distance(gameObject.transform.position, viaTar.transform.position);
+        //            m += 1;
+        //        }
+        //    }
+        //    int minIndex = Array.IndexOf(targetDistances, Mathf.Min(targetDistances));
+        //    target = viableTargets[minIndex].transform;
+        //}
+        //else
+        //{
+        //    target = null;
+        //}
     }
 }

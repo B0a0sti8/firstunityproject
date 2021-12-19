@@ -8527,6 +8527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasAttackSkript: 0
+  hasTarget: 0
   ownEnemyAttack: {fileID: 0}
   target: {fileID: 0}
   speed: 7000
@@ -33336,7 +33337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8542294337897434442, guid: 4b8a34abc372aa44cbe5764a5222068b, type: 3}
       propertyPath: sceneViewId
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b8a34abc372aa44cbe5764a5222068b, type: 3}
@@ -33347,17 +33348,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 959026866}
     m_Modifications:
-    - target: {fileID: 2023599405343247803, guid: 471d28fe515d5314d98cb82a1fe63d92, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2023599405343247803, guid: 471d28fe515d5314d98cb82a1fe63d92, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2023599406339572334, guid: 471d28fe515d5314d98cb82a1fe63d92, type: 3}
       propertyPath: sceneViewId
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2023599406339572341, guid: 471d28fe515d5314d98cb82a1fe63d92, type: 3}
       propertyPath: m_RootOrder
@@ -33406,10 +33399,6 @@ PrefabInstance:
     - target: {fileID: 2023599406339572345, guid: 471d28fe515d5314d98cb82a1fe63d92, type: 3}
       propertyPath: m_Name
       value: MeleeEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2023599406339572345, guid: 471d28fe515d5314d98cb82a1fe63d92, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471d28fe515d5314d98cb82a1fe63d92, type: 3}
