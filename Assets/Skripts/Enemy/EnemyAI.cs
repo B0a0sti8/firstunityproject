@@ -43,10 +43,6 @@ public class EnemyAI : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-
-    // nur master kann gegner verschieben!
-    // Spieler können sich gegenseitig kaum verschieben!
-
     void Update()
     {
         SearchTargets(); // Sucht nach vernünftigem Target: 1. Sucht alle Spieler, 2. Prüft Entfernung und InSight, 3. Sucht nächstgelegenen Spieler
@@ -140,22 +136,6 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
-        //if (target != null)
-        //{
-        //    if ((unitRange >= Vector2.Distance(rb2d.position, target.position) && TargetInSight())
-        //    || (currentWypoint >= path.vectorPath.Count && !TargetInSight()))
-        //    {
-        //        if (hasAttackSkript) // auto-attack target
-        //        {
-        //            if (target != null)
-        //            {
-        //                ownEnemyAttack.StartEnemyAtk(target.gameObject);
-        //            }
-        //        }
-        //        return;
-        //    }
-        //}
-
         try
         {
             Vector2 direction = ((Vector2)path.vectorPath[currentWypoint] - rb2d.position).normalized;
@@ -169,16 +149,6 @@ public class EnemyAI : MonoBehaviour
             }
         }
         catch (Exception e) { }
-
-        //Vector2 direction = ((Vector2)path.vectorPath[currentWypoint] - rb2d.position).normalized;
-        //Vector2 force = direction * speed * Time.deltaTime;
-        //rb2d.AddForce(force);
-
-        //float distance = Vector2.Distance(rb2d.position, path.vectorPath[currentWypoint]);
-        //if (distance < nextWypointDistance)
-        //{
-        //    currentWypoint++;
-        //}
     }
 
     bool TargetInSight(Transform target)
@@ -247,9 +217,9 @@ public class EnemyAI : MonoBehaviour
         {
             StopCoroutine(updatePathCoroutine);
             runningUpdatePathCoroutine = false;
-            Debug.Log("UpdatePath stopped?");
+            Debug.Log("UpdatePath stopped. target -> null");
             target = null;
-            setTargetToNull = false;
+            //setTargetToNull = false;
         }
     }
 
@@ -265,16 +235,15 @@ public class EnemyAI : MonoBehaviour
     private void SearchTargets()
     {
         potentialTargets = GameObject.FindGameObjectsWithTag("Player");
+        
+        viableTargets = new GameObject[potentialTargets.Length];
 
-        viableTargets = new GameObject[10]; // 10 = number of players possible
-
-        targetDistances = new float[10];
-        for (int i = 0; i < 10; i++)
+        targetDistances = new float[potentialTargets.Length];
+        for (int i = 0; i < potentialTargets.Length; i++)
         {
             targetDistances[i] = Mathf.Infinity;
         }
 
-        //float targetDist;
         int n = 0;
         foreach (GameObject potTar in potentialTargets)
         {
@@ -292,11 +261,11 @@ public class EnemyAI : MonoBehaviour
             int minIndex = Array.IndexOf(targetDistances, Mathf.Min(targetDistances));
             target = viableTargets[minIndex].transform;
         }
-        else
-        {
-            setTargetToNull = true;
-            //target = null;
-        }
+        //else
+        //{
+        //    setTargetToNull = true;
+        //    //target = null;
+        //}
 
         if (target != null)
         {
@@ -306,24 +275,5 @@ public class EnemyAI : MonoBehaviour
         {
             hasTarget = false;
         }
-
-        //if (viableTargets[0] != null)
-        //{
-        //    int m = 0;
-        //    foreach (GameObject viaTar in viableTargets)
-        //    {
-        //        if (viaTar != null)
-        //        {
-        //            targetDistances[m] = Vector2.Distance(gameObject.transform.position, viaTar.transform.position);
-        //            m += 1;
-        //        }
-        //    }
-        //    int minIndex = Array.IndexOf(targetDistances, Mathf.Min(targetDistances));
-        //    target = viableTargets[minIndex].transform;
-        //}
-        //else
-        //{
-        //    target = null;
-        //}
     }
 }
