@@ -7,17 +7,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class InteractionCharacter : MonoBehaviour // Sorry Marcus, ist echt nicht schön gecoded. xD
 {
-    Camera cam;
     public Interactable focus;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        cam = Camera.main;      // Verpacke die Kamera in Variable
-    }
 
     void Update()
     {
@@ -29,21 +24,18 @@ public class InteractionCharacter : MonoBehaviour // Sorry Marcus, ist echt nich
             }
         }
 
-        if (Mouse.current.leftButton.wasPressedThisFrame)       // Wenn linke Maustaste gedrückt
-        {//!!!!!!!!!!!!
-            //RemoveFocus();      // Nichts mehr anvisieren (Händler, Gegner, Item etc. können anvisiert werden)
-        }
-
-        if (Mouse.current.rightButton.wasPressedThisFrame)  // Wenn rechte Maustaste gedrückt
+        if (Mouse.current.rightButton.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)  // Wenn rechte Maustaste gedrückt
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero); // Die Mausposition (ursprünglich in Pixel) wird in Weltkoordinaten übersetzt (Unity transform z.B.)
                                                                                                                                     // Eine Linie zwischen der Position des Mauszeigers wird gebildet und dem Vektor (0,0) wird gebildet. Ist noch nicht ganz klar ob das der Ursprung der Map oder das Zentrum der Kamera ist.
-            // Debug.DrawRay(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), new Vector3(10f, 10f, 0f), Color.blue, 20f); Anzeige für Referenz-Ray
-
             if (hit.collider != null)   // Wird geprüft ob überhaupt was getroffen wurde
             {
                  Interactable interactable = hit.collider.GetComponent<Interactable>();          // Gegenstand der getroffen wurde wird fokusiert. (Für spätere Interaktion)
                  SetFocus(interactable);
+            }
+            else if(!EventSystem.current.IsPointerOverGameObject()) // Wenn Mauszeiger nicht über UI Element ist.
+            {
+                RemoveFocus();
             }
         }
     }
@@ -56,10 +48,8 @@ public class InteractionCharacter : MonoBehaviour // Sorry Marcus, ist echt nich
             {
                 focus.OnDefocused(); // Legt Fokus des Charakters auf getroffenen interaktiven Gegenstand
             }
-
             focus = newFocus;
         }
-
         newFocus.OnFocused(transform);
     }
 
@@ -69,7 +59,6 @@ public class InteractionCharacter : MonoBehaviour // Sorry Marcus, ist echt nich
         {
             focus.OnDefocused();
         }
-
         focus = null;
     }
 }

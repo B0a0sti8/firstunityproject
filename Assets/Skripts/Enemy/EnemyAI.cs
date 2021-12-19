@@ -11,7 +11,7 @@ public class EnemyAI : MonoBehaviour
     GameObject[] potentialTargets;
     GameObject[] viableTargets;
     float[] targetDistances;
-    bool setTargetToNull = false;
+    //bool setTargetToNull = false;
 
     public EnemyAttack ownEnemyAttack;
 
@@ -47,6 +47,12 @@ public class EnemyAI : MonoBehaviour
     {
         SearchTargets(); // Sucht nach vernünftigem Target: 1. Sucht alle Spieler, 2. Prüft Entfernung und InSight, 3. Sucht nächstgelegenen Spieler
 
+        ChaseTarget();
+    }
+
+    #region Verfolge Ziele
+    private void ChaseTarget()
+    {
         if (hasTarget)
         {
             float distaceToTarget = Vector2.Distance(transform.position, target.position); // enemy <-> enemy's target (player)
@@ -98,12 +104,6 @@ public class EnemyAI : MonoBehaviour
         if (seeker.IsDone())
         {
             seeker.StartPath(rb2d.position, target.position, OnPathComplete);
-
-            //if (target != null)
-            //{
-            //    //Debug.Log("Update Path");
-            //    seeker.StartPath(rb2d.position, target.position, OnPathComplete);
-            //}
         }
     }
 
@@ -174,42 +174,6 @@ public class EnemyAI : MonoBehaviour
         return inSight;
     }
 
-    //bool PlayerInSight()
-    //{
-    //    bool inSight = false;
-    //    Vector2 direction = ((Vector2)playerTransform.position - rb2d.position).normalized;
-    //    Vector2 endPosition = rb2d.position + direction * agroRange;
-
-    //    RaycastHit2D hit = Physics2D.Linecast(rb2d.position, endPosition, (1 <<
-    //        LayerMask.NameToLayer("Borders")) | (1 << LayerMask.NameToLayer("Action")));
-    //    if (hit.collider != null)
-    //    {
-    //        if (hit.collider.gameObject.CompareTag("Player"))
-    //        {
-    //            inSight = true;
-    //        }
-    //        else
-    //        {
-    //            inSight = false;
-    //        }
-    //    }
-
-    //    return inSight;
-    //}
-
-
-    void OnDrawGizmosSelected()
-    {
-        /* Vector2 direction = ((Vector2)target.position - rb2d.position).normalized * agroRange;
-         Gizmos.DrawRay(rb2d.position, direction);
-
-         Gizmos.color = Color.red;
-         Gizmos.DrawWireSphere(rb2d.position, unitRange);
-
-         Gizmos.color = Color.green;
-         Gizmos.DrawWireSphere(rb2d.position, agroRange); */
-    }
-
     IEnumerator CeasePathfinding(float aggroTime)
     {
         yield return new WaitForSeconds(aggroTime);
@@ -231,11 +195,14 @@ public class EnemyAI : MonoBehaviour
             UpdatePath();
         }
     }
+    #endregion
 
+    #region Suche nach Zielen
     private void SearchTargets()
     {
         potentialTargets = GameObject.FindGameObjectsWithTag("Player");
-        
+        if (potentialTargets.Length == 0) { return; }
+            
         viableTargets = new GameObject[potentialTargets.Length];
 
         targetDistances = new float[potentialTargets.Length];
@@ -276,4 +243,43 @@ public class EnemyAI : MonoBehaviour
             hasTarget = false;
         }
     }
+    #endregion
+
+    #region Momentan nicht verwendet
+    //bool PlayerInSight()
+    //{
+    //    bool inSight = false;
+    //    Vector2 direction = ((Vector2)playerTransform.position - rb2d.position).normalized;
+    //    Vector2 endPosition = rb2d.position + direction * agroRange;
+
+    //    RaycastHit2D hit = Physics2D.Linecast(rb2d.position, endPosition, (1 <<
+    //        LayerMask.NameToLayer("Borders")) | (1 << LayerMask.NameToLayer("Action")));
+    //    if (hit.collider != null)
+    //    {
+    //        if (hit.collider.gameObject.CompareTag("Player"))
+    //        {
+    //            inSight = true;
+    //        }
+    //        else
+    //        {
+    //            inSight = false;
+    //        }
+    //    }
+
+    //    return inSight;
+    //}
+
+
+    void OnDrawGizmosSelected()
+    {
+        /* Vector2 direction = ((Vector2)target.position - rb2d.position).normalized * agroRange;
+         Gizmos.DrawRay(rb2d.position, direction);
+
+         Gizmos.color = Color.red;
+         Gizmos.DrawWireSphere(rb2d.position, unitRange);
+
+         Gizmos.color = Color.green;
+         Gizmos.DrawWireSphere(rb2d.position, agroRange); */
+    }
+    #endregion
 }
