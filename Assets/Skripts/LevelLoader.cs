@@ -12,7 +12,7 @@ public class LevelLoader : MonoBehaviour
     public float transitionTime = 1f;
     
 
-    private void Start()
+    private void Awake()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
     }
@@ -34,7 +34,7 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         if (PhotonNetwork.IsMasterClient) 
         {
-            PhotonNetwork.LoadLevel("SceneName");
+            PhotonNetwork.LoadLevel(SceneName);
         }
         //SceneManager.LoadScene(SceneName);
     }
