@@ -41,6 +41,8 @@ public class PlayerStats : CharacterStats, IPunObservable
 		}
 	}
 
+
+
 	void Start()
 	{
 		if (view.IsMine)
