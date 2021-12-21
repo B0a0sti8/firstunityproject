@@ -20,6 +20,8 @@ public class PlayerStats : CharacterStats, IPunObservable
 	public float currentMana;
 	[HideInInspector]
 	public ManaBar manaBar;
+	[HideInInspector]
+	public ManaBar manaBarUI;
 
 	float tickEveryXSeconds = 1f; // gain mana every 1 second
 	float tickEveryXSecondsTimer = 0f;
@@ -47,12 +49,14 @@ public class PlayerStats : CharacterStats, IPunObservable
 	{
 		if (view.IsMine)
 		{
-			gameObject.transform.Find("Canvas Action Skills").gameObject.SetActive(true);
+			gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas Action Skills").gameObject.SetActive(true);
 		}
 
 		currentHealth = maxHealth.GetValue();
 		currentMana = maxMana;
-		manaBar = gameObject.transform.Find("Canvas World Space").transform.GetChild(1).GetComponent<ManaBar>();
+		manaBar = gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas World Space").transform.Find("ManaBar").GetComponent<ManaBar>();
+		manaBarUI = gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas Healthbar UI").transform.Find("ManaBar").GetComponent<ManaBar>();
+
 
 		isAlive = true;
 
@@ -62,8 +66,10 @@ public class PlayerStats : CharacterStats, IPunObservable
 	private void Update()
 	{
 		// updates Bars on Canvas
-		gameObject.transform.Find("Canvas World Space").transform.GetChild(0).GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-		gameObject.transform.Find("Canvas World Space").transform.GetChild(0).GetComponent<HealthBar>().SetHealth((int)currentHealth);
+		gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
+		gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
+		gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
+		gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
 		if (currentHealth > maxHealth.GetValue())
 		{
 			currentHealth = maxHealth.GetValue();
@@ -75,6 +81,8 @@ public class PlayerStats : CharacterStats, IPunObservable
 
 		manaBar.SetMaxMana((int)maxMana);
 		manaBar.SetMana((int)currentMana);
+		manaBarUI.SetMaxMana((int)maxMana);
+		manaBarUI.SetMana((int)currentMana);
 		if (currentMana > maxMana)
 		{
 			currentMana = maxMana;

@@ -18,9 +18,12 @@ public class InteractionCharacter : MonoBehaviour // Sorry Marcus, ist echt nich
     {
         if (focus != null)
         {
-            if (!focus.GetComponent<CharacterStats>().isAlive)
+            if (focus.gameObject.layer == LayerMask.NameToLayer("Enemy") || focus.gameObject.layer == LayerMask.NameToLayer("Action"))
             {
-                focus = null;
+                if (!focus.GetComponent<CharacterStats>().isAlive)
+                {
+                    focus = null;
+                }
             }
         }
 
@@ -28,9 +31,9 @@ public class InteractionCharacter : MonoBehaviour // Sorry Marcus, ist echt nich
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero); // Die Mausposition (ursprünglich in Pixel) wird in Weltkoordinaten übersetzt (Unity transform z.B.)
                                                                                                                                     // Eine Linie zwischen der Position des Mauszeigers wird gebildet und dem Vektor (0,0) wird gebildet. Ist noch nicht ganz klar ob das der Ursprung der Map oder das Zentrum der Kamera ist.
-            if (hit.collider != null)   // Wird geprüft ob überhaupt was getroffen wurde
+            if (hit.collider != null) // Wird geprüft ob überhaupt was getroffen wurde
             {
-                 Interactable interactable = hit.collider.GetComponent<Interactable>();          // Gegenstand der getroffen wurde wird fokusiert. (Für spätere Interaktion)
+                 Interactable interactable = hit.collider.GetComponent<Interactable>(); // Gegenstand der getroffen wurde wird fokusiert. (Für spätere Interaktion)
                  SetFocus(interactable);
             }
             else if(!EventSystem.current.IsPointerOverGameObject()) // Wenn Mauszeiger nicht über UI Element ist.
