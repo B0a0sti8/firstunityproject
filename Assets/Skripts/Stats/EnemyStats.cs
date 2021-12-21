@@ -19,6 +19,8 @@ public class EnemyStats : CharacterStats, IPunObservable
     public float modAttackSpeed;
     public float baseAttackSpeed = 2f;
 
+    public bool enemyUIHealthActive = false;
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         // Reihenfolge der gesendeten und empfangenen Komponenten muss gleich sein
@@ -41,8 +43,14 @@ public class EnemyStats : CharacterStats, IPunObservable
     private void Update()
     {
         // updates Bars on Canvas
-        gameObject.transform.Find("Canvas World Space").transform.GetChild(0).GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-        gameObject.transform.Find("Canvas World Space").transform.GetChild(0).GetComponent<HealthBar>().SetHealth((int)currentHealth);
+        gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
+        gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
+
+        if (enemyUIHealthActive)
+        {
+            gameObject.transform.Find("Canvas UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
+            gameObject.transform.Find("Canvas UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
+        }
 
         if (currentHealth > maxHealth.GetValue())
         {

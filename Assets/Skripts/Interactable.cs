@@ -32,20 +32,32 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public void OnFocused (Transform playerTransform)  // Wird ausgeführt, sobald Objekt fokussiert wird (rechtsklick)
+    public void OnFocused (Transform playerTransform) // Wird ausgeführt, sobald Objekt fokussiert wird
     {
+        isFocus = true;
+        player = playerTransform;
+        hasInteracted = false;
 
-         isFocus = true;
-         player = playerTransform;
-         hasInteracted = false;
-        
+        if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            gameObject.transform.Find("Charakter").transform.localScale = new Vector3(8f, 1.5f, 1f);
+            gameObject.transform.Find("Canvas UI").gameObject.SetActive(true);
+            gameObject.GetComponent<EnemyStats>().enemyUIHealthActive = true;
+        }
     }
 
-    public void OnDefocused()       // Wird ausgeführt, sobald Objekt nicht mehr fokussiert wird (linksklick)
+    public void OnDefocused() // Wird ausgeführt, sobald Objekt nicht mehr fokussiert wird
     {
         isFocus = false;
         player = null;
         hasInteracted = false;
+
+        if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            gameObject.GetComponent<EnemyStats>().enemyUIHealthActive = false;
+            gameObject.transform.Find("Charakter").transform.localScale = new Vector3(2.5f, 2.5f, 1f);
+            gameObject.transform.Find("Canvas UI").gameObject.SetActive(false);
+        }
     }
 
     void OnDrawGizmosSelected ()        // Malt gelben Kreis mit Interaktionsradius
