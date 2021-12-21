@@ -325,7 +325,7 @@ public class SkillPrefab : MonoBehaviour
     {
         masterChecks = GameObject.Find("Canvas Action Skills").GetComponent<MasterChecks>();
 
-        PLAYER = gameObject.transform.parent.gameObject.transform.parent.gameObject; //GameObject.Find("PLAYER");
+        PLAYER = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject; //GameObject.Find("PLAYER");
 
         interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
         //player = PLAYER.GetComponent<Player>();
@@ -336,11 +336,6 @@ public class SkillPrefab : MonoBehaviour
         globalCooldownSkills = GameObject.FindGameObjectsWithTag("GlobalCooldownSkill");
         //textGameObjects = GameObject.FindGameObjectsWithTag("WeaponSkillCDText");
     }
-
-
-
-
-
 
 
     //public void UseSkill() // checks for time between skill (e.g. Animation, GlobalCooldown) (+ stuff)
@@ -489,7 +484,6 @@ public class SkillPrefab : MonoBehaviour
     //    }
     //}
 }
-
 
 
 //void Update()
