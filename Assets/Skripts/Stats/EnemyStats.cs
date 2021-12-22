@@ -19,6 +19,7 @@ public class EnemyStats : CharacterStats, IPunObservable
     public float modAttackSpeed;
     public float baseAttackSpeed = 2f;
 
+    [HideInInspector]
     public bool enemyUIHealthActive = false;
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -64,10 +65,10 @@ public class EnemyStats : CharacterStats, IPunObservable
     }
 
     [PunRPC]
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(float damage, int missRandomRange)
     {
         Debug.Log("Enemy takes damage " + damage);
-        base.TakeDamage(damage);
+        base.TakeDamage(damage, missRandomRange);
         FindObjectOfType<AudioManager>().Play("Oof");
     }
 

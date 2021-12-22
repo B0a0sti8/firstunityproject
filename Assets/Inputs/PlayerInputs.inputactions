@@ -44,6 +44,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "AutoFocus",
+                    "type": "Button",
+                    "id": "3488c523-4928-43e2-b5d4-5d85f6d5d127",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -154,6 +162,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "EquipmentWindow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c216ca3-92ae-4e14-b8a3-e672623df564",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AutoFocus",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

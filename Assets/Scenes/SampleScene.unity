@@ -154,10 +154,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4584907192636714685, guid: 4b8a34abc372aa44cbe5764a5222068b, type: 3}
-  minX: -40
-  maxX: -30
-  minY: -10
-  maxY: 0
+  minX: -34
+  maxX: -32
+  minY: -7
+  maxY: -5
   isSpawned: 0
 --- !u!4 &25874520
 Transform:
@@ -776,7 +776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &357089918
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6332,7 +6332,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458119416}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6571503, y: -3.034667, z: 50.33747}
+  m_LocalPosition: {x: -18.92, y: 0.46, z: 50.33747}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1344200177}
@@ -6807,7 +6807,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695976293}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5828476, y: -3.1246672, z: 50.33747}
+  m_LocalPosition: {x: -16.96, y: 0.51, z: 50.33747}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1344200177}
@@ -26897,7 +26897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &1804866046
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -27291,10 +27291,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PLAYER
       objectReference: {fileID: 0}
-    - target: {fileID: 8542294337897434442, guid: 4b8a34abc372aa44cbe5764a5222068b, type: 3}
-      propertyPath: sceneViewId
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b8a34abc372aa44cbe5764a5222068b, type: 3}
 --- !u!1001 &2023599405687819454
@@ -27304,10 +27300,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 959026866}
     m_Modifications:
-    - target: {fileID: 2023599406339572334, guid: 471d28fe515d5314d98cb82a1fe63d92, type: 3}
-      propertyPath: sceneViewId
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2023599406339572341, guid: 471d28fe515d5314d98cb82a1fe63d92, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -27424,6 +27416,14 @@ PrefabInstance:
     - target: {fileID: 2985879261512430859, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
       propertyPath: SceneName
       value: TestScene1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985879261512430859, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
+      propertyPath: newPlayerPosition.x
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985879261512430859, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
+      propertyPath: newPlayerPosition.y
+      value: -6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}

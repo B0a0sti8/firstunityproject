@@ -1,7 +1,7 @@
 // Dieses Skript sorgt dafür dass bei Rechtsklick überprüft wird, ob auf ein Interaktives Objekt geklickt wurde
 // z.B. Items, Truhen, Händler etc.
 // Eng verbunden mit "Interactable"-Skript
-// Verantwortlicher für den Quatsch: Basti
+// Verantwortlicher für den Quatsch: Basti <3
 
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System; // for array
 
 public class InteractionCharacter : MonoBehaviour // Sorry Marcus, ist echt nicht schön gecoded. xD
 {
@@ -56,12 +57,53 @@ public class InteractionCharacter : MonoBehaviour // Sorry Marcus, ist echt nich
         newFocus.OnFocused(transform);
     }
 
-    void RemoveFocus ()             // Entfernt Fokus des Charakters
+    void RemoveFocus () // Entfernt Fokus des Charakters
     {
         if (focus != null)
         {
             focus.OnDefocused();
         }
         focus = null;
+    }
+
+
+
+    GameObject[] potentialEnemies;
+    GameObject[] viableEnemies;
+    float[] enemyDistances;
+    float maxFocusRange = 20f;
+
+    void OnAutoFocus() // when pressing TAB (put closest enemy in focus)
+    {
+        //Debug.Log("TAB");
+        potentialEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (potentialEnemies.Length == 0) { return; }
+
+        viableEnemies = new GameObject[potentialEnemies.Length];
+
+        enemyDistances = new float[potentialEnemies.Length];
+        for (int i = 0; i < potentialEnemies.Length; i++)
+        {
+            enemyDistances[i] = Mathf.Infinity;
+        }
+
+        int n = 0;
+        foreach (GameObject potE in potentialEnemies)
+        {
+            float enemyDist = Vector2.Distance(gameObject.transform.position, potE.transform.position);
+            if (enemyDist <= maxFocusRange && potE.GetComponent<EnemyStats>().isAlive == true && focus != potE.gameObject.GetComponent<Interactable>()) // does NOT check if in sight
+            {
+                viableEnemies[n] = potE;
+                enemyDistances[n] = enemyDist;
+                n += 1;
+            }
+        }
+
+        if (viableEnemies[0] != null)
+        {
+            int minIndex = Array.IndexOf(enemyDistances, Mathf.Min(enemyDistances));
+            Interactable closestEnemy = viableEnemies[minIndex].gameObject.GetComponent<Interactable>();
+            SetFocus(closestEnemy);
+        }
     }
 }
