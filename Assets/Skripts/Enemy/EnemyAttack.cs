@@ -11,7 +11,7 @@ public class EnemyAttack : MonoBehaviour
         if (gameObject.GetComponent<EnemyStats>().isAlive && target.gameObject.GetComponent<PlayerStats>().isAlive)
         {
             if (timer <= 0)
-            {
+            { // inSight Check???
                 if (Vector2.Distance(gameObject.transform.position, target.transform.position) <= gameObject.GetComponent<EnemyAI>().unitRange)
                 {
                     timer = gameObject.GetComponent<EnemyStats>().baseAttackSpeed;

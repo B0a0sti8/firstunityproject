@@ -23191,6 +23191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54fc2885b5a04b31adcb62a97bbf0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  view: {fileID: 0}
   maxHealth:
     baseValue: 0
   currentHealth: 0
@@ -23201,10 +23202,11 @@ MonoBehaviour:
   evade:
     baseValue: 0
   isAlive: 0
-  view: {fileID: 0}
   maxMana: 1000
   currentMana: 0
   manaBar: {fileID: 0}
+  manaBarUI: {fileID: 0}
+  missRandom: 0
 --- !u!1 &1133446062
 GameObject:
   m_ObjectHideFlags: 0
@@ -24676,6 +24678,14 @@ PrefabInstance:
     - target: {fileID: 2985879261512430859, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
       propertyPath: SceneName
       value: Dungeon1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985879261512430859, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
+      propertyPath: newPlayerPosition.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985879261512430859, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
+      propertyPath: newPlayerPosition.y
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}

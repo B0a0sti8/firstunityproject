@@ -12,11 +12,10 @@ public class SpawnPlayers : MonoBehaviour
     public float maxX;
     public float minY;
     public float maxY;
-    public bool isSpawned = false;
 
     public void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         if (instance == null)
         {
             instance = this;
@@ -31,10 +30,6 @@ public class SpawnPlayers : MonoBehaviour
     public void Start()
     {
         Vector2 randomPosition = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-        if (!isSpawned)
-         {
-            PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
-            isSpawned = true;
-        }
+        PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
     }
 }
