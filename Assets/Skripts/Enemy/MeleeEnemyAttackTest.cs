@@ -7,7 +7,9 @@ public class MeleeEnemyAttackTest : EnemyAttack
     public override void EnemyAtkEffect(GameObject target)
     {
         base.EnemyAtkEffect(target);
-        target.GetComponent<PlayerStats>().TakeDamage(gameObject.GetComponent<EnemyStats>().damage.GetValue());
+
+        int missRandom = Random.Range(0, 100);
+        target.GetComponent<PlayerStats>().TakeDamage(gameObject.GetComponent<EnemyStats>().damage.GetValue(), missRandom);
         // Attack
         // Animation
     }

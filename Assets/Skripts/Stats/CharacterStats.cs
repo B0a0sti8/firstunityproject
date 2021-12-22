@@ -5,6 +5,8 @@ using Photon.Pun;
 
 public class CharacterStats : MonoBehaviourPunCallbacks
 {
+    public PhotonView view;
+
     public Stat maxHealth;
     public float currentHealth;
 
@@ -16,27 +18,28 @@ public class CharacterStats : MonoBehaviourPunCallbacks
 
 
 
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage, int missRandomRange)
     {
         //Debug.Log("damage: " + damage);
         damage -= armor.GetValue();
-        damage = Mathf.Clamp(damage, 0, float.MaxValue);
-        //Debug.Log(evade.GetValue());
-        if (Random.Range(0, 100) <= Mathf.Clamp(evade.GetValue(), 0, 100))
+        damage = Mathf.Clamp(damage, 0, float.MaxValue); // if (damage < 0) { damage = 0 }
+
+        if (missRandomRange <= Mathf.Clamp(evade.GetValue(), 0, 100))
         {
-            Debug.Log("MISS");
+            Debug.Log("MISS:" + missRandomRange + " <= " + Mathf.Clamp(evade.GetValue(), 0, 100));
         }
         else
         {
-            FindObjectOfType<AudioManager>().Play("Oof");
+            if (view.IsMine)
+            {
+                FindObjectOfType<AudioManager>().Play("Oof");
+            }
             currentHealth -= damage;
-            if (currentHealth <= 0)
+            if (currentHealth <= 0) // maybe put in update instead
             {
                 Die();
             }
         }
-
-        FindObjectOfType<AudioManager>().Play("Oof");
     }
 
     public virtual void Die()

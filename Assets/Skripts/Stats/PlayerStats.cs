@@ -13,7 +13,7 @@ using Photon.Pun;
 
 public class PlayerStats : CharacterStats, IPunObservable
 {
-	public PhotonView view;
+	//public PhotonView view;
 
 	[Header("Mana")]
 	public float maxMana = 1000;
@@ -25,6 +25,8 @@ public class PlayerStats : CharacterStats, IPunObservable
 
 	float tickEveryXSeconds = 1f; // gain mana every 1 second
 	float tickEveryXSecondsTimer = 0f;
+
+	public int missRandom;
 
 
 
@@ -49,13 +51,13 @@ public class PlayerStats : CharacterStats, IPunObservable
 	{
 		if (view.IsMine)
 		{
-			gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas Action Skills").gameObject.SetActive(true);
+			gameObject.transform.Find("Own Canvases").gameObject.SetActive(true);
 		}
 
 		currentHealth = maxHealth.GetValue();
 		currentMana = maxMana;
 		manaBar = gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas World Space").transform.Find("ManaBar").GetComponent<ManaBar>();
-		manaBarUI = gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas Healthbar UI").transform.Find("ManaBar").GetComponent<ManaBar>();
+		manaBarUI = gameObject.transform.Find("Own Canvases").gameObject.transform.Find("Canvas Healthbar UI").transform.Find("ManaBar").GetComponent<ManaBar>();
 
 
 		isAlive = true;
@@ -65,11 +67,11 @@ public class PlayerStats : CharacterStats, IPunObservable
 
 	private void Update()
 	{
-		// updates Bars on Canvas
+		// updates Bars on Canvases
 		gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
 		gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
-		gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-		gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
+		gameObject.transform.Find("Own Canvases").gameObject.transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
+		gameObject.transform.Find("Own Canvases").gameObject.transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
 		if (currentHealth > maxHealth.GetValue())
 		{
 			currentHealth = maxHealth.GetValue();
@@ -92,26 +94,28 @@ public class PlayerStats : CharacterStats, IPunObservable
 			currentMana = 0;
 		}
 
+		// Mana regeneration
 		tickEveryXSecondsTimer += Time.deltaTime;
 		if (tickEveryXSecondsTimer >= tickEveryXSeconds)
 		{
 			tickEveryXSecondsTimer = 0f;
 
-			ManageManaRPC(25);
+			ManageManaRPC(25f);
 		}
 	}
 
 	[PunRPC]
-	public override void TakeDamage(float damage)
+	public override void TakeDamage(float damage, int missRandomRange)
 	{
-		base.TakeDamage(damage);
+		base.TakeDamage(damage, missRandomRange);
 	}
 
 	public void TakeDamageRPC(float damage)
 	{
 		if (view.IsMine)
 		{
-			view.RPC("TakeDamage", RpcTarget.All, damage);
+			missRandom = Random.Range(0, 100);
+			view.RPC("TakeDamage", RpcTarget.All, damage, missRandom);
 		}
 	}
 
@@ -140,12 +144,11 @@ public class PlayerStats : CharacterStats, IPunObservable
 	{
         if (isAlive)
         {
-			ManageManaRPC(-100);
+			ManageManaRPC(-100f);
 
 			TakeDamageRPC(20f);
 		}
 	}
-
 
 	void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
 	{
