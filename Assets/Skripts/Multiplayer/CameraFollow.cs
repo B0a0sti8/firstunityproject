@@ -21,7 +21,7 @@ public class CameraFollow : MonoBehaviour
         CameraMama = GameObject.Find("CameraMama");
         CameraMama.transform.GetChild(0).gameObject.SetActive(true);
 
-        cameera = GameObject.Find("CM vcam1"); // !!
+        //cameera = GameObject.Find("CM vcam1"); // !!
         view = GetComponent<PhotonView>();
 
         vcam1 = CameraMama.transform.GetChild(0).transform.GetChild(0).gameObject;
