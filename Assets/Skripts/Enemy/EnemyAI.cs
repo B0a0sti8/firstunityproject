@@ -18,6 +18,8 @@ public class EnemyAI : MonoBehaviour
     //public Transform playerTransform;
 
     public Transform target = null;
+    public Transform targetTemp = null;
+
 
     public float speed = 200f;
     public float nextWypointDistance;
@@ -41,6 +43,8 @@ public class EnemyAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb2d = GetComponent<Rigidbody2D>();
+
+        targetTemp = target;
     }
 
     void Update()
@@ -48,6 +52,36 @@ public class EnemyAI : MonoBehaviour
         SearchTargets(); // Sucht nach vernünftigem Target: 1. Sucht alle Spieler, 2. Prüft Entfernung und InSight, 3. Sucht nächstgelegenen Spieler
 
         ChaseTarget();
+
+        if (targetTemp != target) // whenever target changes
+        {
+            targetTemp = target;
+
+            if (target == null) // when loosing target
+            {
+
+            }
+            else  // when gaining target
+            {
+                // share target with every group member
+                GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach (GameObject allE in allEnemies)
+                {
+                    if (gameObject.GetComponent<EnemyStats>().groupNumber == allE.GetComponent<EnemyStats>().groupNumber)
+                    {
+                        allE.GetComponent<EnemyAI>().target = target;
+                    }
+                }
+
+                gameObject.transform.Find("Canvas World Space").transform.Find("AggroText").gameObject.SetActive(true);
+                StartCoroutine(Wait(1f));
+                IEnumerator Wait(float time)
+                {
+                    yield return new WaitForSeconds(time);
+                    gameObject.transform.Find("Canvas World Space").transform.Find("AggroText").gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
     #region Verfolge Ziele

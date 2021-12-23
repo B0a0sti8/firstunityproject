@@ -19,6 +19,8 @@ public class EnemyStats : CharacterStats, IPunObservable
     public float modAttackSpeed;
     public float baseAttackSpeed = 2f;
 
+    public int groupNumber;
+
     [HideInInspector]
     public bool enemyUIHealthActive = false;
 

@@ -47,6 +47,19 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
+    void OnGoToHub() // when pressing H
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Debug.Log("Go to Hub");
+            StartCoroutine(LoadLevel("Sanctuary"));
+        }
+        else
+        {
+            Debug.Log("Only the host can travel!");
+        }
+    }
+
     public void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(SceneName));

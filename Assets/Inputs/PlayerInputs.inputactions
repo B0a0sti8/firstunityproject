@@ -30,14 +30,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "ChangeScene",
-                    "type": "Button",
-                    "id": "d71cfb0e-a6d9-4c7d-80c1-71d811ff9e99",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "EquipmentWindow",
                     "type": "Button",
                     "id": "82d1f1de-a72f-4383-aab4-4add7ad5a420",
@@ -50,6 +42,14 @@
                     "type": "Button",
                     "id": "3488c523-4928-43e2-b5d4-5d85f6d5d127",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Zoom",
+                    "type": "PassThrough",
+                    "id": "4c3b5dda-fd48-4399-a753-4ff75c313400",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -145,17 +145,6 @@
                 },
                 {
                     "name": "",
-                    "id": "67d0a1ba-4c22-49be-8b64-7287c698b541",
-                    "path": "<Keyboard>/o",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeScene",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "a62a82da-e913-46ca-b2d7-cd4e7a0ee86c",
                     "path": "<Keyboard>/c",
                     "interactions": "",
@@ -173,6 +162,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "AutoFocus",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e23e99e5-9701-4d5e-98bd-c74ced51a5a4",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -194,6 +194,22 @@
                     "name": "DPSMeterReset",
                     "type": "Button",
                     "id": "eba938a3-d08d-4a0e-a7b0-373a5cfce6c2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ChangeScene",
+                    "type": "Button",
+                    "id": "d2d29ee6-a937-4f22-a9f4-944b3bf61fee",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "GoToHub",
+                    "type": "Button",
+                    "id": "60cb2684-c98b-45c3-a34c-7fab65fd9d29",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -219,6 +235,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "DPSMeterReset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "373c4a3a-fb19-444b-b4af-63d45dfd5fc6",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GoToHub",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4eb3d384-d576-4c8c-9108-3d93b4d5ee61",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeScene",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
