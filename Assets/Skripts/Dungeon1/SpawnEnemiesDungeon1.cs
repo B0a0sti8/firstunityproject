@@ -9,8 +9,8 @@ public class SpawnEnemiesDungeon1 : MonoBehaviour
     public GameObject enemyPrefabRanged;
     public GameObject enemyPrefabBoss;
 
-    GameObject[] allEnemies;
     GameObject[] allEnemyIndicators;
+    GameObject[] allEnemies;
 
 
     public void Start()

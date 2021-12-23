@@ -64,14 +64,14 @@ public class EnemyAI : MonoBehaviour
             else  // when gaining target
             {
                 // share target with every group member
-                GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-                foreach (GameObject allE in allEnemies)
-                {
-                    if (gameObject.GetComponent<EnemyStats>().groupNumber == allE.GetComponent<EnemyStats>().groupNumber)
-                    {
-                        allE.GetComponent<EnemyAI>().target = target;
-                    }
-                }
+                //GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+                //foreach (GameObject allE in allEnemies)
+                //{
+                //    if (gameObject.GetComponent<EnemyStats>().groupNumber == allE.GetComponent<EnemyStats>().groupNumber)
+                //    {
+                //        allE.GetComponent<EnemyAI>().target = target;
+                //    }
+                //}
 
                 gameObject.transform.Find("Canvas World Space").transform.Find("AggroText").gameObject.SetActive(true);
                 StartCoroutine(Wait(1f));

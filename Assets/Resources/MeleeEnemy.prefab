@@ -649,6 +649,7 @@ MonoBehaviour:
   isAlive: 0
   modAttackSpeed: 0
   baseAttackSpeed: 2
+  groupNumber: 0
   enemyUIHealthActive: 0
 --- !u!114 &2023599406339572337
 MonoBehaviour:
