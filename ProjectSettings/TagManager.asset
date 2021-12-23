@@ -8,6 +8,7 @@ TagManager:
   - WeaponSkillCDText
   - GlobalCooldownSkill
   - Enemy
+  - EnemyIndicator
   layers:
   - Default
   - TransparentFX

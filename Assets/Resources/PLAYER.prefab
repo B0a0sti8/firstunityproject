@@ -2991,7 +2991,7 @@ Transform:
   m_LocalScale: {x: 0.12763672, y: 0.10517187, z: 1}
   m_Children:
   - {fileID: 4584907192695298169}
-  m_Father: {fileID: 4584907192636714660}
+  m_Father: {fileID: 6604016653283099680}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &950919041
@@ -7118,7 +7118,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 20
   m_WholeNumbers: 1
-  m_Value: 13
+  m_Value: 15
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7323,7 +7323,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4584907192636714660}
+  - component: {fileID: 6604016653283099680}
   - component: {fileID: 4584907192636714659}
   - component: {fileID: 4584907192636714658}
   - component: {fileID: 4584907192636714657}
@@ -7345,15 +7345,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!4 &4584907192636714660
-Transform:
+--- !u!224 &6604016653283099680
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4584907192636714685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -44.13, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 7.8347363, y: 9.508246, z: 1}
   m_Children:
   - {fileID: 950919040}
@@ -7361,6 +7361,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -44.13, y: 2}
+  m_SizeDelta: {x: 0.11, y: 0.15}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &4584907192636714659
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7537,7 +7542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb29c55773684a46bd0232f0cedaa8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionTransform: {fileID: 4584907192636714660}
+  interactionTransform: {fileID: 0}
   radius: 3
 --- !u!114 &4584907192636714663
 MonoBehaviour:
@@ -7665,6 +7670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraMama: {fileID: 0}
+  vcam1: {fileID: 0}
 --- !u!114 &7117093464679465785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7886,7 +7892,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.65, y: 1}
+  m_AnchorMax: {x: 0.75, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8377,7 +8383,7 @@ Transform:
   - {fileID: 798673589}
   - {fileID: 1117021634}
   - {fileID: 651411252}
-  m_Father: {fileID: 4584907192636714660}
+  m_Father: {fileID: 6604016653283099680}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1367009634302966605

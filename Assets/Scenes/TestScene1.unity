@@ -21511,7 +21511,6 @@ MonoBehaviour:
   maxX: -30
   minY: -10
   maxY: 0
-  isSpawned: 0
 --- !u!4 &600306319
 Transform:
   m_ObjectHideFlags: 0
@@ -24674,6 +24673,10 @@ PrefabInstance:
     - target: {fileID: 2985879261512430853, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985879261512430858, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: a78dda9e-bf35-40bf-bd2f-8a250db741b9
       objectReference: {fileID: 0}
     - target: {fileID: 2985879261512430859, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
       propertyPath: SceneName

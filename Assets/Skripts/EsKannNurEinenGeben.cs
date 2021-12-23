@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EsKannNurEinenGeben : MonoBehaviour
 {
-    public static EsKannNurEinenGeben instance;
+    public static EsKannNurEinenGeben instance = null;
     public void Awake()
     {
         if (instance == null)
