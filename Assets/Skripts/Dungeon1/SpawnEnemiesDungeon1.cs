@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-// ONLY FOR SAMPLE SCENE
-// EnemyIndicator Tag on each Indicator
-public class SpawnEnemies : MonoBehaviour
+
+public class SpawnEnemiesDungeon1 : MonoBehaviour
 {
     public GameObject enemyPrefabMelee;
     public GameObject enemyPrefabRanged;
+    public GameObject enemyPrefabBoss;
 
-    GameObject[] allEnemies;
     GameObject[] allEnemyIndicators;
+    GameObject[] allEnemies;
 
 
     public void Start()
@@ -20,8 +20,9 @@ public class SpawnEnemies : MonoBehaviour
 
         SpawnEnemyType(enemyPrefabMelee, "Melee");
 
-        SpawnEnemyType(enemyPrefabRanged, "Ranged");
+        SpawnEnemyType(enemyPrefabRanged, "Bowman");
 
+        SpawnEnemyType(enemyPrefabBoss, "BigBoii");
 
         // assign groupNumber to Enemy                  // or use alert-range instead of groupNumber?
         allEnemies = GameObject.FindGameObjectsWithTag("Enemy"); // every Enemy using groupNumbers should have the tag "Enemy"
@@ -61,22 +62,4 @@ public class SpawnEnemies : MonoBehaviour
             }
         }
     }
-
-    //public GameObject enemyPrefabMelee;
-    //public GameObject enemyPrefabRanged;
-
-    //Vector2 position1 = new Vector2(-30, 13);
-    //Vector2 position2 = new Vector2(-28, 13);
-    //Vector2 position3 = new Vector2(-26, 13);
-    //Vector2 position4 = new Vector2(-24, 13);
-    //Vector2 position5 = new Vector2(-22, 13);
-
-    //public void Start()
-    //{
-    //    PhotonNetwork.InstantiateRoomObject(enemyPrefabMelee.name, position1, Quaternion.identity); // Gegner 1 Melee
-    //    PhotonNetwork.InstantiateRoomObject(enemyPrefabMelee.name, position2, Quaternion.identity); // Gegner 2 Melee
-    //    PhotonNetwork.InstantiateRoomObject(enemyPrefabMelee.name, position3, Quaternion.identity); // Gegner 3 Melee
-    //    PhotonNetwork.InstantiateRoomObject(enemyPrefabRanged.name, position4, Quaternion.identity); // Gegner 4 Ranged
-    //    PhotonNetwork.InstantiateRoomObject(enemyPrefabRanged.name, position5, Quaternion.identity); // Gegner 5 Ranged
-    //}
 }
