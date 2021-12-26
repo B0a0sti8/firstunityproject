@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TestSpeedBoost : SkillPrefab
 {
+    public Buff testBuff1;
     public override void SkillEffect()
     {
         base.SkillEffect();
@@ -11,12 +12,14 @@ public class TestSpeedBoost : SkillPrefab
         // Play Soundeffect
         // Skilleffect
         //Debug.Log("TestSpeedBoost: + 5 Movement");
-        playerController._Speed += 5;
+        //playerController._Speed += 5;
         StartCoroutine(Wait(10));
         IEnumerator Wait(float time)
         {
             yield return new WaitForSeconds(time);
-            playerController._Speed -= 5;
+            //playerController._Speed -= 5;
         }
+        // AddBuff
+        PLAYER.GetComponent<BuffManager>().Add(testBuff1);
     }
 }
