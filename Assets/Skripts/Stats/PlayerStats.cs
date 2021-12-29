@@ -142,7 +142,8 @@ public class PlayerStats : CharacterStats, IPunObservable
 
 	private void OnTakeDamage() // when pressing SPACE
 	{
-        if (isAlive)
+		//TooltipScreenSpaceUI.ShowTooltip_Static("Hello");
+		if (isAlive)
         {
 			ManageManaRPC(-100f);
 

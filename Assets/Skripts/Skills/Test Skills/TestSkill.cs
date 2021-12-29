@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class TestSkill : SkillPrefab
 {
+    public override void MasterETStuff()
+    {
+        skillDescription = "Does absolutely nothing!";
+        base.MasterETStuff();
+    }
+
     public override void SkillEffect()
     {
         base.SkillEffect();

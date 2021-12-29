@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class TestOverHeal : SkillPrefab
 {
+    public override void MasterETStuff()
+    {
+        skillDescription = "Gain 50 Health\nNo Overheal at the moment";
+        base.MasterETStuff();
+    }
+
     public override void SkillEffect()
     {
         base.SkillEffect();

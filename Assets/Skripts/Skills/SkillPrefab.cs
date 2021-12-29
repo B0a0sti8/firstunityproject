@@ -24,15 +24,17 @@ public class SkillPrefab : MonoBehaviour
     public bool needsTargetEnemy;
     public bool needsTargetAlly;
 
+    [Header("Mana")]
     public bool needsMana; // optional
     public int manaCost;
 
     public float skillRange;
     bool targetInSight;
 
+    [Header("Own Cooldown")]
     public bool hasOwnCooldown;
     public float ownCooldownTime; // 0 if hasOwnCooldown = false
-    float ownCooldownTimeLeft;
+    public float ownCooldownTimeLeft; // ONLY PUBLIC FOR TESTING (should be private)
     bool ownCooldownActive = false;
 
     public bool hasGlobalCooldown;
@@ -40,6 +42,9 @@ public class SkillPrefab : MonoBehaviour
     public bool isSuperInstant; // can not be true if hasGlobalCooldown is true
     bool isSkillInOwnSuperInstantQueue = false;
 
+    [Header("Tooltip")]
+    public string skillDescription;
+    MasterEventTrigger masterET;
 
 
     public void StartSkillChecks() // snjens beginnt sein abenteuer
@@ -316,6 +321,8 @@ public class SkillPrefab : MonoBehaviour
                 ownCooldownTimeLeft = 0;
             }
         }
+
+        MasterETStuff();
     }
 
     GameObject[] globalCooldownSkills;
@@ -335,6 +342,50 @@ public class SkillPrefab : MonoBehaviour
 
         globalCooldownSkills = GameObject.FindGameObjectsWithTag("GlobalCooldownSkill");
         //textGameObjects = GameObject.FindGameObjectsWithTag("WeaponSkillCDText");
+
+    }
+
+    void Start()
+    {
+        masterET = gameObject.GetComponent<MasterEventTrigger>();
+
+        MasterETStuff();
+    }
+
+    public virtual void MasterETStuff()
+    {
+        masterET.skillName = gameObject.name;
+
+        if (skillDescription == "")
+        {
+            skillDescription = "?GoodsInfo?";
+        }
+        masterET.skillDescription = skillDescription;
+
+        masterET.skillSprite = gameObject.GetComponent<Image>().sprite;
+
+        if (hasGlobalCooldown)
+        {
+            masterET.skillType = "Weaponskill (<color=yellow>" + masterChecks.masterGCTime.ToString().Replace(",", ".") + "s</color>)";
+        }
+        else if (isSuperInstant)
+        {
+            masterET.skillType = "Super-Instant";
+        }
+        else
+        {
+            masterET.skillType = "Instant";
+        }
+
+        if (hasOwnCooldown)
+        {
+            masterET.skillCooldown = "Cooldown: <color=yellow>" + ownCooldownTime.ToString().Replace(",", ".") + "s</color>";
+        }
+
+        if (needsMana)
+        {
+            masterET.skillCosts = "Mana: <color=#00ffffff>" + manaCost.ToString().Replace(",", ".") + "</color>";
+        }
     }
 
 
