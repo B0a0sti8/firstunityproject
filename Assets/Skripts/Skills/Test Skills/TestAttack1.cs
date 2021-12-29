@@ -5,6 +5,19 @@ using Photon.Pun;
 
 public class TestAttack1 : SkillPrefab
 {
+    public override void MasterETStuff()
+    {
+        skillDescription = "Test Attack 1";
+        base.MasterETStuff();
+    }
+
+    //public override void Start()
+    //{
+    //    skillDescription = "Test Attack 1";
+
+    //    base.Start();
+    //}
+
     public override void SkillEffect()
     {
         base.SkillEffect();

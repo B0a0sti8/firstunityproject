@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-// ONLY FOR SAMPLE SCENE
+// ONLY FOR SAMPLE SCENE!
 // EnemyIndicator Tag on each Indicator
 public class SpawnEnemies : MonoBehaviour
 {
