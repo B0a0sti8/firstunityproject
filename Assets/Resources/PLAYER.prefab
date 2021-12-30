@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 133253431}
   - component: {fileID: 3154302426633649061}
   m_Layer: 5
-  m_Name: SkillButton 6 TestSkill
+  m_Name: SkillButton 6 (TestSkill)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1402,6 +1402,7 @@ MonoBehaviour:
   hasGlobalCooldown: 1
   isSuperInstant: 0
   skillDescription: 
+  damage: 400
 --- !u!114 &1751446153542886752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2053,6 +2054,8 @@ MonoBehaviour:
   hasGlobalCooldown: 1
   isSuperInstant: 0
   skillDescription: 
+  baseDamage: 100
+  comboDamage: 120
 --- !u!114 &413619550916163104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5740,6 +5743,7 @@ MonoBehaviour:
   hasGlobalCooldown: 0
   isSuperInstant: 0
   skillDescription: 
+  damage: 200
 --- !u!114 &8033903956536368675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5926,6 +5930,7 @@ MonoBehaviour:
   hasGlobalCooldown: 0
   isSuperInstant: 0
   skillDescription: 
+  overhealing: 50
 --- !u!114 &6561186677475220545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6727,6 +6732,7 @@ MonoBehaviour:
   hasGlobalCooldown: 0
   isSuperInstant: 0
   skillDescription: 
+  healing: 75
 --- !u!114 &2781643958777908884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6989,6 +6995,8 @@ MonoBehaviour:
   hasGlobalCooldown: 1
   isSuperInstant: 0
   skillDescription: 
+  baseDamage: 100
+  comboDamage: 150
 --- !u!114 &8933648390615150534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7518,6 +7526,7 @@ MonoBehaviour:
   hasGlobalCooldown: 1
   isSuperInstant: 0
   skillDescription: 
+  damage: 100
 --- !u!114 &8055252640503893492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11426,7 +11435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   view: {fileID: 8542294337897434442}
   maxHealth:
-    baseValue: 200
+    baseValue: 500
   currentHealth: 0
   damage:
     baseValue: 0
@@ -11439,8 +11448,6 @@ MonoBehaviour:
   currentMana: 0
   manaBar: {fileID: 0}
   manaBarUI: {fileID: 0}
-  healthText: {fileID: 0}
-  manaText: {fileID: 0}
   missRandom: 0
 --- !u!114 &8542294337897434442
 MonoBehaviour:

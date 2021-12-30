@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class TestAttack3 : SkillPrefab
 {
+    public float baseDamage = 100f;
+    public float comboDamage = 150f;
+
+    public override void MasterETStuff()
+    {
+        skillDescription = "Deal <color=orange>" + baseDamage + " Damage</color> to any target.\n" +
+            "<color=lightblue>Combo - TestAttack2:</color> Deal <color=orange>" + comboDamage + " Damage</color> instead.";
+
+        base.MasterETStuff();
+    }
+
     public override void SkillEffect()
     {
         base.SkillEffect();
-        // Play Animation
-        // Play Soundeffect
-        // Skilleffect
-        Debug.Log("Attack3");
-        GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += 150f;
+        
+        Debug.Log("Attack3: " + baseDamage + " or " + comboDamage + " Damage");
+        DealDamage(comboDamage);
+        //GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += damage;
     }
 }
