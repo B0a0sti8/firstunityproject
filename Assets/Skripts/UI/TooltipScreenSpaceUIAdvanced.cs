@@ -24,6 +24,8 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
     TextMeshProUGUI textMeshProType;
     TextMeshProUGUI textMeshProCooldown;
     TextMeshProUGUI textMeshProCosts;
+    TextMeshProUGUI textMeshProRange;
+    TextMeshProUGUI textMeshProRadius;
 
     //private System.Func<string> getTooltipTextFunc;
 
@@ -41,11 +43,14 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
         textMeshProType = transform.Find("Tooltip Text Skilltype").GetComponent<TextMeshProUGUI>();
         textMeshProCooldown = transform.Find("Tooltip Text Skillcooldown").GetComponent<TextMeshProUGUI>();
         textMeshProCosts = transform.Find("Tooltip Text Skillcosts").GetComponent<TextMeshProUGUI>();
+        textMeshProRange = transform.Find("Tooltip Text Skillrange").GetComponent<TextMeshProUGUI>();
+        textMeshProRadius = transform.Find("Tooltip Text Skillradius").GetComponent<TextMeshProUGUI>();
 
         HideTooltip();
     }
 
-    void SetText(string tooltipName, string tooltipDescription, Sprite tooltipSprite, string tooltipType, string tooltipCooldown, string tooltipCosts)
+    void SetText(string tooltipName, string tooltipDescription, Sprite tooltipSprite, string tooltipType, 
+        string tooltipCooldown, string tooltipCosts, string tooltipRange, string tooltipRadius)
     {
         textMeshProName.SetText(tooltipName);
         textMeshProDescription.SetText(tooltipDescription);
@@ -53,13 +58,16 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
         textMeshProType.SetText(tooltipType);
         textMeshProCooldown.SetText(tooltipCooldown);
         textMeshProCosts.SetText(tooltipCosts);
+        textMeshProRange.SetText(tooltipRange);
+        textMeshProRadius.SetText(tooltipRadius);
 
         textMeshProName.ForceMeshUpdate();
         textMeshProDescription.ForceMeshUpdate();
         textMeshProType.ForceMeshUpdate();
         textMeshProCooldown.ForceMeshUpdate();
         textMeshProCosts.ForceMeshUpdate();
-
+        textMeshProRange.ForceMeshUpdate();
+        textMeshProRadius.ForceMeshUpdate();
 
         //Vector2 textSize = textMeshPro.GetRenderedValues(false);
         //Vector2 paddingSize = new Vector2(8, 8);
@@ -88,10 +96,29 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
         rectTransform.anchoredPosition = anchoredPosition;
     }
 
-    private void ShowTooltip(string tooltipName, string tooltipDescription, Sprite tooltipSprite, string tooltipType, string tooltipCooldown, string tooltipCosts)
+    private void HideTooltip()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public static void HideTooltip_Static()
+    {
+        Instance.HideTooltip();
+    }
+
+    private void ShowTooltip(string tooltipName, string tooltipDescription, Sprite tooltipSprite, string tooltipType, 
+        string tooltipCooldown, string tooltipCosts, string tooltipRange, string tooltipRadius)
     {
         gameObject.SetActive(true);
-        SetText(tooltipName, tooltipDescription, tooltipSprite, tooltipType, tooltipCooldown, tooltipCosts);
+        SetText(tooltipName, tooltipDescription, tooltipSprite, tooltipType, 
+            tooltipCooldown, tooltipCosts, tooltipRange, tooltipRadius);
+    }
+
+    public static void ShowTooltip_Static(string tooltipName, string tooltipDescription, Sprite tooltipSprite, string tooltipType, 
+        string tooltipCooldown, string tooltipCosts, string tooltipRange, string tooltipRadius)
+    {
+        Instance.ShowTooltip(tooltipName, tooltipDescription, tooltipSprite, tooltipType, 
+            tooltipCooldown, tooltipCosts, tooltipRange, tooltipRadius);
     }
 
     //private void ShowTooltip(string tooltipText)
@@ -105,16 +132,6 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
     //    SetText(getTooltipTextFunc());
     //}
 
-    private void HideTooltip()
-    {
-        gameObject.SetActive(false);
-    }
-
-    public static void ShowTooltip_Static(string tooltipName, string tooltipDescription, Sprite tooltipSprite, string tooltipType, string tooltipCooldown, string tooltipCosts)
-    {
-        Instance.ShowTooltip(tooltipName, tooltipDescription, tooltipSprite, tooltipType, tooltipCooldown, tooltipCosts);
-    }
-
     //public static void ShowTooltip_Static(string tooltipText)
     //{
     //    Instance.ShowTooltip(tooltipText);
@@ -123,9 +140,4 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
     //{
     //    Instance.ShowTooltip(getTooltipTextFunc);
     //}
-
-    public static void HideTooltip_Static()
-    {
-        Instance.HideTooltip();
-    }
 }
