@@ -49,7 +49,7 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
         HideTooltip();
     }
 
-    void SetText(string tooltipName, string tooltipDescription, Sprite tooltipSprite, string tooltipType, 
+    void SetTooltip(string tooltipName, string tooltipDescription, Sprite tooltipSprite, string tooltipType, 
         string tooltipCooldown, string tooltipCosts, string tooltipRange, string tooltipRadius)
     {
         textMeshProName.SetText(tooltipName);
@@ -110,7 +110,7 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
         string tooltipCooldown, string tooltipCosts, string tooltipRange, string tooltipRadius)
     {
         gameObject.SetActive(true);
-        SetText(tooltipName, tooltipDescription, tooltipSprite, tooltipType, 
+        SetTooltip(tooltipName, tooltipDescription, tooltipSprite, tooltipType, 
             tooltipCooldown, tooltipCosts, tooltipRange, tooltipRadius);
     }
 

@@ -12,7 +12,7 @@ public class TestGainLifeHot : SkillPrefab
     public override void MasterETStuff()
     {
         skillDescription = "HOT:\n" +
-            "<color=#f00>" + hotHealing + " Health</color> every <color=yellow>" + hotTime + "s</color>\n" +
+            "<color=green>" + hotHealing + " Health</color> every <color=yellow>" + hotTime + "s</color>\n" +
             "Duration: <color=yellow>" + buffDuration + "s</color>";
         base.MasterETStuff();
     }
@@ -20,15 +20,13 @@ public class TestGainLifeHot : SkillPrefab
     public override void SkillEffect()
     {
         base.SkillEffect();
-        // Play Animation
-        // Play Soundeffect
-        // Skilleffect
+        
         StartCoroutine(Hot(hotTime, hotHealing));
     }
 
     IEnumerator Hot(float time, int healing)
     {
-        for (int i = 0; i < healing; i++)
+        for (int i = 0; i < buffDuration / hotTime; i++)
         {
             yield return new WaitForSeconds(time);
             playerStats.currentHealth += healing;

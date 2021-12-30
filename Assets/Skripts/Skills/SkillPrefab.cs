@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; //unnötig?
+using TMPro;
 using Photon.Pun;
 
 public class SkillPrefab : MonoBehaviour
@@ -310,7 +310,7 @@ public class SkillPrefab : MonoBehaviour
         if (ownCooldownTimeLeft > 0)
         {
             ownCooldownTimeLeft -= Time.deltaTime;
-            gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = Mathf.Round(ownCooldownTimeLeft).ToString();
+            gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Mathf.Round(ownCooldownTimeLeft).ToString();
             gameObject.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
         }
         else
@@ -318,7 +318,7 @@ public class SkillPrefab : MonoBehaviour
             if (ownCooldownActive)
             {
                 ownCooldownActive = false;
-                gameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "";
+                gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
                 gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                 ownCooldownTimeLeft = 0;
             }
@@ -395,6 +395,11 @@ public class SkillPrefab : MonoBehaviour
         masterET.skillRadius = "Radius: <color=yellow>" + skillRadius.ToString().Replace(",", ".") + "m</color>";
     }
 
+    public void DealDamage(float damage)
+    {
+        int missRandom = Random.Range(0, 100);
+        interactionCharacter.focus.gameObject.GetComponent<EnemyStats>().view.RPC("TakeDamage", RpcTarget.All, damage, missRandom);
+    }
 
     //public void UseSkill() // checks for time between skill (e.g. Animation, GlobalCooldown) (+ stuff)
     //{

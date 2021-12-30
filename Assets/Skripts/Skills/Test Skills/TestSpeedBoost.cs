@@ -6,7 +6,7 @@ public class TestSpeedBoost : SkillPrefab
 {
     public override void MasterETStuff()
     {
-        skillDescription = "Boosts your <color=#00ff00>Speed</color> stat for some time";
+        skillDescription = "Boosts your <color=lightblue>Speed</color> stat for some time";
         base.MasterETStuff();
     }
 
@@ -14,9 +14,7 @@ public class TestSpeedBoost : SkillPrefab
     public override void SkillEffect()
     {
         base.SkillEffect();
-        // Play Animation
-        // Play Soundeffect
-        // Skilleffect
+       
         //Debug.Log("TestSpeedBoost: + 5 Movement");
         //playerController._Speed += 5;
         //StartCoroutine(Wait(10));
@@ -27,6 +25,6 @@ public class TestSpeedBoost : SkillPrefab
         //}
 
         // AddBuff
-        PLAYER.GetComponent<BuffManager>().Add(testBuff1);
+        PLAYER.GetComponent<BuffManager>().AddBuff(testBuff1);
     }
 }

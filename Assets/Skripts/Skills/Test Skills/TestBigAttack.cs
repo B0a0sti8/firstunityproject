@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class TestBigAttack : SkillPrefab
 {
+    public float damage = 400f;
+
+    public override void MasterETStuff()
+    {
+        skillDescription = "Deal <color=orange>" + damage + " Damage</color> to any target.";
+
+        base.MasterETStuff();
+    }
+
     public override void SkillEffect()
     {
         base.SkillEffect();
-        // Play Animation
-        // Play Soundeffect
-        // Skilleffect
-        Debug.Log("Activate BigAttack: 400 Damage");
-        GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += 400f;
+        
+        Debug.Log("Activate BigAttack: " + damage + " Damage");
+        DealDamage(damage);
+        GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += damage;
     }
 }
