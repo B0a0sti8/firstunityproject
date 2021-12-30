@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
 
 // tasten-input wird bei BEIDEN AUSGELÖST
 // button-input wird bei dem ausgelöst, dessen Button über dem anderen liegt!
@@ -22,6 +23,9 @@ public class PlayerStats : CharacterStats, IPunObservable
 	public ManaBar manaBar;
 	[HideInInspector]
 	public ManaBar manaBarUI;
+
+	TextMeshProUGUI healthText;
+	TextMeshProUGUI manaText;
 
 	float tickEveryXSeconds = 1f; // gain mana every 1 second
 	float tickEveryXSecondsTimer = 0f;
@@ -56,10 +60,12 @@ public class PlayerStats : CharacterStats, IPunObservable
 
 		currentHealth = maxHealth.GetValue();
 		currentMana = maxMana;
-		manaBar = gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas World Space").transform.Find("ManaBar").GetComponent<ManaBar>();
-		manaBarUI = gameObject.transform.Find("Own Canvases").gameObject.transform.Find("Canvas Healthbar UI").transform.Find("ManaBar").GetComponent<ManaBar>();
+		manaBar = transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("ManaBar").GetComponent<ManaBar>();
+		manaBarUI = transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("ManaBar").GetComponent<ManaBar>();
 
-
+		healthText = transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").transform.Find("Health Text").GetComponent<TextMeshProUGUI>();
+		manaText = transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("ManaBar").transform.Find("Mana Text").GetComponent<TextMeshProUGUI>();
+		
 		isAlive = true;
 
 		EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
@@ -68,10 +74,10 @@ public class PlayerStats : CharacterStats, IPunObservable
 	private void Update()
 	{
 		// updates Bars on Canvases
-		gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-		gameObject.transform.Find("Canvases").gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
-		gameObject.transform.Find("Own Canvases").gameObject.transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-		gameObject.transform.Find("Own Canvases").gameObject.transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
+		transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
+		transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
+		transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
+		transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
 		if (currentHealth > maxHealth.GetValue())
 		{
 			currentHealth = maxHealth.GetValue();
@@ -93,6 +99,9 @@ public class PlayerStats : CharacterStats, IPunObservable
 		{
 			currentMana = 0;
 		}
+
+		healthText.SetText(currentHealth.ToString().Replace(",", ".") + " / " + maxHealth.GetValue().ToString().Replace(",", "."));
+		manaText.SetText(currentMana.ToString().Replace(",", ".") + " / " + maxMana.ToString().Replace(",", "."));
 
 		// Mana regeneration
 		tickEveryXSecondsTimer += Time.deltaTime;
@@ -142,7 +151,8 @@ public class PlayerStats : CharacterStats, IPunObservable
 
 	private void OnTakeDamage() // when pressing SPACE
 	{
-        if (isAlive)
+		//TooltipScreenSpaceUI.ShowTooltip_Static("Hello");
+		if (isAlive)
         {
 			ManageManaRPC(-100f);
 

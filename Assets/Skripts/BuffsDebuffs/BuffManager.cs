@@ -23,11 +23,11 @@ public class BuffManager : MonoBehaviour
     public delegate void OnBuffsChanged();
     public OnBuffsChanged onBuffsChangedCallback;
 
-    public int space = 24;      // Platz im Inventar
+    public int space = 24;      // Platz im Inventar (Listengröße?)
 
     public List<Buff> buffs = new List<Buff>();     // Liste in die Items eingetragen werden
 
-    public bool Add(Buff buff)     // Funktion zum Hinzufügen eines Items
+    public bool AddBuff(Buff buff)     // Funktion zum Hinzufügen eines Items
     {
         if (buffs.Count >= space)   // Falls Inventar voll ist wird Rückmeldung gegeben
         {

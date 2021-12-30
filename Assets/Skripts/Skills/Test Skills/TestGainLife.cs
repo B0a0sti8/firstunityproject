@@ -5,12 +5,22 @@ using Photon.Pun;
 
 public class TestGainLife : SkillPrefab
 {
+    public float healing = 75f;
+
+    public override void MasterETStuff()
+    {
+        skillDescription = "Gain <color=green>" + healing + " Life</color>\n" +
+            "Oooh yeaaah!\n" +
+            "\n" +
+            "OwnCooldownTimeLeft: <color=yellow>" + ownCooldownTimeLeft + "</color>";
+
+        base.MasterETStuff();
+    }
+
     public override void SkillEffect()
     {
         base.SkillEffect();
-        // Play Animation
-        // Play Soundeffect
-        // Skilleffect
-        playerStats.currentHealth += 20;
+        
+        playerStats.currentHealth += healing;
     }
 }

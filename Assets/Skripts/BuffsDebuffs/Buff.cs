@@ -6,13 +6,13 @@ using System;
 [CreateAssetMenu(fileName = "New Buff", menuName = "BuffsAndDebuffs/Buff")]
 public class Buff : ScriptableObject
 {
-    new public string name = "New Buff";      // Bisherige Definiton des Namens wird ?berschrieben
+    new public string name = "New Buff";      // Bisherige Definiton des Namens wird überschrieben
     public Sprite icon = null;                // Effekt Sprite 
-    public bool isDebuff = false;             // Zus?tzlicher m?glicher Unterscheidungsparameter zwischen Buff und Debuff.
+    public bool isDebuff = false;             // Zusätzlicher möglicher Unterscheidungsparameter zwischen Buff und Debuff.
     public float effectDuration;              // Dauer des Effekts
     public string tooltipText;                // Für später Text der im Tooltipp angezeigt wird
 
-    public virtual void BuffEffect(PlayerController playerController)               // Wird ?berschrieben.
+    public virtual void BuffEffect(PlayerController playerController)               // Wird überschrieben.
     {
         // Beeinflusst Spieler oder Gegner.
         Debug.Log("Erhalte Buff/Debuff: " + name);
