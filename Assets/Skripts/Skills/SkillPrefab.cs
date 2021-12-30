@@ -31,6 +31,8 @@ public class SkillPrefab : MonoBehaviour
     public float skillRange;
     bool targetInSight;
 
+    public float skillRadius; // unbenutzt bisher (außer für tooltip)
+
     [Header("Own Cooldown")]
     public bool hasOwnCooldown;
     public float ownCooldownTime; // 0 if hasOwnCooldown = false
@@ -386,6 +388,11 @@ public class SkillPrefab : MonoBehaviour
         {
             masterET.skillCosts = "Mana: <color=#00ffffff>" + manaCost.ToString().Replace(",", ".") + "</color>";
         }
+
+        masterET.skillRange = "Range: <color=yellow>" + skillRange.ToString().Replace(",", ".") + "m</color>";
+
+        //skillRadius = 0f;
+        masterET.skillRadius = "Radius: <color=yellow>" + skillRadius.ToString().Replace(",", ".") + "m</color>";
     }
 
 
