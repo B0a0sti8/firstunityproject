@@ -3383,7 +3383,7 @@ MonoBehaviour:
   hasGlobalCooldown: 0
   isSuperInstant: 0
   skillDescription: 
-  testBuff1: {fileID: 11400000, guid: 2eb249edb52cacf4b8acc7f608117a45, type: 2}
+  speedBoost: {fileID: 11400000, guid: 2eb249edb52cacf4b8acc7f608117a45, type: 2}
 --- !u!114 &5414013708783170070
 MonoBehaviour:
   m_ObjectHideFlags: 0
