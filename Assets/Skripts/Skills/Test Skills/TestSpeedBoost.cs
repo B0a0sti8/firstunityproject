@@ -10,21 +10,12 @@ public class TestSpeedBoost : SkillPrefab
         base.MasterETStuff();
     }
 
-    public Buff testBuff1;
+    public Buff speedBoost;
     public override void SkillEffect()
     {
         base.SkillEffect();
-       
-        //Debug.Log("TestSpeedBoost: + 5 Movement");
-        //playerController._Speed += 5;
-        //StartCoroutine(Wait(10));
-        //IEnumerator Wait(float time)
-        //{
-        //    yield return new WaitForSeconds(time);
-        //    playerController._Speed -= 5;
-        //}
 
         // AddBuff
-        PLAYER.GetComponent<BuffManager>().AddBuff(testBuff1);
+        PLAYER.GetComponent<BuffManager>().AddBuff(speedBoost);
     }
 }

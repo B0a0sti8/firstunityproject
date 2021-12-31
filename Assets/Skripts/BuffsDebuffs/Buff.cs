@@ -11,20 +11,12 @@ public class Buff : ScriptableObject
     public bool isDebuff = false;             // Zusätzlicher möglicher Unterscheidungsparameter zwischen Buff und Debuff.
     public float effectDuration;              // Dauer des Effekts
     public string tooltipText;                // Für später Text der im Tooltipp angezeigt wird
+    public GameObject Hallo;
+}
 
-    public virtual void BuffEffect(PlayerController playerController)               // Wird überschrieben.
-    {
-        // Beeinflusst Spieler oder Gegner.
-        Debug.Log("Erhalte Buff/Debuff: " + name);
-        playerController._Speed += 5f;
-    }
+public class MasterSchmuff : MonoBehaviour
+{
+    public virtual void BuffEffect(PlayerController playerController) { }
 
-    public void RemoveBuff(PlayerController playerController)
-    {
-        // Inventory.instance.Remove(this);  Buff muss aus Kollektion entfernt werden können.
-        // Entferne Buff Effekt
-        Debug.Log("Verliere Buff/Debuff: " + name);
-        playerController._Speed -= 5f;
-        BuffManager.instance.Remove(this);
-    }
+    public virtual void RemoveBuff(PlayerController playerController) { }
 }
