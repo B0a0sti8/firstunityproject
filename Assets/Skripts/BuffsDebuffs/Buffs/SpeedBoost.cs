@@ -6,16 +6,20 @@ public class SpeedBoost : MasterSchmuff
 {
     public Buff thisBuff;
 
-    public override void BuffEffect(PlayerController playerController)
+    public override void BuffEffect(PlayerStats playerStats, float duration)
     {
-        base.BuffEffect(playerController);
-        playerController._Speed += 5f;
+        //base.BuffEffect(playerController);
+        Debug.Log("Speed Up");
+        playerStats.gameObject.GetComponent<PlayerController>()._Speed += 5;
+        //playerController._Speed += 5f;
     }
 
-    public override void RemoveBuff(PlayerController playerController)
+    public override void RemoveBuff(PlayerStats playerStats)
     {
         // Entferne Buff Effekt
-        playerController._Speed -= 5f;
+        Debug.Log("Speed Down");
+        playerStats.gameObject.GetComponent<PlayerController>()._Speed -= 5;
+        //playerController._Speed -= 5f;
         BuffManager.instance.Remove(thisBuff);
     }
 }

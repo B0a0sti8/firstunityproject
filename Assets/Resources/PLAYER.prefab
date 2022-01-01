@@ -1390,7 +1390,7 @@ MonoBehaviour:
   playerController: {fileID: 4584907192636714657}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
-  needsTargetEnemy: 0
+  needsTargetEnemy: 1
   needsTargetAlly: 0
   needsMana: 0
   manaCost: 0
@@ -5731,7 +5731,7 @@ MonoBehaviour:
   playerController: {fileID: 4584907192636714657}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
-  needsTargetEnemy: 0
+  needsTargetEnemy: 1
   needsTargetAlly: 0
   needsMana: 1
   manaCost: 50
@@ -6403,6 +6403,7 @@ MonoBehaviour:
   hotTime: 2
   hotHealing: 5
   buffDuration: 10
+  hot: {fileID: 11400000, guid: 6491f287ba1b61f4b8196ea65da89b9f, type: 2}
 --- !u!114 &9011846820570989720
 MonoBehaviour:
   m_ObjectHideFlags: 0
