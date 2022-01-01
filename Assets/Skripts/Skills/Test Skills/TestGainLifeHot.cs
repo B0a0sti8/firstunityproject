@@ -17,19 +17,23 @@ public class TestGainLifeHot : SkillPrefab
         base.MasterETStuff();
     }
 
+    public Buff hot;
     public override void SkillEffect()
     {
         base.SkillEffect();
-        
-        StartCoroutine(Hot(hotTime, hotHealing));
+
+        Debug.Log("AddBuff(hot)");
+        PLAYER.GetComponent<BuffManager>().AddBuff(hot);
+
+        //StartCoroutine(Hot(hotTime, hotHealing));
     }
 
-    IEnumerator Hot(float time, int healing)
-    {
-        for (int i = 0; i < buffDuration / hotTime; i++)
-        {
-            yield return new WaitForSeconds(time);
-            playerStats.currentHealth += healing;
-        }
-    }
+    //IEnumerator Hot(float time, int healing)
+    //{
+    //    for (int i = 0; i < buffDuration / hotTime; i++)
+    //    {
+    //        yield return new WaitForSeconds(time);
+    //        playerStats.currentHealth += healing;
+    //    }
+    //}
 }

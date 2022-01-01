@@ -16,7 +16,9 @@ public class Buff : ScriptableObject
 
 public class MasterSchmuff : MonoBehaviour
 {
-    public virtual void BuffEffect(PlayerController playerController) { }
+    //public virtual void BuffEffect(PlayerController playerController) { }
+    public virtual void BuffEffect(PlayerStats playerStats, float duration) { }
 
-    public virtual void RemoveBuff(PlayerController playerController) { }
+    //public virtual void RemoveBuff(PlayerController playerController) { }
+    public virtual void RemoveBuff(PlayerStats playerStats) { }
 }

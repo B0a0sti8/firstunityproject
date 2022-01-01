@@ -36,16 +36,19 @@ public class BuffManager : MonoBehaviour
         }
 
         //Debug.Log(buff.Hallo.GetComponent<TestBuff1>());
-        buffs.Add(buff);            // Ansonsten Item aufnehmen
-        buff.Hallo.GetComponent<MasterSchmuff>().BuffEffect(gameObject.GetComponent<PlayerController>());
+        //buffs.Add(buff);            // Ansonsten Item aufnehmen
+        //buff.Hallo.GetComponent<MasterSchmuff>().BuffEffect(gameObject.GetComponent<PlayerStats>());
 
         StartCoroutine(Wait(buff.effectDuration));
         IEnumerator Wait(float time)
         {
             Debug.Log("Starte Buff Timer");
+            buffs.Add(buff);            // Ansonsten Item aufnehmen
+            buff.Hallo.GetComponent<MasterSchmuff>().BuffEffect(gameObject.GetComponent<PlayerStats>(), buff.effectDuration);
+
             yield return new WaitForSeconds(time);
             Debug.Log("Buff Timer Ende");
-            buff.Hallo.GetComponent<MasterSchmuff>().RemoveBuff(gameObject.GetComponent<PlayerController>());
+            buff.Hallo.GetComponent<MasterSchmuff>().RemoveBuff(gameObject.GetComponent<PlayerStats>());
             Debug.Log("Buff weg");
         }
 

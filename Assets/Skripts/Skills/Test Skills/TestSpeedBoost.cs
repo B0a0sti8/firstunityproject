@@ -16,6 +16,7 @@ public class TestSpeedBoost : SkillPrefab
         base.SkillEffect();
 
         // AddBuff
+        Debug.Log("AddBuff(speedBoost)");
         PLAYER.GetComponent<BuffManager>().AddBuff(speedBoost);
     }
 }
