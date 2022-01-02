@@ -13,6 +13,8 @@ public class TestSkill : SkillPrefab
     public override void SkillEffect()
     {
         base.SkillEffect();
+        PLAYER.GetComponent<BuffManager>().DispellBuffs();
+
         // Play Animation
         // Play Soundeffect
         // Skilleffect
