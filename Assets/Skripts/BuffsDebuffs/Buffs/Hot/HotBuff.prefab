@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4589283531793436446}
   - component: {fileID: 5856303008398604061}
   m_Layer: 0
-  m_Name: Hot
+  m_Name: HotBuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

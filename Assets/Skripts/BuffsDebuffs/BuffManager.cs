@@ -27,7 +27,7 @@ public class BuffManager : MonoBehaviour
 
     public List<Buff> buffs = new List<Buff>();     // Liste in die Items eingetragen werden
 
-    public bool AddBuff(Buff buff)     // Funktion zum Hinzufügen eines Items
+    public bool AddBuff(Buff buff, float duration)     // Funktion zum Hinzufügen eines Items
     {
         if (buffs.Count >= space)   // Falls Inventar voll ist wird Rückmeldung gegeben
         {
@@ -35,16 +35,12 @@ public class BuffManager : MonoBehaviour
             return false;
         }
 
-        //Debug.Log(buff.Hallo.GetComponent<TestBuff1>());
-        //buffs.Add(buff);            // Ansonsten Item aufnehmen
-        //buff.Hallo.GetComponent<MasterSchmuff>().BuffEffect(gameObject.GetComponent<PlayerStats>());
-
-        StartCoroutine(Wait(buff.effectDuration));
+        StartCoroutine(Wait(duration));
         IEnumerator Wait(float time)
         {
             Debug.Log("Starte Buff Timer");
             buffs.Add(buff);            // Ansonsten Item aufnehmen
-            buff.Hallo.GetComponent<MasterSchmuff>().BuffEffect(gameObject.GetComponent<PlayerStats>(), buff.effectDuration);
+            buff.Hallo.GetComponent<MasterSchmuff>().BuffEffect(gameObject.GetComponent<PlayerStats>(), duration);
 
             yield return new WaitForSeconds(time);
             Debug.Log("Buff Timer Ende");

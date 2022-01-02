@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3444857a1d5e37f419f08bccb460a027, type: 3}
-  m_Name: Hot
+  m_Name: New Buff
   m_EditorClassIdentifier: 
-  name: Hot
-  icon: {fileID: 21300000, guid: 93761807102717745becbec46fb44be8, type: 3}
+  name: New Buff
+  icon: {fileID: 0}
   isDebuff: 0
-  effectDuration: 5
   tooltipText: 
-  Hallo: {fileID: 3985416944085662656, guid: fbd36994aedd23545b18dc1533fe4ce7, type: 3}
-  gameObjectTest: {fileID: 0}
+  Hallo: {fileID: 0}
+  isInterrupted: 0

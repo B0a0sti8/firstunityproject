@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3444857a1d5e37f419f08bccb460a027, type: 3}
-  m_Name: SpeedBoost
+  m_Name: HotBuff
   m_EditorClassIdentifier: 
-  name: SpeedBoost
-  icon: {fileID: 21300000, guid: 37f621f099e46d245876c6cb720c8c12, type: 3}
+  name: HotBuff
+  icon: {fileID: 21300000, guid: 93761807102717745becbec46fb44be8, type: 3}
   isDebuff: 0
-  effectDuration: 5
   tooltipText: 
-  Hallo: {fileID: 3246854288560677759, guid: 4595c42c9d28f82469053d31bf190f8c, type: 3}
+  Hallo2: {fileID: 3985416944085662656, guid: fbd36994aedd23545b18dc1533fe4ce7, type: 3}
+  Hallo: {fileID: 0}
+  isInterrupted: 0

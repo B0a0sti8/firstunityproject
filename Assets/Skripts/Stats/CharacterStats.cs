@@ -14,6 +14,8 @@ public class CharacterStats : MonoBehaviourPunCallbacks
     public Stat armor;
     public Stat evade;
 
+    public Stat movementSpeed;
+
     public bool isAlive;
 
 
