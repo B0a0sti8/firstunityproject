@@ -38,7 +38,7 @@ public class DamagePopup : MonoBehaviour
         }
         else
         {
-            textColor = new Color(0, 0, 1);
+            textColor = new Color(0, 1, 0);
         }
         textMesh.color = textColor;
         disappearTimer = DISAPPEAR_TIMER_MAX;

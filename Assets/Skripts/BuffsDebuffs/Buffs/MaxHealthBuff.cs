@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class MaxHealthBuff : Buff
 {
-    public override void Dispell()
-    {
-        isRemovable = false;
-        base.Dispell();
-    }
-
     public override void StartBuffEffect(PlayerStats playerStats)
     {
         base.StartBuffEffect(playerStats);
         playerStats.maxHealth.AddModifierAdd(value);
         playerStats.currentHealth += value;
+        isRemovable = false;
     }
 
     public override void EndBuffEffect(PlayerStats playerStats)
