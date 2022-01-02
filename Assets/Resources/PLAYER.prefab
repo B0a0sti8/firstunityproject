@@ -3383,6 +3383,7 @@ MonoBehaviour:
   hasGlobalCooldown: 0
   isSuperInstant: 0
   skillDescription: 
+  duration: 10
   speedBoost: {fileID: 11400000, guid: 2eb249edb52cacf4b8acc7f608117a45, type: 2}
 --- !u!114 &5414013708783170070
 MonoBehaviour:
@@ -6402,7 +6403,7 @@ MonoBehaviour:
   skillDescription: 
   hotTime: 2
   hotHealing: 5
-  buffDuration: 10
+  duration: 10
   hot: {fileID: 11400000, guid: 6491f287ba1b61f4b8196ea65da89b9f, type: 2}
 --- !u!114 &9011846820570989720
 MonoBehaviour:
@@ -11337,7 +11338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad220453c64da164abb5eddcc1116d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Speed: 7
+  speed:
+    baseValue: 0
   animator: {fileID: 4584907192636714686}
 --- !u!50 &4584907192636714656
 Rigidbody2D:
@@ -11444,6 +11446,8 @@ MonoBehaviour:
     baseValue: 0
   evade:
     baseValue: 0
+  movementSpeed:
+    baseValue: 7
   isAlive: 0
   maxMana: 1000
   currentMana: 0
