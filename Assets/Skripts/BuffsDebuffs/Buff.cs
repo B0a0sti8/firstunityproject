@@ -9,10 +9,25 @@ public class Buff : ScriptableObject
     new public string name = "New Buff";      // Bisherige Definiton des Namens wird überschrieben
     public Sprite icon = null;                // Effekt Sprite 
     public bool isDebuff = false;             // Zusätzlicher möglicher Unterscheidungsparameter zwischen Buff und Debuff.
-    public float effectDuration;              // Dauer des Effekts
+    //public float effectDuration;            // Dauer des Effekts
     public string tooltipText;                // Für später Text der im Tooltipp angezeigt wird
+    public GameObject Hallo2;
+    //[HideInInspector]
     public GameObject Hallo;
+    public bool isInterrupted = false;
+
+    private void Awake()
+    {
+        Hallo = Instantiate(Hallo2);
+    }
 }
+
+
+
+
+// ______________________________________________ Looooool ______________________________________________________
+
+
 
 public class MasterSchmuff : MonoBehaviour
 {

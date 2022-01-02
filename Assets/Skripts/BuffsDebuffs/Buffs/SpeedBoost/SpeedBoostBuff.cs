@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedBoost : MasterSchmuff
+public class SpeedBoostBuff : MasterSchmuff
 {
     public Buff thisBuff;
 
@@ -10,16 +10,14 @@ public class SpeedBoost : MasterSchmuff
     {
         //base.BuffEffect(playerController);
         Debug.Log("Speed Up");
-        playerStats.gameObject.GetComponent<PlayerController>()._Speed += 5;
-        //playerController._Speed += 5f;
+        playerStats.movementSpeed.AddModifierAdd(5); 
     }
 
     public override void RemoveBuff(PlayerStats playerStats)
     {
         // Entferne Buff Effekt
         Debug.Log("Speed Down");
-        playerStats.gameObject.GetComponent<PlayerController>()._Speed -= 5;
-        //playerController._Speed -= 5f;
+        playerStats.movementSpeed.AddModifierAdd(-5);
         BuffManager.instance.Remove(thisBuff);
     }
 }

@@ -6,42 +6,46 @@ using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
-    public float _Speed;
+    public Stat speed;
 
-    Vector2 _Movement; // declare variable
+    Vector2 movement; // declare variable
 
     Rigidbody2D _Rigidbody; // get access to rigidbody
     public Animator animator; // Zugriff auf die Animationen
 
     PhotonView view;
 
-    public void Start()
-    {
-        view = GetComponent<PhotonView>();
-    }
+
 
     private void Awake() // Awake() runs before Start()
     {
         _Rigidbody = GetComponent<Rigidbody2D>();
     }
 
+    public void Start()
+    {
+        view = GetComponent<PhotonView>();
+        speed = GetComponent<PlayerStats>().movementSpeed;
+    }
+
     private void OnMovement(InputValue value) // OnMovement = On + name of action-input 
     {
         if (view.IsMine)
         {
-            _Movement = value.Get<Vector2>();
+            movement = value.Get<Vector2>();
         }
     }
 
     private void FixedUpdate()
     {
-        _Rigidbody.velocity = _Movement * _Speed;
+        speed = GetComponent<PlayerStats>().movementSpeed;
+        _Rigidbody.velocity = movement * speed.GetValue();
     }
 
     void Update()       // Ändert Animation je nach Bewegung
     {
-        animator.SetFloat("Horizontal", _Movement.x);
-        animator.SetFloat("Vertical", _Movement.y);
-        animator.SetFloat("SpeedAnim", _Movement.sqrMagnitude);
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("SpeedAnim", movement.sqrMagnitude);
     }
 }

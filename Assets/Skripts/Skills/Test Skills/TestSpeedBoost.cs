@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TestSpeedBoost : SkillPrefab
 {
+    public float duration = 10f;
     public override void MasterETStuff()
     {
         skillDescription = "Boosts your <color=lightblue>Speed</color> stat for some time";
@@ -17,6 +18,6 @@ public class TestSpeedBoost : SkillPrefab
 
         // AddBuff
         Debug.Log("AddBuff(speedBoost)");
-        PLAYER.GetComponent<BuffManager>().AddBuff(speedBoost);
+        PLAYER.GetComponent<BuffManager>().AddBuff(speedBoost, duration);
     }
 }
