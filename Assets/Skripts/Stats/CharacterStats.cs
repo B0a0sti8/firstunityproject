@@ -37,6 +37,8 @@ public class CharacterStats : MonoBehaviourPunCallbacks
                 FindObjectOfType<AudioManager>().Play("Oof");
             }
             currentHealth -= damage;
+            Debug.Log(gameObject.transform.position);
+            DamagePopup.Create(gameObject.transform.position, (int)damage, false);
             if (currentHealth <= 0) // maybe put in update instead
             {
                 Die();
