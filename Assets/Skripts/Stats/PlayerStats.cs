@@ -154,7 +154,7 @@ public class PlayerStats : CharacterStats, IPunObservable
 		//TooltipScreenSpaceUI.ShowTooltip_Static("Hello");
 		if (isAlive)
         {
-			ManageManaRPC(-100f);
+			ManageManaRPC(-20f);
 
 			TakeDamageRPC(20f);
 		}

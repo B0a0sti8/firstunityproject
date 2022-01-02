@@ -21,6 +21,7 @@ public class TestEnergyDrain : SkillPrefab
         Debug.Log("Activate EnergyDrain: " + damage + " Damage");
         DealDamage(damage);
         playerStats.currentHealth += damage / 2;
+
         GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += damage;
     }
 }
