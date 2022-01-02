@@ -27,10 +27,21 @@ public class BuffManager : MonoBehaviour
     public List<Buff> newBuffs = new List<Buff>();
     public List<Buff> expiredBuffs = new List<Buff>();
 
-    public void AddBuff(Buff buff, float duration)     // Funktion zum Hinzufügen eines Items
+    public void AddBuff(Buff buff, float duration, Sprite buffImage)     // Funktion zum Hinzufügen eines Items
     {
         newBuffs.Add(buff);
         buff.effectDuration = duration;
+        buff.icon = buffImage;
+        buff.StartBuffEffect(gameObject.GetComponent<PlayerStats>());
+    }
+
+    public void AddBuff(Buff buff, float duration, Sprite buffImage, float tickTime, float tickValue)
+    {
+        newBuffs.Add(buff);
+        buff.effectDuration = duration + 0.01f;
+        buff.icon = buffImage;
+        buff.tickTime = tickTime;
+        buff.tickValue = tickValue;
         buff.StartBuffEffect(gameObject.GetComponent<PlayerStats>());
     }
 
@@ -76,58 +87,4 @@ public class BuffManager : MonoBehaviour
     {
         HandleBuffs();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //public bool AddBuff(Buff buff, float duration)     // Funktion zum Hinzufügen eines Items
-    //{
-    //    if (buffs.Count >= space)   // Falls Inventar voll ist wird Rückmeldung gegeben
-    //    {
-    //        Debug.Log("To many effects!");
-    //        return false;
-    //    }
-
-    //    StartCoroutine(Wait(duration));
-    //    IEnumerator Wait(float time)
-    //    {
-    //        Debug.Log("Starte Buff Timer");
-    //        buffs.Add(buff);            // Ansonsten Item aufnehmen
-    //        buff.effectDuration = duration;
-    //        buff.BuffEffect(gameObject.GetComponent<PlayerStats>());
-
-    //        yield return new WaitForSeconds(time);
-    //        Debug.Log("Buff Timer Ende");
-    //        buff.RemoveBuff(gameObject.GetComponent<PlayerStats>());
-    //        Debug.Log("Buff weg");
-    //    }
-
-    //    if (onBuffsChangedCallback != null)
-    //    {
-    //        onBuffsChangedCallback.Invoke();  // Triggert immer wenn Item hinzugefügt oder entfernt wird. Nice für Update des UI.
-    //    }
-    //    return true;
-    //}
-
-    //public void Remove(Buff buff)  // Funktion zum Entfernen eines Items
-    //{
-    //    buffs.Remove(buff);
-    //    if (onBuffsChangedCallback != null)
-    //    {
-    //        onBuffsChangedCallback.Invoke();     // Triggert immer wenn Item hinzugefügt oder entfernt wird. Nice für Update des UI.
-    //    }
-    //}
 }

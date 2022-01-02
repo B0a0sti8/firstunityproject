@@ -3383,7 +3383,8 @@ MonoBehaviour:
   hasGlobalCooldown: 0
   isSuperInstant: 0
   skillDescription: 
-  duration: 200
+  duration: 8
+  buffImage: {fileID: 21300000, guid: 37f621f099e46d245876c6cb720c8c12, type: 3}
 --- !u!114 &5414013708783170070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6403,6 +6404,7 @@ MonoBehaviour:
   hotTime: 2
   hotHealing: 5
   duration: 10
+  buffImage: {fileID: 21300000, guid: 93761807102717745becbec46fb44be8, type: 3}
 --- !u!114 &9011846820570989720
 MonoBehaviour:
   m_ObjectHideFlags: 0
