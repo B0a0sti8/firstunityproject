@@ -3,37 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "New Buff", menuName = "BuffsAndDebuffs/Buff")]
-public class Buff : ScriptableObject
+public abstract class Buff
 {
-    new public string name = "New Buff";      // Bisherige Definiton des Namens wird überschrieben
+    public string name = "New Buff";          // Bisherige Definiton des Namens wird überschrieben
     public Sprite icon = null;                // Effekt Sprite 
-    public bool isDebuff = false;             // Zusätzlicher möglicher Unterscheidungsparameter zwischen Buff und Debuff.
-    //public float effectDuration;            // Dauer des Effekts
-    public string tooltipText;                // Für später Text der im Tooltipp angezeigt wird
-    public GameObject Hallo2;
-    //[HideInInspector]
-    public GameObject Hallo;
-    public bool isInterrupted = false;
+    public float effectDuration;              // Dauer des Effekts
+    private float elapsed;
+    public BuffManager buffManager;
+    public bool isRemovable = true;
 
-    private void Awake()
+    public virtual void StartBuffEffect(PlayerStats playerStats) 
     {
-        Hallo = Instantiate(Hallo2);
+
     }
+
+    public virtual void EndBuffEffect(PlayerStats playerStats) 
+    {
+        buffManager = playerStats.gameObject.GetComponent<BuffManager>();
+        buffManager.RemoveBuff(this);
+    }
+
+    public void Dispell()
+    {
+        if (isRemovable)
+        {
+            elapsed = effectDuration;
+        }
+    }
+
+    public virtual void Update(PlayerStats playerStats)
+    {
+        elapsed += Time.deltaTime;
+        if (elapsed >= effectDuration) {
+            EndBuffEffect(playerStats); 
+        }
+    }
+
+    public abstract Buff Clone();
 }
 
-
-
-
-// ______________________________________________ Looooool ______________________________________________________
-
-
-
-public class MasterSchmuff : MonoBehaviour
-{
-    //public virtual void BuffEffect(PlayerController playerController) { }
-    public virtual void BuffEffect(PlayerStats playerStats, float duration) { }
-
-    //public virtual void RemoveBuff(PlayerController playerController) { }
-    public virtual void RemoveBuff(PlayerStats playerStats) { }
-}
+//public string tooltipText;                // Für später Text der im Tooltipp angezeigt wird
+//public bool isDebuff = false;             // Zusätzlicher möglicher Unterscheidungsparameter zwischen Buff und Debuff.
+// public bool isInterrupted = false;
