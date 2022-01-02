@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HoTBuff : Buff
 {
-    new public bool isOverTime = true;
+    //new public bool isOverTime = true;
 
     public override void StartBuffEffect(PlayerStats playerStats)
     {
@@ -31,6 +31,7 @@ public class HoTBuff : Buff
         {
             tickTimeElapsed = 0;
             playerStats.currentHealth += tickValue;
+            DamagePopup.Create(playerStats.gameObject.transform.position, (int)tickValue, true);
         }
     }
 }
