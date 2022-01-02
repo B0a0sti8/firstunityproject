@@ -8,6 +8,7 @@ public class TestGainLifeHot : SkillPrefab
     public float tickTime = 2f;
     public int tickHealing = 5;
     public float duration = 10f;
+
     public Sprite buffImage;
     HoTBuff buff = new HoTBuff();
 
@@ -25,6 +26,6 @@ public class TestGainLifeHot : SkillPrefab
         base.SkillEffect();
         Debug.Log("AddBuff(hot)");
         Buff clone = buff.Clone();
-        PLAYER.GetComponent<BuffManager>().AddBuff(clone, duration, buffImage, tickTime, tickHealing);
+        PLAYER.GetComponent<BuffManager>().AddBuff(clone, buffImage, duration, tickTime, tickHealing);
     }
 }

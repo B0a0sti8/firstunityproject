@@ -4,26 +4,23 @@ using UnityEngine;
 
 public class TestOverHeal : SkillPrefab
 {
-    public float overhealing = 50f;
+    public float duration = 30f;
+    public float value = 100f; // Overhealing
+
+    public Sprite buffImage;
+    MaxHealthBuff buff = new MaxHealthBuff();
 
     public override void MasterETStuff()
     {
-        skillDescription = "Gain <color=green>" + overhealing + " Health</color>\n" +
-            "No Overheal at the moment tho";
+        skillDescription = "Gain <color=green>+" + value + " Max-Health</color> for <color=yellow>" + duration + "s</color>";
         base.MasterETStuff();
     }
 
     public override void SkillEffect()
     {
         base.SkillEffect();
-        
-        //playerStats.maxHealth.GetValue() += 50;
-        playerStats.currentHealth += overhealing;
-        //StartCoroutine(Wait(30));
-        //IEnumerator Wait(float time)
-        //{
-        //    yield return new WaitForSeconds(time);
-        //    player.maxHealth -= 50;
-        //}
+
+        Buff clone = buff.Clone();
+        PLAYER.GetComponent<BuffManager>().AddBuff(clone, buffImage, duration, value);
     }
 }

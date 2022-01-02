@@ -23,29 +23,30 @@ public class BuffManager : MonoBehaviour
     public delegate void OnBuffsChanged();
     public OnBuffsChanged onBuffsChangedCallback;
 
-    public List<Buff> buffs = new List<Buff>();     // Liste in die Items eingetragen werden
+    public List<Buff> buffs = new List<Buff>();
     public List<Buff> newBuffs = new List<Buff>();
     public List<Buff> expiredBuffs = new List<Buff>();
 
-    public void AddBuff(Buff buff, float duration, Sprite buffImage)     // Funktion zum Hinzufügen eines Items
+    public void AddBuff(Buff buff, Sprite buffImage, float duration, float value)
     {
         newBuffs.Add(buff);
-        buff.effectDuration = duration;
         buff.icon = buffImage;
+        buff.duration = duration;
+        buff.value = value;
         buff.StartBuffEffect(gameObject.GetComponent<PlayerStats>());
     }
 
-    public void AddBuff(Buff buff, float duration, Sprite buffImage, float tickTime, float tickValue)
+    public void AddBuff(Buff buff, Sprite buffImage, float duration, float tickTime, float tickValue)
     {
         newBuffs.Add(buff);
-        buff.effectDuration = duration + 0.01f;
         buff.icon = buffImage;
+        buff.duration = duration + 0.01f;
         buff.tickTime = tickTime;
         buff.tickValue = tickValue;
         buff.StartBuffEffect(gameObject.GetComponent<PlayerStats>());
     }
 
-    public void RemoveBuff(Buff buff)     // Funktion zum Hinzufügen eines Items
+    public void RemoveBuff(Buff buff)
     {
         expiredBuffs.Add(buff);
     }

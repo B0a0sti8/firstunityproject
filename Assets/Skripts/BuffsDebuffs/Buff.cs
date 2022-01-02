@@ -5,13 +5,16 @@ using System;
 
 public abstract class Buff
 {
-    public string name = "New Buff";          // Bisherige Definiton des Namens wird überschrieben
-    public Sprite icon = null;                // Effekt Sprite 
-    public float effectDuration;              // Dauer des Effekts
-    private float elapsed;
     public BuffManager buffManager;
+    public Sprite icon = null;
+    float elapsed;
+
+    public string name = "New Buff";          // Bisherige Definiton des Namens wird überschrieben
+    public float duration;
     public bool isRemovable = true;
-    public bool isOverTime = false;
+    //public bool isOverTime = false;
+
+    public float value;
 
     public float tickTime;
     public float tickTimeElapsed;
@@ -28,18 +31,18 @@ public abstract class Buff
         buffManager.RemoveBuff(this);
     }
 
-    public void Dispell()
+    public virtual void Dispell()
     {
         if (isRemovable)
         {
-            elapsed = effectDuration;
+            elapsed = duration;
         }
     }
 
     public virtual void Update(PlayerStats playerStats)
     {
         elapsed += Time.deltaTime;
-        if (elapsed >= effectDuration) {
+        if (elapsed >= duration) {
             EndBuffEffect(playerStats); 
         }
     }

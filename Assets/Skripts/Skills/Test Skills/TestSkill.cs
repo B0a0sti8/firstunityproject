@@ -6,7 +6,7 @@ public class TestSkill : SkillPrefab
 {
     public override void MasterETStuff()
     {
-        skillDescription = "Does absolutely nothing!";
+        skillDescription = "Remove most <color=lightblue>Buffs/Debuffs</color> on yourself.";
         base.MasterETStuff();
     }
 

@@ -10,7 +10,6 @@ public class HoTBuff : Buff
     {
         base.StartBuffEffect(playerStats);
         tickTimeElapsed = 0;
-        Debug.Log("Hallo");
     }
 
     public override void EndBuffEffect(PlayerStats playerStats)
@@ -28,12 +27,10 @@ public class HoTBuff : Buff
     {
         base.Update(playerStats);
         tickTimeElapsed += Time.deltaTime;
-        Debug.Log(tickTimeElapsed);
         if (tickTimeElapsed >= tickTime)
         {
             tickTimeElapsed = 0;
             playerStats.currentHealth += tickValue;
-            Debug.Log(tickValue);
         }
     }
 }
