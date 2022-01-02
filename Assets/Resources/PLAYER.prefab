@@ -3383,8 +3383,7 @@ MonoBehaviour:
   hasGlobalCooldown: 0
   isSuperInstant: 0
   skillDescription: 
-  duration: 10
-  speedBoost: {fileID: 11400000, guid: 2eb249edb52cacf4b8acc7f608117a45, type: 2}
+  duration: 200
 --- !u!114 &5414013708783170070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6404,7 +6403,6 @@ MonoBehaviour:
   hotTime: 2
   hotHealing: 5
   duration: 10
-  hot: {fileID: 11400000, guid: 6491f287ba1b61f4b8196ea65da89b9f, type: 2}
 --- !u!114 &9011846820570989720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11577,8 +11575,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9a12ad78a0506438f060966c5da234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  space: 24
-  buffs: []
 --- !u!1 &4584907192695298165
 GameObject:
   m_ObjectHideFlags: 0
