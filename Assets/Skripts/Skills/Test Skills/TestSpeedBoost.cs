@@ -6,6 +6,7 @@ public class TestSpeedBoost : SkillPrefab
 {
     public float duration = 3f;
     SpeedBoostBuff buff = new SpeedBoostBuff();
+    public Sprite buffImage;
 
     public override void MasterETStuff()
     {
@@ -19,6 +20,6 @@ public class TestSpeedBoost : SkillPrefab
 
         // AddBuff
         Buff clone = buff.Clone();
-        PLAYER.GetComponent<BuffManager>().AddBuff(clone, duration);
+        PLAYER.GetComponent<BuffManager>().AddBuff(clone, duration, buffImage);
     }
 }

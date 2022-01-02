@@ -10,15 +10,15 @@ public class BuffSlot : MonoBehaviour
 
     public void AddBuff(Buff newBuff)
     {
-        buff = newBuff; // Neuer Buff wird in den Slot gepackt
+        buff = newBuff;             // Neuer Buff wird in den Slot gepackt
         icon.sprite = buff.icon;    // Icon wird aktualisiert
         icon.enabled = true;        // Icon wird angezeigt
     }
 
     public void ClearSlot()
     {
-        buff = null;        // Item wird entfernt
-        icon.sprite = null; // Icon gelöscht
+        buff = null;            // Item wird entfernt
+        icon.sprite = null;     // Icon gelöscht
         icon.enabled = false;   // Kein Icon angezeigt
     }
 

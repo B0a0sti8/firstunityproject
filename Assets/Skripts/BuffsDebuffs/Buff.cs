@@ -11,6 +11,11 @@ public abstract class Buff
     private float elapsed;
     public BuffManager buffManager;
     public bool isRemovable = true;
+    public bool isOverTime = false;
+
+    public float tickTime;
+    public float tickTimeElapsed;
+    public float tickValue;
 
     public virtual void StartBuffEffect(PlayerStats playerStats) 
     {
@@ -41,7 +46,3 @@ public abstract class Buff
 
     public abstract Buff Clone();
 }
-
-//public string tooltipText;                // Für später Text der im Tooltipp angezeigt wird
-//public bool isDebuff = false;             // Zusätzlicher möglicher Unterscheidungsparameter zwischen Buff und Debuff.
-// public bool isInterrupted = false;
