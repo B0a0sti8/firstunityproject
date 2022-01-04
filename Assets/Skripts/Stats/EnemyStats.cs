@@ -43,8 +43,10 @@ public class EnemyStats : CharacterStats, IPunObservable
         isAlive = true;
     }
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
+
         // updates Bars on Canvas
         gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
         gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
@@ -67,10 +69,18 @@ public class EnemyStats : CharacterStats, IPunObservable
     }
 
     [PunRPC]
-    public override void TakeDamage(float damage, int missRandomRange)
+    public override void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
     {
         Debug.Log("Enemy takes damage " + damage);
-        base.TakeDamage(damage, missRandomRange);
+        base.TakeDamage(damage, missRandomRange, critRandomRange, critChance, critMultiplier);
+        FindObjectOfType<AudioManager>().Play("Oof");
+    }
+
+    [PunRPC]
+    public override void GetHealing(float healing, int critRandomRange, float critChance, float critMultiplier)
+    {
+        Debug.Log("Enemy gets healing " + healing);
+        base.GetHealing(healing, critRandomRange, critChance, critMultiplier);
         FindObjectOfType<AudioManager>().Play("Oof");
     }
 

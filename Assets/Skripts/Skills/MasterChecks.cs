@@ -14,10 +14,12 @@ public class MasterChecks : MonoBehaviour
     public float masterAnimTimeLeft;
 
     public bool masterGCActive = false;
-    public float masterGCTime = 1.5f;
+    public float masterGCTimeBase = 1.5f;
+    public float masterGCTimeModified = 1.5f;
     public float masterGCTimeLeft;
     public float masterGCEarlyTime = 0.5f;
 
+    //public float masterOwnCooldownModifier = 1f;
     public float masterOwnCooldownEarlyTime = 0.5f;
 
     public bool masterIsSkillInQueue = false;

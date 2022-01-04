@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class TestSkill : SkillPrefab
 {
+    public override void Start()
+    {
+        ownCooldownTimeBase = 5f;
+
+        base.Start();
+    }
+
     public override void MasterETStuff()
     {
         skillDescription = "Remove most <color=lightblue>Buffs/Debuffs</color> on yourself.";

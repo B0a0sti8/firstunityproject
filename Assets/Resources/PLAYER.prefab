@@ -1394,7 +1394,7 @@ MonoBehaviour:
   needsTargetAlly: 0
   needsMana: 0
   manaCost: 0
-  skillRange: 0
+  skillRange: 3
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTime: 10
@@ -5701,7 +5701,7 @@ MonoBehaviour:
   needsTargetAlly: 0
   needsMana: 1
   manaCost: 50
-  skillRange: 0
+  skillRange: 20
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTime: 20
@@ -11307,6 +11307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed:
     baseValue: 0
+    modifiedValue: 0
   animator: {fileID: 4584907192636714686}
 --- !u!50 &4584907192636714656
 Rigidbody2D:
@@ -11406,15 +11407,29 @@ MonoBehaviour:
   view: {fileID: 8542294337897434442}
   maxHealth:
     baseValue: 500
+    modifiedValue: 0
   currentHealth: 0
   damage:
     baseValue: 0
+    modifiedValue: 0
   armor:
     baseValue: 0
-  evade:
-    baseValue: 0
+    modifiedValue: 0
   movementSpeed:
     baseValue: 7
+    modifiedValue: 0
+  attackSpeed:
+    baseValue: 0
+    modifiedValue: 0
+  critChance:
+    baseValue: 50
+    modifiedValue: 0
+  critMultiplier:
+    baseValue: 0
+    modifiedValue: 0
+  evade:
+    baseValue: 0
+    modifiedValue: 0
   isAlive: 0
   maxMana: 1000
   currentMana: 0
@@ -15614,9 +15629,9 @@ RectTransform:
   m_Father: {fileID: 919452660806409744}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -124.7831, y: -114.3}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -111, y: 197}
   m_SizeDelta: {x: 224.8438, y: 82.874}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6516271351750061064

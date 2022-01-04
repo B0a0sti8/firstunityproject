@@ -19,7 +19,7 @@ public class TestAttack1 : SkillPrefab
         base.SkillEffect();
         
         Debug.Log("Attack1: " + damage + " Damage");
-        GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += 100f; // DPS-Meter
+        //GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += 100f; // DPS-Meter
 
         DealDamage(damage);
     }

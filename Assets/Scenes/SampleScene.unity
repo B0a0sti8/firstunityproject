@@ -27305,10 +27305,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4714134077669511854, guid: 369c1e978f4ebec48ad9e9118101fa60, type: 3}
-      propertyPath: sceneViewId
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8886480562570814591, guid: 369c1e978f4ebec48ad9e9118101fa60, type: 3}
       propertyPath: m_Name
       value: RangedEnemy (1)
@@ -27864,10 +27860,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 959026866}
     m_Modifications:
-    - target: {fileID: 2023599406339572334, guid: 471d28fe515d5314d98cb82a1fe63d92, type: 3}
-      propertyPath: sceneViewId
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2023599406339572341, guid: 471d28fe515d5314d98cb82a1fe63d92, type: 3}
       propertyPath: m_RootOrder
       value: 0

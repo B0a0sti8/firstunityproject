@@ -7,42 +7,81 @@ public class CharacterStats : MonoBehaviourPunCallbacks
 {
     public PhotonView view;
 
-    public Stat maxHealth;
+    public Stat maxHealth; // 0 - Inf
     public float currentHealth;
 
-    public Stat damage;
-    public Stat armor;
-    public Stat evade;
+    public Stat mastery; // 0 - Inf
+    public Stat armor; // 0 - 100 bzw. -Inf - 100 /// 30 -> Erlittener Schaden um 30% verringert
 
-    public Stat movementSpeed;
+    public Stat movementSpeed; // 0 - Inf bzw. 1 - Inf
+    public Stat attackSpeed; // 0 - 90 bzw. -Inf - 100 /// 30 -> (Global)Cooldown ist 30% kürzer (10s -> 7s)
+
+    public Stat critChance; // 0(%) - 100(%) /// 30 -> 30% Wahrscheinlichkeit auf Crit
+    public Stat critMultiplier; // 100(%) - Inf(%) /// 130 -> Angriff macht 130% Schaden
+
+    public Stat evade;
 
     public bool isAlive;
 
 
 
-    public virtual void TakeDamage(float damage, int missRandomRange)
+    public virtual void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
     {
-        //Debug.Log("damage: " + damage);
-        damage -= armor.GetValue();
-        damage = Mathf.Clamp(damage, 0, float.MaxValue); // if (damage < 0) { damage = 0 }
-
         if (missRandomRange <= Mathf.Clamp(evade.GetValue(), 0, 100))
         {
             Debug.Log("MISS:" + missRandomRange + " <= " + Mathf.Clamp(evade.GetValue(), 0, 100));
+            return;
         }
-        else
+
+        bool isCrit = false;
+        if (critRandomRange <= critChance)
         {
-            if (view.IsMine)
-            {
-                FindObjectOfType<AudioManager>().Play("Oof");
-            }
-            currentHealth -= damage;
-            Debug.Log(gameObject.transform.position);
-            DamagePopup.Create(gameObject.transform.position, (int)damage, false);
-            if (currentHealth <= 0) // maybe put in update instead
-            {
-                Die();
-            }
+            isCrit = true;
+            Debug.Log("CRIT:" + critRandomRange + " <= " + critChance + "! CritMultiplier: " + critMultiplier + "%");
+            damage *= (Mathf.Clamp(critMultiplier, 100, float.MaxValue) / 100);
+        }
+
+        damage *= (1 - (Mathf.Clamp(armor.GetValue(), float.MinValue, 100) / 100));
+
+        damage = Mathf.Clamp(damage, 0, float.MaxValue);
+
+        currentHealth -= damage;
+
+        if (view.IsMine)
+        {
+            DamagePopup.Create(gameObject.transform.position, (int)damage, false, isCrit);
+            //GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += damage;
+            FindObjectOfType<AudioManager>().Play("Oof");
+        }
+    }
+
+    public virtual void GetHealing(float healing, int critRandomRange, float critChance, float critMultiplier)
+    {
+        bool isCrit = false;
+        if (critRandomRange <= critChance)
+        {
+            isCrit = true;
+            Debug.Log("CRIT:" + critRandomRange + " <= " + critChance + "! CritMultiplier: " + critMultiplier + "%");
+            healing *= (Mathf.Clamp(critMultiplier, 100, float.MaxValue) / 100);
+        }
+
+        healing = Mathf.Clamp(healing, 0, float.MaxValue);
+
+        currentHealth += healing;
+
+        if (view.IsMine)
+        {
+            DamagePopup.Create(gameObject.transform.position, (int)healing, true, isCrit);
+            //GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += damage;
+            //FindObjectOfType<AudioManager>().Play("Oof");
+        }
+    }
+
+    public virtual void Update()
+    {
+        if (currentHealth <= 0)
+        {
+            Die();
         }
     }
 

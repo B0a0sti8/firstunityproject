@@ -5,11 +5,12 @@ using TMPro;
 
 public class DamagePopup : MonoBehaviour
 {
-    public static DamagePopup Create(Vector3 position, int damageAmount, bool isHealing)
+    public static DamagePopup Create(Vector3 position, int damageAmount, bool isHealing, bool isCrit)
     {
-        Transform dmgPopupTransform = Instantiate(GameAssets.i.pfDamagePopup, position, Quaternion.identity);
+        Vector3 popupPosition = new Vector3(position.x + Random.Range(-2f, 2f), position.y + Random.Range(-2f, 2f), position.z);
+        Transform dmgPopupTransform = Instantiate(GameAssets.i.pfDamagePopup, popupPosition, Quaternion.identity);
         DamagePopup damagePopup = dmgPopupTransform.GetComponent<DamagePopup>();
-        damagePopup.Setup(damageAmount, isHealing);
+        damagePopup.Setup(damageAmount, isHealing, isCrit);
 
         return damagePopup;
     }
@@ -28,17 +29,33 @@ public class DamagePopup : MonoBehaviour
         textMesh = transform.GetComponent<TextMeshPro>();
     }
 
-    public void Setup(int damageAmount, bool isHealing)
+    public void Setup(int damageAmount, bool isHealing, bool isCrit)
     {
-        textMesh.SetText(damageAmount.ToString());
-        textMesh.fontSize = 5;
-        if (!isHealing)
+        //textMesh.SetText(damageAmount.ToString());
+        //textMesh.fontSize = 6;
+        if (!isHealing && !isCrit) // damage normal
         {
-            textColor = new Color(1, 1, 0);
+            textColor = new Color(1, 1, 0); // yellow
+            textMesh.SetText(damageAmount.ToString());
+            textMesh.fontSize = 8;
         }
-        else
+        else if (!isHealing && isCrit) // damage crit
         {
-            textColor = new Color(0, 1, 0);
+            textColor = new Color(1, 0, 1); // pink
+            textMesh.SetText(damageAmount.ToString() + "!");
+            textMesh.fontSize = 10;
+        }
+        else if (isHealing && !isCrit) // heal normal
+        {
+            textColor = new Color(0, 1, 0); // green
+            textMesh.SetText(damageAmount.ToString());
+            textMesh.fontSize = 8;
+        }
+        else if (isHealing && isCrit) // heal crit
+        {
+            textColor = new Color(1, 0, 1); // pink
+            textMesh.SetText(damageAmount.ToString() + "!");
+            textMesh.fontSize = 10;
         }
         textMesh.color = textColor;
         disappearTimer = DISAPPEAR_TIMER_MAX;

@@ -19,10 +19,10 @@ public class PlayerStats : CharacterStats, IPunObservable
 	[Header("Mana")]
 	public float maxMana = 1000;
 	public float currentMana;
-	[HideInInspector]
-	public ManaBar manaBar;
-	[HideInInspector]
-	public ManaBar manaBarUI;
+	//[HideInInspector]
+	ManaBar manaBar;
+	//[HideInInspector]
+	ManaBar manaBarUI;
 
 	TextMeshProUGUI healthText;
 	TextMeshProUGUI manaText;
@@ -49,10 +49,21 @@ public class PlayerStats : CharacterStats, IPunObservable
 		}
 	}
 
-
+	void SettingPlayerBaseStats()
+    {
+		maxHealth.baseValue = 500;
+		mastery.baseValue = 0;
+		armor.baseValue = 10;
+		movementSpeed.baseValue = 7;
+		attackSpeed.baseValue = 0;
+		critChance.baseValue = 30;
+		critMultiplier.baseValue = 200;
+    }
 
 	void Start()
 	{
+		SettingPlayerBaseStats();
+
 		if (view.IsMine)
 		{
 			gameObject.transform.Find("Own Canvases").gameObject.SetActive(true);
@@ -60,6 +71,7 @@ public class PlayerStats : CharacterStats, IPunObservable
 
 		currentHealth = maxHealth.GetValue();
 		currentMana = maxMana;
+
 		manaBar = transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("ManaBar").GetComponent<ManaBar>();
 		manaBarUI = transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("ManaBar").GetComponent<ManaBar>();
 
@@ -71,9 +83,21 @@ public class PlayerStats : CharacterStats, IPunObservable
 		EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
 	}
 
-	private void Update()
-	{
-		// updates Bars on Canvases
+	void SyncModifiedPlayerStats()
+    {
+		maxHealth.modifiedValue = maxHealth.GetValue();
+		mastery.modifiedValue = mastery.GetValue();
+		armor.modifiedValue = armor.GetValue();
+		movementSpeed.modifiedValue = movementSpeed.GetValue();
+		attackSpeed.modifiedValue = attackSpeed.GetValue();
+		critChance.modifiedValue = critChance.GetValue();
+		critMultiplier.modifiedValue = critMultiplier.GetValue();
+
+		evade.modifiedValue = evade.GetValue();
+	}
+
+	void UpdateHealthAndMana()
+    {
 		transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
 		transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
 		transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
@@ -102,8 +126,10 @@ public class PlayerStats : CharacterStats, IPunObservable
 
 		healthText.SetText(currentHealth.ToString().Replace(",", ".") + " / " + maxHealth.GetValue().ToString().Replace(",", "."));
 		manaText.SetText(currentMana.ToString().Replace(",", ".") + " / " + maxMana.ToString().Replace(",", "."));
+	}
 
-		// Mana regeneration
+	void ManaRegeneration()
+    {
 		tickEveryXSecondsTimer += Time.deltaTime;
 		if (tickEveryXSecondsTimer >= tickEveryXSeconds)
 		{
@@ -113,18 +139,38 @@ public class PlayerStats : CharacterStats, IPunObservable
 		}
 	}
 
-	[PunRPC]
-	public override void TakeDamage(float damage, int missRandomRange)
+	public override void Update()
 	{
-		base.TakeDamage(damage, missRandomRange);
+		base.Update();
+
+		SyncModifiedPlayerStats();
+
+		UpdateHealthAndMana();
+
+		ManaRegeneration();
+	}
+
+	[PunRPC]
+	public override void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
+	{
+		base.TakeDamage(damage, missRandomRange, critRandomRange, critChance, critMultiplier);
+	}
+
+	[PunRPC]
+	public override void GetHealing(float healing, int critRandomRange, float critChance, float critMultiplier)
+	{
+		base.GetHealing(healing, critRandomRange, critChance, critMultiplier);
 	}
 
 	public void TakeDamageRPC(float damage)
 	{
 		if (view.IsMine)
 		{
-			missRandom = Random.Range(0, 100);
-			view.RPC("TakeDamage", RpcTarget.All, damage, missRandom);
+			missRandom = Random.Range(1, 100);
+			int critRandom = Random.Range(1, 100);
+			float cChance = critChance.GetValue();
+			float cMultiplier = critMultiplier.GetValue();
+			view.RPC("TakeDamage", RpcTarget.All, damage, missRandom, critRandom, cChance, cMultiplier);
 		}
 	}
 
@@ -166,12 +212,12 @@ public class PlayerStats : CharacterStats, IPunObservable
 		{
 			maxHealth.AddModifierAdd(newItem.healthModifierAdd);
 			armor.AddModifierAdd(newItem.armorModifierAdd);
-			damage.AddModifierAdd(newItem.damageModifierAdd);
+			mastery.AddModifierAdd(newItem.damageModifierAdd);
 			evade.AddModifierAdd(newItem.evadeModifierAdd);
 
 			maxHealth.AddModifierMultiply(newItem.healthModifierMultiply);
 			armor.AddModifierMultiply(newItem.armorModifierMultiply);
-			damage.AddModifierMultiply(newItem.damageModifierMultiply);
+			mastery.AddModifierMultiply(newItem.damageModifierMultiply);
 			evade.AddModifierMultiply(newItem.evadeModifierMultiply);
 		}
 
@@ -179,12 +225,12 @@ public class PlayerStats : CharacterStats, IPunObservable
 		{
 			maxHealth.RemoveModifierAdd(oldItem.healthModifierAdd);
 			armor.RemoveModifierAdd(oldItem.armorModifierAdd);
-			damage.RemoveModifierAdd(oldItem.armorModifierAdd);
+			mastery.RemoveModifierAdd(oldItem.armorModifierAdd);
 			evade.RemoveModifierAdd(oldItem.evadeModifierAdd);
 
 			maxHealth.RemoveModifierMultiply(oldItem.healthModifierMultiply);
 			armor.RemoveModifierMultiply(oldItem.armorModifierMultiply);
-			damage.RemoveModifierMultiply(oldItem.armorModifierMultiply);
+			mastery.RemoveModifierMultiply(oldItem.armorModifierMultiply);
 			evade.RemoveModifierMultiply(oldItem.evadeModifierMultiply);
 		}
 	}

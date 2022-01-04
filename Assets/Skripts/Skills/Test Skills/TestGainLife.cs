@@ -7,6 +7,13 @@ public class TestGainLife : SkillPrefab
 {
     public float healing = 75f;
 
+    public override void Start()
+    {
+        ownCooldownTimeBase = 10f;
+
+        base.Start();
+    }
+
     public override void MasterETStuff()
     {
         skillDescription = "Gain <color=green>" + healing + " Life</color>\n" +
@@ -20,7 +27,7 @@ public class TestGainLife : SkillPrefab
     public override void SkillEffect()
     {
         base.SkillEffect();
-        
-        playerStats.currentHealth += healing;
+
+        DoHealing(healing);
     }
 }
