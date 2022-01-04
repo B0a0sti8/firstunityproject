@@ -639,13 +639,29 @@ MonoBehaviour:
   view: {fileID: 2023599406339572334}
   maxHealth:
     baseValue: 300
+    modifiedValue: 0
   currentHealth: 0
-  damage:
+  mastery:
     baseValue: 10
+    modifiedValue: 0
   armor:
     baseValue: 25
+    modifiedValue: 0
+  movementSpeed:
+    baseValue: 0
+    modifiedValue: 0
+  attackSpeed:
+    baseValue: 0
+    modifiedValue: 0
+  critChance:
+    baseValue: 0
+    modifiedValue: 0
+  critMultiplier:
+    baseValue: 0
+    modifiedValue: 0
   evade:
     baseValue: 10
+    modifiedValue: 0
   isAlive: 0
   modAttackSpeed: 0
   baseAttackSpeed: 2
