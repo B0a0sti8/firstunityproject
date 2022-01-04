@@ -5,6 +5,7 @@ using UnityEngine;
 public class Stat
 {
     public float baseValue;
+	public float modifiedValue;
 
 	private List<float> modifiersAdd = new List<float>();
 	private List<float> modifiersMultiply = new List<float>();

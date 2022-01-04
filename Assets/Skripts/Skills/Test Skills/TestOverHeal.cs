@@ -10,6 +10,13 @@ public class TestOverHeal : SkillPrefab
     public Sprite buffImage;
     MaxHealthBuff buff = new MaxHealthBuff();
 
+    public override void Start()
+    {
+        ownCooldownTimeBase = 15f;
+
+        base.Start();
+    }
+
     public override void MasterETStuff()
     {
         skillDescription = "Gain <color=green>+" + value + " Max-Health</color> for <color=yellow>" + duration + "s</color>";

@@ -35,7 +35,8 @@ public class SkillPrefab : MonoBehaviour
 
     [Header("Own Cooldown")]
     public bool hasOwnCooldown;
-    public float ownCooldownTime; // 0 if hasOwnCooldown = false
+    public float ownCooldownTimeBase; // 0 if hasOwnCooldown = false
+    public float ownCooldownTimeModified;
     public float ownCooldownTimeLeft; // ONLY PUBLIC FOR TESTING (should be private)
     bool ownCooldownActive = false;
 
@@ -227,7 +228,7 @@ public class SkillPrefab : MonoBehaviour
                 isSkillInOwnSuperInstantQueue = false;
                 Debug.Log("... Use SuperInstant");
                 ownCooldownActive = true;
-                ownCooldownTimeLeft = ownCooldownTime;
+                ownCooldownTimeLeft = ownCooldownTimeModified;
                 if (needsMana) { playerStats.currentMana -= manaCost; }
                 SkillEffect();
             }
@@ -274,7 +275,7 @@ public class SkillPrefab : MonoBehaviour
         if (hasGlobalCooldown)
         {
             masterChecks.masterGCActive = true;
-            masterChecks.masterGCTimeLeft = masterChecks.masterGCTime;
+            masterChecks.masterGCTimeLeft = masterChecks.masterGCTimeModified;
             foreach (GameObject gObj in globalCooldownSkills) //color all CDSkills grey
             {
                 gObj.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
@@ -289,7 +290,7 @@ public class SkillPrefab : MonoBehaviour
         if (hasOwnCooldown)
         {
             ownCooldownActive = true;
-            ownCooldownTimeLeft = ownCooldownTime;
+            ownCooldownTimeLeft = ownCooldownTimeModified;
         }
 
         if (needsMana)
@@ -325,6 +326,15 @@ public class SkillPrefab : MonoBehaviour
         }
 
         MasterETStuff();
+
+        float attackSpeedModifier = 1 - (playerStats.attackSpeed.GetValue() / 100);
+        masterChecks.masterGCTimeModified = masterChecks.masterGCTimeBase * attackSpeedModifier;
+        ownCooldownTimeModified = ownCooldownTimeBase * attackSpeedModifier;
+
+        //masterChecks.masterOwnCooldownModifier = (1 - (playerStats.attackSpeed.GetValue() / 100));
+
+        //ownCooldownTime *= (1 - playerStats.attackSpeed.GetValue());
+        //masterChecks.masterGCTime *= (1 - playerStats.attackSpeed.GetValue());
     }
 
     GameObject[] globalCooldownSkills;
@@ -334,10 +344,10 @@ public class SkillPrefab : MonoBehaviour
     {
         masterChecks = GameObject.Find("Canvas Action Skills").GetComponent<MasterChecks>();
 
-        PLAYER = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject; //GameObject.Find("PLAYER");
+        PLAYER = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject;
 
         interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
-        //player = PLAYER.GetComponent<Player>();
+
         playerController = PLAYER.GetComponent<PlayerController>();
 
         playerStats = PLAYER.GetComponent<PlayerStats>();
@@ -347,7 +357,7 @@ public class SkillPrefab : MonoBehaviour
 
     }
 
-    void Start()
+    public virtual void Start()
     {
         masterET = gameObject.GetComponent<MasterEventTrigger>();
 
@@ -368,7 +378,7 @@ public class SkillPrefab : MonoBehaviour
 
         if (hasGlobalCooldown)
         {
-            masterET.skillType = "Weaponskill (<color=yellow>" + masterChecks.masterGCTime.ToString().Replace(",", ".") + "s</color>)";
+            masterET.skillType = "Weaponskill (<color=yellow>" + masterChecks.masterGCTimeModified.ToString().Replace(",", ".") + "s</color>)";
         }
         else if (isSuperInstant)
         {
@@ -381,7 +391,7 @@ public class SkillPrefab : MonoBehaviour
 
         if (hasOwnCooldown)
         {
-            masterET.skillCooldown = "Cooldown: <color=yellow>" + ownCooldownTime.ToString().Replace(",", ".") + "s</color>";
+            masterET.skillCooldown = "Cooldown: <color=yellow>" + ownCooldownTimeModified.ToString().Replace(",", ".") + "s</color>";
         }
 
         if (needsMana)
@@ -397,8 +407,19 @@ public class SkillPrefab : MonoBehaviour
 
     public void DealDamage(float damage)
     {
-        int missRandom = Random.Range(0, 100);
-        interactionCharacter.focus.gameObject.GetComponent<EnemyStats>().view.RPC("TakeDamage", RpcTarget.All, damage, missRandom);
+        int missRandom = Random.Range(1, 100);
+        int critRandom = Random.Range(1, 100);
+        float critChance = playerStats.critChance.GetValue();
+        float critMultiplier = playerStats.critMultiplier.GetValue();
+        interactionCharacter.focus.gameObject.GetComponent<EnemyStats>().view.RPC("TakeDamage", RpcTarget.All, damage, missRandom, critRandom, critChance, critMultiplier);
+    }
+
+    public void DoHealing(float healing)
+    {
+        int critRandom = Random.Range(1, 100);
+        float critChance = playerStats.critChance.GetValue();
+        float critMultiplier = playerStats.critMultiplier.GetValue();
+        playerStats.view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
     }
 
     //public void UseSkill() // checks for time between skill (e.g. Animation, GlobalCooldown) (+ stuff)
