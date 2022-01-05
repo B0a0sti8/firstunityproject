@@ -213,6 +213,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Skillbook",
+                    "type": "Button",
+                    "id": "a63bfe8b-9c99-4e6b-b9bc-f187900c112b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -257,6 +265,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ChangeScene",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a758fab3-7b62-4daf-bdfc-8089b18533d2",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skillbook",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
