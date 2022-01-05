@@ -4,11 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - WeaponSkillCD
-  - WeaponSkillCDText
   - GlobalCooldownSkill
   - Enemy
   - EnemyIndicator
+  - Keybind
   layers:
   - Default
   - TransparentFX
