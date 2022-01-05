@@ -221,6 +221,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "KeybindMenue",
+                    "type": "Button",
+                    "id": "70ae5e48-7850-4a18-9ede-a90baa67272f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -276,6 +284,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Skillbook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e039eafe-cb52-4aaf-b8bd-0111f437de37",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KeybindMenue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
