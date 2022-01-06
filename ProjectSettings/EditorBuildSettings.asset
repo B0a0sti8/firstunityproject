@@ -26,4 +26,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sanctuary.unity
     guid: a88be7aff0ddff841b224c4a640e7b79
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 2cec48bd9f2049540b8131a96ba117ac, type: 2}

@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour
 
     // DON'T FORGET TO ADD PLAYER INPUT COMPONENT TO CANVAS! (where this skript is)
     // with the correct default map (Overlay)
-    private void OnPauseMenu(InputValue value)
+    public void OpenPauseMenu()
     {
         Debug.Log("Pause Button Pressed");
         if (GameIsPaused)

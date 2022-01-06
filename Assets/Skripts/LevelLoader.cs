@@ -34,7 +34,7 @@ public class LevelLoader : MonoBehaviour
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
-    private void OnChangeScene(InputValue value) // when pressing O
+    public void ChangeScene() // when pressing O
     {
         if (PhotonNetwork.IsMasterClient)
         {
@@ -47,7 +47,7 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    void OnGoToHub() // when pressing H
+    public void GoToHub() // when pressing H
     {
         if (PhotonNetwork.IsMasterClient)
         {

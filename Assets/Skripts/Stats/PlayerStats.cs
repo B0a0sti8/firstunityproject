@@ -195,18 +195,18 @@ public class PlayerStats : CharacterStats, IPunObservable
 		base.Die();
 	}
 
-	private void OnTakeDamage() // when pressing SPACE
-	{
-		//TooltipScreenSpaceUI.ShowTooltip_Static("Hello");
-		if (isAlive)
+    public void TakeDamageSpace() // when pressing SPACE
+    {
+        //TooltipScreenSpaceUI.ShowTooltip_Static("Hello");
+        if (isAlive)
         {
-			ManageManaRPC(-20f);
+            ManageManaRPC(-20f);
 
-			TakeDamageRPC(20f);
-		}
-	}
+            TakeDamageRPC(20f);
+        }
+    }
 
-	void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
+    void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
 	{
 		if (newItem != null)
 		{

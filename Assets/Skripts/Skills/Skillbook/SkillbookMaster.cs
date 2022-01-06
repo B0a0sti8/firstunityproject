@@ -12,7 +12,7 @@ public class SkillbookMaster : MonoBehaviour
         skillbook.SetActive(false);
     }
 
-    void OnSkillbook()
+    public void OpenSkillbook()
     {
         if (skillbook.activeInHierarchy)
         {

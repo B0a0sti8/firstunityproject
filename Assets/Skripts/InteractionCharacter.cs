@@ -73,9 +73,8 @@ public class InteractionCharacter : MonoBehaviour // Sorry Marcus, ist echt nich
     float[] enemyDistances;
     float maxFocusRange = 20f;
 
-    void OnAutoFocus() // when pressing TAB (put closest enemy in focus)
+    public void AutoFocus() // TAB
     {
-        //Debug.Log("TAB");
         potentialEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (potentialEnemies.Length == 0) { return; }
 
