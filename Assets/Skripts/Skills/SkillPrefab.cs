@@ -7,13 +7,12 @@ using Photon.Pun;
 
 public class SkillPrefab : MonoBehaviour
 {
+    [HideInInspector]
     public PhotonView photonView;
-
+    [HideInInspector]
     public MasterChecks masterChecks;
-
-    public GameObject PLAYER; // drag in player to acces player (for position in rangeCheck)
-    //[HideInInspector]
-    //public Player player; // drag in Character to access Player skript (for health)
+    [HideInInspector]
+    public GameObject PLAYER;
     [HideInInspector]
     public PlayerController playerController; // drag in Character to access PlayerController skript (for speed)
     [HideInInspector]
@@ -21,6 +20,7 @@ public class SkillPrefab : MonoBehaviour
     [HideInInspector]
     public PlayerStats playerStats;
 
+    [Header("Target")]
     public bool needsTargetEnemy;
     public bool needsTargetAlly;
 
@@ -28,6 +28,7 @@ public class SkillPrefab : MonoBehaviour
     public bool needsMana; // optional
     public int manaCost;
 
+    [Header("Range/Radius")]
     public float skillRange;
     bool targetInSight;
 
@@ -36,16 +37,18 @@ public class SkillPrefab : MonoBehaviour
     [Header("Own Cooldown")]
     public bool hasOwnCooldown;
     public float ownCooldownTimeBase; // 0 if hasOwnCooldown = false
-    public float ownCooldownTimeModified;
-    public float ownCooldownTimeLeft; // ONLY PUBLIC FOR TESTING (should be private)
+    float ownCooldownTimeModified;
+    float ownCooldownTimeLeft;
     bool ownCooldownActive = false;
 
+    [Header("Skilltype")]
     public bool hasGlobalCooldown;
 
     public bool isSuperInstant; // can not be true if hasGlobalCooldown is true
     bool isSkillInOwnSuperInstantQueue = false;
 
     [Header("Tooltip")]
+    [HideInInspector]
     public string skillDescription;
     MasterEventTrigger masterET;
 
@@ -342,9 +345,12 @@ public class SkillPrefab : MonoBehaviour
 
     void Awake()
     {
-        masterChecks = GameObject.Find("Canvas Action Skills").GetComponent<MasterChecks>();
-
         PLAYER = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject;
+
+        photonView = PLAYER.GetComponent<PhotonView>();
+
+        masterChecks = PLAYER.transform.Find("Own Canvases").gameObject.transform.Find("Canvas Action Skills").gameObject.GetComponent<MasterChecks>();
+        //masterChecks = GameObject.Find("Canvas Action Skills").GetComponent<MasterChecks>();
 
         interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
 

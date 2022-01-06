@@ -18,7 +18,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Composites;
 using UnityEngine.InputSystem.Utilities;
-
+*/
 
 
 public class Input_ActionSkills : MonoBehaviour
@@ -30,41 +30,45 @@ public class Input_ActionSkills : MonoBehaviour
         //playerInput.actions["ActionSkill11"].AddCompositeBinding("ActionSkill11").With("Modifier1", "<Keyboard>/leftCtrl").With("Modifier1", "<Keyboard>/rightCtrl").With("Button", "<Keyboard>/1");
     }
 
-    void OnActionSkill1()
+    void OnActionSkill1() // Q
+    {
+        //ButtonSlot1Skill();
+    }
+
+    void OnActionSkill2() // E
     { }
 
-    void OnActionSkill2()
+    void OnActionSkill3() // 1
     { }
 
-    void OnActionSkill3()
+    void OnActionSkill4() // 2
     { }
 
-    void OnActionSkill4()
+    void OnActionSkill5() // 3
     { }
 
-    void OnActionSkill5()
+    void OnActionSkill6() // 4
     { }
 
-    void OnActionSkill6()
+    void OnActionSkill7() // 5
     { }
 
-    void OnActionSkill7()
+    void OnActionSkill8() // 6
     { }
 
-    void OnActionSkill8()
+    void OnActionSkill9() // 7
     { }
 
-    void OnActionSkill9()
+    void OnActionSkill10() // 8
     { }
 
-    void OnActionSkill10()
+    void OnActionSkill11() // 9
     { }
 
-    void OnActionSkill11()
+    void OnActionSkill12() // 0
     { }
 
-    void OnActionSkill12()
-    { }
+    // von Haus aus unbelegt. werden nur benutzt wenn der Spieler sie selbst belegt
 
     void OnActionSkill13()
     { }
@@ -120,10 +124,7 @@ public class Input_ActionSkills : MonoBehaviour
     void OnActionSkill30()
     { }
 }
-*/
 #endregion
-
-
 
 
 
