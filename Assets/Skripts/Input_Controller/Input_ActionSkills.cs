@@ -23,7 +23,6 @@ using UnityEngine.InputSystem.Utilities;
 
 public class Input_ActionSkills : MonoBehaviour
 {
-    /*
     [SerializeField] PlayerInput playerInput;
 
     private void Awake()
@@ -32,7 +31,9 @@ public class Input_ActionSkills : MonoBehaviour
     }
 
     void OnActionSkill1() // Q
-    { }
+    {
+        //ButtonSlot1Skill();
+    }
 
     void OnActionSkill2() // E
     { }
@@ -66,6 +67,8 @@ public class Input_ActionSkills : MonoBehaviour
 
     void OnActionSkill12() // 0
     { }
+
+    // von Haus aus unbelegt. werden nur benutzt wenn der Spieler sie selbst belegt
 
     void OnActionSkill13()
     { }
@@ -120,7 +123,6 @@ public class Input_ActionSkills : MonoBehaviour
 
     void OnActionSkill30()
     { }
-*/
 }
 #endregion
 
