@@ -30,21 +30,21 @@ public class Input_Overlay : MonoBehaviour
     }
     #endregion
 
-    void OnInventory()
+    void OnInventory() // I
     { inventoryUI.OpenInventory(); }
 
-    void OnEquipmentWindow()
+    void OnEquipmentWindow() // C
     { equipmentWindowUI.OpenEquipmentWindow(); }
 
-    void OnPauseMenu()
+    void OnPauseMenu() // Esc
     { pauseMenu.OpenPauseMenu(); }
 
-    void OnDPSMeterReset()
+    void OnDPSMeterReset() // .
     { damageMeter.DPSMeterReset(); }
 
-    void OnSkillbook()
+    void OnSkillbook() // K
     { skillbook.OpenSkillbook(); }
 
-    void OnKeybindMenue()
+    void OnKeybindMenue() // N
     { keybindManager.OpenCloseMenue(); }
 }
