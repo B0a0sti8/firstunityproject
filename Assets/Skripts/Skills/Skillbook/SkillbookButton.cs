@@ -10,6 +10,7 @@ public class SkillbookButton : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("Button clicked: " + skillName);
         //HandScript.MyInstance.TakeMovable(Skillbook.MyInstance.GetSkill(skillName));
     }
 }
