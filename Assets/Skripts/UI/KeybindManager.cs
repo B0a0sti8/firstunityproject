@@ -63,6 +63,7 @@ public class KeybindManager : MonoBehaviour
         BindKey("Right", KeyCode.D);
 
         BindKey("ActionSkill1", KeyCode.Alpha1);
+        BindKey("ActionSkill1", KeyCode.L);
         BindKey("ActionSkill2", KeyCode.Alpha2);
         BindKey("ActionSkill3", KeyCode.Alpha3);
         BindKey("ActionSkill4", KeyCode.Alpha4);
@@ -83,7 +84,7 @@ public class KeybindManager : MonoBehaviour
             currentDictionary = ActionBinds;
         }
 
-        if (!currentDictionary.ContainsValue(keyBind))
+        if (!currentDictionary.ContainsKey(key))
         {
             currentDictionary.Add(key, keyBind);
             KeybindManager.MyInstance.UpdateKeyText(key, keyBind);
@@ -115,6 +116,11 @@ public class KeybindManager : MonoBehaviour
 
     void OnActionSkillsChangedCallback(string actionName, string binding)
     {
+        if (binding.Contains("Alph"))
+        { 
+            binding = binding.Remove(0,5); 
+        }
+
         string bindingMod = "<Keyboard>/" + binding;
 
         if (actionName == "Up" || actionName == "Down" || actionName == "Right" || actionName == "Left")
@@ -130,5 +136,22 @@ public class KeybindManager : MonoBehaviour
     public void ClickActionButton(string buttonName)
     {
         Array.Find(actionButtons, x => x.gameObject.name == buttonName).MyButton.onClick.Invoke();
+    }
+
+    public void KeyBindOnClick(string bindName)
+    {
+        this.bindName = bindName;
+    }
+
+    private void OnGUI()
+    {
+        if (bindName != string.Empty)
+        {
+            Event e = Event.current;
+            if(e.isKey)
+            {
+                BindKey(bindName, e.keyCode);
+            }
+        }
     }
 }

@@ -6,34 +6,47 @@ using UnityEngine.UI;
 
 public class ActionButton : MonoBehaviour, IPointerClickHandler
 {
-    private IUseable useable;
-
     public Button MyButton { get; private set; }
+    GameObject PLAYER;
+    GameObject skillManager;
+    public string skillName;
+    public string className;
 
 
-    // Start is called before the first frame update
+
     void Start()
     {
+        PLAYER = transform.parent.transform.parent.transform.parent.transform.parent.gameObject;
+        skillManager = PLAYER.transform.Find("SkillManager").gameObject;
         MyButton = GetComponent<Button>();
-        MyButton.onClick.AddListener(OnClick);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UseSkillOnClick()
     {
-        
-    }
+        if (className == null) return;
 
-    public void OnClick()
-    {
-        if(useable != null)
+        SkillPrefab[] skills = skillManager.transform.Find("BlueMage").GetComponents<SkillPrefab>();
+
+        for (int i = 0; i < skills.Length; i++)
         {
-            useable.Use();
+            if (skills[i].GetType().ToString() == skillName)
+            {
+                skills[i].StartSkillChecks();
+            }
         }
+
+        
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-  
+        // Wenn Button geklickt wird ausgeführt (nur Mausklick)
+        UseSkillOnClick();
     }
 }
+
+//private IUseable useable;
+//if(useable != null)
+//{
+//    useable.Use();
+//}

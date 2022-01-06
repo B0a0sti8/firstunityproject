@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HandScript : MonoBehaviour
 {
+    public IMoveable Moveable { get; set; }
     // Start is called before the first frame update
     void Start()
     {
