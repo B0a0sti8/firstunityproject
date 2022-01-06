@@ -17,15 +17,16 @@ public class InventoryUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        inventoryUI = gameObject.transform.Find("Inventory").gameObject;
         inventory = Inventory.instance;         // Generiert Instanz des Inventars. Nachdem Inventar als Singleton definiert ist, kann es immer nur ein Inventar geben. Vorsicht!
         inventory.onItemChangedCallback += UpdateUI;            // Sobald sich etwas am Inventar ändert (Callback aus "Inventar"-Skript) wird das UI geupdated
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
     }
 
-    private void OnInventory(InputValue value)
+    public void OpenInventory()
     {
         Debug.Log("Inventar An/Aus");
-        inventoryUI.SetActive(!inventoryUI.activeSelf);    
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
     }
 
     void UpdateUI ()        //Updated das UI

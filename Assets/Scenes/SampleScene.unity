@@ -9715,9 +9715,8 @@ GameObject:
   - component: {fileID: 1076243867}
   - component: {fileID: 1076243868}
   - component: {fileID: 1076243869}
-  - component: {fileID: 1076243871}
-  - component: {fileID: 1076243870}
   - component: {fileID: 1076243872}
+  - component: {fileID: 1076243873}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9780,49 +9779,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54e8928ba4655d4cafec179f86770da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1076243870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1076243865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c0aae6890d5e8e43a3b80183ed068b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keybindMenue: {fileID: 999067613}
---- !u!114 &1076243871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1076243865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 14500a08cbd194340b2d7b1e09dcd9e1, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Overlay
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &1076243872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9833,6 +9789,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa1ed5bbb5a0b35449b423318ab853b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keybindMenue: {fileID: 999067613}
+--- !u!114 &1076243873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076243865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7f72d6d15be044aaaf89d495121d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1095742888
@@ -33850,6 +33819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
@@ -35497,17 +35467,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2985879260920815915, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
-      propertyPath: m_SortingOrder
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 2985879261512430852, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
       propertyPath: m_Name
       value: LevelLoader
-      objectReference: {fileID: 0}
-    - target: {fileID: 2985879261512430852, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2985879261512430853, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
       propertyPath: m_RootOrder
@@ -35552,22 +35514,6 @@ PrefabInstance:
     - target: {fileID: 2985879261512430853, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2985879261512430858, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
-      propertyPath: m_DefaultActionMap
-      value: a78dda9e-bf35-40bf-bd2f-8a250db741b9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2985879261512430859, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
-      propertyPath: SceneName
-      value: TestScene1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2985879261512430859, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
-      propertyPath: newPlayerPosition.x
-      value: -33
-      objectReference: {fileID: 0}
-    - target: {fileID: 2985879261512430859, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
-      propertyPath: newPlayerPosition.y
-      value: -6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}

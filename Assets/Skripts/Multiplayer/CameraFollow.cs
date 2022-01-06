@@ -39,7 +39,7 @@ public class CameraFollow : MonoBehaviour
     }
 
 
-    void OnZoom()
+    public void CameraZoom()
     {
         Vector2 vec = Mouse.current.scroll.ReadValue(); // either 120 and 0, or -120 and 0
 

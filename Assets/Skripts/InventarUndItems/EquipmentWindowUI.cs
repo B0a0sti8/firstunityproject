@@ -16,8 +16,8 @@ public class EquipmentWindowUI : MonoBehaviour
         equipmentManager.onEquipmentChanged += UpdateUI;
         eSlots = equipSlotParent.GetComponentsInChildren<EquipmentWindowSlot>();
     }
- 
-    private void OnEquipmentWindow(InputValue value)
+
+    public void OpenEquipmentWindow()
     {
         Debug.Log("EquipmentWindow An/Aus");
         equipmentWindowUI.SetActive(!equipmentWindowUI.activeSelf);
