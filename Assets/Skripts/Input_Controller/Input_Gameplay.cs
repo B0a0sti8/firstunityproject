@@ -28,6 +28,11 @@ public class Input_Gameplay : MonoBehaviour
     }
     #endregion
 
+    void Update()
+    {
+        
+    }
+
     void OnMovement(InputValue value) // WASD
     { playerController.Movement(value); }
 
