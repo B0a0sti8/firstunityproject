@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 public class KeybindManager : MonoBehaviour
 {
+    #region Singleton
     static KeybindManager instance;
 
     public static KeybindManager MyInstance
@@ -18,6 +20,7 @@ public class KeybindManager : MonoBehaviour
             return instance;
         }
     }
+    #endregion
 
     public Dictionary<string, KeyCode> Keybinds { get; private set; } // W A S D
 
@@ -25,8 +28,21 @@ public class KeybindManager : MonoBehaviour
 
     string bindName;
 
+    [SerializeField]
+    CanvasGroup keybindMenue;
+
+    GameObject[] keybindButtons;
+
+    private void Awake()
+    {
+        keybindButtons = GameObject.FindGameObjectsWithTag("Keybind");
+    }
+
     void Start()
     {
+        keybindMenue.alpha = 0;
+        keybindMenue.blocksRaycasts = false;
+
         Keybinds = new Dictionary<string, KeyCode>();
 
         ActionBinds = new Dictionary<string, KeyCode>();
@@ -62,18 +78,30 @@ public class KeybindManager : MonoBehaviour
         if (!currentDictionary.ContainsValue(keyBind))
         {
             currentDictionary.Add(key, keyBind);
-            KeybindControll.MyInstance.UpdateKeyText(key, keyBind);
+            KeybindManager.MyInstance.UpdateKeyText(key, keyBind);
         }
         else if (currentDictionary.ContainsValue(keyBind))
         {
             string myKey = currentDictionary.FirstOrDefault(x => x.Value == keyBind).Key;
 
             currentDictionary[myKey] = KeyCode.None;
-            KeybindControll.MyInstance.UpdateKeyText(key, KeyCode.None);
+            KeybindManager.MyInstance.UpdateKeyText(key, KeyCode.None);
         }
 
         currentDictionary[key] = keyBind;
-        KeybindControll.MyInstance.UpdateKeyText(key, keyBind);
+        KeybindManager.MyInstance.UpdateKeyText(key, keyBind);
         bindName = string.Empty;
+    }
+
+    public void UpdateKeyText(string key, KeyCode code)
+    {
+        TMPro.TextMeshProUGUI tmp = Array.Find(keybindButtons, x => x.name == key).GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        tmp.text = code.ToString();
+    }
+
+    public void OpenCloseMenue()
+    {
+        keybindMenue.alpha = keybindMenue.alpha > 0 ? 0 : 1; // if > 0 -> 0, else 1
+        keybindMenue.blocksRaycasts = keybindMenue.blocksRaycasts == true ? false : true;
     }
 }

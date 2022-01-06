@@ -8,12 +8,12 @@ public class PlayerController : MonoBehaviour
 {
     public Stat speed;
 
-    Vector2 movement; // declare variable
+    public Vector2 movement; // declare variable
 
     Rigidbody2D _Rigidbody; // get access to rigidbody
     public Animator animator; // Zugriff auf die Animationen
 
-    PhotonView view;
+    public PhotonView view;
 
 
 
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         speed = GetComponent<PlayerStats>().movementSpeed;
     }
 
-    private void OnMovement(InputValue value) // OnMovement = On + name of action-input 
+    public void Movement(InputValue value) // OnMovement = On + name of action-input 
     {
         if (view.IsMine)
         {

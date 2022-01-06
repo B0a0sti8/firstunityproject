@@ -10,7 +10,7 @@ public class DamageMeter : MonoBehaviour
     float viewEveryXSecondsTimer = 0f;
     public bool startDPStracking = false;
 
-    private void OnDPSMeterReset()
+    public void DPSMeterReset()
     {
         totalDamage = 0f;
         meterTime = 0f;
