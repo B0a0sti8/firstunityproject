@@ -28,7 +28,7 @@ public class Input_Gameplay : MonoBehaviour
     }
     #endregion
 
-    void OnMovement(InputValue value)
+    void OnMovement(InputValue value) // WASD
     { playerController.Movement(value); }
 
     void OnTakeDamage() // SPACE
@@ -37,12 +37,12 @@ public class Input_Gameplay : MonoBehaviour
     void OnAutoFocus() // TAB
     { interactionCharacter.AutoFocus(); }
 
-    void OnZoom()
+    void OnZoom() // Scroll/Y
     { cameraFollow.CameraZoom(); }
 
-    void OnChangeScene()
+    void OnChangeScene() // O
     { levelLoader.ChangeScene(); }
 
-    void OnGoToHub()
+    void OnGoToHub() // H
     { levelLoader.GoToHub(); }
 }
