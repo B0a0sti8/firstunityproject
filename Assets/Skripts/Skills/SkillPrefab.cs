@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 
-public class SkillPrefab : MonoBehaviour
+public class SkillPrefab : MonoBehaviour, IUseable
 {
     [HideInInspector]
     public PhotonView photonView;
@@ -341,6 +341,9 @@ public class SkillPrefab : MonoBehaviour
     }
 
     GameObject[] globalCooldownSkills;
+
+    public Sprite MyIcon => throw new System.NotImplementedException();
+
     //GameObject[] textGameObjects;
 
     void Awake()
@@ -426,6 +429,11 @@ public class SkillPrefab : MonoBehaviour
         float critChance = playerStats.critChance.GetValue();
         float critMultiplier = playerStats.critMultiplier.GetValue();
         playerStats.view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
+    }
+
+    public void Use()
+    {
+        throw new System.NotImplementedException();
     }
 
     //public void UseSkill() // checks for time between skill (e.g. Animation, GlobalCooldown) (+ stuff)

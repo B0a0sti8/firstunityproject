@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class KeybindManager : MonoBehaviour
 {
@@ -28,14 +29,23 @@ public class KeybindManager : MonoBehaviour
 
     string bindName;
 
+    GameObject PLAYER;
+    PlayerInput playerInputG; PlayerInput playerInputA;
+
     [SerializeField]
     CanvasGroup keybindMenue;
 
+    [SerializeField]
+    ActionButton[] actionButtons;
+
     GameObject[] keybindButtons;
 
-    private void Awake()
+    void Awake()
     {
         keybindButtons = GameObject.FindGameObjectsWithTag("Keybind");
+        PLAYER = gameObject.transform.parent.gameObject;
+        playerInputG = PLAYER.transform.Find("Input_Controller").transform.Find("Input_Gameplay").GetComponent<PlayerInput>();
+        playerInputA = PLAYER.transform.Find("Input_Controller").transform.Find("Input_ActionSkills").GetComponent<PlayerInput>();
     }
 
     void Start()
@@ -46,24 +56,22 @@ public class KeybindManager : MonoBehaviour
         Keybinds = new Dictionary<string, KeyCode>();
 
         ActionBinds = new Dictionary<string, KeyCode>();
-
+            
         BindKey("Up", KeyCode.W);
         BindKey("Left", KeyCode.A);
         BindKey("Down", KeyCode.S);
         BindKey("Right", KeyCode.D);
 
-        BindKey("Action 1", KeyCode.Q);
-        BindKey("Action 2", KeyCode.E);
-        BindKey("Action 3", KeyCode.Alpha1);
-        BindKey("Action 4", KeyCode.Alpha2);
-        BindKey("Action 5", KeyCode.Alpha3);
-        BindKey("Action 6", KeyCode.Alpha4);
-        BindKey("Action 7", KeyCode.Alpha5);
-        BindKey("Action 8", KeyCode.Alpha6);
-        BindKey("Action 9", KeyCode.Alpha7);
-        BindKey("Action 10", KeyCode.Alpha8);
-        BindKey("Action 11", KeyCode.Alpha9);
-        BindKey("Action 12", KeyCode.Alpha0);
+        BindKey("ActionSkill1", KeyCode.Alpha1);
+        BindKey("ActionSkill2", KeyCode.Alpha2);
+        BindKey("ActionSkill3", KeyCode.Alpha3);
+        BindKey("ActionSkill4", KeyCode.Alpha4);
+        BindKey("ActionSkill5", KeyCode.Alpha5);
+        BindKey("ActionSkill6", KeyCode.Alpha6);
+        BindKey("ActionSkill7", KeyCode.Alpha7);
+        BindKey("ActionSkill8", KeyCode.Alpha8);
+        BindKey("ActionSkill9", KeyCode.Alpha9);
+        BindKey("ActionSkill10", KeyCode.Alpha0);
     }
 
     public void BindKey(string key, KeyCode keyBind)
@@ -83,7 +91,6 @@ public class KeybindManager : MonoBehaviour
         else if (currentDictionary.ContainsValue(keyBind))
         {
             string myKey = currentDictionary.FirstOrDefault(x => x.Value == keyBind).Key;
-
             currentDictionary[myKey] = KeyCode.None;
             KeybindManager.MyInstance.UpdateKeyText(key, KeyCode.None);
         }
@@ -97,11 +104,31 @@ public class KeybindManager : MonoBehaviour
     {
         TMPro.TextMeshProUGUI tmp = Array.Find(keybindButtons, x => x.name == key).GetComponentInChildren<TMPro.TextMeshProUGUI>();
         tmp.text = code.ToString();
+        OnActionSkillsChangedCallback(key, code.ToString());
     }
 
     public void OpenCloseMenue()
     {
         keybindMenue.alpha = keybindMenue.alpha > 0 ? 0 : 1; // if > 0 -> 0, else 1
         keybindMenue.blocksRaycasts = keybindMenue.blocksRaycasts == true ? false : true;
+    }
+
+    void OnActionSkillsChangedCallback(string actionName, string binding)
+    {
+        string bindingMod = "<Keyboard>/" + binding;
+
+        if (actionName == "Up" || actionName == "Down" || actionName == "Right" || actionName == "Left")
+        {
+            playerInputG.currentActionMap.FindAction("Movement").ChangeCompositeBinding("WASD").NextPartBinding(actionName).WithPath(bindingMod);
+        } 
+        else
+        {
+            playerInputA.currentActionMap.FindAction(actionName).ApplyBindingOverride(bindingMod);
+        }
+    }
+
+    public void ClickActionButton(string buttonName)
+    {
+        Array.Find(actionButtons, x => x.gameObject.name == buttonName).MyButton.onClick.Invoke();
     }
 }
