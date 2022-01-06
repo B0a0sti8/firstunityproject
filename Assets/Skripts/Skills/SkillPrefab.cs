@@ -348,7 +348,8 @@ public class SkillPrefab : MonoBehaviour, IUseable
 
     void Awake()
     {
-        PLAYER = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject;
+        //PLAYER = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject;
+        PLAYER = transform.parent.gameObject.transform.parent.gameObject;
 
         photonView = PLAYER.GetComponent<PhotonView>();
 
@@ -372,46 +373,48 @@ public class SkillPrefab : MonoBehaviour, IUseable
 
         MasterETStuff();
     }
-
+   
     public virtual void MasterETStuff()
     {
-        masterET.skillName = gameObject.name;
+        /*
+       masterET.skillName = gameObject.name;
 
-        if (skillDescription == "")
-        {
-            skillDescription = "?GoodsInfo?";
-        }
-        masterET.skillDescription = skillDescription;
+       if (skillDescription == "")
+       {
+           skillDescription = "?GoodsInfo?";
+       }
+       masterET.skillDescription = skillDescription;
 
-        masterET.skillSprite = gameObject.GetComponent<Image>().sprite;
+       masterET.skillSprite = gameObject.GetComponent<Image>().sprite;
 
-        if (hasGlobalCooldown)
-        {
-            masterET.skillType = "Weaponskill (<color=yellow>" + masterChecks.masterGCTimeModified.ToString().Replace(",", ".") + "s</color>)";
-        }
-        else if (isSuperInstant)
-        {
-            masterET.skillType = "Super-Instant";
-        }
-        else
-        {
-            masterET.skillType = "Instant";
-        }
+       if (hasGlobalCooldown)
+       {
+           masterET.skillType = "Weaponskill (<color=yellow>" + masterChecks.masterGCTimeModified.ToString().Replace(",", ".") + "s</color>)";
+       }
+       else if (isSuperInstant)
+       {
+           masterET.skillType = "Super-Instant";
+       }
+       else
+       {
+           masterET.skillType = "Instant";
+       }
 
-        if (hasOwnCooldown)
-        {
-            masterET.skillCooldown = "Cooldown: <color=yellow>" + ownCooldownTimeModified.ToString().Replace(",", ".") + "s</color>";
-        }
+       if (hasOwnCooldown)
+       {
+           masterET.skillCooldown = "Cooldown: <color=yellow>" + ownCooldownTimeModified.ToString().Replace(",", ".") + "s</color>";
+       }
 
-        if (needsMana)
-        {
-            masterET.skillCosts = "Mana: <color=#00ffffff>" + manaCost.ToString().Replace(",", ".") + "</color>";
-        }
+       if (needsMana)
+       {
+           masterET.skillCosts = "Mana: <color=#00ffffff>" + manaCost.ToString().Replace(",", ".") + "</color>";
+       }
 
-        masterET.skillRange = "Range: <color=yellow>" + skillRange.ToString().Replace(",", ".") + "m</color>";
+       masterET.skillRange = "Range: <color=yellow>" + skillRange.ToString().Replace(",", ".") + "m</color>";
 
-        //skillRadius = 0f;
-        masterET.skillRadius = "Radius: <color=yellow>" + skillRadius.ToString().Replace(",", ".") + "m</color>";
+       //skillRadius = 0f;
+       masterET.skillRadius = "Radius: <color=yellow>" + skillRadius.ToString().Replace(",", ".") + "m</color>";
+       */
     }
 
     public void DealDamage(float damage)
