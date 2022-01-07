@@ -231,7 +231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &133253427
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1652,7 +1652,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 273781719}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076243872}
+        m_TargetAssemblyTypeName: KeybindManager, Assembly-CSharp
+        m_MethodName: KeyBindOnClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ActionSkill9
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &284874913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2498,7 +2510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &450577093
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3454,7 +3466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &580760632
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4064,7 +4076,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 629266862}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076243872}
+        m_TargetAssemblyTypeName: KeybindManager, Assembly-CSharp
+        m_MethodName: KeyBindOnClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ActionSkill6
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &651411251
 GameObject:
   m_ObjectHideFlags: 0
@@ -4186,7 +4210,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651411251}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -4507,7 +4531,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 673228462}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076243872}
+        m_TargetAssemblyTypeName: KeybindManager, Assembly-CSharp
+        m_MethodName: KeyBindOnClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ActionSkill4
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &679373193
 GameObject:
   m_ObjectHideFlags: 0
@@ -4763,7 +4799,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 707750515}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076243872}
+        m_TargetAssemblyTypeName: KeybindManager, Assembly-CSharp
+        m_MethodName: KeyBindOnClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ActionSkill1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &708051483
 GameObject:
   m_ObjectHideFlags: 0
@@ -5003,7 +5051,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 762163726}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076243872}
+        m_TargetAssemblyTypeName: KeybindManager, Assembly-CSharp
+        m_MethodName: KeyBindOnClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Down
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &776250446
 GameObject:
   m_ObjectHideFlags: 0
@@ -5124,7 +5184,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 776250449}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076243872}
+        m_TargetAssemblyTypeName: KeybindManager, Assembly-CSharp
+        m_MethodName: KeyBindOnClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ActionSkill2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &791867130
 GameObject:
   m_ObjectHideFlags: 0
@@ -6278,7 +6350,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 980722439}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076243872}
+        m_TargetAssemblyTypeName: KeybindManager, Assembly-CSharp
+        m_MethodName: KeyBindOnClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ActionSkill5
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &983215217
 GameObject:
   m_ObjectHideFlags: 0
@@ -6616,7 +6700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1010643334
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8841,7 +8925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1378272110}
   - component: {fileID: 1367009634755358988}
-  - component: {fileID: 1367009634755358989}
+  - component: {fileID: 742398052411495832}
   m_Layer: 8
   m_Name: Input_ActionSkills
   m_TagString: Untagged
@@ -8898,7 +8982,7 @@ MonoBehaviour:
   m_DefaultActionMap: ActionSkills
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1367009634755358989
+--- !u!114 &742398052411495832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9030,7 +9114,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1387000828}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076243872}
+        m_TargetAssemblyTypeName: KeybindManager, Assembly-CSharp
+        m_MethodName: KeyBindOnClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Up
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1389247456
 GameObject:
   m_ObjectHideFlags: 0
@@ -9822,7 +9918,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1450252844}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076243872}
+        m_TargetAssemblyTypeName: KeybindManager, Assembly-CSharp
+        m_MethodName: KeyBindOnClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ActionSkill7
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1472722710
 GameObject:
   m_ObjectHideFlags: 0
@@ -10077,7 +10185,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1493415313}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076243872}
+        m_TargetAssemblyTypeName: KeybindManager, Assembly-CSharp
+        m_MethodName: KeyBindOnClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Right
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1510250981
 GameObject:
   m_ObjectHideFlags: 0
@@ -10517,7 +10637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1587519036
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10703,7 +10823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1591168480
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11278,7 +11398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1649037214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11702,7 +11822,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1723266720}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076243872}
+        m_TargetAssemblyTypeName: KeybindManager, Assembly-CSharp
+        m_MethodName: KeyBindOnClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ActionSkill3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1733911563
 GameObject:
   m_ObjectHideFlags: 0
@@ -12001,7 +12133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1750341985
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12397,7 +12529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1801886982
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12944,7 +13076,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1877074454}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076243872}
+        m_TargetAssemblyTypeName: KeybindManager, Assembly-CSharp
+        m_MethodName: KeyBindOnClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ActionSkill10
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1911621915
 GameObject:
   m_ObjectHideFlags: 0
@@ -13253,7 +13397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1935916319
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14209,7 +14353,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2005573079}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076243872}
+        m_TargetAssemblyTypeName: KeybindManager, Assembly-CSharp
+        m_MethodName: KeyBindOnClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ActionSkill8
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2031137408
 GameObject:
   m_ObjectHideFlags: 0
@@ -14782,7 +14938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2095590556
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15020,7 +15176,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2116709659}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076243872}
+        m_TargetAssemblyTypeName: KeybindManager, Assembly-CSharp
+        m_MethodName: KeyBindOnClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Left
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &17871119487086649
 GameObject:
   m_ObjectHideFlags: 0
@@ -19100,8 +19268,9 @@ GameObject:
   - component: {fileID: 3366430810199230996}
   - component: {fileID: 2894936389454114355}
   - component: {fileID: 8454000053757643605}
+  - component: {fileID: 8432434899062137026}
   m_Layer: 5
-  m_Name: SkillSlot (3)
+  m_Name: ActionSkill4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19209,6 +19378,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8432434899062137026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2234986823910037983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
 --- !u!1 &2244953554037974022
 GameObject:
   m_ObjectHideFlags: 0
@@ -20280,8 +20463,9 @@ GameObject:
   - component: {fileID: 7364641323101663533}
   - component: {fileID: 3842090629069818969}
   - component: {fileID: 7013125958507552696}
+  - component: {fileID: 9002174687737201205}
   m_Layer: 5
-  m_Name: SkillSlot (8)
+  m_Name: ActionSkill9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20389,6 +20573,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9002174687737201205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2572644412293184267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
 --- !u!1 &2783956533400998430
 GameObject:
   m_ObjectHideFlags: 0
@@ -21048,8 +21246,9 @@ GameObject:
   - component: {fileID: 2515331071353647387}
   - component: {fileID: 4458274618825644444}
   - component: {fileID: 8553726657895487351}
+  - component: {fileID: 1367009634755358989}
   m_Layer: 5
-  m_Name: SkillSlot (4)
+  m_Name: ActionSkill5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21157,6 +21356,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1367009634755358989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3182605646493789728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
 --- !u!1 &3198851924555060688
 GameObject:
   m_ObjectHideFlags: 0
@@ -21169,8 +21382,9 @@ GameObject:
   - component: {fileID: 8889807875442944199}
   - component: {fileID: 2898817788182484205}
   - component: {fileID: 8748300393944007201}
+  - component: {fileID: 907646707407522056}
   m_Layer: 5
-  m_Name: SkillSlot (9)
+  m_Name: ActionSkill10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21278,6 +21492,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &907646707407522056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3198851924555060688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
 --- !u!1 &3214520160101189429
 GameObject:
   m_ObjectHideFlags: 0
@@ -25844,7 +26072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2934025957377561973
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29675,9 +29903,9 @@ GameObject:
   - component: {fileID: 2033462489886429157}
   - component: {fileID: 4805734319053250445}
   - component: {fileID: 7065697001215091327}
-  - component: {fileID: 1941935304788934349}
+  - component: {fileID: 4365590965131907550}
   m_Layer: 5
-  m_Name: SkillSlot (1)
+  m_Name: ActionSkill2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29785,7 +30013,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1941935304788934349
+--- !u!114 &4365590965131907550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29794,10 +30022,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6239645638912430423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: ButtonSlot2Skill
+  skillName: 
+  className: 
 --- !u!1 &6281857634994128830
 GameObject:
   m_ObjectHideFlags: 0
@@ -32468,9 +32697,9 @@ GameObject:
   - component: {fileID: 8648680114707216476}
   - component: {fileID: 1877589420074806768}
   - component: {fileID: 8907777975156950696}
-  - component: {fileID: 94439888005521377}
+  - component: {fileID: 1367009634755358990}
   m_Layer: 5
-  m_Name: SkillSlot
+  m_Name: ActionSkill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32578,7 +32807,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &94439888005521377
+--- !u!114 &1367009634755358990
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32587,10 +32816,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7402946126443542438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: ButtonSlot1Skill
+  skillName: TestAttack1
+  className: 
 --- !u!1 &7446746122977708682
 GameObject:
   m_ObjectHideFlags: 0
@@ -33142,8 +33372,9 @@ GameObject:
   - component: {fileID: 6486723781001432636}
   - component: {fileID: 9011385697799009368}
   - component: {fileID: 5362522626336615477}
+  - component: {fileID: 6228188867813204199}
   m_Layer: 5
-  m_Name: SkillSlot (2)
+  m_Name: ActionSkill3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33251,6 +33482,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6228188867813204199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807183840413813742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: TestGainLifeHot
+  className: 
 --- !u!1 &7882955290617712312
 GameObject:
   m_ObjectHideFlags: 0
@@ -35586,8 +35831,9 @@ GameObject:
   - component: {fileID: 827737232932766787}
   - component: {fileID: 2526007565994433326}
   - component: {fileID: 1813660758231717155}
+  - component: {fileID: 9062472218697388989}
   m_Layer: 5
-  m_Name: SkillSlot (6)
+  m_Name: ActionSkill7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35695,6 +35941,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9062472218697388989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8996122932819050018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
 --- !u!1 &9039020055405318627
 GameObject:
   m_ObjectHideFlags: 0
@@ -35707,8 +35967,9 @@ GameObject:
   - component: {fileID: 6326566792073651753}
   - component: {fileID: 5985917378167747785}
   - component: {fileID: 3506339324456405339}
+  - component: {fileID: 4593041645795120962}
   m_Layer: 5
-  m_Name: SkillSlot (5)
+  m_Name: ActionSkill6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35816,6 +36077,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4593041645795120962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9039020055405318627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
 --- !u!1 &9157550391713162585
 GameObject:
   m_ObjectHideFlags: 0
@@ -35828,8 +36103,9 @@ GameObject:
   - component: {fileID: 5846464685252055159}
   - component: {fileID: 9177695701038373559}
   - component: {fileID: 1361740032783033947}
+  - component: {fileID: 1673647931489973199}
   m_Layer: 5
-  m_Name: SkillSlot (7)
+  m_Name: ActionSkill8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35937,6 +36213,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1673647931489973199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9157550391713162585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
 --- !u!1 &9165896079934985845
 GameObject:
   m_ObjectHideFlags: 0
