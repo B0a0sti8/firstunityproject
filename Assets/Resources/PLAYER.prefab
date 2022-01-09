@@ -372,9 +372,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 1
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
 --- !u!114 &3154302426633649061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2651,9 +2662,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 1
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   damage: 400
 --- !u!114 &1751446153542886752
 MonoBehaviour:
@@ -3607,9 +3629,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 0
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 1
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   baseDamage: 100
   comboDamage: 120
 --- !u!114 &413619550916163104
@@ -6841,9 +6874,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   duration: 8
   value: 5
   buffImage: {fileID: 21300000, guid: 37f621f099e46d245876c6cb720c8c12, type: 3}
@@ -10778,9 +10822,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   damage: 200
 --- !u!114 &8033903956536368675
 MonoBehaviour:
@@ -10964,9 +11019,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   duration: 30
   value: 50
   buffImage: {fileID: 21300000, guid: 844b60c4c0a30a043aa066f57200ffaa, type: 3}
@@ -11539,9 +11605,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   instantHealing: 50
   tickTime: 2
   tickHealing: 5
@@ -12274,9 +12351,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   healing: 75
 --- !u!114 &2781643958777908884
 MonoBehaviour:
@@ -12670,9 +12758,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 0
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 1
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   baseDamage: 100
   comboDamage: 150
 --- !u!114 &8933648390615150534
@@ -12950,8 +13049,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 598728969}
   m_HandleRect: {fileID: 598728968}
   m_Direction: 2
-  m_Value: 0.92704237
-  m_Size: 0.8962508
+  m_Value: 0.9270434
+  m_Size: 0.89625084
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13538,9 +13637,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 0
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 1
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   damage: 100
 --- !u!114 &8055252640503893492
 MonoBehaviour:
@@ -15473,7 +15583,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -15570,7 +15680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 106}
+  m_AnchoredPosition: {x: 0, y: 99}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &347072171104287951
@@ -15904,7 +16014,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -15976,8 +16086,9 @@ GameObject:
   - component: {fileID: 8411281423444055266}
   - component: {fileID: 1283861908430119947}
   - component: {fileID: 1367009634755359015}
+  - component: {fileID: 1367009634755359005}
   m_Layer: 8
-  m_Name: Button (1)
+  m_Name: TestAttack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16097,7 +16208,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: Attack2
+  skillName: TestAttack2
+--- !u!114 &1367009634755359005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675965586146273389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &713648025942539792
 GameObject:
   m_ObjectHideFlags: 0
@@ -16173,7 +16305,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -16824,7 +16956,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -17167,7 +17299,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -17301,7 +17433,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -17573,7 +17705,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -17644,7 +17776,6 @@ GameObject:
   - component: {fileID: 7274433197434292289}
   - component: {fileID: 793083264790983552}
   - component: {fileID: 8716490529473121771}
-  - component: {fileID: 927987470006021064}
   m_Layer: 8
   m_Name: Canvas Hand
   m_TagString: Untagged
@@ -17733,18 +17864,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &927987470006021064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1557038885983118199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee540f6cde749bd4aaddc2205dcce975, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1630373161425993211
 GameObject:
   m_ObjectHideFlags: 0
@@ -17892,8 +18011,9 @@ GameObject:
   - component: {fileID: 1098376073068224817}
   - component: {fileID: 9069023116903491916}
   - component: {fileID: 1367009634755359013}
+  - component: {fileID: 1367009634755359003}
   m_Layer: 8
-  m_Name: Button (3)
+  m_Name: TestBigAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18013,7 +18133,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: BigAttack
+  skillName: TestBigAttack
+--- !u!114 &1367009634755359003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654815961536716723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &1777422961266719516
 GameObject:
   m_ObjectHideFlags: 0
@@ -18161,8 +18302,10 @@ GameObject:
   - component: {fileID: 5078745991903249376}
   - component: {fileID: 3255368258150163945}
   - component: {fileID: 8961145922096571604}
+  - component: {fileID: 55769575516885850}
+  - component: {fileID: 6251771386587556098}
   m_Layer: 5
-  m_Name: SkillSlot (13)
+  m_Name: ActionSkill14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18185,7 +18328,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 617.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 347.4448, y: -104.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5078745991903249376
@@ -18270,6 +18413,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &55769575516885850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815363451096539189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: TestGainLife
+  className: 
+--- !u!114 &6251771386587556098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815363451096539189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &1899599581339152774
 GameObject:
   m_ObjectHideFlags: 0
@@ -18404,7 +18582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -18570,7 +18748,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -18704,7 +18882,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -18949,7 +19127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -148}
+  m_AnchoredPosition: {x: 0, y: -175}
   m_SizeDelta: {x: 829.8896, y: 208.5502}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1961369696676733675
@@ -19012,8 +19190,8 @@ MonoBehaviour:
   m_StartAxis: 0
   m_CellSize: {x: 40, y: 40}
   m_Spacing: {x: 5, y: 5}
-  m_Constraint: 0
-  m_ConstraintCount: 10
+  m_Constraint: 2
+  m_ConstraintCount: 3
 --- !u!1 &2202188097831799536
 GameObject:
   m_ObjectHideFlags: 0
@@ -19026,8 +19204,10 @@ GameObject:
   - component: {fileID: 1322819469630250493}
   - component: {fileID: 2294558600287065454}
   - component: {fileID: 14324535421089304}
+  - component: {fileID: 6698535207702058770}
+  - component: {fileID: 1773306492368207133}
   m_Layer: 5
-  m_Name: SkillSlot (27)
+  m_Name: ActionSkill28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19050,7 +19230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 437.4448, y: -126.7751}
+  m_AnchoredPosition: {x: 527.4448, y: -149.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1322819469630250493
@@ -19135,6 +19315,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6698535207702058770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2202188097831799536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &1773306492368207133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2202188097831799536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &2204480137094995541
 GameObject:
   m_ObjectHideFlags: 0
@@ -19147,8 +19362,10 @@ GameObject:
   - component: {fileID: 1882475907617112573}
   - component: {fileID: 8212953334954251883}
   - component: {fileID: 2565611852150046661}
+  - component: {fileID: 6234642264086858165}
+  - component: {fileID: 4662350138539989786}
   m_Layer: 5
-  m_Name: SkillSlot (23)
+  m_Name: ActionSkill24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19171,7 +19388,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 257.4448, y: -126.7751}
+  m_AnchoredPosition: {x: 347.4448, y: -149.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1882475907617112573
@@ -19256,6 +19473,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6234642264086858165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204480137094995541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &4662350138539989786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204480137094995541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &2234986823910037983
 GameObject:
   m_ObjectHideFlags: 0
@@ -19269,6 +19521,7 @@ GameObject:
   - component: {fileID: 2894936389454114355}
   - component: {fileID: 8454000053757643605}
   - component: {fileID: 8432434899062137026}
+  - component: {fileID: 5809756464820950326}
   m_Layer: 5
   m_Name: ActionSkill4
   m_TagString: Untagged
@@ -19293,7 +19546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 167.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 347.4448, y: -59.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3366430810199230996
@@ -19390,8 +19643,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: TestBigAttack
   className: 
+--- !u!114 &5809756464820950326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2234986823910037983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &2244953554037974022
 GameObject:
   m_ObjectHideFlags: 0
@@ -19505,8 +19779,9 @@ GameObject:
   - component: {fileID: 4919860716734538028}
   - component: {fileID: 3053162652917990429}
   - component: {fileID: 1367009634755359011}
+  - component: {fileID: 1367009634755359001}
   m_Layer: 8
-  m_Name: Button (5)
+  m_Name: TestSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19627,6 +19902,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: TestSkill
+--- !u!114 &1367009634755359001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2273584795775717952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &2293189994110155049
 GameObject:
   m_ObjectHideFlags: 0
@@ -19774,8 +20070,10 @@ GameObject:
   - component: {fileID: 6110053488993727317}
   - component: {fileID: 7245364303631446180}
   - component: {fileID: 6652079229390335956}
+  - component: {fileID: 5383719136749291605}
+  - component: {fileID: 4794481828210384349}
   m_Layer: 5
-  m_Name: SkillSlot (28)
+  m_Name: ActionSkill29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19798,7 +20096,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 482.4448, y: -126.7751}
+  m_AnchoredPosition: {x: 572.4448, y: -149.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6110053488993727317
@@ -19883,6 +20181,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5383719136749291605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2303221559634915896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &4794481828210384349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2303221559634915896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &2322762964598167563
 GameObject:
   m_ObjectHideFlags: 0
@@ -20033,7 +20366,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -20464,6 +20797,7 @@ GameObject:
   - component: {fileID: 3842090629069818969}
   - component: {fileID: 7013125958507552696}
   - component: {fileID: 9002174687737201205}
+  - component: {fileID: 6469705382164074936}
   m_Layer: 5
   m_Name: ActionSkill9
   m_TagString: Untagged
@@ -20488,7 +20822,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 392.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 572.4448, y: -59.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7364641323101663533
@@ -20585,8 +20919,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: TestGainLifeHot
   className: 
+--- !u!114 &6469705382164074936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2572644412293184267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &2783956533400998430
 GameObject:
   m_ObjectHideFlags: 0
@@ -20734,8 +21089,10 @@ GameObject:
   - component: {fileID: 2584932186944629243}
   - component: {fileID: 5944947491087678930}
   - component: {fileID: 653039126333173320}
+  - component: {fileID: 5613826303220576356}
+  - component: {fileID: 659879054877498400}
   m_Layer: 5
-  m_Name: SkillSlot (20)
+  m_Name: ActionSkill21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20758,7 +21115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 122.44479, y: -126.7751}
+  m_AnchoredPosition: {x: 212.4448, y: -149.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2584932186944629243
@@ -20843,6 +21200,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5613826303220576356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2807891607603509770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &659879054877498400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2807891607603509770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &2848475093028053753
 GameObject:
   m_ObjectHideFlags: 0
@@ -20990,8 +21382,10 @@ GameObject:
   - component: {fileID: 6446769934540742581}
   - component: {fileID: 3250359115546378801}
   - component: {fileID: 2247961644207434960}
+  - component: {fileID: 4742071422360384271}
+  - component: {fileID: 970972263973110396}
   m_Layer: 5
-  m_Name: SkillSlot (26)
+  m_Name: ActionSkill27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21014,7 +21408,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 392.4448, y: -126.7751}
+  m_AnchoredPosition: {x: 482.4448, y: -149.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6446769934540742581
@@ -21099,6 +21493,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4742071422360384271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2912620394146096543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &970972263973110396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2912620394146096543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &3024719223993451040
 GameObject:
   m_ObjectHideFlags: 0
@@ -21247,6 +21676,7 @@ GameObject:
   - component: {fileID: 4458274618825644444}
   - component: {fileID: 8553726657895487351}
   - component: {fileID: 1367009634755358989}
+  - component: {fileID: 8088685071627736057}
   m_Layer: 5
   m_Name: ActionSkill5
   m_TagString: Untagged
@@ -21271,7 +21701,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 212.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 392.4448, y: -59.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2515331071353647387
@@ -21368,8 +21798,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: TestEnergyDrain
   className: 
+--- !u!114 &8088685071627736057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3182605646493789728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &3198851924555060688
 GameObject:
   m_ObjectHideFlags: 0
@@ -21383,6 +21834,7 @@ GameObject:
   - component: {fileID: 2898817788182484205}
   - component: {fileID: 8748300393944007201}
   - component: {fileID: 907646707407522056}
+  - component: {fileID: 4270205739878678942}
   m_Layer: 5
   m_Name: ActionSkill10
   m_TagString: Untagged
@@ -21407,7 +21859,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 437.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 617.4448, y: -59.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8889807875442944199
@@ -21504,8 +21956,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: TestSpeedBoost
   className: 
+--- !u!114 &4270205739878678942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3198851924555060688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &3214520160101189429
 GameObject:
   m_ObjectHideFlags: 0
@@ -21519,8 +21992,9 @@ GameObject:
   - component: {fileID: 7970496425020175149}
   - component: {fileID: 8370309510463676667}
   - component: {fileID: 1367009634755359012}
+  - component: {fileID: 1367009634755359002}
   m_Layer: 8
-  m_Name: Button (4)
+  m_Name: TestEnergyDrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21640,7 +22114,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: EnergyDrain
+  skillName: TestEnergyDrain
+--- !u!114 &1367009634755359002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3214520160101189429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &3263879989277272547
 GameObject:
   m_ObjectHideFlags: 0
@@ -21716,7 +22211,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -21850,7 +22345,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -21921,8 +22416,10 @@ GameObject:
   - component: {fileID: 2366158838826586861}
   - component: {fileID: 7499916131913357613}
   - component: {fileID: 5037665538864463863}
+  - component: {fileID: 3957737060491611879}
+  - component: {fileID: 6246847871481952359}
   m_Layer: 5
-  m_Name: SkillSlot (15)
+  m_Name: ActionSkill16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21945,7 +22442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 707.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 437.4448, y: -104.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2366158838826586861
@@ -22030,6 +22527,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3957737060491611879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321516511650369140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &6246847871481952359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321516511650369140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &3370665362139404782
 GameObject:
   m_ObjectHideFlags: 0
@@ -22239,7 +22771,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -22311,8 +22843,9 @@ GameObject:
   - component: {fileID: 3296765040452726090}
   - component: {fileID: 7934378518675998323}
   - component: {fileID: 1367009634755359007}
+  - component: {fileID: 1367009634755358997}
   m_Layer: 8
-  m_Name: Button (9)
+  m_Name: TestSpeedBoost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22432,7 +22965,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: SpeedBoost
+  skillName: TestSpeedBoost
+--- !u!114 &1367009634755358997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3584928848529977438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &3588715506173180966
 GameObject:
   m_ObjectHideFlags: 0
@@ -22580,8 +23134,10 @@ GameObject:
   - component: {fileID: 7737024939872555432}
   - component: {fileID: 1997606710757954615}
   - component: {fileID: 3142627008184283671}
+  - component: {fileID: 3404429249372298095}
+  - component: {fileID: 8397395249531660581}
   m_Layer: 5
-  m_Name: SkillSlot (29)
+  m_Name: ActionSkill30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22604,7 +23160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 527.4448, y: -126.7751}
+  m_AnchoredPosition: {x: 617.4448, y: -149.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737024939872555432
@@ -22689,6 +23245,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3404429249372298095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3634532660413268450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &8397395249531660581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3634532660413268450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &3735595230605015783
 GameObject:
   m_ObjectHideFlags: 0
@@ -22764,7 +23355,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -22948,8 +23539,10 @@ GameObject:
   - component: {fileID: 4270879296804694797}
   - component: {fileID: 7468830894493879561}
   - component: {fileID: 1378706942660883074}
+  - component: {fileID: 8309977725444113116}
+  - component: {fileID: 6284683152142198644}
   m_Layer: 5
-  m_Name: SkillSlot (21)
+  m_Name: ActionSkill22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22972,7 +23565,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 167.4448, y: -126.7751}
+  m_AnchoredPosition: {x: 257.4448, y: -149.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4270879296804694797
@@ -23057,6 +23650,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8309977725444113116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4015016010182436143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &6284683152142198644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4015016010182436143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &4049336816065163618
 GameObject:
   m_ObjectHideFlags: 0
@@ -23132,7 +23760,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -23250,7 +23878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -23612,7 +24240,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -24166,8 +24794,9 @@ GameObject:
   - component: {fileID: 6829996319372351647}
   - component: {fileID: 8986163266085673621}
   - component: {fileID: 1367009634755359014}
+  - component: {fileID: 1367009634755359004}
   m_Layer: 8
-  m_Name: Button (2)
+  m_Name: TestAttack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24287,7 +24916,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: Attack3
+  skillName: TestAttack3
+--- !u!114 &1367009634755359004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4356926002943470133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &4400014925551721771
 GameObject:
   m_ObjectHideFlags: 0
@@ -24363,7 +25013,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -24569,8 +25219,10 @@ GameObject:
   - component: {fileID: 7129896406495316698}
   - component: {fileID: 969265080836462539}
   - component: {fileID: 6136675900003446866}
+  - component: {fileID: 2264285739736252347}
+  - component: {fileID: 3627351030399642237}
   m_Layer: 5
-  m_Name: SkillSlot (22)
+  m_Name: ActionSkill23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24593,7 +25245,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 212.4448, y: -126.7751}
+  m_AnchoredPosition: {x: 302.4448, y: -149.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7129896406495316698
@@ -24678,6 +25330,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2264285739736252347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4538294746370569158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &3627351030399642237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4538294746370569158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &4584907191575422016
 GameObject:
   m_ObjectHideFlags: 0
@@ -25804,8 +26491,10 @@ GameObject:
   - component: {fileID: 8970127370467947716}
   - component: {fileID: 4897470817658234204}
   - component: {fileID: 6837758106363093449}
+  - component: {fileID: 3442031026939087424}
+  - component: {fileID: 203094747134736961}
   m_Layer: 5
-  m_Name: SkillSlot (16)
+  m_Name: ActionSkill17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25828,7 +26517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 752.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 482.4448, y: -104.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8970127370467947716
@@ -25913,6 +26602,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3442031026939087424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4603620190230749944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &203094747134736961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4603620190230749944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &4644879010572797506
 GameObject:
   m_ObjectHideFlags: 0
@@ -25988,7 +26712,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -26118,9 +26842,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 0
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 1
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   damage: 100
 --- !u!114 &710900986185266333
 MonoBehaviour:
@@ -26148,9 +26883,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 0
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 1
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   baseDamage: 100
   comboDamage: 120
 --- !u!114 &2348305513113388602
@@ -26179,9 +26925,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 0
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 1
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   baseDamage: 100
   comboDamage: 150
 --- !u!114 &8722080370481325698
@@ -26210,9 +26967,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 1
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   damage: 400
 --- !u!114 &4479257864175243874
 MonoBehaviour:
@@ -26240,9 +27008,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   damage: 200
 --- !u!114 &405477391951262171
 MonoBehaviour:
@@ -26270,9 +27049,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 1
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
 --- !u!114 &8779982288168751922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26299,9 +27089,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   duration: 30
   value: 50
   buffImage: {fileID: 21300000, guid: 844b60c4c0a30a043aa066f57200ffaa, type: 3}
@@ -26331,9 +27132,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   healing: 75
 --- !u!114 &8341601033471067305
 MonoBehaviour:
@@ -26361,9 +27173,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   instantHealing: 50
   tickTime: 2
   tickHealing: 5
@@ -26395,9 +27218,20 @@ MonoBehaviour:
   skillRadius: 0
   hasOwnCooldown: 1
   ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
-  skillDescription: 
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
   duration: 8
   value: 5
   buffImage: {fileID: 21300000, guid: 37f621f099e46d245876c6cb720c8c12, type: 3}
@@ -26683,8 +27517,9 @@ GameObject:
   - component: {fileID: 4687423710311816363}
   - component: {fileID: 791203953472476703}
   - component: {fileID: 1367009634755359010}
+  - component: {fileID: 1367009634755359000}
   m_Layer: 8
-  m_Name: Button (6)
+  m_Name: TestOverHeal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26804,7 +27639,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: OverHeal
+  skillName: TestOverHeal
+--- !u!114 &1367009634755359000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4865161754287168280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &4904383844777247273
 GameObject:
   m_ObjectHideFlags: 0
@@ -27233,7 +28089,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -27711,7 +28567,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -28113,7 +28969,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -28247,7 +29103,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -28381,7 +29237,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -28593,8 +29449,9 @@ GameObject:
   - component: {fileID: 9098118346740667177}
   - component: {fileID: 2585835368291077172}
   - component: {fileID: 1367009634755359009}
+  - component: {fileID: 1367009634755358999}
   m_Layer: 8
-  m_Name: Button (7)
+  m_Name: TestGainLife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28714,7 +29571,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: GainLife
+  skillName: TestGainLife
+--- !u!114 &1367009634755358999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5452921843287476290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &5536661842477734931
 GameObject:
   m_ObjectHideFlags: 0
@@ -28865,7 +29743,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -29071,8 +29949,10 @@ GameObject:
   - component: {fileID: 4617651865471918975}
   - component: {fileID: 1331330146953598342}
   - component: {fileID: 7963488808756542485}
+  - component: {fileID: 2957495365781894893}
+  - component: {fileID: 7981247215737654961}
   m_Layer: 5
-  m_Name: SkillSlot (17)
+  m_Name: ActionSkill18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29095,7 +29975,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 797.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 527.4448, y: -104.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4617651865471918975
@@ -29180,6 +30060,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2957495365781894893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5717908182429806980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &7981247215737654961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5717908182429806980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &5718546068805564915
 GameObject:
   m_ObjectHideFlags: 0
@@ -29707,8 +30622,10 @@ GameObject:
   - component: {fileID: 8889694552707017654}
   - component: {fileID: 2284259287969688740}
   - component: {fileID: 4994669816919112891}
+  - component: {fileID: 1577335790860946365}
+  - component: {fileID: 7533843451229396305}
   m_Layer: 5
-  m_Name: SkillSlot (18)
+  m_Name: ActionSkill19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29731,7 +30648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 32.444794, y: -126.7751}
+  m_AnchoredPosition: {x: 572.4448, y: -104.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8889694552707017654
@@ -29816,6 +30733,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1577335790860946365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116814003916836634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &7533843451229396305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116814003916836634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &6175632897198770759
 GameObject:
   m_ObjectHideFlags: 0
@@ -29904,6 +30856,7 @@ GameObject:
   - component: {fileID: 4805734319053250445}
   - component: {fileID: 7065697001215091327}
   - component: {fileID: 4365590965131907550}
+  - component: {fileID: 4926873087903236753}
   m_Layer: 5
   m_Name: ActionSkill2
   m_TagString: Untagged
@@ -29928,7 +30881,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 77.44479, y: -81.7751}
+  m_AnchoredPosition: {x: 257.4448, y: -59.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2033462489886429157
@@ -30025,8 +30978,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: TestAttack2
   className: 
+--- !u!114 &4926873087903236753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6239645638912430423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &6281857634994128830
 GameObject:
   m_ObjectHideFlags: 0
@@ -30295,8 +31269,10 @@ GameObject:
   - component: {fileID: 6326758168605025}
   - component: {fileID: 7920497774593668938}
   - component: {fileID: 6456454816767307289}
+  - component: {fileID: 4867030714883395842}
+  - component: {fileID: 9000692993840438375}
   m_Layer: 5
-  m_Name: SkillSlot (14)
+  m_Name: ActionSkill15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30319,7 +31295,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 662.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 392.4448, y: -104.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6326758168605025
@@ -30404,6 +31380,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4867030714883395842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6509527261614647308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &9000692993840438375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6509527261614647308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &6514045431914371836
 GameObject:
   m_ObjectHideFlags: 0
@@ -31021,8 +32032,10 @@ GameObject:
   - component: {fileID: 4235025472849126813}
   - component: {fileID: 647948250852638849}
   - component: {fileID: 6345607211176770929}
+  - component: {fileID: 7192592386259824355}
+  - component: {fileID: 6663428512538281850}
   m_Layer: 5
-  m_Name: SkillSlot (12)
+  m_Name: ActionSkill13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31045,7 +32058,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 572.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 302.4448, y: -104.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4235025472849126813
@@ -31130,6 +32143,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7192592386259824355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6727882663924997179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &6663428512538281850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6727882663924997179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &6735941193300666039
 GameObject:
   m_ObjectHideFlags: 0
@@ -31292,8 +32340,10 @@ GameObject:
   - component: {fileID: 485451216590269640}
   - component: {fileID: 5915963628386560216}
   - component: {fileID: 943944508868194112}
+  - component: {fileID: 85311185684309124}
+  - component: {fileID: 1867680771004984206}
   m_Layer: 5
-  m_Name: SkillSlot (19)
+  m_Name: ActionSkill20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31316,7 +32366,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 77.44479, y: -126.7751}
+  m_AnchoredPosition: {x: 617.4448, y: -104.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &485451216590269640
@@ -31401,6 +32451,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &85311185684309124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806314711784614193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &1867680771004984206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806314711784614193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &6812950104246081409
 GameObject:
   m_ObjectHideFlags: 0
@@ -31414,8 +32499,9 @@ GameObject:
   - component: {fileID: 6163916438784098111}
   - component: {fileID: 7183830724556053331}
   - component: {fileID: 1367009634755359016}
+  - component: {fileID: 1367009634755359006}
   m_Layer: 8
-  m_Name: Button
+  m_Name: TestAttack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31535,7 +32621,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: Attack1
+  skillName: TestAttack1
+--- !u!114 &1367009634755359006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812950104246081409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &6834794550528465224
 GameObject:
   m_ObjectHideFlags: 0
@@ -32148,7 +33255,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!114 &8868631390331346714
 MonoBehaviour:
@@ -32441,7 +33548,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -32621,6 +33728,7 @@ GameObject:
   - component: {fileID: 5145943014610514171}
   - component: {fileID: 3743890000837362169}
   - component: {fileID: 4399469416197076397}
+  - component: {fileID: 3299127253984762940}
   m_Layer: 8
   m_Name: Hand Image
   m_TagString: Untagged
@@ -32669,7 +33777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -32685,6 +33793,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3299127253984762940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7386793323397375559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee540f6cde749bd4aaddc2205dcce975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handSkillName: 
+  handButtonSwap: {fileID: 0}
 --- !u!1 &7402946126443542438
 GameObject:
   m_ObjectHideFlags: 0
@@ -32698,6 +33820,7 @@ GameObject:
   - component: {fileID: 1877589420074806768}
   - component: {fileID: 8907777975156950696}
   - component: {fileID: 1367009634755358990}
+  - component: {fileID: 6440481606120902357}
   m_Layer: 5
   m_Name: ActionSkill1
   m_TagString: Untagged
@@ -32722,7 +33845,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 32.444794, y: -81.7751}
+  m_AnchoredPosition: {x: 212.4448, y: -59.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8648680114707216476
@@ -32821,6 +33944,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: TestAttack1
   className: 
+--- !u!114 &6440481606120902357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7402946126443542438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &7446746122977708682
 GameObject:
   m_ObjectHideFlags: 0
@@ -32896,7 +34040,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -33251,8 +34395,10 @@ GameObject:
   - component: {fileID: 3905005133071973636}
   - component: {fileID: 3112856032644986736}
   - component: {fileID: 1322428061242345154}
+  - component: {fileID: 3179321230998512539}
+  - component: {fileID: 4237071420939779508}
   m_Layer: 5
-  m_Name: SkillSlot (11)
+  m_Name: ActionSkill12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33275,7 +34421,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 527.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 257.4448, y: -104.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3905005133071973636
@@ -33360,6 +34506,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3179321230998512539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7778314779226490823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &4237071420939779508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7778314779226490823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &7807183840413813742
 GameObject:
   m_ObjectHideFlags: 0
@@ -33373,6 +34554,7 @@ GameObject:
   - component: {fileID: 9011385697799009368}
   - component: {fileID: 5362522626336615477}
   - component: {fileID: 6228188867813204199}
+  - component: {fileID: 1236681541994813209}
   m_Layer: 5
   m_Name: ActionSkill3
   m_TagString: Untagged
@@ -33397,7 +34579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 122.44479, y: -81.7751}
+  m_AnchoredPosition: {x: 302.4448, y: -59.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6486723781001432636
@@ -33494,8 +34676,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: TestGainLifeHot
+  skillName: TestAttack3
   className: 
+--- !u!114 &1236681541994813209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807183840413813742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &7882955290617712312
 GameObject:
   m_ObjectHideFlags: 0
@@ -33706,7 +34909,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -33840,7 +35043,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -34329,8 +35532,10 @@ GameObject:
   - component: {fileID: 6459520970786651473}
   - component: {fileID: 7942313214473345702}
   - component: {fileID: 3235863620807638568}
+  - component: {fileID: 3550587537469657849}
+  - component: {fileID: 4034160373759880764}
   m_Layer: 5
-  m_Name: SkillSlot (24)
+  m_Name: ActionSkill25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34353,7 +35558,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 302.4448, y: -126.7751}
+  m_AnchoredPosition: {x: 392.4448, y: -149.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6459520970786651473
@@ -34438,6 +35643,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3550587537469657849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296595671235545437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &4034160373759880764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296595671235545437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &8349444976744743264
 GameObject:
   m_ObjectHideFlags: 0
@@ -34651,7 +35891,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -34797,8 +36037,10 @@ GameObject:
   - component: {fileID: 3634948780992838227}
   - component: {fileID: 4774278448631902444}
   - component: {fileID: 1204817743868722364}
+  - component: {fileID: 1966960354532179948}
+  - component: {fileID: 7098625263217012904}
   m_Layer: 5
-  m_Name: SkillSlot (10)
+  m_Name: ActionSkill11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34821,7 +36063,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 482.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 212.4448, y: -104.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3634948780992838227
@@ -34906,6 +36148,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1966960354532179948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8491506062524429110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &7098625263217012904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8491506062524429110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &8533901865578450024
 GameObject:
   m_ObjectHideFlags: 0
@@ -35116,7 +36393,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -35461,8 +36738,10 @@ GameObject:
   - component: {fileID: 2975663075016792971}
   - component: {fileID: 6395778547022043833}
   - component: {fileID: 3567380988771542179}
+  - component: {fileID: 5440998733561848353}
+  - component: {fileID: 3707415874519961063}
   m_Layer: 5
-  m_Name: SkillSlot (25)
+  m_Name: ActionSkill26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35485,7 +36764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 347.4448, y: -126.7751}
+  m_AnchoredPosition: {x: 437.4448, y: -149.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2975663075016792971
@@ -35570,6 +36849,41 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5440998733561848353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8729232896406025212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  className: 
+--- !u!114 &3707415874519961063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8729232896406025212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &8769738788852259307
 GameObject:
   m_ObjectHideFlags: 0
@@ -35697,8 +37011,9 @@ GameObject:
   - component: {fileID: 753322637148879048}
   - component: {fileID: 7470881417369339692}
   - component: {fileID: 1367009634755359008}
+  - component: {fileID: 1367009634755358998}
   m_Layer: 8
-  m_Name: Button (8)
+  m_Name: TestGainLifeHot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35818,7 +37133,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: GainLifeHot
+  skillName: TestGainLifeHot
+--- !u!114 &1367009634755358998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8875447883123588392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &8996122932819050018
 GameObject:
   m_ObjectHideFlags: 0
@@ -35832,6 +37168,7 @@ GameObject:
   - component: {fileID: 2526007565994433326}
   - component: {fileID: 1813660758231717155}
   - component: {fileID: 9062472218697388989}
+  - component: {fileID: 8543224924263205758}
   m_Layer: 5
   m_Name: ActionSkill7
   m_TagString: Untagged
@@ -35856,7 +37193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 302.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 482.4448, y: -59.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &827737232932766787
@@ -35953,8 +37290,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: TestOverHeal
   className: 
+--- !u!114 &8543224924263205758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8996122932819050018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &9039020055405318627
 GameObject:
   m_ObjectHideFlags: 0
@@ -35968,6 +37326,7 @@ GameObject:
   - component: {fileID: 5985917378167747785}
   - component: {fileID: 3506339324456405339}
   - component: {fileID: 4593041645795120962}
+  - component: {fileID: 6459984454356615301}
   m_Layer: 5
   m_Name: ActionSkill6
   m_TagString: Untagged
@@ -35992,7 +37351,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 257.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 437.4448, y: -59.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6326566792073651753
@@ -36089,8 +37448,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: TestSkill
   className: 
+--- !u!114 &6459984454356615301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9039020055405318627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &9157550391713162585
 GameObject:
   m_ObjectHideFlags: 0
@@ -36104,6 +37484,7 @@ GameObject:
   - component: {fileID: 9177695701038373559}
   - component: {fileID: 1361740032783033947}
   - component: {fileID: 1673647931489973199}
+  - component: {fileID: 1475446105075564680}
   m_Layer: 5
   m_Name: ActionSkill8
   m_TagString: Untagged
@@ -36128,7 +37509,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 347.4448, y: -81.7751}
+  m_AnchoredPosition: {x: 527.4448, y: -59.2751}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5846464685252055159
@@ -36225,8 +37606,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: TestGainLife
   className: 
+--- !u!114 &1475446105075564680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9157550391713162585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &9165896079934985845
 GameObject:
   m_ObjectHideFlags: 0

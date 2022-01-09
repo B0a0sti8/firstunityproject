@@ -9,7 +9,7 @@ public class TestAttack3 : SkillPrefab
 
     public override void MasterETStuff()
     {
-        skillDescription = "Deal <color=orange>" + baseDamage + " Damage</color> to any target.\n" +
+        tooltipSkillDescription = "Deal <color=orange>" + baseDamage + " Damage</color> to any target.\n" +
             "<color=lightblue>Combo - TestAttack2:</color> Deal <color=orange>" + comboDamage + " Damage</color> instead.";
 
         base.MasterETStuff();

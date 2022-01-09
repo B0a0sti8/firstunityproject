@@ -37,9 +37,12 @@ public class SkillPrefab : MonoBehaviour, IUseable
     [Header("Own Cooldown")]
     public bool hasOwnCooldown;
     public float ownCooldownTimeBase; // 0 if hasOwnCooldown = false
-    float ownCooldownTimeModified;
-    float ownCooldownTimeLeft;
-    bool ownCooldownActive = false;
+    [HideInInspector]
+    public float ownCooldownTimeModified;
+    [HideInInspector]
+    public float ownCooldownTimeLeft;
+    [HideInInspector]
+    public bool ownCooldownActive = false;
 
     [Header("Skilltype")]
     public bool hasGlobalCooldown;
@@ -49,8 +52,27 @@ public class SkillPrefab : MonoBehaviour, IUseable
 
     [Header("Tooltip")]
     [HideInInspector]
-    public string skillDescription;
-    MasterEventTrigger masterET;
+    public MasterEventTrigger masterET;
+    [HideInInspector]
+    public string tooltipSkillName;
+    [HideInInspector]
+    public string tooltipSkillDescription;
+    [HideInInspector]
+    public Sprite tooltipSkillSprite;
+    [HideInInspector]
+    public string tooltipSkillType;
+    [HideInInspector]
+    public string tooltipSkillCooldown;
+    [HideInInspector]
+    public string tooltipSkillCosts;
+    [HideInInspector]
+    public string tooltipSkillRange;
+    [HideInInspector]
+    public string tooltipSkillRadius;
+
+
+    //[HideInInspector]
+    //public string skillDescription;
 
 
     public void StartSkillChecks() // snjens beginnt sein abenteuer
@@ -314,17 +336,17 @@ public class SkillPrefab : MonoBehaviour, IUseable
         if (ownCooldownTimeLeft > 0)
         {
             ownCooldownTimeLeft -= Time.deltaTime;
-            gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Mathf.Round(ownCooldownTimeLeft).ToString();
-            gameObject.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
+            //gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Mathf.Round(ownCooldownTimeLeft).ToString();
+            //gameObject.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
         }
         else
         {
             if (ownCooldownActive)
             {
                 ownCooldownActive = false;
-                gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
-                gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                 ownCooldownTimeLeft = 0;
+                //gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
+                //gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }
         }
 
@@ -333,11 +355,6 @@ public class SkillPrefab : MonoBehaviour, IUseable
         float attackSpeedModifier = 1 - (playerStats.attackSpeed.GetValue() / 100);
         masterChecks.masterGCTimeModified = masterChecks.masterGCTimeBase * attackSpeedModifier;
         ownCooldownTimeModified = ownCooldownTimeBase * attackSpeedModifier;
-
-        //masterChecks.masterOwnCooldownModifier = (1 - (playerStats.attackSpeed.GetValue() / 100));
-
-        //ownCooldownTime *= (1 - playerStats.attackSpeed.GetValue());
-        //masterChecks.masterGCTime *= (1 - playerStats.attackSpeed.GetValue());
     }
 
     GameObject[] globalCooldownSkills;
@@ -369,53 +386,60 @@ public class SkillPrefab : MonoBehaviour, IUseable
 
     public virtual void Start()
     {
-        masterET = gameObject.GetComponent<MasterEventTrigger>();
+        //masterET = gameObject.GetComponent<MasterEventTrigger>();
 
-        MasterETStuff();
+        //MasterETStuff();
     }
-   
+
     public virtual void MasterETStuff()
     {
-        /*
-       masterET.skillName = gameObject.name;
+        //masterET.skillName = tooltipSkillName;
+        //masterET.skillDescription = tooltipSkillDescription;
+        //masterET.skillSprite = tooltipSkillSprite;
+        //masterET.skillType = tooltipSkillType;
+        //masterET.skillCooldown = tooltipSkillCooldown;
+        //masterET.skillCosts = tooltipSkillCosts;
+        //masterET.skillRange = tooltipSkillRange;
+        //masterET.skillRadius = tooltipSkillRadius;
 
-       if (skillDescription == "")
-       {
-           skillDescription = "?GoodsInfo?";
-       }
-       masterET.skillDescription = skillDescription;
+     //masterET.skillName = gameObject.name;
 
-       masterET.skillSprite = gameObject.GetComponent<Image>().sprite;
+     //if (skillDescription == "")
+     //{
+     //    skillDescription = "?GoodsInfo?";
+     //}
+     //masterET.skillDescription = skillDescription;
+ 
+     //masterET.skillSprite = gameObject.GetComponent<Image>().sprite;
 
-       if (hasGlobalCooldown)
-       {
-           masterET.skillType = "Weaponskill (<color=yellow>" + masterChecks.masterGCTimeModified.ToString().Replace(",", ".") + "s</color>)";
-       }
-       else if (isSuperInstant)
-       {
-           masterET.skillType = "Super-Instant";
-       }
-       else
-       {
-           masterET.skillType = "Instant";
-       }
+     //if (hasGlobalCooldown)
+     //{
+     //    masterET.skillType = "Weaponskill (<color=yellow>" + masterChecks.masterGCTimeModified.ToString().Replace(",", ".") + "s</color>)";
+     //}
+     //else if (isSuperInstant)
+     //{
+     //    masterET.skillType = "Super-Instant";
+     //}
+     //else
+     //{
+     //    masterET.skillType = "Instant";
+     //}
 
-       if (hasOwnCooldown)
-       {
-           masterET.skillCooldown = "Cooldown: <color=yellow>" + ownCooldownTimeModified.ToString().Replace(",", ".") + "s</color>";
-       }
+     //if (hasOwnCooldown)
+     //{
+     //    masterET.skillCooldown = "Cooldown: <color=yellow>" + ownCooldownTimeModified.ToString().Replace(",", ".") + "s</color>";
+     //}
 
-       if (needsMana)
-       {
-           masterET.skillCosts = "Mana: <color=#00ffffff>" + manaCost.ToString().Replace(",", ".") + "</color>";
-       }
+     //if (needsMana)
+     //{
+     //    masterET.skillCosts = "Mana: <color=#00ffffff>" + manaCost.ToString().Replace(",", ".") + "</color>";
+     //}
 
-       masterET.skillRange = "Range: <color=yellow>" + skillRange.ToString().Replace(",", ".") + "m</color>";
+     //masterET.skillRange = "Range: <color=yellow>" + skillRange.ToString().Replace(",", ".") + "m</color>";
 
-       //skillRadius = 0f;
-       masterET.skillRadius = "Radius: <color=yellow>" + skillRadius.ToString().Replace(",", ".") + "m</color>";
-       */
-    }
+     ////skillRadius = 0f;
+     //masterET.skillRadius = "Radius: <color=yellow>" + skillRadius.ToString().Replace(",", ".") + "m</color>";
+}
 
     public void DealDamage(float damage)
     {

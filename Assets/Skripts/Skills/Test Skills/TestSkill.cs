@@ -13,7 +13,7 @@ public class TestSkill : SkillPrefab
 
     public override void MasterETStuff()
     {
-        skillDescription = "Remove most <color=lightblue>Buffs/Debuffs</color> on yourself.";
+        tooltipSkillDescription = "Remove most <color=lightblue>Buffs/Debuffs</color> on yourself.";
         base.MasterETStuff();
     }
 

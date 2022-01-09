@@ -22,7 +22,7 @@ public class TestGainLifeHot : SkillPrefab
 
     public override void MasterETStuff()
     {
-        skillDescription = "Gain <color=green>" + instantHealing + " Life</color>.\n" +
+        tooltipSkillDescription = "Gain <color=green>" + instantHealing + " Life</color>.\n" +
             "HOT:\n" +
             "<color=green>" + tickHealing + " Health</color> every <color=yellow>" + tickTime + "s</color>\n" +
             "Duration: <color=yellow>" + duration + "s</color>";

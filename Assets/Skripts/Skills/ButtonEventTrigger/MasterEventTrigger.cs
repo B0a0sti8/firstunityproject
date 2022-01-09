@@ -27,8 +27,10 @@ public class MasterEventTrigger : EventTrigger
 
     public override void OnPointerEnter(PointerEventData data)
     {
-        showTooltip = true;
-        //TooltipScreenSpaceUIAdvanced.ShowTooltip_Static(timer.ToString(), skillDescription, skillSprite, skillType, skillCooldown, skillCosts);
+        if (skillName != "")
+        {
+            showTooltip = true;
+        }
     }
 
     public override void OnPointerExit(PointerEventData data)
