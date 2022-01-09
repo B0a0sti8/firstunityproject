@@ -13,12 +13,12 @@ public class TestGainLife : SkillPrefab
         base.Start();
     }
 
-    public override void MasterETStuff()
+    public override void Update()
     {
         tooltipSkillDescription = "Gain <color=green>" + healing + " Life</color>\n" +
             "Oooh yeaaah!";
 
-        base.MasterETStuff();
+        base.Update();
     }
 
     public override void SkillEffect()

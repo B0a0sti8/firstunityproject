@@ -11,7 +11,6 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
 {
     public static TooltipScreenSpaceUIAdvanced Instance { get; private set; }
 
-
     [SerializeField] private RectTransform canvasRectTransform;
     [SerializeField] private RectTransform playerRectTransform;
 
@@ -27,7 +26,7 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
     TextMeshProUGUI textMeshProRange;
     TextMeshProUGUI textMeshProRadius;
 
-    //private System.Func<string> getTooltipTextFunc;
+    bool moveWithMouse = false;
 
 
     private void Awake()
@@ -78,22 +77,25 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
     {
         //SetText(getTooltipTextFunc());
 
-        float scaleAdjust = canvasRectTransform.localScale.x * playerRectTransform.localScale.x;
-        Vector2 anchoredPosition = Mouse.current.position.ReadValue() / scaleAdjust;
-
-        if (anchoredPosition.x + backgroundRectTransform.rect.width > canvasRectTransform.rect.width)
+        if (moveWithMouse)
         {
-            // Tooltip left screen on right side
-            anchoredPosition.x = canvasRectTransform.rect.width - backgroundRectTransform.rect.width;
-        }
+            float scaleAdjust = canvasRectTransform.localScale.x * playerRectTransform.localScale.x;
+            Vector2 anchoredPosition = Mouse.current.position.ReadValue() / scaleAdjust;
 
-        if (anchoredPosition.y + backgroundRectTransform.rect.height > canvasRectTransform.rect.height)
-        {
-            // Tooltip left screen on top side
-            anchoredPosition.y = canvasRectTransform.rect.height - backgroundRectTransform.rect.height;
-        }
+            if (anchoredPosition.x + backgroundRectTransform.rect.width > canvasRectTransform.rect.width)
+            {
+                // Tooltip left screen on right side
+                anchoredPosition.x = canvasRectTransform.rect.width - backgroundRectTransform.rect.width;
+            }
 
-        rectTransform.anchoredPosition = anchoredPosition;
+            if (anchoredPosition.y + backgroundRectTransform.rect.height > canvasRectTransform.rect.height)
+            {
+                // Tooltip left screen on top side
+                anchoredPosition.y = canvasRectTransform.rect.height - backgroundRectTransform.rect.height;
+            }
+
+            rectTransform.anchoredPosition = anchoredPosition;
+        }
     }
 
     private void HideTooltip()
@@ -141,3 +143,7 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
     //    Instance.ShowTooltip(getTooltipTextFunc);
     //}
 }
+
+
+//private System.Func<string> getTooltipTextFunc;
+

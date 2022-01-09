@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 // Im Multiplayer muss man die Kamera am Anfang deaktiviert lassen und erst aktivieren wenn der Spieler spawnt.
 // Photon: view.IsMine als Unterscheidungsoption zwischen Spielern.
@@ -15,6 +16,8 @@ public class CameraFollow : MonoBehaviour
     
     public GameObject vcam1;
     //public float lensZoom;
+
+    bool mouseOverGameObject;
 
     private void Start()
     {
@@ -36,11 +39,22 @@ public class CameraFollow : MonoBehaviour
             cameera = GameObject.Find("CM vcam1");
             cameera.GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = gameObject.transform;
         }
+
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            mouseOverGameObject = true;
+        }
+        else
+        {
+            mouseOverGameObject = false;
+        }
     }
 
 
     public void CameraZoom()
     {
+        if (mouseOverGameObject) return; // no zoom when mouse over UI element
+
         Vector2 vec = Mouse.current.scroll.ReadValue(); // either 120 and 0, or -120 and 0
 
         if (vec.y > 0)

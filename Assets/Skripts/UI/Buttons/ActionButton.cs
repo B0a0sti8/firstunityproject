@@ -7,8 +7,6 @@ using TMPro;
 
 public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDropHandler, IEndDragHandler
 {
-    //public Button MyButton { get; private set; }
-
     TextMeshProUGUI buttonText;
     Image buttonImage;
 
@@ -23,17 +21,16 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     void Start()
     {
-        //MyButton = GetComponent<Button>();
         buttonText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         buttonImage = GetComponent<Image>();
         PLAYER = transform.parent.transform.parent.transform.parent.transform.parent.gameObject;
         skillManager = PLAYER.transform.Find("SkillManager").gameObject;
 
-        if (skillName == "") return;
-        //if (className == "") return;
-        FindMatchingSkill();
-        UpdateButton();
-        MasterETStuffAssignment(buttonSkill);
+        //if (skillName == "") return;
+        ////if (className == "") return;
+        //FindMatchingSkill();
+        //UpdateButton();
+        //MasterETStuffAssignment(buttonSkill);
     }
 
     void Update()
@@ -178,52 +175,47 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("BeginDrag");
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+        if (HandScript.MyInstance.handSkillName != "") return;
+        if (skillName == "") return;
+        if (HandScript.MyInstance.actionButtonDragOn)
         {
-            if (HandScript.MyInstance.handSkillName == "")
-            {
-                HandScript.MyInstance.handButtonSwap = gameObject;
-
-                HandScript.MyInstance.handSkillName = skillName;
-                skillName = "";
-            }
+            HandScript.MyInstance.handButtonSwap = gameObject;
+            HandScript.MyInstance.handSkillName = skillName;
+            skillName = "";
         }
     }
 
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("Drop");
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+        if (HandScript.MyInstance.handSkillName == "") return;
+        if (HandScript.MyInstance.actionButtonDragOn)
         {
-            if (HandScript.MyInstance.handSkillName != "")
+            if (HandScript.MyInstance.handButtonSwap != null) // doesn't trigger when dragging from Skillbook to ActionButton
             {
-                if (HandScript.MyInstance.handButtonSwap != null)
-                {
-                    HandScript.MyInstance.handButtonSwap.GetComponent<ActionButton>().skillName = skillName;
-                }
-                HandScript.MyInstance.handButtonSwap = null;
-
-                skillName = HandScript.MyInstance.handSkillName;
-                HandScript.MyInstance.handSkillName = "";
+                HandScript.MyInstance.handButtonSwap.GetComponent<ActionButton>().skillName = skillName;
             }
         }
+        //HandScript.MyInstance.handButtonSwap = null;
+
+        skillName = HandScript.MyInstance.handSkillName;
+        //HandScript.MyInstance.handSkillName = "";
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData) // triggers right after OnDrop
     {
-        Debug.Log("EndDrag - GameObject: " + gameObject);
-        if (eventData.button == PointerEventData.InputButton.Left)
-        {
-            if (HandScript.MyInstance.handSkillName != "")
-            {
-                HandScript.MyInstance.handButtonSwap = null;
-
-                HandScript.MyInstance.handSkillName = "";
-            }
-        }
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+        if (HandScript.MyInstance.handSkillName == "") return;
+        HandScript.MyInstance.handButtonSwap = null;
+        HandScript.MyInstance.handSkillName = "";
     }
 }
+
+
+//public Button MyButton { get; private set; }
+
+//MyButton = GetComponent<Button>();
 
 //if (HandScript.MyInstance.MyMoveable != null)
 //{

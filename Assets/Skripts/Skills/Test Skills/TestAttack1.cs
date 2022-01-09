@@ -7,11 +7,11 @@ public class TestAttack1 : SkillPrefab
 {
     public float damage = 100f;
 
-    public override void MasterETStuff()
+    public override void Update()
     {
         tooltipSkillDescription = "Deal <color=orange>" + damage + " Damage</color> to any target.";
 
-        base.MasterETStuff();
+        base.Update();
     }
 
     public override void SkillEffect()
@@ -19,8 +19,6 @@ public class TestAttack1 : SkillPrefab
         base.SkillEffect();
         
         Debug.Log("Attack1: " + damage + " Damage");
-        //GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += 100f; // DPS-Meter
-
         DealDamage(damage);
     }
 

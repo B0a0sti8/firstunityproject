@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 
-public class SkillPrefab : MonoBehaviour, IUseable
+public class SkillPrefab : MonoBehaviour//, IUseable
 {
     [HideInInspector]
     public PhotonView photonView;
@@ -13,8 +13,6 @@ public class SkillPrefab : MonoBehaviour, IUseable
     public MasterChecks masterChecks;
     [HideInInspector]
     public GameObject PLAYER;
-    [HideInInspector]
-    public PlayerController playerController; // drag in Character to access PlayerController skript (for speed)
     [HideInInspector]
     public InteractionCharacter interactionCharacter; // focus skript
     [HideInInspector]
@@ -70,9 +68,6 @@ public class SkillPrefab : MonoBehaviour, IUseable
     [HideInInspector]
     public string tooltipSkillRadius;
 
-
-    //[HideInInspector]
-    //public string skillDescription;
 
 
     public void StartSkillChecks() // snjens beginnt sein abenteuer
@@ -296,22 +291,18 @@ public class SkillPrefab : MonoBehaviour, IUseable
 
     public void TriggerSkill()
     {
-        // TriggerGlobalCooldown();
+        // TriggerGlobalCooldown
         if (hasGlobalCooldown)
         {
             masterChecks.masterGCActive = true;
             masterChecks.masterGCTimeLeft = masterChecks.masterGCTimeModified;
-            foreach (GameObject gObj in globalCooldownSkills) //color all CDSkills grey
-            {
-                gObj.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
-            }
         }
 
-        // TriggerSkillAnimation();
+        // TriggerSkillAnimation
         masterChecks.masterAnimationActive = true;
         masterChecks.masterAnimTimeLeft = masterChecks.masterAnimTime;
 
-        // TriggerOwnCooldown();
+        // TriggerOwnCooldown
         if (hasOwnCooldown)
         {
             ownCooldownActive = true;
@@ -331,13 +322,11 @@ public class SkillPrefab : MonoBehaviour, IUseable
         
     }
 
-    void Update()
+    public virtual void Update()
     {
         if (ownCooldownTimeLeft > 0)
         {
             ownCooldownTimeLeft -= Time.deltaTime;
-            //gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Mathf.Round(ownCooldownTimeLeft).ToString();
-            //gameObject.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
         }
         else
         {
@@ -345,101 +334,29 @@ public class SkillPrefab : MonoBehaviour, IUseable
             {
                 ownCooldownActive = false;
                 ownCooldownTimeLeft = 0;
-                //gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
-                //gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }
         }
 
-        MasterETStuff();
-
         float attackSpeedModifier = 1 - (playerStats.attackSpeed.GetValue() / 100);
-        masterChecks.masterGCTimeModified = masterChecks.masterGCTimeBase * attackSpeedModifier;
         ownCooldownTimeModified = ownCooldownTimeBase * attackSpeedModifier;
     }
 
-    GameObject[] globalCooldownSkills;
-
-    public Sprite MyIcon => throw new System.NotImplementedException();
-
-    //GameObject[] textGameObjects;
-
     void Awake()
     {
-        //PLAYER = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject;
-        PLAYER = transform.parent.gameObject.transform.parent.gameObject;
+        PLAYER = transform.parent.transform.parent.gameObject;
 
         photonView = PLAYER.GetComponent<PhotonView>();
 
-        masterChecks = PLAYER.transform.Find("Own Canvases").gameObject.transform.Find("Canvas Action Skills").gameObject.GetComponent<MasterChecks>();
-        //masterChecks = GameObject.Find("Canvas Action Skills").GetComponent<MasterChecks>();
+        masterChecks = PLAYER.transform.Find("Own Canvases").transform.Find("Canvas Action Skills").GetComponent<MasterChecks>();
 
         interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
 
-        playerController = PLAYER.GetComponent<PlayerController>();
-
         playerStats = PLAYER.GetComponent<PlayerStats>();
-
-        globalCooldownSkills = GameObject.FindGameObjectsWithTag("GlobalCooldownSkill");
-        //textGameObjects = GameObject.FindGameObjectsWithTag("WeaponSkillCDText");
-
     }
 
     public virtual void Start()
     {
-        //masterET = gameObject.GetComponent<MasterEventTrigger>();
-
-        //MasterETStuff();
     }
-
-    public virtual void MasterETStuff()
-    {
-        //masterET.skillName = tooltipSkillName;
-        //masterET.skillDescription = tooltipSkillDescription;
-        //masterET.skillSprite = tooltipSkillSprite;
-        //masterET.skillType = tooltipSkillType;
-        //masterET.skillCooldown = tooltipSkillCooldown;
-        //masterET.skillCosts = tooltipSkillCosts;
-        //masterET.skillRange = tooltipSkillRange;
-        //masterET.skillRadius = tooltipSkillRadius;
-
-     //masterET.skillName = gameObject.name;
-
-     //if (skillDescription == "")
-     //{
-     //    skillDescription = "?GoodsInfo?";
-     //}
-     //masterET.skillDescription = skillDescription;
- 
-     //masterET.skillSprite = gameObject.GetComponent<Image>().sprite;
-
-     //if (hasGlobalCooldown)
-     //{
-     //    masterET.skillType = "Weaponskill (<color=yellow>" + masterChecks.masterGCTimeModified.ToString().Replace(",", ".") + "s</color>)";
-     //}
-     //else if (isSuperInstant)
-     //{
-     //    masterET.skillType = "Super-Instant";
-     //}
-     //else
-     //{
-     //    masterET.skillType = "Instant";
-     //}
-
-     //if (hasOwnCooldown)
-     //{
-     //    masterET.skillCooldown = "Cooldown: <color=yellow>" + ownCooldownTimeModified.ToString().Replace(",", ".") + "s</color>";
-     //}
-
-     //if (needsMana)
-     //{
-     //    masterET.skillCosts = "Mana: <color=#00ffffff>" + manaCost.ToString().Replace(",", ".") + "</color>";
-     //}
-
-     //masterET.skillRange = "Range: <color=yellow>" + skillRange.ToString().Replace(",", ".") + "m</color>";
-
-     ////skillRadius = 0f;
-     //masterET.skillRadius = "Radius: <color=yellow>" + skillRadius.ToString().Replace(",", ".") + "m</color>";
-}
 
     public void DealDamage(float damage)
     {
@@ -457,191 +374,129 @@ public class SkillPrefab : MonoBehaviour, IUseable
         float critMultiplier = playerStats.critMultiplier.GetValue();
         playerStats.view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
     }
-
-    public void Use()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    //public void UseSkill() // checks for time between skill (e.g. Animation, GlobalCooldown) (+ stuff)
-    //{
-    //    if (!masterChecks.masterAnimationActive)
-    //    {
-    //        if (hasGlobalCooldown)
-    //        {
-    //            if (!masterChecks.masterGCActive)
-    //            {
-    //                Debug.Log("Use GCSkill normal");
-    //                FindObjectOfType<AudioManager>().Play("HoverClick");
-    //                TriggerSkill();
-    //            }
-    //            else // GlobalCooldown Activ
-    //            {
-    //                if (masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime) //&& !masterChecks.masterIsSkillInQueue)
-    //                {
-    //                    Debug.Log("Global Cooldown. Waiting for GCSkill ...  " + masterChecks.masterGCTimeLeft + "  " + masterChecks.masterGCTime);
-    //                    masterChecks.masterIsSkillInQueue = true;
-    //                    FindObjectOfType<AudioManager>().Play("HoverClickUpPitch");
-    //                    StartCoroutine(Wait(masterChecks.masterGCTimeLeft));
-    //                    IEnumerator Wait(float time)
-    //                    {
-    //                        yield return new WaitForSeconds(time);
-    //                        masterChecks.masterIsSkillInQueue = false;
-    //                        Debug.Log("... Use GCSkill");
-    //                        TriggerSkill();
-    //                    }
-    //                }
-    //                else if (masterChecks.masterIsSkillInQueue)
-    //                {
-    //                    Debug.Log("ERROR GC: queue full ????????????????????");
-    //                    FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-    //                }
-    //                else
-    //                {
-    //                    Debug.Log("ERROR GC: too early   " + masterChecks.masterGCTimeLeft);
-    //                    FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-    //                }
-    //            }
-    //        }
-    //        else // kein GlobalCooldown Skill
-    //        {
-    //            Debug.Log("Use InstantSkill normal");
-    //            FindObjectOfType<AudioManager>().Play("HoverClick");
-    //            TriggerSkill();
-    //        }
-    //    }
-    //    else // Animation wait active
-    //    {
-    //        if (!hasGlobalCooldown) //&& !masterChecks.masterIsSkillInQueue)
-    //        {
-    //            masterChecks.masterIsSkillInQueue = true;
-    //            FindObjectOfType<AudioManager>().Play("HoverClickUpPitch");
-    //            Debug.Log("Animation wait active ... " + masterChecks.masterAnimTimeLeft);
-    //            StartCoroutine(Wait(masterChecks.masterAnimTimeLeft)); // wait until animation is over
-    //            IEnumerator Wait(float time)
-    //            {
-    //                yield return new WaitForSeconds(time);
-    //                masterChecks.masterIsSkillInQueue = false;
-    //                Debug.Log("... Use InstantSkill");
-    //                TriggerSkill();
-    //            }
-    //        }
-    //        else if (!masterChecks.masterGCActive) //&& hasGlobalCooldown) //&& !masterChecks.masterIsSkillInQueue) //???
-    //        {
-    //            masterChecks.masterIsSkillInQueue = true;
-    //            FindObjectOfType<AudioManager>().Play("HoverClickUpPitch");
-    //            Debug.Log("Animation wait active ... " + masterChecks.masterAnimTimeLeft);
-    //            StartCoroutine(Wait(masterChecks.masterAnimTimeLeft)); // wait until animation is over
-    //            IEnumerator Wait(float time)
-    //            {
-    //                yield return new WaitForSeconds(time);
-    //                masterChecks.masterIsSkillInQueue = false;
-    //                Debug.Log("... Use GCSkill");
-    //                TriggerSkill();
-    //            }
-    //        }
-    //        else if (masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime)
-    //        {
-    //            masterChecks.masterIsSkillInQueue = true;
-    //            FindObjectOfType<AudioManager>().Play("HoverClickUpPitch");
-    //            Debug.Log("CDTimeLeft: " + masterChecks.masterGCTimeLeft + "    AnimTimeLeft: " + masterChecks.masterAnimTimeLeft);
-    //            if (masterChecks.masterGCTimeLeft >= masterChecks.masterAnimTimeLeft)
-    //            {
-    //                Debug.Log("Global Cooldown. Waiting for GCSkill ..." + masterChecks.masterGCTimeLeft);
-    //                StartCoroutine(Wait(masterChecks.masterGCTimeLeft)); // wait until global cooldown is over
-    //            }
-    //            else // AnimTimeLeft > GCTimeLeft
-    //            {
-    //                Debug.Log("Animation wait active ... " + masterChecks.masterAnimTimeLeft);
-    //                StartCoroutine(Wait(masterChecks.masterAnimTimeLeft)); // wait until animation is over
-    //            }
-    //            IEnumerator Wait(float time)
-    //            {
-    //                yield return new WaitForSeconds(time);
-    //                masterChecks.masterIsSkillInQueue = false;
-    //                Debug.Log("... Use GCSkill");
-    //                TriggerSkill();
-    //            }
-    //        }
-    //        else if (masterChecks.masterIsSkillInQueue)
-    //        {
-    //            Debug.Log("ERROR A: queue full ?????????????");
-    //            FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-    //        }
-    //        else // !skillInQueue && hasGlobalCooldown && globalCooldownActive
-    //        {
-    //            Debug.Log("ERROR A: GC active   " + masterChecks.masterGCTimeLeft);
-    //            FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-    //        }
-    //    }
-    //}
-
-
-    //public void TriggerSkillAnimation()
-    //{
-    //    //skillAnimationActive = true;
-    //    masterChecks.masterAnimationActive = true;
-    //    //saTimeLeft = saTime;
-    //    masterChecks.masterAnimTimeLeft = masterChecks.masterAnimTime;
-    //}
-
-    //public void TriggerGlobalCooldown()
-    //{
-    //    if (hasGlobalCooldown)
-    //    {
-    //        //globalCooldownActive = true;
-    //        masterChecks.masterGCActive = true;
-    //        //gcdTimeLeft = gcdTime;
-    //        masterChecks.masterGCTimeLeft = masterChecks.masterGCTime;
-    //        foreach (GameObject gObj in globalCooldownSkills) //color all CDSkills grey
-    //        {
-    //            gObj.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
-    //        }
-    //    }
-    //}
-
-    //public void TriggerOwnCooldown()
-    //{
-    //    if (hasOwnCooldown)
-    //    {
-    //        ownCooldownActive = true;
-    //        ownCooldownTimeLeft = ownCooldownTime;
-    //    }
-    //}
 }
 
 
-//void Update()
+//public void Use()
 //{
-        //if (saTimeLeft > 0)
-        //{
-        //    saTimeLeft -= Time.deltaTime;
-        //}
-        //else // time <= 0
-        //{
-        //    if (skillAnimationActive)
-        //    {
-        //        skillAnimationActive = false;
-        //        masterChecks.masterSkillAnimationActive = false;
-        //    }
-        //}
-
-//if (gcdTimeLeft > 0)
-//{
-//    gcdTimeLeft -= Time.deltaTime;
+//    throw new System.NotImplementedException();
 //}
-//else // time <= 0
+
+#region UseSkill1()
+//public void UseSkill() // checks for time between skill (e.g. Animation, GlobalCooldown) (+ stuff)
 //{
-//    if (globalCooldownActive)
+//    if (!masterChecks.masterAnimationActive)
 //    {
-//        globalCooldownActive = false;
-//        masterChecks.masterGlobalCooldownActive = false;
-//        foreach (GameObject gObj in globalCooldownSkills) //color all CDSkills normal
+//        if (hasGlobalCooldown)
 //        {
-//            gObj.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+//            if (!masterChecks.masterGCActive)
+//            {
+//                Debug.Log("Use GCSkill normal");
+//                FindObjectOfType<AudioManager>().Play("HoverClick");
+//                TriggerSkill();
+//            }
+//            else // GlobalCooldown Activ
+//            {
+//                if (masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime) //&& !masterChecks.masterIsSkillInQueue)
+//                {
+//                    Debug.Log("Global Cooldown. Waiting for GCSkill ...  " + masterChecks.masterGCTimeLeft + "  " + masterChecks.masterGCTime);
+//                    masterChecks.masterIsSkillInQueue = true;
+//                    FindObjectOfType<AudioManager>().Play("HoverClickUpPitch");
+//                    StartCoroutine(Wait(masterChecks.masterGCTimeLeft));
+//                    IEnumerator Wait(float time)
+//                    {
+//                        yield return new WaitForSeconds(time);
+//                        masterChecks.masterIsSkillInQueue = false;
+//                        Debug.Log("... Use GCSkill");
+//                        TriggerSkill();
+//                    }
+//                }
+//                else if (masterChecks.masterIsSkillInQueue)
+//                {
+//                    Debug.Log("ERROR GC: queue full ????????????????????");
+//                    FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+//                }
+//                else
+//                {
+//                    Debug.Log("ERROR GC: too early   " + masterChecks.masterGCTimeLeft);
+//                    FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+//                }
+//            }
+//        }
+//        else // kein GlobalCooldown Skill
+//        {
+//            Debug.Log("Use InstantSkill normal");
+//            FindObjectOfType<AudioManager>().Play("HoverClick");
+//            TriggerSkill();
+//        }
+//    }
+//    else // Animation wait active
+//    {
+//        if (!hasGlobalCooldown) //&& !masterChecks.masterIsSkillInQueue)
+//        {
+//            masterChecks.masterIsSkillInQueue = true;
+//            FindObjectOfType<AudioManager>().Play("HoverClickUpPitch");
+//            Debug.Log("Animation wait active ... " + masterChecks.masterAnimTimeLeft);
+//            StartCoroutine(Wait(masterChecks.masterAnimTimeLeft)); // wait until animation is over
+//            IEnumerator Wait(float time)
+//            {
+//                yield return new WaitForSeconds(time);
+//                masterChecks.masterIsSkillInQueue = false;
+//                Debug.Log("... Use InstantSkill");
+//                TriggerSkill();
+//            }
+//        }
+//        else if (!masterChecks.masterGCActive) //&& hasGlobalCooldown) //&& !masterChecks.masterIsSkillInQueue) //???
+//        {
+//            masterChecks.masterIsSkillInQueue = true;
+//            FindObjectOfType<AudioManager>().Play("HoverClickUpPitch");
+//            Debug.Log("Animation wait active ... " + masterChecks.masterAnimTimeLeft);
+//            StartCoroutine(Wait(masterChecks.masterAnimTimeLeft)); // wait until animation is over
+//            IEnumerator Wait(float time)
+//            {
+//                yield return new WaitForSeconds(time);
+//                masterChecks.masterIsSkillInQueue = false;
+//                Debug.Log("... Use GCSkill");
+//                TriggerSkill();
+//            }
+//        }
+//        else if (masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime)
+//        {
+//            masterChecks.masterIsSkillInQueue = true;
+//            FindObjectOfType<AudioManager>().Play("HoverClickUpPitch");
+//            Debug.Log("CDTimeLeft: " + masterChecks.masterGCTimeLeft + "    AnimTimeLeft: " + masterChecks.masterAnimTimeLeft);
+//            if (masterChecks.masterGCTimeLeft >= masterChecks.masterAnimTimeLeft)
+//            {
+//                Debug.Log("Global Cooldown. Waiting for GCSkill ..." + masterChecks.masterGCTimeLeft);
+//                StartCoroutine(Wait(masterChecks.masterGCTimeLeft)); // wait until global cooldown is over
+//            }
+//            else // AnimTimeLeft > GCTimeLeft
+//            {
+//                Debug.Log("Animation wait active ... " + masterChecks.masterAnimTimeLeft);
+//                StartCoroutine(Wait(masterChecks.masterAnimTimeLeft)); // wait until animation is over
+//            }
+//            IEnumerator Wait(float time)
+//            {
+//                yield return new WaitForSeconds(time);
+//                masterChecks.masterIsSkillInQueue = false;
+//                Debug.Log("... Use GCSkill");
+//                TriggerSkill();
+//            }
+//        }
+//        else if (masterChecks.masterIsSkillInQueue)
+//        {
+//            Debug.Log("ERROR A: queue full ?????????????");
+//            FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+//        }
+//        else // !skillInQueue && hasGlobalCooldown && globalCooldownActive
+//        {
+//            Debug.Log("ERROR A: GC active   " + masterChecks.masterGCTimeLeft);
+//            FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
 //        }
 //    }
 //}
+#endregion
 
+// different Metod of getting a distance (might be better or not)
 // float distance2 = (playerSkillSkript.transform.position - interactionCharacter.focus.gameObject.transform.position).sqrMagnitude;
 // if (distance2 <= skillRange * skillRange)

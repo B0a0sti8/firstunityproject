@@ -13,12 +13,12 @@ public class TestEnergyDrain : SkillPrefab
         base.Start();
     }
 
-    public override void MasterETStuff()
+    public override void Update()
     {
         tooltipSkillDescription = "Deal <color=orange>" + damage + " damage</color> to any target.\n" +
             "<color=green>Gain " + (damage / 2) + "Life</color> (half the damage).";
 
-        base.MasterETStuff();
+        base.Update();
     }
 
     public override void SkillEffect()
