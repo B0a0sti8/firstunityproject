@@ -15,7 +15,7 @@ public class TestEnergyDrain : SkillPrefab
 
     public override void MasterETStuff()
     {
-        skillDescription = "Deal <color=orange>" + damage + " damage</color> to any target.\n" +
+        tooltipSkillDescription = "Deal <color=orange>" + damage + " damage</color> to any target.\n" +
             "<color=green>Gain " + (damage / 2) + "Life</color> (half the damage).";
 
         base.MasterETStuff();
