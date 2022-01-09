@@ -19,7 +19,7 @@ public class TestOverHeal : SkillPrefab
 
     public override void MasterETStuff()
     {
-        skillDescription = "Gain <color=green>+" + value + " Max-Health</color> for <color=yellow>" + duration + "s</color>";
+        tooltipSkillDescription = "Gain <color=green>+" + value + " Max-Health</color> for <color=yellow>" + duration + "s</color>";
         base.MasterETStuff();
     }
 

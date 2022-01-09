@@ -47,62 +47,62 @@ public class Input_ActionSkills : MonoBehaviour
     // von Haus aus unbelegt. werden nur benutzt wenn der Spieler sie selbst belegt
 
     void OnActionSkill11() 
-    { }
+    { skillSlots.transform.Find("ActionSkill11").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill12() 
-    { }
+    { skillSlots.transform.Find("ActionSkill12").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill13()
-    { }
+    { skillSlots.transform.Find("ActionSkill13").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill14()
-    { }
+    { skillSlots.transform.Find("ActionSkill14").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill15()
-    { }
+    { skillSlots.transform.Find("ActionSkill15").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill16()
-    { }
+    { skillSlots.transform.Find("ActionSkill16").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill17()
-    { }
+    { skillSlots.transform.Find("ActionSkill17").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill18()
-    { }
+    { skillSlots.transform.Find("ActionSkill18").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill19()
-    { }
+    { skillSlots.transform.Find("ActionSkill19").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill20()
-    { }
+    { skillSlots.transform.Find("ActionSkill20").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill21()
-    { }
+    { skillSlots.transform.Find("ActionSkill21").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill22()
-    { }
+    { skillSlots.transform.Find("ActionSkill22").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill23()
-    { }
+    { skillSlots.transform.Find("ActionSkill23").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill24()
-    { }
+    { skillSlots.transform.Find("ActionSkill24").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill25()
-    { }
+    { skillSlots.transform.Find("ActionSkill25").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill26()
-    { }
+    { skillSlots.transform.Find("ActionSkill26").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill27()
-    { }
+    { skillSlots.transform.Find("ActionSkill27").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill28()
-    { }
+    { skillSlots.transform.Find("ActionSkill28").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill29()
-    { }
+    { skillSlots.transform.Find("ActionSkill29").GetComponent<ActionButton>().UseSkillOnClick(); }
 
     void OnActionSkill30()
-    { }
+    { skillSlots.transform.Find("ActionSkill30").GetComponent<ActionButton>().UseSkillOnClick(); }
 }

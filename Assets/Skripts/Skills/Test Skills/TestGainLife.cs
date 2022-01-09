@@ -15,7 +15,7 @@ public class TestGainLife : SkillPrefab
 
     public override void MasterETStuff()
     {
-        skillDescription = "Gain <color=green>" + healing + " Life</color>\n" +
+        tooltipSkillDescription = "Gain <color=green>" + healing + " Life</color>\n" +
             "Oooh yeaaah!";
 
         base.MasterETStuff();

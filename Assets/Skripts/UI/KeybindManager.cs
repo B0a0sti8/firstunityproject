@@ -63,7 +63,6 @@ public class KeybindManager : MonoBehaviour
         BindKey("Right", KeyCode.D);
 
         BindKey("ActionSkill1", KeyCode.Alpha1);
-        BindKey("ActionSkill1", KeyCode.L);
         BindKey("ActionSkill2", KeyCode.Alpha2);
         BindKey("ActionSkill3", KeyCode.Alpha3);
         BindKey("ActionSkill4", KeyCode.Alpha4);
@@ -133,10 +132,10 @@ public class KeybindManager : MonoBehaviour
         }
     }
 
-    public void ClickActionButton(string buttonName)
-    {
-        Array.Find(actionButtons, x => x.gameObject.name == buttonName).MyButton.onClick.Invoke();
-    }
+    //public void ClickActionButton(string buttonName)
+    //{
+    //    Array.Find(actionButtons, x => x.gameObject.name == buttonName).MyButton.onClick.Invoke();
+    //}
 
     public void KeyBindOnClick(string bindName)
     {
