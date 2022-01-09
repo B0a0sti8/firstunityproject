@@ -11,10 +11,11 @@ public class TestSkill : SkillPrefab
         base.Start();
     }
 
-    public override void MasterETStuff()
+    public override void Update()
     {
         tooltipSkillDescription = "Remove most <color=lightblue>Buffs/Debuffs</color> on yourself.";
-        base.MasterETStuff();
+
+        base.Update();
     }
 
     public override void SkillEffect()
@@ -27,6 +28,8 @@ public class TestSkill : SkillPrefab
         // Skilleffect
     }
 }
+
+//GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += 100f; // DPS-Meter
 
 // create skill skript
 // create input

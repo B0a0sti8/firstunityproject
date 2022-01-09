@@ -20,13 +20,14 @@ public class TestGainLifeHot : SkillPrefab
         base.Start();
     }
 
-    public override void MasterETStuff()
+    public override void Update()
     {
         tooltipSkillDescription = "Gain <color=green>" + instantHealing + " Life</color>.\n" +
             "HOT:\n" +
             "<color=green>" + tickHealing + " Health</color> every <color=yellow>" + tickTime + "s</color>\n" +
             "Duration: <color=yellow>" + duration + "s</color>";
-        base.MasterETStuff();
+
+        base.Update();
     }
 
     public override void SkillEffect()

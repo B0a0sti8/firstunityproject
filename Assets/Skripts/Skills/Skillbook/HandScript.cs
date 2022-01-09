@@ -22,11 +22,10 @@ public class HandScript : MonoBehaviour
     }
     #endregion
 
-    //public IMoveable MyMoveable { get; set; }
-
     Image handImage;
     public string handSkillName;
     public GameObject handButtonSwap;
+    public bool actionButtonDragOn = true;
 
     void Start()
     {
@@ -47,19 +46,22 @@ public class HandScript : MonoBehaviour
             handImage.color = Color.white;
         }
     }
-
-    //public void TakeMoveable(IMoveable moveable)
-    //{
-    //    this.MyMoveable = moveable;
-    //    icon.sprite = moveable.MyIcon;
-    //    icon.color = Color.white;
-    //}
-
-    //public IMoveable Put()
-    //{
-    //    IMoveable tmp = MyMoveable;
-    //    MyMoveable = null;
-    //    icon.color = new Color(0, 0, 0, 0);
-    //    return tmp;
-    //}
 }
+
+
+//public IMoveable MyMoveable { get; set; }
+
+//public void TakeMoveable(IMoveable moveable)
+//{
+//    this.MyMoveable = moveable;
+//    icon.sprite = moveable.MyIcon;
+//    icon.color = Color.white;
+//}
+
+//public IMoveable Put()
+//{
+//    IMoveable tmp = MyMoveable;
+//    MyMoveable = null;
+//    icon.color = new Color(0, 0, 0, 0);
+//    return tmp;
+//}
