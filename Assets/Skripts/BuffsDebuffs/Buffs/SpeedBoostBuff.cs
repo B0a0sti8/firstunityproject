@@ -6,6 +6,8 @@ public class SpeedBoostBuff : Buff
 {
     public override void StartBuffEffect(PlayerStats playerStats)
     {
+        buffName = "I Am Speed";
+        buffDescription = "brrrr";
         base.StartBuffEffect(playerStats);
         playerStats.movementSpeed.AddModifierAdd(value);
     }

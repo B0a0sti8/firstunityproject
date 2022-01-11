@@ -37,7 +37,7 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
         rectTransform = transform.GetComponent<RectTransform>();
 
         textMeshProName = transform.Find("Tooltip Text Skillname").GetComponent<TextMeshProUGUI>();
-        textMeshProDescription = transform.Find("Tooltip Description").GetComponent<TextMeshProUGUI>();
+        textMeshProDescription = transform.Find("Tooltip Text Description").GetComponent<TextMeshProUGUI>();
         image = transform.Find("Tooltip Image").GetComponent<Image>();
         textMeshProType = transform.Find("Tooltip Text Skilltype").GetComponent<TextMeshProUGUI>();
         textMeshProCooldown = transform.Find("Tooltip Text Skillcooldown").GetComponent<TextMeshProUGUI>();

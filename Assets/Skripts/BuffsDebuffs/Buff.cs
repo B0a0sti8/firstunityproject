@@ -9,8 +9,10 @@ public abstract class Buff
     public Sprite icon = null;
     float elapsed;
 
-    public string name = "New Buff";          // Bisherige Definiton des Namens wird überschrieben
+    public string buffName;
+    public string buffDescription;
     public float duration;
+    public float durationTimeLeft;
     public bool isRemovable = true;
     //public bool isOverTime = false;
 
@@ -22,7 +24,7 @@ public abstract class Buff
 
     public virtual void StartBuffEffect(PlayerStats playerStats) 
     {
-
+        durationTimeLeft = duration;
     }
 
     public virtual void EndBuffEffect(PlayerStats playerStats) 
@@ -44,6 +46,11 @@ public abstract class Buff
         elapsed += Time.deltaTime;
         if (elapsed >= duration) {
             EndBuffEffect(playerStats); 
+        }
+
+        if (durationTimeLeft > 0)
+        {
+            durationTimeLeft -= Time.deltaTime;
         }
     }
 

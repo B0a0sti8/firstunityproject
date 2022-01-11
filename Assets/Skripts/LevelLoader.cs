@@ -19,7 +19,7 @@ public class LevelLoader : MonoBehaviour
     void Start()
     {
         currentSceneName = SceneManager.GetActiveScene().name; // Get name of current Scene
-        Debug.Log("Current Scene: " + currentSceneName);
+        //Debug.Log("Current Scene: " + currentSceneName);
 
         allPlayer = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject allP in allPlayer)
