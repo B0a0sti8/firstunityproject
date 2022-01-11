@@ -237,7 +237,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     {
         if (isSuperInstant)
         {
-            Debug.Log("Wait for OwnCooldown ...  " + ownCooldownTimeLeft);
+            //Debug.Log("Wait for OwnCooldown ...  " + ownCooldownTimeLeft);
             StartCoroutine(Wait(ownCooldownTimeLeft));
             IEnumerator Wait(float time)
             {
@@ -246,7 +246,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
                 else { FindObjectOfType<AudioManager>().Play("HoverClick"); }
                 yield return new WaitForSeconds(time);
                 isSkillInOwnSuperInstantQueue = false;
-                Debug.Log("... Use SuperInstant");
+                //Debug.Log("... Use SuperInstant");
                 ownCooldownActive = true;
                 ownCooldownTimeLeft = ownCooldownTimeModified;
                 if (needsMana) { playerStats.currentMana -= manaCost; }
@@ -285,7 +285,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         else { FindObjectOfType<AudioManager>().Play("HoverClick"); }
         yield return new WaitForSeconds(time);
         masterChecks.masterIsSkillInQueue = false;
-        Debug.Log("... Use Skill");
+        //Debug.Log("... Use Skill");
         TriggerSkill();
     }
 

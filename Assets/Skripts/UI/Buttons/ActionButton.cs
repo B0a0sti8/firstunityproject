@@ -197,10 +197,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
                 HandScript.MyInstance.handButtonSwap.GetComponent<ActionButton>().skillName = skillName;
             }
         }
-        //HandScript.MyInstance.handButtonSwap = null;
-
         skillName = HandScript.MyInstance.handSkillName;
-        //HandScript.MyInstance.handSkillName = "";
     }
 
     public void OnEndDrag(PointerEventData eventData) // triggers right after OnDrop
