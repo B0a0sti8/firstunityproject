@@ -6,6 +6,8 @@ public class MaxHealthBuff : Buff
 {
     public override void StartBuffEffect(PlayerStats playerStats)
     {
+        buffName = "Chonky";
+        buffDescription = "Gain more <color=green>Max-Health</color>";
         base.StartBuffEffect(playerStats);
         playerStats.maxHealth.AddModifierAdd(value);
         playerStats.currentHealth += value;

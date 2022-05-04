@@ -4,38 +4,26 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SkillbookButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler //IPointerDownHandler, IMoveable
+public class SkillbookButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 {
     [SerializeField]
     string skillName;
-
-    //public void OnPointerDown(PointerEventData eventData)
-    //{
-    //    if (eventData.button == PointerEventData.InputButton.Left)
-    //    {
-    //        Debug.Log("Button clicked: " + skillName);
-    //        HandScript.MyInstance.handSkillName = skillName;
-    //    }
-    //}
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            Debug.Log("Begin Drag with: " + skillName);
             HandScript.MyInstance.handSkillName = skillName;
         }
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData) // triggers right after OnDrop (from ActionButton)
     {
-        Debug.Log("EndDrag - GameObject: " + gameObject);
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             if (HandScript.MyInstance.handSkillName != "")
             {
                 HandScript.MyInstance.handButtonSwap = null;
-
                 HandScript.MyInstance.handSkillName = "";
             }
         }
@@ -113,6 +101,7 @@ public class SkillbookButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         skill.masterET.skillRadius = skill.tooltipSkillRadius;
     }
 }
+
 
 //private Sprite icon;
 //public Sprite MyIcon

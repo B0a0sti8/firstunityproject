@@ -9,6 +9,8 @@ public class HoTBuff : Buff
 
     public override void StartBuffEffect(PlayerStats playerStats)
     {
+        buffName = "Cure";
+        buffDescription = "Gain <color=green>Healinge</color> over <color=yellow>Timere</color>. This is a verry long buff description. Oh yeaaah!";
         base.StartBuffEffect(playerStats);
         tickTimeElapsed = 0;
     }

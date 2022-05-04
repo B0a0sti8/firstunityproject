@@ -13,11 +13,11 @@ public class TestBigAttack : SkillPrefab
         base.Start();
     }
 
-    public override void MasterETStuff()
+    public override void Update()
     {
         tooltipSkillDescription = "Deal <color=orange>" + damage + " Damage</color> to any target.";
 
-        base.MasterETStuff();
+        base.Update();
     }
 
     public override void SkillEffect()

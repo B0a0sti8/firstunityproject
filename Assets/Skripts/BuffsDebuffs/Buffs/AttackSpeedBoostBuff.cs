@@ -6,6 +6,8 @@ public class AttackSpeedBoostBuff : Buff
 {
     public override void StartBuffEffect(PlayerStats playerStats)
     {
+        buffName = "Haste";
+        buffDescription = "haha attack go brrrr\nOi\nlongboii";
         base.StartBuffEffect(playerStats);
         playerStats.attackSpeed.AddModifierAdd(value);
         isRemovable = false;

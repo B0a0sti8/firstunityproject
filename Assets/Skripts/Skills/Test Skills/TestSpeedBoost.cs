@@ -20,12 +20,12 @@ public class TestSpeedBoost : SkillPrefab
         base.Start();
     }
 
-    public override void MasterETStuff()
+    public override void Update()
     {
         tooltipSkillDescription = "Boosts your <color=lightblue>MovementSpeed</color> by <color=lightblue>" + value + "</color> for <color=yellow>" + duration + "s</color>\n" +
             "Boosts your <color=lightblue>AttackSpeed</color> by <color=lightblue>" + value + "</color> for <color=yellow>" + duration + "s</color>";
 
-        base.MasterETStuff();
+        base.Update();
     }
 
     public override void SkillEffect()

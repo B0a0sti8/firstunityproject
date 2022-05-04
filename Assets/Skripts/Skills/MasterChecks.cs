@@ -14,7 +14,7 @@ public class MasterChecks : MonoBehaviour
     public float masterAnimTimeLeft;
 
     public bool masterGCActive = false;
-    public float masterGCTimeBase = 1.5f;
+    float masterGCTimeBase = 1.5f;
     public float masterGCTimeModified = 1.5f;
     public float masterGCTimeLeft;
     public float masterGCEarlyTime = 0.5f;
@@ -24,17 +24,17 @@ public class MasterChecks : MonoBehaviour
 
     public bool masterIsSkillInQueue = false;
 
-    GameObject[] globalCooldownSkills;
-    //GameObject[] textGameObjects;
-
-    void Awake()
+    PlayerStats playerStats;
+    private void Start()
     {
-        globalCooldownSkills = GameObject.FindGameObjectsWithTag("GlobalCooldownSkill");
-        //textGameObjects = GameObject.FindGameObjectsWithTag("WeaponSkillCDText");
+        playerStats = transform.parent.transform.parent.gameObject.GetComponent<PlayerStats>();
     }
 
     void Update()
     {
+        float attackSpeedModifier = 1 - (playerStats.attackSpeed.GetValue() / 100);
+        masterGCTimeModified = masterGCTimeBase * attackSpeedModifier;
+
         if (masterAnimTimeLeft > 0)
         {
             masterAnimTimeLeft -= Time.deltaTime;
@@ -57,10 +57,6 @@ public class MasterChecks : MonoBehaviour
             if (masterGCActive)
             {
                 masterGCActive = false;
-                foreach (GameObject gObj in globalCooldownSkills) //color all GCSkills normal
-                {
-                    gObj.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-                }
                 masterGCTimeLeft = 0f;
             }
         }

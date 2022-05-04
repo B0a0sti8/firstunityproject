@@ -38,13 +38,4 @@ public class MasterEventTrigger : EventTrigger
         showTooltip = false;
         TooltipScreenSpaceUIAdvanced.HideTooltip_Static();
     }
-
-    //public override void OnPointerEnter(PointerEventData data)
-    //{
-    //    System.Func<string> getTooltipTextFunc = () =>
-    //    {
-    //        return skillName;
-    //    };
-    //    TooltipScreenSpaceUIAdvanced.ShowTooltip_Static(getTooltipTextFunc);
-    //}
 }
