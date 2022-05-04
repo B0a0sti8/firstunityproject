@@ -30,7 +30,7 @@ public class Input_Gameplay : MonoBehaviour
 
     void Update()
     {
-        
+        levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
     }
 
     void OnMovement(InputValue value) // WASD
