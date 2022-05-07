@@ -230,6 +230,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ClassChoiceMenue",
+                    "type": "Button",
+                    "id": "7d71a73e-4b7f-4c4b-aa90-f87432cbbf46",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -296,6 +305,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "EquipmentWindow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5204f59e-7ba2-4665-9b20-dd7d70b0c1e8",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClassChoiceMenue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

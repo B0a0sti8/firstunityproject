@@ -15,6 +15,7 @@ public class Input_Overlay : MonoBehaviour
     DamageMeter damageMeter;
     SkillbookMaster skillbook;
     KeybindManager keybindManager;
+    ClassChoiceUI classChoiceUI;
 
     void Awake()
     {
@@ -27,6 +28,7 @@ public class Input_Overlay : MonoBehaviour
         damageMeter = ownCanvases.transform.Find("Canvas Damage Meter").gameObject.GetComponent<DamageMeter>();
         skillbook = ownCanvases.transform.Find("Canvas Skillbook").gameObject.GetComponent<SkillbookMaster>();
         keybindManager = GameObject.Find("GameManager").gameObject.GetComponent<KeybindManager>();
+        classChoiceUI = ownCanvases.transform.Find("Canvas ClassChoice").gameObject.GetComponent<ClassChoiceUI>();
     }
     #endregion
 
@@ -47,4 +49,6 @@ public class Input_Overlay : MonoBehaviour
 
     void OnKeybindMenue() // N
     { keybindManager.OpenCloseMenue(); }
+    void OnClassChoiceMenue() // X
+    { classChoiceUI.OpenClassChoice(); }
 }
