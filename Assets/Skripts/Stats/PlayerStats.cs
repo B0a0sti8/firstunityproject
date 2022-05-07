@@ -15,6 +15,8 @@ using TMPro;
 public class PlayerStats : CharacterStats, IPunObservable
 {
 	//public PhotonView view;
+	[Header("Class")]
+	public string className;
 
 	[Header("Mana")]
 	public float maxMana = 1000;
