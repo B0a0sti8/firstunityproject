@@ -7,12 +7,12 @@ public class TalentTreeUI : MonoBehaviour
 
     void Start()
     {
-        talentTreeUI = gameObject.transform.Find("TalentTree").gameObject;
+        talentTreeUI = gameObject.transform.Find("TalentTrees").gameObject;
     }
 
     public void OpenTalentTree()
     {
-        Debug.Log("Class Choice An/Aus");
+        Debug.Log("Talent Tree An/Aus");
         talentTreeUI.SetActive(!talentTreeUI.activeSelf);
     }
 }
