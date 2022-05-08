@@ -16,6 +16,7 @@ public class Input_Overlay : MonoBehaviour
     SkillbookMaster skillbook;
     KeybindManager keybindManager;
     ClassChoiceUI classChoiceUI;
+    TalentTreeUI talentTreeUI;
 
     void Awake()
     {
@@ -29,6 +30,7 @@ public class Input_Overlay : MonoBehaviour
         skillbook = ownCanvases.transform.Find("Canvas Skillbook").gameObject.GetComponent<SkillbookMaster>();
         keybindManager = GameObject.Find("GameManager").gameObject.GetComponent<KeybindManager>();
         classChoiceUI = ownCanvases.transform.Find("Canvas ClassChoice").gameObject.GetComponent<ClassChoiceUI>();
+        talentTreeUI = ownCanvases.transform.Find("Canvas TalentTree").gameObject.GetComponent<TalentTreeUI>();
     }
     #endregion
 
@@ -49,6 +51,10 @@ public class Input_Overlay : MonoBehaviour
 
     void OnKeybindMenue() // N
     { keybindManager.OpenCloseMenue(); }
+
     void OnClassChoiceMenue() // X
     { classChoiceUI.OpenClassChoice(); }
+
+    void OnTalentTreeMenue() // P
+    { talentTreeUI.OpenTalentTree(); }
 }

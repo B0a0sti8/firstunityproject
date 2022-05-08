@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillbookMaster : MonoBehaviour
 {
-    GameObject skillbook;
+    public GameObject skillbook;
 
     void Start()
     {
