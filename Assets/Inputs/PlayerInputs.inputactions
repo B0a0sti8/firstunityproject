@@ -239,6 +239,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "TalentTreeMenue",
+                    "type": "Button",
+                    "id": "6fa14ecc-b9e1-411d-ace4-eaa4f7b8c58d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -316,6 +325,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ClassChoiceMenue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "726532ab-970f-42cd-aa2c-b89319641381",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TalentTreeMenue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
