@@ -16,18 +16,26 @@ public class TalentTree : MonoBehaviour
     [SerializeField]
     private Talent[] talents;
     [SerializeField]
+    private PassiveTalent[] passiveTalents;
+    [SerializeField]
     private Talent[] unlockedByDefault;
 
     [SerializeField]
     private Talent[] tree1Talents;
+    [SerializeField]
+    private PassiveTalent[] tree1TalentsPassive;
     private int tree1AbsPointCount;
     
     [SerializeField]
     private Talent[] tree2Talents;
+    [SerializeField]
+    private PassiveTalent[] tree2TalentsPassive;
     private int tree2AbsPointCount;
 
     [SerializeField]
     private Talent[] tree3Talents;
+    [SerializeField]
+    private PassiveTalent[] tree3TalentsPassive;
     private int tree3AbsPointCount;
 
     Transform tree1;
@@ -36,6 +44,7 @@ public class TalentTree : MonoBehaviour
 
     Transform currentTier;
     Talent currentTalent;
+    PassiveTalent currentPassive;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +62,7 @@ public class TalentTree : MonoBehaviour
         {
             talentPoints--;
             CheckUnlock();
+            CheckUnlockPassive();
         }
         UpdateTalentPointText();
     }
@@ -65,6 +75,11 @@ public class TalentTree : MonoBehaviour
         {
             talent.Lock();
             talent.UpdatePointCounter();
+        }
+
+        foreach (PassiveTalent passiveTalent in passiveTalents)
+        {
+            passiveTalent.Lock();
         }
 
         foreach (Talent talent in unlockedByDefault)
@@ -106,11 +121,6 @@ public class TalentTree : MonoBehaviour
         foreach (Talent talent in tree3Talents)     // Gesamtzahl aller Skillpunkte in Baum 3
         { tree3AbsPointCount += talent.currentCount; }
 
-        if (tree1AbsPointCount >= 5)
-        {
-
-        }
-
         for (int i = 0; i < tree1.childCount; i++) // Durchläuft alle Tiers von Skilltree 1
         {
             currentTier = tree1.GetChild(i);        // Momentanes Tier von Skills wird in Variable gepackt
@@ -149,5 +159,49 @@ public class TalentTree : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void CheckUnlockPassive()   // Funktion um neues Tier von Talenten zu unlocken, wenn genügend Skillpunkte in einem Baum investiert sind
+    {
+        tree1AbsPointCount = 0;
+        tree2AbsPointCount = 0;
+        tree3AbsPointCount = 0;
+
+        foreach (Talent talent in tree1Talents)     // Gesamtzahl aller Skillpunkte in Baum 1
+        { tree1AbsPointCount += talent.currentCount; }
+
+        foreach (Talent talent in tree2Talents)     // Gesamtzahl aller Skillpunkte in Baum 2
+        { tree2AbsPointCount += talent.currentCount; }
+
+        foreach (Talent talent in tree3Talents)     // Gesamtzahl aller Skillpunkte in Baum 3
+        { tree3AbsPointCount += talent.currentCount; }
+
+        for (int i = 0; i < tree1.parent.Find("Passive").childCount; i++) // Durchläuft alle Tiers von Skilltree 1
+        {
+            currentPassive = tree1.parent.Find("Passive").GetChild(i).GetComponent<PassiveTalent>();        // Momentanes Tier von Skills wird in Variable gepackt
+            if (tree1AbsPointCount >= 5 * i + 5)   
+            {
+                currentPassive.Unlock();
+            }
+        }
+
+        for (int i = 0; i < tree2.parent.Find("Passive").childCount; i++) // Durchläuft alle Tiers von Skilltree 1
+        {
+            currentPassive = tree2.parent.Find("Passive").GetChild(i).GetComponent<PassiveTalent>();        // Momentanes Tier von Skills wird in Variable gepackt
+            if (tree2AbsPointCount >= 5 * i + 5)
+            {
+                currentPassive.Unlock();
+            }
+        }
+
+        for (int i = 0; i < tree3.parent.Find("Passive").childCount; i++) // Durchläuft alle Tiers von Skilltree 1
+        {
+            currentPassive = tree3.parent.Find("Passive").GetChild(i).GetComponent<PassiveTalent>();        // Momentanes Tier von Skills wird in Variable gepackt
+            if (tree3AbsPointCount >= 5 * i + 5)
+            {
+                currentPassive.Unlock();
+            }
+        }
+
     }
 }
