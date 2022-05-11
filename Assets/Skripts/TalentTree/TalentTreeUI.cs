@@ -8,6 +8,7 @@ public class TalentTreeUI : MonoBehaviour
     void Start()
     {
         talentTreeUI = gameObject.transform.Find("TalentTrees").gameObject;
+        talentTreeUI.SetActive(false);
     }
 
     public void OpenTalentTree()

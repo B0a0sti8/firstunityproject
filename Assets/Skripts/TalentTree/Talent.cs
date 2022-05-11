@@ -8,6 +8,9 @@ public class Talent : MonoBehaviour
 {
     private Button button;
 
+    public GameObject PLAYER;
+    public PlayerStats statSkript;
+
     [SerializeField]
     private int maxCount;
 
@@ -19,14 +22,17 @@ public class Talent : MonoBehaviour
     {
         button = GetComponent<Button>();
         talentPointTextOwn = gameObject.transform.Find("Image").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
-    }
-
-    private void Start()
-    {
+        PLAYER = transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.gameObject;
         if (maxCount == 0)
         {
             maxCount = 5;
         }
+    }
+
+    private void Start()
+    {
+        statSkript = PLAYER.GetComponent<PlayerStats>();
+
     }
 
     public void Lock()
@@ -40,6 +46,7 @@ public class Talent : MonoBehaviour
         {
             currentCount++;
             UpdatePointCounter();
+            ActiveTalentEffect();
             return true;
         }
         else
@@ -56,5 +63,15 @@ public class Talent : MonoBehaviour
     public void UpdatePointCounter()
     {
         talentPointTextOwn.text = currentCount.ToString() + " / " + maxCount.ToString();
+    }
+
+    public virtual void ActiveTalentEffect()
+    {
+        
+    }
+
+    public virtual void RemoveActiveTalentEffect()
+    {
+
     }
 }

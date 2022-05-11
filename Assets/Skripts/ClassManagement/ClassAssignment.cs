@@ -71,9 +71,9 @@ public class ClassAssignment : MonoBehaviour
         paladin.SetActive(true);
     }
 
-
     public void DeactivateClass()
     {
+        transform.parent.Find("Canvas Skillbook").GetComponent<SkillbookMaster>().UpdateCurrentSkills();
         classCount = classes.childCount;
         for (int i = 0; i < classCount; i++)
         {

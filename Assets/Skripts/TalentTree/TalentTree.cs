@@ -58,6 +58,7 @@ public class TalentTree : MonoBehaviour
 
     public void TryUseTalent(Talent talent)
     {
+        Debug.Log("Passt 1");
         if (talentPoints > 0 && talent.TryAllocateTalent())
         {
             talentPoints--;
@@ -67,13 +68,15 @@ public class TalentTree : MonoBehaviour
         UpdateTalentPointText();
     }
 
-    private void ResetTalents()
+    public void ResetTalents()
     {
         talentPoints = talentPointsMax;
         UpdateTalentPointText();
         foreach (Talent talent in talents)
         {
             talent.Lock();
+            talent.RemoveActiveTalentEffect();
+            talent.currentCount = 0;
             talent.UpdatePointCounter();
         }
 
@@ -101,7 +104,7 @@ public class TalentTree : MonoBehaviour
         }
     }
 
-    private void UpdateTalentPointText()
+    public void UpdateTalentPointText()
     {
         talentPointText.text = talentPoints.ToString() + " / " + talentPointsMax.ToString();
     }

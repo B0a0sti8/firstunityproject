@@ -15474,7 +15474,7 @@ GameObject:
   - component: {fileID: 2615442408236075717}
   - component: {fileID: 2155635091240538859}
   - component: {fileID: 4443551740590616273}
-  - component: {fileID: 6603080562675860553}
+  - component: {fileID: 6222109671199142754}
   m_Layer: 8
   m_Name: Slot10 (1)
   m_TagString: Untagged
@@ -15523,7 +15523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7924528, g: 0.17568529, b: 0.17568529, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15589,14 +15589,14 @@ MonoBehaviour:
         m_MethodName: TryUseTalent
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6603080562675860553}
+          m_ObjectArgument: {fileID: 6222109671199142754}
           m_ObjectArgumentAssemblyTypeName: Talent, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6603080562675860553
+--- !u!114 &6222109671199142754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15605,9 +15605,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7015360326020283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
+  m_Script: {fileID: 11500000, guid: 60263e48d4af8bc48b930b1745a4fd14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &12509361808808254
@@ -15756,6 +15758,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &15566473956671169
@@ -16248,6 +16252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &58421583911395304
@@ -17089,6 +17095,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &207211358600038285
@@ -17895,6 +17903,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &301462482353384552
@@ -19471,6 +19481,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &434860428750475723
@@ -19562,6 +19574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &436315862203217063
 GameObject:
   m_ObjectHideFlags: 0
@@ -21035,6 +21048,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &675965586146273389
@@ -21123,7 +21138,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675965586146273389}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -22848,6 +22863,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &825838856981938396
@@ -23206,6 +23223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &853942086307750281
@@ -24193,6 +24212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &949793637701963467
 GameObject:
   m_ObjectHideFlags: 0
@@ -24339,6 +24359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &949803128053090624
@@ -25142,6 +25164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &1097424979904271013
 GameObject:
   m_ObjectHideFlags: 0
@@ -25521,6 +25544,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &1141815511309725265
@@ -25826,6 +25851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &1211554255220717510
 GameObject:
   m_ObjectHideFlags: 0
@@ -26450,6 +26476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &1249198029946180970
 GameObject:
   m_ObjectHideFlags: 0
@@ -26726,6 +26753,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &1289026842318980828
@@ -27350,6 +27379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &1361585738965691415
@@ -30288,6 +30319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &1623848687516944233
@@ -30779,6 +30812,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &1630373161425993211
@@ -31111,7 +31146,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654815961536716723}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -31271,6 +31306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &1661735422321033075
 GameObject:
   m_ObjectHideFlags: 0
@@ -31867,6 +31903,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &1776917914719358294
@@ -32326,6 +32364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &1803678382244851615
@@ -32709,6 +32749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: TestGainLife
   className: 
+  skillAvailable: 0
 --- !u!114 &6251771386587556098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34265,6 +34306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &2029691447992983477
@@ -34757,6 +34800,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &2047957669291048364
@@ -35970,6 +36015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &1773306492368207133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36128,6 +36174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &4662350138539989786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36421,6 +36468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: TestBigAttack
   className: 
+  skillAvailable: 0
 --- !u!114 &5809756464820950326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37467,6 +37515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &4794481828210384349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38238,6 +38287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &2380102305300620911
@@ -40364,6 +40415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &2525196840801513067
@@ -40589,6 +40642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &2546483631470117473
 GameObject:
   m_ObjectHideFlags: 0
@@ -40860,6 +40914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: TestGainLifeHot
   className: 
+  skillAvailable: 0
 --- !u!114 &6469705382164074936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41027,6 +41082,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &2586669138630910503
@@ -41466,6 +41523,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &2609350143572698281
@@ -42260,6 +42319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &2716547227723799130
@@ -42745,6 +42806,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &2769752085724319678
@@ -43614,6 +43677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &659879054877498400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43781,6 +43845,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &2840634081421105716
@@ -44005,6 +44071,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &2847835434223979690
@@ -44718,6 +44786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &970972263973110396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45189,6 +45258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &2965270833868316515
 GameObject:
   m_ObjectHideFlags: 0
@@ -46159,6 +46229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &3036241676507572137
@@ -47265,6 +47337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: TestEnergyDrain
   className: 
+  skillAvailable: 0
 --- !u!114 &8088685071627736057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47423,6 +47496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: TestSpeedBoost
   className: 
+  skillAvailable: 0
 --- !u!114 &4270205739878678942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47881,6 +47955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &3243302817077268875
@@ -48373,6 +48449,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &3279945720159150701
@@ -48812,6 +48890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &3302899015422227578
@@ -49228,6 +49308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &3321516511650369140
@@ -49367,6 +49449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &6246847871481952359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51147,6 +51230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &3541139131349971811
@@ -51295,6 +51380,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &3545419598588808953
@@ -51886,6 +51973,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &3584928848529977438
@@ -52421,6 +52510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &3598495274374557153
@@ -52668,6 +52759,7 @@ RectTransform:
   - {fileID: 8595178711834562769}
   - {fileID: 6587144363543716998}
   - {fileID: 5333003035008164109}
+  - {fileID: 4317572538768891148}
   m_Father: {fileID: 2895742046416067210}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52691,9 +52783,9 @@ MonoBehaviour:
   talentPoints: 10
   talentPointText: {fileID: 4652201056592421773}
   talents:
-  - {fileID: 2337924266370528242}
-  - {fileID: 6603080562675860553}
-  - {fileID: 3316700882667595696}
+  - {fileID: 1566180692946300658}
+  - {fileID: 6222109671199142754}
+  - {fileID: 7004385892763681977}
   - {fileID: 2024803300520010393}
   - {fileID: 3410557837357335541}
   - {fileID: 3282271915907877800}
@@ -52813,9 +52905,9 @@ MonoBehaviour:
   - {fileID: 3394726360170835847}
   - {fileID: 3092409369778878478}
   unlockedByDefault:
-  - {fileID: 2337924266370528242}
-  - {fileID: 6603080562675860553}
-  - {fileID: 3316700882667595696}
+  - {fileID: 1566180692946300658}
+  - {fileID: 6222109671199142754}
+  - {fileID: 7004385892763681977}
   - {fileID: 2024803300520010393}
   - {fileID: 5622009892608364771}
   - {fileID: 165786747715011502}
@@ -52826,9 +52918,9 @@ MonoBehaviour:
   - {fileID: 5852620658730635869}
   - {fileID: 8948383918234764125}
   tree1Talents:
-  - {fileID: 2337924266370528242}
-  - {fileID: 6603080562675860553}
-  - {fileID: 3316700882667595696}
+  - {fileID: 1566180692946300658}
+  - {fileID: 6222109671199142754}
+  - {fileID: 7004385892763681977}
   - {fileID: 2024803300520010393}
   - {fileID: 3410557837357335541}
   - {fileID: 3282271915907877800}
@@ -53357,6 +53449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &8397395249531660581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53926,6 +54019,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &3672865102880652662
@@ -54442,6 +54537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &3735595230605015783
 GameObject:
   m_ObjectHideFlags: 0
@@ -55557,6 +55653,140 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &3865801190317255969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7763622213969781}
+  - component: {fileID: 3293648984093645246}
+  - component: {fileID: 3736480177667829165}
+  m_Layer: 8
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7763622213969781
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3865801190317255969}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4317572538768891148}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3293648984093645246
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3865801190317255969}
+  m_CullTransparentMesh: 1
+--- !u!114 &3736480177667829165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3865801190317255969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Reset Talents
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3879632750705533747
 GameObject:
   m_ObjectHideFlags: 0
@@ -56361,6 +56591,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &3920359400280969452
@@ -56552,6 +56784,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillbook: {fileID: 0}
+  allClassesSkills: {fileID: 0}
+  currentSkills: []
+  actionSkill: {fileID: 0}
+  actionSkillSlots: []
+  skillName: 
+  currentActiveSkillNames: []
+  className: 
 --- !u!1 &3961112944764636328
 GameObject:
   m_ObjectHideFlags: 0
@@ -56698,6 +56937,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &4003000473797669605
@@ -56971,6 +57212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &6284683152142198644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59272,6 +59514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &4239953091797807050
@@ -59420,6 +59664,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &4243743736805067556
@@ -59836,6 +60082,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &4244921561772275246
@@ -59927,6 +60175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &4252659453599808635
 GameObject:
   m_ObjectHideFlags: 0
@@ -60784,6 +61033,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &4355962249869546552
@@ -60932,6 +61183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &4356926002943470133
@@ -61180,6 +61433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &4368159134634461151
 GameObject:
   m_ObjectHideFlags: 0
@@ -61460,7 +61714,7 @@ GameObject:
   - component: {fileID: 6693506788268345948}
   - component: {fileID: 4391507710294699933}
   - component: {fileID: 3530401322734897509}
-  - component: {fileID: 3316700882667595696}
+  - component: {fileID: 7004385892763681977}
   m_Layer: 8
   m_Name: Slot10 (2)
   m_TagString: Untagged
@@ -61509,7 +61763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.7798442, b: 0.4009434, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -61575,14 +61829,14 @@ MonoBehaviour:
         m_MethodName: TryUseTalent
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 3316700882667595696}
+          m_ObjectArgument: {fileID: 7004385892763681977}
           m_ObjectArgumentAssemblyTypeName: Talent, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3316700882667595696
+--- !u!114 &7004385892763681977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61591,10 +61845,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4379435872636085158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ac22be27c578844e8d8f4e48a2442ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCount: 0
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
+  maxCount: 1
   currentCount: 0
 --- !u!1 &4387246440899132151
 GameObject:
@@ -61818,6 +62074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &4400014925551721771
 GameObject:
   m_ObjectHideFlags: 0
@@ -62613,6 +62870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &4509775060564956490
 GameObject:
   m_ObjectHideFlags: 0
@@ -63018,6 +63276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &3627351030399642237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63260,6 +63519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &4556487456283925583
@@ -63408,6 +63669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &4584907191575422016
@@ -64804,6 +65067,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &4603128591095259128
@@ -64994,6 +65259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &203094747134736961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66615,6 +66881,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &4763558592314087257
@@ -66706,6 +66974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &4792219519469257522
 GameObject:
   m_ObjectHideFlags: 0
@@ -67255,6 +67524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &4807618199065434411
@@ -68405,6 +68676,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &4904383844777247273
@@ -68628,6 +68901,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &4912462297629760983
@@ -70149,6 +70424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &5061797230396696262
@@ -71084,6 +71361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &5189865221180156040
@@ -71519,6 +71798,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &5222347842667020113
@@ -73352,6 +73633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &5353392229054381642
@@ -73737,6 +74020,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &5365114636461203965
@@ -74019,6 +74304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &5399704252108925789
@@ -74430,6 +74717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &5424336818842812720
 GameObject:
   m_ObjectHideFlags: 0
@@ -74896,6 +75184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &5452921843287476290
@@ -76028,6 +76318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &5633854514686353363
 GameObject:
   m_ObjectHideFlags: 0
@@ -76442,6 +76733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &5712211948462785600
@@ -76735,6 +77028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &7981247215737654961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77190,6 +77484,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &5760417399055118744
@@ -77569,6 +77865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &5835543538081731768
 GameObject:
   m_ObjectHideFlags: 0
@@ -77715,6 +78012,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &5850090463082212398
@@ -77863,6 +78162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &5856650014376048693
@@ -78221,6 +78522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &5876151437958538547
@@ -78312,6 +78615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &5882940525800764563
 GameObject:
   m_ObjectHideFlags: 0
@@ -78726,6 +79030,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &5937106611865224080
@@ -79219,6 +79525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &6027496888845539434
@@ -80170,6 +80478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &7533843451229396305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80471,6 +80780,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &6163818594200421987
@@ -80770,6 +81081,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &6190690380997882368
@@ -81052,6 +81365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &6197538849965055767
@@ -81565,6 +81880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: TestAttack2
   className: 
+  skillAvailable: 0
 --- !u!114 &4926873087903236753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81586,6 +81902,139 @@ MonoBehaviour:
   skillCosts: 
   skillRange: 
   skillRadius: 
+--- !u!1 &6240240351750836069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4317572538768891148}
+  - component: {fileID: 2414015358942903455}
+  - component: {fileID: 3738574913176782878}
+  - component: {fileID: 4738933974814415860}
+  m_Layer: 8
+  m_Name: ResetTalents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4317572538768891148
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6240240351750836069}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7763622213969781}
+  m_Father: {fileID: 3973905715296112673}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -94.249, y: 158}
+  m_SizeDelta: {x: 188.4982, y: 38.547}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2414015358942903455
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6240240351750836069}
+  m_CullTransparentMesh: 1
+--- !u!114 &3738574913176782878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6240240351750836069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7735849, g: 0.74074405, b: 0.74074405, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4738933974814415860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6240240351750836069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 3738574913176782878}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6872988753392215887}
+        m_TargetAssemblyTypeName: TalentTree, Assembly-CSharp
+        m_MethodName: ResetTalents
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6249337844224382520
 GameObject:
   m_ObjectHideFlags: 0
@@ -81889,6 +82338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &6262218363132577382
@@ -82476,6 +82927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &6389127996739063184
@@ -83263,6 +83716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &9000692993840438375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84091,6 +84545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &6561634359860175121
@@ -84527,6 +84983,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &6599837797911369015
@@ -84675,6 +85133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &6626428834034941866
@@ -85403,6 +85863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &6663428512538281850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85588,6 +86049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &6753287146825549641
 GameObject:
   m_ObjectHideFlags: 0
@@ -86222,6 +86684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &1867680771004984206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88286,6 +88749,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &7047197793030007959
@@ -88377,6 +88842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &7049815880509462349
 GameObject:
   m_ObjectHideFlags: 0
@@ -89024,6 +89490,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &7131114819172615545
@@ -89307,6 +89775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &7153258274686329916
@@ -89398,6 +89868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &7163630898812035784
 GameObject:
   m_ObjectHideFlags: 0
@@ -91147,6 +91618,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &7304142195976627043
@@ -92503,7 +92976,7 @@ GameObject:
   - component: {fileID: 2405910505943632943}
   - component: {fileID: 7846396016507709591}
   - component: {fileID: 6859927029860328308}
-  - component: {fileID: 2337924266370528242}
+  - component: {fileID: 1566180692946300658}
   m_Layer: 8
   m_Name: Slot10 (0)
   m_TagString: Untagged
@@ -92552,7 +93025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.23113208, g: 0.9245283, b: 0.9245283, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -92618,14 +93091,14 @@ MonoBehaviour:
         m_MethodName: TryUseTalent
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2337924266370528242}
+          m_ObjectArgument: {fileID: 1566180692946300658}
           m_ObjectArgumentAssemblyTypeName: Talent, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2337924266370528242
+--- !u!114 &1566180692946300658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92634,9 +93107,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7399357343564825226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
+  m_Script: {fileID: 11500000, guid: 530d2aa4db86b8c40b7957a19814602f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &7402946126443542438
@@ -92776,6 +93251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: TestAttack1
   className: 
+  skillAvailable: 0
 --- !u!114 &6440481606120902357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93478,6 +93954,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &7463334680491076871
@@ -94162,6 +94640,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &7555744474013475404
@@ -95208,6 +95688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &7672472723398254413
 GameObject:
   m_ObjectHideFlags: 0
@@ -96572,6 +97053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &4237071420939779508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96864,6 +97346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: TestAttack3
   className: 
+  skillAvailable: 0
 --- !u!114 &1236681541994813209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98852,6 +99335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &7947027799118750904
@@ -99000,6 +99485,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &7948207033433922531
@@ -99685,6 +100172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &8099051553295383831
@@ -101042,6 +101531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &4034160373759880764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102169,6 +102659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &8399005668197054730
@@ -102317,6 +102809,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &8404967137079115450
@@ -102616,6 +103110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &8478984407333580207
@@ -102965,6 +103461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &7098625263217012904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104525,6 +105022,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &8684011568754227051
@@ -104955,6 +105454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: 
   className: 
+  skillAvailable: 0
 --- !u!114 &3707415874519961063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105274,6 +105774,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &8765259912373456989
@@ -105365,6 +105867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &8768496614420833219
 GameObject:
   m_ObjectHideFlags: 0
@@ -105912,6 +106415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33faf1281c62d554888539a1961f9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectActive: 0
 --- !u!1 &8794560574147663748
 GameObject:
   m_ObjectHideFlags: 0
@@ -106058,6 +106562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &8798346673182881934
@@ -106282,6 +106788,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &8804468646325363308
@@ -106686,6 +107194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &8871625031992302560
@@ -107750,6 +108260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: TestOverHeal
   className: 
+  skillAvailable: 0
 --- !u!114 &8543224924263205758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108184,6 +108695,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &9039020055405318627
@@ -108323,6 +108836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: TestSkill
   className: 
+  skillAvailable: 0
 --- !u!114 &6459984454356615301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109138,6 +109652,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &9144252457932732459
@@ -109286,6 +109802,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &9157550391713162585
@@ -109425,6 +109943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: TestGainLife
   className: 
+  skillAvailable: 0
 --- !u!114 &1475446105075564680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109592,6 +110111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
 --- !u!1 &9165896079934985845
