@@ -23,11 +23,17 @@ public class MasterChecks : MonoBehaviour
     public float masterOwnCooldownEarlyTime = 0.5f;
 
     public bool masterIsSkillInQueue = false;
+    public float castTimeMax;
+    public float castTimeCurrent;
+    public bool isSkillInterrupted = false;
+    public bool masterIsCastFinished = false;
+    GameObject PLAYER;
 
     PlayerStats playerStats;
     private void Start()
     {
-        playerStats = transform.parent.transform.parent.gameObject.GetComponent<PlayerStats>();
+        PLAYER = transform.parent.transform.parent.gameObject;
+        playerStats = PLAYER.GetComponent<PlayerStats>();
     }
 
     void Update()
@@ -58,6 +64,33 @@ public class MasterChecks : MonoBehaviour
             {
                 masterGCActive = false;
                 masterGCTimeLeft = 0f;
+            }
+        }
+
+        if (playerStats.isCurrentlyCasting)
+        {
+            if (!isSkillInterrupted)
+            {
+                if (castTimeCurrent > 0)
+                {
+                    castTimeCurrent -= Time.deltaTime;
+                }
+                else
+                {
+                    playerStats.isCurrentlyCasting = false;
+                    castTimeCurrent = 0f;
+                    castTimeMax = 0f;
+                    masterIsCastFinished = true;
+                    PLAYER.transform.Find("PlayerParticleSystems").Find("CastingParticles").gameObject.GetComponent<ParticleSystem>().Stop();
+                }
+            }
+            else
+            {
+                Debug.Log("Skill cast unterbrochen");
+                playerStats.isCurrentlyCasting = false;
+                castTimeCurrent = 0;
+                castTimeMax = 0f;
+                PLAYER.transform.Find("PlayerParticleSystems").Find("CastingParticles").gameObject.GetComponent<ParticleSystem>().Stop();
             }
         }
     }

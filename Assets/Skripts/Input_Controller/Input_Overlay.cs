@@ -17,6 +17,7 @@ public class Input_Overlay : MonoBehaviour
     KeybindManager keybindManager;
     ClassChoiceUI classChoiceUI;
     TalentTreeUI talentTreeUI;
+    MasterChecks masterChecks;
 
     void Awake()
     {
@@ -31,6 +32,7 @@ public class Input_Overlay : MonoBehaviour
         keybindManager = GameObject.Find("GameManager").gameObject.GetComponent<KeybindManager>();
         classChoiceUI = ownCanvases.transform.Find("Canvas ClassChoice").gameObject.GetComponent<ClassChoiceUI>();
         talentTreeUI = ownCanvases.transform.Find("Canvas TalentTree").gameObject.GetComponent<TalentTreeUI>();
+        masterChecks = PLAYER.transform.Find("Own Canvases").Find("Canvas Action Skills").GetComponent<MasterChecks>();
     }
     #endregion
 
@@ -41,7 +43,7 @@ public class Input_Overlay : MonoBehaviour
     { equipmentWindowUI.OpenEquipmentWindow(); }
 
     void OnPauseMenu() // Esc
-    { pauseMenu.OpenPauseMenu(); }
+    { pauseMenu.OpenPauseMenu(); masterChecks.isSkillInterrupted = true; }
 
     void OnDPSMeterReset() // .
     { damageMeter.DPSMeterReset(); }

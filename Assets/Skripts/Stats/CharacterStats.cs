@@ -15,6 +15,7 @@ public class CharacterStats : MonoBehaviourPunCallbacks
 
     public Stat movementSpeed; // 0 - Inf bzw. 1 - Inf
     public Stat attackSpeed; // 0 - 90 bzw. -Inf - 100 /// 30 -> (Global)Cooldown ist 30% kürzer (10s -> 7s)
+    public Stat castSpeed; // 0 - 90 bzw. -Inf - 100 /// 30 -> (Global)Cooldown ist 30% kürzer (10s -> 7s)
 
     public Stat critChance; // 0(%) - 100(%) /// 30 -> 30% Wahrscheinlichkeit auf Crit
     public Stat critMultiplier; // 100(%) - Inf(%) /// 130 -> Angriff macht 130% Schaden
@@ -22,7 +23,7 @@ public class CharacterStats : MonoBehaviourPunCallbacks
     public Stat evade;
 
     public bool isAlive;
-
+    public bool isCurrentlyCasting = false;
 
 
     public virtual void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
