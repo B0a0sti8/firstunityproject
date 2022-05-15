@@ -14,6 +14,7 @@ public class Input_Gameplay : MonoBehaviour
     InteractionCharacter interactionCharacter;
     CameraFollow cameraFollow;
     LevelLoader levelLoader;
+    MasterChecks masterChecks;
 
     void Awake()
     {
@@ -25,6 +26,7 @@ public class Input_Gameplay : MonoBehaviour
         playerStats = PLAYER.GetComponent<PlayerStats>();
         interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
         cameraFollow = PLAYER.GetComponent<CameraFollow>();
+        masterChecks = PLAYER.transform.Find("Own Canvases").Find("Canvas Action Skills").GetComponent<MasterChecks>();
     }
     #endregion
 
@@ -34,7 +36,7 @@ public class Input_Gameplay : MonoBehaviour
     }
 
     void OnMovement(InputValue value) // WASD
-    { playerController.Movement(value); }
+    { playerController.Movement(value); masterChecks.isSkillInterrupted = true; }
 
     void OnTakeDamage() // SPACE
     { playerStats.TakeDamageSpace(); }

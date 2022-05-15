@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 using TMPro;
 
@@ -33,6 +34,10 @@ public class PlayerStats : CharacterStats, IPunObservable
 	float tickEveryXSecondsTimer = 0f;
 
 	public int missRandom;
+	public int goldAmount;
+	public Sprite castingBarImage;
+	public string castingBarText;
+	public bool castingBarChanneling;
 
 
 
@@ -57,7 +62,8 @@ public class PlayerStats : CharacterStats, IPunObservable
 		mastery.baseValue = 0;
 		armor.baseValue = 10;
 		movementSpeed.baseValue = 7;
-		attackSpeed.baseValue = 0;
+		attackSpeed.baseValue = 1;
+		castSpeed.baseValue = 1;
 		critChance.baseValue = 30;
 		critMultiplier.baseValue = 200;
     }

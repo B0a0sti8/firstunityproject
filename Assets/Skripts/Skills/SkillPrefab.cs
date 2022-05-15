@@ -68,6 +68,11 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     [HideInInspector]
     public string tooltipSkillRadius;
 
+    public float castTimeOriginal = 0f;
+    public float castTimeModified;
+    private bool castStarted = false;
+    public bool isSkillChanneling;
+    
 
 
 
@@ -251,7 +256,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
                 ownCooldownActive = true;
                 ownCooldownTimeLeft = ownCooldownTimeModified;
                 if (needsMana) { playerStats.currentMana -= manaCost; }
-                SkillEffect();
+                StartCasting();
             }
         }
         else
@@ -260,21 +265,25 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         }
     }
 
-    public void UseSkill3() // checks for GlobalCooldown and waits for skill
+    public void UseSkill3() // checks for GlobalCooldown and skill casting times and waits for skill
     {
-        if (!hasGlobalCooldown || (hasGlobalCooldown && !masterChecks.masterGCActive)) // no GC trouble
+        if ((!hasGlobalCooldown || (hasGlobalCooldown && !masterChecks.masterGCActive)) && !playerStats.isCurrentlyCasting) // no GC and casting trouble
         {
             //Debug.Log("Wait for OwnCooldown / Animation ...  " + ownCooldownTimeLeft + " / " + masterChecks.masterAnimTimeLeft);
             StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterAnimTimeLeft)));
         }
-        else if (masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime) // GC early cast
+        else if ((masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime) && (masterChecks.castTimeCurrent <= masterChecks.masterGCEarlyTime)) // GC early cast
         {
             //Debug.Log("Wait for OwnCooldown / GlobalCooldown / Animation ...  " + ownCooldownTimeLeft + " / " + masterChecks.masterGCTimeLeft + " / " + masterChecks.masterAnimTimeLeft);
-            StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterGCTimeLeft, masterChecks.masterAnimTimeLeft)));
+            StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterGCTimeLeft, masterChecks.masterAnimTimeLeft, masterChecks.castTimeCurrent)));
         }
         else // hasGlobalCooldown && globalCooldownActive // GC active (too early)
         {
-            Debug.Log("ERROR A: GC active (too early) " + masterChecks.masterGCTimeLeft + " > " + masterChecks.masterGCEarlyTime);
+            if (masterChecks.castTimeCurrent > masterChecks.masterGCEarlyTime)
+            { Debug.Log("ERROR: Casting"); }
+            else
+            { Debug.Log("ERROR A: GC active (too early) " + masterChecks.masterGCTimeLeft + " > " + masterChecks.masterGCEarlyTime); }
+            
             FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
         }
     }
@@ -314,8 +323,37 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         {
             playerStats.ManageManaRPC(-manaCost);
         }
+        StartCasting();
+    }
 
-        SkillEffect();
+    public void StartCasting()
+    {
+        if (castTimeOriginal <= 0)
+        {
+            SkillEffect();
+        }
+        else
+        {
+            if (isSkillChanneling)
+            { playerStats.castingBarChanneling = true; }
+            else
+            { playerStats.castingBarChanneling = false; }
+            playerStats.castingBarImage = tooltipSkillSprite;
+            playerStats.castingBarText = tooltipSkillName;
+            
+            PLAYER.transform.Find("PlayerParticleSystems").Find("CastingParticles").gameObject.GetComponent<ParticleSystem>().Play();
+            masterChecks.isSkillInterrupted = false;
+            castTimeModified = castTimeOriginal / playerStats.castSpeed.GetValue();
+            masterChecks.castTimeCurrent = castTimeModified;
+            masterChecks.castTimeMax = castTimeModified;
+            castStarted = true;
+            playerStats.isCurrentlyCasting = true;
+
+            if (isSkillChanneling)
+            {
+                SkillEffect();
+            }
+        }
     }
 
     public virtual void SkillEffect() // overridden by each skill seperately
@@ -340,6 +378,17 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
         float attackSpeedModifier = 1 - (playerStats.attackSpeed.GetValue() / 100);
         ownCooldownTimeModified = ownCooldownTimeBase * attackSpeedModifier;
+
+
+        if (masterChecks.masterIsCastFinished && castStarted)
+        {
+            SkillEffect();
+            castStarted = false;
+            if (!isSkillChanneling)
+            {
+                masterChecks.masterIsCastFinished = false;
+            }
+        }
     }
 
     void Awake()
