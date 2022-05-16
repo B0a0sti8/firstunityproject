@@ -11,7 +11,12 @@ public class TestHeal : SkillPrefab
     {
         base.Start();
         castTimeOriginal = 2;
-    }
+        needsTargetAlly = true;
+        canSelfCastIfNoTarget = true;
+        skillRadius = 10f;
+        skillRange = 10f;
+        isAOECircle = true;
+}
 
     public override void Update()
     {

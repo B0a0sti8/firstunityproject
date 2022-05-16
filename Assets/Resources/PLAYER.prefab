@@ -500,6 +500,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 0
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -522,7 +526,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
 --- !u!114 &3154302426633649061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2812,6 +2823,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 1
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 0
   manaCost: 0
   skillRange: 3
@@ -2834,7 +2849,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   damage: 400
 --- !u!114 &1751446153542886752
 MonoBehaviour:
@@ -3781,6 +3803,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 1
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 0
   manaCost: 0
   skillRange: 3
@@ -3803,7 +3829,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   baseDamage: 100
   comboDamage: 120
 --- !u!114 &413619550916163104
@@ -7032,6 +7065,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 0
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -7054,7 +7091,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   duration: 8
   value: 5
   buffImage: {fileID: 21300000, guid: 37f621f099e46d245876c6cb720c8c12, type: 3}
@@ -11015,6 +11059,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 1
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 1
   manaCost: 50
   skillRange: 20
@@ -11037,7 +11085,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   damage: 200
 --- !u!114 &8033903956536368675
 MonoBehaviour:
@@ -11214,6 +11269,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 0
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 1
   manaCost: 250
   skillRange: 0
@@ -11236,7 +11295,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   duration: 30
   value: 50
   buffImage: {fileID: 21300000, guid: 844b60c4c0a30a043aa066f57200ffaa, type: 3}
@@ -11581,7 +11647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.8667, y: -339.2508}
+  m_AnchoredPosition: {x: -13.8667, y: -3441.9475}
   m_SizeDelta: {x: 303.3131, y: 1146.6929}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1639063353
@@ -11802,6 +11868,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 0
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 1
   manaCost: 150
   skillRange: 0
@@ -11824,7 +11894,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   instantHealing: 50
   tickTime: 2
   tickHealing: 5
@@ -12550,6 +12627,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 0
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 1
   manaCost: 200
   skillRange: 0
@@ -12572,7 +12653,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   healing: 75
 --- !u!114 &2781643958777908884
 MonoBehaviour:
@@ -12959,6 +13047,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 1
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 0
   manaCost: 0
   skillRange: 3
@@ -12981,7 +13073,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   baseDamage: 100
   comboDamage: 150
 --- !u!114 &8933648390615150534
@@ -13259,8 +13358,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 598728969}
   m_HandleRect: {fileID: 598728968}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.40829697
+  m_Value: 0
+  m_Size: 0.98469514
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13840,6 +13939,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 1
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 1
   manaCost: 100
   skillRange: 10
@@ -13862,7 +13965,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   damage: 100
 --- !u!114 &8055252640503893492
 MonoBehaviour:
@@ -15661,6 +15771,105 @@ MonoBehaviour:
   statSkript: {fileID: 0}
   maxCount: 0
   currentCount: 0
+--- !u!1 &8946786381348275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6644022687615325833}
+  - component: {fileID: 5954654009880196035}
+  - component: {fileID: 793374594411732505}
+  - component: {fileID: 7829088769356088322}
+  m_Layer: 8
+  m_Name: RotationMeasurement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6644022687615325833
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8946786381348275}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6604016653283099680}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 4.78575, y: 6.255}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5954654009880196035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8946786381348275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad744b35a8b034d45a6d6b35923c3fff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!33 &793374594411732505
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8946786381348275}
+  m_Mesh: {fileID: 0}
+--- !u!23 &7829088769356088322
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8946786381348275}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: db55ebdb9473a4a80a0037f64aafccce, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &12509361808808254
 GameObject:
   m_ObjectHideFlags: 0
@@ -69591,6 +69800,7 @@ RectTransform:
   - {fileID: 1097682742502433433}
   - {fileID: 1076243866}
   - {fileID: 5150269622731863710}
+  - {fileID: 6644022687615325833}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -69666,6 +69876,9 @@ MonoBehaviour:
     baseValue: 0
     modifiedValue: 0
   movement: {x: 0, y: 0}
+  currentDirectionTrue: {x: 0, y: 0, z: 0}
+  upDirection: {x: 0, y: 0, z: 0}
+  rotationMeasurement: {fileID: 0}
   animator: {fileID: 4584907192636714686}
   view: {fileID: 0}
 --- !u!50 &4584907192636714656
@@ -71212,6 +71425,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 1
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 1
   manaCost: 100
   skillRange: 10
@@ -71234,7 +71451,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   damage: 100
 --- !u!114 &710900986185266333
 MonoBehaviour:
@@ -71255,6 +71479,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 1
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 0
   manaCost: 0
   skillRange: 3
@@ -71277,7 +71505,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   baseDamage: 100
   comboDamage: 120
 --- !u!114 &2348305513113388602
@@ -71299,6 +71534,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 1
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 0
   manaCost: 0
   skillRange: 3
@@ -71321,7 +71560,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   baseDamage: 100
   comboDamage: 150
 --- !u!114 &8722080370481325698
@@ -71343,6 +71589,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 1
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 0
   manaCost: 0
   skillRange: 3
@@ -71365,7 +71615,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   damage: 400
 --- !u!114 &4479257864175243874
 MonoBehaviour:
@@ -71386,6 +71643,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 1
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 1
   manaCost: 50
   skillRange: 20
@@ -71408,7 +71669,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   damage: 200
 --- !u!114 &405477391951262171
 MonoBehaviour:
@@ -71429,6 +71697,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 0
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -71451,7 +71723,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
 --- !u!114 &8779982288168751922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71471,6 +71750,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 0
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 1
   manaCost: 250
   skillRange: 0
@@ -71493,7 +71776,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   duration: 30
   value: 50
   buffImage: {fileID: 21300000, guid: 844b60c4c0a30a043aa066f57200ffaa, type: 3}
@@ -71516,6 +71806,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 0
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 1
   manaCost: 200
   skillRange: 0
@@ -71538,7 +71832,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   healing: 75
 --- !u!114 &8341601033471067305
 MonoBehaviour:
@@ -71559,6 +71860,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 0
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 1
   manaCost: 150
   skillRange: 0
@@ -71581,7 +71886,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   instantHealing: 50
   tickTime: 2
   tickHealing: 5
@@ -71606,6 +71918,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 0
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -71628,7 +71944,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   duration: 8
   value: 5
   buffImage: {fileID: 21300000, guid: 37f621f099e46d245876c6cb720c8c12, type: 3}
@@ -71651,6 +71974,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 0
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 0
   manaCost: 50
   skillRange: 10
@@ -71673,7 +72000,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   heal: 100
 --- !u!114 &8462400945118294951
 MonoBehaviour:
@@ -71694,6 +72028,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   needsTargetEnemy: 0
   needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -71716,7 +72054,14 @@ MonoBehaviour:
   tooltipSkillRadius: 
   castTimeOriginal: 0
   castTimeModified: 0
+  castStarted: 0
   isSkillChanneling: 0
+  isAOECircle: 1
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
   totalHeal: 10000
   healTick: 0
 --- !u!1 &4707537851890784352
