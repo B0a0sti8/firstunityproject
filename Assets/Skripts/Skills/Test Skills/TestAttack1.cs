@@ -7,6 +7,13 @@ public class TestAttack1 : SkillPrefab
 {
     public float damage = 100f;
 
+    public override void Start()
+    {
+        base.Start();
+        isAOECircle = true;
+        skillRadius = 10;
+    }
+
     public override void Update()
     {
         tooltipSkillDescription = "Deal <color=orange>" + damage + " Damage</color> to any target.";

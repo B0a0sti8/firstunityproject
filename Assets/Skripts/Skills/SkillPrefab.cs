@@ -21,6 +21,10 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     [Header("Target")]
     public bool needsTargetEnemy;
     public bool needsTargetAlly;
+    public bool canSelfCastIfNoTarget;
+    public bool targetsEnemiesOnly;
+    public bool targetsAlliesOnly;
+    public List<GameObject> currentTargets = new List<GameObject>();
 
     [Header("Mana")]
     public bool needsMana; // optional
@@ -48,6 +52,8 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     public bool isSuperInstant; // can not be true if hasGlobalCooldown is true
     bool isSkillInOwnSuperInstantQueue = false;
 
+    private Interactable zwischenSpeicher;
+
     [Header("Tooltip")]
     [HideInInspector]
     public MasterEventTrigger masterET;
@@ -68,10 +74,20 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     [HideInInspector]
     public string tooltipSkillRadius;
 
+    [Header("Casting")]
     public float castTimeOriginal = 0f;
     public float castTimeModified;
-    private bool castStarted = false;
+    public bool castStarted = false;
     public bool isSkillChanneling;
+
+    [Header("Area of Effect")]
+    public bool isAOECircle = false;
+    public bool isAOEFrontCone = false;
+    public bool isAOELine = false;
+    public bool isSelfCast = false;
+    public Vector3 coneAOEDirection;
+    public float coneAOEAngle = 50;
+    private Interactable circleAim;
     
 
 
@@ -115,8 +131,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
             {
                 if (LayerMask.NameToLayer("Enemy") == interactionCharacter.focus.gameObject.layer) // if enemy in focus
                 {
-                    //Debug.Log(interactionCharacter.focus.gameObject.layer);
-                    RangeCheck();
+                    AOECheck();
                 }
                 else
                 {
@@ -137,63 +152,237 @@ public class SkillPrefab : MonoBehaviour//, IUseable
                 if (LayerMask.NameToLayer("Action") == interactionCharacter.focus.gameObject.layer || 
                     LayerMask.NameToLayer("Ally") == interactionCharacter.focus.gameObject.layer) // if ally in focus
                 {
-                    //Debug.Log(interactionCharacter.focus.gameObject.layer);
                     Debug.Log("Ally target");
-                    RangeCheck();
+                    AOECheck();
                 }
                 else
                 {
-                    Debug.Log("No fitting target");
-                    FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+                    if (canSelfCastIfNoTarget) // Hier weitermachen! Freund gebraucht, Gegner drinnen, selfcastable, heilt gegner.
+                    {
+                        zwischenSpeicher = interactionCharacter.focus;
+                        interactionCharacter.focus = null;
+                        AOECheck();
+                        interactionCharacter.focus = zwischenSpeicher;
+                    }
+                    else
+                    {
+                        Debug.Log("No fitting target");
+                        FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+                    }
                 }
             }
             else
             {
-                Debug.Log("Target needed");
-                FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+                if (canSelfCastIfNoTarget)
+                {
+                    AOECheck();
+                }
+                else
+                {
+                    Debug.Log("Target needed");
+                    FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+                }
             }
         }
         else // for skills that don't need a target
         {
-            RangeCheck();
+            AOECheck();
         }
     }
+
+    public void AOECheck()
+    {
+        currentTargets.Clear();
+        if (!isAOECircle && !isAOEFrontCone && !isAOELine) // Skill ist singletarget
+        {
+            if (interactionCharacter.focus != null)
+            { currentTargets.Add(interactionCharacter.focus.gameObject); }
+
+            if (canSelfCastIfNoTarget && interactionCharacter.focus == null)
+            { currentTargets.Add(PLAYER); }
+        }
+
+        if (isAOECircle) // Kreisförmiger Flächenzauber. Um Gegner, um freundliches Ziel oder um den Spieler selbst. Noch nicht implementiert: Bei Mausklick an entsprechende Stelle
+        {
+            isAOEFrontCone = false; isAOELine = false; // Nur sicherheitshalber, falls jmd mehrere Sachen angekreuzt hat.
+
+            if (canSelfCastIfNoTarget && interactionCharacter.focus == null)
+            { circleAim = PLAYER.GetComponent<Interactable>(); }
+            else
+            { circleAim = interactionCharacter.focus; }
+
+            if (needsTargetEnemy) 
+            {
+                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
+                foreach (Collider2D coll in hit)
+                {
+                    currentTargets.Add(coll.gameObject);
+                }
+            }
+            else if (needsTargetAlly)
+            {
+                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
+                foreach (Collider2D coll in hit)
+                {
+                    currentTargets.Add(coll.gameObject);
+                }
+            }
+            else if (isSelfCast)
+            {
+                if (targetsAlliesOnly)
+                {
+                    Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
+                    foreach (Collider2D coll in hit)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+                }
+                else if (targetsEnemiesOnly)
+                {
+                    Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
+                    foreach (Collider2D coll in hit)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+                }
+                else
+                {
+                    Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
+                    foreach (Collider2D coll in hit)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+
+                    Collider2D[] hit2 = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
+                    foreach (Collider2D coll in hit2)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+                }
+            }
+            else // Platzierbarer Flächenzauber. Kommt später
+            {
+
+            }
+        }
+
+        else if (isAOEFrontCone)
+        {
+            isAOELine = false; // Nur sicherheitshalber, falls jmd mehrere Sachen angekreuzt hat.
+
+            if (targetsAlliesOnly)
+            {
+                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
+                foreach (Collider2D coll in hit)
+                {
+                    Vector2 newVector = (coll.transform.position - PLAYER.transform.position);
+                    if (Vector2.SignedAngle(PLAYER.GetComponent<PlayerController>().currentDirectionTrue, newVector) <= coneAOEAngle)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+                }
+            }
+            else if (targetsEnemiesOnly)
+            {
+                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
+                foreach (Collider2D coll in hit)
+                {
+                    Vector2 newVector = (coll.transform.position - PLAYER.transform.position);
+                    if (Vector2.SignedAngle(PLAYER.GetComponent<PlayerController>().currentDirectionTrue, newVector) <= coneAOEAngle)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+                }
+            }
+            else
+            {
+                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
+                foreach (Collider2D coll in hit)
+                {
+                    Vector2 newVector = (coll.transform.position - PLAYER.transform.position);
+                    if (Vector2.SignedAngle(PLAYER.GetComponent<PlayerController>().currentDirectionTrue, newVector) <= coneAOEAngle)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+                }
+
+                Collider2D[] hit2 = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
+                foreach (Collider2D coll in hit2)
+                {
+                    Vector2 newVector = (coll.transform.position - PLAYER.transform.position);
+                    if (Vector2.SignedAngle(PLAYER.GetComponent<PlayerController>().currentDirectionTrue, newVector) <= coneAOEAngle)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+                }
+            }
+        }
+
+        else if (isAOELine)
+        {
+            
+        }
+
+
+
+
+        RangeCheck();
+    }
+
+
+
+
+
 
     public void RangeCheck() // check for range and line of sight
     {
         if (needsTargetEnemy || needsTargetAlly) // // for skills that need a target
         {
-            float distance = Vector2.Distance(PLAYER.transform.position, 
-                interactionCharacter.focus.gameObject.transform.position);
-            if (distance <= skillRange) // target in range
+            if (interactionCharacter.focus == null && canSelfCastIfNoTarget)        // Falls kein Target aber selbst castable
             {
-                //Debug.Log("Target in range");
-                RaycastHit2D[] hit = Physics2D.LinecastAll(PLAYER.transform.position, 
-                    interactionCharacter.focus.gameObject.transform.position, (1 << LayerMask.NameToLayer("Borders")) | 
-                    (1 << LayerMask.NameToLayer("Action")) | (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Enemy")));
-                targetInSight = true;
-                for (int i = 0; i < hit.Length; i++)
+                QueueCheck();
+            }
+            else
+            {
+                float distance = Vector2.Distance(PLAYER.transform.position,
+                interactionCharacter.focus.gameObject.transform.position);
+                if (distance <= skillRange) // target in range
                 {
-                    if (hit[i].collider.gameObject.layer == LayerMask.NameToLayer("Borders"))
+                    RaycastHit2D[] hit = Physics2D.LinecastAll(PLAYER.transform.position,
+                        interactionCharacter.focus.gameObject.transform.position, (1 << LayerMask.NameToLayer("Borders")) |
+                        (1 << LayerMask.NameToLayer("Action")) | (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Enemy")));
+                    targetInSight = true;
+                    for (int i = 0; i < hit.Length; i++)
                     {
-                        targetInSight = false;
+                        if (hit[i].collider.gameObject.layer == LayerMask.NameToLayer("Borders"))
+                        {
+                            targetInSight = false;
+                        }
+                    }
+                    if (targetInSight) // target in sight
+                    {
+                        QueueCheck();
+                    }
+                    else // target not in sight
+                    {
+                        Debug.Log("Target in range but NOT in sight");
+                        FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
                     }
                 }
-                if (targetInSight) // target in sight
+                else // target not in range
                 {
-                    //Debug.Log("Target in range and in sight");
-                    QueueCheck();
+                    if (LayerMask.NameToLayer("Enemy") == interactionCharacter.focus.gameObject.layer && needsTargetAlly && canSelfCastIfNoTarget) // Spezialfall: Wenn eigentlich freundliches Target gebraucht wird, aber ein Gegner im Target ist, das jedoch nicht gemerkt wird, weil der Skill selfcastable ist, muss die Range nicht gecheckt werden.
+                    {
+                        currentTargets.Clear();
+                        currentTargets.Add(PLAYER);
+                        QueueCheck();
+                    }
+                    else
+                    {
+                        Debug.Log("Target not in range: Distance " + distance + " > " + skillRange);
+                        FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+                    }
                 }
-                else // target not in sight
-                {
-                    Debug.Log("Target in range but NOT in sight");
-                    FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-                }
-            }
-            else // target not in range
-            {
-                Debug.Log("Target not in range: Distance " + distance + " > " + skillRange);
-                FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
             }
         }
         else // for skills that don't need a target
@@ -414,7 +603,10 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         int critRandom = Random.Range(1, 100);
         float critChance = playerStats.critChance.GetValue();
         float critMultiplier = playerStats.critMultiplier.GetValue();
-        interactionCharacter.focus.gameObject.GetComponent<EnemyStats>().view.RPC("TakeDamage", RpcTarget.All, damage, missRandom, critRandom, critChance, critMultiplier);
+        for (int i = 0; i < currentTargets.Count; i++)
+        {
+            currentTargets[i].GetComponent<CharacterStats>().view.RPC("TakeDamage", RpcTarget.All, damage, missRandom, critRandom, critChance, critMultiplier);
+        }
     }
 
     public void DoHealing(float healing)
@@ -422,7 +614,11 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         int critRandom = Random.Range(1, 100);
         float critChance = playerStats.critChance.GetValue();
         float critMultiplier = playerStats.critMultiplier.GetValue();
-        playerStats.view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
+        //playerStats.view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
+        for (int i = 0; i < currentTargets.Count; i++)
+        {
+            currentTargets[i].GetComponent<CharacterStats>().view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
+        }
     }
 }
 

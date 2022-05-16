@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - EnemyIndicator
   - Keybind
+  - WeaponSkillCDText
+  - GlobalCooldownSkill
+  - Ally
   layers:
   - Default
   - TransparentFX

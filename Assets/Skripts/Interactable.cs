@@ -38,7 +38,7 @@ public class Interactable : MonoBehaviour
         player = playerTransform;
         hasInteracted = false;
 
-        if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (gameObject.layer == LayerMask.NameToLayer("Enemy") || gameObject.layer == LayerMask.NameToLayer("Ally"))
         {
             //Debug.Log("Focus enemy"); // 2x im Log
             gameObject.transform.Find("Charakter").transform.localScale = new Vector3(8f, 1.5f, 1f); // wide boii
@@ -54,7 +54,7 @@ public class Interactable : MonoBehaviour
         player = null;
         hasInteracted = false;
 
-        if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (gameObject.layer == LayerMask.NameToLayer("Enemy") || gameObject.layer == LayerMask.NameToLayer("Ally"))
         {
             //Debug.Log("Defocus enemy");
             gameObject.transform.Find("Charakter").transform.localScale = new Vector3(2.5f, 2.5f, 1f);
