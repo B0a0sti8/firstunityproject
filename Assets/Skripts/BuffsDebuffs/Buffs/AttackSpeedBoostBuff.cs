@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackSpeedBoostBuff : Buff
 {
-    public override void StartBuffEffect(PlayerStats playerStats)
+    public override void StartBuffEffect(CharacterStats playerStats)
     {
         buffName = "Haste";
         buffDescription = "haha attack go brrrr\nOi\nlongboii";
@@ -13,7 +13,7 @@ public class AttackSpeedBoostBuff : Buff
         isRemovable = false;
     }
 
-    public override void EndBuffEffect(PlayerStats playerStats)
+    public override void EndBuffEffect(CharacterStats playerStats)
     {
         base.EndBuffEffect(playerStats);
         playerStats.attackSpeed.AddModifierAdd(-value);

@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class HoTBuff : Buff
+public class TheWayOfTheChickenDamageDebuff : Buff
 {
-    //new public bool isOverTime = true;
-
     public override void StartBuffEffect(CharacterStats playerStats)
     {
-        buffName = "Cure";
-        buffDescription = "Gain <color=green>Healinge</color> over <color=yellow>Timere</color>. This is a verry long buff description. Oh yeaaah!";
+        buffName = "Chicken";
+        buffDescription = "Chicken";
         base.StartBuffEffect(playerStats);
+        isRemovable = false;
         tickTimeElapsed = 0;
     }
 
@@ -22,7 +21,7 @@ public class HoTBuff : Buff
 
     public override Buff Clone()
     {
-        HoTBuff clone = (HoTBuff)this.MemberwiseClone();
+        TheWayOfTheChickenDamageDebuff clone = (TheWayOfTheChickenDamageDebuff)this.MemberwiseClone();
         return clone;
     }
 
@@ -37,7 +36,7 @@ public class HoTBuff : Buff
             int critRandom = Random.Range(1, 100);
             float critChance = playerStats.critChance.GetValue();
             float critMultiplier = playerStats.critMultiplier.GetValue();
-            playerStats.view.RPC("GetHealing", RpcTarget.All, tickValue, critRandom, critChance, critMultiplier);
+            playerStats.view.RPC("TakeDamage", RpcTarget.All, tickValue, 101, critRandom, critChance, critMultiplier);
 
             //playerStats.currentHealth += tickValue;
             //bool isCrit = false;

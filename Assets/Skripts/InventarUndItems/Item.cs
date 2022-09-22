@@ -12,6 +12,8 @@ public class Item : ScriptableObject {       // Statt Monobehaviour (?bernimmt S
     public Sprite icon = null;               // Item Sprite 
     public bool isDefaultItem = false;       // Zus?tzlicher m?glicher Unterscheidungsparameter. z.B. keine Default Items ins Inventar oder ?hnliches.
 
+    private int stackSize;
+
     public virtual void Use ()               // Wird ?berschrieben, je nach Itemsorte.
     {
         // Item verwenden.

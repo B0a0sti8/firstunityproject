@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
                 currentDirectionTrue = currentDirection1;
             }
         }
-        rotationMeasurement.rotation = Quaternion.LookRotation(currentDirectionTrue);
+        rotationMeasurement.eulerAngles = new Vector3 (0, 0, GetAngleFromVectorFloat(currentDirectionTrue));
     }
 
     void Update()       // Ändert Animation je nach Bewegung
@@ -74,5 +74,14 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("SpeedAnim", movement.sqrMagnitude);
+    }
+
+    public float GetAngleFromVectorFloat(Vector3 dir)
+    {
+        dir = dir.normalized;
+        float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (n < 0) n += 360;
+
+        return n;
     }
 }

@@ -19,6 +19,7 @@ public class TestBurningHeart : SkillPrefab
         totalHeal = 200f;
         nMax = 50;
         n = 0;
+        isSelfCast = true;
     }
 
     public override void Update()
