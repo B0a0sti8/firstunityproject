@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class TestEnergyDrain : SkillPrefab
 {
@@ -27,6 +28,10 @@ public class TestEnergyDrain : SkillPrefab
         
         DealDamage(damage);
 
-        DoHealing(damage / 2);
+        int critRandom = Random.Range(1, 100);
+        float critChance = playerStats.critChance.GetValue();
+        float critMultiplier = playerStats.critMultiplier.GetValue();
+
+        PLAYER.GetComponent<CharacterStats>().view.RPC("GetHealing", RpcTarget.All, damage / 2, critRandom, critChance, critMultiplier);
     }
 }

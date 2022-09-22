@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpeedBoostBuff : Buff
 {
-    public override void StartBuffEffect(PlayerStats playerStats)
+    public override void StartBuffEffect(CharacterStats playerStats)
     {
         buffName = "I Am Speed";
         buffDescription = "brrrr";
@@ -12,7 +12,7 @@ public class SpeedBoostBuff : Buff
         playerStats.movementSpeed.AddModifierAdd(value);
     }
 
-    public override void EndBuffEffect(PlayerStats playerStats)
+    public override void EndBuffEffect(CharacterStats playerStats)
     {
         base.EndBuffEffect(playerStats);
         playerStats.movementSpeed.AddModifierAdd(-value);

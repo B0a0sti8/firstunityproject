@@ -45,6 +45,11 @@ public class Interactable : MonoBehaviour
 
             gameObject.transform.Find("Canvas UI").gameObject.SetActive(true);
             gameObject.GetComponent<EnemyStats>().enemyUIHealthActive = true;
+
+            if (transform.Find("Canvas UI").Find("CanvasBuffsAndDebuffs") != null)
+            {
+                transform.Find("Canvas UI").Find("CanvasBuffsAndDebuffs").GetComponent<BuffDebuffUINPC>().UpdateUI();
+            }
         }
     }
 

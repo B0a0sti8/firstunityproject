@@ -88,6 +88,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     public Vector3 coneAOEDirection;
     public float coneAOEAngle = 50;
     private Interactable circleAim;
+    public bool isPlacableAoE;
     
 
 
@@ -200,6 +201,9 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
             if (canSelfCastIfNoTarget && interactionCharacter.focus == null)
             { currentTargets.Add(PLAYER); }
+
+            if (isSelfCast)
+            { currentTargets.Add(PLAYER); }
         }
 
         if (isAOECircle) // Kreisförmiger Flächenzauber. Um Gegner, um freundliches Ziel oder um den Spieler selbst. Noch nicht implementiert: Bei Mausklick an entsprechende Stelle
@@ -260,15 +264,16 @@ public class SkillPrefab : MonoBehaviour//, IUseable
                     }
                 }
             }
-            else // Platzierbarer Flächenzauber. Kommt später
+            else if(isPlacableAoE) // Platzierbarer Flächenzauber. Kommt später
             {
-
+                QueueCheck();
             }
         }
 
         else if (isAOEFrontCone)
         {
             isAOELine = false; // Nur sicherheitshalber, falls jmd mehrere Sachen angekreuzt hat.
+            circleAim = PLAYER.GetComponent<Interactable>();
 
             if (targetsAlliesOnly)
             {
@@ -432,7 +437,6 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     {
         if (isSuperInstant)
         {
-            //Debug.Log("Wait for OwnCooldown ...  " + ownCooldownTimeLeft);
             StartCoroutine(Wait(ownCooldownTimeLeft));
             IEnumerator Wait(float time)
             {
@@ -441,7 +445,6 @@ public class SkillPrefab : MonoBehaviour//, IUseable
                 else { FindObjectOfType<AudioManager>().Play("HoverClick"); }
                 yield return new WaitForSeconds(time);
                 isSkillInOwnSuperInstantQueue = false;
-                //Debug.Log("... Use SuperInstant");
                 ownCooldownActive = true;
                 ownCooldownTimeLeft = ownCooldownTimeModified;
                 if (needsMana) { playerStats.currentMana -= manaCost; }
@@ -458,13 +461,17 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     {
         if ((!hasGlobalCooldown || (hasGlobalCooldown && !masterChecks.masterGCActive)) && !playerStats.isCurrentlyCasting) // no GC and casting trouble
         {
-            //Debug.Log("Wait for OwnCooldown / Animation ...  " + ownCooldownTimeLeft + " / " + masterChecks.masterAnimTimeLeft);
-            StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterAnimTimeLeft)));
+            if (isPlacableAoE)
+            { PlacableAoESkillProcedure(); }
+            else
+            { StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterAnimTimeLeft))); }
         }
         else if ((masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime) && (masterChecks.castTimeCurrent <= masterChecks.masterGCEarlyTime)) // GC early cast
         {
-            //Debug.Log("Wait for OwnCooldown / GlobalCooldown / Animation ...  " + ownCooldownTimeLeft + " / " + masterChecks.masterGCTimeLeft + " / " + masterChecks.masterAnimTimeLeft);
-            StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterGCTimeLeft, masterChecks.masterAnimTimeLeft, masterChecks.castTimeCurrent)));
+            if (isPlacableAoE)
+            { PlacableAoESkillProcedure(); }
+            else
+            { StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterGCTimeLeft, masterChecks.masterAnimTimeLeft, masterChecks.castTimeCurrent))); }
         }
         else // hasGlobalCooldown && globalCooldownActive // GC active (too early)
         {
@@ -512,7 +519,17 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         {
             playerStats.ManageManaRPC(-manaCost);
         }
+
         StartCasting();
+
+        if (isAOEFrontCone)
+        {
+            StartCoroutine(FrontAOEIndicator(0.2f));
+        }
+        //else if (isAOECircle)
+        //{
+        //StartCoroutine(CircleAOEIndicator(0.2f));
+        // }
     }
 
     public void StartCasting()
@@ -619,6 +636,50 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         {
             currentTargets[i].GetComponent<CharacterStats>().view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
         }
+    }
+
+    public IEnumerator FrontAOEIndicator(float time)
+    {
+        Vector2 normalSize = PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().size;
+        PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().color = Color.red;
+        var frontSpriteColor1 = PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().color;
+        frontSpriteColor1.a = 0.1f;
+        PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().color = frontSpriteColor1;
+        PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().size = new Vector2(skillRadius / (normalSize.x * 1.3f), skillRadius / (normalSize.y * 1.3f));
+
+        yield return new WaitForSeconds(time);
+
+        PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().color = Color.white;
+        var frontSpriteColor2 = PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().color;
+        frontSpriteColor2.a = 0.1f;
+        PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().color = frontSpriteColor2;
+        PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().size = normalSize;
+    }
+
+    public IEnumerator CircleAOEIndicator(float time)
+    {
+        Vector2 normalSize = PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().size;
+
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().enabled = true;
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().color = Color.red;
+        var frontSpriteColor1 = PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().color;
+        frontSpriteColor1.a = 0.1f;
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().color = frontSpriteColor1;
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().size = new Vector2(skillRadius / (normalSize.x * 1.3f), skillRadius / (normalSize.y * 1.3f));
+
+        yield return new WaitForSeconds(time);
+
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().color = Color.white;
+        var frontSpriteColor2 = PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().color;
+        frontSpriteColor2.a = 0.1f;
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().color = frontSpriteColor2;
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().size = normalSize;
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void PlacableAoESkillProcedure()
+    {
+
     }
 }
 
