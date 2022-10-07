@@ -29,7 +29,7 @@ public class EquipmentWindowSlot : MonoBehaviour
     public void AddItem(Item newItem)
     {
         item = newItem; // Neues Item wird in den Slot gepackt
-        icon.sprite = item.icon;    // Icon wird aktualisiert
+        icon.sprite = item.MyIcon;    // Icon wird aktualisiert
         icon.enabled = true;        // Icon wird angezeigt
         removeButton.interactable = true;   // Der Button zum Entfernen des Items wird nutzbar
     }

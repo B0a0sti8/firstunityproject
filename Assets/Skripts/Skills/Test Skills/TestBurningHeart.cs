@@ -30,8 +30,8 @@ public class TestBurningHeart : SkillPrefab
         if (masterChecks.isSkillInterrupted)
         { skillEffektActive = false; }
 
-        if (masterChecks.masterIsCastFinished)
-        { skillEffektActive = false; masterChecks.masterIsCastFinished = false; return; }
+        if (masterChecks.masterIsCastFinished && skillEffektActive)
+        { skillEffektActive = false; masterChecks.masterIsCastFinished = false;  return; }
 
         if (skillEffektActive)
         {
