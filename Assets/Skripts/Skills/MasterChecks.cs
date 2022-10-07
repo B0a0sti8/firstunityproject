@@ -81,6 +81,7 @@ public class MasterChecks : MonoBehaviour
                     castTimeCurrent = 0f;
                     castTimeMax = 0f;
                     masterIsCastFinished = true;
+                    Debug.Log("Gubl!" + masterIsCastFinished);
                     PLAYER.transform.Find("PlayerParticleSystems").Find("CastingParticles").gameObject.GetComponent<ParticleSystem>().Stop();
                 }
             }

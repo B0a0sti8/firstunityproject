@@ -5,14 +5,24 @@
 
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
-public class Item : ScriptableObject {       // Statt Monobehaviour (?bernimmt Sachen von Objekt dem das Skript zugewiesen ist): ScriptableObjekt
+public abstract class Item : ScriptableObject {       // Statt Monobehaviour (?bernimmt Sachen von Objekt dem das Skript zugewiesen ist): ScriptableObjekt
 
     new public string name = "New Item";     // Bisherige Definiton des Namens wird ?berschrieben
-    public Sprite icon = null;               // Item Sprite 
     public bool isDefaultItem = false;       // Zus?tzlicher m?glicher Unterscheidungsparameter. z.B. keine Default Items ins Inventar oder ?hnliches.
 
+    [SerializeField]
+    private Sprite icon = null;               // Item Sprite 
+
+    [SerializeField]
     private int stackSize;
+
+    private InventorySlotScript slot;
+
+    public InventorySlotScript MySlot { get => slot; set => slot = value; }
+    public Sprite MyIcon { get => icon;  }
+    public int StackSize { get => stackSize; }
+
+
 
     public virtual void Use ()               // Wird ?berschrieben, je nach Itemsorte.
     {
@@ -22,8 +32,16 @@ public class Item : ScriptableObject {       // Statt Monobehaviour (?bernimmt S
         Debug.Log("Using " + name);
     }
 
-    public void RemoveFromInventory()
+    public void Remove()
     {
-        Inventory.instance.Remove(this);
+        if (MySlot != null)
+        {
+            MySlot.RemoveItem(this);
+        }
+    }
+
+    public virtual void RemoveFromInventory()
+    {
+
     }
 }

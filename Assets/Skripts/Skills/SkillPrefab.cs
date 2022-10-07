@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
+using UnityEngine.InputSystem;
 
 public class SkillPrefab : MonoBehaviour//, IUseable
 {
+    private Camera mainCam;
+
     [HideInInspector]
     public PhotonView photonView;
     [HideInInspector]
@@ -89,7 +92,10 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     public float coneAOEAngle = 50;
     private Interactable circleAim;
     public bool isPlacableAoE;
-    
+    public GameObject unusedSpell;
+    public GameObject PlacableAOEIndicator;
+    bool hasUnusedSpell = false;
+    public float skillDuration;
 
 
 
@@ -329,15 +335,11 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         }
 
 
-
-
-        RangeCheck();
+        if(isPlacableAoE != true)
+        {
+            RangeCheck();
+        }
     }
-
-
-
-
-
 
     public void RangeCheck() // check for range and line of sight
     {
@@ -461,17 +463,17 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     {
         if ((!hasGlobalCooldown || (hasGlobalCooldown && !masterChecks.masterGCActive)) && !playerStats.isCurrentlyCasting) // no GC and casting trouble
         {
-            if (isPlacableAoE)
-            { PlacableAoESkillProcedure(); }
-            else
-            { StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterAnimTimeLeft))); }
+            //if (isPlacableAoE)
+            //{ PlacableAoESkillProcedure(); }
+            //else
+            StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterAnimTimeLeft)));
         }
         else if ((masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime) && (masterChecks.castTimeCurrent <= masterChecks.masterGCEarlyTime)) // GC early cast
         {
-            if (isPlacableAoE)
-            { PlacableAoESkillProcedure(); }
-            else
-            { StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterGCTimeLeft, masterChecks.masterAnimTimeLeft, masterChecks.castTimeCurrent))); }
+            //if (isPlacableAoE)
+            //{ PlacableAoESkillProcedure(); }
+            //else
+            StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterGCTimeLeft, masterChecks.masterAnimTimeLeft, masterChecks.castTimeCurrent)));
         }
         else // hasGlobalCooldown && globalCooldownActive // GC active (too early)
         {
@@ -492,7 +494,14 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         yield return new WaitForSeconds(time);
         masterChecks.masterIsSkillInQueue = false;
         //Debug.Log("... Use Skill");
-        TriggerSkill();
+        if (isPlacableAoE)
+        {
+            PlacableAoESkillProcedure();
+        }
+        else
+        {
+            TriggerSkill();
+        }
     }
 
     public void TriggerSkill()
@@ -520,16 +529,12 @@ public class SkillPrefab : MonoBehaviour//, IUseable
             playerStats.ManageManaRPC(-manaCost);
         }
 
-        StartCasting();
-
         if (isAOEFrontCone)
         {
             StartCoroutine(FrontAOEIndicator(0.2f));
         }
-        //else if (isAOECircle)
-        //{
-        //StartCoroutine(CircleAOEIndicator(0.2f));
-        // }
+
+        StartCasting();
     }
 
     public void StartCasting()
@@ -537,6 +542,14 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         if (castTimeOriginal <= 0)
         {
             SkillEffect();
+            if (isPlacableAoE)
+            {
+                unusedSpell.GetComponent<AoESpellIndicator>().duration = skillDuration;
+                unusedSpell.GetComponent<AoESpellIndicator>().isIndicatorActive = true;
+                unusedSpell = null;
+                hasUnusedSpell = false;
+                Debug.Log("Zahle Mana");
+            }
         }
         else
         {
@@ -553,6 +566,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
             masterChecks.castTimeCurrent = castTimeModified;
             masterChecks.castTimeMax = castTimeModified;
             castStarted = true;
+            Debug.Log("Skloss");
             playerStats.isCurrentlyCasting = true;
 
             if (isSkillChanneling)
@@ -569,6 +583,25 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
     public virtual void Update()
     {
+        if (masterChecks.masterIsCastFinished && castStarted)
+        {
+            if (isPlacableAoE)
+            {
+                unusedSpell.GetComponent<AoESpellIndicator>().duration = skillDuration;
+                unusedSpell.GetComponent<AoESpellIndicator>().isIndicatorActive = true;
+                unusedSpell = null;
+                hasUnusedSpell = false;
+                Debug.Log("Zahle Mana");
+            }
+            SkillEffect();
+            castStarted = false;
+            if (!isSkillChanneling)
+            {
+                masterChecks.masterIsCastFinished = false;
+            }
+        }
+        
+
         if (ownCooldownTimeLeft > 0)
         {
             ownCooldownTimeLeft -= Time.deltaTime;
@@ -585,14 +618,20 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         float attackSpeedModifier = 1 - (playerStats.attackSpeed.GetValue() / 100);
         ownCooldownTimeModified = ownCooldownTimeBase * attackSpeedModifier;
 
-
-        if (masterChecks.masterIsCastFinished && castStarted)
+        if (unusedSpell != null || hasUnusedSpell == true)
         {
-            SkillEffect();
-            castStarted = false;
-            if (!isSkillChanneling)
+            Vector3 mouseScreenposition = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            unusedSpell.transform.position = new Vector3(mouseScreenposition.x, mouseScreenposition.y, 0);
+
+            if (Mouse.current.rightButton.wasPressedThisFrame)
             {
-                masterChecks.masterIsCastFinished = false;
+                Destroy(unusedSpell);
+                unusedSpell = null;
+                hasUnusedSpell = false;
+            }
+            else if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                TriggerSkill();
             }
         }
     }
@@ -608,6 +647,8 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
 
         playerStats = PLAYER.GetComponent<PlayerStats>();
+        
+        mainCam = GameObject.Find("CameraMama").transform.Find("Main Camera").GetComponent<Camera>();
     }
 
     public virtual void Start()
@@ -679,7 +720,16 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
     public void PlacableAoESkillProcedure()
     {
-
+        if (!hasUnusedSpell)
+        {
+            unusedSpell = Instantiate(PlacableAOEIndicator, mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
+            hasUnusedSpell = true;
+            Debug.Log("Labl Labl");
+        }
+        else // Wenn Unused Spell
+        {
+            Debug.Log("Gubl Gubl");
+        }
     }
 }
 
