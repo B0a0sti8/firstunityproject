@@ -38,18 +38,33 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     void Update()
     {
-        if (skillName == "")
+        if (skillName != "")
+        {
+            FindMatchingSkill();
+            UpdateButton();
+            MasterETStuffAssignment(buttonSkill);
+        }
+        else
         {
             buttonSkill = null;
             buttonImage.sprite = Resources.Load<Sprite>("SkillSprites/EmptySlot");
             buttonText.text = "";
             buttonImage.color = new Color32(255, 255, 255, 255);
-            return;
         }
-        //if (className == "") return;
-        FindMatchingSkill();
-        UpdateButton();
-        MasterETStuffAssignment(buttonSkill);
+
+
+
+        //if (skillName == "")
+        //{
+        //    buttonSkill = null;
+        //    buttonImage.sprite = Resources.Load<Sprite>("SkillSprites/EmptySlot");
+        //    buttonText.text = "";
+        //    buttonImage.color = new Color32(255, 255, 255, 255);
+        //    return;
+        //}
+        //FindMatchingSkill();
+        //UpdateButton();
+        //MasterETStuffAssignment(buttonSkill);
     }
 
     void FindMatchingSkill()

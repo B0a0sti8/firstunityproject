@@ -67,7 +67,7 @@ MonoBehaviour:
   m_ChildAlignment: 8
   m_StartCorner: 3
   m_StartAxis: 0
-  m_CellSize: {x: 95, y: 100}
+  m_CellSize: {x: 170, y: 200}
   m_Spacing: {x: 3, y: -37}
   m_Constraint: 1
   m_ConstraintCount: 2
@@ -93,6 +93,7 @@ MonoBehaviour:
   items:
   - {fileID: 11400000, guid: c1ca4112655138f4d8f686135a5d1d63, type: 2}
   - {fileID: 11400000, guid: c1ca4112655138f4d8f686135a5d1d63, type: 2}
+  - {fileID: 11400000, guid: 35dcf8b81d9873b4f843e8ecb9417fa8, type: 2}
 --- !u!114 &8028374084806499673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: 0}
+  m_Actions: {fileID: -944628639613478452, guid: 14500a08cbd194340b2d7b1e09dcd9e1, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -120,6 +121,6 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

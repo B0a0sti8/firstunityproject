@@ -639,6 +639,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view: {fileID: 2023599406339572334}
+  isAlive: 0
+  isCurrentlyCasting: 0
   maxHealth:
     baseValue: 300
     modifiedValue: 0
@@ -667,8 +669,6 @@ MonoBehaviour:
   evade:
     baseValue: 10
     modifiedValue: 0
-  isAlive: 0
-  isCurrentlyCasting: 0
   modAttackSpeed: 0
   baseAttackSpeed: 2
   groupNumber: 0
