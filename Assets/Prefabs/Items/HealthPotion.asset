@@ -16,3 +16,4 @@ MonoBehaviour:
   isDefaultItem: 0
   icon: {fileID: -728488644960612398, guid: d7c178d83035c854cac5a8d3961567b2, type: 3}
   stackSize: 5
+  healing: 15

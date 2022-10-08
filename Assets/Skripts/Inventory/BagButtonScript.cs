@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class BagButtonScript : MonoBehaviour, IPointerClickHandler
 {
@@ -33,21 +34,45 @@ public class BagButtonScript : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (bag != null)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
-            bag.MyBagScript.OpenClose();
+            if (InventoryScript.MyInstance.FromSlot != null && HandScript.MyInstance.MyMoveable != null && HandScript.MyInstance.MyMoveable is Bag)
+            {
+                if (MyBag != null)
+                {
+                    InventoryScript.MyInstance.SwapBags(MyBag, HandScript.MyInstance.MyMoveable as Bag);
+                }
+                else
+                {
+                    Bag tmp = (Bag)HandScript.MyInstance.MyMoveable;
+                    tmp.MyBagButton = this;
+                    tmp.Use();
+                    MyBag = tmp;
+                    HandScript.MyInstance.Drop();
+                    InventoryScript.MyInstance.FromSlot = null;
+                }
+            }
+            else if (Keyboard.current.shiftKey.isPressed)
+            {
+                HandScript.MyInstance.TakeMoveable(MyBag);
+            }
+            else if (bag != null)
+            {
+                bag.MyBagScript.OpenClose();
+            }
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void RemoveBag()
     {
-        
-    }
+        InventoryScript.MyInstance.RemoveBag(MyBag);
+        MyBag.MyBagButton = null;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        foreach (Item item in MyBag.MyBagScript.GetItems())
+        {
+            InventoryScript.MyInstance.AddItem(item);
+        }
+
+        MyBag = null;
     }
 }

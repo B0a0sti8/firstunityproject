@@ -6766,7 +6766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTransform: {fileID: 1458119420}
   radius: 3
-  item: {fileID: 11400000, guid: 3b9fb8a71238c4526ab4200b188240c4, type: 2}
+  item: {fileID: 0}
 --- !u!212 &1458119419
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7241,7 +7241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTransform: {fileID: 1695976297}
   radius: 3
-  item: {fileID: 11400000, guid: 392929d5be11b460ab4a1ad88cfc1389, type: 2}
+  item: {fileID: 0}
 --- !u!212 &1695976296
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30517,6 +30517,10 @@ PrefabInstance:
     - target: {fileID: 2985879261512430852, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
       propertyPath: m_Name
       value: LevelLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985879261512430852, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2985879261512430853, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
       propertyPath: m_RootOrder

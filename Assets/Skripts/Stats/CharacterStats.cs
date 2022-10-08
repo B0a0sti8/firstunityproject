@@ -7,6 +7,12 @@ public class CharacterStats : MonoBehaviourPunCallbacks
 {
     public PhotonView view;
 
+    public bool isAlive;
+    public bool isCurrentlyCasting = false;
+
+
+    #region Stats
+    // Stats
     public Stat maxHealth; // 0 - Inf
     public float currentHealth;
 
@@ -21,9 +27,8 @@ public class CharacterStats : MonoBehaviourPunCallbacks
     public Stat critMultiplier; // 100(%) - Inf(%) /// 130 -> Angriff macht 130% Schaden
 
     public Stat evade;
+    #endregion
 
-    public bool isAlive;
-    public bool isCurrentlyCasting = false;
 
 
     public virtual void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)

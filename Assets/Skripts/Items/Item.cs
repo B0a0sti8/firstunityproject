@@ -5,26 +5,34 @@
 
 using UnityEngine;
 
-public abstract class Item : ScriptableObject {       // Statt Monobehaviour (?bernimmt Sachen von Objekt dem das Skript zugewiesen ist): ScriptableObjekt
+public enum ItemQuality { Common, Uncommon, Rare, Epic, Mythic }
 
+public abstract class Item : ScriptableObject, IMoveable // Statt Monobehaviour (?bernimmt Sachen von Objekt dem das Skript zugewiesen ist): ScriptableObjekt
+{
+    [SerializeField] public ItemQuality itemQuality;
+
+    [HideInInspector] public string tooltipItemName = "";
+    [HideInInspector] public string tooltipItemDescription = "";
+    public Sprite tooltipItemSprite = null;
+
+
+    
     new public string name = "New Item";     // Bisherige Definiton des Namens wird ?berschrieben
     public bool isDefaultItem = false;       // Zus?tzlicher m?glicher Unterscheidungsparameter. z.B. keine Default Items ins Inventar oder ?hnliches.
 
-    [SerializeField]
-    private Sprite icon = null;               // Item Sprite 
+    [SerializeField] private Sprite icon = null;               // Item Sprite 
 
-    [SerializeField]
-    private int stackSize;
+    [SerializeField] private int stackSize;
 
     private InventorySlotScript slot;
 
     public InventorySlotScript MySlot { get => slot; set => slot = value; }
     public Sprite MyIcon { get => icon;  }
-    public int StackSize { get => stackSize; }
+    public int MyStackSize { get => stackSize; }
 
 
 
-    public virtual void Use ()               // Wird ?berschrieben, je nach Itemsorte.
+    public virtual void Use()               // Wird ?berschrieben, je nach Itemsorte.
     {
         // Item verwenden.
         // Es k?nnte etwas passieren (je nach Item)
@@ -40,7 +48,17 @@ public abstract class Item : ScriptableObject {       // Statt Monobehaviour (?b
         }
     }
 
-    public virtual void RemoveFromInventory()
+    public virtual void Update()
+    {
+
+    }
+
+    public virtual void Awake()
+    {
+
+    }
+
+    public virtual void Start()
     {
 
     }

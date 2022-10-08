@@ -10,7 +10,7 @@ public class Input_Overlay : MonoBehaviour
     GameObject ownCanvases;
 
     InventoryScript inventoryScript;
-    EquipmentWindowUI equipmentWindowUI;
+    //EquipmentWindowUI equipmentWindowUI;
     PauseMenu pauseMenu;
     DamageMeter damageMeter;
     SkillbookMaster skillbook;
@@ -25,7 +25,7 @@ public class Input_Overlay : MonoBehaviour
         ownCanvases = PLAYER.transform.Find("Own Canvases").gameObject;
 
         inventoryScript = ownCanvases.transform.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
-        equipmentWindowUI = ownCanvases.transform.Find("Canvas Equipment").gameObject.GetComponent<EquipmentWindowUI>();
+        //equipmentWindowUI = ownCanvases.transform.Find("Canvas Equipment").gameObject.GetComponent<EquipmentWindowUI>();
         pauseMenu = ownCanvases.transform.Find("Canvas Pause Menu").gameObject.GetComponent<PauseMenu>();
         damageMeter = ownCanvases.transform.Find("Canvas Damage Meter").gameObject.GetComponent<DamageMeter>();
         skillbook = ownCanvases.transform.Find("Canvas Skillbook").gameObject.GetComponent<SkillbookMaster>();
@@ -39,8 +39,8 @@ public class Input_Overlay : MonoBehaviour
     void OnInventory() // I
     { inventoryScript.OpenClose(); }
 
-    void OnEquipmentWindow() // C
-    { equipmentWindowUI.OpenEquipmentWindow(); }
+    //void OnEquipmentWindow() // C
+    //{ equipmentWindowUI.OpenEquipmentWindow(); }
 
     void OnPauseMenu() // Esc
     { pauseMenu.OpenPauseMenu(); masterChecks.isSkillInterrupted = true; }

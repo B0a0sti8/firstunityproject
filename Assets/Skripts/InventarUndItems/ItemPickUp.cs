@@ -12,19 +12,19 @@ public class ItemPickUp : Interactable {
     {
         base.Interact();
 
-        PickUp(); // Zusätzlich zu den bisherigen Funktionen wird PickUp angewendet
+       // PickUp(); // Zusätzlich zu den bisherigen Funktionen wird PickUp angewendet
     }
 
-    void PickUp()   // Versucht Item aufzuheben
-    {
-        Debug.Log("Picking Up " + item.name);
-        bool wasPickedUp = Inventory.instance.Add(item);        // Checkt ob erfolgreich (aka habe ich genug Platz im Inventar)
+    //void PickUp()   // Versucht Item aufzuheben
+    //{
+    //    Debug.Log("Picking Up " + item.name);
+    //    bool wasPickedUp = Inventory.instance.Add(item);        // Checkt ob erfolgreich (aka habe ich genug Platz im Inventar)
 
-        if (wasPickedUp)
-        {
-            Destroy(gameObject);        // Zerstört Item am Boden
-        }
+    //    if (wasPickedUp)
+    //    {
+    //        Destroy(gameObject);        // Zerstört Item am Boden
+    //    }
         
-    }
+    //}
 
 }

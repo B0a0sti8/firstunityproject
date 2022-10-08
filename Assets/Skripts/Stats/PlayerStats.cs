@@ -15,16 +15,33 @@ using TMPro;
 
 public class PlayerStats : CharacterStats, IPunObservable
 {
-	//public PhotonView view;
 	[Header("Class")]
 	public string className;
 
-	[Header("Mana")]
+    #region Stats
+    [Header("Mana")]
 	public float maxMana = 1000;
 	public float currentMana;
-	//[HideInInspector]
+
+	// Aus Characterstats geerbt:
+	//public Stat maxHealth; // 0 - Inf
+	//public float currentHealth;
+
+	//public Stat mastery; // 0 - Inf
+	//public Stat armor; // 0 - 100 bzw. -Inf - 100 /// 30 -> Erlittener Schaden um 30% verringert
+
+	//public Stat movementSpeed; // 0 - Inf bzw. 1 - Inf
+	//public Stat attackSpeed; // 0 - 90 bzw. -Inf - 100 /// 30 -> (Global)Cooldown ist 30% kürzer (10s -> 7s)
+	//public Stat castSpeed; // 0 - 90 bzw. -Inf - 100 /// 30 -> (Global)Cooldown ist 30% kürzer (10s -> 7s)
+
+	//public Stat critChance; // 0(%) - 100(%) /// 30 -> 30% Wahrscheinlichkeit auf Crit
+	//public Stat critMultiplier; // 100(%) - Inf(%) /// 130 -> Angriff macht 130% Schaden
+
+	//public Stat evade;
+	#endregion
+
+
 	ManaBar manaBar;
-	//[HideInInspector]
 	ManaBar manaBarUI;
 
 	TextMeshProUGUI healthText;
@@ -88,7 +105,7 @@ public class PlayerStats : CharacterStats, IPunObservable
 		
 		isAlive = true;
 
-		EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
+		// VERALTET: EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
 	}
 
 	void SyncModifiedPlayerStats()
@@ -214,32 +231,36 @@ public class PlayerStats : CharacterStats, IPunObservable
         }
     }
 
-    void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
-	{
-		if (newItem != null)
-		{
-			maxHealth.AddModifierAdd(newItem.healthModifierAdd);
-			armor.AddModifierAdd(newItem.armorModifierAdd);
-			mastery.AddModifierAdd(newItem.damageModifierAdd);
-			evade.AddModifierAdd(newItem.evadeModifierAdd);
 
-			maxHealth.AddModifierMultiply(newItem.healthModifierMultiply);
-			armor.AddModifierMultiply(newItem.armorModifierMultiply);
-			mastery.AddModifierMultiply(newItem.damageModifierMultiply);
-			evade.AddModifierMultiply(newItem.evadeModifierMultiply);
-		}
 
-		if (oldItem != null)
-		{
-			maxHealth.RemoveModifierAdd(oldItem.healthModifierAdd);
-			armor.RemoveModifierAdd(oldItem.armorModifierAdd);
-			mastery.RemoveModifierAdd(oldItem.armorModifierAdd);
-			evade.RemoveModifierAdd(oldItem.evadeModifierAdd);
+	// VERALTET!!!!
 
-			maxHealth.RemoveModifierMultiply(oldItem.healthModifierMultiply);
-			armor.RemoveModifierMultiply(oldItem.armorModifierMultiply);
-			mastery.RemoveModifierMultiply(oldItem.armorModifierMultiply);
-			evade.RemoveModifierMultiply(oldItem.evadeModifierMultiply);
-		}
-	}
+ //   void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
+	//{
+	//	if (newItem != null)
+	//	{
+	//		maxHealth.AddModifierAdd(newItem.healthModifierAdd);
+	//		armor.AddModifierAdd(newItem.armorModifierAdd);
+	//		mastery.AddModifierAdd(newItem.damageModifierAdd);
+	//		evade.AddModifierAdd(newItem.evadeModifierAdd);
+
+	//		maxHealth.AddModifierMultiply(newItem.healthModifierMultiply);
+	//		armor.AddModifierMultiply(newItem.armorModifierMultiply);
+	//		mastery.AddModifierMultiply(newItem.damageModifierMultiply);
+	//		evade.AddModifierMultiply(newItem.evadeModifierMultiply);
+	//	}
+
+	//	if (oldItem != null)
+	//	{
+	//		maxHealth.RemoveModifierAdd(oldItem.healthModifierAdd);
+	//		armor.RemoveModifierAdd(oldItem.armorModifierAdd);
+	//		mastery.RemoveModifierAdd(oldItem.armorModifierAdd);
+	//		evade.RemoveModifierAdd(oldItem.evadeModifierAdd);
+
+	//		maxHealth.RemoveModifierMultiply(oldItem.healthModifierMultiply);
+	//		armor.RemoveModifierMultiply(oldItem.armorModifierMultiply);
+	//		mastery.RemoveModifierMultiply(oldItem.armorModifierMultiply);
+	//		evade.RemoveModifierMultiply(oldItem.evadeModifierMultiply);
+	//	}
+	//}
 }

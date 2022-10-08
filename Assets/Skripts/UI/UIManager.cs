@@ -23,10 +23,22 @@ public class UIManager : MonoBehaviour
 
     public void UpdateStackSize(IClickable clickable)
     {
-        Debug.Log(clickable.MyCount);
+        if (clickable.MyCount > 1)
+        {
+            clickable.MyStackText.text = clickable.MyCount.ToString();
+            clickable.MyStackText.color = Color.black;
+            clickable.MyIcon.color = Color.white;
+        }
+        else
+        {
+            clickable.MyStackText.color = new Color(0, 0, 0, 0);
+            clickable.MyIcon.color = Color.white;
+        }
+
         if (clickable.MyCount == 0)
         {
             clickable.MyIcon.color = new Color(0, 0, 0, 0);
+            clickable.MyStackText.color = new Color(0, 0, 0, 0);
         }
     }
 }

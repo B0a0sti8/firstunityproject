@@ -11,6 +11,9 @@ public class Bag : Item
     private GameObject bagPrefab;
 
     public InventoryBagScript MyBagScript { get; set; }
+
+    public BagButtonScript MyBagButton { get; set; }
+
     public int Slots { get => slots; set => slots = value; }
 
 
@@ -25,7 +28,16 @@ public class Bag : Item
         {
             MyBagScript = Instantiate(bagPrefab, InventoryScript.MyInstance.transform).GetComponent<InventoryBagScript>();
             MyBagScript.AddSlots(slots);
-            InventoryScript.MyInstance.AddBag(this);
+
+            if (MyBagButton == null)
+            {
+                InventoryScript.MyInstance.AddBag(this);
+            }
+            else
+            {
+                InventoryScript.MyInstance.AddBag(this, MyBagButton);
+            }
+
             Remove();
         }
     }
