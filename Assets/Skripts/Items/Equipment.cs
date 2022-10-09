@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum EquipmentType { Helmet, Chest, Gloves, Boots, Legs, Shoulders, Cape, Mainhand, OffHand, TwoHand }
+enum EquipmentType { Helmet, Chest, Gloves, Boots, Legs, Shoulders, Cape, Mainhand, OffHand, TwoHand, Artefact }
 enum EquipmentClass { Light, Medium, Heavy }
 
 
