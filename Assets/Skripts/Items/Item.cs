@@ -45,6 +45,7 @@ public abstract class Item : ScriptableObject, IMoveable // Statt Monobehaviour 
         if (MySlot != null)
         {
             MySlot.RemoveItem(this);
+            MySlot.onRemoved = true;
         }
     }
 

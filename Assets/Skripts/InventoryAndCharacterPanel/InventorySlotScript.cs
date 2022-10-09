@@ -11,6 +11,8 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
     [SerializeField]
     private Image icon;
 
+    public bool onRemoved = false;
+
     [SerializeField]
     private Text stackSize;
 
@@ -192,6 +194,10 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
         {
             MyItem.Use();
         }
+        else if (MyItem is Equipment)
+        {
+            (MyItem as Equipment).Equip();
+        }
     }
 
     public bool StackItem(Item item)
@@ -274,7 +280,7 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
         UIManager.MyInstance.UpdateStackSize(this);
     }
 
-    void MasterETStuffAssignment()
+    public void MasterETStuffAssignment()
     {
         masterETItems.itemName = MyItem.tooltipItemName;
 
@@ -287,6 +293,13 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
     {
          if (IsEmpty)
          {
+            if (onRemoved)
+            {
+                onRemoved = false;
+                masterETItems.itemName = "";
+                masterETItems.itemDescription = "";
+            }
+
              return;
          }
 

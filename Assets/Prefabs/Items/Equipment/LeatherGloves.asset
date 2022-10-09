@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 236f8b7acb97ae149adb36600e4bab6f, type: 3}
+  m_Name: LeatherGloves
+  m_EditorClassIdentifier: 
+  itemQuality: 0
+  tooltipItemName: <color=#ECEBEB8A>New Item</color>
+  tooltipItemDescription: 
+  tooltipItemSprite: {fileID: -7060413308567658802, guid: 3ef5a0a69104daf4e84e0c292cf1e39f, type: 3}
+  name: Leather Gloves
+  isDefaultItem: 0
+  icon: {fileID: -7060413308567658802, guid: 3ef5a0a69104daf4e84e0c292cf1e39f, type: 3}
+  stackSize: 0
+  equpipType: 4
+  equipClass: 0
+  armor: 5
+  mastery: 2
+  toughness: 2
+  confidence: 2

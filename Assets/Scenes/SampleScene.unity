@@ -5401,6 +5401,20 @@ MonoBehaviour:
     dropChance: 100
   - item: {fileID: 11400000, guid: 641fe2ad975ec7b438937e58ef527b5d, type: 2}
     dropChance: 100
+  - item: {fileID: 11400000, guid: 18e238dcdaa0dff4ba64e8d9436c1c42, type: 2}
+    dropChance: 100
+  - item: {fileID: 11400000, guid: 4164ad6e32d6e39439f0690f30bdd069, type: 2}
+    dropChance: 100
+  - item: {fileID: 11400000, guid: 7a9a7824f4f40db43933b85dbb77ca21, type: 2}
+    dropChance: 100
+  - item: {fileID: 11400000, guid: 894f0ac4a64357540b6dfcfffc0253a1, type: 2}
+    dropChance: 100
+  - item: {fileID: 11400000, guid: 26c3002585a45ac409f89cf64bd9113f, type: 2}
+    dropChance: 100
+  - item: {fileID: 11400000, guid: bd52c7e4151bbf1489104da42319b8d5, type: 2}
+    dropChance: 100
+  - item: {fileID: 11400000, guid: b7a22cdca8750d04aafcf875277dcc15, type: 2}
+    dropChance: 100
 --- !u!1 &640675367
 GameObject:
   m_ObjectHideFlags: 0

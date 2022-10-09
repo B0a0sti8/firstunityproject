@@ -40,7 +40,11 @@ public class HandScript : MonoBehaviour
 
     private void Update()
     {
-        DeleteItem();
+        if (Mouse.current.leftButton.wasPressedThisFrame && !EventSystem.current.IsPointerOverGameObject() && MyInstance.MyMoveable != null)
+        {
+            DeleteItem();
+        }
+       
 
         if (handSkillName == "" && hasItem == false)
         {
@@ -82,21 +86,19 @@ public class HandScript : MonoBehaviour
         MyMoveable = null;
         handImage.color = new Color(0, 0, 0, 0);
         hasItem = false;
+        InventoryScript.MyInstance.FromSlot = null;
     }
 
-    private void DeleteItem()
+    public void DeleteItem()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame && !EventSystem.current.IsPointerOverGameObject() && MyInstance.MyMoveable != null)
+        if (MyMoveable is Item && InventoryScript.MyInstance.FromSlot != null)
         {
-            if (MyMoveable is Item && InventoryScript.MyInstance.FromSlot != null)
-            {
-                (MyMoveable as Item).MySlot.Clear();
-            }
-
-            Drop();
-
-            InventoryScript.MyInstance.FromSlot = null;
+            (MyMoveable as Item).MySlot.Clear();
         }
+
+        Drop();
+
+        InventoryScript.MyInstance.FromSlot = null;
     }
 }
 

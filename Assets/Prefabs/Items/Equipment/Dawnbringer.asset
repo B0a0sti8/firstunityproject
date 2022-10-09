@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 236f8b7acb97ae149adb36600e4bab6f, type: 3}
+  m_Name: Dawnbringer
+  m_EditorClassIdentifier: 
+  itemQuality: 4
+  tooltipItemName: <color=#ECEBEB8A>Dawnbringer</color>
+  tooltipItemDescription: "\n +40 mastery\n +100 confidence"
+  tooltipItemSprite: {fileID: -7691481307581725996, guid: 0780a4a136062bf41afa1ba6d79896a4, type: 3}
+  name: Dawnbringer
+  isDefaultItem: 0
+  icon: {fileID: -7691481307581725996, guid: 0780a4a136062bf41afa1ba6d79896a4, type: 3}
+  stackSize: 0
+  equpipType: 10
+  equipClass: 2
+  armor: 0
+  mastery: 40
+  toughness: 0
+  confidence: 100

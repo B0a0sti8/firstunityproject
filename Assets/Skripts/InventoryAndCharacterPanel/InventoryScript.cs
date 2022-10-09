@@ -238,5 +238,8 @@ public class InventoryScript : MonoBehaviour
 
         Equipment helmet = (Equipment)Instantiate(items[3]);
         AddItem(helmet);
+
+        Equipment helmet1 = (Equipment)Instantiate(items[4]);
+        AddItem(helmet1);
     }
 }
