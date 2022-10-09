@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: HochHackigeStiefel
   m_EditorClassIdentifier: 
   itemQuality: 1
-  tooltipItemName: <color=#ECEBEB8A>New Item</color>
-  tooltipItemDescription: 
+  tooltipItemName: <color=#05CB198A>Hochhackige Stiefel</color>
+  tooltipItemDescription: "\n +2 armor\n +30 confidence"
   tooltipItemSprite: {fileID: 4976816623245800991, guid: b6d7fae7ca59466419b6aa10cb4b8027, type: 3}
   name: Hochhackige Stiefel
   isDefaultItem: 0
   icon: {fileID: 4976816623245800991, guid: b6d7fae7ca59466419b6aa10cb4b8027, type: 3}
   stackSize: 0
-  equpipType: 3
+  equpipType: 6
   equipClass: 0
   armor: 2
   mastery: 0

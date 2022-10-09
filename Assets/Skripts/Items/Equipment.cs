@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum EquipmentType { Helmet, Chest, Gloves, Boots, Legs, Shoulders, Cape, Mainhand, OffHand, TwoHand, Artefact }
+enum EquipmentType { Helmet, Shoulders, Chest, Cape, Gloves, Legs, Boots, Artefact, Mainhand, OffHand, TwoHand }
 enum EquipmentClass { Light, Medium, Heavy }
 
 
@@ -39,6 +39,8 @@ public class Equipment : Item
         }
     }
 
+    internal EquipmentType MyEquipmentType { get => equpipType; }
+
     public override void Awake()
     {
         base.Awake();
@@ -46,21 +48,26 @@ public class Equipment : Item
         tooltipItemDescription = GetItemDescription();
     }
 
+    public override void Use()
+    {
+        base.Use();
+        Equip();
+    }
 
     public string GetItemDescription()
     {
         string tooltipStats = "";
 
-        if (armor > 0)
+        if (armor != 0)
         { tooltipStats += string.Format("\n +{0} armor", armor); }
 
-        if (mastery > 0)
+        if (mastery != 0)
         { tooltipStats += string.Format("\n +{0} mastery", mastery); }
 
-        if (toughness > 0)
+        if (toughness != 0)
         { tooltipStats += string.Format("\n +{0} toughness", toughness); }
 
-        if (confidence > 0)
+        if (confidence != 0)
         { tooltipStats += string.Format("\n +{0} confidence", confidence); }
 
 
@@ -77,5 +84,10 @@ public class Equipment : Item
         string tmpName = string.Format("<color={0}>{1}</color>", MyNameColors[itemQuality], name);
 
         return tmpName;
+    }
+
+    public void Equip()
+    {
+        CharacterPanelScript.MyInstance.EquipStuff(this);
     }
 }
