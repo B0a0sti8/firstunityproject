@@ -41,4 +41,11 @@ public class Bag : Item
             Remove();
         }
     }
+    public override void Awake()
+    {
+        base.Awake();
+        tooltipItemName = "Bag";
+        tooltipItemDescription = "X Item Slots";
+    }
+
 }

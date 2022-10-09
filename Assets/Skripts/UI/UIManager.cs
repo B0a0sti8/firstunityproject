@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    #region Singleton
     private static UIManager instance;
 
     public static UIManager MyInstance
@@ -18,7 +19,7 @@ public class UIManager : MonoBehaviour
             return instance;
         }
     }
-
+    #endregion
 
 
     public void UpdateStackSize(IClickable clickable)

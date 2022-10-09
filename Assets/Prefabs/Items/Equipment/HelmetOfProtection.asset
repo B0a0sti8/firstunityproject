@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236f8b7acb97ae149adb36600e4bab6f, type: 3}
   m_Name: HelmetOfProtection
   m_EditorClassIdentifier: 
-  itemQuality: 4
-  tooltipItemName: <color=#ECEBEB8A>Helmet of Protection</color>
+  itemQuality: 1
+  tooltipItemName: <color=#B512A78A>Helmet of Protection</color>
   tooltipItemDescription: "\n +10 armor\n +5 mastery\n +5 toughness"
   tooltipItemSprite: {fileID: -4877859533067797774, guid: 9fb0e3acca020de4bb9a451cc51edee1, type: 3}
   name: Helmet of Protection
