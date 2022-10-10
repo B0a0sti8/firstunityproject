@@ -38,7 +38,7 @@ public class MasterChecks : MonoBehaviour
 
     void Update()
     {
-        float attackSpeedModifier = 1 - (playerStats.attackSpeed.GetValue() / 100);
+        float attackSpeedModifier = 1 - (playerStats.actionSpeed.GetValue() / 100);
         masterGCTimeModified = masterGCTimeBase * attackSpeedModifier;
 
         if (masterAnimTimeLeft > 0)

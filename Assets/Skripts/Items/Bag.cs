@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Bag", menuName = "Items/Bag", order = 1)]
 public class Bag : Item
 {
-    private int slots;
+    [SerializeField] private int slots;
 
     [SerializeField]
     private GameObject bagPrefab;

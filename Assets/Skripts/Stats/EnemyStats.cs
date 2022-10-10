@@ -18,6 +18,7 @@ public class EnemyStats : CharacterStats, IPunObservable
     //public float movementSpeed;
     public float modAttackSpeed;
     public float baseAttackSpeed = 2f;
+    public Stat mastery; // 0 - Inf
 
     public int groupNumber;
 
@@ -68,16 +69,14 @@ public class EnemyStats : CharacterStats, IPunObservable
         }
     }
 
-    [PunRPC]
-    public override void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
+    [PunRPC] public override void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
     {
         Debug.Log("Enemy takes damage " + damage);
         base.TakeDamage(damage, missRandomRange, critRandomRange, critChance, critMultiplier);
         FindObjectOfType<AudioManager>().Play("Oof");
     }
 
-    [PunRPC]
-    public override void GetHealing(float healing, int critRandomRange, float critChance, float critMultiplier)
+    [PunRPC] public override void GetHealing(float healing, int critRandomRange, float critChance, float critMultiplier)
     {
         Debug.Log("Enemy gets healing " + healing);
         base.GetHealing(healing, critRandomRange, critChance, critMultiplier);

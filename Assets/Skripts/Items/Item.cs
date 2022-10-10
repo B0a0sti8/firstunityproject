@@ -31,6 +31,22 @@ public abstract class Item : ScriptableObject, IMoveable // Statt Monobehaviour 
     public int MyStackSize { get => stackSize; }
 
 
+    private CharPanelButtonScript charButton;
+
+    public CharPanelButtonScript MyCharButton 
+    {
+        get
+        {
+            return charButton;
+        }
+        set
+        {
+            MySlot = null;
+            charButton = value;
+        }
+    }
+
+
 
     public virtual void Use()               // Wird ?berschrieben, je nach Itemsorte.
     {

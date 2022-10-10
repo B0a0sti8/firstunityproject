@@ -26,13 +26,22 @@ public class CharacterPanelScript : MonoBehaviour
 
     [SerializeField] private CharPanelButtonScript helmet, shoulders, chest, cape, gloves, legs, boots, artefact, mainhand, offhand;
 
-    
+    public CharPanelButtonScript[] allEquipmentSlots;
+
+    public CharPanelButtonScript MySelectedButton
+    {
+        get;
+        set;
+    }
+
+
 
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = 0;
+        allEquipmentSlots = transform.GetComponentsInChildren<CharPanelButtonScript>();
     }
 
 

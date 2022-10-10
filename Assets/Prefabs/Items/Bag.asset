@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9abe9bf4e9fcc1b4290cea4b0688df6a, type: 3}
   m_Name: Bag
   m_EditorClassIdentifier: 
+  itemQuality: 0
+  tooltipItemName: Bag
+  tooltipItemDescription: X Item Slots
+  tooltipItemSprite: {fileID: 0}
   name: Bag
   isDefaultItem: 0
   icon: {fileID: -6009198046271197863, guid: 535d77a0a57ae434b9ff53b8c9dcdf4b, type: 3}
   stackSize: 0
+  slots: 8
   bagPrefab: {fileID: 1103555998686193218, guid: 5b3451f431b463d42882118bce7f7261, type: 3}

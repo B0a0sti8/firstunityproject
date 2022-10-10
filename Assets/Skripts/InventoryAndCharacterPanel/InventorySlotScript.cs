@@ -144,33 +144,55 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (eventData.button == PointerEventData.InputButton.Left)          // Wenn Linksklick
         {
             if (InventoryScript.MyInstance.FromSlot == null && !IsEmpty)        // If we dont have something to move
             {
-                if (HandScript.MyInstance.MyMoveable != null)
+                if (HandScript.MyInstance.MyMoveable != null)           // Wenn etwas in der Hand
                 {
                     if (MyItem is Bag && HandScript.MyInstance.MyMoveable is Bag)
                     {
                         InventoryScript.MyInstance.SwapBags(HandScript.MyInstance.MyMoveable as Bag, MyItem as Bag);
+                    }
+                    else if (HandScript.MyInstance.MyMoveable is Equipment)
+                    {
+                        if (MyItem is Equipment && (MyItem as Equipment).MyEquipmentType == (HandScript.MyInstance.MyMoveable as Equipment).MyEquipmentType)
+                        {
+                            (MyItem as Equipment).Equip();
+                            TooltipScreenSpaceUIItems.HideTooltip_Static();
+                            TooltipScreenSpaceUIItems.ShowTooltip_Static(MyItem.tooltipItemName, MyItem.tooltipItemDescription, null);
+                            HandScript.MyInstance.Drop();
+                        }
                     }
                 }
                 else
                 {
                     HandScript.MyInstance.TakeMoveable(MyItem as IMoveable);
                     InventoryScript.MyInstance.FromSlot = this;
+                    onRemoved = true;
                 }
             }
-            else if (InventoryScript.MyInstance.FromSlot == null && IsEmpty && HandScript.MyInstance.MyMoveable is Bag)
+            else if (InventoryScript.MyInstance.FromSlot == null && IsEmpty)
             {
-                Bag bag = (Bag)HandScript.MyInstance.MyMoveable;
-
-                if (bag.MyBagScript != MyBag && InventoryScript.MyInstance.MyEmptySlotCount - bag.Slots > 0)
+                if (HandScript.MyInstance.MyMoveable is Bag)
                 {
-                    AddItem(bag);
-                    bag.MyBagButton.RemoveBag();
+                    Bag bag = (Bag)HandScript.MyInstance.MyMoveable;
+
+                    if (bag.MyBagScript != MyBag && InventoryScript.MyInstance.MyEmptySlotCount - bag.Slots > 0)
+                    {
+                        AddItem(bag);
+                        bag.MyBagButton.RemoveBag();
+                        HandScript.MyInstance.Drop();
+                    }
+                }
+                else if (HandScript.MyInstance.MyMoveable is Equipment)
+                {
+                    Equipment equipment = (Equipment)HandScript.MyInstance.MyMoveable;
+                    AddItem(equipment);
+                    CharacterPanelScript.MyInstance.MySelectedButton.DequipStuff();
                     HandScript.MyInstance.Drop();
                 }
+
 
             }
             else if (InventoryScript.MyInstance.FromSlot != null)               // If something in hand
@@ -179,12 +201,19 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
                 {
                     HandScript.MyInstance.Drop();
                     InventoryScript.MyInstance.FromSlot = null;
+                    onRemoved = true;
                 }
             }
         }
-        if (eventData.button == PointerEventData.InputButton.Right)
+        if (eventData.button == PointerEventData.InputButton.Right && HandScript.MyInstance.MyMoveable == null)
         {
             UseItem();
+            TooltipScreenSpaceUIItems.HideTooltip_Static(); // Refresht Tooltipp
+            if (!IsEmpty) 
+            {
+
+                TooltipScreenSpaceUIItems.ShowTooltip_Static(MyItem.tooltipItemName, MyItem.tooltipItemDescription, null);
+            }
         }
     }
 

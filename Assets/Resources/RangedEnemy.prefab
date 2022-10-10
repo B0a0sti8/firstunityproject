@@ -1278,19 +1278,13 @@ MonoBehaviour:
     baseValue: 200
     modifiedValue: 0
   currentHealth: 0
-  mastery:
-    baseValue: 10
-    modifiedValue: 0
   armor:
     baseValue: 25
     modifiedValue: 0
   movementSpeed:
     baseValue: 2
     modifiedValue: 0
-  attackSpeed:
-    baseValue: 0
-    modifiedValue: 0
-  castSpeed:
+  actionSpeed:
     baseValue: 0
     modifiedValue: 0
   critChance:
@@ -1299,11 +1293,14 @@ MonoBehaviour:
   critMultiplier:
     baseValue: 0
     modifiedValue: 0
-  evade:
-    baseValue: 10
+  evadeChance:
+    baseValue: 0
     modifiedValue: 0
   modAttackSpeed: 0
   baseAttackSpeed: 2
+  mastery:
+    baseValue: 10
+    modifiedValue: 0
   groupNumber: 0
   enemyUIHealthActive: 0
 --- !u!114 &854536099939072540

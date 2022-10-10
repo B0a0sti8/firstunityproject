@@ -14,12 +14,16 @@ public class Equipment : Item
     [SerializeField] private EquipmentType equpipType;
     [SerializeField] private EquipmentClass equipClass;
 
-    [SerializeField] private int armor = 0;          // Gibt Schutz
+
 
     // Hauptstats
-    [SerializeField] private int mastery = 0;        // Mehr Cast- und Movementspeed
-    [SerializeField] private int toughness = 0;      // Leben, Block, Evade, Resistenz
-    [SerializeField] private int confidence = 0;     // Krit, Mana
+    [SerializeField] public int armor = 0;           // 
+    [SerializeField] public int weaponDamage = 0;    // 
+    [SerializeField] public int mastery = 0;         // 
+    [SerializeField] public int toughness = 0;       // 
+    [SerializeField] public int intellect = 0;       // 
+    [SerializeField] public int charisma = 0;        // 
+    [SerializeField] public int tempo = 0;           // 
 
     // Nebenstats
     //[SerializeField] private int castspeed = 0;
@@ -67,8 +71,8 @@ public class Equipment : Item
         if (toughness != 0)
         { tooltipStats += string.Format("\n +{0} toughness", toughness); }
 
-        if (confidence != 0)
-        { tooltipStats += string.Format("\n +{0} confidence", confidence); }
+        if (intellect != 0)
+        { tooltipStats += string.Format("\n +{0} confidence", intellect); }
 
 
         string Lore = "";

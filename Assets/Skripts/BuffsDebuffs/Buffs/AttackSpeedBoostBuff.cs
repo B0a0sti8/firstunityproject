@@ -9,14 +9,14 @@ public class AttackSpeedBoostBuff : Buff
         buffName = "Haste";
         buffDescription = "haha attack go brrrr\nOi\nlongboii";
         base.StartBuffEffect(playerStats);
-        playerStats.attackSpeed.AddModifierAdd(value);
+        playerStats.actionSpeed.AddModifierAdd(value);
         isRemovable = false;
     }
 
     public override void EndBuffEffect(CharacterStats playerStats)
     {
         base.EndBuffEffect(playerStats);
-        playerStats.attackSpeed.AddModifierAdd(-value);
+        playerStats.actionSpeed.AddModifierAdd(-value);
     }
 
     public override Buff Clone()
