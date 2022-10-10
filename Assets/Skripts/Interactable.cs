@@ -19,17 +19,32 @@ public class Interactable : MonoBehaviour
         Debug.Log("Interacting with " + transform.name);
     }
 
+    public virtual void StopInteracting()
+    {
+
+    }
+
+
     private void Update()
     {
-        if (isFocus && !hasInteracted)
+        if (isFocus)
         {
-            hasInteracted = true;
             float distance = Vector2.Distance(player.position, interactionTransform.position); // Berechnet den Abstand zwischen Spieler und Objekt
-            if (distance <= radius)
+            if (!hasInteracted)
             {
-                Interact(); // Führt Interaktion aus, je nachdem mit welchem Objekt 
+                hasInteracted = true;
+                
+                if (distance <= radius)
+                {
+                    Interact(); // Führt Interaktion aus, je nachdem mit welchem Objekt 
+                }
+            }
+            if (distance > radius)
+            {
+                StopInteracting();
             }
         }
+        
     }
 
     public void OnFocused (Transform playerTransform) // Wird ausgeführt, sobald Objekt fokussiert wird

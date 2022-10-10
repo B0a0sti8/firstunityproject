@@ -22,7 +22,7 @@ public class InventoryScript : MonoBehaviour
     }
     #endregion
 
-    private InventorySlotScript fromSlot;
+    [SerializeField] private InventorySlotScript fromSlot;
 
     private List<Bag> bags = new List<Bag>();
 

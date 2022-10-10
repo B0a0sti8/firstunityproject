@@ -191,6 +191,8 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
                     AddItem(equipment);
                     CharacterPanelScript.MyInstance.MySelectedButton.DequipStuff();
                     HandScript.MyInstance.Drop();
+                    Debug.Log(IsEmpty);
+                    equipment.MySlot = this;
                 }
 
 
@@ -209,7 +211,7 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
         {
             UseItem();
             TooltipScreenSpaceUIItems.HideTooltip_Static(); // Refresht Tooltipp
-            if (!IsEmpty) 
+            if (!IsEmpty)
             {
 
                 TooltipScreenSpaceUIItems.ShowTooltip_Static(MyItem.tooltipItemName, MyItem.tooltipItemDescription, null);
@@ -223,10 +225,10 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
         {
             MyItem.Use();
         }
-        else if (MyItem is Equipment)
-        {
-            (MyItem as Equipment).Equip();
-        }
+        //else if (MyItem is Equipment)
+        //{
+        //    (MyItem as Equipment).Equip();
+        //}
     }
 
     public bool StackItem(Item item)
