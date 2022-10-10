@@ -49532,6 +49532,7 @@ MonoBehaviour:
   artefact: {fileID: 5168073554185715721}
   mainhand: {fileID: 3852416496549345369}
   offhand: {fileID: 102425174120951755}
+  allEquipmentSlots: []
 --- !u!1 &2769752085724319678
 GameObject:
   m_ObjectHideFlags: 0
@@ -72471,19 +72472,13 @@ MonoBehaviour:
     baseValue: 500
     modifiedValue: 0
   currentHealth: 0
-  mastery:
-    baseValue: 0
-    modifiedValue: 0
   armor:
     baseValue: 0
     modifiedValue: 0
   movementSpeed:
     baseValue: 7
     modifiedValue: 0
-  attackSpeed:
-    baseValue: 0
-    modifiedValue: 0
-  castSpeed:
+  actionSpeed:
     baseValue: 0
     modifiedValue: 0
   critChance:
@@ -72492,14 +72487,70 @@ MonoBehaviour:
   critMultiplier:
     baseValue: 0
     modifiedValue: 0
-  evade:
+  evadeChance:
     baseValue: 0
     modifiedValue: 0
   className: 
-  maxMana: 1000
-  currentMana: 0
-  missRandom: 0
   goldAmount: 0
+  maxMana:
+    baseValue: 0
+    modifiedValue: 0
+  currentMana: 0
+  weaponDamage:
+    baseValue: 0
+    modifiedValue: 0
+  mastery:
+    baseValue: 0
+    modifiedValue: 0
+  toughness:
+    baseValue: 0
+    modifiedValue: 0
+  intellect:
+    baseValue: 0
+    modifiedValue: 0
+  charisma:
+    baseValue: 0
+    modifiedValue: 0
+  tempo:
+    baseValue: 0
+    modifiedValue: 0
+  healInc:
+    baseValue: 0
+    modifiedValue: 0
+  dmgInc:
+    baseValue: 0
+    modifiedValue: 0
+  physRed:
+    baseValue: 0
+    modifiedValue: 0
+  magRed:
+    baseValue: 0
+    modifiedValue: 0
+  incHealInc:
+    baseValue: 0
+    modifiedValue: 0
+  blockChance:
+    baseValue: 0
+    modifiedValue: 0
+  skillRadInc:
+    baseValue: 0
+    modifiedValue: 0
+  skillDurInc:
+    baseValue: 0
+    modifiedValue: 0
+  buffInc:
+    baseValue: 0
+    modifiedValue: 0
+  debuffInc:
+    baseValue: 0
+    modifiedValue: 0
+  tickRateMod:
+    baseValue: 0
+    modifiedValue: 0
+  lifesteal:
+    baseValue: 0
+    modifiedValue: 0
+  allStatsArray: []
   castingBarImage: {fileID: 0}
   castingBarText: 
   castingBarChanneling: 0

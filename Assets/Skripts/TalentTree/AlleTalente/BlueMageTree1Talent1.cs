@@ -7,15 +7,24 @@ public class BlueMageTree1Talent1 : Talent
     public override void ActiveTalentEffect()
     {
         base.ActiveTalentEffect();
-        statSkript.maxHealth.AddModifierAdd(20);
+        if (currentCount >= 2)
+        {
+            statSkript.maxHealth.RemoveModifierMultiply(1.0f + 0.1f * (currentCount-1));
+        }
+        statSkript.maxHealth.AddModifierMultiply(1.0f + 0.1f * currentCount);
     }
 
     public override void RemoveActiveTalentEffect()
     {
         base.RemoveActiveTalentEffect();
-        for (int i = 0; i < currentCount; i++)
+        if (currentCount >= 1)
         {
-            statSkript.maxHealth.AddModifierAdd(-20);
+            statSkript.maxHealth.RemoveModifierMultiply(1.0f + 0.1f * currentCount);
         }
+        
+        //for (int i = 0; i < currentCount; i++)
+        //{
+        //    statSkript.maxHealth.RemoveModifierMultiply(1.1f);
+        //}
     }
 }

@@ -14,7 +14,7 @@ public class Talent : MonoBehaviour
     [SerializeField]
     private int maxCount;
 
-    public int currentCount;
+    public int currentCount = 0;
 
     private TextMeshProUGUI talentPointTextOwn;
 
