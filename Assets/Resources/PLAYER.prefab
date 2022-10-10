@@ -6754,7 +6754,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1076243866}
-  - component: {fileID: 1076243868}
   - component: {fileID: 1076243872}
   - component: {fileID: 1076243873}
   - component: {fileID: 443649803}
@@ -6780,20 +6779,6 @@ Transform:
   m_Father: {fileID: 6604016653283099680}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1076243868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1076243865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ae43117d4c25451387db113bed209b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultWear: []
-  currentEquipment: []
 --- !u!114 &1076243872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17154,6 +17139,7 @@ GameObject:
   - component: {fileID: 5783413851645187873}
   - component: {fileID: 912934876547914698}
   - component: {fileID: 5168073554185715721}
+  - component: {fileID: 5853519374613696493}
   m_Layer: 5
   m_Name: Artefact
   m_TagString: Untagged
@@ -17234,6 +17220,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipType: 7
   icon: {fileID: 6321263682394904824}
+  equip: {fileID: 0}
+  onRemoved: 0
+--- !u!114 &5853519374613696493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262237203986828749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432fd1f2d04216c46add79a806470b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  itemName: 
+  itemDescription: 
+  tooltipSprite: {fileID: 0}
 --- !u!1 &264816313245357263
 GameObject:
   m_ObjectHideFlags: 0
@@ -23653,6 +23657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   full: {fileID: 3669353926087536294, guid: 8a347ad2da4479140ba3e09e6023280f, type: 3}
   empty: {fileID: 1555494532273717810, guid: 604491a3cc9892344bf30c6920b39f0b, type: 3}
+  bagIndex: 0
 --- !u!1 &429597798139887284
 GameObject:
   m_ObjectHideFlags: 0
@@ -24271,6 +24276,7 @@ GameObject:
   - component: {fileID: 3745501321028607853}
   - component: {fileID: 2505135931848217014}
   - component: {fileID: 7251135934869924755}
+  - component: {fileID: 4270714971888821018}
   m_Layer: 5
   m_Name: Gloves
   m_TagString: Untagged
@@ -24351,6 +24357,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipType: 4
   icon: {fileID: 8734742955932465868}
+  equip: {fileID: 0}
+  onRemoved: 0
+--- !u!114 &4270714971888821018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502213072494473891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432fd1f2d04216c46add79a806470b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  itemName: 
+  itemDescription: 
+  tooltipSprite: {fileID: 0}
 --- !u!1 &517606731733929838
 GameObject:
   m_ObjectHideFlags: 0
@@ -45516,6 +45540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   full: {fileID: 3669353926087536294, guid: 8a347ad2da4479140ba3e09e6023280f, type: 3}
   empty: {fileID: 1555494532273717810, guid: 604491a3cc9892344bf30c6920b39f0b, type: 3}
+  bagIndex: 4
 --- !u!1 &2475263924758904923
 GameObject:
   m_ObjectHideFlags: 0
@@ -53381,6 +53406,7 @@ GameObject:
   - component: {fileID: 2034856808869486558}
   - component: {fileID: 2266880178274734806}
   - component: {fileID: 3852416496549345369}
+  - component: {fileID: 8104973426758002435}
   m_Layer: 5
   m_Name: MainHand
   m_TagString: Untagged
@@ -53461,6 +53487,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipType: 8
   icon: {fileID: 5844358554134023448}
+  equip: {fileID: 0}
+  onRemoved: 0
+--- !u!114 &8104973426758002435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100958433275082869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432fd1f2d04216c46add79a806470b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  itemName: 
+  itemDescription: 
+  tooltipSprite: {fileID: 0}
 --- !u!1 &3101136379713509543
 GameObject:
   m_ObjectHideFlags: 0
@@ -57516,6 +57560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   full: {fileID: 3669353926087536294, guid: 8a347ad2da4479140ba3e09e6023280f, type: 3}
   empty: {fileID: 1555494532273717810, guid: 604491a3cc9892344bf30c6920b39f0b, type: 3}
+  bagIndex: 3
 --- !u!1 &3440082591986544973
 GameObject:
   m_ObjectHideFlags: 0
@@ -62128,6 +62173,7 @@ GameObject:
   - component: {fileID: 5429164989071704508}
   - component: {fileID: 438533548096471100}
   - component: {fileID: 43131614222003828}
+  - component: {fileID: 83238110174284120}
   m_Layer: 5
   m_Name: Cape
   m_TagString: Untagged
@@ -62208,6 +62254,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipType: 3
   icon: {fileID: 310714373842055967}
+  equip: {fileID: 0}
+  onRemoved: 0
+--- !u!114 &83238110174284120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737223335726277745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432fd1f2d04216c46add79a806470b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  itemName: 
+  itemDescription: 
+  tooltipSprite: {fileID: 0}
 --- !u!1 &3739012652980989907
 GameObject:
   m_ObjectHideFlags: 0
@@ -64675,6 +64739,7 @@ GameObject:
   - component: {fileID: 2501603956459823322}
   - component: {fileID: 1107413539994905223}
   - component: {fileID: 4856913728481125601}
+  - component: {fileID: 3353750035958825763}
   m_Layer: 5
   m_Name: Chest
   m_TagString: Untagged
@@ -64755,6 +64820,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipType: 2
   icon: {fileID: 3775075998850423318}
+  equip: {fileID: 0}
+  onRemoved: 0
+--- !u!114 &3353750035958825763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3992680253307118779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432fd1f2d04216c46add79a806470b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  itemName: 
+  itemDescription: 
+  tooltipSprite: {fileID: 0}
 --- !u!1 &4003000473797669605
 GameObject:
   m_ObjectHideFlags: 0
@@ -74943,6 +75026,7 @@ GameObject:
   - component: {fileID: 7635503836509575403}
   - component: {fileID: 8224551482361339867}
   - component: {fileID: 5009299074497990823}
+  - component: {fileID: 1830612554575658158}
   m_Layer: 5
   m_Name: Shoulders
   m_TagString: Untagged
@@ -75023,6 +75107,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipType: 1
   icon: {fileID: 3304793290095172859}
+  equip: {fileID: 0}
+  onRemoved: 0
+--- !u!114 &1830612554575658158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4707712007119901164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432fd1f2d04216c46add79a806470b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  itemName: 
+  itemDescription: 
+  tooltipSprite: {fileID: 0}
 --- !u!1 &4737427016011420880
 GameObject:
   m_ObjectHideFlags: 0
@@ -76406,6 +76508,7 @@ GameObject:
   - component: {fileID: 1743598053551356681}
   - component: {fileID: 3877265788155246086}
   - component: {fileID: 7059620738759068504}
+  - component: {fileID: 6941781341858191025}
   m_Layer: 5
   m_Name: Legs
   m_TagString: Untagged
@@ -76486,6 +76589,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipType: 5
   icon: {fileID: 6597269912805286620}
+  equip: {fileID: 0}
+  onRemoved: 0
+--- !u!114 &6941781341858191025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4822492174515030612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432fd1f2d04216c46add79a806470b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  itemName: 
+  itemDescription: 
+  tooltipSprite: {fileID: 0}
 --- !u!1 &4833439517870511625
 GameObject:
   m_ObjectHideFlags: 0
@@ -78490,6 +78611,7 @@ GameObject:
   - component: {fileID: 6217405860617794358}
   - component: {fileID: 7392248616101077776}
   - component: {fileID: 102425174120951755}
+  - component: {fileID: 3591397625079057644}
   m_Layer: 5
   m_Name: OffHand
   m_TagString: Untagged
@@ -78570,6 +78692,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipType: 9
   icon: {fileID: 3569262132752474824}
+  equip: {fileID: 0}
+  onRemoved: 0
+--- !u!114 &3591397625079057644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941169523457202877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432fd1f2d04216c46add79a806470b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  itemName: 
+  itemDescription: 
+  tooltipSprite: {fileID: 0}
 --- !u!1 &4956103248882108929
 GameObject:
   m_ObjectHideFlags: 0
@@ -89866,6 +90006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   full: {fileID: 3669353926087536294, guid: 8a347ad2da4479140ba3e09e6023280f, type: 3}
   empty: {fileID: 1555494532273717810, guid: 604491a3cc9892344bf30c6920b39f0b, type: 3}
+  bagIndex: 2
 --- !u!1 &5986446231251530231
 GameObject:
   m_ObjectHideFlags: 0
@@ -113021,6 +113162,7 @@ GameObject:
   - component: {fileID: 4200084535402740066}
   - component: {fileID: 7204775897454605235}
   - component: {fileID: 1372649888264664356}
+  - component: {fileID: 4364029637402246942}
   m_Layer: 5
   m_Name: Head
   m_TagString: Untagged
@@ -113101,6 +113243,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipType: 0
   icon: {fileID: 5885229519912105776}
+  equip: {fileID: 0}
+  onRemoved: 0
+--- !u!114 &4364029637402246942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8140501552804209384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432fd1f2d04216c46add79a806470b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  itemName: 
+  itemDescription: 
+  tooltipSprite: {fileID: 0}
 --- !u!1 &8142870865794352950
 GameObject:
   m_ObjectHideFlags: 0
@@ -113842,6 +114002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   full: {fileID: 3669353926087536294, guid: 8a347ad2da4479140ba3e09e6023280f, type: 3}
   empty: {fileID: 1555494532273717810, guid: 604491a3cc9892344bf30c6920b39f0b, type: 3}
+  bagIndex: 1
 --- !u!1 &8205840585032828437
 GameObject:
   m_ObjectHideFlags: 0
@@ -121384,6 +121545,7 @@ GameObject:
   - component: {fileID: 2997007003647612649}
   - component: {fileID: 4087236996459363191}
   - component: {fileID: 1561071697667626696}
+  - component: {fileID: 4457454790929571207}
   m_Layer: 5
   m_Name: Boots
   m_TagString: Untagged
@@ -121464,6 +121626,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipType: 6
   icon: {fileID: 2275787647345955983}
+  equip: {fileID: 0}
+  onRemoved: 0
+--- !u!114 &4457454790929571207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939309437061084029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432fd1f2d04216c46add79a806470b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  itemName: 
+  itemDescription: 
+  tooltipSprite: {fileID: 0}
 --- !u!1 &8939328699607864830
 GameObject:
   m_ObjectHideFlags: 0
@@ -124445,6 +124625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   full: {fileID: 3669353926087536294, guid: 8a347ad2da4479140ba3e09e6023280f, type: 3}
   empty: {fileID: 1555494532273717810, guid: 604491a3cc9892344bf30c6920b39f0b, type: 3}
+  bagIndex: 5
 --- !u!1001 &8873825569582314051
 PrefabInstance:
   m_ObjectHideFlags: 0

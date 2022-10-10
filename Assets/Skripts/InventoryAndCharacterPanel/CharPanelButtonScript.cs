@@ -7,9 +7,22 @@ using UnityEngine.UI;
 public class CharPanelButtonScript : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private EquipmentType equipType;
-    private Equipment equip;
-
     [SerializeField] private Image icon;
+
+    [SerializeField] private Equipment equip;
+    public bool onRemoved = false;
+
+    MasterEventTriggerItems masterETItems;
+    PlayerStats playerStats;
+
+    public Equipment MyEquip { get => equip; }
+
+    private void Awake()
+    {
+        masterETItems = GetComponent<MasterEventTriggerItems>();
+        playerStats = transform.parent.parent.parent.parent.parent.gameObject.GetComponent<PlayerStats>();
+        Debug.Log(playerStats);
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -24,6 +37,12 @@ public class CharPanelButtonScript : MonoBehaviour, IPointerClickHandler
                     EquipStuff(tmp);
                 }
             }
+            else if (HandScript.MyInstance.MyMoveable == null && MyEquip != null)
+            {
+                HandScript.MyInstance.TakeMoveable(MyEquip);
+                CharacterPanelScript.MyInstance.MySelectedButton = this;
+                icon.color = Color.grey;
+            }
         }
     }
 
@@ -32,13 +51,18 @@ public class CharPanelButtonScript : MonoBehaviour, IPointerClickHandler
 
         equipment.Remove();
 
-        if (equip != null)
+        if (MyEquip != null)
         {
+            if (MyEquip != equipment)
+            {
+                Debug.Log(equipment);
+                Debug.Log(equipment.MySlot);
+                Debug.Log(MyEquip);
+                equipment.MySlot.AddItem(MyEquip);
+            }
 
-            equipment.MySlot.AddItem(equip);
             TooltipScreenSpaceUIItems.HideTooltip_Static();
-            TooltipScreenSpaceUIItems.ShowTooltip_Static(equip.tooltipItemName, equip.tooltipItemDescription, null);
-            //equipment.MySlot.MasterETStuffAssignment();
+            TooltipScreenSpaceUIItems.ShowTooltip_Static(MyEquip.tooltipItemName, MyEquip.tooltipItemDescription, null);
         }
         else
         {
@@ -47,12 +71,59 @@ public class CharPanelButtonScript : MonoBehaviour, IPointerClickHandler
 
         icon.enabled = true;
         icon.sprite = equipment.MyIcon;
+        icon.color = Color.white;
         this.equip = equipment;
+        this.MyEquip.MyCharButton = this;
+
+        if (MyEquip != null)
+        {
+            TooltipScreenSpaceUIItems.HideTooltip_Static();
+            TooltipScreenSpaceUIItems.ShowTooltip_Static(MyEquip.tooltipItemName, MyEquip.tooltipItemDescription, null);
+        }
 
         if (HandScript.MyInstance.MyMoveable == (equipment as IMoveable))
         {
             HandScript.MyInstance.Drop();
         }
-        
+
+
+        playerStats.ReloadEquipMainStats();
+
+    }
+
+    public void DequipStuff()
+    {
+        icon.color = Color.white;
+        icon.enabled = false;
+        MyEquip.MyCharButton = null;
+        equip = null;
+        onRemoved = true;
+        playerStats.ReloadEquipMainStats();
+    }
+
+    public void MasterETStuffAssignment()
+    {
+        masterETItems.itemName = MyEquip.tooltipItemName;
+
+        masterETItems.itemDescription = MyEquip.tooltipItemDescription;
+
+        //masterETItems.buffSprite = Resources.Load<Sprite>("Sprites/BuffSprites/" + buffName);
+    }
+
+    private void Update()
+    {
+        if (MyEquip == null)
+        {
+            if (onRemoved)
+            {
+                onRemoved = false;
+                masterETItems.itemName = "";
+                masterETItems.itemDescription = "";
+            }
+
+            return;
+        }
+
+        MasterETStuffAssignment();
     }
 }

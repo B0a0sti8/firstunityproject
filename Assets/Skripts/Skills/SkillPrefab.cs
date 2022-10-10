@@ -562,7 +562,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
             
             PLAYER.transform.Find("PlayerParticleSystems").Find("CastingParticles").gameObject.GetComponent<ParticleSystem>().Play();
             masterChecks.isSkillInterrupted = false;
-            castTimeModified = castTimeOriginal / playerStats.castSpeed.GetValue();
+            castTimeModified = castTimeOriginal / playerStats.actionSpeed.GetValue();
             masterChecks.castTimeCurrent = castTimeModified;
             masterChecks.castTimeMax = castTimeModified;
             castStarted = true;
@@ -615,7 +615,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
             }
         }
 
-        float attackSpeedModifier = 1 - (playerStats.attackSpeed.GetValue() / 100);
+        float attackSpeedModifier = 1 - (playerStats.actionSpeed.GetValue() / 100);
         ownCooldownTimeModified = ownCooldownTimeBase * attackSpeedModifier;
 
         if (unusedSpell != null || hasUnusedSpell == true)

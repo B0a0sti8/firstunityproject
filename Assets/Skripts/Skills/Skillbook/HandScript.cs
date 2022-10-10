@@ -91,9 +91,18 @@ public class HandScript : MonoBehaviour
 
     public void DeleteItem()
     {
-        if (MyMoveable is Item && InventoryScript.MyInstance.FromSlot != null)
+        if (MyMoveable is Item) //  && InventoryScript.MyInstance.FromSlot != null
         {
-            (MyMoveable as Item).MySlot.Clear();
+            Item item = (Item)MyMoveable;
+            if (item.MySlot != null)
+            {
+                item.MySlot.Clear();
+            }
+            else if (item.MyCharButton != null)
+            {
+                item.MyCharButton.DequipStuff();
+            }
+            
         }
 
         Drop();
