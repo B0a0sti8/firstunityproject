@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+
+// Tipp für die Zukunft: Fall im Multiplayer Modus komische Sachen bei Storage Chests oder Vendors passieren:
+// Vielleicht macht es Sinn, das öffnen und schließen des jeweiligen Interfaces (Skript: VendorWindow bzw. StorageChest) auf den PLAYER-Charakter selbst zu verschieben. 
 
 public class StorageChest : Interactable
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite openSprite, closedSprite;
 
-    private bool isOpen;
+    private bool isOpen = false;
+
+    [SerializeField] public CanvasGroup canvasGroup;
 
     private void Start()
     {
@@ -25,6 +31,9 @@ public class StorageChest : Interactable
         {
             isOpen = true;
             spriteRenderer.sprite = openSprite;
+            canvasGroup.alpha = 1;
+            canvasGroup.blocksRaycasts = true;
+            Debug.Log("Sollte zu sehen sein");
         }
     }
 
@@ -33,5 +42,8 @@ public class StorageChest : Interactable
         base.StopInteracting();
         spriteRenderer.sprite = closedSprite;
         isOpen = false;
+        canvasGroup.alpha = 0;
+        canvasGroup.blocksRaycasts = false;
+
     }
 }

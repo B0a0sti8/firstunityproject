@@ -89,6 +89,7 @@ public class PlayerStats : CharacterStats, IPunObservable
 
 	void Start()
 	{
+		goldAmount = 100;
 		charPanel = transform.Find("Own Canvases").Find("CanvasCharacterPanel").Find("CharacterPanel").GetComponent<CharacterPanelScript>();
 		allEquipSlots = charPanel.allEquipmentSlots;
 
