@@ -15,7 +15,7 @@ public abstract class Item : ScriptableObject, IMoveable // Statt Monobehaviour 
     [HideInInspector] public string tooltipItemDescription = "";
     public Sprite tooltipItemSprite = null;
 
-
+    [SerializeField] private int price;
     
     new public string name = "New Item";     // Bisherige Definiton des Namens wird ?berschrieben
     public bool isDefaultItem = false;       // Zus?tzlicher m?glicher Unterscheidungsparameter. z.B. keine Default Items ins Inventar oder ?hnliches.
@@ -46,7 +46,7 @@ public abstract class Item : ScriptableObject, IMoveable // Statt Monobehaviour 
         }
     }
 
-
+    public int MyPrice { get => price; }
 
     public virtual void Use()               // Wird ?berschrieben, je nach Itemsorte.
     {

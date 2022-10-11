@@ -21,7 +21,6 @@ public class CharPanelButtonScript : MonoBehaviour, IPointerClickHandler
     {
         masterETItems = GetComponent<MasterEventTriggerItems>();
         playerStats = transform.parent.parent.parent.parent.parent.gameObject.GetComponent<PlayerStats>();
-        Debug.Log(playerStats);
     }
 
     public void OnPointerClick(PointerEventData eventData)

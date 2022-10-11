@@ -40,7 +40,7 @@ public class InventoryBagScript : MonoBehaviour
         }
     }
 
-    public void Awake()
+    public virtual void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
     }

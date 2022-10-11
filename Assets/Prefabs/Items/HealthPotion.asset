@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8289330b521762e40835ebc0de1a6b09, type: 3}
   m_Name: HealthPotion
   m_EditorClassIdentifier: 
+  itemQuality: 0
+  tooltipItemName: Health Potion
+  tooltipItemDescription: Heals for 15
+  tooltipItemSprite: {fileID: 0}
+  price: 15
   name: HealthPotion
   isDefaultItem: 0
   icon: {fileID: -728488644960612398, guid: d7c178d83035c854cac5a8d3961567b2, type: 3}
