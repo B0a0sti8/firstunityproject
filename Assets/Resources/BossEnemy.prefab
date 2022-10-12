@@ -1192,23 +1192,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view: {fileID: 869110100393099300}
+  isAlive: 0
+  isCurrentlyCasting: 0
   maxHealth:
     baseValue: 2000
     modifiedValue: 0
   currentHealth: 0
-  mastery:
-    baseValue: 0
-    modifiedValue: 0
   armor:
     baseValue: 60
     modifiedValue: 0
   movementSpeed:
     baseValue: 0
     modifiedValue: 0
-  attackSpeed:
-    baseValue: 0
-    modifiedValue: 0
-  castSpeed:
+  actionSpeed:
     baseValue: 0
     modifiedValue: 0
   critChance:
@@ -1217,13 +1213,14 @@ MonoBehaviour:
   critMultiplier:
     baseValue: 0
     modifiedValue: 0
-  evade:
-    baseValue: 15
+  evadeChance:
+    baseValue: 0
     modifiedValue: 0
-  isAlive: 0
-  isCurrentlyCasting: 0
   modAttackSpeed: 0
   baseAttackSpeed: 5
+  mastery:
+    baseValue: 0
+    modifiedValue: 0
   groupNumber: 0
   enemyUIHealthActive: 0
 --- !u!114 &1831716281098815419
