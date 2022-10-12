@@ -66,6 +66,7 @@ public class VendorWindow : MonoBehaviour
         this.vendor = vendor;
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
+        //Debug.Log("Hi");
     }
 
     public void Close()
