@@ -7,7 +7,9 @@ using TMPro;
 public class QuestScript : MonoBehaviour
 {
     public Quest MyQuest { get; set; }
-    
+
+    private bool markedComplete = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,5 +32,22 @@ public class QuestScript : MonoBehaviour
     public void DeSelect()
     {
         GetComponent<TextMeshProUGUI>().color = Color.white;
+    }
+
+    public void IsComplete()
+    {
+        Debug.Log("Quest");
+        if (MyQuest.IsComplete && !markedComplete)
+        {
+            Debug.Log("Quest fertig");
+            markedComplete = true;
+            GetComponent<TextMeshProUGUI>().text += "(Complete)";
+        }
+        else if (!MyQuest.IsComplete)
+        {
+            Debug.Log("Quest fertig ... nicht");
+            markedComplete = false;
+            GetComponent<TextMeshProUGUI>().text = MyQuest.MyTitle;
+        }
     }
 }

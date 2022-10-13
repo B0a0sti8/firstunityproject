@@ -136,9 +136,16 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
 
     public void Clear()
     {
-        if (MyItems.Count > 0)
+        int initCount = MyItems.Count;
+
+        if (initCount > 0)
         {
-            MyItems.Clear();
+            for (int i = 0; i < initCount; i++)
+            {
+                InventoryScript.MyInstance.OnItemCountChanged(MyItems.Pop());
+            }
+            
+            //MyItems.Clear();
         }
     }
 
