@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class QuestLog : MonoBehaviour
 {
+    private List<QuestScript> questScripts = new List<QuestScript>();
+
     [SerializeField] private GameObject questPrefab;
     [SerializeField] private Transform questParent;
 
@@ -42,26 +44,53 @@ public class QuestLog : MonoBehaviour
 
     public void AcceptQuest(Quest quest)
     {
+        foreach (CollectObjective o in quest.MyCollectObjectives)
+        {
+            InventoryScript.MyInstance.itemCountChangedEvent += new ItemCountChanged(o.UpdateItemCount);
+        }
+
         GameObject go = Instantiate(questPrefab, questParent);
 
         QuestScript qs = go.GetComponent<QuestScript>();
         quest.MyQuestScript = qs;
         qs.MyQuest = quest;
-        
+        questScripts.Add(qs);
+
         go.GetComponent<TextMeshProUGUI>().text = quest.MyTitle;
+    }
+
+    public void UpdateSelected()
+    {
+        ShowDescription(selected);
     }
 
     public void ShowDescription(Quest quest)
     {
-        if (selected != null)
+        if (quest != null)
         {
-            selected.MyQuestScript.DeSelect();
+            if (selected != null && selected != quest)
+            {
+                selected.MyQuestScript.DeSelect();
+            }
+
+            string objectives = string.Empty;
+            selected = quest;
+
+            foreach (Objective obj in quest.MyCollectObjectives)
+            {
+                objectives += obj.MyType + ": " + obj.MyCurrentAmount + "/" + obj.MyAmount + "\n";
+            }
+
+            string title = quest.MyTitle;
+            questDescription.text = string.Format("<b>{0}</b>\n\n<size=14>{1}</size>\n\nObjectives\n<size=14>{2}</size>", title, quest.MyDescription, objectives);
         }
+    }
 
-        selected = quest;
-
-        string title = quest.MyTitle;
-        questDescription.text = string.Format("<b>{0}</b>", title);
-
+    public void CheckCompletion()
+    {
+        foreach (QuestScript qs in questScripts)
+        {
+            qs.IsComplete();
+        }
     }
 }

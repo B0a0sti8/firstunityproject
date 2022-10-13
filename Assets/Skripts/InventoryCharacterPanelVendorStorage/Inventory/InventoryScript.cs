@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public delegate void ItemCountChanged(Item item);
+
 public class InventoryScript : MonoBehaviour
 {
     #region Singleton
@@ -25,6 +27,8 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private InventorySlotScript fromSlot;
 
     private List<Bag> bags = new List<Bag>();
+
+    public event ItemCountChanged itemCountChangedEvent;
 
     [SerializeField]
     private BagButtonScript[] bagButtons;
@@ -190,6 +194,7 @@ public class InventoryScript : MonoBehaviour
         {
             if (bag.MyBagScript.AddItem(item))
             {
+                OnItemCountChanged(item);
                 return true;
             }
         }
@@ -205,6 +210,7 @@ public class InventoryScript : MonoBehaviour
             {
                 if (slots.StackItem(item))
                 {
+                    OnItemCountChanged(item);
                     return true;
                 }
             }
@@ -235,13 +241,39 @@ public class InventoryScript : MonoBehaviour
 
     void OnAddBag()
     {
-        HealthPotion healthPot = (HealthPotion)Instantiate(items[2]);
-        AddItem(healthPot);
-
         Equipment helmet = (Equipment)Instantiate(items[3]);
         AddItem(helmet);
 
         Equipment helmet1 = (Equipment)Instantiate(items[4]);
         AddItem(helmet1);
+
+        HealthPotion healthPot = (HealthPotion)Instantiate(items[2]);
+        AddItem(healthPot);
     }
+
+    public int GetItemCount(string type)
+    {
+        int itemCount = 0;
+        foreach (Bag bag in bags)
+        {
+            foreach (InventorySlotScript slot in bag.MyBagScript.MySlots)
+            {
+                if (!slot.IsEmpty && slot.MyItem.name == type)
+                {
+                    itemCount += slot.MyItems.Count;
+                }
+            }
+        }
+
+        return itemCount;
+    }
+
+    public void OnItemCountChanged(Item item)
+    {
+        if (itemCountChangedEvent != null)
+        {
+            itemCountChangedEvent.Invoke(item);
+        }
+    }
+
 }

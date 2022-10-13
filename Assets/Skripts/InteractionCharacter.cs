@@ -60,7 +60,11 @@ public class InteractionCharacter : MonoBehaviour // Sorry Marcus, ist echt nich
             }
             else if (newFocus is Vendor)
             {
-                (newFocus as Vendor).vendorWindow = transform.Find("Own Canvases").Find("CanvasVendorWindow").Find("VendorWindow").GetComponent<VendorWindow>();
+                (newFocus as Vendor).window = transform.Find("Own Canvases").Find("CanvasVendorWindow").Find("VendorWindow").GetComponent<VendorWindow>();
+            }
+            else if (newFocus is QuestGiver)
+            {
+                (newFocus as QuestGiver).window = transform.Find("Own Canvases").Find("CanvasQuestUI").Find("QuestGiverWindow").GetComponent<QuestGiverWindow>();
             }
         }
         newFocus.OnFocused(transform);
