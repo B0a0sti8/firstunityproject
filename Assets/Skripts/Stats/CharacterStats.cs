@@ -9,6 +9,9 @@ public class CharacterStats : MonoBehaviourPunCallbacks
     public bool isAlive;
     public bool isCurrentlyCasting = false;
 
+    [SerializeField]
+    private string type;
+
     #region Stats
     // Stats
     [Header("Health")]
@@ -23,6 +26,8 @@ public class CharacterStats : MonoBehaviourPunCallbacks
     public Stat critChance; // 0(%) - 100(%) /// 30 -> 30% Wahrscheinlichkeit auf Crit
     public Stat critMultiplier; // 100(%) - Inf(%) /// 130 -> Angriff macht 130% Schaden
     public Stat evadeChance;
+
+    public string MyType { get => type; set => type = value; }
     #endregion
 
     public virtual void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
@@ -79,7 +84,7 @@ public class CharacterStats : MonoBehaviourPunCallbacks
 
     public virtual void Update()
     {
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && isAlive == true)
         {
             Die();
         }

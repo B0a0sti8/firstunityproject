@@ -24,22 +24,58 @@ public class QuestGiverWindow : UIWindowNPC
 
     private QuestGiver questGiver;
 
-    [SerializeField] private GameObject backBtn, acceptBtn;
+    [SerializeField] private GameObject backBtn, acceptBtn, completeBtn;
 
     [SerializeField] private Transform questArea;
 
     [SerializeField] private GameObject questPrefab;
     [SerializeField] private GameObject questDescription;
 
+    private StuffManagerScript stuffManager;
+
+    private List<GameObject> quests = new List<GameObject>();
+
+    private Quest selectedQuest;
+
+    public void Start()
+    {
+        stuffManager = transform.parent.parent.parent.gameObject.GetComponent<StuffManagerScript>();
+    }
+
     public void ShowQuests(QuestGiver questGiver)
     {
         this.questGiver = questGiver;
+
+        foreach (GameObject go in quests)
+        {
+            Destroy(go);
+        }
+
+        questArea.gameObject.SetActive(true);
+        questDescription.SetActive(false);
+
         foreach (Quest quest in questGiver.MyQuests)
         {
-            GameObject go = Instantiate(questPrefab, questArea);
-            go.GetComponent<TextMeshProUGUI>().text = quest.MyTitle;
+            if (quest != null)
+            {
+                GameObject go = Instantiate(questPrefab, questArea);
+                go.GetComponent<TextMeshProUGUI>().text = quest.MyTitle;
 
-            go.GetComponent<QGQuestScript>().MyQuest = quest;
+                go.GetComponent<QGQuestScript>().MyQuest = quest;
+
+                quests.Add(go);
+
+                if (QuestLog.MyInstance.HasQuest(quest) && quest.IsComplete)
+                {
+                    go.GetComponent<TextMeshProUGUI>().text += "(Complete)";
+                }
+                else if (QuestLog.MyInstance.HasQuest(quest))
+                {
+                    Color c = go.GetComponent<TextMeshProUGUI>().color;
+                    c.a = 0.5f;
+                    go.GetComponent<TextMeshProUGUI>().color = c;
+                }
+            }
         }
     }
 
@@ -47,13 +83,27 @@ public class QuestGiverWindow : UIWindowNPC
     {
         ShowQuests((npc as QuestGiver));
         base.Open(npc);
+        backBtn.SetActive(false);
+        acceptBtn.SetActive(false);
 
     }
 
     public void ShowQuestInfo(Quest quest)
     {
+        this.selectedQuest = quest;
+
+        if (QuestLog.MyInstance.HasQuest(quest) && quest.IsComplete)
+        {
+            acceptBtn.SetActive(false);
+            completeBtn.SetActive(true);
+        }
+        else if (!QuestLog.MyInstance.HasQuest(quest))
+        {
+            acceptBtn.SetActive(true);
+        }
+
         backBtn.SetActive(true);
-        acceptBtn.SetActive(true);
+
         questArea.gameObject.SetActive(false);
         questDescription.SetActive(true);
 
@@ -65,6 +115,53 @@ public class QuestGiverWindow : UIWindowNPC
         }
 
         
-        questDescription.GetComponent<Text>().text = string.Format("<b><size=22>{0}</size></b>\n\n<size=14>{1}</size>\n\n<size=18>Objectives</size>\n<size=14>{2}</size>", quest.MyTitle, quest.MyDescription, objectives);
+        questDescription.GetComponent<Text>().text = string.Format("<b><size=22>{0}</size></b>\n\n<size=14>{1}</size>\n", quest.MyTitle, quest.MyDescription); // , objectives \n\n<size=18>Objectives</size>\n<size=14>{2}</size>
+    }
+
+    public void Back()
+    {
+        backBtn.SetActive(false);
+        acceptBtn.SetActive(false);
+        ShowQuests(questGiver);
+        completeBtn.SetActive(false);
+    }
+
+    public void Accept()
+    {
+        QuestLog.MyInstance.AcceptQuest(selectedQuest);
+        Back();
+    }
+
+    public override void Close()
+    {
+        completeBtn.SetActive(false);
+        base.Close();
+    }
+
+    public void CompleteQuest()
+    {
+        if (selectedQuest.IsComplete)
+        {
+            for (int i = 0; i < questGiver.MyQuests.Length; i++)
+            {
+                if (selectedQuest == questGiver.MyQuests[i])
+                {
+                    questGiver.MyQuests[i] = null;
+                }
+            }
+
+            foreach (CollectObjective o in selectedQuest.MyCollectObjectives)
+            {
+                InventoryScript.MyInstance.itemCountChangedEvent -= new ItemCountChanged(o.UpdateItemCount);
+                o.Complete();
+            }
+
+            foreach (KillObjective o in selectedQuest.MyKillObjectives)
+            {
+                stuffManager.killConfirmedEvent -= new KillConfirmed(o.UpdateKillCount);
+            }
+
+            Back();
+        }
     }
 }

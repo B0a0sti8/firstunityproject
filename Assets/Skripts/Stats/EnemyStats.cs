@@ -86,6 +86,14 @@ public class EnemyStats : CharacterStats, IPunObservable
     public override void Die()
     {
         gameObject.transform.Find("Charakter").GetComponent<SpriteRenderer>().flipY = true;
+        GameObject[] players = GetComponent<EnemyAI>().potentialTargets;
+        if (players != null)
+        {
+            foreach (GameObject p in players)
+            {
+                p.GetComponent<StuffManagerScript>().OnKillConfirmed(this);
+            }
+        }
         Destroy(gameObject, 1f);
         base.Die();
     }

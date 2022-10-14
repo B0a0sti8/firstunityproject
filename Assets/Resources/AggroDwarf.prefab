@@ -613,6 +613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasAttackSkript: 1
   hasTarget: 0
+  potentialTargets: []
   ownEnemyAttack: {fileID: 2023599406339572337}
   target: {fileID: 0}
   targetTemp: {fileID: 0}
@@ -641,6 +642,7 @@ MonoBehaviour:
   view: {fileID: 2023599406339572334}
   isAlive: 0
   isCurrentlyCasting: 0
+  type: 
   maxHealth:
     baseValue: 300
     modifiedValue: 0

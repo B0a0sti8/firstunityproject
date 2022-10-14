@@ -6115,6 +6115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasAttackSkript: 0
   hasTarget: 0
+  potentialTargets: []
   ownEnemyAttack: {fileID: 0}
   target: {fileID: 0}
   targetTemp: {fileID: 0}
@@ -30110,12 +30111,15 @@ MonoBehaviour:
     - amount: 5
       currentAmount: 0
       type: Healthpotion
+    killObjectives: []
   - title: Kill creepy monster dudes
-    description: Please help! Kill them all.
-    collectObjectives:
-    - amount: 5
+    description: Please help! Kill them all. Well... or at least three of the melee
+      ones!
+    collectObjectives: []
+    killObjectives:
+    - amount: 3
       currentAmount: 0
-      type: Healthpotion
+      type: MeleeEnemy
 --- !u!1 &1928858362
 GameObject:
   m_ObjectHideFlags: 0
