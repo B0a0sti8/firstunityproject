@@ -7,7 +7,7 @@ public class Input_Overlay : MonoBehaviour
 {
     #region
     GameObject PLAYER;
-    GameObject ownCanvases;
+    Transform ownCanvases;
 
     InventoryScript inventoryScript;
     CharacterPanelScript characterPanelScript;
@@ -18,11 +18,12 @@ public class Input_Overlay : MonoBehaviour
     ClassChoiceUI classChoiceUI;
     TalentTreeUI talentTreeUI;
     MasterChecks masterChecks;
+    QuestLog questLog;
 
     void Awake()
     {
         PLAYER = gameObject.transform.parent.gameObject.transform.parent.gameObject;
-        ownCanvases = PLAYER.transform.Find("Own Canvases").gameObject;
+        ownCanvases = PLAYER.transform.Find("Own Canvases");
 
         inventoryScript = ownCanvases.transform.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
         characterPanelScript = ownCanvases.transform.Find("CanvasCharacterPanel").Find("CharacterPanel").gameObject.GetComponent<CharacterPanelScript>();
@@ -32,7 +33,8 @@ public class Input_Overlay : MonoBehaviour
         keybindManager = GameObject.Find("GameManager").gameObject.GetComponent<KeybindManager>();
         classChoiceUI = ownCanvases.transform.Find("Canvas ClassChoice").gameObject.GetComponent<ClassChoiceUI>();
         talentTreeUI = ownCanvases.transform.Find("Canvas TalentTree").gameObject.GetComponent<TalentTreeUI>();
-        masterChecks = PLAYER.transform.Find("Own Canvases").Find("Canvas Action Skills").GetComponent<MasterChecks>();
+        masterChecks = ownCanvases.Find("Canvas Action Skills").GetComponent<MasterChecks>();
+        questLog = ownCanvases.Find("CanvasQuestUI").Find("QuestLog").GetComponent<QuestLog>();
     }
     #endregion
 
@@ -59,4 +61,7 @@ public class Input_Overlay : MonoBehaviour
 
     void OnTalentTreeMenue() // P
     { talentTreeUI.OpenTalentTree(); }
+
+    void OnQuestWindow() // L
+    { Debug.Log("QuestWindow"); questLog.OpenClose(); }
 }

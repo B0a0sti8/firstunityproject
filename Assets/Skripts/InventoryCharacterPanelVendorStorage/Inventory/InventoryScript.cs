@@ -258,7 +258,7 @@ public class InventoryScript : MonoBehaviour
         {
             foreach (InventorySlotScript slot in bag.MyBagScript.MySlots)
             {
-                if (!slot.IsEmpty && slot.MyItem.name == type)
+                if (!slot.IsEmpty && slot.MyItem.name.ToLower() == type.ToLower())
                 {
                     itemCount += slot.MyItems.Count;
                 }
@@ -266,6 +266,32 @@ public class InventoryScript : MonoBehaviour
         }
 
         return itemCount;
+    }
+
+    public Stack<Item> GetItems(string type, int count)
+    {
+        Stack<Item> items = new Stack<Item>();
+
+        foreach (Bag bag in bags)
+        {
+            foreach (InventorySlotScript slot in bag.MyBagScript.MySlots)
+            {
+                if (!slot.IsEmpty && slot.MyItem.name.ToLower() == type.ToLower())
+                {
+                    foreach (Item item in slot.MyItems)
+                    {
+                        items.Push(item);
+
+                        if (items.Count == count)
+                        {
+                            return items;
+                        }
+                    }
+                }
+            }
+        }
+
+        return items;
     }
 
     public void OnItemCountChanged(Item item)

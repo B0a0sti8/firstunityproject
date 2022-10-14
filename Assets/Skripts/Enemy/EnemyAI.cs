@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     public bool hasAttackSkript;
 
     public bool hasTarget = false;
-    GameObject[] potentialTargets;
+    public GameObject[] potentialTargets;
     GameObject[] viableTargets;
     float[] targetDistances;
     //bool setTargetToNull = false;
