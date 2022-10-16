@@ -14,7 +14,7 @@ public class Bag : Item
 
     public BagButtonScript MyBagButton { get; set; }
 
-    public int Slots { get => slots; set => slots = value; }
+    public int MySlotCount { get => slots; set => slots = value; }
 
 
     public void Initialize(int slots)
@@ -41,6 +41,13 @@ public class Bag : Item
             Remove();
         }
     }
+
+    public void SetupScript()
+    {
+        MyBagScript = Instantiate(bagPrefab, InventoryScript.MyInstance.transform).GetComponent<InventoryBagScript>();
+        MyBagScript.AddSlots(slots);
+    }
+
     public override void Awake()
     {
         base.Awake();

@@ -10,9 +10,14 @@ public class SaveData
 
     public StorageChestData MyChestData { get; set; }
 
+    public InventoryData MyInventoryData { get; set; }
+
+    public List<EquipmentData> MyEquipmentData { get; set; }
+
     public SaveData()
     {
-        
+        MyInventoryData = new InventoryData();
+        MyEquipmentData = new List<EquipmentData>();
     }
 }
 
@@ -63,5 +68,43 @@ public class StorageChestData
     {
         MyName = name;
         MyItems = new List<ItemData>();
+    }
+}
+
+[Serializable]
+public class InventoryData
+{
+    public List<BagData> MyBags { get; set; }
+
+    public InventoryData()
+    {
+        MyBags = new List<BagData>();
+    }
+}
+
+[Serializable]
+public class BagData
+{
+    public int MySlotCount { get; set; }
+    public int MyBagIndex { get; set; }
+
+    public BagData(int count, int index)
+    {
+        MySlotCount = count;
+        MyBagIndex = index;
+    }
+}
+
+[Serializable]
+public class EquipmentData
+{
+    public string MyTitle { get; set; }
+
+    public string MyType { get; set; }
+
+    public EquipmentData(string title, string type)
+    {
+        MyTitle = title;
+        MyType = type;
     }
 }
