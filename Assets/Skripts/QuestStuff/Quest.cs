@@ -8,10 +8,14 @@ public class Quest
     [SerializeField] private string title;
     [SerializeField] private string description;
 
+    [SerializeField] private int xPGiven;
+
     [SerializeField] private CollectObjective[] collectObjectives;
     [SerializeField] private KillObjective[] killObjectives;
 
     public QuestScript MyQuestScript { get; set; }
+
+    public QuestGiver MyQuestGiver { get; set; }
 
     public string MyTitle { get => title; set => title = value; }
     public string MyDescription 
@@ -55,7 +59,7 @@ public class Quest
         }
     }
 
-    
+    public int MyXPGiven { get => xPGiven; set => xPGiven = value; }
 }
 
 [System.Serializable]
@@ -124,13 +128,14 @@ public class KillObjective : Objective
     {
         if (MyType == character.MyType)
         {
-            MyCurrentAmount++;
             if (MyCurrentAmount <= MyAmount)
             {
+                MyCurrentAmount++;
                 QuestLog.MyInstance.transform.parent.parent.parent.GetComponent<StuffManagerScript>().WriteMessage(string.Format("{0}: {1} / {2}", character.MyType, MyCurrentAmount, MyAmount));
+                QuestLog.MyInstance.UpdateSelected();
+                QuestLog.MyInstance.CheckCompletion();
             }
-            QuestLog.MyInstance.UpdateSelected();
-            QuestLog.MyInstance.CheckCompletion();
+
         }
     }
 }

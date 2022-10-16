@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "LoadDebug",
+                    "type": "Button",
+                    "id": "54293429-bd36-431e-85db-615bee9f9e4f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "TakeDamage",
                     "type": "Button",
                     "id": "573b1975-b45b-4ea0-921e-eddf1b9e833c",
@@ -188,6 +197,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "AddBag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d09e74a9-2057-4512-aeff-fde6bda903ec",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LoadDebug",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

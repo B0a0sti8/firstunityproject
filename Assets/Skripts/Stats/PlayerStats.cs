@@ -20,6 +20,11 @@ public class PlayerStats : CharacterStats, IPunObservable
 	[Header("Class")] public string className;
 	[Header("Gold")] public int goldAmount;
 
+	[Header("Experience")]
+	[SerializeField] private int neededXP;
+	[SerializeField] private int currentXP;
+	[SerializeField] private int currentPlayerLvl;
+	
 	#region Stats: Aus Characterstats geerbte sind auskommentiert
 	[Header("Mana")]
 	public Stat maxMana;
@@ -68,6 +73,8 @@ public class PlayerStats : CharacterStats, IPunObservable
 	TextMeshProUGUI healthText;
 	TextMeshProUGUI manaText;
 
+	XPBarScript xPBar;
+
 	public Sprite castingBarImage;
 	public string castingBarText;
 	public bool castingBarChanneling;
@@ -76,7 +83,11 @@ public class PlayerStats : CharacterStats, IPunObservable
 	private CharacterPanelScript charPanel;
 	private CharPanelButtonScript[] allEquipSlots;
 
-	public override void Update()
+    public int MyNeededXP { get => neededXP; set => neededXP = value; }
+    public int MyCurrentXP { get => currentXP; set => currentXP = value; }
+    public int MyCurrentPlayerLvl { get => currentPlayerLvl; set => currentPlayerLvl = value; }
+
+    public override void Update()
 	{
 		base.Update();
 
@@ -89,31 +100,41 @@ public class PlayerStats : CharacterStats, IPunObservable
 
 	void Start()
 	{
-		goldAmount = 100;
-		charPanel = transform.Find("Own Canvases").Find("CanvasCharacterPanel").Find("CharacterPanel").GetComponent<CharacterPanelScript>();
-		allEquipSlots = charPanel.allEquipmentSlots;
-
-		isAlive = true;
-
-		Stat[] allStatsArray = { armor, weaponDamage, mastery, toughness, intellect, charisma, tempo, 
-			movementSpeed, actionSpeed, critChance, critMultiplier, evadeChance, healInc, dmgInc, physRed, 
-			magRed, incHealInc, blockChance, skillRadInc, skillDurInc, buffInc, debuffInc, tickRateMod, lifesteal };
-
-		ReloadEquipMainStats(); 
-
-		currentHealth = maxHealth.GetValue();
-		currentMana = maxMana.GetValue();
-
 		if (view.IsMine)
 		{
 			gameObject.transform.Find("Own Canvases").gameObject.SetActive(true);
 		}
+
+		xPBar = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("XPBar").GetComponent<XPBarScript>();
 
 		manaBar = transform.Find("Canvases").Find("Canvas World Space").Find("ManaBar").GetComponent<ManaBar>();
 		manaBarUI = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("ManaBar").GetComponent<ManaBar>();
 
 		healthText = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("HealthBar").Find("Health Text").GetComponent<TextMeshProUGUI>();
 		manaText = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("ManaBar").Find("Mana Text").GetComponent<TextMeshProUGUI>();
+
+		charPanel = transform.Find("Own Canvases").Find("CanvasCharacterPanel").Find("CharacterPanel").GetComponent<CharacterPanelScript>();
+		allEquipSlots = charPanel.allEquipmentSlots;
+
+		Stat[] allStatsArray = { armor, weaponDamage, mastery, toughness, intellect, charisma, tempo,
+			movementSpeed, actionSpeed, critChance, critMultiplier, evadeChance, healInc, dmgInc, physRed,
+			magRed, incHealInc, blockChance, skillRadInc, skillDurInc, buffInc, debuffInc, tickRateMod, lifesteal };
+
+		ReloadEquipMainStats();
+
+		currentHealth = maxHealth.GetValue();
+		currentMana = maxMana.GetValue();
+
+		MyCurrentPlayerLvl = 1;
+		MyNeededXP = Mathf.RoundToInt(100 * MyCurrentPlayerLvl * Mathf.Pow(MyCurrentPlayerLvl, 0.5f));
+		MyCurrentXP = 10;
+		xPBar.SetXPBar(MyCurrentXP, MyNeededXP);
+		xPBar.UpdateLevel(MyCurrentPlayerLvl);
+
+		goldAmount = 100;
+
+		isAlive = true;
+
 	}
 
 	// Setzt alle Stats auf die Standardwerte eines nackten Charakters ohne Klasse, Talente und / oder Buffs und Debuffs
@@ -134,7 +155,6 @@ public class PlayerStats : CharacterStats, IPunObservable
 		buffInc.baseValue = 0;					debuffInc.baseValue = 0;
 		tickRateMod.baseValue = 0;
 	}
-
 
 	// Modifiziert den Base
 	public void ModifyAllStats(int modArmor = 0, int modWeaponDmg = 0, int modMastery = 0, int modToughness = 0, int modIntellect = 0, int modCharisma = 0, int modTempo = 0,
@@ -330,6 +350,42 @@ public class PlayerStats : CharacterStats, IPunObservable
 		}
 	}
     #endregion
+
+	public void CheatCodeAddXP()
+    {
+		GainXP(505);
+    }
+
+	public void GainXP(int xp)
+    {
+		currentXP += xp;
+		xPBar.SetXPBar(currentXP, MyNeededXP);
+		if (currentXP >= neededXP)
+        {
+			int tooMuchXP = currentXP - neededXP;
+			LevelUp(tooMuchXP);
+        }
+    }
+
+	public void LevelUp(int tooMuchXP)
+    {
+		MyCurrentPlayerLvl++;
+		xPBar.UpdateLevel(MyCurrentPlayerLvl);
+		MyNeededXP = Mathf.RoundToInt(100 * MyCurrentPlayerLvl * Mathf.Pow(MyCurrentPlayerLvl, 0.5f));
+		xPBar.SetXPBar(tooMuchXP, MyNeededXP);
+		currentXP = tooMuchXP;
+
+		if (currentXP >= neededXP)
+		{
+			tooMuchXP = currentXP - neededXP;
+			LevelUp(tooMuchXP);
+		}
+	}
+
+	public void LoadLevel()
+    {
+		xPBar.UpdateLevel(MyCurrentPlayerLvl);
+	}
 
     public override void Die()
 	{

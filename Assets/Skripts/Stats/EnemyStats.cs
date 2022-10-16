@@ -20,6 +20,8 @@ public class EnemyStats : CharacterStats, IPunObservable
     public float baseAttackSpeed = 2f;
     public Stat mastery; // 0 - Inf
 
+    public int XPForPlayer;
+
     public int groupNumber;
 
     [HideInInspector]
@@ -92,6 +94,7 @@ public class EnemyStats : CharacterStats, IPunObservable
             foreach (GameObject p in players)
             {
                 p.GetComponent<StuffManagerScript>().OnKillConfirmed(this);
+                p.GetComponent<PlayerStats>().GainXP(XPForPlayer);
             }
         }
         Destroy(gameObject, 1f);

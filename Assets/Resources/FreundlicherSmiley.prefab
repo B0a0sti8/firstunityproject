@@ -640,6 +640,7 @@ MonoBehaviour:
   mastery:
     baseValue: 10
     modifiedValue: 0
+  XPForPlayer: 0
   groupNumber: 0
   enemyUIHealthActive: 0
 --- !u!114 &2023599406339572334
