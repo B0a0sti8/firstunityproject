@@ -21245,7 +21245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 388944769}
   - component: {fileID: 388944770}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stairs Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21322,7 +21322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 411397219}
   - component: {fileID: 411397220}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Border Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21366,8 +21366,8 @@ EdgeCollider2D:
   - {x: 6.3442783, y: 0.7862015}
   - {x: 10.161427, y: 0.99093723}
   - {x: 11.257153, y: 3.7709951}
-  - {x: 14.861403, y: 3.773632}
-  - {x: 14.874227, y: 5.554605}
+  - {x: 14.926579, y: 3.769596}
+  - {x: 14.916125, y: 5.6073146}
   - {x: 13.11481, y: 5.591579}
   - {x: 13.171092, y: 18.846077}
   - {x: 14.85555, y: 18.86157}
@@ -21476,8 +21476,8 @@ EdgeCollider2D:
   - {x: 21.935886, y: 3.6999311}
   - {x: 21.257694, y: 3.6894603}
   - {x: 19.228935, y: 5.60901}
-  - {x: 16.741718, y: 5.6160846}
-  - {x: 16.73502, y: 3.8113284}
+  - {x: 16.706944, y: 5.602177}
+  - {x: 16.746494, y: 3.816492}
   - {x: 19.453476, y: 3.7898097}
   - {x: 20.843628, y: 2.5796313}
   - {x: 20.894466, y: -4.3828707}
@@ -21658,6 +21658,14 @@ PrefabInstance:
     - target: {fileID: 2985879261512430859, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
       propertyPath: SceneName
       value: SampleScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985879261512430859, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
+      propertyPath: newPlayerPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985879261512430859, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
+      propertyPath: newPlayerPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63d3510caa9c0594990b96d9a724b9d7, type: 3}
@@ -22002,7 +22010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 960200622}
   - component: {fileID: 960200623}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Small Rock (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22236,7 +22244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1025530170}
   - component: {fileID: 1025530171}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Medium Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22442,8 +22450,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad220453c64da164abb5eddcc1116d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Speed: 10
+  speed:
+    baseValue: 0
+    modifiedValue: 0
+  movement: {x: 0, y: 0}
+  currentDirectionTrue: {x: 0, y: 0, z: 0}
+  upDirection: {x: 0, y: 0, z: 0}
+  rotationMeasurement: {fileID: 0}
   animator: {fileID: 1071974015}
+  view: {fileID: 0}
 --- !u!114 &1071974018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119091,12 +119106,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIewREI+reQIAADEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzoWRCYS4t5YQ0kMSJrSTiy+KtcYaZMkjyQGS4b93JcvYpSeWt19v3678RYSyNeROm7UR/ElzIN9HxNvk26h3PsKR7bTaik/oYt4Ed6UPYiHmlTmhEU98mtUVOCPyH2onfTBFsFGi0KZa8R0stXUW4YJJC+gy2vlshdDXiBzxZ5z6lBNa04W3PtFK6eiMZg7KgRmE3iwmc0ppEhOSyXSWpundXRLzksnNLElokqzGdBFKNCqXrKqB+3n6SotpLDG7CWEKJ40RdDL3rbWUwkaixJ3qIMS2LsGAV4ILhnMHctgUgRLErnR+imH2S1FYcFEWw073wqCAbVnyU7eqVszuW2ofTDa+UXobWLU1n/5zj5PgLoyuHru2CfUtXCny/Ss75cy6gepD+H7APAh0YHLP3iW8laCe9droRnF0OtP41MbC9L7/e5lsWUK+7/GW6hXY1L3i3ZK7FfsZzmH441KK6j0oP2uBrdRB73AZYHA3v5BwuBsbSyDqWfyx8JvthgcWHQ/CWIeuOKXy9N51Y3woWQXN/DSNW2qjIMCRdA2KSXfaYBl3vcEr36DtleeB+acUm0df90KuUgLcx1N65drow2VZttSHJ7DlS+OkUNCT9o5n1GmplWoPbKhJl7ZtTMHyQdquEfzf0yJ37DYt0llOebKYz+d8vMAHxeYpY8AohfyWhNsTCudkctMSjfLg1lRfXOGddV+Y0dqwOhw7N+ywFp+VHkguVKG3uQFQL22FC3Ew2ATfJV9xgQJtwTmhwr7JV0akzvfAs0uhLEy6OjrDsr5KRmrxoZ1HMrIMn5SMePhyyxsDHwIOvnlX7EzOfwFQSwMEFAAACAgAAAgh7G5H11FtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJJFopllmqVJskGKobmpqWmKrrmhoUGiqWViYmqigUFqsplSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7BEQj6t5AgAAMQUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7G5H11FtAAAAeAAAAAkAJAAAAAAAAAAAAAAAxgIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAB+AwAAAAA=
+    dataString: UEsDBBQAAAgIAAAIIexvMrkpZQIAAB4FAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzk3GpoHUvbWEkB6SMKGdXHzZSGusQZY8khwgGf57V7KNXcoF+e3Xe09rfzKpXY3cG7uyUjwagez7hIUz+zIZgg94gK3RG/mBfc6rFL4MSRBzXsBLQ3gaypyp0FvJf+itCskJgY2WhbHVUmxxYZx3BBegHFLIGh+qNUGfE3agv6sslBzpNL0Npw86ZcnkREeO2qMdUqfT6yz85tOuIp13BW1+o7mCqkYRyI/Kkn5CmrSJmoR1OUEEN0pJ17Fi/lhH1Zu6RItBtpBAIiOT9PorASXKbelD63H1c1E49J0HFo530pJbbVv207QWVuB2LbV3UE0YlM0jp7bn43/hqzSGC2uqh35sGhX5UvLdCxw5OD+yeAzfjZhHg/agdvCm8LVE/WRW1jRaUNDbJpQ2Dqd3w+NZ2aJEvhvwluoF2NSD473f/X0GDaco/rBQsnoLoeubFtgoE/2Oa4CWbuYXEY5L4roWhAYWfxz+hu14m7rAvbTOU6hTqQO9N9PYkMqW0bOgpvELYzVGuCNdowblj2tq4y9v8CI2GnsRuYfw3nTDu1j/OlyURHjIT5KL0Nrsz5flSrN/RFc+N15JjQPpEHginxZG63bBxp70ZZvGFsBHZdtGin9Xi32DeVZkNzwR6e1sNhNXt2mawCwDQEgS5HMWd09q0glq3RLt7KFb00NzTXvWf04mKwt1XHZhYb+SH5UZWS51YTbcIurntsOZOFoaQm+lWApJBm3Qe6njfbPPnCnDdyjyc6M8Kl0evIV86JKzWr4bH5CcLeL3I2cBPu/y2uK7xH0Y3jc7sdNfUEsDBBQAAAgIAAAIIexuR9dRbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrSSRaKZZZqlSbJBiqG5qalpiq65oaFBoqllYmJqooFBarKZUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAIIexvMrkpZQIAAB4FAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIexuR9dRbQAAAHgAAAAJACQAAAAAAAAAAAAAALICAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAagMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
     cacheStartup: 0
-  showNavGraphs: 1
+  showNavGraphs: 0
   showUnwalkableNodes: 1
   debugMode: 0
   debugFloor: 0
@@ -119172,7 +119187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600754004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -63.133884, y: 16.321663, z: 0}
+  m_LocalPosition: {x: -63.13388, y: 16.321663, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -119336,7 +119351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1660875966}
   - component: {fileID: 1660875967}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Small Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119398,7 +119413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1728522185}
   - component: {fileID: 1728522186}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Border Stairs Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}

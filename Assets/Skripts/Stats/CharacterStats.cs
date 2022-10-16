@@ -6,30 +6,35 @@ using Photon.Pun;
 public class CharacterStats : MonoBehaviourPunCallbacks
 {
     public PhotonView view;
+    public bool isAlive;
+    public bool isCurrentlyCasting = false;
 
+    [SerializeField]
+    private string type;
+
+    #region Stats
+    // Stats
+    [Header("Health")]
     public Stat maxHealth; // 0 - Inf
     public float currentHealth;
 
-    public Stat mastery; // 0 - Inf
-    public Stat armor; // 0 - 100 bzw. -Inf - 100 /// 30 -> Erlittener Schaden um 30% verringert
+    [Header("Main Stats")] public Stat armor; // 0 - 100 bzw. -Inf - 100 /// 30 -> Erlittener Schaden um 30% verringert
 
+    [Header("Side Stats")]
     public Stat movementSpeed; // 0 - Inf bzw. 1 - Inf
-    public Stat attackSpeed; // 0 - 90 bzw. -Inf - 100 /// 30 -> (Global)Cooldown ist 30% kürzer (10s -> 7s)
-
+    public Stat actionSpeed; // 0 - 90 bzw. -Inf - 100 /// 30 -> (Global)Cooldown ist 30% kürzer (10s -> 7s)
     public Stat critChance; // 0(%) - 100(%) /// 30 -> 30% Wahrscheinlichkeit auf Crit
     public Stat critMultiplier; // 100(%) - Inf(%) /// 130 -> Angriff macht 130% Schaden
+    public Stat evadeChance;
 
-    public Stat evade;
-
-    public bool isAlive;
-
-
+    public string MyType { get => type; set => type = value; }
+    #endregion
 
     public virtual void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
     {
-        if (missRandomRange <= Mathf.Clamp(evade.GetValue(), 0, 100))
+        if (missRandomRange <= Mathf.Clamp(evadeChance.GetValue(), 0, 100))
         {
-            Debug.Log("MISS:" + missRandomRange + " <= " + Mathf.Clamp(evade.GetValue(), 0, 100));
+            Debug.Log("MISS:" + missRandomRange + " <= " + Mathf.Clamp(evadeChance.GetValue(), 0, 100));
             return;
         }
 
@@ -79,7 +84,7 @@ public class CharacterStats : MonoBehaviourPunCallbacks
 
     public virtual void Update()
     {
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && isAlive == true)
         {
             Die();
         }

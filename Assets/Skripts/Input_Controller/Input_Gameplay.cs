@@ -6,35 +6,40 @@ using UnityEngine.InputSystem;
 public class Input_Gameplay : MonoBehaviour
 {
     #region
-    GameObject PLAYER;
-    GameObject ownCanvases;
+    Transform PLAYER;
+    Transform ownCanvases;
 
     PlayerController playerController;
     PlayerStats playerStats;
     InteractionCharacter interactionCharacter;
     CameraFollow cameraFollow;
     LevelLoader levelLoader;
+    MasterChecks masterChecks;
+    InventoryScript inventoryScript;
 
     void Awake()
     {
-        PLAYER = gameObject.transform.parent.gameObject.transform.parent.gameObject;
-        ownCanvases = PLAYER.transform.Find("Own Canvases").gameObject;
+        PLAYER = transform.parent.parent;
+        ownCanvases = PLAYER.transform.Find("Own Canvases");
         levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
 
         playerController = PLAYER.GetComponent<PlayerController>();
         playerStats = PLAYER.GetComponent<PlayerStats>();
         interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
         cameraFollow = PLAYER.GetComponent<CameraFollow>();
+        masterChecks = ownCanvases.Find("Canvas Action Skills").GetComponent<MasterChecks>();
+
+        inventoryScript = ownCanvases.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
     }
     #endregion
 
     void Update()
     {
-        
+        levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
     }
 
     void OnMovement(InputValue value) // WASD
-    { playerController.Movement(value); }
+    { playerController.Movement(value); masterChecks.isSkillInterrupted = true; }
 
     void OnTakeDamage() // SPACE
     { playerStats.TakeDamageSpace(); }
@@ -50,4 +55,15 @@ public class Input_Gameplay : MonoBehaviour
 
     void OnGoToHub() // H
     { levelLoader.GoToHub(); }
+
+    void OnAddBag() // B
+    {
+        inventoryScript.CheatCodeAddBag();
+        playerStats.CheatCodeAddXP();
+        PLAYER.transform.Find("GameManager").GetComponent<SaveManager>().Save();
+    }
+
+    // Nur zum Debuggen. Wird Später auf nen Button im Hauptmenü gelegt oder so
+    void OnLoadDebug() // V
+    { PLAYER.transform.Find("GameManager").GetComponent<SaveManager>().Load(); Debug.Log("Load1"); }
 }

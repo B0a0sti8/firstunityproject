@@ -18,6 +18,9 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     SkillPrefab buttonSkill;
 
+    public bool skillAvailable;
+
+
 
     void Start()
     {
@@ -35,18 +38,33 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     void Update()
     {
-        if (skillName == "")
+        if (skillName != "")
+        {
+            FindMatchingSkill();
+            UpdateButton();
+            MasterETStuffAssignment(buttonSkill);
+        }
+        else
         {
             buttonSkill = null;
             buttonImage.sprite = Resources.Load<Sprite>("SkillSprites/EmptySlot");
             buttonText.text = "";
             buttonImage.color = new Color32(255, 255, 255, 255);
-            return;
         }
-        //if (className == "") return;
-        FindMatchingSkill();
-        UpdateButton();
-        MasterETStuffAssignment(buttonSkill);
+
+
+
+        //if (skillName == "")
+        //{
+        //    buttonSkill = null;
+        //    buttonImage.sprite = Resources.Load<Sprite>("SkillSprites/EmptySlot");
+        //    buttonText.text = "";
+        //    buttonImage.color = new Color32(255, 255, 255, 255);
+        //    return;
+        //}
+        //FindMatchingSkill();
+        //UpdateButton();
+        //MasterETStuffAssignment(buttonSkill);
     }
 
     void FindMatchingSkill()
@@ -154,7 +172,14 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     {
         if (buttonSkill == null) return;
 
-        buttonSkill.StartSkillChecks();
+        if (skillAvailable)
+        {
+            buttonSkill.StartSkillChecks();
+        }
+        else
+        {
+            Debug.Log("You don't have that skill yet.");
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData) // Wenn Button geklickt wird ausgeführt (nur Mausklick)
@@ -198,6 +223,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
             }
         }
         skillName = HandScript.MyInstance.handSkillName;
+        PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").gameObject.GetComponent<SkillbookMaster>().UpdateCurrentSkills();
     }
 
     public void OnEndDrag(PointerEventData eventData) // triggers right after OnDrop

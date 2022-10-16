@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 236f8b7acb97ae149adb36600e4bab6f, type: 3}
+  m_Name: HochHackigeStiefel
+  m_EditorClassIdentifier: 
+  itemQuality: 1
+  tooltipItemName: <color=#05CB198A>Hochhackige Stiefel</color>
+  tooltipItemDescription: "\n +2 armor"
+  tooltipItemSprite: {fileID: 4976816623245800991, guid: b6d7fae7ca59466419b6aa10cb4b8027, type: 3}
+  price: 5
+  name: Hochhackige Stiefel
+  isDefaultItem: 0
+  icon: {fileID: 4976816623245800991, guid: b6d7fae7ca59466419b6aa10cb4b8027, type: 3}
+  stackSize: 0
+  equpipType: 6
+  equipClass: 0
+  armor: 2
+  weaponDamage: 0
+  mastery: 0
+  toughness: 0
+  intellect: 0
+  charisma: 0
+  tempo: 0
+  movementSpeed: 0
+  actionSpeed: 0
+  critChance: 0
+  critMultiplier: 0
+  evadeChance: 0
+  healInc: 0
+  dmgInc: 0
+  physRed: 0
+  magRed: 0
+  incHealInc: 0
+  blockChance: 0
+  skillRadInc: 0
+  skillDurInc: 0
+  buffInc: 0
+  debuffInc: 0
+  tickRateMod: 0
+  lifesteal: 0

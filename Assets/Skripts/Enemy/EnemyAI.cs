@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     public bool hasAttackSkript;
 
     public bool hasTarget = false;
-    GameObject[] potentialTargets;
+    public GameObject[] potentialTargets;
     GameObject[] viableTargets;
     float[] targetDistances;
     //bool setTargetToNull = false;
@@ -173,7 +173,7 @@ public class EnemyAI : MonoBehaviour
         try
         {
             Vector2 direction = ((Vector2)path.vectorPath[currentWypoint] - rb2d.position).normalized;
-            Vector2 force = direction * speed * Time.deltaTime;
+            Vector2 force = direction * speed * GetComponent<EnemyStats>().movementSpeed.GetValue() * Time.deltaTime; 
             rb2d.AddForce(force);
 
             float distance = Vector2.Distance(rb2d.position, path.vectorPath[currentWypoint]);

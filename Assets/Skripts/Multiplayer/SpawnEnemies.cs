@@ -8,6 +8,8 @@ public class SpawnEnemies : MonoBehaviour
 {
     public GameObject enemyPrefabMelee;
     public GameObject enemyPrefabRanged;
+    public GameObject enemyPrefabaggroDwarf;
+    public GameObject freundlicherSmiley;
 
     GameObject[] allEnemies;
     GameObject[] allEnemyIndicators;
@@ -21,6 +23,10 @@ public class SpawnEnemies : MonoBehaviour
         SpawnEnemyType(enemyPrefabMelee, "Melee");
 
         SpawnEnemyType(enemyPrefabRanged, "Ranged");
+
+        SpawnEnemyType(enemyPrefabaggroDwarf, "AggroDwarf");
+
+        SpawnEnemyType(freundlicherSmiley, "FreundlicherSmiley");
 
 
         // assign groupNumber to Enemy                  // or use alert-range instead of groupNumber?

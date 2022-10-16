@@ -19,17 +19,32 @@ public class Interactable : MonoBehaviour
         Debug.Log("Interacting with " + transform.name);
     }
 
+    public virtual void StopInteracting()
+    {
+
+    }
+
+
     private void Update()
     {
-        if (isFocus && !hasInteracted)
+        if (isFocus)
         {
-            hasInteracted = true;
             float distance = Vector2.Distance(player.position, interactionTransform.position); // Berechnet den Abstand zwischen Spieler und Objekt
-            if (distance <= radius)
+            if (!hasInteracted)
             {
-                Interact(); // Führt Interaktion aus, je nachdem mit welchem Objekt 
+                hasInteracted = true;
+                
+                if (distance <= radius)
+                {
+                    Interact(); // Führt Interaktion aus, je nachdem mit welchem Objekt 
+                }
+            }
+            if (distance > radius)
+            {
+                StopInteracting();
             }
         }
+        
     }
 
     public void OnFocused (Transform playerTransform) // Wird ausgeführt, sobald Objekt fokussiert wird
@@ -38,13 +53,18 @@ public class Interactable : MonoBehaviour
         player = playerTransform;
         hasInteracted = false;
 
-        if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (gameObject.layer == LayerMask.NameToLayer("Enemy") || gameObject.layer == LayerMask.NameToLayer("Ally"))
         {
             //Debug.Log("Focus enemy"); // 2x im Log
             gameObject.transform.Find("Charakter").transform.localScale = new Vector3(8f, 1.5f, 1f); // wide boii
 
             gameObject.transform.Find("Canvas UI").gameObject.SetActive(true);
             gameObject.GetComponent<EnemyStats>().enemyUIHealthActive = true;
+
+            if (transform.Find("Canvas UI").Find("CanvasBuffsAndDebuffs") != null)
+            {
+                transform.Find("Canvas UI").Find("CanvasBuffsAndDebuffs").GetComponent<BuffDebuffUINPC>().UpdateUI();
+            }
         }
     }
 
@@ -54,7 +74,7 @@ public class Interactable : MonoBehaviour
         player = null;
         hasInteracted = false;
 
-        if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (gameObject.layer == LayerMask.NameToLayer("Enemy") || gameObject.layer == LayerMask.NameToLayer("Ally"))
         {
             //Debug.Log("Defocus enemy");
             gameObject.transform.Find("Charakter").transform.localScale = new Vector3(2.5f, 2.5f, 1f);

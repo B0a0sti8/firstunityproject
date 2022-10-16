@@ -45,14 +45,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Oof
-    clip: {fileID: 8300000, guid: 2ecdd9eb3429b2d4db0ab11588302178, type: 3}
+    clip: {fileID: 8300000, guid: 12800724222257c4e81dc5d6f00abefa, type: 3}
+    output: {fileID: 3959614307401099931, guid: ff50a5d2d1050f74a9213cfbab05436d, type: 2}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: DragonTheme
     clip: {fileID: 8300000, guid: 13f761c71c156ce44983e8e150cfd5e6, type: 3}
+    output: {fileID: 472476998730757432, guid: ff50a5d2d1050f74a9213cfbab05436d, type: 2}
     volume: 1
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - name: HoverClick
+    clip: {fileID: 8300000, guid: 6f0a92e7354a47040ad6ad8419cb53de, type: 3}
+    output: {fileID: 3959614307401099931, guid: ff50a5d2d1050f74a9213cfbab05436d, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: HoverClickDownPitch
+    clip: {fileID: 8300000, guid: 6f0a92e7354a47040ad6ad8419cb53de, type: 3}
+    output: {fileID: 3959614307401099931, guid: ff50a5d2d1050f74a9213cfbab05436d, type: 2}
+    volume: 1
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - name: HoverClickUpPitch
+    clip: {fileID: 8300000, guid: 6f0a92e7354a47040ad6ad8419cb53de, type: 3}
+    output: {fileID: 3959614307401099931, guid: ff50a5d2d1050f74a9213cfbab05436d, type: 2}
+    volume: 1
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+  - name: OoOof
+    clip: {fileID: 8300000, guid: 12800724222257c4e81dc5d6f00abefa, type: 3}
+    output: {fileID: 3959614307401099931, guid: ff50a5d2d1050f74a9213cfbab05436d, type: 2}
+    volume: 1
+    pitch: 0.2
+    loop: 0
     source: {fileID: 0}

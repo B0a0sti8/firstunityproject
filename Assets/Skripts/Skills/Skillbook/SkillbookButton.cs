@@ -34,7 +34,7 @@ public class SkillbookButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     SkillPrefab buttonSkill;
     void Start()
     {
-        PLAYER = transform.parent.transform.parent.transform.parent.transform.parent.transform.parent.gameObject;
+        PLAYER = transform.parent.transform.parent.transform.parent.transform.parent.transform.parent.transform.parent.gameObject;
         skillManager = PLAYER.transform.Find("SkillManager").gameObject;
 
         SkillPrefab[] skills = skillManager.transform.Find("BlueMage").GetComponents<SkillPrefab>();

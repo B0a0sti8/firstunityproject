@@ -53,8 +53,22 @@ public class InteractionCharacter : MonoBehaviour // Sorry Marcus, ist echt nich
                 focus.OnDefocused(); // Legt Fokus des Charakters auf getroffenen interaktiven Gegenstand
             }
             focus = newFocus;
+
+            if (newFocus is StorageChest)
+            {
+                (newFocus as StorageChest).canvasGroup = transform.Find("Own Canvases").Find("CanvasStorageChest").Find("StorageChest").GetComponent<CanvasGroup>();
+            }
+            else if (newFocus is Vendor)
+            {
+                (newFocus as Vendor).window = transform.Find("Own Canvases").Find("CanvasVendorWindow").Find("VendorWindow").GetComponent<VendorWindow>();
+            }
+            else if (newFocus is QuestGiver)
+            {
+                (newFocus as QuestGiver).window = transform.Find("Own Canvases").Find("CanvasQuestUI").Find("QuestGiverWindow").GetComponent<QuestGiverWindow>();
+            }
         }
         newFocus.OnFocused(transform);
+
     }
 
     void RemoveFocus () // Entfernt Fokus des Charakters

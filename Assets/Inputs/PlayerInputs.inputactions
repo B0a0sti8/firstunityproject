@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "LoadDebug",
+                    "type": "Button",
+                    "id": "54293429-bd36-431e-85db-615bee9f9e4f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "TakeDamage",
                     "type": "Button",
                     "id": "573b1975-b45b-4ea0-921e-eddf1b9e833c",
@@ -54,6 +63,15 @@
                     "name": "GoToHub",
                     "type": "Button",
                     "id": "e8d6a061-49fb-4bdd-9d75-ed4ba72b40bc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AddBag",
+                    "type": "Button",
+                    "id": "c2ee94b4-c979-4831-97a9-29c6dee38dde",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -170,6 +188,28 @@
                     "action": "TakeDamage",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b517565a-8a28-43e3-9f4a-f115851c8f93",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddBag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d09e74a9-2057-4512-aeff-fde6bda903ec",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LoadDebug",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -226,6 +266,33 @@
                     "name": "KeybindMenue",
                     "type": "Button",
                     "id": "70ae5e48-7850-4a18-9ede-a90baa67272f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ClassChoiceMenue",
+                    "type": "Button",
+                    "id": "7d71a73e-4b7f-4c4b-aa90-f87432cbbf46",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TalentTreeMenue",
+                    "type": "Button",
+                    "id": "6fa14ecc-b9e1-411d-ace4-eaa4f7b8c58d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "QuestWindow",
+                    "type": "Button",
+                    "id": "9f149cfe-7a91-4fc2-b98a-2a4c68ec87a2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -296,6 +363,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "EquipmentWindow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5204f59e-7ba2-4665-9b20-dd7d70b0c1e8",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClassChoiceMenue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "726532ab-970f-42cd-aa2c-b89319641381",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TalentTreeMenue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "56f066bf-8607-4063-a304-fab87e6528c8",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuestWindow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

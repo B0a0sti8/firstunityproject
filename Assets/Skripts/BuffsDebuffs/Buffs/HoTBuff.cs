@@ -7,7 +7,7 @@ public class HoTBuff : Buff
 {
     //new public bool isOverTime = true;
 
-    public override void StartBuffEffect(PlayerStats playerStats)
+    public override void StartBuffEffect(CharacterStats playerStats)
     {
         buffName = "Cure";
         buffDescription = "Gain <color=green>Healinge</color> over <color=yellow>Timere</color>. This is a verry long buff description. Oh yeaaah!";
@@ -15,7 +15,7 @@ public class HoTBuff : Buff
         tickTimeElapsed = 0;
     }
 
-    public override void EndBuffEffect(PlayerStats playerStats)
+    public override void EndBuffEffect(CharacterStats playerStats)
     {
         base.EndBuffEffect(playerStats);
     }
@@ -26,7 +26,7 @@ public class HoTBuff : Buff
         return clone;
     }
 
-    public override void Update(PlayerStats playerStats)
+    public override void Update(CharacterStats playerStats)
     {
         base.Update(playerStats);
         tickTimeElapsed += Time.deltaTime;

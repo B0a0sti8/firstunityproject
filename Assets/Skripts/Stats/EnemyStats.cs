@@ -18,6 +18,9 @@ public class EnemyStats : CharacterStats, IPunObservable
     //public float movementSpeed;
     public float modAttackSpeed;
     public float baseAttackSpeed = 2f;
+    public Stat mastery; // 0 - Inf
+
+    public int XPForPlayer;
 
     public int groupNumber;
 
@@ -68,16 +71,14 @@ public class EnemyStats : CharacterStats, IPunObservable
         }
     }
 
-    [PunRPC]
-    public override void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
+    [PunRPC] public override void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
     {
         Debug.Log("Enemy takes damage " + damage);
         base.TakeDamage(damage, missRandomRange, critRandomRange, critChance, critMultiplier);
         FindObjectOfType<AudioManager>().Play("Oof");
     }
 
-    [PunRPC]
-    public override void GetHealing(float healing, int critRandomRange, float critChance, float critMultiplier)
+    [PunRPC] public override void GetHealing(float healing, int critRandomRange, float critChance, float critMultiplier)
     {
         Debug.Log("Enemy gets healing " + healing);
         base.GetHealing(healing, critRandomRange, critChance, critMultiplier);
@@ -87,6 +88,15 @@ public class EnemyStats : CharacterStats, IPunObservable
     public override void Die()
     {
         gameObject.transform.Find("Charakter").GetComponent<SpriteRenderer>().flipY = true;
+        GameObject[] players = GetComponent<EnemyAI>().potentialTargets;
+        if (players != null)
+        {
+            foreach (GameObject p in players)
+            {
+                p.GetComponent<StuffManagerScript>().OnKillConfirmed(this);
+                p.GetComponent<PlayerStats>().GainXP(XPForPlayer);
+            }
+        }
         Destroy(gameObject, 1f);
         base.Die();
     }

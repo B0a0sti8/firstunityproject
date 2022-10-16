@@ -6,6 +6,7 @@ using System;
 public abstract class Buff
 {
     public BuffManager buffManager;
+    public BuffManagerNPC buffManagerNPC;
     public Sprite icon = null;
     float elapsed;
 
@@ -22,15 +23,23 @@ public abstract class Buff
     public float tickTimeElapsed;
     public float tickValue;
 
-    public virtual void StartBuffEffect(PlayerStats playerStats) 
+    public virtual void StartBuffEffect(CharacterStats playerStats) 
     {
         durationTimeLeft = duration;
     }
 
-    public virtual void EndBuffEffect(PlayerStats playerStats) 
+    public virtual void EndBuffEffect(CharacterStats playerStats) 
     {
-        buffManager = playerStats.gameObject.GetComponent<BuffManager>();
-        buffManager.RemoveBuff(this);
+        if (playerStats.gameObject.GetComponent<BuffManager>() != null)
+        {
+            buffManager = playerStats.gameObject.GetComponent<BuffManager>();
+            buffManager.RemoveBuff(this);
+        }
+        else
+        {
+            buffManagerNPC = playerStats.gameObject.GetComponent<BuffManagerNPC>();
+            buffManagerNPC.RemoveBuff(this);
+        }
     }
 
     public virtual void Dispell()
@@ -41,7 +50,7 @@ public abstract class Buff
         }
     }
 
-    public virtual void Update(PlayerStats playerStats)
+    public virtual void Update(CharacterStats playerStats)
     {
         elapsed += Time.deltaTime;
         if (elapsed >= duration) {

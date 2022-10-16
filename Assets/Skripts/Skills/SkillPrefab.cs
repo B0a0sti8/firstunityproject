@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
+using UnityEngine.InputSystem;
 
 public class SkillPrefab : MonoBehaviour//, IUseable
 {
+    private Camera mainCam;
+
     [HideInInspector]
     public PhotonView photonView;
     [HideInInspector]
@@ -21,6 +24,10 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     [Header("Target")]
     public bool needsTargetEnemy;
     public bool needsTargetAlly;
+    public bool canSelfCastIfNoTarget;
+    public bool targetsEnemiesOnly;
+    public bool targetsAlliesOnly;
+    public List<GameObject> currentTargets = new List<GameObject>();
 
     [Header("Mana")]
     public bool needsMana; // optional
@@ -48,6 +55,8 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     public bool isSuperInstant; // can not be true if hasGlobalCooldown is true
     bool isSkillInOwnSuperInstantQueue = false;
 
+    private Interactable zwischenSpeicher;
+
     [Header("Tooltip")]
     [HideInInspector]
     public MasterEventTrigger masterET;
@@ -67,6 +76,26 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     public string tooltipSkillRange;
     [HideInInspector]
     public string tooltipSkillRadius;
+
+    [Header("Casting")]
+    public float castTimeOriginal = 0f;
+    public float castTimeModified;
+    public bool castStarted = false;
+    public bool isSkillChanneling;
+
+    [Header("Area of Effect")]
+    public bool isAOECircle = false;
+    public bool isAOEFrontCone = false;
+    public bool isAOELine = false;
+    public bool isSelfCast = false;
+    public Vector3 coneAOEDirection;
+    public float coneAOEAngle = 50;
+    private Interactable circleAim;
+    public bool isPlacableAoE;
+    public GameObject unusedSpell;
+    public GameObject PlacableAOEIndicator;
+    bool hasUnusedSpell = false;
+    public float skillDuration;
 
 
 
@@ -109,8 +138,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
             {
                 if (LayerMask.NameToLayer("Enemy") == interactionCharacter.focus.gameObject.layer) // if enemy in focus
                 {
-                    //Debug.Log(interactionCharacter.focus.gameObject.layer);
-                    RangeCheck();
+                    AOECheck();
                 }
                 else
                 {
@@ -131,23 +159,183 @@ public class SkillPrefab : MonoBehaviour//, IUseable
                 if (LayerMask.NameToLayer("Action") == interactionCharacter.focus.gameObject.layer || 
                     LayerMask.NameToLayer("Ally") == interactionCharacter.focus.gameObject.layer) // if ally in focus
                 {
-                    //Debug.Log(interactionCharacter.focus.gameObject.layer);
                     Debug.Log("Ally target");
-                    RangeCheck();
+                    AOECheck();
                 }
                 else
                 {
-                    Debug.Log("No fitting target");
-                    FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+                    if (canSelfCastIfNoTarget) // Hier weitermachen! Freund gebraucht, Gegner drinnen, selfcastable, heilt gegner.
+                    {
+                        zwischenSpeicher = interactionCharacter.focus;
+                        interactionCharacter.focus = null;
+                        AOECheck();
+                        interactionCharacter.focus = zwischenSpeicher;
+                    }
+                    else
+                    {
+                        Debug.Log("No fitting target");
+                        FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+                    }
                 }
             }
             else
             {
-                Debug.Log("Target needed");
-                FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+                if (canSelfCastIfNoTarget)
+                {
+                    AOECheck();
+                }
+                else
+                {
+                    Debug.Log("Target needed");
+                    FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+                }
             }
         }
         else // for skills that don't need a target
+        {
+            AOECheck();
+        }
+    }
+
+    public void AOECheck()
+    {
+        currentTargets.Clear();
+        if (!isAOECircle && !isAOEFrontCone && !isAOELine) // Skill ist singletarget
+        {
+            if (interactionCharacter.focus != null)
+            { currentTargets.Add(interactionCharacter.focus.gameObject); }
+
+            if (canSelfCastIfNoTarget && interactionCharacter.focus == null)
+            { currentTargets.Add(PLAYER); }
+
+            if (isSelfCast)
+            { currentTargets.Add(PLAYER); }
+        }
+
+        if (isAOECircle) // Kreisförmiger Flächenzauber. Um Gegner, um freundliches Ziel oder um den Spieler selbst. Noch nicht implementiert: Bei Mausklick an entsprechende Stelle
+        {
+            isAOEFrontCone = false; isAOELine = false; // Nur sicherheitshalber, falls jmd mehrere Sachen angekreuzt hat.
+
+            if (canSelfCastIfNoTarget && interactionCharacter.focus == null)
+            { circleAim = PLAYER.GetComponent<Interactable>(); }
+            else
+            { circleAim = interactionCharacter.focus; }
+
+            if (needsTargetEnemy) 
+            {
+                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
+                foreach (Collider2D coll in hit)
+                {
+                    currentTargets.Add(coll.gameObject);
+                }
+            }
+            else if (needsTargetAlly)
+            {
+                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
+                foreach (Collider2D coll in hit)
+                {
+                    currentTargets.Add(coll.gameObject);
+                }
+            }
+            else if (isSelfCast)
+            {
+                if (targetsAlliesOnly)
+                {
+                    Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
+                    foreach (Collider2D coll in hit)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+                }
+                else if (targetsEnemiesOnly)
+                {
+                    Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
+                    foreach (Collider2D coll in hit)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+                }
+                else
+                {
+                    Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
+                    foreach (Collider2D coll in hit)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+
+                    Collider2D[] hit2 = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
+                    foreach (Collider2D coll in hit2)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+                }
+            }
+            else if(isPlacableAoE) // Platzierbarer Flächenzauber. Kommt später
+            {
+                QueueCheck();
+            }
+        }
+
+        else if (isAOEFrontCone)
+        {
+            isAOELine = false; // Nur sicherheitshalber, falls jmd mehrere Sachen angekreuzt hat.
+            circleAim = PLAYER.GetComponent<Interactable>();
+
+            if (targetsAlliesOnly)
+            {
+                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
+                foreach (Collider2D coll in hit)
+                {
+                    Vector2 newVector = (coll.transform.position - PLAYER.transform.position);
+                    if (Vector2.SignedAngle(PLAYER.GetComponent<PlayerController>().currentDirectionTrue, newVector) <= coneAOEAngle)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+                }
+            }
+            else if (targetsEnemiesOnly)
+            {
+                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
+                foreach (Collider2D coll in hit)
+                {
+                    Vector2 newVector = (coll.transform.position - PLAYER.transform.position);
+                    if (Vector2.SignedAngle(PLAYER.GetComponent<PlayerController>().currentDirectionTrue, newVector) <= coneAOEAngle)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+                }
+            }
+            else
+            {
+                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
+                foreach (Collider2D coll in hit)
+                {
+                    Vector2 newVector = (coll.transform.position - PLAYER.transform.position);
+                    if (Vector2.SignedAngle(PLAYER.GetComponent<PlayerController>().currentDirectionTrue, newVector) <= coneAOEAngle)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+                }
+
+                Collider2D[] hit2 = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
+                foreach (Collider2D coll in hit2)
+                {
+                    Vector2 newVector = (coll.transform.position - PLAYER.transform.position);
+                    if (Vector2.SignedAngle(PLAYER.GetComponent<PlayerController>().currentDirectionTrue, newVector) <= coneAOEAngle)
+                    {
+                        currentTargets.Add(coll.gameObject);
+                    }
+                }
+            }
+        }
+
+        else if (isAOELine)
+        {
+            
+        }
+
+
+        if(isPlacableAoE != true)
         {
             RangeCheck();
         }
@@ -157,37 +345,51 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     {
         if (needsTargetEnemy || needsTargetAlly) // // for skills that need a target
         {
-            float distance = Vector2.Distance(PLAYER.transform.position, 
-                interactionCharacter.focus.gameObject.transform.position);
-            if (distance <= skillRange) // target in range
+            if (interactionCharacter.focus == null && canSelfCastIfNoTarget)        // Falls kein Target aber selbst castable
             {
-                //Debug.Log("Target in range");
-                RaycastHit2D[] hit = Physics2D.LinecastAll(PLAYER.transform.position, 
-                    interactionCharacter.focus.gameObject.transform.position, (1 << LayerMask.NameToLayer("Borders")) | 
-                    (1 << LayerMask.NameToLayer("Action")) | (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Enemy")));
-                targetInSight = true;
-                for (int i = 0; i < hit.Length; i++)
+                QueueCheck();
+            }
+            else
+            {
+                float distance = Vector2.Distance(PLAYER.transform.position,
+                interactionCharacter.focus.gameObject.transform.position);
+                if (distance <= skillRange) // target in range
                 {
-                    if (hit[i].collider.gameObject.layer == LayerMask.NameToLayer("Borders"))
+                    RaycastHit2D[] hit = Physics2D.LinecastAll(PLAYER.transform.position,
+                        interactionCharacter.focus.gameObject.transform.position, (1 << LayerMask.NameToLayer("Borders")) |
+                        (1 << LayerMask.NameToLayer("Action")) | (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Enemy")));
+                    targetInSight = true;
+                    for (int i = 0; i < hit.Length; i++)
                     {
-                        targetInSight = false;
+                        if (hit[i].collider.gameObject.layer == LayerMask.NameToLayer("Borders"))
+                        {
+                            targetInSight = false;
+                        }
+                    }
+                    if (targetInSight) // target in sight
+                    {
+                        QueueCheck();
+                    }
+                    else // target not in sight
+                    {
+                        Debug.Log("Target in range but NOT in sight");
+                        FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
                     }
                 }
-                if (targetInSight) // target in sight
+                else // target not in range
                 {
-                    //Debug.Log("Target in range and in sight");
-                    QueueCheck();
+                    if (LayerMask.NameToLayer("Enemy") == interactionCharacter.focus.gameObject.layer && needsTargetAlly && canSelfCastIfNoTarget) // Spezialfall: Wenn eigentlich freundliches Target gebraucht wird, aber ein Gegner im Target ist, das jedoch nicht gemerkt wird, weil der Skill selfcastable ist, muss die Range nicht gecheckt werden.
+                    {
+                        currentTargets.Clear();
+                        currentTargets.Add(PLAYER);
+                        QueueCheck();
+                    }
+                    else
+                    {
+                        Debug.Log("Target not in range: Distance " + distance + " > " + skillRange);
+                        FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+                    }
                 }
-                else // target not in sight
-                {
-                    Debug.Log("Target in range but NOT in sight");
-                    FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-                }
-            }
-            else // target not in range
-            {
-                Debug.Log("Target not in range: Distance " + distance + " > " + skillRange);
-                FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
             }
         }
         else // for skills that don't need a target
@@ -237,7 +439,6 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     {
         if (isSuperInstant)
         {
-            //Debug.Log("Wait for OwnCooldown ...  " + ownCooldownTimeLeft);
             StartCoroutine(Wait(ownCooldownTimeLeft));
             IEnumerator Wait(float time)
             {
@@ -246,11 +447,10 @@ public class SkillPrefab : MonoBehaviour//, IUseable
                 else { FindObjectOfType<AudioManager>().Play("HoverClick"); }
                 yield return new WaitForSeconds(time);
                 isSkillInOwnSuperInstantQueue = false;
-                //Debug.Log("... Use SuperInstant");
                 ownCooldownActive = true;
                 ownCooldownTimeLeft = ownCooldownTimeModified;
                 if (needsMana) { playerStats.currentMana -= manaCost; }
-                SkillEffect();
+                StartCasting();
             }
         }
         else
@@ -259,21 +459,29 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         }
     }
 
-    public void UseSkill3() // checks for GlobalCooldown and waits for skill
+    public void UseSkill3() // checks for GlobalCooldown and skill casting times and waits for skill
     {
-        if (!hasGlobalCooldown || (hasGlobalCooldown && !masterChecks.masterGCActive)) // no GC trouble
+        if ((!hasGlobalCooldown || (hasGlobalCooldown && !masterChecks.masterGCActive)) && !playerStats.isCurrentlyCasting) // no GC and casting trouble
         {
-            //Debug.Log("Wait for OwnCooldown / Animation ...  " + ownCooldownTimeLeft + " / " + masterChecks.masterAnimTimeLeft);
+            //if (isPlacableAoE)
+            //{ PlacableAoESkillProcedure(); }
+            //else
             StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterAnimTimeLeft)));
         }
-        else if (masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime) // GC early cast
+        else if ((masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime) && (masterChecks.castTimeCurrent <= masterChecks.masterGCEarlyTime)) // GC early cast
         {
-            //Debug.Log("Wait for OwnCooldown / GlobalCooldown / Animation ...  " + ownCooldownTimeLeft + " / " + masterChecks.masterGCTimeLeft + " / " + masterChecks.masterAnimTimeLeft);
-            StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterGCTimeLeft, masterChecks.masterAnimTimeLeft)));
+            //if (isPlacableAoE)
+            //{ PlacableAoESkillProcedure(); }
+            //else
+            StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterGCTimeLeft, masterChecks.masterAnimTimeLeft, masterChecks.castTimeCurrent)));
         }
         else // hasGlobalCooldown && globalCooldownActive // GC active (too early)
         {
-            Debug.Log("ERROR A: GC active (too early) " + masterChecks.masterGCTimeLeft + " > " + masterChecks.masterGCEarlyTime);
+            if (masterChecks.castTimeCurrent > masterChecks.masterGCEarlyTime)
+            { Debug.Log("ERROR: Casting"); }
+            else
+            { Debug.Log("ERROR A: GC active (too early) " + masterChecks.masterGCTimeLeft + " > " + masterChecks.masterGCEarlyTime); }
+            
             FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
         }
     }
@@ -286,7 +494,14 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         yield return new WaitForSeconds(time);
         masterChecks.masterIsSkillInQueue = false;
         //Debug.Log("... Use Skill");
-        TriggerSkill();
+        if (isPlacableAoE)
+        {
+            PlacableAoESkillProcedure();
+        }
+        else
+        {
+            TriggerSkill();
+        }
     }
 
     public void TriggerSkill()
@@ -314,7 +529,51 @@ public class SkillPrefab : MonoBehaviour//, IUseable
             playerStats.ManageManaRPC(-manaCost);
         }
 
-        SkillEffect();
+        if (isAOEFrontCone)
+        {
+            StartCoroutine(FrontAOEIndicator(0.2f));
+        }
+
+        StartCasting();
+    }
+
+    public void StartCasting()
+    {
+        if (castTimeOriginal <= 0)
+        {
+            SkillEffect();
+            if (isPlacableAoE)
+            {
+                unusedSpell.GetComponent<AoESpellIndicator>().duration = skillDuration;
+                unusedSpell.GetComponent<AoESpellIndicator>().isIndicatorActive = true;
+                unusedSpell = null;
+                hasUnusedSpell = false;
+                Debug.Log("Zahle Mana");
+            }
+        }
+        else
+        {
+            if (isSkillChanneling)
+            { playerStats.castingBarChanneling = true; }
+            else
+            { playerStats.castingBarChanneling = false; }
+            playerStats.castingBarImage = tooltipSkillSprite;
+            playerStats.castingBarText = tooltipSkillName;
+            
+            PLAYER.transform.Find("PlayerParticleSystems").Find("CastingParticles").gameObject.GetComponent<ParticleSystem>().Play();
+            masterChecks.isSkillInterrupted = false;
+            castTimeModified = castTimeOriginal / playerStats.actionSpeed.GetValue();
+            masterChecks.castTimeCurrent = castTimeModified;
+            masterChecks.castTimeMax = castTimeModified;
+            castStarted = true;
+            Debug.Log("Skloss");
+            playerStats.isCurrentlyCasting = true;
+
+            if (isSkillChanneling)
+            {
+                SkillEffect();
+            }
+        }
     }
 
     public virtual void SkillEffect() // overridden by each skill seperately
@@ -324,6 +583,25 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
     public virtual void Update()
     {
+        if (masterChecks.masterIsCastFinished && castStarted)
+        {
+            if (isPlacableAoE)
+            {
+                unusedSpell.GetComponent<AoESpellIndicator>().duration = skillDuration;
+                unusedSpell.GetComponent<AoESpellIndicator>().isIndicatorActive = true;
+                unusedSpell = null;
+                hasUnusedSpell = false;
+                Debug.Log("Zahle Mana");
+            }
+            SkillEffect();
+            castStarted = false;
+            if (!isSkillChanneling)
+            {
+                masterChecks.masterIsCastFinished = false;
+            }
+        }
+        
+
         if (ownCooldownTimeLeft > 0)
         {
             ownCooldownTimeLeft -= Time.deltaTime;
@@ -337,8 +615,25 @@ public class SkillPrefab : MonoBehaviour//, IUseable
             }
         }
 
-        float attackSpeedModifier = 1 - (playerStats.attackSpeed.GetValue() / 100);
+        float attackSpeedModifier = 1 - (playerStats.actionSpeed.GetValue() / 100);
         ownCooldownTimeModified = ownCooldownTimeBase * attackSpeedModifier;
+
+        if (unusedSpell != null || hasUnusedSpell == true)
+        {
+            Vector3 mouseScreenposition = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            unusedSpell.transform.position = new Vector3(mouseScreenposition.x, mouseScreenposition.y, 0);
+
+            if (Mouse.current.rightButton.wasPressedThisFrame)
+            {
+                Destroy(unusedSpell);
+                unusedSpell = null;
+                hasUnusedSpell = false;
+            }
+            else if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                TriggerSkill();
+            }
+        }
     }
 
     void Awake()
@@ -352,6 +647,8 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
 
         playerStats = PLAYER.GetComponent<PlayerStats>();
+        
+        mainCam = GameObject.Find("CameraMama").transform.Find("Main Camera").GetComponent<Camera>();
     }
 
     public virtual void Start()
@@ -364,7 +661,10 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         int critRandom = Random.Range(1, 100);
         float critChance = playerStats.critChance.GetValue();
         float critMultiplier = playerStats.critMultiplier.GetValue();
-        interactionCharacter.focus.gameObject.GetComponent<EnemyStats>().view.RPC("TakeDamage", RpcTarget.All, damage, missRandom, critRandom, critChance, critMultiplier);
+        for (int i = 0; i < currentTargets.Count; i++)
+        {
+            currentTargets[i].GetComponent<CharacterStats>().view.RPC("TakeDamage", RpcTarget.All, damage, missRandom, critRandom, critChance, critMultiplier);
+        }
     }
 
     public void DoHealing(float healing)
@@ -372,7 +672,64 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         int critRandom = Random.Range(1, 100);
         float critChance = playerStats.critChance.GetValue();
         float critMultiplier = playerStats.critMultiplier.GetValue();
-        playerStats.view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
+        //playerStats.view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
+        for (int i = 0; i < currentTargets.Count; i++)
+        {
+            currentTargets[i].GetComponent<CharacterStats>().view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
+        }
+    }
+
+    public IEnumerator FrontAOEIndicator(float time)
+    {
+        Vector2 normalSize = PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().size;
+        PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().color = Color.red;
+        var frontSpriteColor1 = PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().color;
+        frontSpriteColor1.a = 0.1f;
+        PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().color = frontSpriteColor1;
+        PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().size = new Vector2(skillRadius / (normalSize.x * 1.3f), skillRadius / (normalSize.y * 1.3f));
+
+        yield return new WaitForSeconds(time);
+
+        PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().color = Color.white;
+        var frontSpriteColor2 = PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().color;
+        frontSpriteColor2.a = 0.1f;
+        PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().color = frontSpriteColor2;
+        PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().size = normalSize;
+    }
+
+    public IEnumerator CircleAOEIndicator(float time)
+    {
+        Vector2 normalSize = PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().size;
+
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().enabled = true;
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().color = Color.red;
+        var frontSpriteColor1 = PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().color;
+        frontSpriteColor1.a = 0.1f;
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().color = frontSpriteColor1;
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().size = new Vector2(skillRadius / (normalSize.x * 1.3f), skillRadius / (normalSize.y * 1.3f));
+
+        yield return new WaitForSeconds(time);
+
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().color = Color.white;
+        var frontSpriteColor2 = PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().color;
+        frontSpriteColor2.a = 0.1f;
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().color = frontSpriteColor2;
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().size = normalSize;
+        PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void PlacableAoESkillProcedure()
+    {
+        if (!hasUnusedSpell)
+        {
+            unusedSpell = Instantiate(PlacableAOEIndicator, mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
+            hasUnusedSpell = true;
+            Debug.Log("Labl Labl");
+        }
+        else // Wenn Unused Spell
+        {
+            Debug.Log("Gubl Gubl");
+        }
     }
 }
 
