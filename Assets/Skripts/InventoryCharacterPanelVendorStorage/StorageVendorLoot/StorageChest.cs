@@ -15,6 +15,10 @@ public class StorageChest : Interactable
 
     [SerializeField] public CanvasGroup canvasGroup;
 
+    private List<Item> items;
+
+    public List<Item> MyItems { get => items; set => items = value; }
+
     private void Start()
     {
         spriteRenderer.sprite = closedSprite;

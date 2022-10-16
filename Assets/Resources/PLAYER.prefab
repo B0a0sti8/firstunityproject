@@ -7100,6 +7100,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33db10d17608d044b431f75c316de1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allItemsInTheFuckingGameBecauseTheLoadManagerNeedsToKnowWhatHeCanLoad:
+  - {fileID: 11400000, guid: c1ca4112655138f4d8f686135a5d1d63, type: 2}
+  - {fileID: 11400000, guid: 35dcf8b81d9873b4f843e8ecb9417fa8, type: 2}
+  - {fileID: 11400000, guid: 26c3002585a45ac409f89cf64bd9113f, type: 2}
+  - {fileID: 11400000, guid: 05b5cb128dcec194a822ffdda6b8153c, type: 2}
+  - {fileID: 11400000, guid: b7a22cdca8750d04aafcf875277dcc15, type: 2}
+  - {fileID: 11400000, guid: bd52c7e4151bbf1489104da42319b8d5, type: 2}
+  - {fileID: 11400000, guid: 64bce55a3a348774fb49ba896223de2e, type: 2}
+  - {fileID: 11400000, guid: 2f28ce734eb130a4ba27e8f2c5d26b42, type: 2}
+  - {fileID: 11400000, guid: 641fe2ad975ec7b438937e58ef527b5d, type: 2}
+  - {fileID: 11400000, guid: 18e238dcdaa0dff4ba64e8d9436c1c42, type: 2}
+  - {fileID: 11400000, guid: 4164ad6e32d6e39439f0690f30bdd069, type: 2}
+  - {fileID: 11400000, guid: 7a9a7824f4f40db43933b85dbb77ca21, type: 2}
+  - {fileID: 11400000, guid: 894f0ac4a64357540b6dfcfffc0253a1, type: 2}
 --- !u!1 &1095742888
 GameObject:
   m_ObjectHideFlags: 0
