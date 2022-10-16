@@ -10,6 +10,9 @@ public class SaveManager : MonoBehaviour
     [SerializeField]
     private Item[] allItemsInTheFuckingGameBecauseTheLoadManagerNeedsToKnowWhatHeCanLoad;
 
+    [SerializeField]
+    private ActionButton[] actionButtons;
+
     Transform PLAYER;
     Transform ownCanvases;
     PlayerStats playerStats;
@@ -26,6 +29,7 @@ public class SaveManager : MonoBehaviour
         storageChest = ownCanvases.Find("CanvasStorageChest").Find("StorageChest").GetComponent<StorageChestCanvasScript>();
         inventoryScript = ownCanvases.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
         characterPanel = ownCanvases.Find("CanvasCharacterPanel").Find("CharacterPanel").GetComponent<CharacterPanelScript>();
+        actionButtons = ownCanvases.Find("Canvas Action Skills").Find("SkillSlots").GetComponentsInChildren<ActionButton>();
     }
 
     void Update()
@@ -46,6 +50,7 @@ public class SaveManager : MonoBehaviour
             SaveBags(data);
             SavePlayer(data);
             SaveStorageChest(data);
+            SaveActionButtons(data);
 
             bf.Serialize(file, data);
 
@@ -100,6 +105,16 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    public void SaveActionButtons(SaveData data)
+    {
+        ActionButtonData a;
+        for (int i = 0; i < actionButtons.Length; i++)
+        {
+            a = new ActionButtonData(actionButtons[i].skillName, i);
+            data.MyActionButtonData.Add(a);
+        }
+    }
+
 
 
 
@@ -124,6 +139,7 @@ public class SaveManager : MonoBehaviour
             LoadBags(data);
             LoadPlayer(data);
             LoadStorageChests(data);
+            LoadActionButtons(data);
 
 
         }
@@ -183,6 +199,14 @@ public class SaveManager : MonoBehaviour
         {
             CharPanelButtonScript cb = Array.Find(characterPanel.allEquipmentSlots, x => x.name == equipmentData.MyType);
             cb.EquipStuff(Array.Find(allItemsInTheFuckingGameBecauseTheLoadManagerNeedsToKnowWhatHeCanLoad, x => x.name == equipmentData.MyTitle) as Equipment);
+        }
+    }
+
+    public void LoadActionButtons(SaveData data)
+    {
+        for (int i = 0; i < data.MyActionButtonData.Count; i++)
+        {
+            actionButtons[data.MyActionButtonData[i].MyIndex].skillName = data.MyActionButtonData[i].MyAction;
         }
     }
 }

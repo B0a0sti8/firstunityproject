@@ -14,10 +14,13 @@ public class SaveData
 
     public List<EquipmentData> MyEquipmentData { get; set; }
 
+    public List<ActionButtonData> MyActionButtonData { get; set; }
+
     public SaveData()
     {
         MyInventoryData = new InventoryData();
         MyEquipmentData = new List<EquipmentData>();
+        MyActionButtonData = new List<ActionButtonData>();
     }
 }
 
@@ -106,5 +109,19 @@ public class EquipmentData
     {
         MyTitle = title;
         MyType = type;
+    }
+}
+
+[Serializable]
+public class ActionButtonData
+{
+    public string MyAction { get; set; }
+
+    public int MyIndex { get; set; }
+
+    public ActionButtonData(string action, int index)
+    {
+        this.MyAction = action;
+        this.MyIndex = index;
     }
 }
