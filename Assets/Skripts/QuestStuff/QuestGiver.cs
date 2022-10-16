@@ -8,18 +8,51 @@ public class QuestGiver : NPC
 
     public Quest[] MyQuests { get => quests; }
 
+    [SerializeField] private Sprite question, questionSilver, exclamation;
+
+    [SerializeField] private SpriteRenderer statusRenderer;
 
 
+    private void Start()
+    {
+        foreach (Quest quest in quests)
+        {
+            quest.MyQuestGiver = this;
+        }
+    }
 
-    //Debugging
-    //[SerializeField] private QuestLog tmpLog;
+    public void UpdateQuestStatus()
+    {
+        int count = 0;
 
-    //private void Start()
-    //{
-    //    //Debugging only
-    //    Transform vanc = InventoryScript.MyInstance.transform.parent.parent;
-    //    tmpLog = vanc.Find("CanvasQuestUI").Find("QuestLog").GetComponent<QuestLog>();
-    //    tmpLog.AcceptQuest(quests[0]);
-    //    tmpLog.AcceptQuest(quests[1]);
-    //}
+        foreach (Quest quest in quests)
+        {
+            if (quest != null)
+            {
+                if (quest.IsComplete && QuestLog.MyInstance.HasQuest(quest))
+                {
+                    statusRenderer.sprite = question;
+                    break;
+                }
+                else if (!QuestLog.MyInstance.HasQuest(quest))
+                {
+                    statusRenderer.sprite = exclamation;
+                    break;
+                }
+                else if (!quest.IsComplete && QuestLog.MyInstance.HasQuest(quest))
+                {
+                    statusRenderer.sprite = questionSilver;
+                }
+            }
+            else
+            {
+                count++;
+
+                if (count == quests.Length)
+                {
+                    statusRenderer.sprite = null;
+                }
+            }
+        }
+    }
 }

@@ -239,7 +239,7 @@ public class InventoryScript : MonoBehaviour
         
     }
 
-    void OnAddBag()
+    public void CheatCodeAddBag()
     {
         Equipment helmet = (Equipment)Instantiate(items[3]);
         AddItem(helmet);

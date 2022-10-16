@@ -1166,6 +1166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasAttackSkript: 1
   hasTarget: 0
+  potentialTargets: []
   ownEnemyAttack: {fileID: 1831716281098815419}
   target: {fileID: 0}
   targetTemp: {fileID: 0}
@@ -1194,6 +1195,7 @@ MonoBehaviour:
   view: {fileID: 869110100393099300}
   isAlive: 0
   isCurrentlyCasting: 0
+  type: 
   maxHealth:
     baseValue: 2000
     modifiedValue: 0
@@ -1221,6 +1223,7 @@ MonoBehaviour:
   mastery:
     baseValue: 0
     modifiedValue: 0
+  XPForPlayer: 2000
   groupNumber: 0
   enemyUIHealthActive: 0
 --- !u!114 &1831716281098815419

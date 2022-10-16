@@ -32,6 +32,8 @@ public class QuestGiverWindow : UIWindowNPC
     [SerializeField] private GameObject questDescription;
 
     private StuffManagerScript stuffManager;
+    private PlayerStats playerStats;
+    private GameObject PLAYER;
 
     private List<GameObject> quests = new List<GameObject>();
 
@@ -39,7 +41,9 @@ public class QuestGiverWindow : UIWindowNPC
 
     public void Start()
     {
-        stuffManager = transform.parent.parent.parent.gameObject.GetComponent<StuffManagerScript>();
+        PLAYER = transform.parent.parent.parent.gameObject;
+        stuffManager = PLAYER.GetComponent<StuffManagerScript>();
+        playerStats = PLAYER.GetComponent<PlayerStats>();
     }
 
     public void ShowQuests(QuestGiver questGiver)
@@ -161,6 +165,8 @@ public class QuestGiverWindow : UIWindowNPC
                 stuffManager.killConfirmedEvent -= new KillConfirmed(o.UpdateKillCount);
             }
 
+            playerStats.GainXP(selectedQuest.MyXPGiven);
+            QuestLog.MyInstance.RemoveQuest(selectedQuest.MyQuestScript);
             Back();
         }
     }
