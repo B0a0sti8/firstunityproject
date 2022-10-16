@@ -18,6 +18,8 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
 
     public InventoryBagScript MyBag { get; set; }
 
+    public int MyIndex { get; set; }
+
     public bool IsEmpty
     {
         get

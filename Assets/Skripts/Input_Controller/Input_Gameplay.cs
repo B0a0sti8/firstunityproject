@@ -63,6 +63,7 @@ public class Input_Gameplay : MonoBehaviour
         PLAYER.transform.Find("GameManager").GetComponent<SaveManager>().Save();
     }
 
+    // Nur zum Debuggen. Wird Später auf nen Button im Hauptmenü gelegt oder so
     void OnLoadDebug() // V
     { PLAYER.transform.Find("GameManager").GetComponent<SaveManager>().Load(); Debug.Log("Load1"); }
 }

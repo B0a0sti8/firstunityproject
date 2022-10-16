@@ -68,6 +68,7 @@ public class InventoryBagScript : MonoBehaviour
         for (int i = 0; i < slotCount; i++)
         {
             InventorySlotScript slot = Instantiate(slotPrefab, transform).GetComponent<InventorySlotScript>();
+            slot.MyIndex = i;
             slot.MyBag = this;
             MySlots.Add(slot);
         }
@@ -91,5 +92,16 @@ public class InventoryBagScript : MonoBehaviour
     {
         canvasGroup.alpha = canvasGroup.alpha > 0 ? 0 : 1;
         canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
+    }
+
+    public void AddItemThroughLoading(Item item, int slotIndex)
+    {
+        foreach (InventorySlotScript slot in MySlots)
+        {
+            if (slot.MyIndex == slotIndex)
+            {
+                slot.AddItem(item);
+            }
+        }
     }
 }

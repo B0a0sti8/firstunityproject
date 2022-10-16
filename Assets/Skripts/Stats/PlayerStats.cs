@@ -382,9 +382,11 @@ public class PlayerStats : CharacterStats, IPunObservable
 		}
 	}
 
-	public void LoadLevel()
+	public void LoadPlayerLevel()
     {
 		xPBar.UpdateLevel(MyCurrentPlayerLvl);
+		MyNeededXP = Mathf.RoundToInt(100 * MyCurrentPlayerLvl * Mathf.Pow(MyCurrentPlayerLvl, 0.5f));
+		xPBar.SetXPBar(currentXP, MyNeededXP);
 	}
 
     public override void Die()
