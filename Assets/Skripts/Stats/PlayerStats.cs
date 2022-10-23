@@ -52,14 +52,18 @@ public class PlayerStats : CharacterStats, IPunObservable
 	//public Stat evadeChance;				// Lässt Charakter Schaden vermeiden
 	public Stat healInc;					// Erhöht verursachte Heilung
 	public Stat dmgInc;						// Erhöht verursachten Schaden
+
 	public Stat physRed;					// Verringert erlittenen physischen Schaden
 	public Stat magRed;                     // Verringert erlittenen magischen Schaden
 	public Stat incHealInc;					// Erhöht erhaltene Heilung
 	public Stat blockChance;				// Erhöht Blockchance (nur bei Schildträgern und ggf. Dual wielding)
+
 	public Stat skillRadInc;				// Höherer Skillradius
 	public Stat skillDurInc;				// Höhere Skilldauer
+
 	public Stat buffInc;					// Stärkerer Buffeffekt
 	public Stat debuffInc;					// Stärkerer Debuffeffekt
+
 	public Stat tickRateMod;				// Schnellere Tickrate für Effekte
 	public Stat lifesteal;                  // Heilt durch verursachten Schaden bzw. Heilung
 
