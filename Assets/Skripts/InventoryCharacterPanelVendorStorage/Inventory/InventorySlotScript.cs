@@ -187,7 +187,7 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
                 {
                     Bag bag = (Bag)HandScript.MyInstance.MyMoveable;
 
-                    if (bag.MyBagScript != MyBag && InventoryScript.MyInstance.MyEmptySlotCount - bag.Slots > 0)
+                    if (bag.MyBagScript != MyBag && InventoryScript.MyInstance.MyEmptySlotCount - bag.MySlotCount > 0)
                     {
                         AddItem(bag);
                         bag.MyBagButton.RemoveBag();

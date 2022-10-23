@@ -10,11 +10,16 @@ public class SaveManager : MonoBehaviour
     [SerializeField]
     private Item[] allItemsInTheFuckingGameBecauseTheLoadManagerNeedsToKnowWhatHeCanLoad;
 
+    [SerializeField]
+    private ActionButton[] actionButtons;
+
     Transform PLAYER;
     Transform ownCanvases;
     PlayerStats playerStats;
-
-    private StorageChestCanvasScript storageChest; // Falls mal mehrere storageChests existieren: private StorageChest[] storageChests;
+    StorageChestCanvasScript storageChest; // Falls mal mehrere storageChests existieren: private StorageChest[] storageChests;
+    InventoryScript inventoryScript;
+    CharacterPanelScript characterPanel;
+    
 
     void Awake()
     {
@@ -22,6 +27,9 @@ public class SaveManager : MonoBehaviour
         ownCanvases = PLAYER.Find("Own Canvases");
         playerStats = PLAYER.GetComponent<PlayerStats>();
         storageChest = ownCanvases.Find("CanvasStorageChest").Find("StorageChest").GetComponent<StorageChestCanvasScript>();
+        inventoryScript = ownCanvases.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
+        characterPanel = ownCanvases.Find("CanvasCharacterPanel").Find("CharacterPanel").GetComponent<CharacterPanelScript>();
+        actionButtons = ownCanvases.Find("Canvas Action Skills").Find("SkillSlots").GetComponentsInChildren<ActionButton>();
     }
 
     void Update()
@@ -38,8 +46,11 @@ public class SaveManager : MonoBehaviour
 
             SaveData data = new SaveData();
 
+            SaveEquipment(data);
+            SaveBags(data);
             SavePlayer(data);
             SaveStorageChest(data);
+            SaveActionButtons(data);
 
             bf.Serialize(file, data);
 
@@ -75,6 +86,36 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    public void SaveBags(SaveData data)
+    {
+        for (int i = 1; i < inventoryScript.MyBags.Count; i++)
+        {
+            data.MyInventoryData.MyBags.Add(new BagData(inventoryScript.MyBags[i].MySlotCount, inventoryScript.MyBags[i].MyBagButton.MyBagIndex));
+        }
+    }
+
+    public void SaveEquipment(SaveData data)
+    {
+        foreach (CharPanelButtonScript charButton in characterPanel.allEquipmentSlots)
+        {
+            if (charButton.MyEquip != null)
+            {
+                data.MyEquipmentData.Add(new EquipmentData(charButton.MyEquip.name, charButton.name));
+            }
+        }
+    }
+
+    public void SaveActionButtons(SaveData data)
+    {
+        ActionButtonData a;
+        for (int i = 0; i < actionButtons.Length; i++)
+        {
+            a = new ActionButtonData(actionButtons[i].skillName, i);
+            data.MyActionButtonData.Add(a);
+        }
+    }
+
+
 
 
 
@@ -94,8 +135,11 @@ public class SaveManager : MonoBehaviour
 
             file.Close();
 
+            LoadEquipment(data);
+            LoadBags(data);
             LoadPlayer(data);
             LoadStorageChests(data);
+            LoadActionButtons(data);
 
 
         }
@@ -125,6 +169,44 @@ public class SaveManager : MonoBehaviour
             Item item = Array.Find(allItemsInTheFuckingGameBecauseTheLoadManagerNeedsToKnowWhatHeCanLoad, x => x.name == itemData.MyTitle);
             item.MySlot = chest.MySlots.Find(x => x.MyIndex == itemData.MySlotIndex);
             chest.AddItemThroughLoading(item, itemData.MySlotIndex);
+        }
+    }
+
+    public void LoadBags(SaveData data)
+    {
+        int bagIndexInArray = 0; int ix = 0;
+        foreach (Item item in allItemsInTheFuckingGameBecauseTheLoadManagerNeedsToKnowWhatHeCanLoad)
+        {
+            if (item is Bag)
+            {
+                bagIndexInArray = ix;
+            }
+
+            ix++;
+        }
+
+        foreach (BagData bagData in data.MyInventoryData.MyBags)
+        {
+            Bag newBag = (Bag)Instantiate(allItemsInTheFuckingGameBecauseTheLoadManagerNeedsToKnowWhatHeCanLoad[bagIndexInArray]);
+            newBag.Initialize(bagData.MySlotCount);
+            inventoryScript.AddBag(newBag, bagData.MyBagIndex);
+        }
+    }
+
+    public void LoadEquipment(SaveData data)
+    {
+        foreach (EquipmentData equipmentData in data.MyEquipmentData)
+        {
+            CharPanelButtonScript cb = Array.Find(characterPanel.allEquipmentSlots, x => x.name == equipmentData.MyType);
+            cb.EquipStuff(Array.Find(allItemsInTheFuckingGameBecauseTheLoadManagerNeedsToKnowWhatHeCanLoad, x => x.name == equipmentData.MyTitle) as Equipment);
+        }
+    }
+
+    public void LoadActionButtons(SaveData data)
+    {
+        for (int i = 0; i < data.MyActionButtonData.Count; i++)
+        {
+            actionButtons[data.MyActionButtonData[i].MyIndex].skillName = data.MyActionButtonData[i].MyAction;
         }
     }
 }
