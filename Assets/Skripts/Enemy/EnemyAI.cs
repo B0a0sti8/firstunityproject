@@ -5,6 +5,17 @@ using System;
 
 public class EnemyAI : MonoBehaviour
 {
+    private enum State
+    {
+        Idle,
+        Chasing,
+        Casting,
+        Attacking,
+        Dying
+    }
+
+    private State state;
+
     public bool hasAttackSkript;
 
     public bool hasTarget = false;
@@ -44,11 +55,42 @@ public class EnemyAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb2d = GetComponent<Rigidbody2D>();
 
+        state = State.Idle;
+
         targetTemp = target;
     }
 
     void Update()
     {
+        switch (state)
+        {
+            default:
+            case State.Idle:
+                // Funktion wenn Gegner nichts macht / wartet
+                break;
+
+            case State.Chasing:
+                // Funktion wenn Gegner jemanden verfolgt
+                break;
+
+            case State.Casting:
+                // Funktion wenn Gegner einen Spell castet. Wird vermutlich überschrieben von einzelnen Gegnern
+                break;
+
+            case State.Attacking:
+                // Funktion wenn Gegner jemanden attackiert
+                break;
+
+            case State.Dying:
+                // Funktion wenn Gegner stirbt
+                break;
+        }
+
+
+
+
+
+
         SearchTargets(); // Sucht nach vernünftigem Target: 1. Sucht alle Spieler, 2. Prüft Entfernung und InSight, 3. Sucht nächstgelegenen Spieler
 
         ChaseTarget();
@@ -153,9 +195,7 @@ public class EnemyAI : MonoBehaviour
     void FollowPath()
     {
         if (path == null)
-        {
-            return;
-        }
+        { return; }
 
         if ((unitRange >= Vector2.Distance(rb2d.position, target.position) && TargetInSight(target))
             || (currentWypoint >= path.vectorPath.Count && !TargetInSight(target)))
@@ -170,10 +210,15 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
+        Move();        
+    }
+
+    void Move()
+    {
         try
         {
             Vector2 direction = ((Vector2)path.vectorPath[currentWypoint] - rb2d.position).normalized;
-            Vector2 force = direction * speed * GetComponent<EnemyStats>().movementSpeed.GetValue() * Time.deltaTime; 
+            Vector2 force = direction * speed * GetComponent<EnemyStats>().movementSpeed.GetValue() * Time.deltaTime;
             rb2d.AddForce(force);
 
             float distance = Vector2.Distance(rb2d.position, path.vectorPath[currentWypoint]);
