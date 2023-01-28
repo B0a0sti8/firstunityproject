@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Pathfinding;
 using System;
+using System.Collections.Generic;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class EnemyAI : MonoBehaviour
 
     public bool hasAttackSkript;
 
-    public bool hasTarget = false;
+    //public bool hasTarget = false;
     public GameObject[] potentialTargets;
     GameObject[] viableTargets;
     float[] targetDistances;
@@ -49,6 +50,8 @@ public class EnemyAI : MonoBehaviour
     public bool runningUpdatePathCoroutine = false;
     public Coroutine updatePathCoroutine;
 
+    Dictionary<GameObject, int> aggroTable = new Dictionary<GameObject, int>();
+
 
     void Start()
     {
@@ -56,9 +59,40 @@ public class EnemyAI : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
 
         state = State.Idle;
+        potentialTargets = GameObject.FindGameObjectsWithTag("Player"); // Sucht alle Spieler in der Scene
+        foreach (GameObject potTar in potentialTargets)
+        {
+            aggroTable.Add(potTar, 0);
+        }
 
         targetTemp = target;
     }
+
+    private void Idle() 
+    {
+        // Gegner könnte herumwandern o.ä. sucht währenddessen nach Zielen
+        // Neues System: Beim Laden der Scene wird ein Dictionary erstellt, in dem alle Spieler einem Aggro-Wert zugeordnet werden.
+        // Wenn Skills verwendet werden (Heilung in bestimmten Radius) Dmg Spells von irgendwo oder ein Spieler zu nah kommt -> Aggrowert erhöht
+        // Sobald der Aggrowert > 0 ist, greift Gegner an.
+        SearchTargets();
+    }
+
+    private void Chasing() 
+    {
+        // Gegner fängt an Ziele zu jagen. Könnte andere Gegner in der Nähe 'warnen'
+        ChaseTarget();
+    }
+
+    private void Casting() 
+    { }
+
+    private void Attacking() 
+    { }
+
+    private void Dying() 
+    { }
+
+
 
     void Update()
     {
@@ -66,23 +100,23 @@ public class EnemyAI : MonoBehaviour
         {
             default:
             case State.Idle:
-                // Funktion wenn Gegner nichts macht / wartet
+                Idle();
                 break;
 
             case State.Chasing:
-                // Funktion wenn Gegner jemanden verfolgt
+                Chasing();
                 break;
 
             case State.Casting:
-                // Funktion wenn Gegner einen Spell castet. Wird vermutlich überschrieben von einzelnen Gegnern
+                Casting();
                 break;
 
             case State.Attacking:
-                // Funktion wenn Gegner jemanden attackiert
+                Attacking();
                 break;
 
             case State.Dying:
-                // Funktion wenn Gegner stirbt
+                Dying();
                 break;
         }
 
@@ -126,10 +160,17 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+
+
+
+
+
+
+
     #region Verfolge Ziele
     private void ChaseTarget()
     {
-        if (hasTarget)
+        if (target != null)
         {
             float distaceToTarget = Vector2.Distance(transform.position, target.position); // enemy <-> enemy's target (player)
             //float distaceToTarget = Vector2.Distance(transform.position, playerTransform.position); // enemy <-> enemy's target (player)
@@ -279,16 +320,13 @@ public class EnemyAI : MonoBehaviour
     #region Suche nach Zielen
     private void SearchTargets()
     {
-        potentialTargets = GameObject.FindGameObjectsWithTag("Player");
         if (potentialTargets.Length == 0) { return; }
             
-        viableTargets = new GameObject[potentialTargets.Length];
-
+        viableTargets = new GameObject[potentialTargets.Length];       
         targetDistances = new float[potentialTargets.Length];
+
         for (int i = 0; i < potentialTargets.Length; i++)
-        {
-            targetDistances[i] = Mathf.Infinity;
-        }
+        { targetDistances[i] = Mathf.Infinity; }
 
         int n = 0;
         foreach (GameObject potTar in potentialTargets)
@@ -307,58 +345,12 @@ public class EnemyAI : MonoBehaviour
             int minIndex = Array.IndexOf(targetDistances, Mathf.Min(targetDistances));
             target = viableTargets[minIndex].transform;
         }
-        //else
-        //{
-        //    setTargetToNull = true;
-        //    //target = null;
-        //}
-
-        if (target != null)
-        {
-            hasTarget = true;
-        }
-        else
-        {
-            hasTarget = false;
-        }
     }
     #endregion
 
     #region Momentan nicht verwendet
-    //bool PlayerInSight()
-    //{
-    //    bool inSight = false;
-    //    Vector2 direction = ((Vector2)playerTransform.position - rb2d.position).normalized;
-    //    Vector2 endPosition = rb2d.position + direction * agroRange;
-
-    //    RaycastHit2D hit = Physics2D.Linecast(rb2d.position, endPosition, (1 <<
-    //        LayerMask.NameToLayer("Borders")) | (1 << LayerMask.NameToLayer("Action")));
-    //    if (hit.collider != null)
-    //    {
-    //        if (hit.collider.gameObject.CompareTag("Player"))
-    //        {
-    //            inSight = true;
-    //        }
-    //        else
-    //        {
-    //            inSight = false;
-    //        }
-    //    }
-
-    //    return inSight;
-    //}
-
 
     void OnDrawGizmosSelected()
-    {
-        /* Vector2 direction = ((Vector2)target.position - rb2d.position).normalized * agroRange;
-         Gizmos.DrawRay(rb2d.position, direction);
-
-         Gizmos.color = Color.red;
-         Gizmos.DrawWireSphere(rb2d.position, unitRange);
-
-         Gizmos.color = Color.green;
-         Gizmos.DrawWireSphere(rb2d.position, agroRange); */
-    }
+    {    }
     #endregion
 }
