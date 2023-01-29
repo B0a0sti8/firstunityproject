@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using System.Linq;
 
 public class EnemyStats : CharacterStats, IPunObservable
 {
@@ -111,7 +112,7 @@ public class EnemyStats : CharacterStats, IPunObservable
     public override void Die()
     {
         gameObject.transform.Find("Charakter").GetComponent<SpriteRenderer>().flipY = true;
-        GameObject[] players = GetComponent<EnemyAI>().potentialTargets;
+        GameObject[] players = GetComponent<EnemyAI>().aggroTable.Keys.ToArray();
         if (players != null)
         {
             foreach (GameObject p in players)

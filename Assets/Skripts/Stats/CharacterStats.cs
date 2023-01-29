@@ -6,7 +6,7 @@ using Photon.Pun;
 public class CharacterStats : MonoBehaviourPunCallbacks
 {
     public PhotonView view;
-    public bool isAlive;
+    public bool isAlive = true;
     public bool isCurrentlyCasting = false;
 
     [SerializeField]
