@@ -5,20 +5,22 @@ using Photon.Pun;
 
 public class EnemyStats : CharacterStats, IPunObservable
 {
-    //public bool isBoss;
-    //public float hitboxRadius;
-    //public bool isMelee;
-    //public float attackRange;
-    //public bool isFlying;
+    //Dictionary<>
+    // public bool isBoss;
+    // public float hitboxRadius;
+    // public bool isMelee;
+    // public float attackRange;
+    // public bool isFlying;
 
-    //public float enemyHealth;
-    //public float enemyDamage;
-    //public float enemyArmor;
-    //public float enemyEvade;
-    //public float movementSpeed;
-    public float modAttackSpeed;
+    // public float enemyHealth;
+    // public float enemyDamage;
+    // public float enemyArmor;
+    // public float enemyEvade;
+    // public float movementSpeed;
+    // public float modAttackSpeed;
     public float baseAttackSpeed = 2f;
-    public Stat mastery; // 0 - Inf
+    [SerializeField] public float baseDamage = 10f;
+    public Stat dmgModifier; // 0 - Inf
 
     public int XPForPlayer;
 
@@ -44,6 +46,8 @@ public class EnemyStats : CharacterStats, IPunObservable
     {
         currentHealth = maxHealth.GetValue();
         isAlive = true;
+        baseDamage = 10f;
+        baseAttackSpeed = 2f;
     }
 
     public override void Update()
@@ -71,18 +75,37 @@ public class EnemyStats : CharacterStats, IPunObservable
         }
     }
 
-    [PunRPC] public override void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
+    [PunRPC] public override void TakeDamage(float damage, int aggro, bool isCrit)
     {
         Debug.Log("Enemy takes damage " + damage);
-        base.TakeDamage(damage, missRandomRange, critRandomRange, critChance, critMultiplier);
+        base.TakeDamage(damage, aggro, isCrit);
         FindObjectOfType<AudioManager>().Play("Oof");
     }
 
-    [PunRPC] public override void GetHealing(float healing, int critRandomRange, float critChance, float critMultiplier)
+    [PunRPC] public override void GetHealing(float healing, bool isCrit)
     {
         Debug.Log("Enemy gets healing " + healing);
-        base.GetHealing(healing, critRandomRange, critChance, critMultiplier);
-        FindObjectOfType<AudioManager>().Play("Oof");
+        base.GetHealing(healing, isCrit);
+        //FindObjectOfType<AudioManager>().Play("Oof");
+    }
+
+    public void TakeDamageRPC(float damage, int aggro, bool isCrit, GameObject source)
+    {
+        Debug.Log("Deal Damage");
+        if (view.IsMine)
+        {
+            Debug.Log("Deal Damage 1");
+            view.RPC("TakeDamage", RpcTarget.All, damage, aggro, isCrit);
+        }
+        gameObject.GetComponent<EnemyAI>().aggroTable[source] += aggro;
+    }
+
+    public void TakeHealingRPC(float healing, bool isCrit, GameObject source)
+    {
+        if (view.IsMine)
+        {
+            view.RPC("GetHealing", RpcTarget.All, healing, isCrit);
+        }
     }
 
     public override void Die()

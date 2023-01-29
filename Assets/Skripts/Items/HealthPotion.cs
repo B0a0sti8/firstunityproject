@@ -19,7 +19,8 @@ public class HealthPotion : Item
             if (player.GetComponent<PhotonView>().IsMine == true)
             {
                 Debug.Log("HealthPotion war sehr effektiv!");
-                player.GetComponent<PlayerStats>().GetHealing(healing, 0, 0, 0);
+                DamageOrHealing.DoHealing(null, player, healing);
+                //player.GetComponent<PlayerStats>().GetHealing(healing, 0, 0, 0);
             }
         }
 

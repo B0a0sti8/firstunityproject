@@ -18,6 +18,7 @@ using TMPro;
 public class PlayerStats : CharacterStats, IPunObservable
 {
 	[Header("Class")] public string className;
+	[SerializeField] private bool isTank = false;
 	[Header("Gold")] public int goldAmount;
 
 	[Header("Experience")]
@@ -87,7 +88,9 @@ public class PlayerStats : CharacterStats, IPunObservable
 	private CharacterPanelScript charPanel;
 	private CharPanelButtonScript[] allEquipSlots;
 
-    public int MyNeededXP { get => neededXP; set => neededXP = value; }
+	public bool MyIsTank { get => isTank; set => isTank = value; }
+
+	public int MyNeededXP { get => neededXP; set => neededXP = value; }
     public int MyCurrentXP { get => currentXP; set => currentXP = value; }
     public int MyCurrentPlayerLvl { get => currentPlayerLvl; set => currentPlayerLvl = value; }
 
@@ -150,7 +153,7 @@ public class PlayerStats : CharacterStats, IPunObservable
 		charisma.baseValue = 10;				tempo.baseValue = 10;
 
 		movementSpeed.baseValue = 7;			actionSpeed.baseValue = 1;
-		critChance.baseValue = 5;				critMultiplier.baseValue = 150;
+		critChance.baseValue = 5;				critMultiplier.baseValue = 1.5f;
 		healInc.baseValue = 0;					dmgInc.baseValue = 0;
 		physRed.baseValue = 0;					magRed.baseValue = 0;
 		incHealInc.baseValue = 0;				lifesteal.baseValue = 0;
@@ -321,25 +324,29 @@ public class PlayerStats : CharacterStats, IPunObservable
 		}
 	}
 
-	[PunRPC] public override void GetHealing(float healing, int critRandomRange, float critChance, float critMultiplier)
+	[PunRPC] public override void GetHealing(float healing, bool isCrit)
 	{
-		base.GetHealing(healing, critRandomRange, critChance, critMultiplier);
+		base.GetHealing(healing, isCrit);
 	}
 
-	[PunRPC] public override void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
+	[PunRPC] public override void TakeDamage(float damage, int aggro, bool isCrit)
 	{
-		base.TakeDamage(damage, missRandomRange, critRandomRange, critChance, critMultiplier);
+		base.TakeDamage(damage, aggro, isCrit);
 	}
 
-	public void TakeDamageRPC(float damage)
+	public void TakeDamageRPC(float damage, int aggro, bool isCrit, GameObject source)
 	{
 		if (view.IsMine)
 		{
-			int missRandom = Random.Range(1, 100);
-			int critRandom = Random.Range(1, 100);
-			float cChance = critChance.GetValue();
-			float cMultiplier = critMultiplier.GetValue();
-			view.RPC("TakeDamage", RpcTarget.All, damage, missRandom, critRandom, cChance, cMultiplier);
+			view.RPC("TakeDamage", RpcTarget.All, damage, aggro, isCrit);
+		}
+	}
+
+	public void TakeHealingRPC(float healing, bool isCrit, GameObject source)
+	{
+		if (view.IsMine)
+		{
+			view.RPC("GetHealing", RpcTarget.All, healing, isCrit);
 		}
 	}
 
@@ -350,7 +357,7 @@ public class PlayerStats : CharacterStats, IPunObservable
 		{
 			ManageManaRPC(-20f);
 
-			TakeDamageRPC(20f);
+			TakeDamageRPC(20f, 0 , false, gameObject);
 		}
 	}
     #endregion
@@ -399,35 +406,4 @@ public class PlayerStats : CharacterStats, IPunObservable
 		//Destroy(gameObject, 1f);
 		base.Die();
 	}
-
-	// VERALTET!!!!
-
- //   void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
-	//{
-	//	if (newItem != null)
-	//	{
-	//		maxHealth.AddModifierAdd(newItem.healthModifierAdd);
-	//		armor.AddModifierAdd(newItem.armorModifierAdd);
-	//		mastery.AddModifierAdd(newItem.damageModifierAdd);
-	//		evade.AddModifierAdd(newItem.evadeModifierAdd);
-
-	//		maxHealth.AddModifierMultiply(newItem.healthModifierMultiply);
-	//		armor.AddModifierMultiply(newItem.armorModifierMultiply);
-	//		mastery.AddModifierMultiply(newItem.damageModifierMultiply);
-	//		evade.AddModifierMultiply(newItem.evadeModifierMultiply);
-	//	}
-
-	//	if (oldItem != null)
-	//	{
-	//		maxHealth.RemoveModifierAdd(oldItem.healthModifierAdd);
-	//		armor.RemoveModifierAdd(oldItem.armorModifierAdd);
-	//		mastery.RemoveModifierAdd(oldItem.armorModifierAdd);
-	//		evade.RemoveModifierAdd(oldItem.evadeModifierAdd);
-
-	//		maxHealth.RemoveModifierMultiply(oldItem.healthModifierMultiply);
-	//		armor.RemoveModifierMultiply(oldItem.armorModifierMultiply);
-	//		mastery.RemoveModifierMultiply(oldItem.armorModifierMultiply);
-	//		evade.RemoveModifierMultiply(oldItem.evadeModifierMultiply);
-	//	}
-	//}
 }

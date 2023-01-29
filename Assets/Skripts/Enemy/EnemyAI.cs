@@ -3,6 +3,7 @@ using UnityEngine;
 using Pathfinding;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class EnemyAI : MonoBehaviour
     public bool hasAttackSkript;
 
     //public bool hasTarget = false;
+
     public GameObject[] potentialTargets;
     GameObject[] viableTargets;
     float[] targetDistances;
@@ -50,7 +52,21 @@ public class EnemyAI : MonoBehaviour
     public bool runningUpdatePathCoroutine = false;
     public Coroutine updatePathCoroutine;
 
-    Dictionary<GameObject, int> aggroTable = new Dictionary<GameObject, int>();
+    [SerializeField]
+    public Dictionary<GameObject, int> aggroTable = new Dictionary<GameObject, int>();
+    public Dictionary<GameObject, int> aggroTableNew = new Dictionary<GameObject, int>();
+
+    void HandleTargets()
+    {
+        GameObject[] pT1 = GameObject.FindGameObjectsWithTag("Player");  // Sucht alle Spieler in der Scene
+        GameObject[] pT2 = GameObject.FindGameObjectsWithTag("Ally");    // Sucht alle Pets/Helfer in der Scene
+        potentialTargets = pT1.Concat(pT2).ToArray();                    // Schmeißt alle Ziele in ein Array
+        foreach (GameObject potTar in potentialTargets)
+        { aggroTableNew.Add(potTar, 0); }                                // Fügt alle aktuellen Ziele in ein Dictionary, mit Aggrowert 0
+
+        aggroTableNew.Keys.Except(aggroTable.Keys).ToList().ForEach(k => aggroTable.Add(k, 0));        // Vergleicht alle aktuellen Targets mit den bisherigen und fügt neue mit Aggro=0 hinzu
+        aggroTable.Keys.Except(aggroTableNew.Keys).ToList().ForEach(k => aggroTable.Remove(k));        // Vergleicht alle aktuellen Targets mit den bisherigen und entfernt alle die nicht mehr da sind
+    }
 
 
     void Start()

@@ -28,10 +28,6 @@ public class TestEnergyDrain : SkillPrefab
         
         DealDamage(damage);
 
-        int critRandom = Random.Range(1, 100);
-        float critChance = playerStats.critChance.GetValue();
-        float critMultiplier = playerStats.critMultiplier.GetValue();
-
-        PLAYER.GetComponent<CharacterStats>().view.RPC("GetHealing", RpcTarget.All, damage / 2, critRandom, critChance, critMultiplier);
+        DamageOrHealing.DoHealing(PLAYER, PLAYER, damage / 2);
     }
 }
