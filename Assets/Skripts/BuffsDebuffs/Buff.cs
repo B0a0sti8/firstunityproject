@@ -10,6 +10,8 @@ public abstract class Buff
     public Sprite icon = null;
     float elapsed;
 
+    public GameObject buffSource=null;
+
     public string buffName;
     public string buffDescription;
     public float duration;
@@ -18,7 +20,7 @@ public abstract class Buff
     //public bool isOverTime = false;
 
     public float value;
-
+    
     public float tickTime;
     public float tickTimeElapsed;
     public float tickValue;

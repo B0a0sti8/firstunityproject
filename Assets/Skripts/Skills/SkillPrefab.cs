@@ -657,25 +657,19 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
     public void DealDamage(float damage)
     {
-        int missRandom = Random.Range(1, 100);
-        int critRandom = Random.Range(1, 100);
-        float critChance = playerStats.critChance.GetValue();
-        float critMultiplier = playerStats.critMultiplier.GetValue();
         for (int i = 0; i < currentTargets.Count; i++)
         {
-            currentTargets[i].GetComponent<CharacterStats>().view.RPC("TakeDamage", RpcTarget.All, damage, missRandom, critRandom, critChance, critMultiplier);
+            DamageOrHealing.DealDamage(PLAYER, currentTargets[i], damage, false, false);
         }
     }
 
     public void DoHealing(float healing)
     {
-        int critRandom = Random.Range(1, 100);
-        float critChance = playerStats.critChance.GetValue();
-        float critMultiplier = playerStats.critMultiplier.GetValue();
-        //playerStats.view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
+        
         for (int i = 0; i < currentTargets.Count; i++)
         {
-            currentTargets[i].GetComponent<CharacterStats>().view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
+            DamageOrHealing.DoHealing(PLAYER, currentTargets[i], healing);
+            //currentTargets[i].GetComponent<CharacterStats>().view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
         }
     }
 

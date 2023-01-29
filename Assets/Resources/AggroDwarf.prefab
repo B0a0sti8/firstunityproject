@@ -612,7 +612,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasAttackSkript: 1
-  hasTarget: 0
   potentialTargets: []
   ownEnemyAttack: {fileID: 2023599406339572337}
   target: {fileID: 0}
@@ -665,10 +664,10 @@ MonoBehaviour:
   evadeChance:
     baseValue: 0
     modifiedValue: 0
-  modAttackSpeed: 0
   baseAttackSpeed: 0.05
-  mastery:
-    baseValue: 2
+  baseDamage: 0
+  dmgModifier:
+    baseValue: 0
     modifiedValue: 0
   XPForPlayer: 200
   groupNumber: 0

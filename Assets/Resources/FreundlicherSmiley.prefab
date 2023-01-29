@@ -635,10 +635,10 @@ MonoBehaviour:
   evadeChance:
     baseValue: 0
     modifiedValue: 0
-  modAttackSpeed: 0
   baseAttackSpeed: 2
-  mastery:
-    baseValue: 10
+  baseDamage: 0
+  dmgModifier:
+    baseValue: 0
     modifiedValue: 0
   XPForPlayer: 0
   groupNumber: 0
