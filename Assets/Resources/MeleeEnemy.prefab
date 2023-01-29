@@ -494,6 +494,7 @@ GameObject:
   - component: {fileID: 6988727837950832956}
   - component: {fileID: 927303460417524811}
   - component: {fileID: 3195896753731157457}
+  - component: {fileID: 3362643410898400835}
   m_Layer: 9
   m_Name: MeleeEnemy
   m_TagString: Enemy
@@ -612,20 +613,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasAttackSkript: 1
-  potentialTargets: []
+  aggroRange: 12
+  targetRange: 2
+  attackRange: 6
+  aggroTime: 2
   ownEnemyAttack: {fileID: 2023599406339572337}
   target: {fileID: 0}
-  targetTemp: {fileID: 0}
-  speed: 8000
-  nextWypointDistance: 0.5
-  unitRange: 2
-  agroRange: 10
-  agroTime: 5
-  currentWypoint: 0
-  seeker: {fileID: 0}
-  rb2d: {fileID: 0}
-  runningCeasePathfindingCoroutine: 0
-  runningUpdatePathCoroutine: 0
 --- !u!114 &2023599406339572343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,6 +763,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824c50fd9b1d6794a9b1801b709da38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3362643410898400835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023599406339572345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8bcc04a0f09ad644aec33b6dd4488c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 200
 --- !u!1 &2023599406366343330
 GameObject:
   m_ObjectHideFlags: 0
