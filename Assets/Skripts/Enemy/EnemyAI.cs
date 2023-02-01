@@ -26,6 +26,8 @@ public class EnemyAI : MonoBehaviour
     public float attackRange = 6f;
     public float aggroTime = 2.0f;
 
+    EnemySkillPrefab[] mySkills;
+
     bool isLC = false;
     Coroutine lc;
 
@@ -120,6 +122,7 @@ public class EnemyAI : MonoBehaviour
     {
         state = State.Idle;
         eMove = GetComponent<EnemyMovement>();
+        mySkills = transform.Find("Skills").GetComponents<EnemySkillPrefab>();
     }
 
     void Idle() 
@@ -181,6 +184,15 @@ public class EnemyAI : MonoBehaviour
 
     private void DoAction() 
     {
+        foreach (EnemySkillPrefab mS in mySkills)
+        {
+            if (mS.CastSkill())
+            {
+                // SKill wurde ausgeführt, warte Skilldauer ab.
+                break;
+            }
+            
+        }
         state = State.Attacking;
         Debug.Log("Ich würde jetzt casten wenn ich könnte!");
     }
@@ -235,6 +247,8 @@ public class EnemyAI : MonoBehaviour
         isLC = false;
         LoseAggro(linTar.gameObject);
     }
+
+
 
 
     void OnDrawGizmosSelected()
