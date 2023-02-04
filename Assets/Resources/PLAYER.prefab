@@ -8800,6 +8800,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4164ad6e32d6e39439f0690f30bdd069, type: 2}
   - {fileID: 11400000, guid: 7a9a7824f4f40db43933b85dbb77ca21, type: 2}
   - {fileID: 11400000, guid: 894f0ac4a64357540b6dfcfffc0253a1, type: 2}
+  actionButtons: []
 --- !u!1 &1085084451
 GameObject:
   m_ObjectHideFlags: 0
@@ -83088,6 +83089,7 @@ MonoBehaviour:
     baseValue: 0
     modifiedValue: 0
   className: 
+  isTank: 0
   goldAmount: 0
   neededXP: 0
   currentXP: 0

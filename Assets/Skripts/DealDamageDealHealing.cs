@@ -24,7 +24,7 @@ public static class DamageOrHealing
         {
             enemyStats = source.GetComponent<EnemyStats>();
 
-            tempDamage = enemyStats.baseDamage * (1 + enemyStats.dmgModifier.GetValue());
+            tempDamage = baseDamge * (1 + enemyStats.dmgModifier.GetValue());
 
             int critRandom = Random.Range(1, 100);          
             if (critRandom <= enemyStats.critChance.GetValue())         // Crit?

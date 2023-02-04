@@ -13,8 +13,6 @@ public class TestWayOfTheChickenDamage : SkillPrefab
     public Sprite buffImage;
     TheWayOfTheChickenDamageDebuff buff = new TheWayOfTheChickenDamageDebuff();
 
-    
-
     public override void Start()
     {
         base.Start();

@@ -518,6 +518,7 @@ Transform:
   - {fileID: 2023599405647954621}
   - {fileID: 2023599405509759012}
   - {fileID: 5888010145829111090}
+  - {fileID: 2721648205070568396}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -612,11 +613,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda4207442b0d40e890057bdeca6d441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasAttackSkript: 1
   aggroRange: 12
   targetRange: 2
   attackRange: 6
   aggroTime: 2
+  tBS: 5
+  currentTBS: 0
+  isCasting: 0
   ownEnemyAttack: {fileID: 2023599406339572337}
   target: {fileID: 0}
 --- !u!114 &2023599406339572343
@@ -1083,6 +1086,36 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7192208476339369173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2721648205070568396}
+  m_Layer: 9
+  m_Name: Skills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2721648205070568396
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192208476339369173}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2023599406339572341}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7202001096608861577
 GameObject:
   m_ObjectHideFlags: 0
