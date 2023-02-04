@@ -4,25 +4,27 @@ using UnityEngine;
 
 public abstract class EnemySkillPrefab : MonoBehaviour
 {
-    float cooldown;
-    float remainingCD;
+    public float cooldown = 0;
+    public float remainingCD;
+
+    public Coroutine isInCast;
 
     public bool skillReady = true;
     public float duration;
     public float range = 0;
+    public float radius = 0;
+    public float baseDamage = 0;
+    public float baseHealing = 0;
 
-    public bool CastSkill()
+    public void CastSkill()
     {
-        if (skillReady)
-        {
-            SkillEffect();
-            skillReady = false;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        isInCast = StartCoroutine(CastDelay(duration));
+        this.skillReady = false;
+    }
+
+    public virtual void AtSkillStart()
+    {
+
     }
 
     public virtual void SkillEffect()
@@ -32,12 +34,19 @@ public abstract class EnemySkillPrefab : MonoBehaviour
 
     private void Update()
     {
-        if (!skillReady)
+        if (!this.skillReady)
         {
-            if (remainingCD > 0)
-            { remainingCD -= Time.deltaTime; }
+            if (this.remainingCD > 0)
+            { this.remainingCD -= Time.deltaTime; }
             else
-            { remainingCD = cooldown; skillReady = true; }
+            { this.remainingCD = this.cooldown; this.skillReady = true; }
         }
+    }
+
+    IEnumerator CastDelay(float delayTime)
+    {
+        AtSkillStart();
+        yield return new WaitForSeconds(delayTime);
+        SkillEffect();
     }
 }

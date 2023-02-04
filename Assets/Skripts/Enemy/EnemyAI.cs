@@ -32,7 +32,8 @@ public class EnemyAI : MonoBehaviour
     bool isLC = false;
     Coroutine lc;
 
-    bool isCasting = false;
+    public bool isCasting = false;
+    bool noSkillReady = false;
     Coroutine isInCast;
 
     EnemyMovement eMove;
@@ -121,7 +122,7 @@ public class EnemyAI : MonoBehaviour
         return inSight;
     }
 
-    void StartChase()
+    void StartChase()               // Gegner fängt an Ziele zu jagen. Könnte andere Gegner in der Nähe 'warnen'
     {
         gameObject.transform.Find("Canvas World Space").transform.Find("AggroText").gameObject.SetActive(true);
         StartCoroutine(Wait(1f));
@@ -151,7 +152,7 @@ public class EnemyAI : MonoBehaviour
         SearchTargets();
     }
 
-    private void Chasing()      // Gegner fängt an Ziele zu jagen. Könnte andere Gegner in der Nähe 'warnen'
+    private void Chasing()              // Gegner jagt aktuell Ziele
     {
         prevTarget = target;            // Speichert aktuelles Target
         
@@ -189,7 +190,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (isLC == false)
             {
-                lc = StartCoroutine(lingeringChase(aggroTime));
+                lc = StartCoroutine(LingeringChase(aggroTime));
                 isLC = true;
             }
             eMove.ChaseTarget();
@@ -198,46 +199,71 @@ public class EnemyAI : MonoBehaviour
 
     private void DoAction() 
     {
-        if (mySkills == null)
+        if (mySkills == null || currentTBS != 0)                // Schaut ob er Skills hat und wieder casten darf. Wenn eines von beiden nicht erfüllt ist, soll er in Attack range laufen, oder angreifen
         {
-            state = State.Attacking;
+            Debug.Log("Ich habe keine Skills, chase oder greife an.");
+            if (CheckIfInRange(attackRange) & TargetInSight(target) & target.GetComponent<CharacterStats>().isAlive)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
+            {
+                state = State.Attacking;
+                Attacking();
+            }
+            else
+            {
+                state = State.Chasing;
+                Chasing();
+            }
             return;
         }
 
-        if (currentTBS == 0)                                        // Schaut ob er überhaupt casten darf.
+        foreach (EnemySkillPrefab mS in mySkills)               // Wenn er Skills hat und casten darf: Geht durch all seine Skills
         {
-            foreach (EnemySkillPrefab mS in mySkills)               // Geht durch all seine Skills
+            if (mS.range != 0 & CheckIfInRange(mS.range) & mS.skillReady)       // Schaut für jeden Skill, ob er eine Range hat, wenn ja ob er in Range ist und ob Skill ready ist
             {
-                if (mS.range != 0 & CheckIfInRange(mS.range))       // Schaut für jeden Skill, ob er eine Range hat, wenn ja ob er in Range ist.
+                Debug.Log("Ein Skill ist ready, ich caste");
+                mS.CastSkill();
+                currentTBS = tBS;
+                noSkillReady = false;
+                if (mS.duration > 0)        // Skill wurde ausgeführt, warte ggf. Skilldauer ab.
                 {
-                    
-                    if (mS.CastSkill())                             // Castet den Skill
-                    {
-                            
-
-                        // SKill wurde ausgeführt, warte Skilldauer ab.
-                        break;
-                    }
-
+                    isInCast = StartCoroutine(WaitingForCast(mS.duration));
+                    state = State.WaitingForCast;
                 }
-                else if (mS.range == 0)
-                {
-                    if (mS.CastSkill())                             // Castet den Skill
-                    {
-
-
-                        // SKill wurde ausgeführt, warte Skilldauer ab.
-                        break;
-                    }
-                }
-                
-
+                break;
             }
-            currentTBS = tBS;
+            else if (mS.range == 0 & mS.skillReady)
+            {
+                Debug.Log("Ein Skill ist ready, ich caste");
+                mS.CastSkill();
+                currentTBS = tBS;
+                noSkillReady = false;
+                if (mS.duration > 0)        // Skill wurde ausgeführt, warte ggf. Skilldauer ab.
+                {
+                    isInCast = StartCoroutine(WaitingForCast(mS.duration));
+                    state = State.WaitingForCast;
+                }
+                break;
+            }
+            else    // Wenn er out of range ist oder kein Skill ready: In Attack range laufen, oder angreifen
+            {
+                noSkillReady = true;
+                Debug.Log("Kein Skill ready oder alle out of range, ich chase oder greife an.");
+                
+            }
         }
-        
-        state = State.Attacking;
-        Debug.Log("Ich würde jetzt casten wenn ich könnte!");
+
+        if (noSkillReady)
+        {
+            if (CheckIfInRange(attackRange) & TargetInSight(target) & target.GetComponent<CharacterStats>().isAlive)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
+            {
+                state = State.Attacking;
+                Attacking();
+            }
+            else
+            {
+                state = State.Chasing;
+                Chasing();
+            }
+        }
     }
 
     private void Attacking() 
@@ -277,6 +303,7 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case State.WaitingForCast:
+                Debug.Log("Ich caste gerade");
                 // Wenn der Gegner bei seinem Cast unterbrochen wird, kann man es hier rein tun
                 break;
 
@@ -288,7 +315,7 @@ public class EnemyAI : MonoBehaviour
         currentTBS = (currentTBS > 0) ? currentTBS - Time.deltaTime : 0;
     }
 
-    IEnumerator lingeringChase(float delayTime)
+    IEnumerator LingeringChase(float delayTime)
     {
         Transform linTar = target;
         yield return new WaitForSeconds(delayTime);
@@ -297,6 +324,23 @@ public class EnemyAI : MonoBehaviour
         LoseAggro(linTar.gameObject);
     }
 
+    IEnumerator WaitingForCast(float castTime)
+    {
+        isCasting = true;
+        yield return new WaitForSeconds(castTime);
+        isCasting = false;
+
+        if (CheckIfInRange(attackRange) & TargetInSight(target) & target.GetComponent<CharacterStats>().isAlive)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
+        {
+            state = State.Attacking;
+            Attacking();
+        }
+        else
+        {
+            state = State.Chasing;
+            Chasing();
+        }
+    }
 
 
 
