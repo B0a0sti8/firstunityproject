@@ -14,12 +14,11 @@ public class EnemyAI : MonoBehaviour
         Chasing,
         DoAction,
         Attacking,
+        WaitingForCast,
         Dying
     }
 
     private State state;
-
-    public bool hasAttackSkript;
 
     public float aggroRange = 12f;
     public float targetRange = 2f;
@@ -27,16 +26,19 @@ public class EnemyAI : MonoBehaviour
     public float aggroTime = 2.0f;
 
     EnemySkillPrefab[] mySkills;
-
+    [SerializeField] float tBS = 5;              // Zeit zwischen zwei Skills, selbst wenn der CD ready ist.
+    [SerializeField] float currentTBS = 0;       // Aktuelle Zeit zwischen zwei Skills
+        
     bool isLC = false;
     Coroutine lc;
+
+    bool isCasting = false;
+    Coroutine isInCast;
 
     EnemyMovement eMove;
     public EnemyAttack ownEnemyAttack;
     public Transform target = null;
     Transform prevTarget = null;
-
-
 
     [SerializeField]
     public Dictionary<GameObject, int> aggroTable = new Dictionary<GameObject, int>();
@@ -64,6 +66,7 @@ public class EnemyAI : MonoBehaviour
         if (source != null && aggroTable.ContainsKey(source))
         { aggroTable[source] += aggro; }
     }
+
     void LoseAggro(GameObject source)
     {
         if (source != null && aggroTable.ContainsKey(source))
@@ -90,6 +93,17 @@ public class EnemyAI : MonoBehaviour
 
             state = State.Chasing; 
         }
+    }
+
+    bool CheckIfInRange(float distance)
+    {
+        if (target != null)
+        {
+            float targetDist = Vector2.Distance(transform.position, target.transform.position);
+            if (targetDist <= distance && TargetInSight(target.transform) && target.GetComponent<CharacterStats>().isAlive == true)
+            { return true; }
+        }
+        return false;
     }
 
     public bool TargetInSight(Transform target)
@@ -184,15 +198,44 @@ public class EnemyAI : MonoBehaviour
 
     private void DoAction() 
     {
-        foreach (EnemySkillPrefab mS in mySkills)
+        if (mySkills == null)
         {
-            if (mS.CastSkill())
-            {
-                // SKill wurde ausgeführt, warte Skilldauer ab.
-                break;
-            }
-            
+            state = State.Attacking;
+            return;
         }
+
+        if (currentTBS == 0)                                        // Schaut ob er überhaupt casten darf.
+        {
+            foreach (EnemySkillPrefab mS in mySkills)               // Geht durch all seine Skills
+            {
+                if (mS.range != 0 & CheckIfInRange(mS.range))       // Schaut für jeden Skill, ob er eine Range hat, wenn ja ob er in Range ist.
+                {
+                    
+                    if (mS.CastSkill())                             // Castet den Skill
+                    {
+                            
+
+                        // SKill wurde ausgeführt, warte Skilldauer ab.
+                        break;
+                    }
+
+                }
+                else if (mS.range == 0)
+                {
+                    if (mS.CastSkill())                             // Castet den Skill
+                    {
+
+
+                        // SKill wurde ausgeführt, warte Skilldauer ab.
+                        break;
+                    }
+                }
+                
+
+            }
+            currentTBS = tBS;
+        }
+        
         state = State.Attacking;
         Debug.Log("Ich würde jetzt casten wenn ich könnte!");
     }
@@ -233,10 +276,16 @@ public class EnemyAI : MonoBehaviour
                 Attacking();
                 break;
 
+            case State.WaitingForCast:
+                // Wenn der Gegner bei seinem Cast unterbrochen wird, kann man es hier rein tun
+                break;
+
             case State.Dying:
                 Dying();
                 break;
         }
+
+        currentTBS = (currentTBS > 0) ? currentTBS - Time.deltaTime : 0;
     }
 
     IEnumerator lingeringChase(float delayTime)

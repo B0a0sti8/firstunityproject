@@ -6,8 +6,10 @@ public abstract class EnemySkillPrefab : MonoBehaviour
 {
     float cooldown;
     float remainingCD;
+
+    public bool skillReady = true;
     public float duration;
-    bool skillReady = true;
+    public float range = 0;
 
     public bool CastSkill()
     {
