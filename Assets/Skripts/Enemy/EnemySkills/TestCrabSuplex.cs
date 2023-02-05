@@ -19,7 +19,7 @@ public class TestCrabSuplex : EnemySkillPrefab
     void Start()
     {
         crabSuplexAnimator = transform.parent.Find("CrabBoss").GetComponent<Animator>();
-        cooldown = 3;
+        cooldown = 10;
         duration = 1f;
         animationDuration = 1;
         range = 3f;
@@ -45,7 +45,6 @@ public class TestCrabSuplex : EnemySkillPrefab
             endedAnimation = false;
         }
         base.Update();
-
     }
 
     public override void AtSkillStart()
