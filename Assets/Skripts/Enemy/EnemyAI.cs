@@ -8,13 +8,14 @@ using System.Linq;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField]
-    private enum State
+    public enum State
     {
         Idle,
         Chasing,
         DoAction,
         Attacking,
         WaitingForCast,
+        DoNothing,
         Dying
     }
 
@@ -313,6 +314,9 @@ public class EnemyAI : MonoBehaviour
                 // Wenn der Gegner bei seinem Cast unterbrochen wird, kann man es hier rein tun
                 break;
 
+            case State.DoNothing:
+                break;
+
             case State.Dying:
                 Dying();
                 break;
@@ -348,7 +352,10 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-
+    public void SetState(State s)
+    {
+        state = s;
+    }
 
     void OnDrawGizmosSelected()
     {    }

@@ -195,7 +195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.034, y: 1.6}
+  m_AnchoredPosition: {x: 0.02, y: 1.23}
   m_SizeDelta: {x: 237.8128, y: 63.7211}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2023599405509759011
@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 3195896753731157457}
   - component: {fileID: 3362643410898400835}
   m_Layer: 9
-  m_Name: Crab
+  m_Name: CrabblingMinion
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1206,7 +1206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7361840813213336678}
-  - component: {fileID: 3826565818947455163}
+  - component: {fileID: 2880348256679859521}
   m_Layer: 9
   m_Name: Skills
   m_TagString: Untagged
@@ -1228,7 +1228,7 @@ Transform:
   m_Father: {fileID: 2023599406339572341}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3826565818947455163
+--- !u!114 &2880348256679859521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1237,7 +1237,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8414547341760501568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ff07322eb0a53b4bbf37fce962ef91d, type: 3}
+  m_Script: {fileID: 11500000, guid: df8b696242a3f4041bf7f9f8b75447f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
@@ -1251,8 +1251,8 @@ MonoBehaviour:
   radius: 0
   baseDamage: 0
   baseHealing: 0
-  crabbling: {fileID: 2023599406339572345, guid: bb48d8e245d65014bacf749d89eeb68b, type: 3}
-  crabRaveAnimator: {fileID: 0}
+  crabSuplexAnimator: {fileID: 0}
+  shakeData: {fileID: 11400000, guid: e16818c9a93954741b245d754130c058, type: 2}
 --- !u!1 &9205449121068270241
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,23 +2799,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721456478e350be4f93484004075cb37, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.09664362
+      value: 0.018431872
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721456478e350be4f93484004075cb37, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.09664362
+      value: 0.018431872
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721456478e350be4f93484004075cb37, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.09664362
+      value: 0.018431872
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721456478e350be4f93484004075cb37, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.57
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721456478e350be4f93484004075cb37, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.12
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721456478e350be4f93484004075cb37, type: 3}
       propertyPath: m_LocalPosition.z
