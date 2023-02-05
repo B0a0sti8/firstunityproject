@@ -199,9 +199,9 @@ public class EnemyAI : MonoBehaviour
 
     private void DoAction() 
     {
-        if (mySkills == null || currentTBS != 0)                // Schaut ob er Skills hat und wieder casten darf. Wenn eines von beiden nicht erfüllt ist, soll er in Attack range laufen, oder angreifen
+        if (mySkills.Count() == 0 || currentTBS != 0)                // Schaut ob er Skills hat und wieder casten darf. Wenn eines von beiden nicht erfüllt ist, soll er in Attack range laufen, oder angreifen
         {
-            Debug.Log("Ich habe keine Skills, chase oder greife an.");
+            //Debug.Log("Ich habe keine Skills, chase oder greife an.");
             if (CheckIfInRange(attackRange) & TargetInSight(target) & target.GetComponent<CharacterStats>().isAlive)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
             {
                 state = State.Attacking;
@@ -219,7 +219,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (mS.range != 0 & CheckIfInRange(mS.range) & mS.skillReady)       // Schaut für jeden Skill, ob er eine Range hat, wenn ja ob er in Range ist und ob Skill ready ist
             {
-                Debug.Log("Ein Skill ist ready, ich caste");
+                //Debug.Log("Ein Skill ist ready, ich caste");
                 mS.CastSkill();
                 currentTBS = tBS;
                 noSkillReady = false;
@@ -232,7 +232,7 @@ public class EnemyAI : MonoBehaviour
             }
             else if (mS.range == 0 & mS.skillReady)
             {
-                Debug.Log("Ein Skill ist ready, ich caste");
+                //Debug.Log("Ein Skill ist ready, ich caste");
                 mS.CastSkill();
                 currentTBS = tBS;
                 noSkillReady = false;
@@ -246,7 +246,7 @@ public class EnemyAI : MonoBehaviour
             else    // Wenn er out of range ist oder kein Skill ready: In Attack range laufen, oder angreifen
             {
                 noSkillReady = true;
-                Debug.Log("Kein Skill ready oder alle out of range, ich chase oder greife an.");
+                //Debug.Log("Kein Skill ready oder alle out of range, ich chase oder greife an.");
                 
             }
         }
@@ -268,7 +268,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Attacking() 
     {
-        Debug.Log("Ich mach dich fertig!");
+        //Debug.Log("Ich mach dich fertig!");
         state = State.Chasing;
     }
 
@@ -282,6 +282,12 @@ public class EnemyAI : MonoBehaviour
         //Debug.Log(state);
         //if (GetComponent<CharacterStats>().isAlive == false)
         //{ state = State.Dying; }
+        if (target != null)
+        {
+            Vector2 lookDir = (Vector2)(transform.position - target.position).normalized;
+            transform.localRotation = Quaternion.LookRotation(lookDir, Vector3.back);
+        }
+
 
         switch (state)
         {
@@ -303,7 +309,7 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case State.WaitingForCast:
-                Debug.Log("Ich caste gerade");
+                //Debug.Log("Ich caste gerade");
                 // Wenn der Gegner bei seinem Cast unterbrochen wird, kann man es hier rein tun
                 break;
 
