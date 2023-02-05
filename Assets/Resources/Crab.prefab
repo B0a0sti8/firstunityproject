@@ -617,7 +617,7 @@ MonoBehaviour:
   targetRange: 2
   attackRange: 3
   aggroTime: 2
-  tBS: 5
+  tBS: 1
   currentTBS: 0
   isCasting: 0
   ownEnemyAttack: {fileID: 2023599406339572337}
@@ -778,7 +778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8bcc04a0f09ad644aec33b6dd4488c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
+  speed: 5000
 --- !u!1 &2023599406366343330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,6 +1252,7 @@ MonoBehaviour:
   baseDamage: 0
   baseHealing: 0
   crabSuplexAnimator: {fileID: 0}
+  shakeData: {fileID: 11400000, guid: e16818c9a93954741b245d754130c058, type: 2}
 --- !u!1 &9205449121068270241
 GameObject:
   m_ObjectHideFlags: 0

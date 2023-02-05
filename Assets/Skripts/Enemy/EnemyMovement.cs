@@ -27,7 +27,7 @@ public class EnemyMovement : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb2d = GetComponent<Rigidbody2D>();
 
-        speed = 10000;
+        speed = 20000;
         target = eAI.target;
     }
 
