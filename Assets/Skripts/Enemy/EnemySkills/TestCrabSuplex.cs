@@ -19,12 +19,12 @@ public class TestCrabSuplex : EnemySkillPrefab
     void Start()
     {
         crabSuplexAnimator = transform.parent.Find("CrabBoss").GetComponent<Animator>();
-        cooldown = 10;
+        cooldown = 2;
         duration = 1f;
         animationDuration = 1;
         range = 3f;
         //radius = 2f;
-        baseDamage = 200;
+        baseDamage = 40;
         SuplexVelocity = 50;
         camMam = GameObject.Find("CameraMama").transform.Find("Main Camera").GetComponent<CameraShaker>();
     }
