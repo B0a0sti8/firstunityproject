@@ -11,7 +11,6 @@ public class TestCrabRave : EnemySkillPrefab
     List<GameObject> myCrabs = new List<GameObject>();
 
     Coroutine raveParty;
-    bool ravePartying = false;
 
     [SerializeField] Animator crabRaveAnimator;
     // Start is called before the first frame update
@@ -66,7 +65,7 @@ public class TestCrabRave : EnemySkillPrefab
             foreach (GameObject tar in myTargetsEnemies)
             {
                 DamageOrHealing.DoHealing(transform.parent.gameObject, tar, baseHealing);
-                if (i == 0 || i == 25 || i == 50)
+                if (i == 0 || i == 5 || i == 10 || i == 12 || i == 17 || i == 19 || i == 23 || i == 28 || i == 25 || i == 50)
                 {
                     float x = Random.Range(2, 5);
                     float y = Random.Range(2, 5);
@@ -91,6 +90,9 @@ public class TestCrabRave : EnemySkillPrefab
         }
 
         FadeInStopRaving(1.5f, myCrabs);
+        myCrabs.Clear();
+        myTargetsEnemies.Clear();
+        myTargetsFriends.Clear();
     }
 
     IEnumerator FadeInStopRaving(float duration, List<GameObject> crabs)
