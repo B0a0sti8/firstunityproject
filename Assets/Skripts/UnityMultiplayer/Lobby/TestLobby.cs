@@ -11,7 +11,6 @@ public class TestLobby : MonoBehaviour
     private Lobby hostLobby;
     float heartBeatTimer;
 
-
     private async void Start()
     {
         await UnityServices.InitializeAsync();
@@ -20,7 +19,6 @@ public class TestLobby : MonoBehaviour
         {
             Debug.Log("Signed In " + AuthenticationService.Instance.PlayerId);
         };
-
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
@@ -30,10 +28,16 @@ public class TestLobby : MonoBehaviour
         {
             string lobbyName = "MyLobby";
             int maxPlayers = 10;
-            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers);
+
+            CreateLobbyOptions createLobbyOptions = new CreateLobbyOptions
+            {
+                IsPrivate = true,
+            };
+
+            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, createLobbyOptions);
             hostLobby = lobby; 
 
-            Debug.Log("Created Lobby! " + lobby.Name + " " + lobby.MaxPlayers);
+            Debug.Log("Created Lobby! " + lobby.Name + " " + lobby.MaxPlayers + " " + lobby.Id + " " + lobby.LobbyCode);
         }
         catch (LobbyServiceException e)
         {
@@ -73,6 +77,17 @@ public class TestLobby : MonoBehaviour
         
     }
 
+    private async void JoinLobbyByCode(string lobbyCode)
+    {
+        try
+        {
+            await Lobbies.Instance.JoinLobbyByCodeAsync(lobbyCode);
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
+    }
 
     void Update()
     {
