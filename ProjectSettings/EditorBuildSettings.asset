@@ -6,27 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/LobbyTutorial_Done.unity
+    guid: be8200a558cfff84b8ce074fa6e33558
+  - enabled: 0
     path: Assets/Scenes/UnityMultiplayer.unity
     guid: 6de7d66b54182ae46ade44a0a57ac710
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LoadingScene.unity
     guid: 18fee056fcc1d704ca51012d47b92ff5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LobbyScene.unity
     guid: bbd06b16754649740bd3752d0e10b54f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestScene1.unity
     guid: 8494ecf01ff939b4bb1bb63ba72c6ca6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Dungeon1.unity
     guid: 38ddacb682bbf86439de46fff79d46f9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Sanctuary.unity
     guid: a88be7aff0ddff841b224c4a640e7b79
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: 95b8f569e38891043aa3c8193208a59f
   m_configObjects:
