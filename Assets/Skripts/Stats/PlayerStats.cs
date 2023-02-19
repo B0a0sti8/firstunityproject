@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;
+using Unity.Netcode;
 using TMPro;
 
 // tasten-input wird bei BEIDEN AUSGELÖST
@@ -15,7 +15,7 @@ using TMPro;
 
 // 
 
-public class PlayerStats : CharacterStats, IPunObservable
+public class PlayerStats : CharacterStats
 {
 	[Header("Class")] public string className;
 	[SerializeField] private bool isTank = false;
@@ -107,7 +107,7 @@ public class PlayerStats : CharacterStats, IPunObservable
 
 	void Start()
 	{
-		if (view.IsMine)
+		if (IsOwner)
 		{
 			gameObject.transform.Find("Own Canvases").gameObject.SetActive(true);
 		}
@@ -248,20 +248,20 @@ public class PlayerStats : CharacterStats, IPunObservable
 		evadeChance.modifiedValue = evadeChance.GetValue();
 	}
 
-	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-	{
-		// Reihenfolge der gesendeten und empfangenen Komponenten muss gleich sein
-		if (stream.IsWriting)
-		{
-			stream.SendNext(currentHealth);
-			stream.SendNext(currentMana);
-		}
-		else if (stream.IsReading)
-		{
-			currentHealth = (float)stream.ReceiveNext();
-			currentMana = (float)stream.ReceiveNext();
-		}
-	}
+	//public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+	//{
+	//	// Reihenfolge der gesendeten und empfangenen Komponenten muss gleich sein
+	//	if (stream.IsWriting)
+	//	{
+	//		stream.SendNext(currentHealth);
+	//		stream.SendNext(currentMana);
+	//	}
+	//	else if (stream.IsReading)
+	//	{
+	//		currentHealth = (float)stream.ReceiveNext();
+	//		currentMana = (float)stream.ReceiveNext();
+	//	}
+	//}
 	#endregion
 
 	#region ManageManaAndHealth
@@ -297,16 +297,17 @@ public class PlayerStats : CharacterStats, IPunObservable
 		manaText.SetText(currentMana.ToString().Replace(",", ".") + " / " + maxMana.GetValue().ToString().Replace(",", "."));
 	}
 
-	[PunRPC] private void ManageMana(float manaCost)
+	[ServerRpc]
+	 private void ManageManaServerRPC(float manaCost)
     {
 		currentMana += manaCost;
 	}
 
-	public void ManageManaRPC(float manaCost)
+	public void ManageMana(float manaCost)
 	{
-		if (view.IsMine)
+		if (IsOwner)
 		{
-			view.RPC("ManageMana", RpcTarget.All, manaCost);
+			ManageManaServerRPC(manaCost);
 		}
 	}
 
@@ -320,33 +321,35 @@ public class PlayerStats : CharacterStats, IPunObservable
 		{
 			tickEveryXSecondsTimer = 0f;
 
-			ManageManaRPC(25f);
+			ManageMana(25f);
 		}
 	}
 
-	[PunRPC] public override void GetHealing(float healing, bool isCrit)
+	[ServerRpc]
+	public override void GetHealingServerRpc(float healing, bool isCrit)
 	{
-		base.GetHealing(healing, isCrit);
+		base.GetHealingServerRpc(healing, isCrit);
 	}
 
-	[PunRPC] public override void TakeDamage(float damage, int aggro, bool isCrit)
+	[ServerRpc]
+	public override void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
 	{
-		base.TakeDamage(damage, aggro, isCrit);
+		base.TakeDamageServerRpc(damage, aggro, isCrit);
 	}
 
-	public void TakeDamageRPC(float damage, int aggro, bool isCrit, GameObject source)
+	public void TakeDamage(float damage, int aggro, bool isCrit, GameObject source)
 	{
-		if (view.IsMine)
+		if (IsOwner)
 		{
-			view.RPC("TakeDamage", RpcTarget.All, damage, aggro, isCrit);
+			TakeDamageServerRpc(damage, aggro, isCrit);
 		}
 	}
 
-	public void TakeHealingRPC(float healing, bool isCrit, GameObject source)
+	public void TakeHealing(float healing, bool isCrit, GameObject source)
 	{
-		if (view.IsMine)
+		if (IsOwner)
 		{
-			view.RPC("GetHealing", RpcTarget.All, healing, isCrit);
+			GetHealingServerRpc(healing, isCrit);
 		}
 	}
 
@@ -355,9 +358,9 @@ public class PlayerStats : CharacterStats, IPunObservable
 		//TooltipScreenSpaceUI.ShowTooltip_Static("Hello");
 		if (isAlive)
 		{
-			ManageManaRPC(-20f);
+			ManageMana(-20f);
 
-			TakeDamageRPC(20f, 0 , false, gameObject);
+			TakeDamage(20f, 0 , false, gameObject);
 		}
 	}
     #endregion

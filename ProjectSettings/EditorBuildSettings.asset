@@ -32,5 +32,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 95b8f569e38891043aa3c8193208a59f
+  - enabled: 1
+    path: Assets/Scenes/0_Tavern.unity
+    guid: daa1bacb485f6ca4aad961aeb3ed030c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2cec48bd9f2049540b8131a96ba117ac, type: 2}

@@ -526,7 +526,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
         if (needsMana)
         {
-            playerStats.ManageManaRPC(-manaCost);
+            playerStats.ManageMana(-manaCost);
         }
 
         if (isAOEFrontCone)

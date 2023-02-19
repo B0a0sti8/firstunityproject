@@ -4,11 +4,12 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using Unity.Netcode;
 
 // Im Multiplayer muss man die Kamera am Anfang deaktiviert lassen und erst aktivieren wenn der Spieler spawnt.
 // Photon: view.IsMine als Unterscheidungsoption zwischen Spielern.
 
-public class CameraFollow : MonoBehaviour
+public class CameraFollow : NetworkBehaviour
 {
     GameObject cameera;
     public GameObject CameraMama;
@@ -25,7 +26,7 @@ public class CameraFollow : MonoBehaviour
         CameraMama.transform.GetChild(0).gameObject.SetActive(true);
 
         //cameera = GameObject.Find("CM vcam1"); // !!
-        view = GetComponent<PhotonView>();
+        //view = GetComponent<PhotonView>();
 
         vcam1 = CameraMama.transform.GetChild(0).transform.GetChild(0).gameObject;
         //lensZoom = vcam1.GetComponent<Cinemachine.CinemachineVirtualCamera>().m_Lens.OrthographicSize;
@@ -34,7 +35,7 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
-        if (view.IsMine)
+        if (IsOwner)
         {
             cameera = GameObject.Find("CM vcam1");
             cameera.GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = gameObject.transform;
