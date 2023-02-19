@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
+using Unity.Netcode;
 using System.Linq;
 
-public class EnemyStats : CharacterStats, IPunObservable
+public class EnemyStats : CharacterStats
 {
     //Dictionary<>
     // public bool isBoss;
@@ -30,18 +30,18 @@ public class EnemyStats : CharacterStats, IPunObservable
     [HideInInspector]
     public bool enemyUIHealthActive = false;
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        // Reihenfolge der gesendeten und empfangenen Komponenten muss gleich sein
-        if (stream.IsWriting)
-        {
-            stream.SendNext(currentHealth);
-        }
-        else if (stream.IsReading)
-        {
-            currentHealth = (float)stream.ReceiveNext();
-        }
-    }
+    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    //{
+    //    // Reihenfolge der gesendeten und empfangenen Komponenten muss gleich sein
+    //    if (stream.IsWriting)
+    //    {
+    //        stream.SendNext(currentHealth);
+    //    }
+    //    else if (stream.IsReading)
+    //    {
+    //        currentHealth = (float)stream.ReceiveNext();
+    //    }
+    //}
 
     void Start()
     {
@@ -76,36 +76,38 @@ public class EnemyStats : CharacterStats, IPunObservable
         }
     }
 
-    [PunRPC] public override void TakeDamage(float damage, int aggro, bool isCrit)
+    [ServerRpc]
+    public override void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
     {
         Debug.Log("Enemy takes damage " + damage);
-        base.TakeDamage(damage, aggro, isCrit);
+        base.TakeDamageServerRpc(damage, aggro, isCrit);
         FindObjectOfType<AudioManager>().Play("Oof");
     }
 
-    [PunRPC] public override void GetHealing(float healing, bool isCrit)
+    [ServerRpc]
+    public override void GetHealingServerRpc(float healing, bool isCrit)
     {
         Debug.Log("Enemy gets healing " + healing);
-        base.GetHealing(healing, isCrit);
+        base.GetHealingServerRpc(healing, isCrit);
         //FindObjectOfType<AudioManager>().Play("Oof");
     }
 
-    public void TakeDamageRPC(float damage, int aggro, bool isCrit, GameObject source)
+    public void TakeDamage(float damage, int aggro, bool isCrit, GameObject source)
     {
         Debug.Log("Deal Damage");
-        if (view.IsMine)
+        if (IsOwner)
         {
             Debug.Log("Deal Damage 1");
-            view.RPC("TakeDamage", RpcTarget.All, damage, aggro, isCrit);
+            TakeDamageServerRpc(damage, aggro, isCrit);
         }
         gameObject.GetComponent<EnemyAI>().aggroTable[source] += aggro;
     }
 
-    public void TakeHealingRPC(float healing, bool isCrit, GameObject source)
+    public void TakeHealing(float healing, bool isCrit, GameObject source)
     {
-        if (view.IsMine)
+        if (IsOwner)
         {
-            view.RPC("GetHealing", RpcTarget.All, healing, isCrit);
+            GetHealingServerRpc(healing, isCrit);
         }
     }
 

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Photon.Pun;
 
-public class PlayerController : MonoBehaviour
+
+public class PlayerController : NetworkBehaviour
 {
     public Stat speed;
 
@@ -21,8 +22,6 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D _Rigidbody; // get access to rigidbody
     public Animator animator; // Zugriff auf die Animationen
 
-    public PhotonView view;
-
 
 
     private void Awake() // Awake() runs before Start()
@@ -32,7 +31,6 @@ public class PlayerController : MonoBehaviour
 
     public void Start()
     {
-        view = GetComponent<PhotonView>();
         speed = GetComponent<PlayerStats>().movementSpeed;
         rotationMeasurement = transform.Find("RotationMeasurement");
         upDirection.z = 1;
@@ -40,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     public void Movement(InputValue value) // OnMovement = On + name of action-input 
     {
-        if (view.IsMine)
+        if (IsOwner)
         {
             movement = value.Get<Vector2>();
         }

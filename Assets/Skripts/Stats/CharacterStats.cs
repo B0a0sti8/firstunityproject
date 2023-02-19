@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
+using Unity.Netcode;
 
-public class CharacterStats : MonoBehaviourPunCallbacks
+public class CharacterStats : NetworkBehaviour
 {
-    public PhotonView view;
+    //public PhotonView view;
     public bool isAlive = true;
     public bool isCurrentlyCasting = false;
 
@@ -28,14 +28,15 @@ public class CharacterStats : MonoBehaviourPunCallbacks
     public Stat critMultiplier; // 100(%) - Inf(%) /// 130 -> Angriff macht 130% Schaden
     public Stat evadeChance;
 
-  
+
     #endregion
 
-    public virtual void TakeDamage(float damage, int aggro, bool isCrit)
+    [ServerRpc]
+    public virtual void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
     {
         currentHealth -= damage;
 
-        if (view.IsMine)
+        if (IsOwner)
         {
             DamagePopup.Create(gameObject.transform.position, (int)damage, false, isCrit);
             //GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += damage;
@@ -43,15 +44,14 @@ public class CharacterStats : MonoBehaviourPunCallbacks
         }
     }
 
-    public virtual void GetHealing(float healing, bool isCrit)
+    [ServerRpc]
+    public virtual void GetHealingServerRpc(float healing, bool isCrit)
     {
         currentHealth += healing;
 
-        if (view.IsMine)
+        if (IsOwner)
         {
             DamagePopup.Create(gameObject.transform.position, (int)healing, true, isCrit);
-            //GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += damage;
-            //FindObjectOfType<AudioManager>().Play("Oof");
         }
     }
 

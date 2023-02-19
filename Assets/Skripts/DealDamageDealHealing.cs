@@ -64,7 +64,7 @@ public static class DamageOrHealing
             }
 
             trueDamage = (int)Mathf.Round(tempDamage);
-            enemyStats.TakeDamageRPC(trueDamage, aggro, isCrit, source);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
+            enemyStats.TakeDamage(trueDamage, aggro, isCrit, source);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
         }
         else if (target.GetComponent<PlayerStats>() != null)            // Target = Player
         {
@@ -88,7 +88,7 @@ public static class DamageOrHealing
             }
 
             trueDamage = (int)Mathf.Round(tempDamage);
-            playerStats.TakeDamageRPC(trueDamage, 0, isCrit, source);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
+            playerStats.TakeDamage(trueDamage, 0, isCrit, source);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
         }
 
         enemyStats = null;
@@ -136,7 +136,7 @@ public static class DamageOrHealing
             enemyStats = source.GetComponent<EnemyStats>();
 
             trueHealing = (int)Mathf.Round(tempHealing);
-            enemyStats.TakeHealingRPC(trueHealing, isCrit, source);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
+            enemyStats.TakeHealing(trueHealing, isCrit, source);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
         }
         else if (target.GetComponent<PlayerStats>() != null)            // Target = Player
         {
@@ -144,7 +144,7 @@ public static class DamageOrHealing
             tempHealing *= (1 + playerStats.incHealInc.GetValue());
 
             trueHealing = (int)Mathf.Round(tempHealing);
-            playerStats.TakeHealingRPC(trueHealing, isCrit, source);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
+            playerStats.TakeHealing(trueHealing, isCrit, source);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
         }
 
         enemyStats = null;
