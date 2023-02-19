@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 // ONLY FOR SAMPLE SCENE!
 // EnemyIndicator Tag on each Indicator
 public class SpawnEnemies : MonoBehaviour
@@ -66,7 +65,7 @@ public class SpawnEnemies : MonoBehaviour
             if (allName != null)
             {
                 Vector2 pos = allName.transform.position;
-                PhotonNetwork.InstantiateRoomObject(prefab.name, pos, Quaternion.identity);
+                //PhotonNetwork.InstantiateRoomObject(prefab.name, pos, Quaternion.identity);
             }
         }
     }

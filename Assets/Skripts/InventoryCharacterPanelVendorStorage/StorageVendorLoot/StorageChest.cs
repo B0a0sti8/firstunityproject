@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 // Tipp für die Zukunft: Fall im Multiplayer Modus komische Sachen bei Storage Chests oder Vendors passieren:
 // Vielleicht macht es Sinn, das öffnen und schließen des jeweiligen Interfaces (Skript: VendorWindow bzw. StorageChest) auf den PLAYER-Charakter selbst zu verschieben. 
