@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using Unity.Netcode;
@@ -13,7 +12,6 @@ public class CameraFollow : NetworkBehaviour
 {
     GameObject cameera;
     public GameObject CameraMama;
-    PhotonView view;
     
     public GameObject vcam1;
     //public float lensZoom;

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using Photon.Pun;
+using Unity.Netcode;
 
-public class LevelLoader : MonoBehaviour
+public class LevelLoader : NetworkBehaviour
 {
     GameObject[] allPlayer;
     public Vector3 newPlayerPosition;
@@ -31,12 +31,12 @@ public class LevelLoader : MonoBehaviour
 
     private void Awake()
     {
-        PhotonNetwork.AutomaticallySyncScene = true;
+
     }
 
     public void ChangeScene() // when pressing O
     {
-        if (PhotonNetwork.IsMasterClient)
+        if (IsOwner)
         {
             Debug.Log("Wechsle Scene");
             LoadNextLevel();
@@ -49,7 +49,7 @@ public class LevelLoader : MonoBehaviour
 
     public void GoToHub() // when pressing H
     {
-        if (PhotonNetwork.IsMasterClient)
+        if (IsOwner)
         {
             Debug.Log("Go to Hub");
             StartCoroutine(LoadLevel("Sanctuary"));
@@ -69,6 +69,7 @@ public class LevelLoader : MonoBehaviour
     {
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
-        PhotonNetwork.LoadLevel(SceneName);
+        
+        //Photon.LoadLevel(SceneName);
     }
 }

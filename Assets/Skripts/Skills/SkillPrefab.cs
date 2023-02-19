@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Photon.Pun;
 using UnityEngine.InputSystem;
 
 public class SkillPrefab : MonoBehaviour//, IUseable
 {
     private Camera mainCam;
 
-    [HideInInspector]
-    public PhotonView photonView;
     [HideInInspector]
     public MasterChecks masterChecks;
     [HideInInspector]
@@ -639,8 +636,6 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     void Awake()
     {
         PLAYER = transform.parent.transform.parent.gameObject;
-
-        photonView = PLAYER.GetComponent<PhotonView>();
 
         masterChecks = PLAYER.transform.Find("Own Canvases").transform.Find("Canvas Action Skills").GetComponent<MasterChecks>();
 

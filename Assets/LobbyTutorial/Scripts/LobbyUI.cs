@@ -22,6 +22,7 @@ public class LobbyUI : MonoBehaviour {
     [SerializeField] private Button changeZombieButton;
     [SerializeField] private Button leaveLobbyButton;
     [SerializeField] private Button changeGameModeButton;
+    [SerializeField] private Button startGameButton;
 
 
     private void Awake() {
@@ -46,6 +47,10 @@ public class LobbyUI : MonoBehaviour {
         changeGameModeButton.onClick.AddListener(() => {
             LobbyManager.Instance.ChangeGameMode();
         });
+
+        startGameButton.onClick.AddListener(() => {
+            LobbyManager.Instance.StartGame();
+        });
     }
 
     private void Start() {
@@ -54,6 +59,7 @@ public class LobbyUI : MonoBehaviour {
         LobbyManager.Instance.OnLobbyGameModeChanged += UpdateLobby_Event;
         LobbyManager.Instance.OnLeftLobby += LobbyManager_OnLeftLobby;
         LobbyManager.Instance.OnKickedFromLobby += LobbyManager_OnLeftLobby;
+        LobbyManager.Instance.OnGameStarted += UpdateLobby_GameStarted;
 
         Hide();
     }
@@ -65,6 +71,11 @@ public class LobbyUI : MonoBehaviour {
 
     private void UpdateLobby_Event(object sender, LobbyManager.LobbyEventArgs e) {
         UpdateLobby();
+    }
+
+    private void UpdateLobby_GameStarted(object sender, System.EventArgs e)
+    {
+        Hide();
     }
 
     private void UpdateLobby() {
