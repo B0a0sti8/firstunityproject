@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/LobbyTutorial_Done.unity
+    path: Assets/Scenes/OldScenes/LobbyTutorial_Done.unity
     guid: be8200a558cfff84b8ce074fa6e33558
   - enabled: 0
     path: Assets/Scenes/UnityMultiplayer.unity
     guid: 6de7d66b54182ae46ade44a0a57ac710
   - enabled: 0
-    path: Assets/Scenes/LoadingScene.unity
+    path: Assets/Scenes/OldScenes/LoadingScene.unity
     guid: 18fee056fcc1d704ca51012d47b92ff5
   - enabled: 0
-    path: Assets/Scenes/LobbyScene.unity
+    path: Assets/Scenes/OldScenes/LobbyScene.unity
     guid: bbd06b16754649740bd3752d0e10b54f
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
