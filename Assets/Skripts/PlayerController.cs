@@ -25,6 +25,9 @@ public class PlayerController : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
+
+        if (!IsOwner) { return; }
+
         PlayerStartPosition[] positions = GameObject.Find("PlayerSpawnPositions").GetComponentsInChildren<PlayerStartPosition>();
         foreach (PlayerStartPosition pos in positions)
         {
@@ -60,6 +63,8 @@ public class PlayerController : NetworkBehaviour
 
     private void FixedUpdate()
     {
+        if (!IsOwner) { return; }
+
         speed = GetComponent<PlayerStats>().movementSpeed;
         _Rigidbody.velocity = movement * speed.GetValue();
         if (movement != Vector2.zero)
@@ -83,6 +88,8 @@ public class PlayerController : NetworkBehaviour
 
     void Update()       // Ändert Animation je nach Bewegung
     {
+        if (!IsOwner) { return; }
+
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("SpeedAnim", movement.sqrMagnitude);

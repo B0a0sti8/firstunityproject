@@ -8,7 +8,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void StartEnemyAtk(GameObject target)
     {
-        if (gameObject.GetComponent<EnemyStats>().isAlive && target.gameObject.GetComponent<PlayerStats>().isAlive)
+        if (gameObject.GetComponent<EnemyStats>().isAlive.Value && target.gameObject.GetComponent<PlayerStats>().isAlive.Value)
         {
             if (timer <= 0)
             { // inSight Check???

@@ -5,8 +5,8 @@ using Unity.Netcode;
 
 public class CharacterStats : NetworkBehaviour
 {
-    //public PhotonView view;
-    public bool isAlive = true;
+    public NetworkVariable<bool> isAlive = new NetworkVariable<bool>(true);
+    //public bool isAlive = true;
     public bool isCurrentlyCasting = false;
 
     [SerializeField]
@@ -17,7 +17,7 @@ public class CharacterStats : NetworkBehaviour
     // Stats
     [Header("Health")]
     public Stat maxHealth; // 0 - Inf
-    public float currentHealth;
+    public NetworkVariable<float> currentHealth = new NetworkVariable<float>(1);
 
     [Header("Main Stats")] public Stat armor; // 0 - 100 bzw. -Inf - 100 /// 30 -> Erlittener Schaden um 30% verringert
 
@@ -34,7 +34,7 @@ public class CharacterStats : NetworkBehaviour
     [ServerRpc]
     public virtual void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
     {
-        currentHealth -= damage;
+        currentHealth.Value -= damage;
 
         if (IsOwner)
         {
@@ -47,7 +47,7 @@ public class CharacterStats : NetworkBehaviour
     [ServerRpc]
     public virtual void GetHealingServerRpc(float healing, bool isCrit)
     {
-        currentHealth += healing;
+        currentHealth.Value += healing;
 
         if (IsOwner)
         {
@@ -57,17 +57,14 @@ public class CharacterStats : NetworkBehaviour
 
     public virtual void Update()
     {
-        if (currentHealth <= 0 && isAlive == true)
-        {
-            Die();
-        }
+
     }
 
     public virtual void Die()
     {
         FindObjectOfType<AudioManager>().Play("OoOof");
         //Debug.Log("He dead");
-        isAlive = false;
+        isAlive.Value = false;
         // To be overwritten in Child Class
     }
 }

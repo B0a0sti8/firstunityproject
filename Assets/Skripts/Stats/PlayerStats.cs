@@ -98,6 +98,14 @@ public class PlayerStats : CharacterStats
 	{
 		base.Update();
 
+		if (!IsOwner) { return; }
+
+		if (currentHealth.Value <= 0 && isAlive.Value == true)
+		{
+			Die();
+			Debug.Log("Stirb!");
+		}
+
 		SyncModifiedPlayerStats();
 
 		UpdateHealthAndMana();
@@ -107,10 +115,49 @@ public class PlayerStats : CharacterStats
 
 	void Start()
 	{
-		if (IsOwner)
-		{
-			gameObject.transform.Find("Own Canvases").gameObject.SetActive(true);
-		}
+		//if (!IsOwner) { return; }
+
+		//gameObject.transform.Find("Own Canvases").gameObject.SetActive(true);
+
+		//xPBar = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("XPBar").GetComponent<XPBarScript>();
+
+		//manaBar = transform.Find("Canvases").Find("Canvas World Space").Find("ManaBar").GetComponent<ManaBar>();
+		//manaBarUI = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("ManaBar").GetComponent<ManaBar>();
+
+		//healthText = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("HealthBar").Find("Health Text").GetComponent<TextMeshProUGUI>();
+		//manaText = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("ManaBar").Find("Mana Text").GetComponent<TextMeshProUGUI>();
+
+		//charPanel = transform.Find("Own Canvases").Find("CanvasCharacterPanel").Find("CharacterPanel").GetComponent<CharacterPanelScript>();
+		//allEquipSlots = charPanel.allEquipmentSlots;
+
+		//Stat[] allStatsArray = { armor, weaponDamage, mastery, toughness, intellect, charisma, tempo,
+		//	movementSpeed, actionSpeed, critChance, critMultiplier, evadeChance, healInc, dmgInc, physRed,
+		//	magRed, incHealInc, blockChance, skillRadInc, skillDurInc, buffInc, debuffInc, tickRateMod, lifesteal };
+
+		//ReloadEquipMainStats();
+
+		//currentHealth.Value = maxHealth.GetValue();
+		//currentMana = maxMana.GetValue();
+
+		//MyCurrentPlayerLvl = 1;
+		//MyNeededXP = Mathf.RoundToInt(100 * MyCurrentPlayerLvl * Mathf.Pow(MyCurrentPlayerLvl, 0.5f));
+		//MyCurrentXP = 10;
+		//xPBar.SetXPBar(MyCurrentXP, MyNeededXP);
+		//xPBar.UpdateLevel(MyCurrentPlayerLvl);
+
+		//goldAmount = 100;
+
+		//isAlive = true;
+
+	}
+
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+
+		if (!IsOwner) { return; }
+
+		gameObject.transform.Find("Own Canvases").gameObject.SetActive(true);
 
 		xPBar = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("XPBar").GetComponent<XPBarScript>();
 
@@ -129,7 +176,7 @@ public class PlayerStats : CharacterStats
 
 		ReloadEquipMainStats();
 
-		currentHealth = maxHealth.GetValue();
+		currentHealth.Value = maxHealth.GetValue();
 		currentMana = maxMana.GetValue();
 
 		MyCurrentPlayerLvl = 1;
@@ -140,12 +187,11 @@ public class PlayerStats : CharacterStats
 
 		goldAmount = 100;
 
-		isAlive = true;
-
+		isAlive.Value = true;
 	}
 
-	// Setzt alle Stats auf die Standardwerte eines nackten Charakters ohne Klasse, Talente und / oder Buffs und Debuffs
-	void InitializeBaseStats()
+    // Setzt alle Stats auf die Standardwerte eines nackten Charakters ohne Klasse, Talente und / oder Buffs und Debuffs
+    void InitializeBaseStats()
 	{
 		maxHealth.baseValue = maxHealthStart;	maxMana.baseValue = 1000;
 		armor.baseValue = 10;					mastery.baseValue = 10;
@@ -235,7 +281,6 @@ public class PlayerStats : CharacterStats
 		actionSpeed.baseValue += 0.01f * tempo.GetValue();
     }
 
-	#region Multiplayer-Stuff
 	void SyncModifiedPlayerStats()
 	{
 		maxHealth.modifiedValue = maxHealth.GetValue();
@@ -244,40 +289,23 @@ public class PlayerStats : CharacterStats
 		actionSpeed.modifiedValue = actionSpeed.GetValue();
 		critChance.modifiedValue = critChance.GetValue();
 		critMultiplier.modifiedValue = critMultiplier.GetValue();
-
 		evadeChance.modifiedValue = evadeChance.GetValue();
 	}
-
-	//public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-	//{
-	//	// Reihenfolge der gesendeten und empfangenen Komponenten muss gleich sein
-	//	if (stream.IsWriting)
-	//	{
-	//		stream.SendNext(currentHealth);
-	//		stream.SendNext(currentMana);
-	//	}
-	//	else if (stream.IsReading)
-	//	{
-	//		currentHealth = (float)stream.ReceiveNext();
-	//		currentMana = (float)stream.ReceiveNext();
-	//	}
-	//}
-	#endregion
 
 	#region ManageManaAndHealth
 	void UpdateHealthAndMana()
 	{
 		transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-		transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
+		transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)(currentHealth.Value));
 		transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-		transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
-		if (currentHealth > maxHealth.GetValue())
+		transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)(currentHealth.Value));
+		if (currentHealth.Value > maxHealth.GetValue())
 		{
-			currentHealth = maxHealth.GetValue();
+			currentHealth.Value = maxHealth.GetValue();
 		}
-		if (currentHealth < 0)
+		if (currentHealth.Value < 0)
 		{
-			currentHealth = 0;
+			currentHealth.Value = 0;
 		}
 
 		manaBar.SetMaxMana((int)maxMana.GetValue());
@@ -293,36 +321,14 @@ public class PlayerStats : CharacterStats
 			currentMana = 0;
 		}
 
-		healthText.SetText(currentHealth.ToString().Replace(",", ".") + " / " + maxHealth.GetValue().ToString().Replace(",", "."));
+		healthText.SetText(currentHealth.Value.ToString().Replace(",", ".") + " / " + maxHealth.GetValue().ToString().Replace(",", "."));
 		manaText.SetText(currentMana.ToString().Replace(",", ".") + " / " + maxMana.GetValue().ToString().Replace(",", "."));
 	}
 
 	[ServerRpc]
-	 private void ManageManaServerRPC(float manaCost)
-    {
+	private void ManageManaServerRPC(float manaCost)
+	{
 		currentMana += manaCost;
-	}
-
-	public void ManageMana(float manaCost)
-	{
-		if (IsOwner)
-		{
-			ManageManaServerRPC(manaCost);
-		}
-	}
-
-	void ManaRegeneration()
-	{
-		// gain mana every 1 second
-		float tickEveryXSecondsTimer = 0f;
-		float tickEveryXSeconds = 1f;
-		tickEveryXSecondsTimer += Time.deltaTime;
-		if (tickEveryXSecondsTimer >= tickEveryXSeconds)
-		{
-			tickEveryXSecondsTimer = 0f;
-
-			ManageMana(25f);
-		}
 	}
 
 	[ServerRpc]
@@ -353,22 +359,29 @@ public class PlayerStats : CharacterStats
 		}
 	}
 
-	public void TakeDamageSpace() // when pressing SPACE
+	public void ManageMana(float manaCost)
 	{
-		//TooltipScreenSpaceUI.ShowTooltip_Static("Hello");
-		if (isAlive)
+		if (IsOwner)
 		{
-			ManageMana(-20f);
-
-			TakeDamage(20f, 0 , false, gameObject);
+			ManageManaServerRPC(manaCost);
 		}
 	}
-    #endregion
 
-	public void CheatCodeAddXP()
-    {
-		GainXP(505);
-    }
+	void ManaRegeneration()
+	{
+		// gain mana every 1 second
+		float tickEveryXSecondsTimer = 0f;
+		float tickEveryXSeconds = 1f;
+		tickEveryXSecondsTimer += Time.deltaTime;
+		if (tickEveryXSecondsTimer >= tickEveryXSeconds)
+		{
+			tickEveryXSecondsTimer = 0f;
+
+			ManageMana(25f);
+		}
+	}
+
+	#endregion
 
 	public void GainXP(int xp)
     {
@@ -408,5 +421,30 @@ public class PlayerStats : CharacterStats
 		gameObject.GetComponent<SpriteRenderer>().flipY = true;
 		//Destroy(gameObject, 1f);
 		base.Die();
+	}
+
+
+
+
+
+
+	// Ab hier nur zum Debuggen
+
+	public void TakeDamageSpace() // when pressing SPACE
+	{
+		if (!IsOwner) { return; }
+
+		if (isAlive.Value)
+		{
+			ManageMana(-20f);
+
+			TakeDamage(20f, 0, false, gameObject);
+		}
+	}
+
+	public void CheatCodeAddXP()
+	{
+		if (!IsOwner) { return; }
+		GainXP(505);
 	}
 }

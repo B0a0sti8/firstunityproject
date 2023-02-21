@@ -30,23 +30,12 @@ public class EnemyStats : CharacterStats
     [HideInInspector]
     public bool enemyUIHealthActive = false;
 
-    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    //{
-    //    // Reihenfolge der gesendeten und empfangenen Komponenten muss gleich sein
-    //    if (stream.IsWriting)
-    //    {
-    //        stream.SendNext(currentHealth);
-    //    }
-    //    else if (stream.IsReading)
-    //    {
-    //        currentHealth = (float)stream.ReceiveNext();
-    //    }
-    //}
+
 
     void Start()
     {
-        currentHealth = maxHealth.GetValue();
-        isAlive = true;
+        currentHealth.Value = maxHealth.GetValue();
+        isAlive.Value = true;
         baseDamage = 10f;
         baseAttackSpeed = 2f;
     }
@@ -55,24 +44,30 @@ public class EnemyStats : CharacterStats
     {
         base.Update();
 
+        if (currentHealth.Value <= 0 && isAlive.Value == true)
+        {
+            Die();
+        }
+
+
         // updates Bars on Canvas
         gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-        gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
+        gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth.Value);
 
         if (enemyUIHealthActive)
         {
             gameObject.transform.Find("Canvas UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-            gameObject.transform.Find("Canvas UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
+            gameObject.transform.Find("Canvas UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth.Value);
         }
 
-        if (currentHealth > maxHealth.GetValue())
+        if (currentHealth.Value > maxHealth.GetValue())
         {
-            currentHealth = maxHealth.GetValue();
+            currentHealth.Value = maxHealth.GetValue();
         }
-        
-        if (currentHealth < 0)
+
+        if (currentHealth.Value < 0)
         {
-            currentHealth = 0;
+            currentHealth.Value = 0;
         }
     }
 
@@ -125,5 +120,7 @@ public class EnemyStats : CharacterStats
         }
         Destroy(gameObject, 1f);
         base.Die();
+
+
     }
 }
