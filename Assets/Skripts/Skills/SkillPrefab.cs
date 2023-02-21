@@ -98,7 +98,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
     public void StartSkillChecks() // snjens beginnt sein abenteuer
     {
-        if (PLAYER.GetComponent<PlayerStats>().isAlive)
+        if (PLAYER.GetComponent<PlayerStats>().isAlive.Value)
         {
             ConditionCheck();
         }

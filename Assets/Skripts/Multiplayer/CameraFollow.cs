@@ -6,53 +6,45 @@ using UnityEngine.EventSystems;
 using Unity.Netcode;
 
 // Im Multiplayer muss man die Kamera am Anfang deaktiviert lassen und erst aktivieren wenn der Spieler spawnt.
-// Photon: view.IsMine als Unterscheidungsoption zwischen Spielern.
+
 
 public class CameraFollow : NetworkBehaviour
 {
     GameObject cameera;
-    public GameObject CameraMama;
-    
-    public GameObject vcam1;
-    //public float lensZoom;
-
-    bool mouseOverGameObject;
+    GameObject CameraMama;
+    GameObject vcam1;
 
     private void Start()
     {
         CameraMama = GameObject.Find("CameraMama");
         CameraMama.transform.GetChild(0).gameObject.SetActive(true);
 
-        //cameera = GameObject.Find("CM vcam1"); // !!
-        //view = GetComponent<PhotonView>();
-
         vcam1 = CameraMama.transform.GetChild(0).transform.GetChild(0).gameObject;
-        //lensZoom = vcam1.GetComponent<Cinemachine.CinemachineVirtualCamera>().m_Lens.OrthographicSize;
         vcam1.GetComponent<Cinemachine.CinemachineVirtualCamera>().m_Lens.OrthographicSize = 6.5f;
     }
 
     private void Update()
     {
-        if (IsOwner)
-        {
-            cameera = GameObject.Find("CM vcam1");
-            cameera.GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = gameObject.transform;
-        }
+        if (!IsOwner) { return; }
 
+        vcam1.GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = gameObject.transform;
+    }
+
+    bool MouseOverGameObj()
+    {
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            mouseOverGameObject = true;
+            return true;
         }
         else
         {
-            mouseOverGameObject = false;
+            return false;
         }
     }
 
-
     public void CameraZoom()
     {
-        if (mouseOverGameObject) return; // no zoom when mouse over UI element
+        if (MouseOverGameObj()) return; // no zoom when mouse over UI element
 
         Vector2 vec = Mouse.current.scroll.ReadValue(); // either 120 and 0, or -120 and 0
 
@@ -78,6 +70,5 @@ public class CameraFollow : NetworkBehaviour
             vcam1.GetComponent<Cinemachine.CinemachineVirtualCamera>().m_Lens.OrthographicSize = 3f;
         }
 
-        //Debug.Log("Zoom Value: " + vcam1.GetComponent<Cinemachine.CinemachineVirtualCamera>().m_Lens.OrthographicSize);
     }
 }

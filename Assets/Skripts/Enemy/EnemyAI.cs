@@ -54,7 +54,7 @@ public class EnemyAI : MonoBehaviour
 
         foreach (GameObject pT in potentialTargets)     // Fügt alle aktuellen Ziele in ein Dictionary, mit Aggrowert 0
         {
-            if (pT.GetComponent<CharacterStats>().isAlive)
+            if (pT.GetComponent<CharacterStats>().isAlive.Value)
             { aggroTableNew.Add(pT, 0); }
         }        
 
@@ -80,7 +80,7 @@ public class EnemyAI : MonoBehaviour
         foreach (GameObject tar in aggroTable.Keys.ToList())            // Wenn ein Spieler zu nah kommt, erhält Enemy aggro
         {
             float targetDist = Vector2.Distance(transform.position, tar.transform.position);
-            if (targetDist <= aggroRange && TargetInSight(tar.transform) && tar.GetComponent<CharacterStats>().isAlive == true)
+            if (targetDist <= aggroRange && TargetInSight(tar.transform) && tar.GetComponent<CharacterStats>().isAlive.Value == true)
             { IncreaseAggro(tar, 1); }
         }
         if (aggroTable.Count != 0)
@@ -88,7 +88,7 @@ public class EnemyAI : MonoBehaviour
             target = aggroTable.Aggregate((x, y) => x.Value > y.Value ? x : y).Key.transform;       // Findet Eintrag im AggroTable mit der höchsten Aggro und prüft ob Insight
         }
         
-        if (target != null && target.GetComponent<CharacterStats>().isAlive && aggroTable[target.gameObject] > 0) 
+        if (target != null && target.GetComponent<CharacterStats>().isAlive.Value && aggroTable[target.gameObject] > 0) 
         {
             if (state == State.Idle)
             { StartChase(); }
@@ -102,7 +102,7 @@ public class EnemyAI : MonoBehaviour
         if (target != null)
         {
             float targetDist = Vector2.Distance(transform.position, target.transform.position);
-            if (targetDist <= distance && TargetInSight(target.transform) && target.GetComponent<CharacterStats>().isAlive == true)
+            if (targetDist <= distance && TargetInSight(target.transform) && target.GetComponent<CharacterStats>().isAlive.Value == true)
             { return true; }
         }
         return false;
@@ -163,7 +163,7 @@ public class EnemyAI : MonoBehaviour
         float distanceToTarget = Vector2.Distance(transform.position, target.position); // enemy <-> enemy's target (player)
 
         if (distanceToTarget < aggroRange && distanceToTarget > attackRange && TargetInSight(target) &&           // Wenn Ziel am Leben, in Aggro-Range,
-            target.GetComponent<CharacterStats>().isAlive == true && prevTarget == target)                        // kein anderes Ziel wichtiger und Ziel sichtbar
+            target.GetComponent<CharacterStats>().isAlive.Value == true && prevTarget == target)                        // kein anderes Ziel wichtiger und Ziel sichtbar
         {
             eMove.ChaseTarget();
             if (isLC == true) { isLC = false; StopCoroutine(lc); }
@@ -174,7 +174,7 @@ public class EnemyAI : MonoBehaviour
             eMove.ChaseTarget();
             if (isLC == true) { isLC = false; StopCoroutine(lc); }
         }
-        else if (target.GetComponent<CharacterStats>().isAlive == false)         // Falls Charakter tot ist
+        else if (target.GetComponent<CharacterStats>().isAlive.Value == false)         // Falls Charakter tot ist
         {
             LoseAggro(target.gameObject);
             eMove.StopChasing(0f);
@@ -203,7 +203,7 @@ public class EnemyAI : MonoBehaviour
         if (mySkills.Count() == 0 || currentTBS != 0)                // Schaut ob er Skills hat und wieder casten darf. Wenn eines von beiden nicht erfüllt ist, soll er in Attack range laufen, oder angreifen
         {
             //Debug.Log("Ich habe keine Skills, chase oder greife an.");
-            if (CheckIfInRange(attackRange) & TargetInSight(target) & target.GetComponent<CharacterStats>().isAlive)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
+            if (CheckIfInRange(attackRange) & TargetInSight(target) & target.GetComponent<CharacterStats>().isAlive.Value)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
             {
                 state = State.Attacking;
                 Attacking();
@@ -254,7 +254,7 @@ public class EnemyAI : MonoBehaviour
 
         if (noSkillReady)
         {
-            if (CheckIfInRange(attackRange) & TargetInSight(target) & target.GetComponent<CharacterStats>().isAlive)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
+            if (CheckIfInRange(attackRange) & TargetInSight(target) & target.GetComponent<CharacterStats>().isAlive.Value)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
             {
                 state = State.Attacking;
                 Attacking();
@@ -340,7 +340,7 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(castTime);
         isCasting = false;
 
-        if (CheckIfInRange(attackRange) & TargetInSight(target) & target.GetComponent<CharacterStats>().isAlive)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
+        if (CheckIfInRange(attackRange) & TargetInSight(target) & target.GetComponent<CharacterStats>().isAlive.Value)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
         {
             state = State.Attacking;
             Attacking();
