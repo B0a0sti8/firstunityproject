@@ -22,6 +22,20 @@ public class PlayerController : NetworkBehaviour
     Rigidbody2D _Rigidbody; // get access to rigidbody
     public Animator animator; // Zugriff auf die Animationen
 
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        PlayerStartPosition[] positions = GameObject.Find("PlayerSpawnPositions").GetComponentsInChildren<PlayerStartPosition>();
+        foreach (PlayerStartPosition pos in positions)
+        {
+            if (pos.hasSpawned)
+            {
+                pos.hasSpawned = false;
+                transform.position = pos.transform.position;
+                break;
+            }
+        }
+    }
 
 
     private void Awake() // Awake() runs before Start()
