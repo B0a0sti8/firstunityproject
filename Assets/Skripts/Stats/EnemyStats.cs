@@ -50,9 +50,7 @@ public class EnemyStats : CharacterStats
         }
 
 
-        // updates Bars on Canvas
-        gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-        gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth.Value);
+
 
         if (enemyUIHealthActive)
         {
