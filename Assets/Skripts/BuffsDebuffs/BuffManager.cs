@@ -5,22 +5,6 @@ using UnityEngine;
 
 public class BuffManager : NetworkBehaviour
 {
-    #region Singleton
-
-    public static BuffManager instance;
-
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Debug.LogWarning("More than one instance of Inventory found!");
-            return;
-        }
-        instance = this;
-    }
-
-    #endregion
-
     public delegate void OnBuffsChanged();
     public OnBuffsChanged onBuffsChangedCallback;
 

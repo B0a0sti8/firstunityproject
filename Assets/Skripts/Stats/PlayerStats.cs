@@ -26,7 +26,8 @@ public class PlayerStats : CharacterStats
 	#region Stats: Aus Characterstats geerbte sind auskommentiert
 	[Header("Mana")]
 	public Stat maxMana;
-	public float currentMana;
+	public NetworkVariable<float> currentMana = new NetworkVariable<float>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+	//public float currentMana;
 
 	//[Header("Health")]
 	//public Stat maxHealth;
@@ -73,7 +74,7 @@ public class PlayerStats : CharacterStats
 	#endregion
 
 	#region UI-Interface-Stuff
-	ManaBar manaBar;
+	ManaBar manaBarWorldCanv;
 	ManaBar manaBarUI;
 
 	TextMeshProUGUI healthText;
@@ -117,9 +118,13 @@ public class PlayerStats : CharacterStats
 	public override void Start()
 	{
 		base.Start();
-		manaBar = transform.Find("Canvas World Space").Find("ManaBar").GetComponent<ManaBar>();
 
 		if (!IsOwner) { return; }
+
+		manaBarWorldCanv = transform.Find("Canvas World Space").Find("ManaBar").GetComponent<ManaBar>();
+		currentMana.OnValueChanged += (float previousValue, float newValue) => { OnManaChange(); };
+
+		OnManaChange();
 
 		gameObject.transform.Find("Own Canvases").gameObject.SetActive(true);
 
@@ -141,7 +146,7 @@ public class PlayerStats : CharacterStats
 		ReloadEquipMainStats();
 
 		currentHealth.Value = maxHealth.GetValue();
-		currentMana = maxMana.GetValue();
+		currentMana.Value = maxMana.GetValue();
 
 		MyCurrentPlayerLvl = 1;
 		MyNeededXP = Mathf.RoundToInt(100 * MyCurrentPlayerLvl * Mathf.Pow(MyCurrentPlayerLvl, 0.5f));
@@ -155,11 +160,29 @@ public class PlayerStats : CharacterStats
 
 	}
 
-    public override void OnNetworkSpawn()
-    {
-        base.OnNetworkSpawn();
+	public void OnManaChange()
+	{
+		if (!IsOwner) { return; }
 
-		
+		int cM = (int)this.currentMana.Value;
+		int mM = (int)this.maxMana.GetValue();
+		NetworkBehaviourReference nBref = this;
+		ManaChangedServerRpc(cM, mM, nBref);
+	}
+
+	[ServerRpc]
+	public void ManaChangedServerRpc(int cuMa, int maMa, NetworkBehaviourReference nBrf)
+	{
+		ManaChangedClientRpc(cuMa, maMa, nBrf);
+	}
+
+	[ClientRpc]
+	public void ManaChangedClientRpc(int cuMa, int maMa, NetworkBehaviourReference nBrf)
+	{
+		nBrf.TryGet<CharacterStats>(out CharacterStats cStat);
+		ManaBar maBa = cStat.transform.Find("Canvas World Space").Find("ManaBar").GetComponent<ManaBar>();
+		maBa.SetMaxMana(maMa);
+		maBa.SetMana(cuMa);
 	}
 
 	// Setzt alle Stats auf die Standardwerte eines nackten Charakters ohne Klasse, Talente und / oder Buffs und Debuffs
@@ -282,38 +305,30 @@ public class PlayerStats : CharacterStats
 			currentHealth.Value = 0;
 		}
 
-		UpdateWorldCanvasManaBarClientRpc();
-		//manaBar.SetMaxMana((int)maxMana.GetValue());
-		//manaBar.SetMana((int)currentMana);
 		manaBarUI.SetMaxMana((int)maxMana.GetValue());
-		manaBarUI.SetMana((int)currentMana);
-		if (currentMana > maxMana.GetValue())
+		manaBarUI.SetMana((int)currentMana.Value);
+		if (currentMana.Value > maxMana.GetValue())
 		{
-			currentMana = maxMana.GetValue();
+			currentMana.Value = maxMana.GetValue();
 		}
-		if (currentMana < 0)
+		if (currentMana.Value < 0)
 		{
-			currentMana = 0;
+			currentMana.Value = 0;
 		}
 
 		string hText = currentHealth.Value.ToString().Replace(",", ".") + " / " + maxHealth.GetValue().ToString().Replace(",", ".");
-		string mText = currentMana.ToString().Replace(",", ".") + " / " + maxMana.GetValue().ToString().Replace(",", ".");
+		string mText = currentMana.Value.ToString().Replace(",", ".") + " / " + maxMana.GetValue().ToString().Replace(",", ".");
 
 		healthText.SetText(hText);
 		manaText.SetText(mText);
 	}
 
-	[ClientRpc]
-	void UpdateWorldCanvasManaBarClientRpc()
-	{
-		manaBar.SetMaxMana((int)maxHealth.GetValue());
-		manaBar.SetMana((int)currentHealth.Value);
-	}
+
 
 	[ServerRpc]
 	private void ManageManaServerRPC(float manaCost)
 	{
-		currentMana += manaCost;
+		currentMana.Value += manaCost;
 	}
 
 	[ServerRpc]
@@ -421,9 +436,13 @@ public class PlayerStats : CharacterStats
 
 		if (isAlive.Value)
 		{
-			ManageMana(-20f);
+			//ManageMana(-20f);
 
-			TakeDamage(20f, 0, false, gameObject);
+			//TakeDamage(20f, 0, false, gameObject);
+
+			currentMana.Value -= 20;
+			currentHealth.Value -= 20;
+			Debug.Log("Mache mir selbst Schaden!");
 		}
 	}
 

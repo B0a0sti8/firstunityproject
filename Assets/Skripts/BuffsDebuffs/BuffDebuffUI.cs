@@ -11,7 +11,7 @@ public class BuffDebuffUI : MonoBehaviour
 
     void Start()
     {
-        buffManager = BuffManager.instance;         // Generiert Instanz der Buffleiste. Nachdem BuffManager als Singleton definiert ist, kann es immer nur einen BuffManager geben. Vorsicht!
+        buffManager = transform.parent.parent.GetComponent<BuffManager>();         // Generiert Instanz der Buffleiste. Nachdem BuffManager als Singleton definiert ist, kann es immer nur einen BuffManager geben. Vorsicht!
         buffManager.onBuffsChangedCallback += UpdateUI;            // Sobald sich etwas an der Buffleiste ändert (Callback aus "BuffManager"-Skript) wird das UI geupdated
         slots = buffsParent.GetComponentsInChildren<BuffSlot>();
     }

@@ -23,6 +23,8 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
 
     void Update()
     {
+        if (!IsOwner) { return; }
+
         if (focus != null)
         {
             if (focus.gameObject.layer == LayerMask.NameToLayer("Enemy") || focus.gameObject.layer == LayerMask.NameToLayer("Action"))
@@ -53,7 +55,7 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
 
     void SetFocus (Interactable newFocus) 
     {
-        if (!IsOwner) { return; }
+        
 
         if (newFocus != focus)
         {

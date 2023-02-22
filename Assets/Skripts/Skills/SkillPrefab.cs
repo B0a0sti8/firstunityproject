@@ -112,13 +112,13 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     {
         if (needsMana)
         {
-            if (playerStats.currentMana >= manaCost)
+            if (playerStats.currentMana.Value >= manaCost)
             {
                 TargetCheck();
             }
             else
             {
-                Debug.Log("ERROR: not enough mana (Current: " + playerStats.currentMana + ", Needed: " + manaCost + ")");
+                Debug.Log("ERROR: not enough mana (Current: " + playerStats.currentMana.Value + ", Needed: " + manaCost + ")");
             }
         }
         else
@@ -446,7 +446,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
                 isSkillInOwnSuperInstantQueue = false;
                 ownCooldownActive = true;
                 ownCooldownTimeLeft = ownCooldownTimeModified;
-                if (needsMana) { playerStats.currentMana -= manaCost; }
+                if (needsMana) { playerStats.currentMana.Value -= manaCost; }
                 StartCasting();
             }
         }

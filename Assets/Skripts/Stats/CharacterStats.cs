@@ -59,7 +59,11 @@ public class CharacterStats : NetworkBehaviour
 
     public virtual void Start()
     {
+        if (!IsOwner) { return; }
         healthBarWorldCanv = gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>();
+        currentHealth.OnValueChanged += (float previousValue, float newValue) => { OnHealthChange(); };
+
+        OnHealthChange();
     }
 
     public override void OnNetworkSpawn()
@@ -67,18 +71,38 @@ public class CharacterStats : NetworkBehaviour
         base.OnNetworkSpawn();
     }
 
-    public virtual void Update()
+    public void OnHealthChange()
     {
-        // updates Bars on Canvas
-        UpdateWorldCanvasHealthBarClientRpc();
+        if (!IsOwner) { return; }
+
+        int cH = (int)this.currentHealth.Value;
+        int mH = (int)this.maxHealth.GetValue();
+        NetworkBehaviourReference nBref = this;
+        HealthChangedServerRpc(cH, mH, nBref);
+
+    }
+
+    [ServerRpc]
+    public void HealthChangedServerRpc(int cuHe, int maHe, NetworkBehaviourReference nBrf)
+    {
+        HealthChangedClientRpc(cuHe, maHe, nBrf);
     }
 
     [ClientRpc]
-    void UpdateWorldCanvasHealthBarClientRpc()
+    public void HealthChangedClientRpc(int cuHe, int maHe, NetworkBehaviourReference nBrf)
     {
-        healthBarWorldCanv.SetMaxHealth((int)maxHealth.GetValue());
-        healthBarWorldCanv.SetHealth((int)currentHealth.Value);
+        nBrf.TryGet<CharacterStats>(out CharacterStats cStat);
+        HealthBar heBa = cStat.transform.Find("Canvas World Space").Find("HealthBar").GetComponent<HealthBar>();
+        heBa.SetMaxHealth(maHe);
+        heBa.SetHealth(cuHe);
     }
+
+
+    public virtual void Update()
+    {
+
+    }
+
 
     public virtual void Die()
     {
