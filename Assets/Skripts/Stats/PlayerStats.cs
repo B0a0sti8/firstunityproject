@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using Unity.Netcode;
 using TMPro;
+using Unity.Netcode;
+using UnityEngine;
 
 // tasten-input wird bei BEIDEN AUSGELÖST
 // button-input wird bei dem ausgelöst, dessen Button über dem anderen liegt!
@@ -68,7 +65,11 @@ public class PlayerStats : CharacterStats
 	public Stat tickRateMod;				// Schnellere Tickrate für Effekte
 	public Stat lifesteal;                  // Heilt durch verursachten Schaden bzw. Heilung
 
-	public Stat[] allStatsArray;			// Enthält alle Stats
+	public Stat[] allStatsArray;            // Enthält alle Stats
+	#endregion
+
+	#region MultiplayerStats
+
 	#endregion
 
 	#region UI-Interface-Stuff
@@ -113,47 +114,10 @@ public class PlayerStats : CharacterStats
 		ManaRegeneration();
 	}
 
-	void Start()
+	public override void Start()
 	{
-		//if (!IsOwner) { return; }
-
-		//gameObject.transform.Find("Own Canvases").gameObject.SetActive(true);
-
-		//xPBar = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("XPBar").GetComponent<XPBarScript>();
-
-		//manaBar = transform.Find("Canvases").Find("Canvas World Space").Find("ManaBar").GetComponent<ManaBar>();
-		//manaBarUI = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("ManaBar").GetComponent<ManaBar>();
-
-		//healthText = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("HealthBar").Find("Health Text").GetComponent<TextMeshProUGUI>();
-		//manaText = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("ManaBar").Find("Mana Text").GetComponent<TextMeshProUGUI>();
-
-		//charPanel = transform.Find("Own Canvases").Find("CanvasCharacterPanel").Find("CharacterPanel").GetComponent<CharacterPanelScript>();
-		//allEquipSlots = charPanel.allEquipmentSlots;
-
-		//Stat[] allStatsArray = { armor, weaponDamage, mastery, toughness, intellect, charisma, tempo,
-		//	movementSpeed, actionSpeed, critChance, critMultiplier, evadeChance, healInc, dmgInc, physRed,
-		//	magRed, incHealInc, blockChance, skillRadInc, skillDurInc, buffInc, debuffInc, tickRateMod, lifesteal };
-
-		//ReloadEquipMainStats();
-
-		//currentHealth.Value = maxHealth.GetValue();
-		//currentMana = maxMana.GetValue();
-
-		//MyCurrentPlayerLvl = 1;
-		//MyNeededXP = Mathf.RoundToInt(100 * MyCurrentPlayerLvl * Mathf.Pow(MyCurrentPlayerLvl, 0.5f));
-		//MyCurrentXP = 10;
-		//xPBar.SetXPBar(MyCurrentXP, MyNeededXP);
-		//xPBar.UpdateLevel(MyCurrentPlayerLvl);
-
-		//goldAmount = 100;
-
-		//isAlive = true;
-
-	}
-
-    public override void OnNetworkSpawn()
-    {
-        base.OnNetworkSpawn();
+		base.Start();
+		manaBar = transform.Find("Canvas World Space").Find("ManaBar").GetComponent<ManaBar>();
 
 		if (!IsOwner) { return; }
 
@@ -161,7 +125,7 @@ public class PlayerStats : CharacterStats
 
 		xPBar = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("XPBar").GetComponent<XPBarScript>();
 
-		manaBar = transform.Find("Canvases").Find("Canvas World Space").Find("ManaBar").GetComponent<ManaBar>();
+		
 		manaBarUI = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("ManaBar").GetComponent<ManaBar>();
 
 		healthText = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("HealthBar").Find("Health Text").GetComponent<TextMeshProUGUI>();
@@ -188,10 +152,18 @@ public class PlayerStats : CharacterStats
 		goldAmount = 100;
 
 		isAlive.Value = true;
+
 	}
 
-    // Setzt alle Stats auf die Standardwerte eines nackten Charakters ohne Klasse, Talente und / oder Buffs und Debuffs
-    void InitializeBaseStats()
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+
+		
+	}
+
+	// Setzt alle Stats auf die Standardwerte eines nackten Charakters ohne Klasse, Talente und / oder Buffs und Debuffs
+	void InitializeBaseStats()
 	{
 		maxHealth.baseValue = maxHealthStart;	maxMana.baseValue = 1000;
 		armor.baseValue = 10;					mastery.baseValue = 10;
@@ -295,8 +267,10 @@ public class PlayerStats : CharacterStats
 	#region ManageManaAndHealth
 	void UpdateHealthAndMana()
 	{
-		transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-		transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)(currentHealth.Value));
+		//Wird ab jetzt in Characterstats gemacht.
+		//transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
+		//transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)(currentHealth.Value));
+
 		transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
 		transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)(currentHealth.Value));
 		if (currentHealth.Value > maxHealth.GetValue())
@@ -308,8 +282,9 @@ public class PlayerStats : CharacterStats
 			currentHealth.Value = 0;
 		}
 
-		manaBar.SetMaxMana((int)maxMana.GetValue());
-		manaBar.SetMana((int)currentMana);
+		UpdateWorldCanvasManaBarClientRpc();
+		//manaBar.SetMaxMana((int)maxMana.GetValue());
+		//manaBar.SetMana((int)currentMana);
 		manaBarUI.SetMaxMana((int)maxMana.GetValue());
 		manaBarUI.SetMana((int)currentMana);
 		if (currentMana > maxMana.GetValue())
@@ -321,8 +296,18 @@ public class PlayerStats : CharacterStats
 			currentMana = 0;
 		}
 
-		healthText.SetText(currentHealth.Value.ToString().Replace(",", ".") + " / " + maxHealth.GetValue().ToString().Replace(",", "."));
-		manaText.SetText(currentMana.ToString().Replace(",", ".") + " / " + maxMana.GetValue().ToString().Replace(",", "."));
+		string hText = currentHealth.Value.ToString().Replace(",", ".") + " / " + maxHealth.GetValue().ToString().Replace(",", ".");
+		string mText = currentMana.ToString().Replace(",", ".") + " / " + maxMana.GetValue().ToString().Replace(",", ".");
+
+		healthText.SetText(hText);
+		manaText.SetText(mText);
+	}
+
+	[ClientRpc]
+	void UpdateWorldCanvasManaBarClientRpc()
+	{
+		manaBar.SetMaxMana((int)maxHealth.GetValue());
+		manaBar.SetMana((int)currentHealth.Value);
 	}
 
 	[ServerRpc]

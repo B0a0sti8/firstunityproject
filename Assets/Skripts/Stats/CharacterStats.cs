@@ -5,7 +5,7 @@ using Unity.Netcode;
 
 public class CharacterStats : NetworkBehaviour
 {
-    public NetworkVariable<bool> isAlive = new NetworkVariable<bool>(true);
+    public NetworkVariable<bool> isAlive = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     //public bool isAlive = true;
     public bool isCurrentlyCasting = false;
 
@@ -17,7 +17,7 @@ public class CharacterStats : NetworkBehaviour
     // Stats
     [Header("Health")]
     public Stat maxHealth; // 0 - Inf
-    public NetworkVariable<float> currentHealth = new NetworkVariable<float>(1);
+    public NetworkVariable<float> currentHealth = new NetworkVariable<float>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     [Header("Main Stats")] public Stat armor; // 0 - 100 bzw. -Inf - 100 /// 30 -> Erlittener Schaden um 30% verringert
 
@@ -30,6 +30,8 @@ public class CharacterStats : NetworkBehaviour
 
 
     #endregion
+
+    HealthBar healthBarWorldCanv;
 
     [ServerRpc]
     public virtual void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
@@ -55,13 +57,33 @@ public class CharacterStats : NetworkBehaviour
         }
     }
 
+    public virtual void Start()
+    {
+        healthBarWorldCanv = gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>();
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+    }
+
     public virtual void Update()
     {
+        // updates Bars on Canvas
+        UpdateWorldCanvasHealthBarClientRpc();
+    }
 
+    [ClientRpc]
+    void UpdateWorldCanvasHealthBarClientRpc()
+    {
+        healthBarWorldCanv.SetMaxHealth((int)maxHealth.GetValue());
+        healthBarWorldCanv.SetHealth((int)currentHealth.Value);
     }
 
     public virtual void Die()
     {
+        if (!IsOwner) { return; }
+
         FindObjectOfType<AudioManager>().Play("OoOof");
         //Debug.Log("He dead");
         isAlive.Value = false;
