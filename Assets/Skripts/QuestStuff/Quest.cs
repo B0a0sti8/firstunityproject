@@ -85,11 +85,12 @@ public abstract class Objective
 [System.Serializable]
 public class CollectObjective : Objective
 {
+    InventoryScript myInventory = null;
     public void UpdateItemCount(Item item)
     {
         if (MyType.ToLower() == item.name.ToLower())
         {
-            MyCurrentAmount = InventoryScript.MyInstance.GetItemCount(item.name);
+            MyCurrentAmount = myInventory.GetItemCount(item.name);
 
             if (MyCurrentAmount <= MyAmount)
             {
@@ -104,14 +105,14 @@ public class CollectObjective : Objective
 
     public void UpdateItemCount()
     {
-        MyCurrentAmount = InventoryScript.MyInstance.GetItemCount(MyType);
+        MyCurrentAmount = myInventory.GetItemCount(MyType);
         QuestLog.MyInstance.UpdateSelected();
         QuestLog.MyInstance.CheckCompletion();
     }
 
     public void Complete()
     {
-        Stack<Item> items = InventoryScript.MyInstance.GetItems(MyType, MyAmount);
+        Stack<Item> items = myInventory.GetItems(MyType, MyAmount);
 
         foreach (Item item in items)
         {

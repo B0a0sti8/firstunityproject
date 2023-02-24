@@ -31,6 +31,8 @@ public class QuestGiverWindow : UIWindowNPC
     [SerializeField] private GameObject questPrefab;
     [SerializeField] private GameObject questDescription;
 
+    InventoryScript myInventory;
+
     private StuffManagerScript stuffManager;
     private PlayerStats playerStats;
     private GameObject PLAYER;
@@ -44,6 +46,8 @@ public class QuestGiverWindow : UIWindowNPC
         PLAYER = transform.parent.parent.parent.gameObject;
         stuffManager = PLAYER.GetComponent<StuffManagerScript>();
         playerStats = PLAYER.GetComponent<PlayerStats>();
+        myInventory = PLAYER.transform.Find("Own Canvases").Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
+
     }
 
     public void ShowQuests(QuestGiver questGiver)
@@ -156,7 +160,7 @@ public class QuestGiverWindow : UIWindowNPC
 
             foreach (CollectObjective o in selectedQuest.MyCollectObjectives)
             {
-                InventoryScript.MyInstance.itemCountChangedEvent -= new ItemCountChanged(o.UpdateItemCount);
+                myInventory.itemCountChangedEvent -= new ItemCountChanged(o.UpdateItemCount);
                 o.Complete();
             }
 

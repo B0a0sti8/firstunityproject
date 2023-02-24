@@ -6,28 +6,14 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
 public class HandScript : MonoBehaviour
-{
-    #region Singleton
-    static HandScript instance;
-
-    public static HandScript MyInstance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<HandScript>();
-            }
-            return instance;
-        }
-    }
-    #endregion
-
+{ 
     Image handImage;
     public string handSkillName;
     public GameObject handButtonSwap;
     public bool actionButtonDragOn = true;
     bool hasItem;
+
+    InventoryScript myInventory;
 
     public IMoveable MyMoveable { get; set; }
 
@@ -36,11 +22,12 @@ public class HandScript : MonoBehaviour
     void Start()
     {
         handImage = GetComponent<Image>();
+        myInventory = transform.parent.parent.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
     }
 
     private void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame && !EventSystem.current.IsPointerOverGameObject() && MyInstance.MyMoveable != null)
+        if (Mouse.current.leftButton.wasPressedThisFrame && !EventSystem.current.IsPointerOverGameObject() && this.MyMoveable != null)
         {
             DeleteItem();
         }
@@ -86,7 +73,7 @@ public class HandScript : MonoBehaviour
         MyMoveable = null;
         handImage.color = new Color(0, 0, 0, 0);
         hasItem = false;
-        InventoryScript.MyInstance.FromSlot = null;
+        myInventory.FromSlot = null;
     }
 
     public void DeleteItem()
@@ -107,7 +94,7 @@ public class HandScript : MonoBehaviour
 
         Drop();
 
-        InventoryScript.MyInstance.FromSlot = null;
+        myInventory.FromSlot = null;
     }
 }
 
