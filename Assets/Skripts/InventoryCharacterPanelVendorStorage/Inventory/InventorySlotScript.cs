@@ -18,6 +18,10 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
 
     public InventoryBagScript MyBag { get; set; }
 
+    HandScript myHandScript;
+    InventoryScript myInventory;
+    UIManager myUIManager;
+
     public int MyIndex { get; set; }
 
     public bool IsEmpty
@@ -94,6 +98,20 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
         MyItems.OnClear += new UpdateStackEvent(UpdateSlot);
 
         masterETItems = GetComponent<MasterEventTriggerItems>();
+
+        if (transform.parent.name == "StorageChest")
+        {
+            myHandScript = transform.parent.parent.parent.Find("Canvas Hand").Find("Hand Image").GetComponent<HandScript>();
+            myInventory = transform.parent.parent.parent.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
+            myUIManager = transform.parent.parent.parent.parent.Find("GameManager").GetComponent<UIManager>();
+        }
+        else        // Tatsächlicher Inventarslot (Keine Kiste o.ä.)
+        {
+            myHandScript = transform.parent.parent.parent.parent.Find("Canvas Hand").Find("Hand Image").GetComponent<HandScript>();
+            myInventory = transform.parent.parent.GetComponent<InventoryScript>();
+            myUIManager = transform.parent.parent.parent.parent.parent.Find("GameManager").GetComponent<UIManager>();
+        }
+
     }
 
     public bool AddItem(Item item)
@@ -144,7 +162,7 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
         {
             for (int i = 0; i < initCount; i++)
             {
-                InventoryScript.MyInstance.OnItemCountChanged(MyItems.Pop());
+                myInventory.OnItemCountChanged(MyItems.Pop());
             }
             
             //MyItems.Clear();
@@ -155,68 +173,68 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
     {
         if (eventData.button == PointerEventData.InputButton.Left)          // Wenn Linksklick
         {
-            if (InventoryScript.MyInstance.FromSlot == null && !IsEmpty)        // If we dont have something to move
+            if (myInventory.FromSlot == null && !IsEmpty)        // If we dont have something to move
             {
-                if (HandScript.MyInstance.MyMoveable != null)           // Wenn etwas in der Hand
+                if (myHandScript.MyMoveable != null)           // Wenn etwas in der Hand
                 {
-                    if (MyItem is Bag && HandScript.MyInstance.MyMoveable is Bag)
-                    {
-                        InventoryScript.MyInstance.SwapBags(HandScript.MyInstance.MyMoveable as Bag, MyItem as Bag);
+                    if (MyItem is Bag && myHandScript.MyMoveable is Bag)
+                    {   
+                         myInventory.SwapBags(myHandScript.MyMoveable as Bag, MyItem as Bag);
                     }
-                    else if (HandScript.MyInstance.MyMoveable is Equipment)
+                    else if (myHandScript.MyMoveable is Equipment)
                     {
-                        if (MyItem is Equipment && (MyItem as Equipment).MyEquipmentType == (HandScript.MyInstance.MyMoveable as Equipment).MyEquipmentType)
+                        if (MyItem is Equipment && (MyItem as Equipment).MyEquipmentType == (myHandScript.MyMoveable as Equipment).MyEquipmentType)
                         {
                             (MyItem as Equipment).Equip();
                             TooltipScreenSpaceUIItems.HideTooltip_Static();
                             TooltipScreenSpaceUIItems.ShowTooltip_Static(MyItem.tooltipItemName, MyItem.tooltipItemDescription, null);
-                            HandScript.MyInstance.Drop();
+                            myHandScript.Drop();
                         }
                     }
                 }
                 else
                 {
-                    HandScript.MyInstance.TakeMoveable(MyItem as IMoveable);
-                    InventoryScript.MyInstance.FromSlot = this;
+                    myHandScript.TakeMoveable(MyItem as IMoveable);
+                    myInventory.FromSlot = this;
                     onRemoved = true;
                 }
             }
-            else if (InventoryScript.MyInstance.FromSlot == null && IsEmpty)
+            else if (myInventory.FromSlot == null && IsEmpty)
             {
-                if (HandScript.MyInstance.MyMoveable is Bag)
+                if (myHandScript.MyMoveable is Bag)
                 {
-                    Bag bag = (Bag)HandScript.MyInstance.MyMoveable;
+                    Bag bag = (Bag)myHandScript.MyMoveable;
 
-                    if (bag.MyBagScript != MyBag && InventoryScript.MyInstance.MyEmptySlotCount - bag.MySlotCount > 0)
+                    if (bag.MyBagScript != MyBag && myInventory.MyEmptySlotCount - bag.MySlotCount > 0)
                     {
                         AddItem(bag);
                         bag.MyBagButton.RemoveBag();
-                        HandScript.MyInstance.Drop();
+                        myHandScript.Drop();
                     }
                 }
-                else if (HandScript.MyInstance.MyMoveable is Equipment)
+                else if (myHandScript.MyMoveable is Equipment)
                 {
-                    Equipment equipment = (Equipment)HandScript.MyInstance.MyMoveable;
+                    Equipment equipment = (Equipment)myHandScript.MyMoveable;
                     AddItem(equipment);
                     CharacterPanelScript.MyInstance.MySelectedButton.DequipStuff();
-                    HandScript.MyInstance.Drop();
+                    myHandScript.Drop();
                     Debug.Log(IsEmpty);
                     equipment.MySlot = this;
                 }
 
 
             }
-            else if (InventoryScript.MyInstance.FromSlot != null)               // If something in hand
+            else if (myInventory.FromSlot != null)               // If something in hand
             {
-                if (PutItemBack() || MergeItems(InventoryScript.MyInstance.FromSlot) || SwapItems(InventoryScript.MyInstance.FromSlot) || AddItems(InventoryScript.MyInstance.FromSlot.MyItems))
+                if (PutItemBack() || MergeItems(myInventory.FromSlot) || SwapItems(myInventory.FromSlot) || AddItems(myInventory.FromSlot.MyItems))
                 {
-                    HandScript.MyInstance.Drop();
-                    InventoryScript.MyInstance.FromSlot = null;
+                    myHandScript.Drop();
+                    myInventory.FromSlot = null;
                     onRemoved = true;
                 }
             }
         }
-        if (eventData.button == PointerEventData.InputButton.Right && HandScript.MyInstance.MyMoveable == null)
+        if (eventData.button == PointerEventData.InputButton.Right && myHandScript.MyMoveable == null)
         {
             UseItem();
             TooltipScreenSpaceUIItems.HideTooltip_Static(); // Refresht Tooltipp
@@ -254,9 +272,9 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
 
     private bool PutItemBack()
     {
-        if (InventoryScript.MyInstance.FromSlot == this)
+        if (myInventory.FromSlot == this)
         {
-            InventoryScript.MyInstance.FromSlot.MyIcon.color = Color.white;
+            myInventory.FromSlot.MyIcon.color = Color.white;
             return true;
         }
 
@@ -317,7 +335,7 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
 
     private void UpdateSlot()
     {
-        UIManager.MyInstance.UpdateStackSize(this);
+        myUIManager.UpdateStackSize(this);
     }
 
     public void MasterETStuffAssignment()

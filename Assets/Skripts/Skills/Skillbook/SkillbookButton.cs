@@ -8,12 +8,13 @@ public class SkillbookButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 {
     [SerializeField]
     string skillName;
+    HandScript myHandScript;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            HandScript.MyInstance.handSkillName = skillName;
+            myHandScript.handSkillName = skillName;
         }
     }
 
@@ -21,10 +22,10 @@ public class SkillbookButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (HandScript.MyInstance.handSkillName != "")
+            if (myHandScript.handSkillName != "")
             {
-                HandScript.MyInstance.handButtonSwap = null;
-                HandScript.MyInstance.handSkillName = "";
+                myHandScript.handButtonSwap = null;
+                myHandScript.handSkillName = "";
             }
         }
     }
@@ -34,8 +35,10 @@ public class SkillbookButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     SkillPrefab buttonSkill;
     void Start()
     {
-        PLAYER = transform.parent.transform.parent.transform.parent.transform.parent.transform.parent.transform.parent.gameObject;
+        PLAYER = transform.parent.parent.parent.parent.parent.parent.gameObject;
         skillManager = PLAYER.transform.Find("SkillManager").gameObject;
+
+        myHandScript = transform.parent.parent.parent.parent.parent.Find("Canvas Hand").Find("Hand Image").GetComponent<HandScript>();
 
         SkillPrefab[] skills = skillManager.transform.Find("BlueMage").GetComponents<SkillPrefab>();
 

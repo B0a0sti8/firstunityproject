@@ -19,11 +19,13 @@ public class VendorButton : MonoBehaviour, IPointerClickHandler
     private VendorItem vendorItem1;
     public bool onRemoved = false;
     int goldAmount1;
+    InventoryScript myInventory;
 
     private void Awake()
     {
         masterETItems = GetComponent<MasterEventTriggerItems>();
         goldAmount1 = transform.parent.parent.parent.parent.parent.GetComponent<PlayerStats>().goldAmount;
+        myInventory = transform.parent.parent.parent.parent.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
     }
 
 
@@ -65,7 +67,7 @@ public class VendorButton : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if ((goldAmount1 >= vendorItem1.MyItem.MyPrice) && InventoryScript.MyInstance.AddItem(Instantiate(vendorItem1.MyItem)))
+        if ((goldAmount1 >= vendorItem1.MyItem.MyPrice) && myInventory.AddItem(Instantiate(vendorItem1.MyItem)))
         {
             SellItem();
             onRemoved = true;

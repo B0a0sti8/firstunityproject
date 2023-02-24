@@ -7,23 +7,6 @@ public delegate void ItemCountChanged(Item item);
 
 public class InventoryScript : MonoBehaviour
 {
-    #region Singleton
-    private static InventoryScript instance;
-
-    public static InventoryScript MyInstance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<InventoryScript>();
-            }
-
-            return instance;
-        }
-    }
-    #endregion
-
     [SerializeField] private InventorySlotScript fromSlot;
 
     private List<Bag> bags = new List<Bag>();
@@ -32,6 +15,8 @@ public class InventoryScript : MonoBehaviour
 
     [SerializeField]
     private BagButtonScript[] bagButtons;
+
+    HandScript myHandScript;
 
     // For Debugging
     [SerializeField]
@@ -113,7 +98,7 @@ public class InventoryScript : MonoBehaviour
         bag.Initialize(12);
         AddItem(bag);
 
-
+        myHandScript = transform.parent.parent.Find("Canvas Hand").Find("Hand Image").GetComponent<HandScript>();
     }
 
     public void AddBag(Bag bag)
@@ -140,7 +125,7 @@ public class InventoryScript : MonoBehaviour
 
     public void AddBag(Bag bag, int bagIndex)
     {
-        bag.SetupScript();
+        bag.SetupScript(this);
         MyBags.Add(bag);
         bag.MyBagButton = bagButtons[bagIndex];
         bagButtons[bagIndex].MyBag = bag;
@@ -176,8 +161,8 @@ public class InventoryScript : MonoBehaviour
 
             AddItem(oldBag);
 
-            HandScript.MyInstance.Drop();
-            MyInstance.fromSlot = null;
+            myHandScript.Drop();
+            this.fromSlot = null;
         }
     }
 

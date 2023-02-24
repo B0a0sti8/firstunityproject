@@ -26,6 +26,8 @@ public class QuestLog : MonoBehaviour
     [SerializeField] private int maxCount;
     private int currentCount;
 
+    InventoryScript myInventory;
+
     private static QuestLog instance;
 
     public static QuestLog MyInstance 
@@ -45,6 +47,7 @@ public class QuestLog : MonoBehaviour
         questDescription = transform.Find("Description").Find("TextArea").Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
         stuffManager = transform.parent.parent.parent.gameObject.GetComponent<StuffManagerScript>();
         QuestCountTxt.text = currentCount + "/" + maxCount;
+        myInventory = transform.parent.parent.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
     }
 
     public void AcceptQuest(Quest quest)
@@ -55,7 +58,7 @@ public class QuestLog : MonoBehaviour
             QuestCountTxt.text = currentCount + "/" + maxCount;
             foreach (CollectObjective o in quest.MyCollectObjectives)
             {
-                InventoryScript.MyInstance.itemCountChangedEvent += new ItemCountChanged(o.UpdateItemCount);
+                myInventory.itemCountChangedEvent += new ItemCountChanged(o.UpdateItemCount);
                 o.UpdateItemCount();
 
             }
@@ -145,7 +148,7 @@ public class QuestLog : MonoBehaviour
     {
         foreach (CollectObjective o in selected.MyCollectObjectives)
         {
-            InventoryScript.MyInstance.itemCountChangedEvent -= new ItemCountChanged(o.UpdateItemCount);
+            myInventory.itemCountChangedEvent -= new ItemCountChanged(o.UpdateItemCount);
         }
 
         foreach (KillObjective o in selected.MyKillObjectives)
