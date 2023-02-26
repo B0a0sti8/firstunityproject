@@ -8,6 +8,7 @@ public class QGQuestScript : MonoBehaviour
 
     public void Select()
     {
-        QuestGiverWindow.MyInstance.ShowQuestInfo(MyQuest);
+        QuestGiverWindow localQuestGiverWindow = MyQuest.myQuestLog.transform.parent.Find("QuestGiverWindow").GetComponent<QuestGiverWindow>();
+        localQuestGiverWindow.ShowQuestInfo(MyQuest);
     }
 }

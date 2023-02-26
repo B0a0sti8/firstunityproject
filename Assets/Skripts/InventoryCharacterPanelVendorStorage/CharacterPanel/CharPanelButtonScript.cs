@@ -15,6 +15,7 @@ public class CharPanelButtonScript : MonoBehaviour, IPointerClickHandler
     MasterEventTriggerItems masterETItems;
     PlayerStats playerStats;
     HandScript myHandScript;
+    CharacterPanelScript myCharPanel;
 
     public Equipment MyEquip { get => equip; }
 
@@ -23,6 +24,7 @@ public class CharPanelButtonScript : MonoBehaviour, IPointerClickHandler
         masterETItems = GetComponent<MasterEventTriggerItems>();
         playerStats = transform.parent.parent.parent.parent.parent.GetComponent<PlayerStats>();
         myHandScript = transform.parent.parent.parent.parent.Find("Canvas Hand").Find("Hand Image").GetComponent<HandScript>();
+        myCharPanel = transform.parent.parent.GetComponent<CharacterPanelScript>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -41,7 +43,7 @@ public class CharPanelButtonScript : MonoBehaviour, IPointerClickHandler
             else if (myHandScript.MyMoveable == null && MyEquip != null)
             {
                 myHandScript.TakeMoveable(MyEquip);
-                CharacterPanelScript.MyInstance.MySelectedButton = this;
+                myCharPanel.MySelectedButton = this;
                 icon.color = Color.grey;
             }
         }

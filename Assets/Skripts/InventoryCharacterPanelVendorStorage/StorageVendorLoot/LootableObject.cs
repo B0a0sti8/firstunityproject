@@ -10,13 +10,13 @@ public class LootableObject : Interactable
     {
         base.Interact();
         Debug.Log("Hi, ich kann gelootet werden!");
-        lootTable.ShowLoot();
+        lootTable.ShowLoot(player.Find("Own Canvases").Find("CanvasLootWindow").Find("LootWindow").GetComponent<LootWindow>());
     }
 
     public override void StopInteracting()
     {
         base.Interact();
         Debug.Log("Hey, du bist zu weit weg.");
-        LootWindow.MyInstance.Close();
+        player.Find("Own Canvases").Find("CanvasLootWindow").Find("LootWindow").GetComponent<LootWindow>().Close();
     }
 }

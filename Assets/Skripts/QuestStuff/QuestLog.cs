@@ -4,8 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
 public class QuestLog : MonoBehaviour
 {
     private List<QuestScript> questScripts = new List<QuestScript>();
@@ -28,19 +26,19 @@ public class QuestLog : MonoBehaviour
 
     InventoryScript myInventory;
 
-    private static QuestLog instance;
+    //private static QuestLog instance;
 
-    public static QuestLog MyInstance 
-    {
-        get 
-        {
-            if (instance == null)
-            {
-                instance = GameObject.FindObjectOfType<QuestLog>();
-            }
-            return instance;
-        } 
-    }
+    //public static QuestLog MyInstance 
+    //{
+    //    get 
+    //    {
+    //        if (instance == null)
+    //        {
+    //            instance = GameObject.FindObjectOfType<QuestLog>();
+    //        }
+    //        return instance;
+    //    } 
+    //}
 
     void Start()
     {
@@ -56,27 +54,28 @@ public class QuestLog : MonoBehaviour
         {
             currentCount++;
             QuestCountTxt.text = currentCount + "/" + maxCount;
-            foreach (CollectObjective o in quest.MyCollectObjectives)
-            {
-                myInventory.itemCountChangedEvent += new ItemCountChanged(o.UpdateItemCount);
-                o.UpdateItemCount();
-
-            }
-
-            foreach (KillObjective o in quest.MyKillObjectives)
-            {
-                stuffManager.killConfirmedEvent += new KillConfirmed(o.UpdateKillCount);
-
-            }
+            
 
             quests.Add(quest);
 
             GameObject go = Instantiate(questPrefab, questParent);
 
             QuestScript qs = go.GetComponent<QuestScript>();
+            quest.myQuestLog = this;
             quest.MyQuestScript = qs;
             qs.MyQuest = quest;
             questScripts.Add(qs);
+
+            foreach (CollectObjective o in quest.MyCollectObjectives)
+            {
+                myInventory.itemCountChangedEvent += new ItemCountChanged(o.UpdateItemCount);
+                o.UpdateItemCount();
+            }
+
+            foreach (KillObjective o in quest.MyKillObjectives)
+            {
+                stuffManager.killConfirmedEvent += new KillConfirmed(o.UpdateKillCount);
+            }
 
             go.GetComponent<TextMeshProUGUI>().text = quest.MyTitle;
 
@@ -120,7 +119,7 @@ public class QuestLog : MonoBehaviour
     {
         foreach (QuestScript qs in questScripts)
         {
-            qs.MyQuest.MyQuestGiver.UpdateQuestStatus();
+            qs.MyQuest.MyQuestGiver.UpdateQuestStatus(this);
             qs.IsComplete();
         }
     }
@@ -168,7 +167,7 @@ public class QuestLog : MonoBehaviour
         selected = null;
         currentCount--;
         QuestCountTxt.text = currentCount + "/" + maxCount;
-        qs.MyQuest.MyQuestGiver.UpdateQuestStatus();
+        qs.MyQuest.MyQuestGiver.UpdateQuestStatus(this);
         qs = null;
     }
 

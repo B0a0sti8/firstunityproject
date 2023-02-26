@@ -6,23 +6,8 @@ using UnityEngine.UI;
 
 public class QuestGiverWindow : UIWindowNPC
 {
-    #region Singleton
-    private static QuestGiverWindow instance;
-
-    public static QuestGiverWindow MyInstance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<QuestGiverWindow>();
-            }
-            return instance;
-        }
-    }
-    #endregion
-
     private QuestGiver questGiver;
+    private QuestLog myQuestLog;
 
     [SerializeField] private GameObject backBtn, acceptBtn, completeBtn;
 
@@ -47,7 +32,7 @@ public class QuestGiverWindow : UIWindowNPC
         stuffManager = PLAYER.GetComponent<StuffManagerScript>();
         playerStats = PLAYER.GetComponent<PlayerStats>();
         myInventory = PLAYER.transform.Find("Own Canvases").Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
-
+        myQuestLog = PLAYER.transform.Find("Own Canvases").Find("CanvasQuestUI").Find("QuestLog").GetComponent<QuestLog>();
     }
 
     public void ShowQuests(QuestGiver questGiver)
@@ -70,14 +55,16 @@ public class QuestGiverWindow : UIWindowNPC
                 go.GetComponent<TextMeshProUGUI>().text = quest.MyTitle;
 
                 go.GetComponent<QGQuestScript>().MyQuest = quest;
+                go.GetComponent<QGQuestScript>().MyQuest.myQuestLog = this.myQuestLog;
+                go.GetComponent<QGQuestScript>().MyQuest.ConnectObjectives();
 
                 quests.Add(go);
 
-                if (QuestLog.MyInstance.HasQuest(quest) && quest.IsComplete)
+                if (myQuestLog.HasQuest(quest) && quest.IsComplete)
                 {
                     go.GetComponent<TextMeshProUGUI>().text += "(Complete)";
                 }
-                else if (QuestLog.MyInstance.HasQuest(quest))
+                else if (myQuestLog.HasQuest(quest))
                 {
                     Color c = go.GetComponent<TextMeshProUGUI>().color;
                     c.a = 0.5f;
@@ -100,12 +87,12 @@ public class QuestGiverWindow : UIWindowNPC
     {
         this.selectedQuest = quest;
 
-        if (QuestLog.MyInstance.HasQuest(quest) && quest.IsComplete)
+        if (myQuestLog.HasQuest(quest) && quest.IsComplete)
         {
             acceptBtn.SetActive(false);
             completeBtn.SetActive(true);
         }
-        else if (!QuestLog.MyInstance.HasQuest(quest))
+        else if (!myQuestLog.HasQuest(quest))
         {
             acceptBtn.SetActive(true);
         }
@@ -136,7 +123,7 @@ public class QuestGiverWindow : UIWindowNPC
 
     public void Accept()
     {
-        QuestLog.MyInstance.AcceptQuest(selectedQuest);
+        myQuestLog.AcceptQuest(selectedQuest);
         Back();
     }
 
@@ -170,7 +157,7 @@ public class QuestGiverWindow : UIWindowNPC
             }
 
             playerStats.GainXP(selectedQuest.MyXPGiven);
-            QuestLog.MyInstance.RemoveQuest(selectedQuest.MyQuestScript);
+            myQuestLog.RemoveQuest(selectedQuest.MyQuestScript);
             Back();
         }
     }

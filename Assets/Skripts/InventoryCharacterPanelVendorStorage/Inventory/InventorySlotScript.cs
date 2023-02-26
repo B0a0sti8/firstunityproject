@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Unity.Netcode;
 
 public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickable
 {
@@ -16,11 +17,14 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
     [SerializeField]
     private Text stackSize;
 
+    Transform ownCanvases;
+
     public InventoryBagScript MyBag { get; set; }
 
     HandScript myHandScript;
     InventoryScript myInventory;
     UIManager myUIManager;
+    CharacterPanelScript myCharPanel;
 
     public int MyIndex { get; set; }
 
@@ -98,12 +102,14 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
         MyItems.OnClear += new UpdateStackEvent(UpdateSlot);
 
         masterETItems = GetComponent<MasterEventTriggerItems>();
+        ownCanvases = transform.parent.parent.parent;
 
         if (transform.parent.name == "StorageChest")
         {
-            myHandScript = transform.parent.parent.parent.Find("Canvas Hand").Find("Hand Image").GetComponent<HandScript>();
-            myInventory = transform.parent.parent.parent.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
-            myUIManager = transform.parent.parent.parent.parent.Find("GameManager").GetComponent<UIManager>();
+            myHandScript = ownCanvases.Find("Canvas Hand").Find("Hand Image").GetComponent<HandScript>();
+            myInventory = ownCanvases.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
+            myUIManager = ownCanvases.parent.Find("GameManager").GetComponent<UIManager>();
+            myCharPanel = ownCanvases.Find("CanvasCharacterPanel").Find("CharacterPanel").GetComponent<CharacterPanelScript>();
         }
         else        // Tatsächlicher Inventarslot (Keine Kiste o.ä.)
         {
@@ -185,7 +191,7 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
                     {
                         if (MyItem is Equipment && (MyItem as Equipment).MyEquipmentType == (myHandScript.MyMoveable as Equipment).MyEquipmentType)
                         {
-                            (MyItem as Equipment).Equip();
+                            (MyItem as Equipment).Equip(ownCanvases.parent.GetComponent<NetworkObject>());
                             TooltipScreenSpaceUIItems.HideTooltip_Static();
                             TooltipScreenSpaceUIItems.ShowTooltip_Static(MyItem.tooltipItemName, MyItem.tooltipItemDescription, null);
                             myHandScript.Drop();
@@ -216,7 +222,7 @@ public class InventorySlotScript : MonoBehaviour, IPointerClickHandler, IClickab
                 {
                     Equipment equipment = (Equipment)myHandScript.MyMoveable;
                     AddItem(equipment);
-                    CharacterPanelScript.MyInstance.MySelectedButton.DequipStuff();
+                    myCharPanel.MySelectedButton.DequipStuff();
                     myHandScript.Drop();
                     Debug.Log(IsEmpty);
                     equipment.MySlot = this;

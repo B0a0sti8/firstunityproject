@@ -12,7 +12,7 @@ public class CharacterStats : NetworkBehaviour
     [SerializeField]
     private string type;
     public string MyType { get => type; set => type = value; }
-
+    
     #region Stats
     // Stats
     [Header("Health")]
