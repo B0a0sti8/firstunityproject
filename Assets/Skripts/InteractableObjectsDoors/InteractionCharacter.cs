@@ -55,6 +55,7 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
 
     void SetFocus (Interactable newFocus) 
     {
+        Debug.Log("Setting Focus");
         
 
         if (newFocus != focus)
@@ -78,9 +79,12 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
                 (newFocus as QuestGiver).window = transform.Find("Own Canvases").Find("CanvasQuestUI").Find("QuestGiverWindow").GetComponent<QuestGiverWindow>();
             }
         }
-        Debug.Log("Versuche Fokus zu setzen");
-        newFocus.OnFocused(transform);
-
+        
+        if (newFocus != null)
+        {
+            Debug.Log("Versuche Fokus zu setzen");
+            newFocus.OnFocused(transform);
+        }
     }
 
     void RemoveFocus () // Entfernt Fokus des Charakters

@@ -7,24 +7,6 @@ using TMPro;
 
 public class CharacterPanelScript : MonoBehaviour
 {
-    #region Singleton
-    private static CharacterPanelScript instance;
-
-    public static CharacterPanelScript MyInstance
-    {
-        get 
-        {
-            if (instance == null)
-            {
-                instance = GameObject.FindObjectOfType<CharacterPanelScript>();
-            }
-
-            return instance;
-        } 
-    }
-    #endregion
-
-
     [SerializeField] private CanvasGroup canvasGroup;
 
     [SerializeField] private CharPanelButtonScript helmet, shoulders, chest, cape, gloves, legs, boots, artefact, mainhand, offhand;

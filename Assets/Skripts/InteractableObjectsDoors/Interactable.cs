@@ -11,7 +11,7 @@ public class Interactable : NetworkBehaviour
     public Transform interactionTransform; // Punkt von dem aus mit dem Interactable agiert werden kann (nicht zwangsläufig Position des Interactable selbst)
     public float radius = 3f;              // Radius den man entfernt sein darf
     bool isFocus = false;                  // Stellt später fest ob Interactible bereits im Fokus ist
-    Transform player;                      // Position des Spielers 
+    public Transform player;                      // Position des Spielers 
     bool hasInteracted = false;            // Schaut ob bereits Interaktion stattgefunden hat
 
     public virtual void Interact () // Diese Methode wird überschrieben, je nachdem mit was interagiert wird (Händler, Item, Gegner, Schatzkiste etc.)

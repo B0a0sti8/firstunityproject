@@ -32,12 +32,14 @@ public class EnemyStats : CharacterStats
 
 
 
-    void Start()
+    public override void Start()
     {
+        
         currentHealth.Value = maxHealth.GetValue();
         isAlive.Value = true;
         baseDamage = 10f;
         baseAttackSpeed = 2f;
+        base.Start();
     }
 
     public override void Update()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 enum EquipmentType { Helmet, Shoulders, Chest, Cape, Gloves, Legs, Boots, Artefact, Mainhand, OffHand, TwoHand }
@@ -68,7 +69,7 @@ public class Equipment : Item
     public override void Use()
     {
         base.Use();
-        Equip();
+        Equip(user);
     }
 
     public string GetItemDescription()
@@ -103,8 +104,8 @@ public class Equipment : Item
         return tmpName;
     }
 
-    public void Equip()
+    public void Equip(NetworkObject user)
     {
-        CharacterPanelScript.MyInstance.EquipStuff(this);
+        user.transform.Find("Own Canvases").Find("CanvasCharacterPanel").Find("CharacterPanel").GetComponent<CharacterPanelScript>().EquipStuff(this);
     }
 }

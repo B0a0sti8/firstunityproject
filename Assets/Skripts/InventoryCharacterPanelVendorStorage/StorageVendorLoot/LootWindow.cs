@@ -5,22 +5,6 @@ using UnityEngine.UI;
 
 public class LootWindow : MonoBehaviour
 { 
-    #region Singleton
-    private static LootWindow instance;
-
-    public static LootWindow MyInstance 
-    { 
-        get
-        {
-            if (instance == null)
-            {
-                instance = GameObject.FindObjectOfType<LootWindow>();
-            }
-            return instance;
-        }
-    }
-    #endregion
-
     [SerializeField] private LootButton[] lootButtons;
 
     private CanvasGroup canvasGroup;
