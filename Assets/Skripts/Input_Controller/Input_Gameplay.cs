@@ -21,7 +21,7 @@ public class Input_Gameplay : MonoBehaviour
     {
         PLAYER = transform.parent.parent;
         ownCanvases = PLAYER.transform.Find("Own Canvases");
-        levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
+        // levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
 
         playerController = PLAYER.GetComponent<PlayerController>();
         playerStats = PLAYER.GetComponent<PlayerStats>();
@@ -35,7 +35,7 @@ public class Input_Gameplay : MonoBehaviour
 
     void Update()
     {
-        levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
+        // levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
     }
 
     void OnMovement(InputValue value) // WASD
@@ -50,8 +50,8 @@ public class Input_Gameplay : MonoBehaviour
     void OnZoom() // Scroll/Y
     { cameraFollow.CameraZoom(); }
 
-    void OnChangeScene() // O
-    { levelLoader.ChangeScene(); }
+    //void OnChangeScene() // O
+    //{ levelLoader.ChangeScene(); }
 
     void OnGoToHub() // H
     { levelLoader.GoToHub(); }

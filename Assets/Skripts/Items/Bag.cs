@@ -12,9 +12,11 @@ public class Bag : Item
 
     public InventoryBagScript MyBagScript { get; set; }
 
+    InventoryScript myInventory;
+
     public BagButtonScript MyBagButton { get; set; }
 
-    public int Slots { get => slots; set => slots = value; }
+    public int MySlotCount { get => slots; set => slots = value; }
 
 
     public void Initialize(int slots)
@@ -24,23 +26,34 @@ public class Bag : Item
 
     public override void Use()
     {
-        if (InventoryScript.MyInstance.CanAddBag)
+        base.Use();
+
+        myInventory = user.transform.Find("Own Canvases").Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>(); 
+
+        if (myInventory.CanAddBag)
         {
-            MyBagScript = Instantiate(bagPrefab, InventoryScript.MyInstance.transform).GetComponent<InventoryBagScript>();
+            MyBagScript = Instantiate(bagPrefab, myInventory.transform).GetComponent<InventoryBagScript>();
             MyBagScript.AddSlots(slots);
 
             if (MyBagButton == null)
             {
-                InventoryScript.MyInstance.AddBag(this);
+                myInventory.AddBag(this);
             }
             else
             {
-                InventoryScript.MyInstance.AddBag(this, MyBagButton);
+                myInventory.AddBag(this, MyBagButton);
             }
 
             Remove();
         }
     }
+
+    public void SetupScript(InventoryScript myInven)
+    {
+        MyBagScript = Instantiate(bagPrefab, myInven.transform).GetComponent<InventoryBagScript>();
+        MyBagScript.AddSlots(slots);
+    }
+
     public override void Awake()
     {
         base.Awake();

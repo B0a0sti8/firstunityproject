@@ -15,7 +15,8 @@ public class QuestScript : MonoBehaviour
     public void Select()
     {
         GetComponent<TextMeshProUGUI>().color = Color.red;
-        QuestLog.MyInstance.ShowDescription(MyQuest);
+        QuestLog localQuestLog = MyQuest.myQuestLog;
+        localQuestLog.ShowDescription(MyQuest);
     }
 
     public void DeSelect()
@@ -29,7 +30,8 @@ public class QuestScript : MonoBehaviour
         {
             markedComplete = true;
             GetComponent<TextMeshProUGUI>().text += "(Complete)";
-            QuestLog.MyInstance.transform.parent.parent.parent.GetComponent<StuffManagerScript>().WriteMessage(string.Format("{0} (Complete)", MyQuest.MyTitle));
+            QuestLog localQuestLog = MyQuest.myQuestLog;
+            localQuestLog.transform.parent.parent.parent.GetComponent<StuffManagerScript>().WriteMessage(string.Format("{0} (Complete)", MyQuest.MyTitle));
         }
         else if (!MyQuest.IsComplete)
         {

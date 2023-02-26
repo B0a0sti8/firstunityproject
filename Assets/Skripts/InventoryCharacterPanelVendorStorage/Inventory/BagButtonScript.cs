@@ -14,6 +14,9 @@ public class BagButtonScript : MonoBehaviour, IPointerClickHandler
 
     [SerializeField] private int bagIndex;
 
+    HandScript myHandScript;
+    InventoryScript myInventory;
+
     public int MyBagIndex { get => bagIndex; set => bagIndex = value; }
 
     public Bag MyBag
@@ -36,31 +39,36 @@ public class BagButtonScript : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    void Awake() 
+    {
+        myHandScript = transform.parent.parent.parent.Find("Canvas Hand").Find("Hand Image").GetComponent<HandScript>();
+        myInventory = transform.parent.parent.parent.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
+    }
 
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (InventoryScript.MyInstance.FromSlot != null && HandScript.MyInstance.MyMoveable != null && HandScript.MyInstance.MyMoveable is Bag)
+            if (myInventory.FromSlot != null && myHandScript.MyMoveable != null && myHandScript.MyMoveable is Bag)
             {
                 if (MyBag != null)
                 {
-                    InventoryScript.MyInstance.SwapBags(MyBag, HandScript.MyInstance.MyMoveable as Bag);
+                    myInventory.SwapBags(MyBag, myHandScript.MyMoveable as Bag);
                 }
                 else
                 {
-                    Bag tmp = (Bag)HandScript.MyInstance.MyMoveable;
+                    Bag tmp = (Bag)myHandScript.MyMoveable;
                     tmp.MyBagButton = this;
                     tmp.Use();
                     MyBag = tmp;
-                    HandScript.MyInstance.Drop();
-                    InventoryScript.MyInstance.FromSlot = null;
+                    myHandScript.Drop();
+                    myInventory.FromSlot = null;
                 }
             }
             else if (Keyboard.current.shiftKey.isPressed)
             {
-                HandScript.MyInstance.TakeMoveable(MyBag);
+                myHandScript.TakeMoveable(MyBag);
             }
             else if (bag != null)
             {
@@ -71,12 +79,12 @@ public class BagButtonScript : MonoBehaviour, IPointerClickHandler
 
     public void RemoveBag()
     {
-        InventoryScript.MyInstance.RemoveBag(MyBag);
+        myInventory.RemoveBag(MyBag);
         MyBag.MyBagButton = null;
 
         foreach (Item item in MyBag.MyBagScript.GetItems())
         {
-            InventoryScript.MyInstance.AddItem(item);
+            myInventory.AddItem(item);
         }
 
         MyBag = null;

@@ -4,6 +4,7 @@
 // Verantwortlicher f?r den Quatsch: Basti
 
 using UnityEngine;
+using Unity.Netcode;
 
 public enum ItemQuality { Common, Uncommon, Rare, Epic, Mythic }
 
@@ -25,6 +26,9 @@ public abstract class Item : ScriptableObject, IMoveable // Statt Monobehaviour 
     [SerializeField] private int stackSize;
 
     private InventorySlotScript slot;
+
+
+    public NetworkObject user; 
 
     public InventorySlotScript MySlot { get => slot; set => slot = value; }
     public Sprite MyIcon { get => icon;  }
@@ -52,7 +56,7 @@ public abstract class Item : ScriptableObject, IMoveable // Statt Monobehaviour 
     {
         // Item verwenden.
         // Es k?nnte etwas passieren (je nach Item)
-
+        user = NetworkManager.Singleton.ConnectedClients[NetworkManager.Singleton.LocalClientId].PlayerObject;
         Debug.Log("Using " + name);
     }
 

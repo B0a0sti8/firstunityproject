@@ -13,6 +13,7 @@ public class LootButton : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Item item;
 
     private LootWindow lootWindow;
+    InventoryScript myInventory;
 
     public Image MyIcon { get => icon; set => icon = value; }
     public Text MyTitle { get => title; set => title = value; }
@@ -20,7 +21,7 @@ public class LootButton : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (InventoryScript.MyInstance.AddItem(MyItem))
+        if (myInventory.AddItem(MyItem))
         {
             gameObject.SetActive(false);
             lootWindow.TakeLoot(MyItem);
@@ -34,6 +35,7 @@ public class LootButton : MonoBehaviour, IPointerClickHandler
     {
         masterETItems = GetComponent<MasterEventTriggerItems>();
         lootWindow = GetComponentInParent<LootWindow>();
+        myInventory = transform.parent.parent.parent.parent.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
     }
 
     void MasterETStuffAssignment()

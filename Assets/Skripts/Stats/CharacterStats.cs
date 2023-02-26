@@ -1,22 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
+using Unity.Netcode;
 
-public class CharacterStats : MonoBehaviourPunCallbacks
+public class CharacterStats : NetworkBehaviour
 {
-    public PhotonView view;
-    public bool isAlive;
+    public NetworkVariable<bool> isAlive = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    //public bool isAlive = true;
     public bool isCurrentlyCasting = false;
 
     [SerializeField]
     private string type;
-
+    public string MyType { get => type; set => type = value; }
+    
     #region Stats
     // Stats
     [Header("Health")]
     public Stat maxHealth; // 0 - Inf
-    public float currentHealth;
+    public NetworkVariable<float> currentHealth = new NetworkVariable<float>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     [Header("Main Stats")] public Stat armor; // 0 - 100 bzw. -Inf - 100 /// 30 -> Erlittener Schaden um 30% verringert
 
@@ -27,32 +28,17 @@ public class CharacterStats : MonoBehaviourPunCallbacks
     public Stat critMultiplier; // 100(%) - Inf(%) /// 130 -> Angriff macht 130% Schaden
     public Stat evadeChance;
 
-    public string MyType { get => type; set => type = value; }
+
     #endregion
 
-    public virtual void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
+    HealthBar healthBarWorldCanv;
+
+    [ServerRpc]
+    public virtual void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
     {
-        if (missRandomRange <= Mathf.Clamp(evadeChance.GetValue(), 0, 100))
-        {
-            Debug.Log("MISS:" + missRandomRange + " <= " + Mathf.Clamp(evadeChance.GetValue(), 0, 100));
-            return;
-        }
+        currentHealth.Value -= damage;
 
-        bool isCrit = false;
-        if (critRandomRange <= critChance)
-        {
-            isCrit = true;
-            Debug.Log("CRIT:" + critRandomRange + " <= " + critChance + "! CritMultiplier: " + critMultiplier + "%");
-            damage *= (Mathf.Clamp(critMultiplier, 100, float.MaxValue) / 100);
-        }
-
-        damage *= (1 - (Mathf.Clamp(armor.GetValue(), float.MinValue, 100) / 100));
-
-        damage = Mathf.Clamp(damage, 0, float.MaxValue);
-
-        currentHealth -= damage;
-
-        if (view.IsMine)
+        if (IsOwner)
         {
             DamagePopup.Create(gameObject.transform.position, (int)damage, false, isCrit);
             //GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += damage;
@@ -60,41 +46,71 @@ public class CharacterStats : MonoBehaviourPunCallbacks
         }
     }
 
-    public virtual void GetHealing(float healing, int critRandomRange, float critChance, float critMultiplier)
+    [ServerRpc]
+    public virtual void GetHealingServerRpc(float healing, bool isCrit)
     {
-        bool isCrit = false;
-        if (critRandomRange <= critChance)
-        {
-            isCrit = true;
-            Debug.Log("CRIT:" + critRandomRange + " <= " + critChance + "! CritMultiplier: " + critMultiplier + "%");
-            healing *= (Mathf.Clamp(critMultiplier, 100, float.MaxValue) / 100);
-        }
+        currentHealth.Value += healing;
 
-        healing = Mathf.Clamp(healing, 0, float.MaxValue);
-
-        currentHealth += healing;
-
-        if (view.IsMine)
+        if (IsOwner)
         {
             DamagePopup.Create(gameObject.transform.position, (int)healing, true, isCrit);
-            //GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += damage;
-            //FindObjectOfType<AudioManager>().Play("Oof");
         }
     }
+
+    public virtual void Start()
+    {
+        if (!IsOwner) { return; }
+        healthBarWorldCanv = gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>();
+        currentHealth.OnValueChanged += (float previousValue, float newValue) => { OnHealthChange(); };
+
+        OnHealthChange();
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+    }
+
+    public void OnHealthChange()
+    {
+        if (!IsOwner) { return; }
+
+        int cH = (int)this.currentHealth.Value;
+        int mH = (int)this.maxHealth.GetValue();
+        NetworkBehaviourReference nBref = this;
+        HealthChangedServerRpc(cH, mH, nBref);
+
+    }
+
+    [ServerRpc]
+    public void HealthChangedServerRpc(int cuHe, int maHe, NetworkBehaviourReference nBrf)
+    {
+        HealthChangedClientRpc(cuHe, maHe, nBrf);
+    }
+
+    [ClientRpc]
+    public void HealthChangedClientRpc(int cuHe, int maHe, NetworkBehaviourReference nBrf)
+    {
+        nBrf.TryGet<CharacterStats>(out CharacterStats cStat);
+        HealthBar heBa = cStat.transform.Find("Canvas World Space").Find("HealthBar").GetComponent<HealthBar>();
+        heBa.SetMaxHealth(maHe);
+        heBa.SetHealth(cuHe);
+    }
+
 
     public virtual void Update()
     {
-        if (currentHealth <= 0 && isAlive == true)
-        {
-            Die();
-        }
+
     }
+
 
     public virtual void Die()
     {
+        if (!IsOwner) { return; }
+
         FindObjectOfType<AudioManager>().Play("OoOof");
         //Debug.Log("He dead");
-        isAlive = false;
+        isAlive.Value = false;
         // To be overwritten in Child Class
     }
 }

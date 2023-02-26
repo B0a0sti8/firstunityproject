@@ -4,24 +4,6 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    #region Singleton
-    private static UIManager instance;
-
-    public static UIManager MyInstance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<UIManager>();
-            }
-
-            return instance;
-        }
-    }
-    #endregion
-
-
     public void UpdateStackSize(IClickable clickable)
     {
         if (clickable.MyCount > 1)

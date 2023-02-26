@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Photon.Pun;
 
-public class PlayerController : MonoBehaviour
+
+public class PlayerController : NetworkBehaviour
 {
     public Stat speed;
 
@@ -21,8 +22,23 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D _Rigidbody; // get access to rigidbody
     public Animator animator; // Zugriff auf die Animationen
 
-    public PhotonView view;
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
 
+        if (!IsOwner) { return; }
+
+        PlayerStartPosition[] positions = GameObject.Find("PlayerSpawnPositions").GetComponentsInChildren<PlayerStartPosition>();
+        foreach (PlayerStartPosition pos in positions)
+        {
+            if (pos.hasSpawned)
+            {
+                pos.hasSpawned = false;
+                transform.position = pos.transform.position;
+                break;
+            }
+        }
+    }
 
 
     private void Awake() // Awake() runs before Start()
@@ -32,7 +48,6 @@ public class PlayerController : MonoBehaviour
 
     public void Start()
     {
-        view = GetComponent<PhotonView>();
         speed = GetComponent<PlayerStats>().movementSpeed;
         rotationMeasurement = transform.Find("RotationMeasurement");
         upDirection.z = 1;
@@ -40,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     public void Movement(InputValue value) // OnMovement = On + name of action-input 
     {
-        if (view.IsMine)
+        if (IsOwner)
         {
             movement = value.Get<Vector2>();
         }
@@ -48,6 +63,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!IsOwner) { return; }
+
         speed = GetComponent<PlayerStats>().movementSpeed;
         _Rigidbody.velocity = movement * speed.GetValue();
         if (movement != Vector2.zero)
@@ -71,6 +88,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()       // Ändert Animation je nach Bewegung
     {
+        if (!IsOwner) { return; }
+
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("SpeedAnim", movement.sqrMagnitude);

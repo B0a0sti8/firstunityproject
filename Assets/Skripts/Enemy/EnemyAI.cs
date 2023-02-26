@@ -2,318 +2,362 @@ using System.Collections;
 using UnityEngine;
 using Pathfinding;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class EnemyAI : MonoBehaviour
 {
-    public bool hasAttackSkript;
+    [SerializeField]
+    public enum State
+    {
+        Idle,
+        Chasing,
+        DoAction,
+        Attacking,
+        WaitingForCast,
+        DoNothing,
+        Dying
+    }
 
-    public bool hasTarget = false;
-    public GameObject[] potentialTargets;
-    GameObject[] viableTargets;
-    float[] targetDistances;
-    //bool setTargetToNull = false;
+    private State state;
 
+    public float aggroRange = 12f;
+    public float targetRange = 2f;
+    public float attackRange = 6f;
+    public float aggroTime = 2.0f;
+
+    EnemySkillPrefab[] mySkills;
+    [SerializeField] float tBS = 5;              // Zeit zwischen zwei Skills, selbst wenn der CD ready ist.
+    [SerializeField] float currentTBS = 0;       // Aktuelle Zeit zwischen zwei Skills
+        
+    bool isLC = false;
+    Coroutine lc;
+
+    public bool isCasting = false;
+    bool noSkillReady = false;
+    Coroutine isInCast;
+
+    EnemyMovement eMove;
     public EnemyAttack ownEnemyAttack;
-
-    //public Transform playerTransform;
-
     public Transform target = null;
-    public Transform targetTemp = null;
+    Transform prevTarget = null;
 
+    [SerializeField]
+    public Dictionary<GameObject, int> aggroTable = new Dictionary<GameObject, int>();
 
-    public float speed = 200f;
-    public float nextWypointDistance;
-    public float unitRange = 6f;
-    public float agroRange = 12f;
-    public float agroTime = 2.0f;
-
-    public int currentWypoint = 0;
-    public Path path;
-    public Seeker seeker;
-    public Rigidbody2D rb2d;
-
-    public bool runningCeasePathfindingCoroutine = false;
-    public Coroutine ceasePathfindingCoroutine;
-
-    public bool runningUpdatePathCoroutine = false;
-    public Coroutine updatePathCoroutine;
-
-
-    void Start()
+    void HandleTargetAggro()
     {
-        seeker = GetComponent<Seeker>();
-        rb2d = GetComponent<Rigidbody2D>();
+        GameObject[] pT1 = GameObject.FindGameObjectsWithTag("Player");  // Sucht alle Spieler in der Scene
+        GameObject[] pT2 = GameObject.FindGameObjectsWithTag("Ally");    // Sucht alle Pets/Helfer in der Scene
+        List<GameObject> potentialTargets = pT1.Concat(pT2).ToList();                     // Schmeißt alle Ziele in ein Array
+        Dictionary<GameObject, int> aggroTableNew = new Dictionary<GameObject, int>();
 
-        targetTemp = target;
+        foreach (GameObject pT in potentialTargets)     // Fügt alle aktuellen Ziele in ein Dictionary, mit Aggrowert 0
+        {
+            if (pT.GetComponent<CharacterStats>().isAlive.Value)
+            { aggroTableNew.Add(pT, 0); }
+        }        
+
+        aggroTableNew.Keys.Except(aggroTable.Keys).ToList().ForEach(k => aggroTable.Add(k, 0));        // Vergleicht alle aktuellen Targets mit den bisherigen und fügt neue mit Aggro=0 hinzu
+        aggroTable.Keys.Except(aggroTableNew.Keys).ToList().ForEach(k => aggroTable.Remove(k));        // Vergleicht alle aktuellen Targets mit den bisherigen und entfernt alle die nicht mehr da sind
+        aggroTableNew.Clear();
     }
 
-    void Update()
+    public void IncreaseAggro(GameObject source, int aggro)
     {
-        SearchTargets(); // Sucht nach vernünftigem Target: 1. Sucht alle Spieler, 2. Prüft Entfernung und InSight, 3. Sucht nächstgelegenen Spieler
+        if (source != null && aggroTable.ContainsKey(source))
+        { aggroTable[source] += aggro; }
+    }
 
-        ChaseTarget();
+    void LoseAggro(GameObject source)
+    {
+        if (source != null && aggroTable.ContainsKey(source))
+        { aggroTable[source] = 0; }
+    }
 
-        if (targetTemp != target) // whenever target changes
+    void SearchTargets()
+    {
+        foreach (GameObject tar in aggroTable.Keys.ToList())            // Wenn ein Spieler zu nah kommt, erhält Enemy aggro
         {
-            targetTemp = target;
+            float targetDist = Vector2.Distance(transform.position, tar.transform.position);
+            if (targetDist <= aggroRange && TargetInSight(tar.transform) && tar.GetComponent<CharacterStats>().isAlive.Value == true)
+            { IncreaseAggro(tar, 1); }
+        }
+        if (aggroTable.Count != 0)
+        {
+            target = aggroTable.Aggregate((x, y) => x.Value > y.Value ? x : y).Key.transform;       // Findet Eintrag im AggroTable mit der höchsten Aggro und prüft ob Insight
+        }
+        
+        if (target != null && target.GetComponent<CharacterStats>().isAlive.Value && aggroTable[target.gameObject] > 0) 
+        {
+            if (state == State.Idle)
+            { StartChase(); }
 
-            if (target == null) // when loosing target
-            {
-
-            }
-            else  // when gaining target
-            {
-                // share target with every group member
-                //GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-                //foreach (GameObject allE in allEnemies)
-                //{
-                //    if (gameObject.GetComponent<EnemyStats>().groupNumber == allE.GetComponent<EnemyStats>().groupNumber)
-                //    {
-                //        allE.GetComponent<EnemyAI>().target = target;
-                //    }
-                //}
-
-                gameObject.transform.Find("Canvas World Space").transform.Find("AggroText").gameObject.SetActive(true);
-                StartCoroutine(Wait(1f));
-                IEnumerator Wait(float time)
-                {
-                    yield return new WaitForSeconds(time);
-                    gameObject.transform.Find("Canvas World Space").transform.Find("AggroText").gameObject.SetActive(false);
-                }
-            }
+            state = State.Chasing; 
         }
     }
 
-    #region Verfolge Ziele
-    private void ChaseTarget()
+    bool CheckIfInRange(float distance)
     {
-        if (hasTarget)
+        if (target != null)
         {
-            float distaceToTarget = Vector2.Distance(transform.position, target.position); // enemy <-> enemy's target (player)
-            //float distaceToTarget = Vector2.Distance(transform.position, playerTransform.position); // enemy <-> enemy's target (player)
-            if (distaceToTarget < agroRange && TargetInSight(target) && target.GetComponent<PlayerStats>().isAlive == true)
-            {
-                //target = playerTransform;
-
-                if (runningCeasePathfindingCoroutine)
-                {
-                    StopCoroutine(ceasePathfindingCoroutine);
-                    runningCeasePathfindingCoroutine = false;
-                    //Debug.Log("ERROR 1 lolsos");
-                }
-
-                if (!runningUpdatePathCoroutine)
-                {
-                    updatePathCoroutine = StartCoroutine(InvokePathfinding());
-                    runningUpdatePathCoroutine = true;
-                    //Debug.Log("ERROR 2 lol? sooos");
-                }
-            }
-            else if (!runningCeasePathfindingCoroutine)
-            {
-                if (target.GetComponent<PlayerStats>().isAlive == false)
-                {
-                    ceasePathfindingCoroutine = StartCoroutine(CeasePathfinding(0f));
-                }
-                else
-                {
-                    ceasePathfindingCoroutine = StartCoroutine(CeasePathfinding(agroTime));
-                }
-                runningCeasePathfindingCoroutine = true;
-            }
-
-            if (target.GetComponent<PlayerStats>().isAlive == false) // target is dead
-            {
-                target = null;
-            }
-            else // target is alive
-            {
-                FollowPath();
-            }
+            float targetDist = Vector2.Distance(transform.position, target.transform.position);
+            if (targetDist <= distance && TargetInSight(target.transform) && target.GetComponent<CharacterStats>().isAlive.Value == true)
+            { return true; }
         }
+        return false;
     }
 
-    void UpdatePath()
-    {
-        if (seeker.IsDone())
-        {
-            seeker.StartPath(rb2d.position, target.position, OnPathComplete);
-        }
-    }
-
-    void OnPathComplete(Path path)
-    {
-        if (!path.error)
-        {
-            this.path = path;
-            currentWypoint = 0;
-        }
-    }
-
-    void FollowPath()
-    {
-        if (path == null)
-        {
-            return;
-        }
-
-        if ((unitRange >= Vector2.Distance(rb2d.position, target.position) && TargetInSight(target))
-            || (currentWypoint >= path.vectorPath.Count && !TargetInSight(target)))
-        {
-            if (hasAttackSkript) // auto-attack target
-            {
-                if (target != null)
-                {
-                    ownEnemyAttack.StartEnemyAtk(target.gameObject);
-                }
-            }
-            return;
-        }
-
-        try
-        {
-            Vector2 direction = ((Vector2)path.vectorPath[currentWypoint] - rb2d.position).normalized;
-            Vector2 force = direction * speed * GetComponent<EnemyStats>().movementSpeed.GetValue() * Time.deltaTime; 
-            rb2d.AddForce(force);
-
-            float distance = Vector2.Distance(rb2d.position, path.vectorPath[currentWypoint]);
-            if (distance < nextWypointDistance)
-            {
-                currentWypoint++;
-            }
-        }
-        catch (Exception e) { }
-    }
-
-    bool TargetInSight(Transform target)
+    public bool TargetInSight(Transform target)
     {
         bool inSight = false;
-        Vector2 direction = ((Vector2)target.position - rb2d.position).normalized;
-        Vector2 endPosition = rb2d.position + direction * agroRange;
+        Vector2 direction = ((Vector2)target.position - (Vector2)transform.position).normalized;
+        Vector2 endPosition = (Vector2)transform.position + direction * aggroRange;
 
-        RaycastHit2D hit = Physics2D.Linecast(rb2d.position, endPosition, (1 <<
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, endPosition, (1 <<
             LayerMask.NameToLayer("Borders")) | (1 << LayerMask.NameToLayer("Action")));
+
         if (hit.collider != null)
-        {
-            if (hit.collider.gameObject.CompareTag("Player"))
-            {
-                inSight = true;
-            }
-            else
-            {
-                inSight = false;
-            }
-        }
+        { inSight = hit.collider.gameObject.CompareTag("Player")? true : false; }
 
         return inSight;
     }
 
-    IEnumerator CeasePathfinding(float aggroTime)
+    void StartChase()               // Gegner fängt an Ziele zu jagen. Könnte andere Gegner in der Nähe 'warnen'
     {
-        yield return new WaitForSeconds(aggroTime);
-        if (runningUpdatePathCoroutine)
+        gameObject.transform.Find("Canvas World Space").transform.Find("AggroText").gameObject.SetActive(true);
+        StartCoroutine(Wait(1f));
+        IEnumerator Wait(float time)
         {
-            StopCoroutine(updatePathCoroutine);
-            runningUpdatePathCoroutine = false;
-            Debug.Log("UpdatePath stopped. target -> null");
-            target = null;
-            //setTargetToNull = false;
+            yield return new WaitForSeconds(time);
+            gameObject.transform.Find("Canvas World Space").transform.Find("AggroText").gameObject.SetActive(false);
         }
     }
 
-    IEnumerator InvokePathfinding()
+    void Start()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(0.2f);
-            UpdatePath();
-        }
+        state = State.Idle;
+        eMove = GetComponent<EnemyMovement>();
+        mySkills = transform.Find("Skills").GetComponents<EnemySkillPrefab>();
     }
-    #endregion
 
-    #region Suche nach Zielen
-    private void SearchTargets()
+    void Idle() 
     {
-        potentialTargets = GameObject.FindGameObjectsWithTag("Player");
-        if (potentialTargets.Length == 0) { return; }
-            
-        viableTargets = new GameObject[potentialTargets.Length];
+        // Gegner könnte herumwandern o.ä. sucht währenddessen nach Zielen
+        // Neues System: Beim Laden der Scene wird ein Dictionary erstellt, in dem alle Spieler einem Aggro-Wert zugeordnet werden.
+        // Wenn Skills verwendet werden (Heilung in bestimmten Radius) Dmg Spells von irgendwo oder ein Spieler zu nah kommt -> Aggrowert erhöht
+        // Sobald der Aggrowert > 0 ist, greift Gegner an.
 
-        targetDistances = new float[potentialTargets.Length];
-        for (int i = 0; i < potentialTargets.Length; i++)
+        // Diese beiden Funktionen müssen nicht jedes Frame ausgeführt werden. Reicht ~ jede Sekunde
+        HandleTargetAggro();
+        SearchTargets();
+    }
+
+    private void Chasing()              // Gegner jagt aktuell Ziele
+    {
+        prevTarget = target;            // Speichert aktuelles Target
+        
+        HandleTargetAggro();
+        SearchTargets();                // Soll weiterhin schauen, welches Ziel die höchste Aggro hat
+
+        float distanceToTarget = Vector2.Distance(transform.position, target.position); // enemy <-> enemy's target (player)
+
+        if (distanceToTarget < aggroRange && distanceToTarget > attackRange && TargetInSight(target) &&           // Wenn Ziel am Leben, in Aggro-Range,
+            target.GetComponent<CharacterStats>().isAlive.Value == true && prevTarget == target)                        // kein anderes Ziel wichtiger und Ziel sichtbar
         {
-            targetDistances[i] = Mathf.Infinity;
+            eMove.ChaseTarget();
+            if (isLC == true) { isLC = false; StopCoroutine(lc); }
         }
-
-        int n = 0;
-        foreach (GameObject potTar in potentialTargets)
+        else if (target != prevTarget)                                           // Falls sich Target geändert hat
         {
-            float targetDist = Vector2.Distance(gameObject.transform.position, potTar.transform.position);
-            if (targetDist <= agroRange && TargetInSight(potTar.transform) && potTar.GetComponent<PlayerStats>().isAlive == true)
+            eMove.StopChasing(0f);
+            eMove.ChaseTarget();
+            if (isLC == true) { isLC = false; StopCoroutine(lc); }
+        }
+        else if (target.GetComponent<CharacterStats>().isAlive.Value == false)         // Falls Charakter tot ist
+        {
+            LoseAggro(target.gameObject);
+            eMove.StopChasing(0f);
+            state = State.Idle;
+            if (isLC == true) { isLC = false; StopCoroutine(lc); }
+        }
+        else if (distanceToTarget < attackRange)                                 // Falls das Ziel in Reichweite ist
+        {
+            eMove.StopChasing(0.2f);
+            state = State.DoAction;
+            if (isLC == true) { isLC = false; StopCoroutine(lc); }
+        }
+        else                                                                     // Falls Ziel nicht sichtbar oder zu weit weg, lauf noch bisschen hinterher. Dann brich ab.
+        {
+            if (isLC == false)
             {
-                viableTargets[n] = potTar;
-                targetDistances[n] = targetDist;
-                n += 1;
+                lc = StartCoroutine(LingeringChase(aggroTime));
+                isLC = true;
+            }
+            eMove.ChaseTarget();
+        }
+    }
+
+    private void DoAction() 
+    {
+        if (mySkills.Count() == 0 || currentTBS != 0)                // Schaut ob er Skills hat und wieder casten darf. Wenn eines von beiden nicht erfüllt ist, soll er in Attack range laufen, oder angreifen
+        {
+            //Debug.Log("Ich habe keine Skills, chase oder greife an.");
+            if (CheckIfInRange(attackRange) & TargetInSight(target) & target.GetComponent<CharacterStats>().isAlive.Value)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
+            {
+                state = State.Attacking;
+                Attacking();
+            }
+            else
+            {
+                state = State.Chasing;
+                Chasing();
+            }
+            return;
+        }
+
+        foreach (EnemySkillPrefab mS in mySkills)               // Wenn er Skills hat und casten darf: Geht durch all seine Skills
+        {
+            if (mS.range != 0 & CheckIfInRange(mS.range) & mS.skillReady)       // Schaut für jeden Skill, ob er eine Range hat, wenn ja ob er in Range ist und ob Skill ready ist
+            {
+                //Debug.Log("Ein Skill ist ready, ich caste");
+                mS.CastSkill();
+                currentTBS = tBS;
+                noSkillReady = false;
+                if (mS.duration > 0)        // Skill wurde ausgeführt, warte ggf. Skilldauer ab.
+                {
+                    isInCast = StartCoroutine(WaitingForCast(mS.duration));
+                    state = State.WaitingForCast;
+                }
+                break;
+            }
+            else if (mS.range == 0 & mS.skillReady)
+            {
+                //Debug.Log("Ein Skill ist ready, ich caste");
+                mS.CastSkill();
+                currentTBS = tBS;
+                noSkillReady = false;
+                if (mS.duration > 0)        // Skill wurde ausgeführt, warte ggf. Skilldauer ab.
+                {
+                    isInCast = StartCoroutine(WaitingForCast(mS.duration));
+                    state = State.WaitingForCast;
+                }
+                break;
+            }
+            else    // Wenn er out of range ist oder kein Skill ready: In Attack range laufen, oder angreifen
+            {
+                noSkillReady = true;
+                //Debug.Log("Kein Skill ready oder alle out of range, ich chase oder greife an.");
+                
             }
         }
 
-        if (viableTargets[0] != null)
+        if (noSkillReady)
         {
-            int minIndex = Array.IndexOf(targetDistances, Mathf.Min(targetDistances));
-            target = viableTargets[minIndex].transform;
+            if (CheckIfInRange(attackRange) & TargetInSight(target) & target.GetComponent<CharacterStats>().isAlive.Value)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
+            {
+                state = State.Attacking;
+                Attacking();
+            }
+            else
+            {
+                state = State.Chasing;
+                Chasing();
+            }
         }
-        //else
-        //{
-        //    setTargetToNull = true;
-        //    //target = null;
-        //}
+    }
 
+    private void Attacking() 
+    {
+        //Debug.Log("Ich mach dich fertig!");
+        state = State.Chasing;
+    }
+
+    private void Dying() 
+    { }
+
+
+
+    void Update()
+    {
+        //Debug.Log(state);
+        //if (GetComponent<CharacterStats>().isAlive == false)
+        //{ state = State.Dying; }
         if (target != null)
         {
-            hasTarget = true;
+            Vector2 lookDir = (Vector2)(transform.position - target.position).normalized;
+            transform.localRotation = Quaternion.LookRotation(lookDir, Vector3.back);
+        }
+
+
+        switch (state)
+        {
+            default:
+            case State.Idle:
+                Idle();
+                break;
+
+            case State.Chasing:
+                Chasing();
+                break;
+
+            case State.DoAction:
+                DoAction();
+                break;
+
+            case State.Attacking:
+                Attacking();
+                break;
+
+            case State.WaitingForCast:
+                //Debug.Log("Ich caste gerade");
+                // Wenn der Gegner bei seinem Cast unterbrochen wird, kann man es hier rein tun
+                break;
+
+            case State.DoNothing:
+                break;
+
+            case State.Dying:
+                Dying();
+                break;
+        }
+
+        currentTBS = (currentTBS > 0) ? currentTBS - Time.deltaTime : 0;
+    }
+
+    IEnumerator LingeringChase(float delayTime)
+    {
+        Transform linTar = target;
+        yield return new WaitForSeconds(delayTime);
+        state = State.Idle;
+        isLC = false;
+        LoseAggro(linTar.gameObject);
+    }
+
+    IEnumerator WaitingForCast(float castTime)
+    {
+        isCasting = true;
+        yield return new WaitForSeconds(castTime);
+        isCasting = false;
+
+        if (CheckIfInRange(attackRange) & TargetInSight(target) & target.GetComponent<CharacterStats>().isAlive.Value)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
+        {
+            state = State.Attacking;
+            Attacking();
         }
         else
         {
-            hasTarget = false;
+            state = State.Chasing;
+            Chasing();
         }
     }
-    #endregion
 
-    #region Momentan nicht verwendet
-    //bool PlayerInSight()
-    //{
-    //    bool inSight = false;
-    //    Vector2 direction = ((Vector2)playerTransform.position - rb2d.position).normalized;
-    //    Vector2 endPosition = rb2d.position + direction * agroRange;
-
-    //    RaycastHit2D hit = Physics2D.Linecast(rb2d.position, endPosition, (1 <<
-    //        LayerMask.NameToLayer("Borders")) | (1 << LayerMask.NameToLayer("Action")));
-    //    if (hit.collider != null)
-    //    {
-    //        if (hit.collider.gameObject.CompareTag("Player"))
-    //        {
-    //            inSight = true;
-    //        }
-    //        else
-    //        {
-    //            inSight = false;
-    //        }
-    //    }
-
-    //    return inSight;
-    //}
-
+    public void SetState(State s)
+    {
+        state = s;
+    }
 
     void OnDrawGizmosSelected()
-    {
-        /* Vector2 direction = ((Vector2)target.position - rb2d.position).normalized * agroRange;
-         Gizmos.DrawRay(rb2d.position, direction);
+    {    }
 
-         Gizmos.color = Color.red;
-         Gizmos.DrawWireSphere(rb2d.position, unitRange);
-
-         Gizmos.color = Color.green;
-         Gizmos.DrawWireSphere(rb2d.position, agroRange); */
-    }
-    #endregion
 }

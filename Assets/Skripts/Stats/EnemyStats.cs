@@ -1,24 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
+using Unity.Netcode;
+using System.Linq;
 
-public class EnemyStats : CharacterStats, IPunObservable
+public class EnemyStats : CharacterStats
 {
-    //public bool isBoss;
-    //public float hitboxRadius;
-    //public bool isMelee;
-    //public float attackRange;
-    //public bool isFlying;
+    //Dictionary<>
+    // public bool isBoss;
+    // public float hitboxRadius;
+    // public bool isMelee;
+    // public float attackRange;
+    // public bool isFlying;
 
-    //public float enemyHealth;
-    //public float enemyDamage;
-    //public float enemyArmor;
-    //public float enemyEvade;
-    //public float movementSpeed;
-    public float modAttackSpeed;
+    // public float enemyHealth;
+    // public float enemyDamage;
+    // public float enemyArmor;
+    // public float enemyEvade;
+    // public float movementSpeed;
+    // public float modAttackSpeed;
     public float baseAttackSpeed = 2f;
-    public Stat mastery; // 0 - Inf
+    [SerializeField] public float baseDamage = 10f;
+    public Stat dmgModifier; // 0 - Inf
 
     public int XPForPlayer;
 
@@ -27,68 +30,86 @@ public class EnemyStats : CharacterStats, IPunObservable
     [HideInInspector]
     public bool enemyUIHealthActive = false;
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        // Reihenfolge der gesendeten und empfangenen Komponenten muss gleich sein
-        if (stream.IsWriting)
-        {
-            stream.SendNext(currentHealth);
-        }
-        else if (stream.IsReading)
-        {
-            currentHealth = (float)stream.ReceiveNext();
-        }
-    }
 
-    void Start()
+
+    public override void Start()
     {
-        currentHealth = maxHealth.GetValue();
-        isAlive = true;
+        
+        currentHealth.Value = maxHealth.GetValue();
+        isAlive.Value = true;
+        baseDamage = 10f;
+        baseAttackSpeed = 2f;
+        base.Start();
     }
 
     public override void Update()
     {
         base.Update();
 
-        // updates Bars on Canvas
-        gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-        gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
+        if (currentHealth.Value <= 0 && isAlive.Value == true)
+        {
+            Die();
+        }
+
+
+
 
         if (enemyUIHealthActive)
         {
             gameObject.transform.Find("Canvas UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-            gameObject.transform.Find("Canvas UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
+            gameObject.transform.Find("Canvas UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth.Value);
         }
 
-        if (currentHealth > maxHealth.GetValue())
+        if (currentHealth.Value > maxHealth.GetValue())
         {
-            currentHealth = maxHealth.GetValue();
+            currentHealth.Value = maxHealth.GetValue();
         }
-        
-        if (currentHealth < 0)
+
+        if (currentHealth.Value < 0)
         {
-            currentHealth = 0;
+            currentHealth.Value = 0;
         }
     }
 
-    [PunRPC] public override void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
+    [ServerRpc]
+    public override void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
     {
         Debug.Log("Enemy takes damage " + damage);
-        base.TakeDamage(damage, missRandomRange, critRandomRange, critChance, critMultiplier);
+        base.TakeDamageServerRpc(damage, aggro, isCrit);
         FindObjectOfType<AudioManager>().Play("Oof");
     }
 
-    [PunRPC] public override void GetHealing(float healing, int critRandomRange, float critChance, float critMultiplier)
+    [ServerRpc]
+    public override void GetHealingServerRpc(float healing, bool isCrit)
     {
         Debug.Log("Enemy gets healing " + healing);
-        base.GetHealing(healing, critRandomRange, critChance, critMultiplier);
-        FindObjectOfType<AudioManager>().Play("Oof");
+        base.GetHealingServerRpc(healing, isCrit);
+        //FindObjectOfType<AudioManager>().Play("Oof");
+    }
+
+    public void TakeDamage(float damage, int aggro, bool isCrit, GameObject source)
+    {
+        Debug.Log("Deal Damage");
+        if (IsOwner)
+        {
+            Debug.Log("Deal Damage 1");
+            TakeDamageServerRpc(damage, aggro, isCrit);
+        }
+        gameObject.GetComponent<EnemyAI>().aggroTable[source] += aggro;
+    }
+
+    public void TakeHealing(float healing, bool isCrit, GameObject source)
+    {
+        if (IsOwner)
+        {
+            GetHealingServerRpc(healing, isCrit);
+        }
     }
 
     public override void Die()
     {
         gameObject.transform.Find("Charakter").GetComponent<SpriteRenderer>().flipY = true;
-        GameObject[] players = GetComponent<EnemyAI>().potentialTargets;
+        GameObject[] players = GetComponent<EnemyAI>().aggroTable.Keys.ToArray();
         if (players != null)
         {
             foreach (GameObject p in players)
@@ -99,5 +120,7 @@ public class EnemyStats : CharacterStats, IPunObservable
         }
         Destroy(gameObject, 1f);
         base.Die();
+
+
     }
 }

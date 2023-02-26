@@ -638,6 +638,36 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5042199300167660545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6023301135574179917}
+  m_Layer: 9
+  m_Name: Skills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6023301135574179917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5042199300167660545}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8759710617809275416}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7799141311565484070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,6 +1077,7 @@ GameObject:
   - component: {fileID: 5840882158213063397}
   - component: {fileID: 1644529612076714918}
   - component: {fileID: 1936888905039524073}
+  - component: {fileID: 8301635127848141820}
   m_Layer: 9
   m_Name: BossEnemy
   m_TagString: Enemy
@@ -1070,6 +1101,7 @@ Transform:
   - {fileID: 5365231249017261527}
   - {fileID: 7346379376065401507}
   - {fileID: 430268416798534512}
+  - {fileID: 6023301135574179917}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1164,22 +1196,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda4207442b0d40e890057bdeca6d441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasAttackSkript: 1
-  hasTarget: 0
-  potentialTargets: []
+  aggroRange: 12
+  targetRange: 2
+  attackRange: 6
+  aggroTime: 2
+  tBS: 5
+  currentTBS: 0
+  isCasting: 0
   ownEnemyAttack: {fileID: 1831716281098815419}
   target: {fileID: 0}
-  targetTemp: {fileID: 0}
-  speed: 14000
-  nextWypointDistance: 0.5
-  unitRange: 5
-  agroRange: 15
-  agroTime: 200
-  currentWypoint: 0
-  seeker: {fileID: 0}
-  rb2d: {fileID: 0}
-  runningCeasePathfindingCoroutine: 0
-  runningUpdatePathCoroutine: 0
 --- !u!114 &3801048378357110570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1218,9 +1243,9 @@ MonoBehaviour:
   evadeChance:
     baseValue: 0
     modifiedValue: 0
-  modAttackSpeed: 0
   baseAttackSpeed: 5
-  mastery:
+  baseDamage: 10
+  dmgModifier:
     baseValue: 0
     modifiedValue: 0
   XPForPlayer: 2000
@@ -1324,6 +1349,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824c50fd9b1d6794a9b1801b709da38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8301635127848141820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9182288991896903476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8bcc04a0f09ad644aec33b6dd4488c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 200
 --- !u!1001 &4171727667380691898
 PrefabInstance:
   m_ObjectHideFlags: 0

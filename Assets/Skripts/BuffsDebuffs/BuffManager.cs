@@ -1,31 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class BuffManager : MonoBehaviour
+public class BuffManager : NetworkBehaviour
 {
-    #region Singleton
-
-    public static BuffManager instance;
-
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Debug.LogWarning("More than one instance of Inventory found!");
-            return;
-        }
-        instance = this;
-    }
-
-    #endregion
-
     public delegate void OnBuffsChanged();
     public OnBuffsChanged onBuffsChangedCallback;
 
     public List<Buff> buffs = new List<Buff>();
-    public List<Buff> newBuffs = new List<Buff>();
-    public List<Buff> expiredBuffs = new List<Buff>();
+    List<Buff> newBuffs = new List<Buff>();
+    List<Buff> expiredBuffs = new List<Buff>();
 
     public void AddBuff(Buff buff, Sprite buffImage, float duration, float value)
     {
@@ -51,7 +36,15 @@ public class BuffManager : MonoBehaviour
         expiredBuffs.Add(buff);
     }
 
-    public void HandleBuffs()
+    public void DispellBuffs()
+    {
+        foreach (Buff buff in buffs)
+        {
+            buff.Dispell();
+        }
+    }
+
+    void HandleBuffs()
     {
         foreach (Buff buff in buffs)
         {
@@ -76,16 +69,10 @@ public class BuffManager : MonoBehaviour
         }
     }
 
-    public void DispellBuffs()
-    {
-        foreach (Buff buff in buffs)
-        {
-            buff.Dispell();
-        }
-    }
-
     void Update()
     {
+        if (!IsOwner) { return; }
+
         HandleBuffs();
     }
 }

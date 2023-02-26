@@ -8,11 +8,11 @@ public class EnemyAttack : MonoBehaviour
 
     public void StartEnemyAtk(GameObject target)
     {
-        if (gameObject.GetComponent<EnemyStats>().isAlive && target.gameObject.GetComponent<PlayerStats>().isAlive)
+        if (gameObject.GetComponent<EnemyStats>().isAlive.Value && target.gameObject.GetComponent<PlayerStats>().isAlive.Value)
         {
             if (timer <= 0)
             { // inSight Check???
-                if (Vector2.Distance(gameObject.transform.position, target.transform.position) <= gameObject.GetComponent<EnemyAI>().unitRange)
+                if (Vector2.Distance(gameObject.transform.position, target.transform.position) <= gameObject.GetComponent<EnemyAI>().attackRange)
                 {
                     timer = gameObject.GetComponent<EnemyStats>().baseAttackSpeed;
                     EnemyAtkEffect(target);

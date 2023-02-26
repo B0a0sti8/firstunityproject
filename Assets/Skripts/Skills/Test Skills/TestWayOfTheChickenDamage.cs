@@ -13,8 +13,6 @@ public class TestWayOfTheChickenDamage : SkillPrefab
     public Sprite buffImage;
     TheWayOfTheChickenDamageDebuff buff = new TheWayOfTheChickenDamageDebuff();
 
-    
-
     public override void Start()
     {
         base.Start();
@@ -40,6 +38,7 @@ public class TestWayOfTheChickenDamage : SkillPrefab
         DealDamage(damage);
 
         Buff clone = buff.Clone();
+        clone.buffSource = PLAYER;
 
         for (int i = 0; i < currentTargets.Count; i++)
         {

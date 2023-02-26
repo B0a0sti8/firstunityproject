@@ -10,7 +10,7 @@ public class LootTable : MonoBehaviour
 
     private bool rolled = false;
 
-    public void ShowLoot()
+    public void ShowLoot(LootWindow wind)
     {
         if (!rolled)
         {
@@ -18,7 +18,7 @@ public class LootTable : MonoBehaviour
             
         }
 
-        LootWindow.MyInstance.CreatePages(droppedItems);
+        wind.CreatePages(droppedItems);
     }
 
     private void RollLoot()

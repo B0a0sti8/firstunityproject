@@ -6,22 +6,25 @@ using UnityEngine.UI;
 public class LockActionButtonDrag : MonoBehaviour
 {
     Image lockImage;
+    HandScript myHandScript;
 
     private void Awake()
     {
         lockImage = GetComponent<Image>();
+        myHandScript = transform.parent.parent.Find("Canvas Hand").Find("Hand Image").GetComponent<HandScript>();
     }
+
 
     public void ActionButtonDragChange()
     {
-        if (HandScript.MyInstance.actionButtonDragOn == true)
+        if (myHandScript.actionButtonDragOn == true)
         {
-            HandScript.MyInstance.actionButtonDragOn = false;
+            myHandScript.actionButtonDragOn = false;
             lockImage.sprite = Resources.Load<Sprite>("SkillSprites/LockClosed");
         }
         else
         {
-            HandScript.MyInstance.actionButtonDragOn = true;
+            myHandScript.actionButtonDragOn = true;
             lockImage.sprite = Resources.Load<Sprite>("SkillSprites/LockOpen");
         }
     }

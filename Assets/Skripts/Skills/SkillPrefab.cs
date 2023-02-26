@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Photon.Pun;
 using UnityEngine.InputSystem;
 
 public class SkillPrefab : MonoBehaviour//, IUseable
 {
     private Camera mainCam;
 
-    [HideInInspector]
-    public PhotonView photonView;
     [HideInInspector]
     public MasterChecks masterChecks;
     [HideInInspector]
@@ -101,7 +98,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
     public void StartSkillChecks() // snjens beginnt sein abenteuer
     {
-        if (PLAYER.GetComponent<PlayerStats>().isAlive)
+        if (PLAYER.GetComponent<PlayerStats>().isAlive.Value)
         {
             ConditionCheck();
         }
@@ -115,13 +112,13 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     {
         if (needsMana)
         {
-            if (playerStats.currentMana >= manaCost)
+            if (playerStats.currentMana.Value >= manaCost)
             {
                 TargetCheck();
             }
             else
             {
-                Debug.Log("ERROR: not enough mana (Current: " + playerStats.currentMana + ", Needed: " + manaCost + ")");
+                Debug.Log("ERROR: not enough mana (Current: " + playerStats.currentMana.Value + ", Needed: " + manaCost + ")");
             }
         }
         else
@@ -449,7 +446,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
                 isSkillInOwnSuperInstantQueue = false;
                 ownCooldownActive = true;
                 ownCooldownTimeLeft = ownCooldownTimeModified;
-                if (needsMana) { playerStats.currentMana -= manaCost; }
+                if (needsMana) { playerStats.currentMana.Value -= manaCost; }
                 StartCasting();
             }
         }
@@ -526,7 +523,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
         if (needsMana)
         {
-            playerStats.ManageManaRPC(-manaCost);
+            playerStats.ManageMana(-manaCost);
         }
 
         if (isAOEFrontCone)
@@ -640,8 +637,6 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     {
         PLAYER = transform.parent.transform.parent.gameObject;
 
-        photonView = PLAYER.GetComponent<PhotonView>();
-
         masterChecks = PLAYER.transform.Find("Own Canvases").transform.Find("Canvas Action Skills").GetComponent<MasterChecks>();
 
         interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
@@ -657,25 +652,19 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
     public void DealDamage(float damage)
     {
-        int missRandom = Random.Range(1, 100);
-        int critRandom = Random.Range(1, 100);
-        float critChance = playerStats.critChance.GetValue();
-        float critMultiplier = playerStats.critMultiplier.GetValue();
         for (int i = 0; i < currentTargets.Count; i++)
         {
-            currentTargets[i].GetComponent<CharacterStats>().view.RPC("TakeDamage", RpcTarget.All, damage, missRandom, critRandom, critChance, critMultiplier);
+            DamageOrHealing.DealDamage(PLAYER, currentTargets[i], damage, false, false);
         }
     }
 
     public void DoHealing(float healing)
     {
-        int critRandom = Random.Range(1, 100);
-        float critChance = playerStats.critChance.GetValue();
-        float critMultiplier = playerStats.critMultiplier.GetValue();
-        //playerStats.view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
+        
         for (int i = 0; i < currentTargets.Count; i++)
         {
-            currentTargets[i].GetComponent<CharacterStats>().view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
+            DamageOrHealing.DoHealing(PLAYER, currentTargets[i], healing);
+            //currentTargets[i].GetComponent<CharacterStats>().view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
         }
     }
 

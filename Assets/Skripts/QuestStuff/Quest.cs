@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class Quest
 {
+    public QuestLog myQuestLog = null;
+
     [SerializeField] private string title;
     [SerializeField] private string description;
 
@@ -60,11 +62,38 @@ public class Quest
     }
 
     public int MyXPGiven { get => xPGiven; set => xPGiven = value; }
+
+    public void ConnectObjectives()
+    {
+        foreach (CollectObjective cO in collectObjectives)
+        {
+            cO.myQuest = this;
+            if (myQuestLog != null)
+            {
+                cO.myQuestLog = this.myQuestLog;
+                cO.myInventory = this.myQuestLog.transform.parent.parent.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
+            }
+        }
+
+        foreach (KillObjective kO in killObjectives)
+        {
+            kO.myQuest = this;
+            if (myQuestLog != null)
+            {
+                kO.myQuestLog = this.myQuestLog;
+                kO.myInventory = this.myQuestLog.transform.parent.parent.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
+            }
+        }
+    }
 }
 
 [System.Serializable]
 public abstract class Objective
 {
+    public Quest myQuest = null;
+    public InventoryScript myInventory = null;
+    public QuestLog myQuestLog = null;
+
     [SerializeField] private int amount;
     [SerializeField] private int currentAmount;
     [SerializeField] private string type;
@@ -85,33 +114,34 @@ public abstract class Objective
 [System.Serializable]
 public class CollectObjective : Objective
 {
+    
     public void UpdateItemCount(Item item)
     {
         if (MyType.ToLower() == item.name.ToLower())
         {
-            MyCurrentAmount = InventoryScript.MyInstance.GetItemCount(item.name);
+            MyCurrentAmount = myInventory.GetItemCount(item.name);
 
             if (MyCurrentAmount <= MyAmount)
             {
-                QuestLog.MyInstance.transform.parent.parent.parent.GetComponent<StuffManagerScript>().WriteMessage(string.Format("{0}: {1} / {2}", item.name, MyCurrentAmount, MyAmount));
+                myQuestLog.transform.parent.parent.parent.GetComponent<StuffManagerScript>().WriteMessage(string.Format("{0}: {1} / {2}", item.name, MyCurrentAmount, MyAmount));
             }            
 
             Debug.Log(MyCurrentAmount);
-            QuestLog.MyInstance.UpdateSelected();
-            QuestLog.MyInstance.CheckCompletion();
+            myQuestLog.UpdateSelected();
+            myQuestLog.CheckCompletion();
         }
     }
 
     public void UpdateItemCount()
     {
-        MyCurrentAmount = InventoryScript.MyInstance.GetItemCount(MyType);
-        QuestLog.MyInstance.UpdateSelected();
-        QuestLog.MyInstance.CheckCompletion();
+        MyCurrentAmount = myInventory.GetItemCount(MyType);
+        myQuestLog.UpdateSelected();
+        myQuestLog.CheckCompletion();
     }
 
     public void Complete()
     {
-        Stack<Item> items = InventoryScript.MyInstance.GetItems(MyType, MyAmount);
+        Stack<Item> items = myInventory.GetItems(MyType, MyAmount);
 
         foreach (Item item in items)
         {
@@ -131,11 +161,10 @@ public class KillObjective : Objective
             if (MyCurrentAmount <= MyAmount)
             {
                 MyCurrentAmount++;
-                QuestLog.MyInstance.transform.parent.parent.parent.GetComponent<StuffManagerScript>().WriteMessage(string.Format("{0}: {1} / {2}", character.MyType, MyCurrentAmount, MyAmount));
-                QuestLog.MyInstance.UpdateSelected();
-                QuestLog.MyInstance.CheckCompletion();
+                myQuestLog.transform.parent.parent.parent.GetComponent<StuffManagerScript>().WriteMessage(string.Format("{0}: {1} / {2}", character.MyType, MyCurrentAmount, MyAmount));
+                myQuestLog.UpdateSelected();
+                myQuestLog.CheckCompletion();
             }
-
         }
     }
 }

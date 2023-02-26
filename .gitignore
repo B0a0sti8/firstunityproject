@@ -9,6 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+/[Aa]ssets/2DHandPaintedTilesets
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -63,3 +64,5 @@ crashlytics-build.properties
 
 
 
+
+Assets/2D Hand Painted Tilesets/

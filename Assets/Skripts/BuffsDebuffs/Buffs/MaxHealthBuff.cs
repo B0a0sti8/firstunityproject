@@ -10,7 +10,7 @@ public class MaxHealthBuff : Buff
         buffDescription = "Gain more <color=green>Max-Health</color>";
         base.StartBuffEffect(playerStats);
         playerStats.maxHealth.AddModifierAdd(value);
-        playerStats.currentHealth += value;
+        playerStats.currentHealth.Value += value;
         isRemovable = false;
     }
 

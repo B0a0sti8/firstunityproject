@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         maxHealth = enemyStats.maxHealth.GetValue();
-        currentHealth = enemyStats.currentHealth;
+        currentHealth = enemyStats.currentHealth.Value;
     }
 
     // Update is called once per frame

@@ -20,20 +20,26 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     public bool skillAvailable;
 
+    HandScript myHandScript;
+
 
 
     void Start()
     {
         buttonText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         buttonImage = GetComponent<Image>();
-        PLAYER = transform.parent.transform.parent.transform.parent.transform.parent.gameObject;
+        PLAYER = transform.parent.parent.parent.parent.gameObject;
         skillManager = PLAYER.transform.Find("SkillManager").gameObject;
+
+        myHandScript = PLAYER.transform.Find("Own Canvases").Find("Canvas Hand").Find("Hand Image").GetComponent<HandScript>();
 
         //if (skillName == "") return;
         ////if (className == "") return;
         //FindMatchingSkill();
         //UpdateButton();
         //MasterETStuffAssignment(buttonSkill);
+
+
     }
 
     void Update()
@@ -186,10 +192,10 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (HandScript.MyInstance.handSkillName != "")
+            if (myHandScript.handSkillName != "")
             {
-                skillName = HandScript.MyInstance.handSkillName;
-                HandScript.MyInstance.handSkillName = "";
+                skillName = myHandScript.handSkillName;
+                myHandScript.handSkillName = "";
             }
             else
             {
@@ -201,12 +207,12 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
-        if (HandScript.MyInstance.handSkillName != "") return;
+        if (myHandScript.handSkillName != "") return;
         if (skillName == "") return;
-        if (HandScript.MyInstance.actionButtonDragOn)
+        if (myHandScript.actionButtonDragOn)
         {
-            HandScript.MyInstance.handButtonSwap = gameObject;
-            HandScript.MyInstance.handSkillName = skillName;
+            myHandScript.handButtonSwap = gameObject;
+            myHandScript.handSkillName = skillName;
             skillName = "";
         }
     }
@@ -214,24 +220,24 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
-        if (HandScript.MyInstance.handSkillName == "") return;
-        if (HandScript.MyInstance.actionButtonDragOn)
+        if (myHandScript.handSkillName == "") return;
+        if (myHandScript.actionButtonDragOn)
         {
-            if (HandScript.MyInstance.handButtonSwap != null) // doesn't trigger when dragging from Skillbook to ActionButton
+            if (myHandScript.handButtonSwap != null) // doesn't trigger when dragging from Skillbook to ActionButton
             {
-                HandScript.MyInstance.handButtonSwap.GetComponent<ActionButton>().skillName = skillName;
+                myHandScript.handButtonSwap.GetComponent<ActionButton>().skillName = skillName;
             }
         }
-        skillName = HandScript.MyInstance.handSkillName;
+        skillName = myHandScript.handSkillName;
         PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").gameObject.GetComponent<SkillbookMaster>().UpdateCurrentSkills();
     }
 
     public void OnEndDrag(PointerEventData eventData) // triggers right after OnDrop
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
-        if (HandScript.MyInstance.handSkillName == "") return;
-        HandScript.MyInstance.handButtonSwap = null;
-        HandScript.MyInstance.handSkillName = "";
+        if (myHandScript.handSkillName == "") return;
+        myHandScript.handButtonSwap = null;
+        myHandScript.handSkillName = "";
     }
 }
 

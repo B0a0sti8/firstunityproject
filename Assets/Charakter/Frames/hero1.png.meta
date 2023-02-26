@@ -90,7 +90,7 @@ TextureImporter:
       213: 3480627407706327957
     second: hero1_3
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -111,6 +111,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -149,6 +150,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -164,6 +166,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -775,6 +789,35 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      IdleUp2: 8553921521120028391
+      IdleUp1: 1044551133740561767
+      IdleDown3: -6347497189201796264
+      IdleRight1: -5325804900502842195
+      IdleDown1: -1412069691502966538
+      RunLeft1: 3011298779005549022
+      RunDown3: 3900617944304160194
+      RunLeft3: 4377589045089091398
+      RunLeft2: 9172545168558247634
+      IdleLeft2: -7793193277169693457
+      IdleUp3: 3337095947744440587
+      RunUp4: 2077227729070561125
+      RunRight1: 3806201825965807330
+      RunRight2: 1479139575860154981
+      IdleLeft3: -1627965665675420515
+      RunDown2: 9097310155892809259
+      RunDown4: -6779990920349805253
+      RunDown1: -7708054654132149330
+      RunRight4: -7129106855158482810
+      RunRight3: 1158102792637978187
+      RunLeft4: 2347022981768647222
+      RunUp2: 3040836628667445439
+      IdleRIght2: -7113349066137370025
+      RunUp1: 2765216336854478266
+      RunUp3: 2225807007353401527
+      IdleLeft1: 3246365301855640718
+      IdleDown2: 5319503654516011887
+      IdleRight3: -3443201876411514593
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

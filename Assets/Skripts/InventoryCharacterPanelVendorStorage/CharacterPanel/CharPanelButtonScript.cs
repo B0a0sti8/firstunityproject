@@ -14,32 +14,36 @@ public class CharPanelButtonScript : MonoBehaviour, IPointerClickHandler
 
     MasterEventTriggerItems masterETItems;
     PlayerStats playerStats;
+    HandScript myHandScript;
+    CharacterPanelScript myCharPanel;
 
     public Equipment MyEquip { get => equip; }
 
     private void Awake()
     {
         masterETItems = GetComponent<MasterEventTriggerItems>();
-        playerStats = transform.parent.parent.parent.parent.parent.gameObject.GetComponent<PlayerStats>();
+        playerStats = transform.parent.parent.parent.parent.parent.GetComponent<PlayerStats>();
+        myHandScript = transform.parent.parent.parent.parent.Find("Canvas Hand").Find("Hand Image").GetComponent<HandScript>();
+        myCharPanel = transform.parent.parent.GetComponent<CharacterPanelScript>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (HandScript.MyInstance.MyMoveable is Equipment)
+            if (myHandScript.MyMoveable is Equipment)
             {
-                Equipment tmp = (Equipment)HandScript.MyInstance.MyMoveable;
+                Equipment tmp = (Equipment)myHandScript.MyMoveable;
 
                 if (tmp.MyEquipmentType == this.equipType)
                 {
                     EquipStuff(tmp);
                 }
             }
-            else if (HandScript.MyInstance.MyMoveable == null && MyEquip != null)
+            else if (myHandScript.MyMoveable == null && MyEquip != null)
             {
-                HandScript.MyInstance.TakeMoveable(MyEquip);
-                CharacterPanelScript.MyInstance.MySelectedButton = this;
+                myHandScript.TakeMoveable(MyEquip);
+                myCharPanel.MySelectedButton = this;
                 icon.color = Color.grey;
             }
         }
@@ -80,9 +84,9 @@ public class CharPanelButtonScript : MonoBehaviour, IPointerClickHandler
             TooltipScreenSpaceUIItems.ShowTooltip_Static(MyEquip.tooltipItemName, MyEquip.tooltipItemDescription, null);
         }
 
-        if (HandScript.MyInstance.MyMoveable == (equipment as IMoveable))
+        if (myHandScript.MyMoveable == (equipment as IMoveable))
         {
-            HandScript.MyInstance.Drop();
+            myHandScript.Drop();
         }
 
 

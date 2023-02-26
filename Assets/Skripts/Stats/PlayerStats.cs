@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using Photon.Pun;
 using TMPro;
+using Unity.Netcode;
+using UnityEngine;
 
 // tasten-input wird bei BEIDEN AUSGELÖST
 // button-input wird bei dem ausgelöst, dessen Button über dem anderen liegt!
@@ -15,9 +12,10 @@ using TMPro;
 
 // 
 
-public class PlayerStats : CharacterStats, IPunObservable
+public class PlayerStats : CharacterStats
 {
 	[Header("Class")] public string className;
+	[SerializeField] private bool isTank = false;
 	[Header("Gold")] public int goldAmount;
 
 	[Header("Experience")]
@@ -28,7 +26,8 @@ public class PlayerStats : CharacterStats, IPunObservable
 	#region Stats: Aus Characterstats geerbte sind auskommentiert
 	[Header("Mana")]
 	public Stat maxMana;
-	public float currentMana;
+	public NetworkVariable<float> currentMana = new NetworkVariable<float>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+	//public float currentMana;
 
 	//[Header("Health")]
 	//public Stat maxHealth;
@@ -67,11 +66,15 @@ public class PlayerStats : CharacterStats, IPunObservable
 	public Stat tickRateMod;				// Schnellere Tickrate für Effekte
 	public Stat lifesteal;                  // Heilt durch verursachten Schaden bzw. Heilung
 
-	public Stat[] allStatsArray;			// Enthält alle Stats
+	public Stat[] allStatsArray;            // Enthält alle Stats
+	#endregion
+
+	#region MultiplayerStats
+
 	#endregion
 
 	#region UI-Interface-Stuff
-	ManaBar manaBar;
+	ManaBar manaBarWorldCanv;
 	ManaBar manaBarUI;
 
 	TextMeshProUGUI healthText;
@@ -87,13 +90,23 @@ public class PlayerStats : CharacterStats, IPunObservable
 	private CharacterPanelScript charPanel;
 	private CharPanelButtonScript[] allEquipSlots;
 
-    public int MyNeededXP { get => neededXP; set => neededXP = value; }
+	public bool MyIsTank { get => isTank; set => isTank = value; }
+
+	public int MyNeededXP { get => neededXP; set => neededXP = value; }
     public int MyCurrentXP { get => currentXP; set => currentXP = value; }
     public int MyCurrentPlayerLvl { get => currentPlayerLvl; set => currentPlayerLvl = value; }
 
     public override void Update()
 	{
 		base.Update();
+
+		if (!IsOwner) { return; }
+
+		if (currentHealth.Value <= 0 && isAlive.Value == true)
+		{
+			Die();
+			Debug.Log("Stirb!");
+		}
 
 		SyncModifiedPlayerStats();
 
@@ -102,16 +115,22 @@ public class PlayerStats : CharacterStats, IPunObservable
 		ManaRegeneration();
 	}
 
-	void Start()
+	public override void Start()
 	{
-		if (view.IsMine)
-		{
-			gameObject.transform.Find("Own Canvases").gameObject.SetActive(true);
-		}
+		base.Start();
+
+		if (!IsOwner) { return; }
+
+		manaBarWorldCanv = transform.Find("Canvas World Space").Find("ManaBar").GetComponent<ManaBar>();
+		currentMana.OnValueChanged += (float previousValue, float newValue) => { OnManaChange(); };
+
+		OnManaChange();
+
+		gameObject.transform.Find("Own Canvases").gameObject.SetActive(true);
 
 		xPBar = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("XPBar").GetComponent<XPBarScript>();
 
-		manaBar = transform.Find("Canvases").Find("Canvas World Space").Find("ManaBar").GetComponent<ManaBar>();
+		
 		manaBarUI = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("ManaBar").GetComponent<ManaBar>();
 
 		healthText = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("HealthBar").Find("Health Text").GetComponent<TextMeshProUGUI>();
@@ -126,8 +145,8 @@ public class PlayerStats : CharacterStats, IPunObservable
 
 		ReloadEquipMainStats();
 
-		currentHealth = maxHealth.GetValue();
-		currentMana = maxMana.GetValue();
+		currentHealth.Value = maxHealth.GetValue();
+		currentMana.Value = maxMana.GetValue();
 
 		MyCurrentPlayerLvl = 1;
 		MyNeededXP = Mathf.RoundToInt(100 * MyCurrentPlayerLvl * Mathf.Pow(MyCurrentPlayerLvl, 0.5f));
@@ -137,8 +156,33 @@ public class PlayerStats : CharacterStats, IPunObservable
 
 		goldAmount = 100;
 
-		isAlive = true;
+		isAlive.Value = true;
 
+	}
+
+	public void OnManaChange()
+	{
+		if (!IsOwner) { return; }
+
+		int cM = (int)this.currentMana.Value;
+		int mM = (int)this.maxMana.GetValue();
+		NetworkBehaviourReference nBref = this;
+		ManaChangedServerRpc(cM, mM, nBref);
+	}
+
+	[ServerRpc]
+	public void ManaChangedServerRpc(int cuMa, int maMa, NetworkBehaviourReference nBrf)
+	{
+		ManaChangedClientRpc(cuMa, maMa, nBrf);
+	}
+
+	[ClientRpc]
+	public void ManaChangedClientRpc(int cuMa, int maMa, NetworkBehaviourReference nBrf)
+	{
+		nBrf.TryGet<CharacterStats>(out CharacterStats cStat);
+		ManaBar maBa = cStat.transform.Find("Canvas World Space").Find("ManaBar").GetComponent<ManaBar>();
+		maBa.SetMaxMana(maMa);
+		maBa.SetMana(cuMa);
 	}
 
 	// Setzt alle Stats auf die Standardwerte eines nackten Charakters ohne Klasse, Talente und / oder Buffs und Debuffs
@@ -150,7 +194,7 @@ public class PlayerStats : CharacterStats, IPunObservable
 		charisma.baseValue = 10;				tempo.baseValue = 10;
 
 		movementSpeed.baseValue = 7;			actionSpeed.baseValue = 1;
-		critChance.baseValue = 5;				critMultiplier.baseValue = 150;
+		critChance.baseValue = 5;				critMultiplier.baseValue = 1.5f;
 		healInc.baseValue = 0;					dmgInc.baseValue = 0;
 		physRed.baseValue = 0;					magRed.baseValue = 0;
 		incHealInc.baseValue = 0;				lifesteal.baseValue = 0;
@@ -232,7 +276,6 @@ public class PlayerStats : CharacterStats, IPunObservable
 		actionSpeed.baseValue += 0.01f * tempo.GetValue();
     }
 
-	#region Multiplayer-Stuff
 	void SyncModifiedPlayerStats()
 	{
 		maxHealth.modifiedValue = maxHealth.GetValue();
@@ -241,69 +284,86 @@ public class PlayerStats : CharacterStats, IPunObservable
 		actionSpeed.modifiedValue = actionSpeed.GetValue();
 		critChance.modifiedValue = critChance.GetValue();
 		critMultiplier.modifiedValue = critMultiplier.GetValue();
-
 		evadeChance.modifiedValue = evadeChance.GetValue();
 	}
-
-	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-	{
-		// Reihenfolge der gesendeten und empfangenen Komponenten muss gleich sein
-		if (stream.IsWriting)
-		{
-			stream.SendNext(currentHealth);
-			stream.SendNext(currentMana);
-		}
-		else if (stream.IsReading)
-		{
-			currentHealth = (float)stream.ReceiveNext();
-			currentMana = (float)stream.ReceiveNext();
-		}
-	}
-	#endregion
 
 	#region ManageManaAndHealth
 	void UpdateHealthAndMana()
 	{
-		transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-		transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
+		//Wird ab jetzt in Characterstats gemacht.
+		//transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
+		//transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)(currentHealth.Value));
+
 		transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-		transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth);
-		if (currentHealth > maxHealth.GetValue())
+		transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)(currentHealth.Value));
+		if (currentHealth.Value > maxHealth.GetValue())
 		{
-			currentHealth = maxHealth.GetValue();
+			currentHealth.Value = maxHealth.GetValue();
 		}
-		if (currentHealth < 0)
+		if (currentHealth.Value < 0)
 		{
-			currentHealth = 0;
+			currentHealth.Value = 0;
 		}
 
-		manaBar.SetMaxMana((int)maxMana.GetValue());
-		manaBar.SetMana((int)currentMana);
 		manaBarUI.SetMaxMana((int)maxMana.GetValue());
-		manaBarUI.SetMana((int)currentMana);
-		if (currentMana > maxMana.GetValue())
+		manaBarUI.SetMana((int)currentMana.Value);
+		if (currentMana.Value > maxMana.GetValue())
 		{
-			currentMana = maxMana.GetValue();
+			currentMana.Value = maxMana.GetValue();
 		}
-		if (currentMana < 0)
+		if (currentMana.Value < 0)
 		{
-			currentMana = 0;
+			currentMana.Value = 0;
 		}
 
-		healthText.SetText(currentHealth.ToString().Replace(",", ".") + " / " + maxHealth.GetValue().ToString().Replace(",", "."));
-		manaText.SetText(currentMana.ToString().Replace(",", ".") + " / " + maxMana.GetValue().ToString().Replace(",", "."));
+		string hText = currentHealth.Value.ToString().Replace(",", ".") + " / " + maxHealth.GetValue().ToString().Replace(",", ".");
+		string mText = currentMana.Value.ToString().Replace(",", ".") + " / " + maxMana.GetValue().ToString().Replace(",", ".");
+
+		healthText.SetText(hText);
+		manaText.SetText(mText);
 	}
 
-	[PunRPC] private void ManageMana(float manaCost)
-    {
-		currentMana += manaCost;
-	}
 
-	public void ManageManaRPC(float manaCost)
+
+	[ServerRpc]
+	private void ManageManaServerRPC(float manaCost)
 	{
-		if (view.IsMine)
+		currentMana.Value += manaCost;
+	}
+
+	[ServerRpc]
+	public override void GetHealingServerRpc(float healing, bool isCrit)
+	{
+		base.GetHealingServerRpc(healing, isCrit);
+	}
+
+	[ServerRpc]
+	public override void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
+	{
+		base.TakeDamageServerRpc(damage, aggro, isCrit);
+	}
+
+	public void TakeDamage(float damage, int aggro, bool isCrit, GameObject source)
+	{
+		if (IsOwner)
 		{
-			view.RPC("ManageMana", RpcTarget.All, manaCost);
+			TakeDamageServerRpc(damage, aggro, isCrit);
+		}
+	}
+
+	public void TakeHealing(float healing, bool isCrit, GameObject source)
+	{
+		if (IsOwner)
+		{
+			GetHealingServerRpc(healing, isCrit);
+		}
+	}
+
+	public void ManageMana(float manaCost)
+	{
+		if (IsOwner)
+		{
+			ManageManaServerRPC(manaCost);
 		}
 	}
 
@@ -317,48 +377,11 @@ public class PlayerStats : CharacterStats, IPunObservable
 		{
 			tickEveryXSecondsTimer = 0f;
 
-			ManageManaRPC(25f);
+			ManageMana(25f);
 		}
 	}
 
-	[PunRPC] public override void GetHealing(float healing, int critRandomRange, float critChance, float critMultiplier)
-	{
-		base.GetHealing(healing, critRandomRange, critChance, critMultiplier);
-	}
-
-	[PunRPC] public override void TakeDamage(float damage, int missRandomRange, int critRandomRange, float critChance, float critMultiplier)
-	{
-		base.TakeDamage(damage, missRandomRange, critRandomRange, critChance, critMultiplier);
-	}
-
-	public void TakeDamageRPC(float damage)
-	{
-		if (view.IsMine)
-		{
-			int missRandom = Random.Range(1, 100);
-			int critRandom = Random.Range(1, 100);
-			float cChance = critChance.GetValue();
-			float cMultiplier = critMultiplier.GetValue();
-			view.RPC("TakeDamage", RpcTarget.All, damage, missRandom, critRandom, cChance, cMultiplier);
-		}
-	}
-
-	public void TakeDamageSpace() // when pressing SPACE
-	{
-		//TooltipScreenSpaceUI.ShowTooltip_Static("Hello");
-		if (isAlive)
-		{
-			ManageManaRPC(-20f);
-
-			TakeDamageRPC(20f);
-		}
-	}
-    #endregion
-
-	public void CheatCodeAddXP()
-    {
-		GainXP(505);
-    }
+	#endregion
 
 	public void GainXP(int xp)
     {
@@ -400,34 +423,32 @@ public class PlayerStats : CharacterStats, IPunObservable
 		base.Die();
 	}
 
-	// VERALTET!!!!
 
- //   void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
-	//{
-	//	if (newItem != null)
-	//	{
-	//		maxHealth.AddModifierAdd(newItem.healthModifierAdd);
-	//		armor.AddModifierAdd(newItem.armorModifierAdd);
-	//		mastery.AddModifierAdd(newItem.damageModifierAdd);
-	//		evade.AddModifierAdd(newItem.evadeModifierAdd);
 
-	//		maxHealth.AddModifierMultiply(newItem.healthModifierMultiply);
-	//		armor.AddModifierMultiply(newItem.armorModifierMultiply);
-	//		mastery.AddModifierMultiply(newItem.damageModifierMultiply);
-	//		evade.AddModifierMultiply(newItem.evadeModifierMultiply);
-	//	}
 
-	//	if (oldItem != null)
-	//	{
-	//		maxHealth.RemoveModifierAdd(oldItem.healthModifierAdd);
-	//		armor.RemoveModifierAdd(oldItem.armorModifierAdd);
-	//		mastery.RemoveModifierAdd(oldItem.armorModifierAdd);
-	//		evade.RemoveModifierAdd(oldItem.evadeModifierAdd);
 
-	//		maxHealth.RemoveModifierMultiply(oldItem.healthModifierMultiply);
-	//		armor.RemoveModifierMultiply(oldItem.armorModifierMultiply);
-	//		mastery.RemoveModifierMultiply(oldItem.armorModifierMultiply);
-	//		evade.RemoveModifierMultiply(oldItem.evadeModifierMultiply);
-	//	}
-	//}
+
+	// Ab hier nur zum Debuggen
+
+	public void TakeDamageSpace() // when pressing SPACE
+	{
+		if (!IsOwner) { return; }
+
+		if (isAlive.Value)
+		{
+			//ManageMana(-20f);
+
+			//TakeDamage(20f, 0, false, gameObject);
+
+			currentMana.Value -= 20;
+			currentHealth.Value -= 20;
+			Debug.Log("Mache mir selbst Schaden!");
+		}
+	}
+
+	public void CheatCodeAddXP()
+	{
+		if (!IsOwner) { return; }
+		GainXP(505);
+	}
 }
