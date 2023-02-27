@@ -19,49 +19,92 @@ public class BuffDebuffUIWorldCanv : NetworkBehaviour
     }
 
     [ServerRpc]
-    void UpdateUIServerRpc(NetworkBehaviourReference nBref) 
+    void AddBuffServerRpc(string title, string description, string SpriteName, float duration)
     {
-        Debug.Log("ServerRPC Update");
-        UpdateUIClientRpc(nBref);
+        //Buff newBuf = new Buff;
+
+        //newBuf.duration = duration;
     }
 
     [ClientRpc]
-    void UpdateUIClientRpc(NetworkBehaviourReference nBref)
+    void AddBuffClientRpc()
+    {
+
+    }
+
+
+
+
+
+
+
+
+
+
+    [ServerRpc]
+    void UpdateUIServerRpc(NetworkBehaviourReference nBref, int slotNr, string buffName, string buffDescription, string buffSpriteName, float buffDur) 
+    {
+        Debug.Log("ServerRPC Update");
+        UpdateUIClientRpc(nBref, slotNr, buffName, buffDescription, buffSpriteName, buffDur);
+    }
+
+    [ClientRpc]
+    void UpdateUIClientRpc(NetworkBehaviourReference nBref, int slotNr, string buffName, string buffDescription, string buffSpriteName, float buffDur)
     {
         Debug.Log("ClientRPc Update");
         nBref.TryGet<BuffDebuffUIWorldCanv>(out BuffDebuffUIWorldCanv UiWC);
-        UiWC.UpdateUI(); 
-    }
 
-    void UpdateUI()
-    {
-        Debug.Log("Update Buffs");
-        for (int i = 0; i < slots.Length; i++)      // Geht alle Slots durch
+        Debug.Log(buffSpriteName);
+        Debug.Log(buffDur);
+
+        if (buffName == "")
         {
-            Debug.Log(i);
-            if (i < buffManager.buffs.Count)          // Solange die Zählvariable kleiner ist, als die Anzahl der Buffs
-            {
-                Debug.Log(i);
-                slots[i].AddBuff(buffManager.buffs[i]);   // Füge dem nächsten Slot den nächsten Buff hinzu
-                slots[i].buffName = buffManager.buffs[i].buffName;
-                slots[i].buffDescription = buffManager.buffs[i].buffDescription;
-            }
-            else                    // Wenn keine Buffs mehr übrig sind
-            {
-                slots[i].ClearSlot();       // Mach die übrigen Slots leer.
-                slots[i].buffName = "";
-                slots[i].buffDescription = "";
-            }
+            UiWC.slots[slotNr].ClearSlot();
+        }
+        else
+        {
+            DummyBuffMultiplayer slotBuff = new DummyBuffMultiplayer();
+            Buff clone = slotBuff.Clone();
+            clone.buffName = buffName;
+            clone.buffDescription = buffDescription;
+            clone.icon = Resources.Load<Sprite>("BuffDebuffSprites/" + buffSpriteName);
+            clone.duration = buffDur;
+            clone.durationTimeLeft = buffDur;
+            StartCoroutine(ReduceTime((DummyBuffMultiplayer)clone, 0.3f));
+            
+
+            UiWC.slots[slotNr].AddBuff(clone);
         }
     }
 
+    public IEnumerator ReduceTime(DummyBuffMultiplayer buff, float tickTime)
+    {
+        while (buff.durationTimeLeft >= 0)
+        {
+            yield return new WaitForSeconds(tickTime);
+            buff.StartTicking(tickTime);
+        }
+    }
 
     public void UpdateUIStart()        //Updated das UI
     {
         if (!IsOwner) { return; }
 
-        Debug.Log("Starte Update");
         NetworkBehaviourReference nBref = this;
-        UpdateUIServerRpc(nBref);
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (i < buffManager.buffs.Count)
+            {
+                string buffN = buffManager.buffs[i].buffName;
+                string buffDes = buffManager.buffs[i].buffDescription;
+                string buffSpN = buffManager.buffs[i].icon.name;
+                float buffDur = buffManager.buffs[i].duration;
+                UpdateUIServerRpc(nBref, i, buffN, buffDes, buffSpN, buffDur);
+            }
+            else
+            {
+                UpdateUIServerRpc(nBref, i, "", "", "", 0f);
+            }
+        }
     }
 }

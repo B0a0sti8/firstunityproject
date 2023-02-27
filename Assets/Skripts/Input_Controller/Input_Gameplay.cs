@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Netcode;
 
-public class Input_Gameplay : MonoBehaviour
+public class Input_Gameplay : NetworkBehaviour
 {
     #region
     Transform PLAYER;
@@ -39,25 +40,27 @@ public class Input_Gameplay : MonoBehaviour
     }
 
     void OnMovement(InputValue value) // WASD
-    { playerController.Movement(value); masterChecks.isSkillInterrupted = true; }
+    { if (IsOwner) { playerController.Movement(value); masterChecks.isSkillInterrupted = true; } }
 
     void OnTakeDamage() // SPACE
-    { playerStats.TakeDamageSpace(); }
+    { if (IsOwner) { playerStats.TakeDamageSpace(); } }
 
     void OnAutoFocus() // TAB
-    { interactionCharacter.AutoFocus(); }
+    { if (IsOwner) { interactionCharacter.AutoFocus(); } }
 
     void OnZoom() // Scroll/Y
-    { cameraFollow.CameraZoom(); }
+    { if (IsOwner) { cameraFollow.CameraZoom(); } }
 
     //void OnChangeScene() // O
     //{ levelLoader.ChangeScene(); }
 
     void OnGoToHub() // H
-    { levelLoader.GoToHub(); }
+    { if (IsOwner) { levelLoader.GoToHub(); } }
 
     void OnAddBag() // B
     {
+        if (!IsOwner) { return; }
+
         inventoryScript.CheatCodeAddBag();
         playerStats.CheatCodeAddXP();
         PLAYER.transform.Find("GameManager").GetComponent<SaveManager>().Save();
@@ -65,5 +68,5 @@ public class Input_Gameplay : MonoBehaviour
 
     // Nur zum Debuggen. Wird Später auf nen Button im Hauptmenü gelegt oder so
     void OnLoadDebug() // V
-    { PLAYER.transform.Find("GameManager").GetComponent<SaveManager>().Load(); Debug.Log("Load1"); }
+    { if (IsOwner) { PLAYER.transform.Find("GameManager").GetComponent<SaveManager>().Load(); Debug.Log("Load1"); } }
 }
