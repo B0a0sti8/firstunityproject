@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Netcode;
 
-public class Input_Overlay : MonoBehaviour
+public class Input_Overlay : NetworkBehaviour
 {
     #region
     GameObject PLAYER;
@@ -39,29 +40,29 @@ public class Input_Overlay : MonoBehaviour
     #endregion
 
     void OnInventory() // I
-    { inventoryScript.OpenClose(); }
+    { if (IsOwner) { inventoryScript.OpenClose(); } }
 
     void OnEquipmentWindow() // C
-    { characterPanelScript.OpenClose(); }
+    { if (IsOwner) { characterPanelScript.OpenClose(); } }
 
     void OnPauseMenu() // Esc
-    { pauseMenu.OpenPauseMenu(); masterChecks.isSkillInterrupted = true; }
+    { if (IsOwner) { pauseMenu.OpenPauseMenu(); masterChecks.isSkillInterrupted = true; } }
 
     void OnDPSMeterReset() // .
-    { damageMeter.DPSMeterReset(); }
+    { if (IsOwner) { damageMeter.DPSMeterReset(); } }
 
     void OnSkillbook() // K
-    { skillbook.OpenSkillbook(); }
+    { if (IsOwner) { skillbook.OpenSkillbook(); } }
 
     void OnKeybindMenue() // N
-    { keybindManager.OpenCloseMenue(); }
+    { if (IsOwner) { keybindManager.OpenCloseMenue(); } }
 
     void OnClassChoiceMenue() // X
-    { classChoiceUI.OpenClassChoice(); }
+    { if (IsOwner) { classChoiceUI.OpenClassChoice(); } }
 
     void OnTalentTreeMenue() // P
-    { talentTreeUI.OpenTalentTree(); }
+    { if (IsOwner) { talentTreeUI.OpenTalentTree(); } }
 
     void OnQuestWindow() // L
-    { Debug.Log("QuestWindow"); questLog.OpenClose(); }
+    { if (IsOwner) { questLog.OpenClose(); } }
 }
