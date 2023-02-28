@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Unity.Netcode;
 
-public abstract class Buff
+public abstract class Buff 
 {
     public BuffManager buffManager;
     public BuffManagerNPC buffManagerNPC;
@@ -14,6 +15,7 @@ public abstract class Buff
 
     public string buffName;
     public string buffDescription;
+    public string internTransferName;
     public float duration;
     public float durationTimeLeft;
     public bool isRemovable = true;
@@ -24,6 +26,11 @@ public abstract class Buff
     public float tickTime;
     public float tickTimeElapsed;
     public float tickValue;
+
+    public virtual void InitializeBuff(GameObject source)
+    {
+
+    }
 
     public virtual void StartBuffEffect(CharacterStats playerStats) 
     {

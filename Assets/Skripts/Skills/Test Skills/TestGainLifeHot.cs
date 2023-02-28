@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class TestGainLifeHot : SkillPrefab
 {
@@ -9,15 +10,23 @@ public class TestGainLifeHot : SkillPrefab
     public float tickTime = 2f;
     public int tickHealing = 5;
     public float duration = 10f;
+    
+   
 
     public Sprite buffImage;
     HoTBuff buff = new HoTBuff();
 
     public override void Start()
     {
+
         ownCooldownTimeBase = 2f;
+        
 
         base.Start();
+
+        needsTargetAlly = true;
+        canSelfCastIfNoTarget = true;
+        skillRange = 10;
     }
 
     public override void Update()
@@ -32,11 +41,25 @@ public class TestGainLifeHot : SkillPrefab
 
     public override void SkillEffect()
     {
+       
         base.SkillEffect();
 
         DoHealing(instantHealing);
 
         Buff clone = buff.Clone();
-        PLAYER.GetComponent<BuffManager>().AddBuff(clone, buffImage, duration, tickTime, tickHealing);
+        clone.InitializeBuff(PLAYER);
+        if (interactionCharacter.focus == null)
+        {
+            //PLAYER.GetComponent<BuffManager>().AddBuff(clone, buffImage, duration, tickTime, tickHealing);
+            GiveBuffOrDebuffToTarget.GiveBuffOrDebuffServerRpc(PLAYER.GetComponent<NetworkBehaviour>(), PLAYER.GetComponent<NetworkBehaviour>(), "HoTBuff", "HoTBuff", true, duration, tickTime, tickHealing);
+        }
+        else
+        {
+            Debug.Log("Anderer Charakter");
+            //interactionCharacter.focus.GetComponent<BuffManager>().AddBuff(clone, buffImage, duration, tickTime, tickHealing);
+            GiveBuffOrDebuffToTarget.GiveBuffOrDebuffServerRpc(interactionCharacter.focus.gameObject.GetComponent<NetworkBehaviour>(), PLAYER.GetComponent<NetworkBehaviour>(), "HoTBuff", "HoTBuff", true, duration, tickTime, tickHealing);
+        }
+
+        
     }
 }

@@ -7,6 +7,7 @@ public class BuffManager : NetworkBehaviour
 {
     public delegate void OnBuffsChanged();
     public OnBuffsChanged onBuffsChangedCallback;
+    BuffDebuffUIWorldCanv buffDebuffUIWorldCanv;
 
     public List<Buff> buffs = new List<Buff>();
     List<Buff> newBuffs = new List<Buff>();
@@ -23,6 +24,7 @@ public class BuffManager : NetworkBehaviour
 
     public void AddBuff(Buff buff, Sprite buffImage, float duration, float tickTime, float tickValue)
     {
+        Debug.Log("BuffManager: Added Buff");
         newBuffs.Add(buff);
         buff.icon = buffImage;
         buff.duration = duration + 0.01f;
@@ -55,6 +57,7 @@ public class BuffManager : NetworkBehaviour
         {
             buffs.AddRange(newBuffs);
             newBuffs.Clear();
+            buffDebuffUIWorldCanv.UpdateUIStart();
             if (onBuffsChangedCallback != null) { onBuffsChangedCallback.Invoke(); }
         }
 
@@ -65,6 +68,7 @@ public class BuffManager : NetworkBehaviour
                 buffs.Remove(buff);
             }
             expiredBuffs.Clear();
+            buffDebuffUIWorldCanv.UpdateUIStart();
             if (onBuffsChangedCallback != null) { onBuffsChangedCallback.Invoke(); }
         }
     }
@@ -74,5 +78,10 @@ public class BuffManager : NetworkBehaviour
         if (!IsOwner) { return; }
 
         HandleBuffs();
+    }
+
+    private void Start()
+    {
+        buffDebuffUIWorldCanv = transform.Find("Canvas World Space").Find("CanvasBuffsAndDebuffsPlayerWorldCanv").GetComponent<BuffDebuffUIWorldCanv>();
     }
 }

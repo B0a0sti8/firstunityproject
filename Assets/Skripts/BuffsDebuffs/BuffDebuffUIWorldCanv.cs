@@ -19,29 +19,6 @@ public class BuffDebuffUIWorldCanv : NetworkBehaviour
     }
 
     [ServerRpc]
-    void AddBuffServerRpc(string title, string description, string SpriteName, float duration)
-    {
-        //Buff newBuf = new Buff;
-
-        //newBuf.duration = duration;
-    }
-
-    [ClientRpc]
-    void AddBuffClientRpc()
-    {
-
-    }
-
-
-
-
-
-
-
-
-
-
-    [ServerRpc]
     void UpdateUIServerRpc(NetworkBehaviourReference nBref, int slotNr, string buffName, string buffDescription, string buffSpriteName, float buffDur) 
     {
         Debug.Log("ServerRPC Update");
