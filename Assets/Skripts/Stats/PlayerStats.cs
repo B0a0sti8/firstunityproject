@@ -113,6 +113,8 @@ public class PlayerStats : CharacterStats
 		UpdateHealthAndMana();
 
 		ManaRegeneration();
+
+		//Debug.Log(gameObject.GetInstanceID());
 	}
 
 	public override void Start()
