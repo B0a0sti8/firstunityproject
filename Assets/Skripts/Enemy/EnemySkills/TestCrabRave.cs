@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class TestCrabRave : EnemySkillPrefab
 {
@@ -64,7 +65,7 @@ public class TestCrabRave : EnemySkillPrefab
         {
             foreach (GameObject tar in myTargetsEnemies)
             {
-                DamageOrHealing.DoHealing(transform.parent.gameObject, tar, baseHealing);
+                DamageOrHealing.DoHealing(transform.parent.gameObject.GetComponent<NetworkBehaviour>(), tar.GetComponent<NetworkBehaviour>(), baseHealing);
                 if (i == 0 || i == 5 || i == 10 || i == 12 || i == 17 || i == 19 || i == 23 || i == 28 || i == 25 || i == 50)
                 {
                     float x = Random.Range(2, 5);
@@ -83,7 +84,7 @@ public class TestCrabRave : EnemySkillPrefab
 
             foreach (GameObject tar in myTargetsFriends)
             {
-                DamageOrHealing.DoHealing(transform.parent.gameObject, tar, baseHealing);
+                DamageOrHealing.DoHealing(transform.parent.gameObject.GetComponent<NetworkBehaviour>(), tar.GetComponent<NetworkBehaviour>(), baseHealing);
             }
 
             yield return new WaitForSeconds(duration / 50);

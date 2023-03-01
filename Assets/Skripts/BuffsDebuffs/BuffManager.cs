@@ -9,7 +9,7 @@ public class BuffManager : NetworkBehaviour
     public OnBuffsChanged onBuffsChangedCallback;
     BuffDebuffUIWorldCanv buffDebuffUIWorldCanv;
 
-    public List<Buff> buffs = new List<Buff>();
+    [SerializeField] public List<Buff> buffs = new List<Buff>();
     List<Buff> newBuffs = new List<Buff>();
     List<Buff> expiredBuffs = new List<Buff>();
 

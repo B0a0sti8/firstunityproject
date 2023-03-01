@@ -2,6 +2,7 @@ using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class TestCrabSuplex : EnemySkillPrefab
 {
@@ -50,7 +51,7 @@ public class TestCrabSuplex : EnemySkillPrefab
     public override void AtSkillStart()
     {
         skillTarget = GetComponentInParent<EnemyAI>().target;
-        DamageOrHealing.DealDamage(transform.parent.gameObject, skillTarget.gameObject, baseDamage / 2);
+        DamageOrHealing.DealDamage(transform.parent.gameObject.GetComponent<NetworkBehaviour>(), skillTarget.gameObject.GetComponent<NetworkBehaviour>(), baseDamage / 2);
 
         skillTarget.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         if (skillTarget.tag == "Player")

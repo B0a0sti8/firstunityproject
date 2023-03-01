@@ -20,7 +20,7 @@ public class HealthPotion : Item
             if (player.GetComponent<NetworkBehaviour>().IsOwner == true)
             {
                 Debug.Log("HealthPotion war sehr effektiv!");
-                DamageOrHealing.DoHealing(null, player, healing);
+                DamageOrHealing.DoHealing(null, player.GetComponent<NetworkBehaviour>(), healing);
                 //player.GetComponent<PlayerStats>().GetHealing(healing, 0, 0, 0);
             }
         }

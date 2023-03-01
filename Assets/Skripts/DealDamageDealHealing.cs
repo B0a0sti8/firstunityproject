@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public static class DamageOrHealing
 {
@@ -17,10 +18,17 @@ public static class DamageOrHealing
     private static int trueHealing;
 
 
-    public static float DealDamage(GameObject source, GameObject target, float baseDamge, bool isMagical=false, bool isUnavoidable=false)
+    public static float DealDamage(NetworkBehaviourReference netSource, NetworkBehaviourReference netTarget, float baseDamge, bool isMagical=false, bool isUnavoidable=false)
     {
+        netSource.TryGet<NetworkBehaviour>(out NetworkBehaviour sour);
+        GameObject source = sour.gameObject;
+
+        netTarget.TryGet<NetworkBehaviour>(out NetworkBehaviour tar);
+        GameObject target = tar.gameObject;
+
+
         // Stats des Angreifers
-        if(source.GetComponent<EnemyStats>() != null)                    // Source = Enemy
+        if (source.GetComponent<EnemyStats>() != null)                    // Source = Enemy
         {
             enemyStats = source.GetComponent<EnemyStats>();
 
@@ -64,7 +72,7 @@ public static class DamageOrHealing
             }
 
             trueDamage = (int)Mathf.Round(tempDamage);
-            enemyStats.TakeDamage(trueDamage, aggro, isCrit, source);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
+            enemyStats.TakeDamage(trueDamage, aggro, isCrit, netSource);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
         }
         else if (target.GetComponent<PlayerStats>() != null)            // Target = Player
         {
@@ -88,7 +96,7 @@ public static class DamageOrHealing
             }
 
             trueDamage = (int)Mathf.Round(tempDamage);
-            playerStats.TakeDamage(trueDamage, 0, isCrit, source);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
+            playerStats.TakeDamage(trueDamage, 0, isCrit, netSource);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
         }
 
         enemyStats = null;
@@ -97,8 +105,14 @@ public static class DamageOrHealing
         return trueDamage;
     }
 
-    public static float DoHealing(GameObject source, GameObject target, float baseHealing)
+    public static float DoHealing(NetworkBehaviourReference netSource, NetworkBehaviourReference netTarget, float baseHealing)
     {
+        netSource.TryGet<NetworkBehaviour>(out NetworkBehaviour sour);
+        GameObject source = sour.gameObject;
+
+        netTarget.TryGet<NetworkBehaviour>(out NetworkBehaviour tar);
+        GameObject target = tar.gameObject;
+
         // Stats des Heilers
         if (source.GetComponent<EnemyStats>() != null)                    // Source = Enemy
         {
@@ -136,7 +150,7 @@ public static class DamageOrHealing
             enemyStats = source.GetComponent<EnemyStats>();
 
             trueHealing = (int)Mathf.Round(tempHealing);
-            enemyStats.TakeHealing(trueHealing, isCrit, source);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
+            enemyStats.TakeHealing(trueHealing, isCrit, netSource);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
         }
         else if (target.GetComponent<PlayerStats>() != null)            // Target = Player
         {
@@ -144,7 +158,7 @@ public static class DamageOrHealing
             tempHealing *= (1 + playerStats.incHealInc.GetValue());
 
             trueHealing = (int)Mathf.Round(tempHealing);
-            playerStats.TakeHealing(trueHealing, isCrit, source);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
+            playerStats.TakeHealing(trueHealing, isCrit, netSource);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
         }
 
         enemyStats = null;

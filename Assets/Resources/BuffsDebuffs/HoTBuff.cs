@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class HoTBuff : Buff
 {
@@ -48,7 +49,7 @@ public class HoTBuff : Buff
             Debug.Log(buffSource);
             Debug.Log(playerStats.gameObject);
 
-            DamageOrHealing.DoHealing(buffSource, playerStats.gameObject, tickValue);
+            DamageOrHealing.DoHealing(buffSource.GetComponent<NetworkBehaviour>(), playerStats.gameObject.GetComponent<NetworkBehaviour>(), tickValue);
         }
     }
 }

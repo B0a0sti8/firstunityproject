@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class TestRangeEnemyAoE : EnemySkillPrefab
 {
@@ -48,7 +49,7 @@ public class TestRangeEnemyAoE : EnemySkillPrefab
 
         foreach (GameObject tar in myTargets)
         {
-            DamageOrHealing.DealDamage(transform.parent.gameObject, tar, baseDamage);
+            DamageOrHealing.DealDamage(transform.parent.gameObject.GetComponent<NetworkBehaviour>(), tar.GetComponent<NetworkBehaviour>(), baseDamage);
             tar.GetComponent<BuffManager>().AddBuff(clone, buffImage, dotDuration, 1f, baseDotDamage);
         }
         myTargets.Clear();
