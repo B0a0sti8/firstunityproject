@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class TheWayOfTheChickenDamageDebuff : Buff
 {
@@ -32,7 +33,7 @@ public class TheWayOfTheChickenDamageDebuff : Buff
         {
             tickTimeElapsed = 0;
 
-            DamageOrHealing.DealDamage(buffSource, playerStats.gameObject, tickValue, false, false);
+            DamageOrHealing.DealDamage(buffSource.GetComponent<NetworkBehaviour>(), playerStats.gameObject.GetComponent<NetworkBehaviour>(), tickValue, false, false);
             //playerStats.view.RPC("TakeDamage", RpcTarget.All, tickValue, 101, critRandom, critChance, critMultiplier);
         }
     }

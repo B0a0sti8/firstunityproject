@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using Unity.Netcode;
 
 public class SkillPrefab : MonoBehaviour//, IUseable
 {
@@ -654,7 +655,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     {
         for (int i = 0; i < currentTargets.Count; i++)
         {
-            DamageOrHealing.DealDamage(PLAYER, currentTargets[i], damage, false, false);
+            DamageOrHealing.DealDamage(PLAYER.GetComponent<NetworkBehaviour>(), currentTargets[i].GetComponent<NetworkBehaviour>(), damage, false, false);
         }
     }
 
@@ -663,7 +664,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         
         for (int i = 0; i < currentTargets.Count; i++)
         {
-            DamageOrHealing.DoHealing(PLAYER, currentTargets[i], healing);
+            DamageOrHealing.DoHealing(PLAYER.GetComponent<NetworkBehaviour>(), currentTargets[i].GetComponent<NetworkBehaviour>(), healing);
             //currentTargets[i].GetComponent<CharacterStats>().view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
         }
     }

@@ -71,40 +71,21 @@ public class EnemyStats : CharacterStats
         }
     }
 
-    [ServerRpc]
-    public override void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
-    {
-        Debug.Log("Enemy takes damage " + damage);
-        base.TakeDamageServerRpc(damage, aggro, isCrit);
-        FindObjectOfType<AudioManager>().Play("Oof");
-    }
+    //[ServerRpc]
+    //public override void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
+    //{
+    //    Debug.Log("Enemy takes damage " + damage);
+    //    base.TakeDamageServerRpc(damage, aggro, isCrit);
+    //    FindObjectOfType<AudioManager>().Play("Oof");
+    //}
 
-    [ServerRpc]
-    public override void GetHealingServerRpc(float healing, bool isCrit)
-    {
-        Debug.Log("Enemy gets healing " + healing);
-        base.GetHealingServerRpc(healing, isCrit);
-        //FindObjectOfType<AudioManager>().Play("Oof");
-    }
-
-    public void TakeDamage(float damage, int aggro, bool isCrit, GameObject source)
-    {
-        Debug.Log("Deal Damage");
-        if (IsOwner)
-        {
-            Debug.Log("Deal Damage 1");
-            TakeDamageServerRpc(damage, aggro, isCrit);
-        }
-        gameObject.GetComponent<EnemyAI>().aggroTable[source] += aggro;
-    }
-
-    public void TakeHealing(float healing, bool isCrit, GameObject source)
-    {
-        if (IsOwner)
-        {
-            GetHealingServerRpc(healing, isCrit);
-        }
-    }
+    //[ServerRpc]
+    //public override void GetHealingServerRpc(float healing, bool isCrit)
+    //{
+    //    Debug.Log("Enemy gets healing " + healing);
+    //    base.GetHealingServerRpc(healing, isCrit);
+    //    //FindObjectOfType<AudioManager>().Play("Oof");
+    //}
 
     public override void Die()
     {

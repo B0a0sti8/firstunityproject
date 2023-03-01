@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class MeleeEnemyAttackTest : EnemyAttack
 {
@@ -8,7 +9,7 @@ public class MeleeEnemyAttackTest : EnemyAttack
     {
         base.EnemyAtkEffect(target);
 
-        DamageOrHealing.DealDamage(gameObject, target, gameObject.GetComponent<EnemyStats>().dmgModifier.GetValue(), false, false);
+        DamageOrHealing.DealDamage(gameObject.GetComponent<NetworkBehaviour>(), target.GetComponent<NetworkBehaviour>(), gameObject.GetComponent<EnemyStats>().dmgModifier.GetValue(), false, false); ;
         // Attack
         // Animation
     }

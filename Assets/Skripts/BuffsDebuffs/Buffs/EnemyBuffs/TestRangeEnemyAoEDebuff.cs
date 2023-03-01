@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class TestRangeEnemyAoEDebuff : Buff
 {
@@ -27,7 +28,7 @@ public class TestRangeEnemyAoEDebuff : Buff
         {
             tickTimeElapsed = 0;
 
-            DamageOrHealing.DealDamage(buffSource, playerStats.gameObject, tickValue, false, false);
+            DamageOrHealing.DealDamage(buffSource.GetComponent<NetworkBehaviour>(), playerStats.gameObject.GetComponent<NetworkBehaviour>(), tickValue, false, false);
         }
     }
 }

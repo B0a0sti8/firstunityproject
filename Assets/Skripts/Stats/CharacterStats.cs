@@ -33,28 +33,71 @@ public class CharacterStats : NetworkBehaviour
 
     HealthBar healthBarWorldCanv;
 
-    [ServerRpc]
-    public virtual void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
+    public void TakeDamage(float damage, int aggro, bool isCrit, NetworkBehaviourReference nBref)
     {
-        currentHealth.Value -= damage;
-
         if (IsOwner)
         {
-            DamagePopup.Create(gameObject.transform.position, (int)damage, false, isCrit);
-            //GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += damage;
-            FindObjectOfType<AudioManager>().Play("Oof");
+            Debug.Log("IsOwner = True");
+            TakeDamageServerRpc(damage, aggro, isCrit, nBref);
         }
     }
 
     [ServerRpc]
-    public virtual void GetHealingServerRpc(float healing, bool isCrit)
+    public virtual void TakeDamageServerRpc(float damage, int aggro, bool isCrit, NetworkBehaviourReference source)
     {
-        currentHealth.Value += healing;
+        Debug.Log("ServerRPc");
+        TakeDamageClientRpc(damage, aggro, isCrit, source);
+    }
 
+    [ClientRpc]
+    public virtual void TakeDamageClientRpc(float damage, int aggro, bool isCrit, NetworkBehaviourReference source)
+    {
         if (IsOwner)
         {
+            Debug.Log("ClientRPc");
+            currentHealth.Value -= damage;
+
+            DamagePopup.Create(gameObject.transform.position, (int)damage, false, isCrit);
+        }
+
+        //GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += damage;
+        //FindObjectOfType<AudioManager>().Play("Oof");
+
+        // AggroManagement später ... 
+        //source.TryGet<NetworkBehaviour>(out NetworkBehaviour sourc);
+        //gameObject.GetComponent<EnemyAI>().aggroTable[sourc.gameObject] += aggro;
+    }
+
+    public void TakeHealing(float healing, bool isCrit, NetworkBehaviourReference nBref)
+    {
+        if (IsOwner)
+        {
+            Debug.Log("IsOwner = True");
+            GetHealingServerRpc(healing, isCrit, nBref);
+        }
+    }
+
+    [ServerRpc]
+    public virtual void GetHealingServerRpc(float healing, bool isCrit, NetworkBehaviourReference source)
+    {
+        Debug.Log("ServerRPc");
+        GetHealingClientRpc(healing, isCrit, source);
+    }
+
+    [ClientRpc]
+    public virtual void GetHealingClientRpc(float healing, bool isCrit, NetworkBehaviourReference source)
+    {
+        Debug.Log("ClientRPc");
+        if (IsOwner)
+        {
+            currentHealth.Value += healing;
+
             DamagePopup.Create(gameObject.transform.position, (int)healing, true, isCrit);
         }
+
+        // AggroManagement später ... 
+        //source.TryGet<NetworkBehaviour>(out NetworkBehaviour sourc);
+        //gameObject.GetComponent<EnemyAI>().aggroTable[sourc.gameObject] += aggro;
     }
 
     public virtual void Start()

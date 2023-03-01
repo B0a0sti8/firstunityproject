@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class TestEnergyDrain : SkillPrefab
 {
@@ -27,6 +28,6 @@ public class TestEnergyDrain : SkillPrefab
         
         DealDamage(damage);
 
-        DamageOrHealing.DoHealing(PLAYER, PLAYER, damage / 2);
+        DamageOrHealing.DoHealing(PLAYER.GetComponent<NetworkBehaviour>(), PLAYER.GetComponent<NetworkBehaviour>(), damage / 2);
     }
 }

@@ -333,33 +333,33 @@ public class PlayerStats : CharacterStats
 		currentMana.Value += manaCost;
 	}
 
-	[ServerRpc]
-	public override void GetHealingServerRpc(float healing, bool isCrit)
-	{
-		base.GetHealingServerRpc(healing, isCrit);
-	}
+	//[ServerRpc]
+	//public override void GetHealingServerRpc(float healing, bool isCrit)
+	//{
+	//	base.GetHealingServerRpc(healing, isCrit);
+	//}
 
-	[ServerRpc]
-	public override void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
-	{
-		base.TakeDamageServerRpc(damage, aggro, isCrit);
-	}
+	//[ServerRpc]
+	//public override void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
+	//{
+	//	base.TakeDamageServerRpc(damage, aggro, isCrit);
+	//}
 
-	public void TakeDamage(float damage, int aggro, bool isCrit, GameObject source)
-	{
-		if (IsOwner)
-		{
-			TakeDamageServerRpc(damage, aggro, isCrit);
-		}
-	}
+	//public void TakeDamage(float damage, int aggro, bool isCrit, GameObject source)
+	//{
+	//	if (IsOwner)
+	//	{
+	//		TakeDamageServerRpc(damage, aggro, isCrit);
+	//	}
+	//}
 
-	public void TakeHealing(float healing, bool isCrit, GameObject source)
-	{
-		if (IsOwner)
-		{
-			GetHealingServerRpc(healing, isCrit);
-		}
-	}
+	//public void TakeHealing(float healing, bool isCrit, GameObject source)
+	//{
+	//	if (IsOwner)
+	//	{
+	//		GetHealingServerRpc(healing, isCrit);
+	//	}
+	//}
 
 	public void ManageMana(float manaCost)
 	{
@@ -424,9 +424,6 @@ public class PlayerStats : CharacterStats
 		//Destroy(gameObject, 1f);
 		base.Die();
 	}
-
-
-
 
 
 
