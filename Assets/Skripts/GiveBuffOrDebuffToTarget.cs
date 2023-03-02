@@ -14,7 +14,6 @@ public static class GiveBuffOrDebuffToTarget
     [ClientRpc]
     public static void GiveBuffOrDebuffClientRpc(NetworkBehaviourReference target, NetworkBehaviourReference source, string buffName, string buffImageName, bool isDamageOrHealing, float duration, float tickTime, float value)
     {
-        Debug.Log("ClientRPC");
         target.TryGet<NetworkBehaviour>(out NetworkBehaviour tar);
         source.TryGet<NetworkBehaviour>(out NetworkBehaviour sor);
 
@@ -25,10 +24,8 @@ public static class GiveBuffOrDebuffToTarget
 
         if (tar.CompareTag("Player"))
         {
-            Debug.Log("Is Player");
             if (isDamageOrHealing)
             {
-                Debug.Log("Add Buff");
                 tar.GetComponent<BuffManager>().AddBuff(clone, buffIcon, duration, tickTime, value);
             }
             else

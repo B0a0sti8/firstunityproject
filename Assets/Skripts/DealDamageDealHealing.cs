@@ -72,7 +72,7 @@ public static class DamageOrHealing
             }
 
             trueDamage = (int)Mathf.Round(tempDamage);
-            enemyStats.TakeDamage(trueDamage, aggro, isCrit, netSource);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
+            enemyStats.TakeDamage(trueDamage, aggro, isCrit, netTarget);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
         }
         else if (target.GetComponent<PlayerStats>() != null)            // Target = Player
         {
@@ -96,7 +96,7 @@ public static class DamageOrHealing
             }
 
             trueDamage = (int)Mathf.Round(tempDamage);
-            playerStats.TakeDamage(trueDamage, 0, isCrit, netSource);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
+            playerStats.TakeDamage(trueDamage, 0, isCrit, netTarget);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
         }
 
         enemyStats = null;
@@ -150,7 +150,7 @@ public static class DamageOrHealing
             enemyStats = source.GetComponent<EnemyStats>();
 
             trueHealing = (int)Mathf.Round(tempHealing);
-            enemyStats.TakeHealing(trueHealing, isCrit, netSource);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
+            enemyStats.TakeHealing(trueHealing, isCrit, netTarget);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
         }
         else if (target.GetComponent<PlayerStats>() != null)            // Target = Player
         {
@@ -158,7 +158,8 @@ public static class DamageOrHealing
             tempHealing *= (1 + playerStats.incHealInc.GetValue());
 
             trueHealing = (int)Mathf.Round(tempHealing);
-            playerStats.TakeHealing(trueHealing, isCrit, netSource);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
+            playerStats.TakeHealing(trueHealing, isCrit, netTarget);                              // IM MULTIPLAYER: INFO MUSS AN ALLE GESENDET WERDEN!
+            Debug.Log("Spieler wird geheilt");
         }
 
         enemyStats = null;

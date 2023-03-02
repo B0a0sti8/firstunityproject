@@ -162,7 +162,13 @@ public class PlayerStats : CharacterStats
 
 	}
 
-	public void OnManaChange()
+    public override void TakeHealing(float healing, bool isCrit, NetworkBehaviourReference nBref)
+    {
+        base.TakeHealing(healing, isCrit, nBref);
+    }
+
+
+    public void OnManaChange()
 	{
 		if (!IsOwner) { return; }
 
