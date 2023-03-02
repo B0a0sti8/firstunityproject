@@ -37,7 +37,6 @@ public class CharacterStats : NetworkBehaviour
     {
         if (IsOwner)
         {
-            Debug.Log("IsOwner = True");
             TakeDamageServerRpc(damage, aggro, isCrit, nBref);
         }
     }
@@ -45,7 +44,6 @@ public class CharacterStats : NetworkBehaviour
     [ServerRpc]
     public virtual void TakeDamageServerRpc(float damage, int aggro, bool isCrit, NetworkBehaviourReference source)
     {
-        Debug.Log("ServerRPc");
         TakeDamageClientRpc(damage, aggro, isCrit, source);
     }
 
@@ -54,7 +52,6 @@ public class CharacterStats : NetworkBehaviour
     {
         if (IsOwner)
         {
-            Debug.Log("ClientRPc");
             currentHealth.Value -= damage;
 
             DamagePopup.Create(gameObject.transform.position, (int)damage, false, isCrit);
@@ -68,32 +65,31 @@ public class CharacterStats : NetworkBehaviour
         //gameObject.GetComponent<EnemyAI>().aggroTable[sourc.gameObject] += aggro;
     }
 
-    public void TakeHealing(float healing, bool isCrit, NetworkBehaviourReference nBref)
+    public virtual void TakeHealing(float healing, bool isCrit, NetworkBehaviourReference nBref)
     {
         if (IsOwner)
         {
-            Debug.Log("IsOwner = True");
+            currentHealth.Value += healing;
             GetHealingServerRpc(healing, isCrit, nBref);
         }
+        
     }
 
     [ServerRpc]
     public virtual void GetHealingServerRpc(float healing, bool isCrit, NetworkBehaviourReference source)
     {
-        Debug.Log("ServerRPc");
+        Debug.Log("ServerRpc");
         GetHealingClientRpc(healing, isCrit, source);
     }
 
     [ClientRpc]
     public virtual void GetHealingClientRpc(float healing, bool isCrit, NetworkBehaviourReference source)
     {
-        Debug.Log("ClientRPc");
-        if (IsOwner)
-        {
-            currentHealth.Value += healing;
+        Debug.Log("ClientRpc");
+        currentHealth.Value += healing;
 
-            DamagePopup.Create(gameObject.transform.position, (int)healing, true, isCrit);
-        }
+        DamagePopup.Create(gameObject.transform.position, (int)healing, true, isCrit);
+
 
         // AggroManagement später ... 
         //source.TryGet<NetworkBehaviour>(out NetworkBehaviour sourc);
@@ -117,7 +113,6 @@ public class CharacterStats : NetworkBehaviour
     public void OnHealthChange()
     {
         if (!IsOwner) { return; }
-
         int cH = (int)this.currentHealth.Value;
         int mH = (int)this.maxHealth.GetValue();
         NetworkBehaviourReference nBref = this;

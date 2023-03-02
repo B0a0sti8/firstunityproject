@@ -21,18 +21,14 @@ public class BuffDebuffUIWorldCanv : NetworkBehaviour
     [ServerRpc]
     void UpdateUIServerRpc(NetworkBehaviourReference nBref, int slotNr, string buffName, string buffDescription, string buffSpriteName, float buffDur) 
     {
-        Debug.Log("ServerRPC Update");
         UpdateUIClientRpc(nBref, slotNr, buffName, buffDescription, buffSpriteName, buffDur);
     }
 
     [ClientRpc]
     void UpdateUIClientRpc(NetworkBehaviourReference nBref, int slotNr, string buffName, string buffDescription, string buffSpriteName, float buffDur)
     {
-        Debug.Log("ClientRPc Update");
         nBref.TryGet<BuffDebuffUIWorldCanv>(out BuffDebuffUIWorldCanv UiWC);
 
-        Debug.Log(buffSpriteName);
-        Debug.Log(buffDur);
 
         if (buffName == "")
         {

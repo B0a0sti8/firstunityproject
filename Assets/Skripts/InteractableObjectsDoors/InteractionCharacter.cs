@@ -43,7 +43,6 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
             if (hit.collider != null) // Wird geprüft ob überhaupt was getroffen wurde
             {
                 Interactable interactable = hit.collider.GetComponent<Interactable>(); // Gegenstand der getroffen wurde wird fokusiert. (Für spätere Interaktion)
-                Debug.Log("Klick Button");
                 SetFocus(interactable);
             }
             else if(!EventSystem.current.IsPointerOverGameObject()) // Wenn Mauszeiger nicht über UI Element ist.
@@ -54,10 +53,7 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
     }
 
     void SetFocus (Interactable newFocus) 
-    {
-        Debug.Log("Setting Focus");
-        
-
+    {      
         if (newFocus != focus)
         {
             if (focus != null)
@@ -82,7 +78,6 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
         
         if (newFocus != null)
         {
-            Debug.Log("Versuche Fokus zu setzen");
             newFocus.OnFocused(transform);
         }
     }
