@@ -119,8 +119,6 @@ public class PlayerStats : CharacterStats
 
 	public override void Start()
 	{
-		base.Start();
-
 		if (!IsOwner) { return; }
 
 		manaBarWorldCanv = transform.Find("Canvas World Space").Find("ManaBar").GetComponent<ManaBar>();
@@ -147,7 +145,7 @@ public class PlayerStats : CharacterStats
 
 		ReloadEquipMainStats();
 
-		currentHealth.Value = maxHealth.GetValue();
+		//currentHealth.Value = maxHealth.GetValue();
 		currentMana.Value = maxMana.GetValue();
 
 		MyCurrentPlayerLvl = 1;
@@ -159,6 +157,8 @@ public class PlayerStats : CharacterStats
 		goldAmount = 100;
 
 		isAlive.Value = true;
+
+		base.Start();
 
 	}
 
@@ -306,11 +306,11 @@ public class PlayerStats : CharacterStats
 		transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)(currentHealth.Value));
 		if (currentHealth.Value > maxHealth.GetValue())
 		{
-			currentHealth.Value = maxHealth.GetValue();
+			SetCurrentHealthServerRpc(maxHealth.GetValue());
 		}
 		if (currentHealth.Value < 0)
 		{
-			currentHealth.Value = 0;
+			SetCurrentHealthServerRpc(0);
 		}
 
 		manaBarUI.SetMaxMana((int)maxMana.GetValue());
@@ -445,9 +445,9 @@ public class PlayerStats : CharacterStats
 
 			//TakeDamage(20f, 0, false, gameObject);
 
+			TakeDamage(20, 0, false, this);
+
 			currentMana.Value -= 20;
-			currentHealth.Value -= 20;
-			Debug.Log("Mache mir selbst Schaden!");
 		}
 	}
 
