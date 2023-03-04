@@ -17,7 +17,8 @@ public class CharacterStats : NetworkBehaviour
     // Stats
     [Header("Health")]
     public Stat maxHealth; // 0 - Inf
-    public NetworkVariable<float> currentHealth = new NetworkVariable<float>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public NetworkVariable<float> currentHealth = new NetworkVariable<float>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    public NetworkVariable<float> maxHealthServer = new NetworkVariable<float>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     [Header("Main Stats")] public Stat armor; // 0 - 100 bzw. -Inf - 100 /// 30 -> Erlittener Schaden um 30% verringert
 
@@ -35,27 +36,28 @@ public class CharacterStats : NetworkBehaviour
 
     public void TakeDamage(float damage, int aggro, bool isCrit, NetworkBehaviourReference nBref)
     {
-        if (IsOwner)
-        {
-            TakeDamageServerRpc(damage, aggro, isCrit, nBref);
-        }
+        Debug.Log("TakeDamage");
+        TakeDamageServerRpc(damage, aggro, isCrit, nBref);
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public virtual void TakeDamageServerRpc(float damage, int aggro, bool isCrit, NetworkBehaviourReference source)
     {
+        Debug.Log("TakeDamageServerRpc");
+        currentHealth.Value -= damage;
         TakeDamageClientRpc(damage, aggro, isCrit, source);
     }
 
     [ClientRpc]
     public virtual void TakeDamageClientRpc(float damage, int aggro, bool isCrit, NetworkBehaviourReference source)
     {
-        if (IsOwner)
-        {
-            currentHealth.Value -= damage;
+        Debug.Log("ClientRpc");
+        //if (IsOwner)
+        //{
+            
 
-            DamagePopup.Create(gameObject.transform.position, (int)damage, false, isCrit);
-        }
+        //    DamagePopup.Create(gameObject.transform.position, (int)damage, false, isCrit);
+        //}
 
         //GameObject.Find("Canvas Damage Meter").GetComponent<DamageMeter>().totalDamage += damage;
         //FindObjectOfType<AudioManager>().Play("Oof");
@@ -67,28 +69,25 @@ public class CharacterStats : NetworkBehaviour
 
     public virtual void TakeHealing(float healing, bool isCrit, NetworkBehaviourReference nBref)
     {
-        if (IsOwner)
-        {
-            currentHealth.Value += healing;
-            GetHealingServerRpc(healing, isCrit, nBref);
-        }
-        
+        Debug.Log("TakeHealing");        
+        GetHealingServerRpc(healing, isCrit, nBref);
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public virtual void GetHealingServerRpc(float healing, bool isCrit, NetworkBehaviourReference source)
     {
-        Debug.Log("ServerRpc");
+        Debug.Log("TakeHealingServerRpc");
+        currentHealth.Value += healing;
         GetHealingClientRpc(healing, isCrit, source);
     }
 
     [ClientRpc]
     public virtual void GetHealingClientRpc(float healing, bool isCrit, NetworkBehaviourReference source)
     {
-        Debug.Log("ClientRpc");
-        currentHealth.Value += healing;
+        Debug.Log("TakeHealingClientRpc");
+        //currentHealth.Value += healing;
 
-        DamagePopup.Create(gameObject.transform.position, (int)healing, true, isCrit);
+        //DamagePopup.Create(gameObject.transform.position, (int)healing, true, isCrit);
 
 
         // AggroManagement später ... 
@@ -101,8 +100,24 @@ public class CharacterStats : NetworkBehaviour
         if (!IsOwner) { return; }
         healthBarWorldCanv = gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>();
         currentHealth.OnValueChanged += (float previousValue, float newValue) => { OnHealthChange(); };
+        maxHealthServer.OnValueChanged += (float previousValue, float newValue) => { OnHealthChange(); };
 
         OnHealthChange();
+
+        SetMultiplayerMaxHealthServerRpc(maxHealth.GetValue());
+        SetCurrentHealthServerRpc(maxHealth.GetValue());
+    }
+
+    [ServerRpc]
+    public void SetCurrentHealthServerRpc(float healthValue)
+    {
+        currentHealth.Value = healthValue;
+    }
+
+    [ServerRpc]
+    public void SetMultiplayerMaxHealthServerRpc(float healthValue)
+    {
+         maxHealthServer.Value = healthValue;
     }
 
     public override void OnNetworkSpawn()
@@ -114,7 +129,7 @@ public class CharacterStats : NetworkBehaviour
     {
         if (!IsOwner) { return; }
         int cH = (int)this.currentHealth.Value;
-        int mH = (int)this.maxHealth.GetValue();
+        int mH = (int)this.maxHealthServer.Value;
         NetworkBehaviourReference nBref = this;
         HealthChangedServerRpc(cH, mH, nBref);
 
@@ -138,7 +153,13 @@ public class CharacterStats : NetworkBehaviour
 
     public virtual void Update()
     {
-
+        if (!IsOwner)
+        { return; }
+        if (maxHealthServer.Value != maxHealth.GetValue())
+        {
+            Debug.Log("Updating Max Health");
+            SetMultiplayerMaxHealthServerRpc(maxHealth.GetValue());
+        }
     }
 
 

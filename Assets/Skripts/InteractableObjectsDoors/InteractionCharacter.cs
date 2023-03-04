@@ -25,6 +25,7 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
     {
         if (!IsOwner) { return; }
 
+
         if (focus != null)
         {
             if (focus.gameObject.layer == LayerMask.NameToLayer("Enemy") || focus.gameObject.layer == LayerMask.NameToLayer("Action"))
@@ -38,22 +39,97 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
 
         if (Mouse.current.rightButton.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)  // Wenn rechte Maustaste gedrückt
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero); // Die Mausposition (ursprünglich in Pixel) wird in Weltkoordinaten übersetzt (Unity transform z.B.)
-                                                                                                                                    // Eine Linie zwischen der Position des Mauszeigers wird gebildet und dem Vektor (0,0) wird gebildet. Ist noch nicht ganz klar ob das der Ursprung der Map oder das Zentrum der Kamera ist.
-            if (hit.collider != null) // Wird geprüft ob überhaupt was getroffen wurde
-            {
-                Interactable interactable = hit.collider.GetComponent<Interactable>(); // Gegenstand der getroffen wurde wird fokusiert. (Für spätere Interaktion)
-                SetFocus(interactable);
-            }
-            else if(!EventSystem.current.IsPointerOverGameObject()) // Wenn Mauszeiger nicht über UI Element ist.
+            if (!EventSystem.current.IsPointerOverGameObject()) // Wenn Mauszeiger nicht über UI Element ist.
             {
                 RemoveFocus();
             }
+
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero); // Die Mausposition (ursprünglich in Pixel) wird in Weltkoordinaten übersetzt (Unity transform z.B.)
+                                                                                                                                    // Eine Linie zwischen der Position des Mauszeigers wird gebildet und dem Vektor (0,0) wird gebildet. Ist noch nicht ganz klar ob das der Ursprung der Map oder das Zentrum der Kamera ist.
+            if (hit.collider != null)
+            {
+                Debug.Log("Hab Was");
+                if (hit.collider.GetComponent<Interactable>() != null)
+                {
+                    Debug.Log("Ist Interactable, setze Focus");
+                    SetFocus(hit.collider.GetComponent<Interactable>());
+                }
+            }
+
+
+            //CheckIfHitInteractableServerRpc(this, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
         }
+
+        
+
+
+        
     }
 
-    void SetFocus (Interactable newFocus) 
-    {      
+    //[ServerRpc]
+    //public void CheckIfHitInteractableServerRpc(NetworkBehaviourReference characterBox, Vector2 origin, ServerRpcParams serverRpcParams = default)
+    //{
+    //    var clientId = serverRpcParams.Receive.SenderClientId;
+    //    ClientRpcParams clientRpcParams = new ClientRpcParams
+    //    {
+    //        Send = new ClientRpcSendParams { TargetClientIds = new ulong[] { clientId } }
+    //    };
+
+    //    NetworkBehaviourReference interactable;
+    //    interactable = characterBox;
+    //    DebugLogClientRpc("ServerRpc", clientRpcParams);
+    //    RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.zero); // Die Mausposition (ursprünglich in Pixel) wird in Weltkoordinaten übersetzt (Unity transform z.B.)
+    //                                                                // Eine Linie zwischen der Position des Mauszeigers wird gebildet und dem Vektor (0,0) wird gebildet. Ist noch nicht ganz klar ob das der Ursprung der Map oder das Zentrum der Kamera ist.
+    //    DebugLogClientRpc(origin.ToString());
+    //    if (hit.collider != null) // Wird geprüft ob überhaupt was getroffen wurde
+    //    {
+    //        DebugLogClientRpc("Hab was!!", clientRpcParams);
+    //        if (hit.collider.GetComponent<Interactable>() != null)
+    //        {
+    //            DebugLogClientRpc("Ist ein Interactable", clientRpcParams);
+    //            interactable = hit.collider.GetComponent<NetworkBehaviourReference>(); // Gegenstand der getroffen wurde wird fokusiert. (Für spätere Interaktion)
+    //        }
+    //    }
+
+    //    CheckIfHitInteractableClientRpc(interactable, clientRpcParams);
+    //}
+
+    //[ClientRpc]
+    //public void CheckIfHitInteractableClientRpc(NetworkBehaviourReference interactable, ClientRpcParams clientRpcParams = default)
+    //{
+    //    Debug.Log("ClientRpc");
+    //    interactable.TryGet<Interactable>(out Interactable interactableFocus);
+    //    SetFocus(interactableFocus);
+    //}
+
+    //[ClientRpc]
+    //public void DebugLogClientRpc(string message, ClientRpcParams clientRpcParams = default)
+    //{
+    //    Debug.Log(message);
+    //}
+
+    //RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero); // Die Mausposition (ursprünglich in Pixel) wird in Weltkoordinaten übersetzt (Unity transform z.B.)
+    //        foreach(RaycastHit2D h in hits)                                                                                                                        // Eine Linie zwischen der Position des Mauszeigers wird gebildet und dem Vektor (0,0) wird gebildet. Ist noch nicht ganz klar ob das der Ursprung der Map oder das Zentrum der Kamera ist.
+    //        {
+    //            Debug.Log(h);
+    //            if (h.collider != null)
+    //            {
+    //                Debug.Log("Found Collider");
+    //                Interactable inter = h.collider.GetComponent<Interactable>();
+    //                if (inter != null)
+    //                {
+    //                    Debug.Log("Found Interactable, break");
+    //                    SetFocus(inter);
+    //                    break;
+    //                }
+    //            }
+    //        }
+
+    public void SetFocus (Interactable newFocus) 
+    {
+        if (newFocus == null)
+        { return; }
+
         if (newFocus != focus)
         {
             if (focus != null)

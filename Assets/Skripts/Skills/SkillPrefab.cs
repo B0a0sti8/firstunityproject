@@ -644,7 +644,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
         playerStats = PLAYER.GetComponent<PlayerStats>();
         
-        mainCam = GameObject.Find("CameraMama").transform.Find("Main Camera").GetComponent<Camera>();
+        mainCam = GameObject.Find("CameraMama").transform.Find("MainKamera").GetComponent<Camera>();
     }
 
     public virtual void Start()

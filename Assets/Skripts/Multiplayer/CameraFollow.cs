@@ -16,6 +16,15 @@ public class CameraFollow : NetworkBehaviour
 
     private void Start()
     {
+        if (IsOwner)
+        {
+            GameObject prevMainCam = GameObject.Find("Main Camera");
+            if (prevMainCam != null)
+            {
+                prevMainCam.SetActive(false);
+            }
+        }
+        
         CameraMama = GameObject.Find("CameraMama");
         CameraMama.transform.GetChild(0).gameObject.SetActive(true);
 
