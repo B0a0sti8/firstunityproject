@@ -447,7 +447,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
                 isSkillInOwnSuperInstantQueue = false;
                 ownCooldownActive = true;
                 ownCooldownTimeLeft = ownCooldownTimeModified;
-                if (needsMana) { playerStats.currentMana.Value -= manaCost; }
+                if (needsMana) { playerStats.ManageMana(-manaCost); }
                 StartCasting();
             }
         }

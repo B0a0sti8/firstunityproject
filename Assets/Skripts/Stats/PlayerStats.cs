@@ -26,7 +26,7 @@ public class PlayerStats : CharacterStats
 	#region Stats: Aus Characterstats geerbte sind auskommentiert
 	[Header("Mana")]
 	public Stat maxMana;
-	public NetworkVariable<float> currentMana = new NetworkVariable<float>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+	public NetworkVariable<float> currentMana = new NetworkVariable<float>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 	//public float currentMana;
 
 	//[Header("Health")]
@@ -146,7 +146,8 @@ public class PlayerStats : CharacterStats
 		ReloadEquipMainStats();
 
 		//currentHealth.Value = maxHealth.GetValue();
-		currentMana.Value = maxMana.GetValue();
+
+		SetManaCurrentValueServerRPC(maxMana.GetValue());
 
 		MyCurrentPlayerLvl = 1;
 		MyNeededXP = Mathf.RoundToInt(100 * MyCurrentPlayerLvl * Mathf.Pow(MyCurrentPlayerLvl, 0.5f));
@@ -317,11 +318,11 @@ public class PlayerStats : CharacterStats
 		manaBarUI.SetMana((int)currentMana.Value);
 		if (currentMana.Value > maxMana.GetValue())
 		{
-			currentMana.Value = maxMana.GetValue();
+			SetManaCurrentValueServerRPC(maxMana.GetValue());
 		}
 		if (currentMana.Value < 0)
 		{
-			currentMana.Value = 0;
+			SetManaCurrentValueServerRPC(0);
 		}
 
 		string hText = currentHealth.Value.ToString().Replace(",", ".") + " / " + maxHealth.GetValue().ToString().Replace(",", ".");
@@ -331,6 +332,12 @@ public class PlayerStats : CharacterStats
 		manaText.SetText(mText);
 	}
 
+
+	[ServerRpc]
+	private void SetManaCurrentValueServerRPC(float manaValue)
+	{
+		currentMana.Value = manaValue;
+	}
 
 
 	[ServerRpc]
@@ -369,10 +376,7 @@ public class PlayerStats : CharacterStats
 
 	public void ManageMana(float manaCost)
 	{
-		if (IsOwner)
-		{
-			ManageManaServerRPC(manaCost);
-		}
+		ManageManaServerRPC(manaCost);
 	}
 
 	void ManaRegeneration()
@@ -447,7 +451,7 @@ public class PlayerStats : CharacterStats
 
 			TakeDamage(20, 0, false, this);
 
-			currentMana.Value -= 20;
+			ManageMana(-20);
 		}
 	}
 
