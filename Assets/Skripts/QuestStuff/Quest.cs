@@ -150,7 +150,6 @@ public class CollectObjective : Objective
     }
 }
 
-
 [System.Serializable]
 public class KillObjective : Objective
 {

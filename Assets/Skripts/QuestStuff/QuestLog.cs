@@ -6,6 +6,13 @@ using UnityEngine.UI;
 
 public class QuestLog : MonoBehaviour
 {
+    [SerializeField] private List<Quest> allTheQuests;
+    [SerializeField] private List<Quest> allTheCompletedQuests;
+    [SerializeField] private List<Quest> allTheCurrentQuests;
+
+
+
+
     private List<QuestScript> questScripts = new List<QuestScript>();
     private List<Quest> quests = new List<Quest>();
     private StuffManagerScript stuffManager;
@@ -25,20 +32,6 @@ public class QuestLog : MonoBehaviour
     private int currentCount;
 
     InventoryScript myInventory;
-
-    //private static QuestLog instance;
-
-    //public static QuestLog MyInstance 
-    //{
-    //    get 
-    //    {
-    //        if (instance == null)
-    //        {
-    //            instance = GameObject.FindObjectOfType<QuestLog>();
-    //        }
-    //        return instance;
-    //    } 
-    //}
 
     void Start()
     {
@@ -168,7 +161,7 @@ public class QuestLog : MonoBehaviour
         currentCount--;
         QuestCountTxt.text = currentCount + "/" + maxCount;
         qs.MyQuest.MyQuestGiver.UpdateQuestStatus(this);
-        qs = null;
+        //qs = null;
     }
 
     public bool HasQuest(Quest quest)
