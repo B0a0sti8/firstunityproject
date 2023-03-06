@@ -14,18 +14,18 @@ public class HoTBuff : Buff
         buffName = "Cure";
         buffDescription = "Gain <color=green>Healinge</color> over <color=yellow>Timere</color>. This is a verry long buff description. Oh yeaaah!";
         buffSource = source;
-        tickValue = 10f;
+        tickValue = 100f;
 
     }
 
-    public override void StartBuffEffect(CharacterStats playerStats)
+    public override void StartBuffUI()
     {
         Debug.Log("Started Buff Effect");
         internTransferName = "HoTBuff";
         buffName = "Cure";
         buffDescription = "Gain <color=green>Healinge</color> over <color=yellow>Timere</color>. This is a verry long buff description. Oh yeaaah!";
-        base.StartBuffEffect(playerStats);
-        tickTimeElapsed = 0;
+        base.StartBuffUI();
+        tickTimeElapsed = 0;        
     }
 
     public override void EndBuffEffect(CharacterStats playerStats)
@@ -39,15 +39,15 @@ public class HoTBuff : Buff
         return clone;
     }
 
-    public override void Update(CharacterStats playerStats)
+
+    public override void UpdateEffect(CharacterStats playerStats)
     {
-        base.Update(playerStats);
+        base.UpdateEffect(playerStats);
+
         tickTimeElapsed += Time.deltaTime;
         if (tickTimeElapsed >= tickTime)
         {
             tickTimeElapsed = 0;
-            Debug.Log(buffSource);
-            Debug.Log(playerStats.gameObject);
 
             DamageOrHealing.DoHealing(buffSource.GetComponent<NetworkBehaviour>(), playerStats.gameObject.GetComponent<NetworkBehaviour>(), tickValue);
         }

@@ -71,7 +71,7 @@ public class BuffDebuffUIWorldCanv : NetworkBehaviour
                 string buffN = buffManager.buffs[i].buffName;
                 string buffDes = buffManager.buffs[i].buffDescription;
                 string buffSpN = buffManager.buffs[i].icon.name;
-                float buffDur = buffManager.buffs[i].duration;
+                float buffDur = buffManager.buffs[i].durationTimeLeft;
                 UpdateUIServerRpc(nBref, i, buffN, buffDes, buffSpN, buffDur);
             }
             else

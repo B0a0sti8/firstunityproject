@@ -34,10 +34,20 @@ public abstract class Buff
 
     public virtual void StartBuffEffect(CharacterStats playerStats) 
     {
+        
+    }
+
+    public virtual void StartBuffUI()
+    {
         durationTimeLeft = duration;
     }
 
     public virtual void EndBuffEffect(CharacterStats playerStats) 
+    {
+
+    }
+
+    public void EndBuffUI(CharacterStats playerStats)
     {
         if (playerStats.gameObject.GetComponent<BuffManager>() != null)
         {
@@ -51,6 +61,7 @@ public abstract class Buff
         }
     }
 
+
     public virtual void Dispell()
     {
         if (isRemovable)
@@ -61,16 +72,28 @@ public abstract class Buff
 
     public virtual void Update(CharacterStats playerStats)
     {
-        elapsed += Time.deltaTime;
-        if (elapsed >= duration) {
-            EndBuffEffect(playerStats); 
-        }
-
         if (durationTimeLeft > 0)
         {
             durationTimeLeft -= Time.deltaTime;
         }
+        elapsed += Time.deltaTime;
+
+        if (elapsed >= duration)
+        {
+            durationTimeLeft = 0;
+            EndBuffUI(playerStats);
+        }
     }
+
+    public virtual void UpdateEffect(CharacterStats playerStats)
+    {
+        
+        if (elapsed >= duration)
+        {
+            EndBuffEffect(playerStats);
+        }
+    }
+
 
     public abstract Buff Clone();
 }

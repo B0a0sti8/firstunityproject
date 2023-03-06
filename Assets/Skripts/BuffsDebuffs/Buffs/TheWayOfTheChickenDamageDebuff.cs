@@ -25,9 +25,9 @@ public class TheWayOfTheChickenDamageDebuff : Buff
         return clone;
     }
 
-    public override void Update(CharacterStats playerStats)
+    public override void UpdateEffect(CharacterStats playerStats)
     {
-        base.Update(playerStats);
+        base.UpdateEffect(playerStats);
         tickTimeElapsed += Time.deltaTime;
         if (tickTimeElapsed >= tickTime)
         {
