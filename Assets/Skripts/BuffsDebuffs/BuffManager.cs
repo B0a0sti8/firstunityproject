@@ -13,7 +13,6 @@ public class BuffManager : NetworkBehaviour
     List<Buff> newBuffs = new List<Buff>();
     List<Buff> expiredBuffs = new List<Buff>();
 
-
     public void AddBuffProcedure(NetworkBehaviourReference target, NetworkBehaviourReference source, string buffName, string buffImageName, bool isDamageOrHealing, float duration, float tickTime, float value)
     {
          AddBuffServerRpc(target, source, buffName, buffImageName, isDamageOrHealing, duration, tickTime, value);
@@ -22,28 +21,12 @@ public class BuffManager : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     void AddBuffServerRpc(NetworkBehaviourReference target, NetworkBehaviourReference source, string buffName, string buffImageName, bool isDamageOrHealing, float duration, float tickTime, float value)
     {
-        AddBuffClientRpc(target, source, buffName, buffImageName, isDamageOrHealing, duration, tickTime, value);
-                
-        target.TryGet<NetworkBehaviour>(out NetworkBehaviour tar);
-        source.TryGet<NetworkBehaviour>(out NetworkBehaviour sor);
-
-        var buff = BuffMasterManager.MyInstance.ListOfAllBuffs[buffName];
-        Buff clone = buff.Clone();
-        clone.buffSource = sor.gameObject;
-        Sprite buffIcon = Resources.Load<Sprite>("BuffDebuffSprites/" + buffImageName);
-
-        if (isDamageOrHealing)
-        { tar.gameObject.GetComponent<BuffManager>().AddBuff(clone, buffIcon, duration, tickTime, value); }
-        else
-        { tar.gameObject.GetComponent<BuffManager>().AddBuff(clone, buffIcon, duration, value); }
-        
+        AddBuffClientRpc(target, source, buffName, buffImageName, isDamageOrHealing, duration, tickTime, value);     
     }
 
     [ClientRpc]
     void AddBuffClientRpc(NetworkBehaviourReference target, NetworkBehaviourReference source, string buffName, string buffImageName, bool isDamageOrHealing, float duration, float tickTime, float value)
     {
-        if (IsHost) { return; }
-     
         target.TryGet<NetworkBehaviour>(out NetworkBehaviour tar);
         source.TryGet<NetworkBehaviour>(out NetworkBehaviour sor);
 
@@ -57,9 +40,6 @@ public class BuffManager : NetworkBehaviour
         else
         { tar.gameObject.GetComponent<BuffManager>().AddBuff(clone, buffIcon, duration, value); }
     }
-
-   
-
 
     public void AddBuff(Buff buff, Sprite buffImage, float duration, float value)
     {
@@ -70,7 +50,6 @@ public class BuffManager : NetworkBehaviour
         buff.StartBuffUI();
 
         if (IsServer) { buff.StartBuffEffect(gameObject.GetComponent<PlayerStats>()); }
-        
     }
 
     public void AddBuff(Buff buff, Sprite buffImage, float duration, float tickTime, float tickValue)
@@ -125,12 +104,6 @@ public class BuffManager : NetworkBehaviour
             buffDebuffUIWorldCanv.UpdateUIStart();
             if (onBuffsChangedCallback != null) { onBuffsChangedCallback.Invoke(); }
         }
-    }
-
-    [ClientRpc]
-    void DebugLogClientRpc()
-    {
-        Debug.Log("Habe Buff");
     }
 
     void Update()

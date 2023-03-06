@@ -10,8 +10,6 @@ public class QuestScript : MonoBehaviour
 
     private bool markedComplete = false;
 
-
-
     public void Select()
     {
         GetComponent<TextMeshProUGUI>().color = Color.red;
