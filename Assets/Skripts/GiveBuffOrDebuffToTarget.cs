@@ -5,74 +5,26 @@ using Unity.Netcode;
 
 public static class GiveBuffOrDebuffToTarget
 {
-    [ServerRpc]
-    public static void GiveBuffOrDebuffServerRpc(NetworkBehaviourReference target, NetworkBehaviourReference source, string buffName, string buffImageName, bool isDamageOrHealing, float duration, float tickTime, float value)
+    public static void GiveBuffOrDebuff(NetworkBehaviourReference target, NetworkBehaviourReference source, string buffName, string buffImageName, bool isDamageOrHealing, float duration, float tickTime, float value)
     {
-        GiveBuffOrDebuffClientRpc(target, source, buffName, buffImageName, isDamageOrHealing, duration, tickTime, value);
-        //target.TryGet<NetworkBehaviour>(out NetworkBehaviour tar);
-        //source.TryGet<NetworkBehaviour>(out NetworkBehaviour sor);
-
-        //var buff = BuffMasterManager.MyInstance.ListOfAllBuffs[buffName];
-        //Buff clone = buff.Clone();
-        //clone.buffSource = sor.gameObject;
-        //Sprite buffIcon = Resources.Load<Sprite>("BuffDebuffSprites/" + buffImageName);
-
-        //if (tar.CompareTag("Player"))
-        //{
-        //    if (isDamageOrHealing)
-        //    {
-        //        tar.GetComponent<BuffManager>().AddBuff(clone, buffIcon, duration, tickTime, value);
-        //    }
-        //    else
-        //    {
-        //        tar.GetComponent<BuffManager>().AddBuff(clone, buffIcon, duration, value);
-        //    }
-        //}
-        //else        // Falls es ein Enemy oder Friendly NPC ist.
-        //{
-        //    if (isDamageOrHealing)
-        //    {
-        //        tar.GetComponent<BuffManagerNPC>().AddBuff(clone, buffIcon, duration, tickTime, value);
-        //    }
-        //    else
-        //    {
-        //        tar.GetComponent<BuffManagerNPC>().AddBuff(clone, buffIcon, duration, value);
-        //    }
-        //}
-    }
-
-    [ClientRpc]
-    public static void GiveBuffOrDebuffClientRpc(NetworkBehaviourReference target, NetworkBehaviourReference source, string buffName, string buffImageName, bool isDamageOrHealing, float duration, float tickTime, float value)
-    {
-        Debug.Log("GIveBuffClientRpc");
         target.TryGet<NetworkBehaviour>(out NetworkBehaviour tar);
-        source.TryGet<NetworkBehaviour>(out NetworkBehaviour sor);
+        
 
-        var buff = BuffMasterManager.MyInstance.ListOfAllBuffs[buffName];
-        Buff clone = buff.Clone();
-        clone.buffSource = sor.gameObject;
-        Sprite buffIcon = Resources.Load<Sprite>("BuffDebuffSprites/" + buffImageName);
-
-        if (tar.CompareTag("Player"))
+        if (tar.gameObject.CompareTag("Player"))
         {
-            if (isDamageOrHealing)
-            {
-                tar.GetComponent<BuffManager>().AddBuff(clone, buffIcon, duration, tickTime, value);
-            }
-            else
-            {
-                tar.GetComponent<BuffManager>().AddBuff(clone, buffIcon, duration, value);
-            }
+            tar.gameObject.GetComponent<BuffManager>().AddBuffProcedure(target, source, buffName, buffImageName, isDamageOrHealing, duration, tickTime, value);
         }
         else        // Falls es ein Enemy oder Friendly NPC ist.
         {
             if (isDamageOrHealing)
             {
-                tar.GetComponent<BuffManagerNPC>().AddBuff(clone, buffIcon, duration, tickTime, value);
+                Debug.Log("Gegnern Kann noch kein Buff gegeben werden, siehe hier");
+                //tar.gameObject.GetComponent<BuffManagerNPC>().AddBuffProcedure(target, source, buffName, buffImageName, isDamageOrHealing, duration, tickTime, value);
             }
             else
             {
-                tar.GetComponent<BuffManagerNPC>().AddBuff(clone, buffIcon, duration, value);
+                Debug.Log("Gegnern Kann noch kein Buff gegeben werden, siehe hier");
+                //tar.gameObject.GetComponent<BuffManagerNPC>().AddBuffProcedure(target, source, buffName, buffImageName, isDamageOrHealing, duration, tickTime, value);
             }
         }
     }

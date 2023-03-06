@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class BuffManagerNPC : MonoBehaviour
+public class BuffManagerNPC : NetworkBehaviour
 {
     public delegate void OnBuffsChanged();
     public OnBuffsChanged onBuffsChangedCallback;
@@ -17,7 +18,9 @@ public class BuffManagerNPC : MonoBehaviour
         buff.icon = buffImage;
         buff.duration = duration;
         buff.value = value;
-        buff.StartBuffEffect(gameObject.GetComponent<CharacterStats>());
+        buff.StartBuffUI();
+
+        if (IsServer) { buff.StartBuffEffect(gameObject.GetComponent<CharacterStats>()); }
     }
 
     public void AddBuff(Buff buff, Sprite buffImage, float duration, float tickTime, float tickValue)
@@ -27,7 +30,9 @@ public class BuffManagerNPC : MonoBehaviour
         buff.duration = duration + 0.01f;
         buff.tickTime = tickTime;
         buff.tickValue = tickValue;
-        buff.StartBuffEffect(gameObject.GetComponent<CharacterStats>());
+        buff.StartBuffUI();
+
+        if (IsServer) { buff.StartBuffEffect(gameObject.GetComponent<CharacterStats>()); }
     }
 
     public void RemoveBuff(Buff buff)
@@ -40,6 +45,7 @@ public class BuffManagerNPC : MonoBehaviour
         foreach (Buff buff in buffs)
         {
             buff.Update(gameObject.GetComponent<CharacterStats>());
+            if (IsServer) { buff.Update(gameObject.GetComponent<CharacterStats>()); }
         }
 
         if (newBuffs.Count > 0)

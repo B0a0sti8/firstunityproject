@@ -8,7 +8,7 @@ public class TestGainLifeHot : SkillPrefab
     [Header("Hot-Stats")]
     public float instantHealing = 50f;
     public float tickTime = 2f;
-    public int tickHealing = 5;
+    public int tickHealing = 50;
     public float duration = 10f;
     
    
@@ -51,13 +51,13 @@ public class TestGainLifeHot : SkillPrefab
         if (interactionCharacter.focus == null)
         {
             //PLAYER.GetComponent<BuffManager>().AddBuff(clone, buffImage, duration, tickTime, tickHealing);
-            GiveBuffOrDebuffToTarget.GiveBuffOrDebuffServerRpc(PLAYER.GetComponent<NetworkBehaviour>(), PLAYER.GetComponent<NetworkBehaviour>(), "HoTBuff", "HoTBuff", true, duration, tickTime, tickHealing);
+            GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(PLAYER.GetComponent<NetworkBehaviour>(), PLAYER.GetComponent<NetworkBehaviour>(), "HoTBuff", "HoTBuff", true, duration, tickTime, tickHealing);
         }
         else
         {
             Debug.Log("Anderer Charakter");
             //interactionCharacter.focus.GetComponent<BuffManager>().AddBuff(clone, buffImage, duration, tickTime, tickHealing);
-            GiveBuffOrDebuffToTarget.GiveBuffOrDebuffServerRpc(interactionCharacter.focus.gameObject.GetComponent<NetworkBehaviour>(), PLAYER.GetComponent<NetworkBehaviour>(), "HoTBuff", "HoTBuff", true, duration, tickTime, tickHealing);
+            GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(interactionCharacter.focus.gameObject.GetComponent<NetworkBehaviour>(), PLAYER.GetComponent<NetworkBehaviour>(), "HoTBuff", "HoTBuff", true, duration, tickTime, tickHealing);
         }
 
         

@@ -69,8 +69,15 @@ public class CharacterStats : NetworkBehaviour
 
     public virtual void TakeHealing(float healing, bool isCrit, NetworkBehaviourReference nBref)
     {
-        Debug.Log("TakeHealing");        
-        GetHealingServerRpc(healing, isCrit, nBref);
+        Debug.Log("TakeHealing");
+        if (IsServer)
+        {
+            currentHealth.Value += healing;
+        }
+        else
+        {
+            GetHealingServerRpc(healing, isCrit, nBref);
+        }
     }
 
     [ServerRpc(RequireOwnership = false)]
