@@ -56,18 +56,20 @@ public abstract class Item : ScriptableObject, IMoveable // Statt Monobehaviour 
     {
         // Item verwenden.
         // Es k?nnte etwas passieren (je nach Item)
-        NetworkObjectReference userReference = GetUserServerRpc();
-        userReference.TryGet(out NetworkObject user);
+        // NetworkObjectReference userReference = GetUserServerRpc();
+        // userReference.TryGet(out NetworkObject user);
+        user = NetworkManager.Singleton.LocalClient.PlayerObject;
         Debug.Log("Using " + name);
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    public NetworkObjectReference GetUserServerRpc()
-    {
-        user = NetworkManager.Singleton.ConnectedClients[NetworkManager.Singleton.LocalClientId].PlayerObject;
-        NetworkObjectReference userReference = user.GetComponent<NetworkObjectReference>();
-        return userReference;
-    }
+    //[ServerRpc(RequireOwnership = false)]
+    //public NetworkObjectReference GetUserServerRpc()
+    //{
+        
+    //    user = NetworkManager.Singleton.ConnectedClients[NetworkManager.Singleton.LocalClientId].PlayerObject;
+    //    NetworkObjectReference userReference = (NetworkObjectReference)user;  //  user.gameObject.GetComponent<NetworkObjectReference>();
+    //    return userReference;
+    //}
 
     public void Remove()
     {
