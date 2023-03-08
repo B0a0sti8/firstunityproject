@@ -168,7 +168,6 @@ public class PlayerStats : CharacterStats
         base.TakeHealing(healing, isCrit, nBref);
     }
 
-
     public void OnManaChange()
 	{
 		if (!IsOwner) { return; }

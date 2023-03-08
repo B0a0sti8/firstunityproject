@@ -39,6 +39,13 @@ public class EnemyStats : CharacterStats
         isAlive.Value = true;
         baseDamage = 10f;
         baseAttackSpeed = 2f;
+        if (IsServer)
+        {
+            if (!GetComponent<NetworkObject>().IsSpawned)
+            {
+                GetComponent<NetworkObject>().Spawn();
+            }
+        }
         base.Start();
     }
 
