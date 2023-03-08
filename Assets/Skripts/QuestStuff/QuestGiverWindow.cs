@@ -158,6 +158,7 @@ public class QuestGiverWindow : UIWindowNPC
 
             playerStats.GainXP(selectedQuest.MyXPGiven);
             myQuestLog.RemoveQuest(selectedQuest.MyQuestScript);
+            myQuestLog.allTheCompletedQuests.Add(selectedQuest.MyQuestScript.MyQuest);
             Back();
         }
     }

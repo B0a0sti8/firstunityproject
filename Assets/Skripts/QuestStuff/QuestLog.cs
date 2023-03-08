@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class QuestLog : MonoBehaviour
 {
     [SerializeField] private List<Quest> allTheQuests;
-    [SerializeField] private List<Quest> allTheCompletedQuests;
+    [SerializeField] public List<Quest> allTheCompletedQuests;
     [SerializeField] private List<Quest> allTheCurrentQuests;
 
 
