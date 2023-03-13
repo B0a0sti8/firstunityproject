@@ -10,7 +10,7 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 /[Aa]ssets/2DHandPaintedTilesets
-/[Aa]llIn1VfxToolkit
+/[Aa]ssets/AllIn1VfxToolkit
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
