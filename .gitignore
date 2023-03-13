@@ -67,3 +67,5157 @@ crashlytics-build.properties
 
 
 Assets/2D Hand Painted Tilesets/
+
+Assets/AllIn1VfxToolkit.meta
+
+Assets/AllIn1VfxToolkit/!README.txt
+
+Assets/AllIn1VfxToolkit/!README.txt.meta
+
+Assets/AllIn1VfxToolkit/AllIn1VfxAssmebly.asmdef
+
+Assets/AllIn1VfxToolkit/AllIn1VfxAssmebly.asmdef.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/Beam Blue.controller
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/Beam Blue.controller.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/BlueBeam.anim
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/BlueBeam.anim.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/CharacterRun.controller
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/CharacterRun.controller.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/Fire Bullet.controller
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/Fire Bullet.controller.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/FireBulletSpawn.anim
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/FireBulletSpawn.anim.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/FireShield.anim
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/FireShield.anim.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/FireShield.controller
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/FireShield.controller.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/HumanoidRun.anim
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/HumanoidRun.anim.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/MagicSlash.controller
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/MagicSlash.controller.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/MagicSlashAnim.anim
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/MagicSlashAnim.anim.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/RunAvatar.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/RunAvatar.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/SandShield.anim
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/SandShield.anim.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/SandShield.controller
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/SandShield.controller.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/VenomSlash.controller
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/VenomSlash.controller.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/VenomSlashAnim.anim
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/VenomSlashAnim.anim.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/WaterShield.anim
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/WaterShield.anim.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/WaterShield.controller
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Animation/WaterShield.controller.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/DemoBuiltInPipeline.unity
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/DemoBuiltInPipeline.unity.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/AreaAuras Group.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/AreaAuras Group.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/AreaBlue.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/AreaBlue.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/AreaGreen.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/AreaGreen.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/AreaPurple.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/AreaPurple.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/AreaRed.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/AreaRed.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/AuraEvil.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/AuraEvil.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/AuraHolly.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/AuraHolly.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosion Group.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosion Group.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosions Blue Impact.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosions Blue Impact.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosions Bomb.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosions Bomb.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosions Galaxy.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosions Galaxy.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosions Purple Impact.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosions Purple Impact.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosions Red Impact.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosions Red Impact.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosions Toon Bomb.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosions Toon Bomb.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosions Water Splash.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Explosions Water Splash.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Magic Explosive Spell.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Magic Explosive Spell.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playable Others Group.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playable Others Group.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Blue Beam.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Blue Beam.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Incinerate Spell.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Incinerate Spell.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Lightning Strike.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Lightning Strike.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Orange Beam.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Orange Beam.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Slash 1.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Slash 1.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Slash 2.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Slash 2.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Slash 3.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Slash 3.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Slash 4.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Playables Slash 4.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Projectile Group 1.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Projectile Group 1.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Projectiles Digital.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Projectiles Digital.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Projectiles Fire.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Projectiles Fire.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Projectiles Gun.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Projectiles Gun.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Projectiles Ice.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Projectiles Ice.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Shield Group.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Shield Group.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Shields Fire.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Shields Fire.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Shields Sand.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Shields Sand.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Shields Scifi 2.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Shields Scifi 2.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Shields Scifi.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Shields Scifi.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Shields Water.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Shields Water.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Blue Fire.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Blue Fire.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Dark Magic Orb.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Dark Magic Orb.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Electricity.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Electricity.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Fire Trail.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Fire Trail.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Galaxy Character.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Galaxy Character.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Ghost Trail.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Ghost Trail.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Pink Trail.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Pink Trail.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Pixel Fire.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Pixel Fire.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Real Fire.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Real Fire.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Thick Smoke.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Thick Smoke.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Toon Character.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1 Toon Character.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics1.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2 Air Column.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2 Air Column.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2 Blue Pixel Portal.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2 Blue Pixel Portal.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2 Blue Tornado.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2 Blue Tornado.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2 Fire Tornado.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2 Fire Tornado.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2 Green Portal.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2 Green Portal.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2 Magic Spiral.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2 Magic Spiral.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2 Plasma Ball.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2 Plasma Ball.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/EffectsScriptableObjects/Statics2.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Fonts.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Fonts/PoetsenOne-Regular.ttf
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Fonts/PoetsenOne-Regular.ttf.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Fonts/Raleway-Medium.ttf
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Fonts/Raleway-Medium.ttf.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Fonts/Roboto-Medium.ttf
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Fonts/Roboto-Medium.ttf.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/10_Base.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/10_Base.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/10_Tornado_Core.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/10_Tornado_Core.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/10_Tornado_Ext.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/10_Tornado_Ext.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/11_Light_Sparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/11_Light_Sparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/11_Light_Strike.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/11_Light_Strike.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/11_Sparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/11_Sparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/12_Toon_Base.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/12_Toon_Base.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/12_Toon_Shield.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/12_Toon_Shield.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/13_Base.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/13_Base.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/13_Tornado_Core.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/13_Tornado_Core.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/13_tornado_Ext.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/13_tornado_Ext.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/14_Base.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/14_Base.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/14_Core.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/14_Core.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/14_Ext.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/14_Ext.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/15_Base_2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/15_Base_2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/15_Base.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/15_Base.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/15_Vertical_1.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/15_Vertical_1.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/16_Base_1.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/16_Base_1.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/16_Base_2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/16_Base_2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/16_Vertical_1.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/16_Vertical_1.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/17_Base.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/17_Base.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/17_Spiral.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/17_Spiral.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/18_Slash_Mesh.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/18_Slash_Mesh.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/19_Shere_Distortion.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/19_Shere_Distortion.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/2_Water_Base.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/2_Water_Base.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/2_Water_Sphere.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/2_Water_Sphere.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/4_Aura_Base.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/4_Aura_Base.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/4_Aura_Core.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/4_Aura_Core.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/4_Aura_Wave.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/4_Aura_Wave.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/5_Aura_Base_1.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/5_Aura_Base_1.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/5_Aura_Base_2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/5_Aura_Base_2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/5_Aura_Vertical.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/5_Aura_Vertical.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/6_Aura_Base_1.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/6_Aura_Base_1.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/6_Aura_Base_2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/6_Aura_Base_2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/6_Aura_Vertical.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/6_Aura_Vertical.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/7_Aura_1.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/7_Aura_1.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/7_Aura_3.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/7_Aura_3.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/7_Aura_Base.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/7_Aura_Base.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_Beam1.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_Beam1.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_Sphere_Toon.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_Sphere_Toon.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_Sphere.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_Sphere.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_Splash_Toon.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_Splash_Toon.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_Splash.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_Splash.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_ToonBeam_1.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_ToonBeam_1.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_ToonBeam_2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_ToonBeam_2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_ToonBeam_3.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/8_ToonBeam_3.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/9_Ray.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/9_Ray.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/9_Sparks Purple.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/9_Sparks Purple.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/9_Sparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/9_Sparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/9_Sphere.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/9_Sphere.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/AbosrbMagicChargeUpCircle.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/AbosrbMagicChargeUpCircle.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/AbosrbMagicChargeUpLines.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/AbosrbMagicChargeUpLines.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/AbosrbMagicFlare.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/AbosrbMagicFlare.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/AbosrbMagicFlare2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/AbosrbMagicFlare2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/AbsorbMagicPieces.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/AbsorbMagicPieces.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/AbsorbMagicStreaks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/AbsorbMagicStreaks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Ash.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Ash.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/BackFire.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/BackFire.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/BackgroundGlow.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/BackgroundGlow.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/BlackFire.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/BlackFire.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/BlueEmbers.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/BlueEmbers.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/BlueFireTrail.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/BlueFireTrail.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/BluePixelPs.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/BluePixelPs.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/CenterGlow.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/CenterGlow.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/CenterGlow2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/CenterGlow2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/CenterSparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/CenterSparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/CharacterToon.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/CharacterToon.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/CrackLighting.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/CrackLighting.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/CrackLighting2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/CrackLighting2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/CrackLighting3.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/CrackLighting3.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/DarkBG.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/DarkBG.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/DarkBGWater.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/DarkBGWater.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Debris.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Debris.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/DistortionDebris.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/DistortionDebris.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/DistortionField.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/DistortionField.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/DistortionShockwave.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/DistortionShockwave.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/DistortionShockwaveIn.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/DistortionShockwaveIn.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/DistortOrbSparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/DistortOrbSparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Drops.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Drops.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Electricity.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Electricity.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ElectricMagicSwordSlash.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ElectricMagicSwordSlash.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ElectricSparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ElectricSparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/EmberSparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/EmberSparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/EmberSparksGalaxy.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/EmberSparksGalaxy.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Environment.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Environment/DemoBackGradient.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Environment/DemoBackGradient.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Environment/DemoDarkWall.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Environment/DemoDarkWall.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Environment/DemoFloorMat.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Environment/DemoFloorMat.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Environment/DemoWhite.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Environment/DemoWhite.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/EvilCapsule.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/EvilCapsule.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ExpansiveWave.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ExpansiveWave.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ExplosionBurnmark.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ExplosionBurnmark.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ExplosionBurnmark2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ExplosionBurnmark2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ExplosionBurnmark3.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ExplosionBurnmark3.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ExplosionSparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ExplosionSparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ExplosionStreaks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ExplosionStreaks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FaintGlow.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FaintGlow.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FaintOrange.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FaintOrange.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Fire_Sparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Fire_Sparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Fire.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Fire.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireBullet.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireBullet.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireMuzzleCone.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireMuzzleCone.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireReal.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireReal.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireShapes.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireShapes.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireShotTrail.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireShotTrail.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireSparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireSparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireSparks2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireSparks2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireTrail.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireTrail.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireTrailSmoke.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/FireTrailSmoke.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GalaxyCharacter.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GalaxyCharacter.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GalaxySmokeSide.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GalaxySmokeSide.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GalaxySmokeTop.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GalaxySmokeTop.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GalaxySparksExpl.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GalaxySparksExpl.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GalaxyStars.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GalaxyStars.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GhostSmoke.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GhostSmoke.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GhostSphere.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GhostSphere.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GhostTrail.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GhostTrail.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GhostTrail2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GhostTrail2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Glow.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Glow.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GlowExplosion.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GlowExplosion.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GlowFireBlue.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GlowFireBlue.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GlowFireRed.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GlowFireRed.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GlowSphere.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GlowSphere.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GreenFire.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GreenFire.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GunBulletCore.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GunBulletCore.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GunBulletTrail.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GunBulletTrail.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GunImpactBigSparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GunImpactBigSparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GunImpactFlare.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GunImpactFlare.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GunMuzzleCone.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GunMuzzleCone.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GunMuzzlePlanes.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GunMuzzlePlanes.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GunMuzzleSparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/GunMuzzleSparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/HollySphere.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/HollySphere.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/IceFlares.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/IceFlares.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/IceMuzzleCone.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/IceMuzzleCone.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/IceShotTrail.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/IceShotTrail.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/IceShotTrailDark.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/IceShotTrailDark.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactBigSparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactBigSparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactCenterFlare.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactCenterFlare.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactCenterGlow.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactCenterGlow.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactFlare.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactFlare.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactFlareFire.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactFlareFire.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactFlareIce.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactFlareIce.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactGlow.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactGlow.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactMark.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactMark.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactRing.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactRing.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactRing2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactRing2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactRingBlue.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactRingBlue.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactRingRed.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactRingRed.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactShapeBlue.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactShapeBlue.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactShapeBright.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactShapeBright.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactShapeRed.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactShapeRed.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactSmoke2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactSmoke2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactSmokeBlue.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactSmokeBlue.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactSmokePurple.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactSmokePurple.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactSmokeRed.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactSmokeRed.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactSpirals.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ImpactSpirals.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/IntersectOrb.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/IntersectOrb.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Leafs.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Leafs.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Lightnings.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Lightnings.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/LightRays.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/LightRays.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/LightRaysMasked.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/LightRaysMasked.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/MagicPurpleBall.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/MagicPurpleBall.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/MagicPurpleCircle.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/MagicPurpleCircle.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/MagicPurpleCircle2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/MagicPurpleCircle2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/MuzzleWave.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/MuzzleWave.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/MuzzleWave2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/MuzzleWave2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/OrangeFaintGlow.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/OrangeFaintGlow.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/OrangeFireTrail.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/OrangeFireTrail.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/OrbSpark.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/OrbSpark.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/OrbSparkGlow.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/OrbSparkGlow.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Pentagram.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Pentagram.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PentagramEcho.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PentagramEcho.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PentagramSoul.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PentagramSoul.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PentagramSoul2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PentagramSoul2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PixelFire.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PixelFire.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PixelFire2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PixelFire2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PixelFireShape.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PixelFireShape.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PixelGlow.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PixelGlow.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PixelSmoke.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PixelSmoke.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PixelSparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PixelSparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PlainLeafs.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PlainLeafs.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PortalBlue.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PortalBlue.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PortalDistortion.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PortalDistortion.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PortalPixelBlue.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/PortalPixelBlue.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjectileSparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjectileSparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjGlowRed.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjGlowRed.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjGlowTrail.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjGlowTrail.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjHeadDigital.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjHeadDigital.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjHeadIce.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjHeadIce.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjSmallTrail.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjSmallTrail.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjTrail1.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjTrail1.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjTrail2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjTrail2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjWaves.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ProjWaves.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/QuadWave.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/QuadWave.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/RandomBrokenPieces.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/RandomBrokenPieces.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/RedFaintGlow.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/RedFaintGlow.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SandOrb.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SandOrb.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SandWaves.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SandWaves.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SciFiOrbLines.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SciFiOrbLines.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SciFiShield2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SciFiShield2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Shield2Particles.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Shield2Particles.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Shockwave.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Shockwave.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ShockwaveDistortion.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ShockwaveDistortion.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ShockwaveWave.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ShockwaveWave.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashAsh.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashAsh.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashCore.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashCore.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashDark.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashDark.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashDropsVenom.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashDropsVenom.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashMagicSparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashMagicSparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashSmoke2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashSmoke2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashSmokeDark.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashSmokeDark.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashSmokeVenom.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashSmokeVenom.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashSparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashSparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashSparks2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SlashSparks2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Smoke_side.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Smoke_side.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Smoke.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Smoke.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Smoke2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Smoke2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Smoke3.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Smoke3.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SmokeDiablo3.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SmokeDiablo3.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SmokeDistortion.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SmokeDistortion.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SmokeFlame.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SmokeFlame.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SmokePuffMesh.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SmokePuffMesh.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SmokeTop.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SmokeTop.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SmokeTrail.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SmokeTrail.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SmokeWater.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SmokeWater.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SnowFlakes.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SnowFlakes.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SparkleSciFiOrb.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SparkleSciFiOrb.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Sparks.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Sparks.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Sparks1.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Sparks1.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SparksSword.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SparksSword.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SpeedLines.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SpeedLines.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Spiral.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Spiral.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Spiral1.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Spiral1.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SplashStreak.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/SplashStreak.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Stones.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Stones.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ToonExplosionEmbers.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ToonExplosionEmbers.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ToonFireSmoke.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ToonFireSmoke.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ToonSmokeTrail.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ToonSmokeTrail.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Triangle.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/Triangle.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/VenomSwordSlash.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/VenomSwordSlash.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/WaterRings.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/WaterRings.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/WaterSplash.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/WaterSplash.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/WaterSplash2.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/WaterSplash2.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/WavePurple.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/WavePurple.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/xShapeImpact.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/xShapeImpact.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/YellowCenterProjectile.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/YellowCenterProjectile.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ZWrite.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ZWrite.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ZWriteGpuIntancing.mat
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Materials/ZWriteGpuIntancing.mat.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Models.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Models/DemoPuppet.fbx
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Models/DemoPuppet.fbx.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/PostProcessingProfile.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/PostProcessingProfile/AllIn1VfxPp.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/PostProcessingProfile/AllIn1VfxPp.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Air Column.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Air Column.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Beam Blue.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Beam Blue.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Blue Area \+ Distort Sphere.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Blue Area \+ Distort Sphere.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Blue Fire.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Blue Fire.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Blue Impact.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Blue Impact.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Blue Pixel Portal.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Blue Pixel Portal.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Blue Tornado.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Blue Tornado.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Dark Magic Orb.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Dark Magic Orb.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Digital Muzzle Flash.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Digital Muzzle Flash.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Digital Proj Impact.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Digital Proj Impact.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Digital Projectile.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Digital Projectile.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Electricity.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Electricity.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Evil Aura.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Evil Aura.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Explosion Bomb.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Explosion Bomb.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Explosion Galaxy.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Explosion Galaxy.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Fire Bullet.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Fire Bullet.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Fire Impact.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Fire Impact.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Fire Muzzle Flash.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Fire Muzzle Flash.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Fire Shield.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Fire Shield.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Fire Tornado.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Fire Tornado.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Fire Trail.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Fire Trail.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Ghost Trail.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Ghost Trail.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Green Area.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Green Area.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Green Portal.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Green Portal.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Gun Bullet.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Gun Bullet.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Gun Impact.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Gun Impact.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Gun Muzzle Flash.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Gun Muzzle Flash.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Holly Aura.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Holly Aura.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Ice Impact.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Ice Impact.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Ice Muzzle Flash.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Ice Muzzle Flash.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Ice Projectile.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Ice Projectile.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Incinerate Spell.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Incinerate Spell.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Lightning Strike.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Lightning Strike.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Magic Explosive Spell.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Magic Explosive Spell.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Magic Spiral.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Magic Spiral.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Pink Trail.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Pink Trail.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Pixel Fire.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Pixel Fire.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Plasma Ball.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Plasma Ball.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Purple Area.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Purple Area.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Purple Impact.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Purple Impact.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Real Fire.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Real Fire.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Red Area.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Red Area.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Red Impact.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Red Impact.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Sand Shield.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Sand Shield.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/SciFi Shield 2.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/SciFi Shield 2.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/SciFi Shield.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/SciFi Shield.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Screenspace Galaxy Character.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Screenspace Galaxy Character.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Slash Blue.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Slash Blue.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Slash Magic.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Slash Magic.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Slash Orange.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Slash Orange.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Slash Venom.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Slash Venom.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Thick Smoke.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Thick Smoke.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Toon Beam Orange.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Toon Beam Orange.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Toon Character.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Toon Character.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Toon Explosion.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Toon Explosion.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Water Shield.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Water Shield.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Water Splash.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/Water Splash.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/zProjectileBase.prefab
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Prefabs/zProjectileBase.prefab.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/All1DemoDropdownScroller.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/All1DemoDropdownScroller.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/All1DemoMouseLocker.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/All1DemoMouseLocker.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/All1DemoProjectileObstacle.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/All1DemoProjectileObstacle.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/All1DemoSceneColor.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/All1DemoSceneColor.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/All1VfxDemoEffect.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/All1VfxDemoEffect.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/All1VfxDemoEffectCollection.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/All1VfxDemoEffectCollection.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/All1VfxDemoScriptsAssembly.asmdef
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/All1VfxDemoScriptsAssembly.asmdef.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1AutoRotate.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1AutoRotate.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1CanvasFader.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1CanvasFader.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1ChangeAllChildTextFonts.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1ChangeAllChildTextFonts.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1DemoProjectile.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1DemoProjectile.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1DemoScaleTween.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1DemoScaleTween.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1DoShake.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1DoShake.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1MouseRotate.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1MouseRotate.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1Shaker.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1Shaker.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1TimeControl.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1TimeControl.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1VfxAutoDestroy.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1VfxAutoDestroy.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1VfxDemoController.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1VfxDemoController.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1VfxFadeLight.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1VfxFadeLight.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1VfxParticleSystemTime.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Scripts/AllIn1VfxParticleSystemTime.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Texutres.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Texutres/FloorTexture.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Texutres/FloorTexture.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Texutres/UiButton.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Texutres/UiButton.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Texutres/UiCircleSmall.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Texutres/UiCircleSmall.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Texutres/UiTriangle.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Demo/Texutres/UiTriangle.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/DemoUrp.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/DemoUrp/AllIn1VfxUrpPostProcessing.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/DemoUrp/AllIn1VfxUrpPostProcessing.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/DemoUrp/DemoUrp.unity
+
+Assets/AllIn1VfxToolkit/Demo & Assets/DemoUrp/DemoUrp.unity.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Arc1.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Arc1.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/ArrowHead.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/ArrowHead.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Base1.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Base1.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Base2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Base2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Base3.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Base3.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Base4.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Base4.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Beam1.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Beam1.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Beam2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Beam2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/BigWave.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/BigWave.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/BigWave2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/BigWave2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/BigWave3.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/BigWave3.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Bullet.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Bullet.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Bullet2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Bullet2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Bullet3.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Bullet3.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/BulletPointy.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/BulletPointy.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/BulletRound.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/BulletRound.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/BulletVeryLong.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/BulletVeryLong.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell100Deg.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell100Deg.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell10Deg.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell10Deg.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell180Deg.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell180Deg.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell20Deg.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell20Deg.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell25Deg.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell25Deg.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell360Deg.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell360Deg.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell45Deg.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell45Deg.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell60Deg.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell60Deg.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell75Deg.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CastSpell75Deg.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CircularQuad.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CircularQuad.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CircularQuad2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CircularQuad2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CircularQuad3.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CircularQuad3.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CircularQuad4.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CircularQuad4.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CircularQuadTwisted.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CircularQuadTwisted.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Cone1.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Cone1.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Cone2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Cone2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Cone3.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Cone3.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Cone4.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Cone4.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Crystal.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Crystal.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Curve_1.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Curve_1.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Curve_2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Curve_2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CurvedCone1.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CurvedCone1.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Cylinder.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Cylinder.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CylinderRay.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/CylinderRay.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/HorizontalLoop.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/HorizontalLoop.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/MuzzleCone.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/MuzzleCone.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/MuzzlePlanes.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/MuzzlePlanes.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/PilarAura.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/PilarAura.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/QuadRing.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/QuadRing.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Ring.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Ring.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Ring1.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Ring1.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SciFiShield.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SciFiShield.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SemiSphere.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SemiSphere.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Semisphere2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Semisphere2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash3.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash3.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash4.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash4.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash5.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash5.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash6.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash6.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash7.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash7.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash8.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Slash8.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SmokePuffMesh.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SmokePuffMesh.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SmokePuffMesh2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SmokePuffMesh2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SmokePuffMesh3.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SmokePuffMesh3.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SmokePuffMesh4.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SmokePuffMesh4.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SphereTwisted.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SphereTwisted.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SphereTwisted2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SphereTwisted2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SphereVfx.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SphereVfx.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SphereVfx2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SphereVfx2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SphereVfx3.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/SphereVfx3.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Spike.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Spike.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Spike1.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Spike1.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Spiral.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Spiral.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Spiral2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Spiral2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Spiral3.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Spiral3.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Spiral4.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Spiral4.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Spiral5.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Spiral5.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Swirl1.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Swirl1.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Swirl2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Swirl2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Swirl3.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Swirl3.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Swirl4.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Swirl4.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Swirl5.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Swirl5.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Tornado1.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Tornado1.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Tornado2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Tornado2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Triangle.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Triangle.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Vertical.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Vertical.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Vertical2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Vertical2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Vertical3.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Vertical3.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Vertical4.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Vertical4.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Wave.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Wave.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Wave2.mesh
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Meshes/Wave2.mesh.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/DemoTextures.unity
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/DemoTextures.unity.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Font.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Font/PoetsenOne-RegularTextures.ttf
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Font/PoetsenOne-RegularTextures.ttf.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/ScriptableObjects.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/ScriptableObjects/All1VfxDistorsionMapsTextureCollection.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/ScriptableObjects/All1VfxDistorsionMapsTextureCollection.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/ScriptableObjects/All1VfxGrayscaleTextureCollection.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/ScriptableObjects/All1VfxGrayscaleTextureCollection.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/ScriptableObjects/All1VfxNoiseTextureCollection.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/ScriptableObjects/All1VfxNoiseTextureCollection.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/ScriptableObjects/All1VfxOthersTextureCollection.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/ScriptableObjects/All1VfxOthersTextureCollection.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/ScriptableObjects/All1VfxShapeTextureCollection.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/ScriptableObjects/All1VfxShapeTextureCollection.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/ScriptableObjects/All1VfxTrailsTextureCollection.asset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/ScriptableObjects/All1VfxTrailsTextureCollection.asset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Scripts.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Scripts/All1VfxDemoTextureCollection.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Scripts/All1VfxDemoTextureCollection.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Scripts/AllIn1DemoScaleTween.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Scripts/AllIn1DemoScaleTween.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Scripts/AllIn1VfxTexDemoAssembly.asmdef
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Scripts/AllIn1VfxTexDemoAssembly.asmdef.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Scripts/AllIn1VfxTextureDemoManager.cs
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Scripts/AllIn1VfxTextureDemoManager.cs.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DemoTexturesBack.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DemoTexturesBack.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/Distortion1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/Distortion1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/Distortion2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/Distortion2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/Distortion3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/Distortion3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCircle.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCircle.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCircle10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCircle10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCircle11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCircle11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCircle2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCircle2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCircle3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCircle3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCircle4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCircle4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCircle7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCircle7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCone1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCone1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCone2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCone2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCrack1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCrack1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCrack2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCrack2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCrack3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCrack3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCrack4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCrack4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCrack5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionCrack5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionMuzzle1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionMuzzle1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionNoise1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionNoise1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionNoise2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionNoise2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionNoise3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionNoise3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionNoise4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionNoise4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionNoise5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionNoise5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionNoise6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionNoise6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionRing9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionSmoke1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionSmoke1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionSmoke2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionSmoke2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionSmoke3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/DistortionSmoke3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/NormalTrail.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/NormalTrail.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/NormalTrail2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/NormalTrail2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/NormalTrail3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/NormalTrail3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/NormalTrail4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/NormalTrail4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/NormalTrailHead.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/NormalTrailHead.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/NormalTrailHead2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/DistortionMapsCopyNoNormalMap/NormalTrailHead2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/UiButton.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/UiButton.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/UiTriangle.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/Textures/UiTriangle.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/VfxTexturesDocumentation.pdf
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures Demo/VfxTexturesDocumentation.pdf.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/_ImportPreset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/_ImportPreset/AllIn1VfxImportPreset.preset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/_ImportPreset/AllIn1VfxImportPreset.preset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/_ImportPreset/AllIn1VfxSpriteImportPreset.preset
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/_ImportPreset/AllIn1VfxSpriteImportPreset.preset.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Color Gradients.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Color Gradients/AlphaGradient.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Color Gradients/AlphaGradient.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Color Gradients/GradientBlueGreen.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Color Gradients/GradientBlueGreen.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Color Gradients/GradientBurn.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Color Gradients/GradientBurn.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/Distortion1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/Distortion1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/Distortion2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/Distortion2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/Distortion3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/Distortion3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCircle.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCircle.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCircle10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCircle10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCircle11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCircle11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCircle2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCircle2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCircle3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCircle3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCircle4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCircle4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCircle7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCircle7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCone1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCone1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCone2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCone2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCrack1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCrack1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCrack2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCrack2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCrack3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCrack3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCrack4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCrack4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCrack5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionCrack5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionMuzzle1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionMuzzle1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionNoise1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionNoise1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionNoise2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionNoise2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionNoise3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionNoise3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionNoise4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionNoise4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionNoise5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionNoise5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionNoise6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionNoise6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionRing9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionSmoke1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionSmoke1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionSmoke2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionSmoke2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionSmoke3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/DistortionSmoke3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/NormalTrail.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/NormalTrail.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/NormalTrail2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/NormalTrail2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/NormalTrail3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/NormalTrail3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/NormalTrail4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/NormalTrail4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/NormalTrailHead.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/NormalTrailHead.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/NormalTrailHead2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Distortion Normal Maps/NormalTrailHead2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/AngleGradient.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/AngleGradient.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Black.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Black.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient14.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient14.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient15.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient15.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient16.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient16.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient17.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient17.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient19.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient19.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient20.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient20.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient21.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient21.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient22.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient22.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/Gradient9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/White.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Greyscale Gradients/White.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/ColorNoise1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/ColorNoise1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/ColorNoise2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/ColorNoise2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/ColorNoise3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/ColorNoise3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/ColorNoise4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/ColorNoise4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/ColorNoise5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/ColorNoise5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise100.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise100.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise101.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise101.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise102.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise102.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise103.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise103.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise104.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise104.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise105.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise105.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise106.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise106.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise107.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise107.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise108.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise108.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise109.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise109.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise110.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise110.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise111.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise111.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise112.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise112.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise113.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise113.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise114.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise114.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise115.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise115.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise116.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise116.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise117.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise117.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise118.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise118.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise119.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise119.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise120.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise120.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise14.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise14.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise15.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise15.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise16.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise16.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise17.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise17.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise18.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise18.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise19.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise19.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise20.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise20.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise21.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise21.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise22.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise22.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise23.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise23.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise24.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise24.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise25.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise25.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise26.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise26.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise27.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise27.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise28.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise28.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise29.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise29.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise30.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise30.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise31.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise31.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise32.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise32.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise33.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise33.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise34.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise34.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise35.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise35.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise36.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise36.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise37.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise37.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise38.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise38.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise39.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise39.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise40.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise40.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise41.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise41.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise42.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise42.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise43.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise43.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise44.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise44.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise45.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise45.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise46.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise46.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise47.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise47.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise48.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise48.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise49.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise49.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise50.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise50.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise51.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise51.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise52.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise52.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise53.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise53.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise54.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise54.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise55.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise55.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise56.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise56.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise57.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise57.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise58.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise58.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise59.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise59.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise60.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise60.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise61.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise61.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise62.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise62.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise63.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise63.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise64.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise64.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise65.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise65.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise66.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise66.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise67.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise67.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise68.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise68.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise69.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise69.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise70.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise70.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise71.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise71.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise72.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise72.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise73.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise73.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise74.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise74.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise75.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise75.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise76.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise76.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise77.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise77.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise78.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise78.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise79.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise79.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise80.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise80.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise81.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise81.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise82.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise82.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise83.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise83.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise84.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise84.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise85.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise85.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise86.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise86.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise87.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise87.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise88.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise88.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise89.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise89.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise90.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise90.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise91.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise91.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise92.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise92.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise93.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise93.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise94.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise94.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise95.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise95.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise96.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise96.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise97.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise97.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise98.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise98.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise99.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/Noise99.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/PerlinNoise.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/PerlinNoise.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/PerlinNoise2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/PerlinNoise2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/PerlinNoise3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/PerlinNoise3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/SmokeNoise.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Noise/SmokeNoise.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/AlienRunes.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/AlienRunes.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Blood1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Blood1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Blood2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Blood2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Blood3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Blood3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/BloodColor.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/BloodColor.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/BloodGrayscale.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/BloodGrayscale.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Digital1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Digital1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Digital2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Digital2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Digital3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Digital3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Digital4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Digital4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Digital5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/Digital5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/GalaxyBackground.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/GalaxyBackground.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/HoneyComb1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/HoneyComb1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/HoneyComb2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/HoneyComb2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/InvokeArea.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/InvokeArea.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/InvokeArea2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/InvokeArea2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/InvokeArea3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/InvokeArea3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/InvokeArea4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/InvokeArea4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/InvokeArea5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/InvokeArea5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/InvokeArea6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/InvokeArea6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/InvokeArea7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/InvokeArea7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/SciFiShield.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/SciFiShield.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/SpeedLines1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/SpeedLines1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/SpeedLines2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/SpeedLines2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/SpeedLines3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Others/SpeedLines3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle14.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle14.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle15.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle15.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle16.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle16.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle17.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle17.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle18.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle18.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle19.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle19.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle20.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle20.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle21.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle21.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle22.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle22.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle23.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle23.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle24.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle24.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle25.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle25.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle26.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle26.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle27.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle27.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle28.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle28.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle29.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle29.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle30.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle30.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle31.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle31.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Circle9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/CircleFireball.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/CircleFireball.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/CirclePentagram.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/CirclePentagram.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Coin1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Coin1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Coin2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Coin2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Coin3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Coin3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/CylinderScrew.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/CylinderScrew.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Diamond.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Diamond.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/DigitalProjectileHead.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/DigitalProjectileHead.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/DigitalShapes1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/DigitalShapes1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/DigitalShapes2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/DigitalShapes2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/DigitalSquare.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/DigitalSquare.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/DigitalTriangle.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/DigitalTriangle.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Drop.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Drop.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ElectricMask.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ElectricMask.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire14.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire14.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire15.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire15.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire16.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire16.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire17.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire17.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire18.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire18.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire19.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire19.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire20.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire20.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire21.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire21.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Fire9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/FireEmbers.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/FireEmbers.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/FireEmbers2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/FireEmbers2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/FireEmbers2Erosion.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/FireEmbers2Erosion.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/FireEmbers3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/FireEmbers3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/FlameMask.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/FlameMask.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/FlameMaskTrail.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/FlameMaskTrail.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare14.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare14.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare15.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare15.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare16.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare16.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare17.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare17.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare18.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare18.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare19.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare19.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare20.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare20.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare21.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare21.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare23.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare23.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare24.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare24.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare25.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare25.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare26.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare26.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare27.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare27.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare28.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare28.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare29.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare29.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare30.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare30.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare31.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare31.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare32.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare32.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare33.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare33.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare34.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare34.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare35.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare35.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flare9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flower1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flower1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flower2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Flower2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/FuzzyBall.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/FuzzyBall.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glitter.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glitter.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Glow9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/GroundCrack8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Heart.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Heart.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Heart2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Heart2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Heart3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Heart3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact14.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact14.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact15.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact15.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact16.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact16.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact17.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact17.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact18.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact18.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact19.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact19.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact19b.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact19b.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact20.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact20.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact21.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact21.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact22.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact22.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact23.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact23.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact24.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact24.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact25.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact25.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact26.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact26.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact27.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact27.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact28.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact28.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact29.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact29.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact30.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact30.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact31.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact31.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact32.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact32.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact33.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact33.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact34.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact34.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact35.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact35.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact36.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact36.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact37.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact37.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact38.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact38.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact38b.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact38b.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact39.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact39.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact40.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact40.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact41.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact41.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Impact9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ImpactToon.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ImpactToon.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ImpactToon2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ImpactToon2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ImpactToon3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ImpactToon3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ImpactToon4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ImpactToon4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ImpactToon5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ImpactToon5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ImpactToon6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ImpactToon6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ImpactToon7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/ImpactToon7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Leaf1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Leaf1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Leaf2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Leaf2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Leaf3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Leaf3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/LightingErode1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/LightingErode1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/LightingErode2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/LightingErode2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/LightingShape.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/LightingShape.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/LightRays.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/LightRays.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Line6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Line6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic14.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic14.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic15.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic15.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Magic9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Muzzle9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile12b.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile12b.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile14.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile14.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile15.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile15.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile16.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile16.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile17.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile17.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Projectile9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/RandomPieces.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/RandomPieces.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Ring.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Ring.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Ring2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Ring2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Ring3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Ring3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Ring4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Ring4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/RingGlow.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/RingGlow.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Scratch.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Scratch.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Shield9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke14.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke14.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke15.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke15.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke16.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke16.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke17_1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke17_1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke17.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke17.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke18.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke18.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Smoke9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/SnowFlake.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/SnowFlake.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/SnowFlake2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/SnowFlake2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Sparks4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Sparks4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/SpikeBall.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/SpikeBall.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/SpikeBallTwirl.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/SpikeBallTwirl.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral14.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral14.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral15.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral15.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral16.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral16.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral17.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral17.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral18.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral18.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Spiral9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash14.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash14.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash15.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash15.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash16.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash16.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash17.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash17.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash18.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash18.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash19.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash19.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash20.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash20.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash21.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash21.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash22.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash22.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash23.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash23.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash24.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash24.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Splash9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/SplashErode.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/SplashErode.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Square.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Square.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/SquareBlurry.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/SquareBlurry.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Star1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Star1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Star2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Star2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Star3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Star3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Star4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Star4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Star5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Star5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Star6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Star6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Star7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Star7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/StarDiamond.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/StarDiamond.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Triangle.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/Triangle.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/WaterSplash.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/WaterSplash.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/WaterSplashErode.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Shapes/WaterSplashErode.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/DigitalTrail1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/DigitalTrail1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/DigitalTrail2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/DigitalTrail2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/DigitalTrail3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/DigitalTrail3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/EnergyTrail1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/EnergyTrail1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/EnergyTrail2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/EnergyTrail2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/EnergyTrail3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/EnergyTrail3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/EnergyTrail4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/EnergyTrail4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/EnergyTrail5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/EnergyTrail5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/EnergyTrail6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/EnergyTrail6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/FlameTrail9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/GlowTrail.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/GlowTrail.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/Line1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/Line1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/Line2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/Line2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/Line3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/Line3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/Line4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/Line4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/Line5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/Line5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/MagicTrail9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ScrollHead.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ScrollHead.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashCore9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashMask.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashMask.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashMaskVertical.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SlashMaskVertical.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail14.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail14.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail15.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail15.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail16.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail16.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/SmokeTrail9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ToonBeamTrail1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ToonBeamTrail1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ToonBeamTrail2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ToonBeamTrail2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ToonBeamTrail3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ToonBeamTrail3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ToonBeamTrail4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ToonBeamTrail4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ToonBeamTrail5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ToonBeamTrail5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ToonDust1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ToonDust1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ToonDust2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/ToonDust2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric10.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric10.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric11.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric11.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric12.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric12.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric13.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric13.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric14.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric14.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric15.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric15.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric16.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric16.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric17.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric17.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric18.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric18.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric19.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric19.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric20.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric20.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric21.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric21.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric22.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric22.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric23.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric23.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric24.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric24.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailElectric9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead7.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead7.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead8.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead8.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead9.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailHead9.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines1_1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines1_1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines1.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines1.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines2.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines2.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines3.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines3.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines4.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines4.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines4b.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines4b.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines5.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines5.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines6.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/TrailLines6.png.meta
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/WaterStreakHead.png
+
+Assets/AllIn1VfxToolkit/Demo & Assets/Textures/Trails/WaterStreakHead.png.meta
+
+Assets/AllIn1VfxToolkit/Documentation.pdf
+
+Assets/AllIn1VfxToolkit/Documentation.pdf.meta
+
+Assets/AllIn1VfxToolkit/Editor.meta
+
+Assets/AllIn1VfxToolkit/Editor/AllIn1ParticleHelperEditor.cs
+
+Assets/AllIn1VfxToolkit/Editor/AllIn1ParticleHelperEditor.cs.meta
+
+Assets/AllIn1VfxToolkit/Editor/AllIn1VfxCustomMaterialEditor.cs
+
+Assets/AllIn1VfxToolkit/Editor/AllIn1VfxCustomMaterialEditor.cs.meta
+
+Assets/AllIn1VfxToolkit/Editor/AllIn1VfxEditor.cs
+
+Assets/AllIn1VfxToolkit/Editor/AllIn1VfxEditor.cs.meta
+
+Assets/AllIn1VfxToolkit/Editor/AllIn1VfxGradientDrawer.cs
+
+Assets/AllIn1VfxToolkit/Editor/AllIn1VfxGradientDrawer.cs.meta
+
+Assets/AllIn1VfxToolkit/Editor/Resources.meta
+
+Assets/AllIn1VfxToolkit/Editor/Resources/CustomEditorTransparent.png
+
+Assets/AllIn1VfxToolkit/Editor/Resources/CustomEditorTransparent.png.meta
+
+Assets/AllIn1VfxToolkit/HdrpPackage(post2020).unitypackage.meta
+
+Assets/AllIn1VfxToolkit/HdrpPackage(pre2020).unitypackage.meta
+
+Assets/AllIn1VfxToolkit/MaterialSaves.meta
+
+Assets/AllIn1VfxToolkit/MaterialSaves/DefaultVfxMat.mat
+
+Assets/AllIn1VfxToolkit/MaterialSaves/DefaultVfxMat.mat.meta
+
+Assets/AllIn1VfxToolkit/ParticlePresets.meta
+
+Assets/AllIn1VfxToolkit/ParticlePresets/Resources.meta
+
+Assets/AllIn1VfxToolkit/ParticlePresets/Resources/ConeBurstHelperPreset.asset
+
+Assets/AllIn1VfxToolkit/ParticlePresets/Resources/ConeBurstHelperPreset.asset.meta
+
+Assets/AllIn1VfxToolkit/ParticlePresets/Resources/ConeBurstPsPreset.preset
+
+Assets/AllIn1VfxToolkit/ParticlePresets/Resources/ConeBurstPsPreset.preset.meta
+
+Assets/AllIn1VfxToolkit/ParticlePresets/Resources/ExplosionBurstHelperPreset.asset
+
+Assets/AllIn1VfxToolkit/ParticlePresets/Resources/ExplosionBurstHelperPreset.asset.meta
+
+Assets/AllIn1VfxToolkit/ParticlePresets/Resources/ExplosionPsPreset.preset
+
+Assets/AllIn1VfxToolkit/ParticlePresets/Resources/ExplosionPsPreset.preset.meta
+
+Assets/AllIn1VfxToolkit/ParticlePresets/Resources/SingleCenterHelperPreset.asset
+
+Assets/AllIn1VfxToolkit/ParticlePresets/Resources/SingleCenterHelperPreset.asset.meta
+
+Assets/AllIn1VfxToolkit/ParticlePresets/Resources/SingleCenterPsPreset.preset
+
+Assets/AllIn1VfxToolkit/ParticlePresets/Resources/SingleCenterPsPreset.preset.meta
+
+Assets/AllIn1VfxToolkit/Scripts.meta
+
+Assets/AllIn1VfxToolkit/Scripts/All1VfxRandomTimeSeed.cs
+
+Assets/AllIn1VfxToolkit/Scripts/All1VfxRandomTimeSeed.cs.meta
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1GraphicMaterialDuplicate.cs
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1GraphicMaterialDuplicate.cs.meta
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1LookAt.cs
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1LookAt.cs.meta
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1ParticleHelperComponent.cs
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1ParticleHelperComponent.cs.meta
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1ParticleHelperSO.cs
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1ParticleHelperSO.cs.meta
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1VfxBounceAnimation.cs
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1VfxBounceAnimation.cs.meta
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1VfxComponent.cs
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1VfxComponent.cs.meta
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1VfxFakeLightDirSetter.cs
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1VfxFakeLightDirSetter.cs.meta
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1VfxNoiseCreator.cs
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1VfxNoiseCreator.cs.meta
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1VfxScrollShaderProperty.cs
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1VfxScrollShaderProperty.cs.meta
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1VfxScrollShaderTexture.cs
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1VfxScrollShaderTexture.cs.meta
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1VfxWindow.cs
+
+Assets/AllIn1VfxToolkit/Scripts/AllIn1VfxWindow.cs.meta
+
+Assets/AllIn1VfxToolkit/Shaders.meta
+
+Assets/AllIn1VfxToolkit/Shaders/All1VfxZWrite.shader
+
+Assets/AllIn1VfxToolkit/Shaders/All1VfxZWrite.shader.meta
+
+Assets/AllIn1VfxToolkit/Shaders/All1VfxZWriteGpuInstancing.shader
+
+Assets/AllIn1VfxToolkit/Shaders/All1VfxZWriteGpuInstancing.shader.meta
+
+Assets/AllIn1VfxToolkit/Shaders/EditorShaders.meta
+
+Assets/AllIn1VfxToolkit/Shaders/EditorShaders/Resources.meta
+
+Assets/AllIn1VfxToolkit/Shaders/EditorShaders/Resources/AllIn1VfxFractalNoise.shader
+
+Assets/AllIn1VfxToolkit/Shaders/EditorShaders/Resources/AllIn1VfxFractalNoise.shader.meta
+
+Assets/AllIn1VfxToolkit/Shaders/EditorShaders/Resources/AllIn1VfxWorleyNoise.shader
+
+Assets/AllIn1VfxToolkit/Shaders/EditorShaders/Resources/AllIn1VfxWorleyNoise.shader.meta
+
+Assets/AllIn1VfxToolkit/Shaders/Resources.meta
+
+Assets/AllIn1VfxToolkit/Shaders/Resources/AllIn1Vfx.shader
+
+Assets/AllIn1VfxToolkit/Shaders/Resources/AllIn1Vfx.shader.meta
+
+Assets/AllIn1VfxToolkit/Shaders/Resources/AllIn1VfxBuiltIn.shader
+
+Assets/AllIn1VfxToolkit/Shaders/Resources/AllIn1VfxBuiltIn.shader.meta
+
+Assets/AllIn1VfxToolkit/Shaders/Resources/AllIn1VfxFunctions.cginc
+
+Assets/AllIn1VfxToolkit/Shaders/Resources/AllIn1VfxFunctions.cginc.meta
+
+Assets/AllIn1VfxToolkit/Shaders/Resources/AllIn1VfxGrabPass.shader
+
+Assets/AllIn1VfxToolkit/Shaders/Resources/AllIn1VfxGrabPass.shader.meta
+
+Assets/AllIn1VfxToolkit/Shaders/Resources/AllIn1VfxURP.shader
+
+Assets/AllIn1VfxToolkit/Shaders/Resources/AllIn1VfxURP.shader.meta
+
+Assets/AllIn1VfxToolkit/UrpPackage.unitypackage.meta
