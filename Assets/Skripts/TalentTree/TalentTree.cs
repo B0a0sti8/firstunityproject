@@ -1,210 +1,176 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class TalentTree : MonoBehaviour
 {
-    [SerializeField]
-    private int talentPoints = 500;
-    private int talentPointsMax = 500;
+    public string subClassMain="Alchemist", subClassLeft="Dummy", subClassRight="Dummy";
+    enum subClassSlot { Main, Left, Right };
 
-    [SerializeField]
-    private TextMeshProUGUI talentPointText;
+    Transform classTrees;
+    Transform myTalentTree;
 
-    [SerializeField]
-    private Talent[] talents;
-    [SerializeField]
-    private PassiveTalent[] passiveTalents;
-    [SerializeField]
-    private Talent[] unlockedByDefault;
+    [SerializeField] List<Transform> talentsMain, talentsLeft, talentsRight;
+    float turningDuration = 2f;
+    bool isTurning = false;
 
-    [SerializeField]
-    private Talent[] tree1Talents;
-    [SerializeField]
-    private PassiveTalent[] tree1TalentsPassive;
-    private int tree1AbsPointCount;
-    
-    [SerializeField]
-    private Talent[] tree2Talents;
-    [SerializeField]
-    private PassiveTalent[] tree2TalentsPassive;
-    private int tree2AbsPointCount;
-
-    [SerializeField]
-    private Talent[] tree3Talents;
-    [SerializeField]
-    private PassiveTalent[] tree3TalentsPassive;
-    private int tree3AbsPointCount;
-
-    Transform tree1;
-    Transform tree2;
-    Transform tree3;
-
-    Transform currentTier;
-    Talent currentTalent;
-    PassiveTalent currentPassive;
-
-    // Start is called before the first frame update
     void Start()
     {
-        tree1 = transform.Find("AdditionalLayer").Find("TalentTree1").Find("Active");
-        tree2 = transform.Find("AdditionalLayer").Find("TalentTree2").Find("Active");
-        tree3 = transform.Find("AdditionalLayer").Find("TalentTree3").Find("Active");
-        ResetTalents();
-        UpdateTalentPointText();
+        classTrees = GameObject.Find("SkillTreeCollection").transform.Find("CanvasAllSkillTrees").Find("TalentTree");
+        myTalentTree = transform.Find("MainBody").Find("TalentTree");
+
+        subClassMain = "Alchemist";
+        subClassLeft = "Berserker";
+        subClassRight = "Dummy";
     }
 
-    public void TryUseTalent(Talent talent)
+    public void UpdateSkillTree()
     {
-        Debug.Log("Passt 1");
-        if (talentPoints > 0 && talent.TryAllocateTalent())
+        RemoveAllActiveTalents();
+
+        for (int n = 0; n < 3; n++)
         {
-            talentPoints--;
-            CheckUnlock();
-            CheckUnlockPassive();
-        }
-        UpdateTalentPointText();
-    }
+            string cName;
 
-    public void ResetTalents()
-    {
-        talentPoints = talentPointsMax;
-        UpdateTalentPointText();
-        foreach (Talent talent in talents)
-        {
-            talent.Lock();
-            talent.RemoveActiveTalentEffect();
-            talent.currentCount = 0;
-            talent.UpdatePointCounter();
-        }
+            if (n == 0)
+            { cName = subClassMain; }
+            else if (n == 1)
+            { cName = subClassLeft; }
+            else
+            { cName = subClassRight; }
 
-        foreach (PassiveTalent passiveTalent in passiveTalents)
-        {
-            passiveTalent.Lock();
-        }
-
-        foreach (Talent talent in unlockedByDefault)
-        {
-            talent.Unlock();
-        }
-    }
-
-    public int TalentPoints
-    {
-        get
-        {
-            return talentPoints;
-        }
-        set
-        {
-            talentPoints = value;
-            UpdateTalentPointText();
-        }
-    }
-
-    public void UpdateTalentPointText()
-    {
-        talentPointText.text = talentPoints.ToString() + " / " + talentPointsMax.ToString();
-    }
-
-    public void CheckUnlock()   // Funktion um neues Tier von Talenten zu unlocken, wenn genügend Skillpunkte in einem Baum investiert sind
-    {
-        tree1AbsPointCount = 0;
-        tree2AbsPointCount = 0;
-        tree3AbsPointCount = 0;
-
-        foreach (Talent talent in tree1Talents)     // Gesamtzahl aller Skillpunkte in Baum 1
-        { tree1AbsPointCount += talent.currentCount; }
-
-        foreach (Talent talent in tree2Talents)     // Gesamtzahl aller Skillpunkte in Baum 2
-        { tree2AbsPointCount += talent.currentCount; }
-
-        foreach (Talent talent in tree3Talents)     // Gesamtzahl aller Skillpunkte in Baum 3
-        { tree3AbsPointCount += talent.currentCount; }
-
-        for (int i = 0; i < tree1.childCount; i++) // Durchläuft alle Tiers von Skilltree 1
-        {
-            currentTier = tree1.GetChild(i);        // Momentanes Tier von Skills wird in Variable gepackt
-            if (i > 0 && tree1AbsPointCount >= 5 * i)   // Falls das Tierlevel höher als 0 ist (also ab der 2. Zeile von Skills)
-            {                                           // wird geschaut ob die Anzahl der investierten Punkte größer ist als 5 mal die Tierstufe
-                for (int j = 0; j < currentTier.childCount; j++)    // Wenn ja werden alle Talente durchlaufen
+            for (int i = 0; i < 4; i++)
+            {
+                Transform myCurrentTier = myTalentTree.Find("Tier" + (i + 1).ToString());
+                for (int k = 0; k < classTrees.Find(cName).Find("Tier" + (i + 1).ToString()).childCount; k++)
                 {
-                    currentTalent = currentTier.GetChild(j).GetComponent<Talent>();
-                    currentTalent.Unlock();             // Und alle Talente im entsprechenden Tier unlocked.
-                }
-            }
-        }
+                    GameObject cTalent = classTrees.Find(cName).Find("Tier" + (i + 1).ToString()).GetChild(k).gameObject;
+                    GameObject cTalentNew = Instantiate(cTalent, myCurrentTier);
+                    cTalentNew.transform.rotation = Quaternion.identity;
 
-        for (int i = 0; i < tree2.childCount; i++) // Durchläuft alle Tiers von Skilltree 2
-        {
-            currentTier = tree2.GetChild(i);        // Momentanes Tier von Skills wird in Variable gepackt
-            if (i > 0 && tree2AbsPointCount >= 5 * i)   // Falls das Tierlevel höher als 0 ist (also ab der 2. Zeile von Skills)
-            {                                           // wird geschaut ob die Anzahl der investierten Punkte größer ist als 5 mal die Tierstufe
-                for (int j = 0; j < currentTier.childCount; j++)    // Wenn ja werden alle Talente durchlaufen
-                {
-                    currentTalent = currentTier.GetChild(j).GetComponent<Talent>();
-                    currentTalent.Unlock();             // Und alle Talente im entsprechenden Tier unlocked.
-                }
-            }
-        }
+                    if (n == 1)
+                    { cTalentNew.transform.localPosition = Quaternion.Euler(0, 0, 120) * cTalentNew.transform.localPosition; }
 
-        for (int i = 0; i < tree3.childCount; i++) // Durchläuft alle Tiers von Skilltree 3
-        {
-            currentTier = tree3.GetChild(i);        // Momentanes Tier von Skills wird in Variable gepackt
-            if (i > 0 && tree3AbsPointCount >= 5 * i)   // Falls das Tierlevel höher als 0 ist (also ab der 2. Zeile von Skills)
-            {                                           // wird geschaut ob die Anzahl der investierten Punkte größer ist als 5 mal die Tierstufe
-                for (int j = 0; j < currentTier.childCount; j++)    // Wenn ja werden alle Talente durchlaufen
-                {
-                    currentTalent = currentTier.GetChild(j).GetComponent<Talent>();
-                    currentTalent.Unlock();             // Und alle Talente im entsprechenden Tier unlocked.
+                    if (n == 2)
+                    { cTalentNew.transform.localPosition = Quaternion.Euler(0, 0, -120) * cTalentNew.transform.localPosition; }
                 }
             }
         }
     }
 
-    public void CheckUnlockPassive()   // Funktion um neues Tier von Talenten zu unlocken, wenn genügend Skillpunkte in einem Baum investiert sind
+    public void ShowClassWindow(string subClassPosition)
     {
-        tree1AbsPointCount = 0;
-        tree2AbsPointCount = 0;
-        tree3AbsPointCount = 0;
+        myTalentTree.parent.parent.Find("ClassWindow").gameObject.SetActive(true);
+        myTalentTree.parent.parent.Find("ClassWindow").GetComponent<TalentClassWindow>().subClassPosition = subClassPosition;
+    }
 
-        foreach (Talent talent in tree1Talents)     // Gesamtzahl aller Skillpunkte in Baum 1
-        { tree1AbsPointCount += talent.currentCount; }
-
-        foreach (Talent talent in tree2Talents)     // Gesamtzahl aller Skillpunkte in Baum 2
-        { tree2AbsPointCount += talent.currentCount; }
-
-        foreach (Talent talent in tree3Talents)     // Gesamtzahl aller Skillpunkte in Baum 3
-        { tree3AbsPointCount += talent.currentCount; }
-
-        for (int i = 0; i < tree1.parent.Find("Passive").childCount; i++) // Durchläuft alle Tiers von Skilltree 1
+    void RemoveAllActiveTalents()
+    {
+        for (int i = 0; i < 4; i++)
         {
-            currentPassive = tree1.parent.Find("Passive").GetChild(i).GetComponent<PassiveTalent>();        // Momentanes Tier von Skills wird in Variable gepackt
-            if (tree1AbsPointCount >= 5 * i + 5)   
+            Transform tierToClear = myTalentTree.Find("Tier" + (i + 1).ToString());
+            int clearCount = tierToClear.childCount;
+            List<GameObject> talentsToDestroy = new List<GameObject>();
+            for (int k = 0; k < clearCount; k++)
             {
-                currentPassive.Unlock();
+                talentsToDestroy.Add(tierToClear.GetChild(k).gameObject);
+            }
+
+            talentsToDestroy.ForEach(k => GameObject.Destroy(k));
+            talentsToDestroy.Clear();
+        }
+    }
+
+    public void ResetRingTuning()
+    {
+        if (isTurning)
+        {
+            return;
+        }
+        
+        for (int i = 0; i < 4; i++)
+        {
+            Transform detunedRing = myTalentTree.Find("Tier" + (i+1).ToString());
+
+            if ((int)detunedRing.rotation.eulerAngles.z == 120 || (int)detunedRing.rotation.eulerAngles.z == -240)
+            {
+                StartCoroutine(turningRingCoroutine(detunedRing, detunedRing.rotation.eulerAngles.z, false));
+            }
+            else if ((int)detunedRing.rotation.eulerAngles.z == 240 || (int)detunedRing.rotation.eulerAngles.z == -120)
+            {
+                StartCoroutine(turningRingCoroutine(detunedRing, detunedRing.rotation.eulerAngles.z, true));
             }
         }
+        isTurning = true;
+    }
 
-        for (int i = 0; i < tree2.parent.Find("Passive").childCount; i++) // Durchläuft alle Tiers von Skilltree 1
+    public void TurnRing(int ringNr)
+    {
+        if (isTurning)
         {
-            currentPassive = tree2.parent.Find("Passive").GetChild(i).GetComponent<PassiveTalent>();        // Momentanes Tier von Skills wird in Variable gepackt
-            if (tree2AbsPointCount >= 5 * i + 5)
-            {
-                currentPassive.Unlock();
-            }
+            return;
+        }
+        Transform movingRing = myTalentTree.Find("Tier" + ringNr.ToString());
+        float startAngle = movingRing.rotation.eulerAngles.z;
+        bool directionLeft = false;
+        StartCoroutine(turningRingCoroutine(movingRing, startAngle, directionLeft));
+        isTurning = true;
+    }
+
+    public IEnumerator turningRingCoroutine(Transform movingRing, float startAngle, bool directionLeft)
+    {
+        float elapsed = 0;
+        float suffix;
+
+        if (directionLeft)
+        { suffix = 1; }
+        else
+        { suffix = -1; }
+
+        while (elapsed <= turningDuration)
+        {
+            yield return new WaitForSeconds(Time.deltaTime);
+            float newAngle = suffix * 120 * Time.deltaTime / turningDuration;
+            movingRing.Rotate(0, 0, newAngle);
+
+            for (int i = 0; i < movingRing.childCount; i++)
+            { movingRing.GetChild(i).Rotate(0, 0, -newAngle); }
+
+            elapsed += Time.deltaTime;
         }
 
-        for (int i = 0; i < tree3.parent.Find("Passive").childCount; i++) // Durchläuft alle Tiers von Skilltree 1
+        movingRing.rotation = Quaternion.Euler(0, 0, startAngle + suffix * 120);    
+
+        if (movingRing.rotation.eulerAngles.z == 360 || Mathf.Abs(movingRing.rotation.eulerAngles.z) < 0.01)
         {
-            currentPassive = tree3.parent.Find("Passive").GetChild(i).GetComponent<PassiveTalent>();        // Momentanes Tier von Skills wird in Variable gepackt
-            if (tree3AbsPointCount >= 5 * i + 5)
-            {
-                currentPassive.Unlock();
-            }
+            movingRing.rotation = Quaternion.Euler(0, 0, 0);
         }
 
+        for (int i = 0; i < movingRing.childCount; i++)
+        { movingRing.GetChild(i).rotation = Quaternion.Euler(0, 0, 0); }
+
+        CheckTalentOrientation(movingRing);
+        isTurning = false;
+    }
+
+    void CheckTalentOrientation(Transform currentRing)
+    {
+        for (int i = 0; i < currentRing.childCount; i++)
+        {
+            Transform talent = currentRing.GetChild(i);
+            Vector2 globalDirection = Quaternion.Euler(0, 0, currentRing.rotation.eulerAngles.z) * talent.localPosition.normalized;
+            float angle = Vector2.SignedAngle(globalDirection, Vector2.up);
+
+            talentsMain.Remove(talent);
+            talentsLeft.Remove(talent);
+            talentsRight.Remove(talent);
+
+            if (angle > -60.00 && angle < 60.00)
+            { talentsMain.Add(talent); }
+            else if (angle < -60 && angle > -180)
+            { talentsLeft.Add(talent); }
+            else if (angle > 60 && angle < 180)
+            { talentsRight.Add(talent); }
+        }
     }
 }
