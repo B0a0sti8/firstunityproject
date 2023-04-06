@@ -6,10 +6,12 @@ using TMPro;
 
 public class Talent : MonoBehaviour
 {
-    private Button button;
+    Button button;
+    Image sprite;
 
     public GameObject PLAYER;
     public PlayerStats statSkript;
+    TalentTree myTalentTree;
 
     [SerializeField]
     private int maxCount;
@@ -21,23 +23,25 @@ public class Talent : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
-        talentPointTextOwn = gameObject.transform.Find("Image").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
-        PLAYER = transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.gameObject;
+        sprite = GetComponent<Image>();
+        button.onClick.AddListener(OnTalentButtonClick);
+        talentPointTextOwn = transform.Find("Image").Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
+        myTalentTree = transform.parent.parent.parent.parent.GetComponent<TalentTree>();
+        //PLAYER = transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.gameObject;
         if (maxCount == 0)
         {
             maxCount = 5;
         }
     }
 
-    private void Start()
+    void OnTalentButtonClick()
     {
-        statSkript = PLAYER.GetComponent<PlayerStats>();
-
+        myTalentTree.TryUseTalent(this);
     }
 
-    public void Lock()
+    private void Start()
     {
-        button.interactable = false;
+        //statSkript = PLAYER.GetComponent<PlayerStats>();
     }
 
     public bool TryAllocateTalent()
@@ -55,9 +59,16 @@ public class Talent : MonoBehaviour
         }
     }
 
+    public void Lock()
+    {
+        button.interactable = false;
+        sprite.color = Color.grey;
+    }
+
     public void Unlock()
     {
         button.interactable = true;
+        sprite.color = Color.white;
     }
 
     public void UpdatePointCounter()

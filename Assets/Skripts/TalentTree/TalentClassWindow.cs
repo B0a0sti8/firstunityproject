@@ -24,7 +24,8 @@ public class TalentClassWindow : MonoBehaviour
 
         CloseWindow();
 
-        myTalentTree.UpdateSkillTree();
+        myTalentTree.ResetSkillTree();
+        myTalentTree.ResetTalents();
     }
 
     public void CloseWindow()
