@@ -1,32 +1,113 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class TalentTree : MonoBehaviour
 {
-    public string subClassMain="Alchemist", subClassLeft="Dummy", subClassRight="Dummy";
-    enum subClassSlot { Main, Left, Right };
+    public string subClassMain, subClassLeft, subClassRight;
+
+    [SerializeField] int talentPoints = 500, talentPointsMax = 500;
+
+    [SerializeField] List<Talent> talents, unlockedByDefault;
+    [SerializeField] PassiveTalent[] passiveTalents;
+
+    [SerializeField] List<GameObject> talentsMain, talentsLeft, talentsRight;
+    //[SerializeField] PassiveTalent[] pTalentsMain, pTalentsLeft, pTalentsRight;
+    int mainAbsPointCount, leftAbsPointCount, rightAbsPointCount;
+
+    bool checkAfterReset;
 
     Transform classTrees;
     Transform myTalentTree;
 
-    [SerializeField] List<Transform> talentsMain, talentsLeft, talentsRight;
     float turningDuration = 2f;
     bool isTurning = false;
+
+
+    [SerializeField] TextMeshProUGUI talentPointText;
 
     void Start()
     {
         classTrees = GameObject.Find("SkillTreeCollection").transform.Find("CanvasAllSkillTrees").Find("TalentTree");
         myTalentTree = transform.Find("MainBody").Find("TalentTree");
+        talentPointText = transform.Find("MainBody").Find("TalentPointText").Find("TalentPointCount").GetComponent<TextMeshProUGUI>();
 
         subClassMain = "Alchemist";
-        subClassLeft = "Berserker";
+        subClassLeft = "Dummy";
         subClassRight = "Dummy";
+
+        checkAfterReset = false;
+
+        ResetSkillTree();
     }
 
-    public void UpdateSkillTree()
+    public void TryUseTalent(Talent talent)
+    {
+        Debug.Log("Passt 1");
+        if (talentPoints > 0 && talent.TryAllocateTalent())
+        {
+            talentPoints--;
+            CheckUnlockTalent();
+            //CheckUnlockPassive();
+        }
+        UpdateTalentPointText();
+    }
+
+    void CheckUnlockTalent()
+    {
+        mainAbsPointCount = 0;
+        leftAbsPointCount = 0;
+        rightAbsPointCount = 0;
+
+        ClearTalentOrientation();
+        for (int i = 0; i < 4; i++)
+        {
+            Transform myCurrentTier = myTalentTree.Find("Tier" + (i + 1).ToString());
+            CheckTalentOrientation(myCurrentTier);
+        }
+
+        talentsMain.ForEach(k => mainAbsPointCount += k.GetComponent<Talent>().currentCount);
+        talentsRight.ForEach(k => rightAbsPointCount += k.GetComponent<Talent>().currentCount);
+        talentsLeft.ForEach(k => leftAbsPointCount += k.GetComponent<Talent>().currentCount);
+
+        for (int i = 0; i < 4; i++)
+        {
+            Transform myCurrentTier = myTalentTree.Find("Tier" + (i + 1).ToString());
+
+            for (int k = 0; k < myCurrentTier.childCount; k++)
+            {
+                if (talentsMain.Contains(myCurrentTier.GetChild(k).gameObject))
+                {
+                    if (mainAbsPointCount >= 10 * i)
+                    {
+                        myCurrentTier.GetChild(k).GetComponent<Talent>().Unlock();
+                    }
+                }
+                else if (talentsRight.Contains(myCurrentTier.GetChild(k).gameObject))
+                {
+                    if (rightAbsPointCount >= 10 * i)
+                    {
+                        myCurrentTier.GetChild(k).GetComponent<Talent>().Unlock();
+                    }
+                }
+                else if (talentsLeft.Contains(myCurrentTier.GetChild(k).gameObject))
+                {
+                    if (leftAbsPointCount >= 10 * i)
+                    {
+                        myCurrentTier.GetChild(k).GetComponent<Talent>().Unlock();
+                    }
+                }
+            }
+        }
+    }
+
+    public void ResetSkillTree()
     {
         RemoveAllActiveTalents();
+
+        ClearTalentOrientation();
 
         for (int n = 0; n < 3; n++)
         {
@@ -56,6 +137,71 @@ public class TalentTree : MonoBehaviour
                 }
             }
         }
+        checkAfterReset = true;
+    }
+
+    public void ResetTalents()
+    {
+        talentPoints = talentPointsMax;
+        UpdateTalentPointText();
+
+        GetUnlockedByDefaultTalents();
+
+        foreach (Talent talent in talents)
+        {
+            talent.Lock();
+            talent.RemoveActiveTalentEffect();
+            talent.currentCount = 0;
+            talent.UpdatePointCounter();
+        }
+
+        foreach (PassiveTalent passiveTalent in passiveTalents)
+        {
+            passiveTalent.Lock();
+            passiveTalent.RemoveActiveTalentEffect();
+        }
+
+        foreach (Talent talent in unlockedByDefault)
+        {
+            talent.Unlock();
+        }
+    }
+
+    void GetUnlockedByDefaultTalents()
+    {
+        unlockedByDefault.Clear();
+        unlockedByDefault = myTalentTree.Find("Tier1").GetComponentsInChildren<Talent>().ToList();
+    }
+
+    public void UpdateTalentPointText()
+    {
+        talentPointText.text = talentPoints.ToString() + " / " + talentPointsMax.ToString();
+    }
+
+    void LateUpdate()
+    {
+        if (checkAfterReset)
+        {
+            checkAfterReset = false;
+            for (int i = 0; i < 4; i++)
+            {
+                Transform myCurrentTier = myTalentTree.Find("Tier" + (i + 1).ToString());
+                CheckTalentOrientation(myCurrentTier);
+
+                talentsMain = talentsMain.Where(k => k != null).ToList();
+                talentsLeft = talentsLeft.Where(k => k != null).ToList();
+                talentsRight = talentsRight.Where(k => k != null).ToList();
+            }
+
+            FetchAllTalents();
+            ResetTalents();
+        }
+    }
+
+    void FetchAllTalents()
+    {
+        talents.Clear();
+        talents = myTalentTree.GetComponentsInChildren<Talent>().ToList();
     }
 
     public void ShowClassWindow(string subClassPosition)
@@ -76,6 +222,10 @@ public class TalentTree : MonoBehaviour
                 talentsToDestroy.Add(tierToClear.GetChild(k).gameObject);
             }
 
+            talentsToDestroy.ForEach(k => talentsMain.Remove(k));
+            talentsToDestroy.ForEach(k => talentsRight.Remove(k));
+            talentsToDestroy.ForEach(k => talentsLeft.Remove(k));
+
             talentsToDestroy.ForEach(k => GameObject.Destroy(k));
             talentsToDestroy.Clear();
         }
@@ -95,13 +245,14 @@ public class TalentTree : MonoBehaviour
             if ((int)detunedRing.rotation.eulerAngles.z == 120 || (int)detunedRing.rotation.eulerAngles.z == -240)
             {
                 StartCoroutine(turningRingCoroutine(detunedRing, detunedRing.rotation.eulerAngles.z, false));
+                isTurning = true;
             }
             else if ((int)detunedRing.rotation.eulerAngles.z == 240 || (int)detunedRing.rotation.eulerAngles.z == -120)
             {
                 StartCoroutine(turningRingCoroutine(detunedRing, detunedRing.rotation.eulerAngles.z, true));
+                isTurning = true;
             }
         }
-        isTurning = true;
     }
 
     public void TurnRing(int ringNr)
@@ -110,11 +261,13 @@ public class TalentTree : MonoBehaviour
         {
             return;
         }
+        ResetTalents();
+
         Transform movingRing = myTalentTree.Find("Tier" + ringNr.ToString());
         float startAngle = movingRing.rotation.eulerAngles.z;
         bool directionLeft = false;
-        StartCoroutine(turningRingCoroutine(movingRing, startAngle, directionLeft));
         isTurning = true;
+        StartCoroutine(turningRingCoroutine(movingRing, startAngle, directionLeft));
     }
 
     public IEnumerator turningRingCoroutine(Transform movingRing, float startAngle, bool directionLeft)
@@ -157,8 +310,8 @@ public class TalentTree : MonoBehaviour
     {
         for (int i = 0; i < currentRing.childCount; i++)
         {
-            Transform talent = currentRing.GetChild(i);
-            Vector2 globalDirection = Quaternion.Euler(0, 0, currentRing.rotation.eulerAngles.z) * talent.localPosition.normalized;
+            GameObject talent = currentRing.GetChild(i).gameObject;
+            Vector2 globalDirection = Quaternion.Euler(0, 0, currentRing.rotation.eulerAngles.z) * talent.transform.localPosition.normalized;
             float angle = Vector2.SignedAngle(globalDirection, Vector2.up);
 
             talentsMain.Remove(talent);
@@ -171,6 +324,23 @@ public class TalentTree : MonoBehaviour
             { talentsLeft.Add(talent); }
             else if (angle > 60 && angle < 180)
             { talentsRight.Add(talent); }
+
+            talentsMain = talentsMain.Where(k => k != null).ToList();
+            talentsLeft = talentsLeft.Where(k => k != null).ToList();
+            talentsRight = talentsRight.Where(k => k != null).ToList();
         }
     }
+
+    void ClearTalentOrientation()
+    {
+        talentsMain.Clear();
+        talentsLeft.Clear();
+        talentsRight.Clear();
+    }
+
+    public void BtnResetTalents()
+    {
+        ResetSkillTree();
+    }
+
 }

@@ -30,4 +30,9 @@ public class PassiveTalent : MonoBehaviour
     {
 
     }
+
+    public virtual void RemoveActiveTalentEffect()
+    {
+
+    }
 }
