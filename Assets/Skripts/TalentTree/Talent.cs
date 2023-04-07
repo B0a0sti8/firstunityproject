@@ -26,7 +26,7 @@ public class Talent : MonoBehaviour
         sprite = GetComponent<Image>();
         button.onClick.AddListener(OnTalentButtonClick);
         talentPointTextOwn = transform.Find("Image").Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
-        myTalentTree = transform.parent.parent.parent.parent.GetComponent<TalentTree>();
+        myTalentTree = transform.parent.parent.parent.parent.parent.GetComponent<TalentTree>();
         //PLAYER = transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.gameObject;
         if (maxCount == 0)
         {
