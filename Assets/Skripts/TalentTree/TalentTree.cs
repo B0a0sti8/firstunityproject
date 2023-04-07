@@ -31,7 +31,7 @@ public class TalentTree : MonoBehaviour
     void Start()
     {
         classTrees = GameObject.Find("SkillTreeCollection").transform.Find("CanvasAllSkillTrees").Find("TalentTree");
-        myTalentTree = transform.Find("MainBody").Find("TalentTree");
+        myTalentTree = transform.Find("MainBody").Find("MaskLayer").Find("TalentTree");
         talentPointText = transform.Find("MainBody").Find("TalentPointText").Find("TalentPointCount").GetComponent<TextMeshProUGUI>();
 
         subClassMain = "Alchemist";
@@ -123,9 +123,9 @@ public class TalentTree : MonoBehaviour
             for (int i = 0; i < 4; i++)
             {
                 Transform myCurrentTier = myTalentTree.Find("Tier" + (i + 1).ToString());
-                for (int k = 0; k < classTrees.Find(cName).Find("Tier" + (i + 1).ToString()).childCount; k++)
+                for (int k = 0; k < classTrees.Find(cName).Find("MaskLayer").Find("TalentTree").Find("Tier" + (i + 1).ToString()).childCount; k++)
                 {
-                    GameObject cTalent = classTrees.Find(cName).Find("Tier" + (i + 1).ToString()).GetChild(k).gameObject;
+                    GameObject cTalent = classTrees.Find(cName).Find("MaskLayer").Find("TalentTree").Find("Tier" + (i + 1).ToString()).GetChild(k).gameObject;
                     GameObject cTalentNew = Instantiate(cTalent, myCurrentTier);
                     cTalentNew.transform.rotation = Quaternion.identity;
 
@@ -198,6 +198,8 @@ public class TalentTree : MonoBehaviour
         }
     }
 
+
+
     void FetchAllTalents()
     {
         talents.Clear();
@@ -237,7 +239,8 @@ public class TalentTree : MonoBehaviour
         {
             return;
         }
-        
+        ResetTalents();
+
         for (int i = 0; i < 4; i++)
         {
             Transform detunedRing = myTalentTree.Find("Tier" + (i+1).ToString());
