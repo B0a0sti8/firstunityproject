@@ -208,8 +208,8 @@ public class TalentTree : MonoBehaviour
 
     public void ShowClassWindow(string subClassPosition)
     {
-        myTalentTree.parent.parent.Find("ClassWindow").gameObject.SetActive(true);
-        myTalentTree.parent.parent.Find("ClassWindow").GetComponent<TalentClassWindow>().subClassPosition = subClassPosition;
+        myTalentTree.parent.parent.parent.Find("ClassWindow").gameObject.SetActive(true);
+        myTalentTree.parent.parent.parent.Find("ClassWindow").GetComponent<TalentClassWindow>().subClassPosition = subClassPosition;
     }
 
     void RemoveAllActiveTalents()
