@@ -18383,6 +18383,7 @@ GameObject:
   - component: {fileID: 1223069224}
   - component: {fileID: 1223069223}
   - component: {fileID: 1223069225}
+  - component: {fileID: 1223069226}
   m_Layer: 5
   m_Name: TalentTreeWindow
   m_TagString: Untagged
@@ -18475,6 +18476,19 @@ MonoBehaviour:
   talentsLeft: []
   talentsRight: []
   talentPointText: {fileID: 0}
+--- !u!114 &1223069226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223069220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe43a3c3ea7a8374cb873bf361ee728f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  talentTreeUI: {fileID: 0}
 --- !u!1 &1231392839
 GameObject:
   m_ObjectHideFlags: 0
@@ -28871,7 +28885,7 @@ GameObject:
   - component: {fileID: 1911801806}
   - component: {fileID: 1911801805}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasTalentTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
