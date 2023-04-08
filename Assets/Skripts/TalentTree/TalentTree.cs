@@ -149,10 +149,13 @@ public class TalentTree : MonoBehaviour
 
         foreach (Talent talent in talents)
         {
-            talent.Lock();
-            talent.RemoveActiveTalentEffect();
-            talent.currentCount = 0;
-            talent.UpdatePointCounter();
+            if (talent != null)
+            {
+                talent.Lock();
+                talent.RemoveActiveTalentEffect();
+                talent.currentCount = 0;
+                talent.UpdatePointCounter();
+            }
         }
 
         foreach (PassiveTalent passiveTalent in passiveTalents)
@@ -239,6 +242,8 @@ public class TalentTree : MonoBehaviour
         {
             return;
         }
+
+        ResetSkillTree();
         ResetTalents();
 
         for (int i = 0; i < 4; i++)
@@ -264,6 +269,8 @@ public class TalentTree : MonoBehaviour
         {
             return;
         }
+
+        ResetSkillTree();
         ResetTalents();
 
         Transform movingRing = myTalentTree.Find("Tier" + ringNr.ToString());
