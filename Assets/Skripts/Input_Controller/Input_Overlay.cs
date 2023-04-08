@@ -32,7 +32,7 @@ public class Input_Overlay : NetworkBehaviour
         damageMeter = ownCanvases.transform.Find("Canvas Damage Meter").gameObject.GetComponent<DamageMeter>();
         skillbook = ownCanvases.transform.Find("Canvas Skillbook").gameObject.GetComponent<SkillbookMaster>();
         keybindManager = GameObject.Find("GameManager").gameObject.GetComponent<KeybindManager>();
-        classChoiceUI = ownCanvases.transform.Find("Canvas ClassChoice").gameObject.GetComponent<ClassChoiceUI>();
+        classChoiceUI = ownCanvases.transform.Find("CanvasClassChoice").gameObject.GetComponent<ClassChoiceUI>();
         talentTreeUI = ownCanvases.transform.Find("CanvasTalentTree").gameObject.GetComponent<TalentTreeUI>();
         masterChecks = ownCanvases.Find("Canvas Action Skills").GetComponent<MasterChecks>();
         questLog = ownCanvases.Find("CanvasQuestUI").Find("QuestLog").GetComponent<QuestLog>();

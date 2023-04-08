@@ -14,7 +14,11 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
-	[Header("Class")] public string className;
+	[Header("Class")] 
+	public string mainClassName;
+	public string rightSubClassName;
+	public string leftSubClassName;
+
 	[SerializeField] private bool isTank = false;
 	[Header("Gold")] public int goldAmount;
 

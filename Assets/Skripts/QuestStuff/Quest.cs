@@ -20,6 +20,7 @@ public class Quest
     public QuestGiver MyQuestGiver { get; set; }
 
     public string MyTitle { get => title; set => title = value; }
+
     public string MyDescription 
     {        
         get

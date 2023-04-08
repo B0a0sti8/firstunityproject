@@ -17,7 +17,7 @@ public class SkillbookMaster : MonoBehaviour
 
     void Start()
     {
-        className = transform.parent.parent.GetComponent<PlayerStats>().className;
+        className = transform.parent.parent.GetComponent<PlayerStats>().mainClassName;
         skillbook = transform.Find("Skillbook").gameObject;
         actionSkill = transform.parent.Find("Canvas Action Skills").Find("SkillSlots");
         UpdateCurrentSkills();
@@ -39,16 +39,24 @@ public class SkillbookMaster : MonoBehaviour
 
     public void UpdateCurrentSkills()
     {
-        className = transform.parent.parent.GetComponent<PlayerStats>().className;
-        Debug.Log("1");
+        className = transform.parent.parent.GetComponent<PlayerStats>().mainClassName;
+
         if (className.ToString() == "")
         { return; }
-        Debug.Log("1");
+
+        for (int i = 0; i < skillbook.transform.Find("Classes").childCount; i++)
+        {
+            skillbook.transform.Find("Classes").GetChild(i).gameObject.SetActive(false);
+        }
 
         allClassesSkills = skillbook.transform.Find("Classes").Find(className.ToString() + "Skills");
         currentSkills.Clear();
         actionSkillSlots.Clear();
         currentActiveSkillNames.Clear();
+
+        if (className.ToString() == "Dummy")
+        { return; }
+
         for (int i = 0; i < actionSkill.childCount; i++)
         {
             actionSkillSlots.Add(actionSkill.GetChild(i).gameObject);
@@ -66,6 +74,8 @@ public class SkillbookMaster : MonoBehaviour
                 allClassesSkills.GetChild(i).gameObject.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
             }
         }
+
+        allClassesSkills.gameObject.SetActive(true);
 
         foreach (GameObject currentSkill in currentSkills)
         {
