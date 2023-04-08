@@ -73,6 +73,11 @@ public class PlayerStats : CharacterStats
 
 	#endregion
 
+	float tickEveryXSecondsTimerMana = 0f;
+	float tickEveryXSecondsMana = 1f;
+
+
+
 	#region UI-Interface-Stuff
 	ManaBar manaBarWorldCanv;
 	ManaBar manaBarUI;
@@ -381,12 +386,10 @@ public class PlayerStats : CharacterStats
 	void ManaRegeneration()
 	{
 		// gain mana every 1 second
-		float tickEveryXSecondsTimer = 0f;
-		float tickEveryXSeconds = 1f;
-		tickEveryXSecondsTimer += Time.deltaTime;
-		if (tickEveryXSecondsTimer >= tickEveryXSeconds)
+		tickEveryXSecondsTimerMana += Time.deltaTime;
+		if (tickEveryXSecondsTimerMana >= tickEveryXSecondsMana)
 		{
-			tickEveryXSecondsTimer = 0f;
+			tickEveryXSecondsTimerMana = 0f;
 
 			ManageMana(25f);
 		}
