@@ -5,22 +5,38 @@ using UnityEngine;
 public class TalentClassWindow : MonoBehaviour
 {
     public string subClassPosition;
-    private TalentTree myTalentTree;
+    TalentTree myTalentTree;
+    ClassAssignment myClassManager;
+    SkillbookMaster mySkillBook;
+
     void Start()
     {
         myTalentTree = transform.parent.GetComponent<TalentTree>();
+        myClassManager = transform.parent.parent.parent.Find("CanvasClassChoice").GetComponent<ClassAssignment>();
+        mySkillBook = transform.parent.parent.parent.Find("Canvas Skillbook").GetComponent<SkillbookMaster>();
     }
-    // Start is called before the first frame update
+
     public void ChangeClassToButtonString(string newClassName)
     {
         if (subClassPosition == "Main")
-        { myTalentTree.subClassMain = newClassName; }
+        { 
+            myTalentTree.subClassMain = newClassName;
+            myClassManager.ChangeAndSetClass("main", newClassName);
+        }
 
         if (subClassPosition == "Left")
-        { myTalentTree.subClassLeft = newClassName; }
+        { 
+            myTalentTree.subClassLeft = newClassName;
+            myClassManager.ChangeAndSetClass("left", newClassName);
+        }
 
         if (subClassPosition == "Right")
-        { myTalentTree.subClassRight = newClassName; }
+        { 
+            myTalentTree.subClassRight = newClassName;
+            myClassManager.ChangeAndSetClass("right", newClassName);
+        }
+
+        mySkillBook.UpdateCurrentSkills();
 
         CloseWindow();
 

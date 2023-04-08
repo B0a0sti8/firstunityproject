@@ -67,16 +67,6 @@ public class CharacterStats : NetworkBehaviour
 
     public virtual void TakeHealing(float healing, bool isCrit, NetworkBehaviourReference nBref)
     {
-        //Debug.Log("TakeHealing");
-        //if (IsServer)
-        //{
-        //    currentHealth.Value += healing;
-        //}
-        //else
-        //{
-        //    GetHealingServerRpc(healing, isCrit, nBref);
-        //}
-        //Debug.Log("TakeHealing");
         NetworkObjectReference targetPosition = gameObject;
         GetHealingServerRpc(healing, isCrit, nBref, targetPosition);
         OnHealthChange();
@@ -138,12 +128,12 @@ public class CharacterStats : NetworkBehaviour
         //Debug.Log("HealthChange1");
         if (!IsOwner) { return; }
 
-        Debug.Log("HealthChange3");
+        //Debug.Log("HealthChange3");
         int cH = (int)this.currentHealth.Value;
         int mH = (int)this.maxHealthServer.Value;
         NetworkBehaviourReference nBref = this;
-        Debug.Log(cH);
-        Debug.Log(mH);
+        //Debug.Log(cH);
+        //Debug.Log(mH);
         HealthChangedServerRpc(cH, mH, nBref);
 
     }
@@ -157,7 +147,7 @@ public class CharacterStats : NetworkBehaviour
     [ClientRpc]
     public void HealthChangedClientRpc(int cuHe, int maHe, NetworkBehaviourReference nBrf)
     {
-        Debug.Log("HealthChange!");
+        //Debug.Log("HealthChange!");
         nBrf.TryGet<CharacterStats>(out CharacterStats cStat);
         HealthBar heBa = cStat.transform.Find("Canvas World Space").Find("HealthBar").GetComponent<HealthBar>();
         heBa.SetMaxHealth(maHe);

@@ -68,7 +68,7 @@ public class SaveManager : MonoBehaviour
     private void SavePlayer(SaveData data)
     {
         data.MyPlayerData = new PlayerData(playerStats.MyCurrentPlayerLvl,
-            playerStats.MyCurrentXP, playerStats.goldAmount, playerStats.transform.position, playerStats.className);
+            playerStats.MyCurrentXP, playerStats.goldAmount, playerStats.transform.position, playerStats.mainClassName);
     }
 
     private void SaveStorageChest(SaveData data)

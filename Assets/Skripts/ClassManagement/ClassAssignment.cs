@@ -17,61 +17,48 @@ public class ClassAssignment : MonoBehaviour
 
     public void Awake()
     {
-        PLAYER = gameObject.transform.parent.gameObject.transform.parent.gameObject;
+        PLAYER = transform.parent.parent.gameObject;
         playerStats = PLAYER.GetComponent<PlayerStats>();
-        classes = PLAYER.transform.Find("Own Canvases").transform.Find("Canvas Skillbook").transform.Find("Skillbook").transform.Find("Classes").transform;
-        blueMage = classes.Find("BlueMageSkills").gameObject;
-        warrior = classes.Find("WarriorSkills").gameObject;
-        hunter = classes.Find("HunterSkills").gameObject;
-        priest = classes.Find("PriestSkills").gameObject;
-        mage = classes.Find("MageSkills").gameObject;
-        paladin = classes.Find("PaladinSkills").gameObject;
-        DeactivateClass();
+        classes = PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").Find("Skillbook").Find("Classes");
+        ResetClasses();
     }
 
-    public void ChangeClassBlueMage()
-    { 
-        playerStats.className = "BlueMage";
-        DeactivateClass();
-        blueMage.SetActive(true);
-    }
-
-    public void ChangeClassWarrior()
+    public void ChangeAndSetClass(string whichOne, string newClass)
     {
-        playerStats.className = "Warrior";
-        DeactivateClass();
-        warrior.SetActive(true);
+        ResetClasses();
+
+        switch (whichOne)
+        {
+            case "main":
+                playerStats.mainClassName = newClass;
+                    break;
+
+            case "right":
+                playerStats.rightSubClassName = newClass;
+                break;
+
+            case "left":
+                playerStats.leftSubClassName = newClass;
+                break;
+        }
+
+        if (classes.Find(playerStats.mainClassName) != null)
+        {
+            classes.Find(playerStats.mainClassName).gameObject.SetActive(true);
+        }
+
+        if (classes.Find(playerStats.rightSubClassName) != null)
+        {
+            classes.Find(playerStats.rightSubClassName).gameObject.SetActive(true);
+        }
+
+        if (classes.Find(playerStats.leftSubClassName) != null)
+        {
+            classes.Find(playerStats.leftSubClassName).gameObject.SetActive(true);
+        }
     }
 
-    public void ChangeClassHunter()
-    {
-        playerStats.className = "Hunter";
-        DeactivateClass();
-        hunter.SetActive(true);
-    }
-
-    public void ChangeClassPriest()
-    {
-        playerStats.className = "Priest";
-        DeactivateClass();
-        priest.SetActive(true);
-    }
-
-    public void ChangeClassMage()
-    {
-        playerStats.className = "Mage";
-        DeactivateClass();
-        mage.SetActive(true);
-    }
-
-    public void ChangeClassPaladin()
-    {
-        playerStats.className = "Paladin";
-        DeactivateClass();
-        paladin.SetActive(true);
-    }
-
-    public void DeactivateClass()
+    public void ResetClasses()
     {
         transform.parent.Find("Canvas Skillbook").GetComponent<SkillbookMaster>().UpdateCurrentSkills();
         classCount = classes.childCount;
