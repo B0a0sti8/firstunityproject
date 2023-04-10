@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
     EnemyAI eAI;
     Transform target;
 
-    private void Start()
+    void Start()
     {
         eAI = GetComponent<EnemyAI>();
         seeker = GetComponent<Seeker>();
