@@ -40,6 +40,7 @@ public abstract class Buff
     public virtual void StartBuffUI()
     {
         durationTimeLeft = duration;
+        elapsed = 0;
     }
 
     public virtual void EndBuffEffect(CharacterStats playerStats) 
@@ -87,7 +88,6 @@ public abstract class Buff
 
     public virtual void UpdateEffect(CharacterStats playerStats)
     {
-        
         if (elapsed >= duration)
         {
             EndBuffEffect(playerStats);

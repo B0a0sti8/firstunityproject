@@ -18,9 +18,10 @@ public class MinionPetAI : MonoBehaviour
         Dying
     }
 
-    public GameObject myMaster;
+    public Transform myMaster;
     public bool isAggroForced;
     public Transform forcedTarget;
+    public bool isInFight;
 
     private State state;
 
@@ -57,59 +58,51 @@ public class MinionPetAI : MonoBehaviour
 
     void GetCurrentTarget()
     {
+        prevTarget = target;
+
         if (isAggroForced)
         {
             target = forcedTarget;
+            //isAggroForced = false;
         }
-        else if (myMaster.GetComponent<InteractionCharacter>().focus.gameObject.CompareTag("Enemy"))
+
+        else if (myMaster.GetComponent<InteractionCharacter>().focus != null)
         {
-            target = myMaster.GetComponent<InteractionCharacter>().focus.transform;
+            if (myMaster.GetComponent<InteractionCharacter>().focus.gameObject.CompareTag("Enemy"))
+            {
+                target = myMaster.GetComponent<InteractionCharacter>().focus.transform;
+            }
         }
-    }
 
-    bool CheckIfInRange(float distance)
-    {
-        if (target != null)
+        if (state == State.Idle && prevTarget != target)
         {
-            float targetDist = Vector2.Distance(transform.position, target.transform.position);
-            if (targetDist <= distance && TargetInSight(target.transform) && target.GetComponent<CharacterStats>().isAlive.Value == true)
-            { return true; }
+            eMove.StopChasing(0f);
+            state = State.Chasing;
         }
-        return false;
-    }
-
-    bool TargetInSight(Transform target)
-    {
-        bool inSight = false;
-        Vector2 direction = ((Vector2)target.position - (Vector2)transform.position).normalized;
-        Vector2 endPosition = (Vector2)transform.position + direction * aggroRange;
-
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, endPosition, (1 <<
-            LayerMask.NameToLayer("Borders")) | (1 << LayerMask.NameToLayer("Action")));
-
-        if (hit.collider != null)
-        { inSight = hit.collider.gameObject.CompareTag("Player") ? true : false; }
-
-        return inSight;
     }
 
     void Idle()
     {
-        // Gegner könnte herumwandern o.ä. sucht währenddessen nach Zielen
-        // Neues System: Beim Laden der Scene wird ein Dictionary erstellt, in dem alle Spieler einem Aggro-Wert zugeordnet werden.
-        // Wenn Skills verwendet werden (Heilung in bestimmten Radius) Dmg Spells von irgendwo oder ein Spieler zu nah kommt -> Aggrowert erhöht
-        // Sobald der Aggrowert > 0 ist, greift Gegner an.
+        target = myMaster;
+        eMove.FollowMaster();
 
-        // Diese beiden Funktionen müssen nicht jedes Frame ausgeführt werden. Reicht ~ jede Sekunde
-        GetCurrentTarget();
-        //SearchTargets();
+        if (isInFight)
+        {
+            GetCurrentTarget();
+        }
     }
 
     private void Chasing()              // Gegner jagt aktuell Ziele
     {
+        if (!isInFight)
+        {
+            eMove.StopChasing(0f);
+            target = myMaster;
+            state = State.Idle;
+            return;
+        }
 
         GetCurrentTarget();
-        //SearchTargets();              // Soll weiterhin schauen, welches Ziel die höchste Aggro hat
 
         float distanceToTarget = Vector2.Distance(transform.position, target.position); // enemy <-> enemy's target (player)
 
@@ -146,8 +139,7 @@ public class MinionPetAI : MonoBehaviour
     {
         if (mySkills.Count() == 0 || currentTBS != 0)                // Schaut ob er Skills hat und wieder casten darf. Wenn eines von beiden nicht erfüllt ist, soll er in Attack range laufen, oder angreifen
         {
-            //Debug.Log("Ich habe keine Skills, chase oder greife an.");
-            if (CheckIfInRange(attackRange) & TargetInSight(target) & target.GetComponent<CharacterStats>().isAlive.Value)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
+            if (CheckIfInRange(attackRange) && TargetInSight(target) && target.GetComponent<CharacterStats>().isAlive.Value)            // Schaut ob Kriterien für Angriff erfüllt sind. Wenn nicht: Jagen
             {
                 state = State.Attacking;
                 Attacking();
@@ -213,7 +205,7 @@ public class MinionPetAI : MonoBehaviour
 
     private void Attacking()
     {
-        //Debug.Log("Ich mach dich fertig!");
+        ownEnemyAttack.StartEnemyAtk(target.gameObject);
         state = State.Chasing;
     }
 
@@ -225,10 +217,9 @@ public class MinionPetAI : MonoBehaviour
         //Debug.Log(state);
         //if (GetComponent<CharacterStats>().isAlive == false)
         //{ state = State.Dying; }
-        if (target != null)
+        if (GameObject.FindGameObjectsWithTag("Player")[0].transform != null)
         {
-            Vector2 lookDir = (Vector2)(transform.position - target.position).normalized;
-            transform.localRotation = Quaternion.LookRotation(lookDir, Vector3.back);
+            myMaster = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         }
 
         switch (state)
@@ -291,5 +282,31 @@ public class MinionPetAI : MonoBehaviour
             state = State.Chasing;
             Chasing();
         }
+    }
+
+    bool CheckIfInRange(float distance)
+    {
+        if (target != null)
+        {
+            float targetDist = Vector2.Distance(transform.position, target.transform.position);
+            if (targetDist <= distance && TargetInSight(target.transform) && target.GetComponent<CharacterStats>().isAlive.Value == true)
+            { return true; }
+        }
+        return false;
+    }
+
+    bool TargetInSight(Transform target)
+    {
+        bool inSight = false;
+        Vector2 direction = ((Vector2)target.position - (Vector2)transform.position).normalized;
+        Vector2 endPosition = (Vector2)transform.position + direction * aggroRange;
+
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, endPosition, (1 <<
+            LayerMask.NameToLayer("Borders")) | (1 << LayerMask.NameToLayer("Enemy")));
+
+        if (hit.collider != null)
+        { inSight = hit.collider.gameObject.CompareTag("Enemy") ? true : false; }
+
+        return inSight;
     }
 }

@@ -45,7 +45,7 @@ public class BuffManagerNPC : NetworkBehaviour
         foreach (Buff buff in buffs)
         {
             buff.Update(gameObject.GetComponent<CharacterStats>());
-            if (IsServer) { buff.Update(gameObject.GetComponent<CharacterStats>()); }
+            //if (IsServer) { buff.Update(gameObject.GetComponent<CharacterStats>()); }
         }
 
         if (newBuffs.Count > 0)

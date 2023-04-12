@@ -34,7 +34,7 @@ public class TalentTree : MonoBehaviour
         myTalentTree = transform.Find("MainBody").Find("MaskLayer").Find("TalentTree");
         talentPointText = transform.Find("MainBody").Find("TalentPointText").Find("TalentPointCount").GetComponent<TextMeshProUGUI>();
 
-        subClassMain = "Alchemist";
+        subClassMain = "Summoner";
         subClassLeft = "Dummy";
         subClassRight = "Dummy";
 

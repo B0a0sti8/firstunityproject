@@ -19,12 +19,12 @@ public class MinionPetMovement : MonoBehaviour
     Path path;
     Seeker seeker;
     Rigidbody2D rb2d;
-    EnemyAI eAI;
+    MinionPetAI eAI;
     Transform target;
 
     void Start()
     {
-        eAI = GetComponent<EnemyAI>();
+        eAI = GetComponent<MinionPetAI>();
         seeker = GetComponent<Seeker>();
         rb2d = GetComponent<Rigidbody2D>();
 
@@ -58,6 +58,31 @@ public class MinionPetMovement : MonoBehaviour
             isInvokingPF = true;
         }
         Move();
+    }
+
+    public void FollowMaster()
+    {
+        if (eAI.myMaster == null) return;
+        target = eAI.myMaster;
+
+        if (isStoppingPF)                                   // Falls 
+        {
+            StopCoroutine(ceasePathfindingCoroutine);
+            isStoppingPF = false;
+        }
+
+        if (!isInvokingPF)
+        {
+            updatePathCoroutine = StartCoroutine(InvokePathfinding());
+            isInvokingPF = true;
+        }
+
+        float distance = Vector2.Distance(rb2d.position, target.position);
+
+        if (distance > eAI.targetRange)
+        {
+            Move();
+        }
     }
 
     IEnumerator CeasePathfinding(float aggroTime)
@@ -99,6 +124,12 @@ public class MinionPetMovement : MonoBehaviour
         Vector2 force = direction * speed * GetComponent<EnemyStats>().movementSpeed.GetValue() * Time.deltaTime;
         rb2d.AddForce(force);
 
+        Vector3 lookDir = direction;
+        if (lookDir != Vector3.zero)
+        {
+            transform.localRotation = Quaternion.LookRotation(lookDir, Vector3.back);
+        }
+        
         float distance = Vector2.Distance(rb2d.position, path.vectorPath[currentWypoint]);
         if (distance < nextWypointDistance)
         { currentWypoint++; }

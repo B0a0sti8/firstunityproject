@@ -5,18 +5,16 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     float timer = 0f;
+    public float baseAttackDamage = 0;
 
     public void StartEnemyAtk(GameObject target)
     {
-        if (gameObject.GetComponent<EnemyStats>().isAlive.Value && target.gameObject.GetComponent<PlayerStats>().isAlive.Value)
+        if (gameObject.GetComponent<EnemyStats>().isAlive.Value && target.gameObject.GetComponent<CharacterStats>().isAlive.Value)
         {
             if (timer <= 0)
             { // inSight Check???
-                if (Vector2.Distance(gameObject.transform.position, target.transform.position) <= gameObject.GetComponent<EnemyAI>().attackRange)
-                {
-                    timer = gameObject.GetComponent<EnemyStats>().baseAttackSpeed;
-                    EnemyAtkEffect(target);
-                }
+                timer = gameObject.GetComponent<EnemyStats>().baseAttackSpeed;
+                EnemyAtkEffect(target);
             }
         }
     }
