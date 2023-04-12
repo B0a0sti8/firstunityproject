@@ -19,6 +19,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     SkillPrefab buttonSkill;
 
     public bool skillAvailable;
+    ActionButton[] allActionButtons;
 
     HandScript myHandScript;
 
@@ -33,16 +34,19 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
         myHandScript = PLAYER.transform.Find("Own Canvases").Find("Canvas Hand").Find("Hand Image").GetComponent<HandScript>();
 
-        //if (skillName == "") return;
-        ////if (className == "") return;
-        //FindMatchingSkill();
-        //UpdateButton();
-        //MasterETStuffAssignment(buttonSkill);
+        allActionButtons = transform.parent.parent.GetComponentsInChildren<ActionButton>();
 
-
+        RemoteUpdateThisButton();
+        //for (int i = 0; i < allActionButtons.Length; i++)
+        //{ allActionButtons[i].RemoteUpdateThisButton(); }
     }
 
     void Update()
+    {
+        UpdateButton();
+    }
+
+    public void RemoteUpdateThisButton()
     {
         if (skillName != "")
         {
@@ -61,7 +65,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     void FindMatchingSkill()
     {
-        SkillPrefab[] skills = skillManager.transform.Find("BlueMage").GetComponents<SkillPrefab>();
+        SkillPrefab[] skills = skillManager.transform.GetComponentsInChildren<SkillPrefab>();
 
         for (int i = 0; i < skills.Length; i++)
         {
@@ -76,6 +80,11 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     void UpdateButton()
     {
+        if (buttonSkill == null)
+        {
+            return;
+        }
+
         if (buttonSkill.ownCooldownTimeLeft > 0)
         {
             buttonText.text = Mathf.Round(buttonSkill.ownCooldownTimeLeft).ToString();
@@ -107,6 +116,87 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
                 }
             }
         }
+    }
+
+    public void UseSkillOnClick()
+    {
+        if (buttonSkill == null) return;
+
+        if (skillAvailable)
+        {
+            buttonSkill.StartSkillChecks();
+        }
+        else
+        {
+            Debug.Log("You don't have that skill yet.");
+        }
+
+        for (int i = 0; i < allActionButtons.Length; i++)
+        { allActionButtons[i].RemoteUpdateThisButton(); }
+    }
+
+    public void OnPointerClick(PointerEventData eventData) // Wenn Button geklickt wird ausgeführt (nur Mausklick)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (myHandScript.handSkillName != "")
+            {
+                skillName = myHandScript.handSkillName;
+                myHandScript.handSkillName = "";
+            }
+            else
+            {
+                UseSkillOnClick();
+            }
+        }
+
+        for (int i = 0; i < allActionButtons.Length; i++)
+        { allActionButtons[i].RemoteUpdateThisButton(); }
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+        if (myHandScript.handSkillName != "") return;
+        if (skillName == "") return;
+        if (myHandScript.actionButtonDragOn)
+        {
+            myHandScript.handButtonSwap = gameObject;
+            myHandScript.handSkillName = skillName;
+            skillName = "";
+        }
+
+        for (int i = 0; i < allActionButtons.Length; i++)
+        { allActionButtons[i].RemoteUpdateThisButton(); }
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+        if (myHandScript.handSkillName == "") return;
+        if (myHandScript.actionButtonDragOn)
+        {
+            if (myHandScript.handButtonSwap != null) // doesn't trigger when dragging from Skillbook to ActionButton
+            {
+                myHandScript.handButtonSwap.GetComponent<ActionButton>().skillName = skillName;
+            }
+        }
+        skillName = myHandScript.handSkillName;
+        PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").gameObject.GetComponent<SkillbookMaster>().UpdateCurrentSkills();
+
+        for (int i = 0; i < allActionButtons.Length; i++)
+        { allActionButtons[i].RemoteUpdateThisButton(); }
+    }
+
+    public void OnEndDrag(PointerEventData eventData) // triggers right after OnDrop
+    {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+        if (myHandScript.handSkillName == "") return;
+        myHandScript.handButtonSwap = null;
+        myHandScript.handSkillName = "";
+
+        for (int i = 0; i < allActionButtons.Length; i++)
+        { allActionButtons[i].RemoteUpdateThisButton(); }
     }
 
     void MasterETStuffAssignment(SkillPrefab skill)
@@ -159,96 +249,4 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         skill.masterET.skillRange = skill.tooltipSkillRange;
         skill.masterET.skillRadius = skill.tooltipSkillRadius;
     }
-
-    public void UseSkillOnClick()
-    {
-        if (buttonSkill == null) return;
-
-        if (skillAvailable)
-        {
-            buttonSkill.StartSkillChecks();
-        }
-        else
-        {
-            Debug.Log("You don't have that skill yet.");
-        }
-    }
-
-    public void OnPointerClick(PointerEventData eventData) // Wenn Button geklickt wird ausgeführt (nur Mausklick)
-    {
-        if (eventData.button == PointerEventData.InputButton.Left)
-        {
-            if (myHandScript.handSkillName != "")
-            {
-                skillName = myHandScript.handSkillName;
-                myHandScript.handSkillName = "";
-            }
-            else
-            {
-                UseSkillOnClick();
-            }
-        }
-    }
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        if (eventData.button != PointerEventData.InputButton.Left) return;
-        if (myHandScript.handSkillName != "") return;
-        if (skillName == "") return;
-        if (myHandScript.actionButtonDragOn)
-        {
-            myHandScript.handButtonSwap = gameObject;
-            myHandScript.handSkillName = skillName;
-            skillName = "";
-        }
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        if (eventData.button != PointerEventData.InputButton.Left) return;
-        if (myHandScript.handSkillName == "") return;
-        if (myHandScript.actionButtonDragOn)
-        {
-            if (myHandScript.handButtonSwap != null) // doesn't trigger when dragging from Skillbook to ActionButton
-            {
-                myHandScript.handButtonSwap.GetComponent<ActionButton>().skillName = skillName;
-            }
-        }
-        skillName = myHandScript.handSkillName;
-        PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").gameObject.GetComponent<SkillbookMaster>().UpdateCurrentSkills();
-    }
-
-    public void OnEndDrag(PointerEventData eventData) // triggers right after OnDrop
-    {
-        if (eventData.button != PointerEventData.InputButton.Left) return;
-        if (myHandScript.handSkillName == "") return;
-        myHandScript.handButtonSwap = null;
-        myHandScript.handSkillName = "";
-    }
 }
-
-
-//public Button MyButton { get; private set; }
-
-//MyButton = GetComponent<Button>();
-
-//if (HandScript.MyInstance.MyMoveable != null)
-//{
-//    UpdateVisual();
-//}
-//else
-//{
-//    UseSkillOnClick();
-//}
-
-//public void UpdateVisual()
-//{
-//    buttonImage.sprite = HandScript.MyInstance.Put().MyIcon;
-//    buttonImage.color = Color.white;
-//}
-
-//private IUseable useable;
-//if(useable != null)
-//{
-//    useable.Use();
-//}

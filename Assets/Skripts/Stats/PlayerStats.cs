@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
@@ -99,6 +100,8 @@ public class PlayerStats : CharacterStats
 	private CharacterPanelScript charPanel;
 	private CharPanelButtonScript[] allEquipSlots;
 
+	public List<GameObject> myMinions;
+
 	public bool MyIsTank { get => isTank; set => isTank = value; }
 
 	public int MyNeededXP { get => neededXP; set => neededXP = value; }
@@ -135,7 +138,7 @@ public class PlayerStats : CharacterStats
 
 		OnManaChange();
 
-		gameObject.transform.Find("Own Canvases").gameObject.SetActive(true);
+		transform.Find("Own Canvases").gameObject.SetActive(true);
 
 		xPBar = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("XPBar").GetComponent<XPBarScript>();
 

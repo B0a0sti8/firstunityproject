@@ -19,6 +19,8 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     [HideInInspector]
     public PlayerStats playerStats;
 
+    public string myClass;
+
     [Header("Target")]
     public bool needsTargetEnemy;
     public bool needsTargetAlly;
