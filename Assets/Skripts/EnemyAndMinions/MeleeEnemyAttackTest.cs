@@ -5,11 +5,15 @@ using Unity.Netcode;
 
 public class MeleeEnemyAttackTest : EnemyAttack
 {
+    private void Start()
+    {
+        baseAttackDamage = 50;
+    }
     public override void EnemyAtkEffect(GameObject target)
     {
         base.EnemyAtkEffect(target);
 
-        DamageOrHealing.DealDamage(gameObject.GetComponent<NetworkBehaviour>(), target.GetComponent<NetworkBehaviour>(), gameObject.GetComponent<EnemyStats>().dmgModifier.GetValue(), false, false); ;
+        DamageOrHealing.DealDamage(gameObject.GetComponent<NetworkBehaviour>(), target.GetComponent<NetworkBehaviour>(), 50, false, false); 
         // Attack
         // Animation
     }

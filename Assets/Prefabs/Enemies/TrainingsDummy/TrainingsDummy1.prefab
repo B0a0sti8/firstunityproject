@@ -425,7 +425,7 @@ MonoBehaviour:
   isCurrentlyCasting: 0
   type: 
   maxHealth:
-    baseValue: 3e+10
+    baseValue: 3000000
     modifiedValue: 0
   currentHealth:
     m_InternalValue: 1
@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 2799739491412168339}
   - component: {fileID: 3799933746576688303}
   m_Layer: 0
-  m_Name: sprite
+  m_Name: Charakter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -750,7 +750,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6298106996332654106}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.015000343, y: 0.288, z: -50.33747}
+  m_LocalPosition: {x: 0.015000343, y: 0.288, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1060,7 +1060,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9075257062473545420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.015, y: -0.712, z: -50.33747}
+  m_LocalPosition: {x: 0.015, y: -0.712, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

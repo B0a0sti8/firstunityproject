@@ -21,6 +21,7 @@ public class TalentClassWindow : MonoBehaviour
         if (subClassPosition == "Main")
         { 
             myTalentTree.subClassMain = newClassName;
+            Debug.Log(newClassName);
             myClassManager.ChangeAndSetClass("main", newClassName);
         }
 

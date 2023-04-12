@@ -40,7 +40,8 @@ public class SkillbookButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 
         myHandScript = transform.parent.parent.parent.parent.parent.Find("Canvas Hand").Find("Hand Image").GetComponent<HandScript>();
 
-        SkillPrefab[] skills = skillManager.transform.Find("BlueMage").GetComponents<SkillPrefab>();
+        string myClassName = transform.parent.name.Substring(0, transform.parent.name.Length - 6);
+        SkillPrefab[] skills = skillManager.transform.Find(myClassName).GetComponents<SkillPrefab>();
 
         for (int i = 0; i < skills.Length; i++)
         {

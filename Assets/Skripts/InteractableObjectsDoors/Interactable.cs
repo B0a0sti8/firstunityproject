@@ -57,9 +57,9 @@ public class Interactable : NetworkBehaviour
         if (gameObject.layer == LayerMask.NameToLayer("Enemy") || gameObject.layer == LayerMask.NameToLayer("Ally"))
         {
             //Debug.Log("Focus enemy"); // 2x im Log
-            gameObject.transform.Find("Charakter").transform.localScale = new Vector3(8f, 1.5f, 1f); // wide boii
+            transform.Find("Charakter").transform.localScale = new Vector3(8f, 1.5f, 1f); // wide boii
 
-            gameObject.transform.Find("Canvas UI").gameObject.SetActive(true);
+            transform.Find("Canvas UI").gameObject.SetActive(true);
             gameObject.GetComponent<EnemyStats>().enemyUIHealthActive = true;
 
             if (transform.Find("Canvas UI").Find("CanvasBuffsAndDebuffs") != null)

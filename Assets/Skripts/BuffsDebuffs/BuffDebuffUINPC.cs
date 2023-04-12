@@ -73,6 +73,7 @@ public class BuffDebuffUINPC : NetworkBehaviour
                 string buffSpN = buffManager.buffs[i].icon.name;
                 float buffDur = buffManager.buffs[i].durationTimeLeft;
                 UpdateUIServerRpc(nBref, i, buffN, buffDes, buffSpN, buffDur);
+                Debug.Log("BuffSprite heiﬂt: " +  buffSpN);
             }
             else
             {
