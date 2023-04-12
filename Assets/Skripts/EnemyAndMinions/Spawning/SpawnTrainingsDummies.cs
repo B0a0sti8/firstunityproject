@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class SpawnTrainingsDummies : MonoBehaviour
+public class SpawnTrainingsDummies : NetworkBehaviour
 {
-    [SerializeField] GameObject trainingsDummy; 
-    private void Start()
+    [SerializeField] GameObject trainingsDummy;
+    [SerializeField] Vector3 spawnPos1;
+    [SerializeField] Vector3 spawnPos2;
+    [SerializeField] Vector3 spawnPos3;
+
+    public override void OnNetworkSpawn()
     {
+        base.OnNetworkSpawn();
         {
-            GameObject go = Instantiate(trainingsDummy, new Vector3(-9.85f, -0.56f, 50.0f), Quaternion.identity);
+            GameObject go = Instantiate(trainingsDummy, spawnPos1, Quaternion.identity);
             go.GetComponent<NetworkObject>().Spawn();
 
-            GameObject go1 = Instantiate(trainingsDummy, new Vector3(-11.05f, 1.41f, 50.0f), Quaternion.identity);
+            GameObject go1 = Instantiate(trainingsDummy, spawnPos2, Quaternion.identity);
             go1.GetComponent<NetworkObject>().Spawn();
 
-            GameObject go2 = Instantiate(trainingsDummy, new Vector3(-9.61f, -3.82f, 50.0f), Quaternion.identity);
+            GameObject go2 = Instantiate(trainingsDummy, spawnPos3, Quaternion.identity);
             go2.GetComponent<NetworkObject>().Spawn();
         }
     }

@@ -14,6 +14,7 @@ public class HandScript : MonoBehaviour
     bool hasItem;
 
     InventoryScript myInventory;
+    ActionButton[] allActionButtons;
 
     public IMoveable MyMoveable { get; set; }
 
@@ -23,6 +24,7 @@ public class HandScript : MonoBehaviour
     {
         handImage = GetComponent<Image>();
         myInventory = transform.parent.parent.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
+        allActionButtons = transform.parent.parent.Find("Canvas Action Skills").Find("SkillSlots").GetComponentsInChildren<ActionButton>();
     }
 
     private void Update()
@@ -50,8 +52,6 @@ public class HandScript : MonoBehaviour
         }
     }
 
-    
-
     public void TakeMoveable(IMoveable moveable)
     {
          this.MyMoveable = moveable;
@@ -65,6 +65,9 @@ public class HandScript : MonoBehaviour
         IMoveable tmp = MyMoveable;
         MyMoveable = null;
         handImage.color = new Color(0, 0, 0, 0);
+
+        for (int i = 0; i < allActionButtons.Length; i++)
+        { allActionButtons[i].RemoteUpdateThisButton(); }
         return tmp;
     }
 
@@ -74,6 +77,9 @@ public class HandScript : MonoBehaviour
         handImage.color = new Color(0, 0, 0, 0);
         hasItem = false;
         myInventory.FromSlot = null;
+
+        for (int i = 0; i < allActionButtons.Length; i++)
+        { allActionButtons[i].RemoteUpdateThisButton(); }
     }
 
     public void DeleteItem()

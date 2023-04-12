@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class ObjectDisableAtStart : MonoBehaviour
+public class ObjectDisableAtStart : NetworkBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void OnNetworkSpawn()
     {
+        base.OnNetworkSpawn();
         gameObject.SetActive(false);
     }
 }
