@@ -12,6 +12,8 @@ public class SummonDragonling : SkillPrefab
         base.Start();
         myClass = "Summoner";
 
+        hasGlobalCooldown = true;
+
         isSelfCast = true;
 
         hasOwnCooldown = true;

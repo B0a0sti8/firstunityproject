@@ -14,8 +14,11 @@ public class Stat
 	public float GetValue()
     {
 		float finalValue = baseValue;
-		modifiersAdd.ForEach(x => finalValue += x);
-		modifiersMultiply.ForEach(x => finalValue *= x);
+		float additiveFactors=1;
+
+		modifiersAdd.ForEach(x => additiveFactors += x);
+		finalValue *= additiveFactors;
+		modifiersMultiply.ForEach(x => finalValue *= (1+x));
 		return finalValue;
     }
 

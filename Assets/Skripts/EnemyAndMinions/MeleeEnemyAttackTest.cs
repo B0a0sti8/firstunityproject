@@ -13,6 +13,8 @@ public class MeleeEnemyAttackTest : EnemyAttack
     {
         base.EnemyAtkEffect(target);
 
+        Debug.Log(gameObject.GetComponent<EnemyStats>().actionSpeed.GetValue());
+
         DamageOrHealing.DealDamage(gameObject.GetComponent<NetworkBehaviour>(), target.GetComponent<NetworkBehaviour>(), 50, false, false); 
         // Attack
         // Animation

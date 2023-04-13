@@ -16,7 +16,7 @@ public class AttackSpeedBoostBuff : Buff
     public override void EndBuffEffect(CharacterStats playerStats)
     {
         base.EndBuffEffect(playerStats);
-        playerStats.actionSpeed.AddModifierAdd(-value);
+        playerStats.actionSpeed.RemoveModifierAdd(value);
     }
 
     public override Buff Clone()
