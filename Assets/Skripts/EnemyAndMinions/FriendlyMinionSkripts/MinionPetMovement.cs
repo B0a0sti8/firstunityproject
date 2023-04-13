@@ -127,7 +127,7 @@ public class MinionPetMovement : MonoBehaviour
         Vector3 lookDir = direction;
         if (lookDir != Vector3.zero)
         {
-            transform.localRotation = Quaternion.LookRotation(lookDir, Vector3.back);
+            transform.Find("ImageComponent").localRotation = Quaternion.LookRotation(lookDir, Vector3.back);
         }
         
         float distance = Vector2.Distance(rb2d.position, path.vectorPath[currentWypoint]);

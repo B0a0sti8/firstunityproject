@@ -34,7 +34,7 @@ public class EnemyStats : CharacterStats
 
     public override void Start()
     {
-        
+        actionSpeed.baseValue = 1f;        
         currentHealth.Value = maxHealth.GetValue();
         isAlive.Value = true;
         baseDamage = 10f;

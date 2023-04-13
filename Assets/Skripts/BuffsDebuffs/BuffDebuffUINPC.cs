@@ -63,6 +63,9 @@ public class BuffDebuffUINPC : NetworkBehaviour
     {
         if (!IsOwner) { return; }
 
+        if (!transform.parent.gameObject.activeSelf || !transform.parent.gameObject.activeInHierarchy)
+        { return; }
+
         NetworkBehaviourReference nBref = this;
         for (int i = 0; i < slots.Length; i++)
         {

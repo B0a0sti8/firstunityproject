@@ -13,7 +13,7 @@ public class EnemyAttack : MonoBehaviour
         {
             if (timer <= 0)
             { // inSight Check???
-                timer = gameObject.GetComponent<EnemyStats>().baseAttackSpeed;
+                timer = 1 / gameObject.GetComponent<EnemyStats>().actionSpeed.GetValue();
                 EnemyAtkEffect(target);
             }
         }

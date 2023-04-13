@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class AllMinionsAttackThis : SkillPrefab
+public class AllMinionsStopAttacking : SkillPrefab
 {
     public override void Start()
     {
@@ -18,7 +18,7 @@ public class AllMinionsAttackThis : SkillPrefab
     }
     public override void Update()
     {
-        tooltipSkillDescription = "All Minions attack this Target!";
+        tooltipSkillDescription = "All Minions stop attacking!";
 
         base.Update();
     }
@@ -27,6 +27,6 @@ public class AllMinionsAttackThis : SkillPrefab
     {
         base.SkillEffect();
 
-        PLAYER.GetComponent<PlayerStats>().myMinions.ForEach(k => k.GetComponent<MinionPetAI>().isInFight = true);
+        PLAYER.GetComponent<PlayerStats>().myMinions.ForEach(k => k.GetComponent<MinionPetAI>().isInFight = false);
     }
 }

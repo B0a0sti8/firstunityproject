@@ -27,9 +27,11 @@ public class BuffMasterManager : MonoBehaviour
         HoTBuff hoTBuff = new HoTBuff();
         SpeedBoostBuff speedBoostBuff = new SpeedBoostBuff();
         TheWayOfTheChickenDamageDebuff testWayOfTheChickenDamageDebuff = new TheWayOfTheChickenDamageDebuff();
+        AttackSpeedBoostBuff attackSpeedBoostBuff = new AttackSpeedBoostBuff();
 
         ListOfAllBuffs.Add("HoTBuff", hoTBuff);
         ListOfAllBuffs.Add("speedBoostBuff", speedBoostBuff);
         ListOfAllBuffs.Add("TestWayOfTheChickenDamageDebuff", testWayOfTheChickenDamageDebuff);
+        ListOfAllBuffs.Add("AttackSpeedBoostBuff", attackSpeedBoostBuff);
     }
 }

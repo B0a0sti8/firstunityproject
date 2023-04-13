@@ -83,6 +83,7 @@ public abstract class Buff
         {
             durationTimeLeft = 0;
             EndBuffUI(playerStats);
+            EndBuffEffect(playerStats);
         }
     }
 
@@ -90,7 +91,7 @@ public abstract class Buff
     {
         if (elapsed >= duration)
         {
-            EndBuffEffect(playerStats);
+            //EndBuffEffect(playerStats);
         }
     }
 
