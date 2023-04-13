@@ -638,9 +638,9 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
     void Awake()
     {
-        PLAYER = transform.parent.transform.parent.gameObject;
+        PLAYER = transform.parent.parent.gameObject;
 
-        masterChecks = PLAYER.transform.Find("Own Canvases").transform.Find("Canvas Action Skills").GetComponent<MasterChecks>();
+        masterChecks = PLAYER.transform.Find("Own Canvases").Find("Canvas Action Skills").GetComponent<MasterChecks>();
 
         interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
 

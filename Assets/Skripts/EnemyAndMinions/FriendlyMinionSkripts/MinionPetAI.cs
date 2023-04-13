@@ -56,6 +56,19 @@ public class MinionPetAI : MonoBehaviour
         mySkills = transform.Find("Skills").GetComponents<EnemySkillPrefab>();
     }
 
+    public void ForceAggroToTarget(Transform forcTar)
+    {
+        forcedTarget = forcTar;
+        target = forcTar;
+        isAggroForced = true;
+    }
+
+    public void DisableForcedAggro()
+    {
+        forcedTarget = null;
+        isAggroForced = false;
+    }
+
     void GetCurrentTarget()
     {
         prevTarget = target;
@@ -63,7 +76,6 @@ public class MinionPetAI : MonoBehaviour
         if (isAggroForced)
         {
             target = forcedTarget;
-            //isAggroForced = false;
         }
 
         else if (myMaster.GetComponent<InteractionCharacter>().focus != null)
@@ -114,6 +126,7 @@ public class MinionPetAI : MonoBehaviour
         }
         else if (target.GetComponent<CharacterStats>().isAlive.Value == false)         // Falls Charakter tot ist
         {
+            isAggroForced = false;
             eMove.StopChasing(0f);
             state = State.Idle;
             if (isLC == true) { isLC = false; StopCoroutine(lc); }
@@ -209,18 +222,21 @@ public class MinionPetAI : MonoBehaviour
         state = State.Chasing;
     }
 
-    private void Dying()
-    { }
+    public void Dying()
+    {
+        state = State.Dying;
+        myMaster.GetComponent<PlayerStats>().MinionHasDied(gameObject);
+    }
 
     void Update()
     {
         //Debug.Log(state);
         //if (GetComponent<CharacterStats>().isAlive == false)
         //{ state = State.Dying; }
-        if (GameObject.FindGameObjectsWithTag("Player")[0].transform != null)
-        {
-            myMaster = GameObject.FindGameObjectsWithTag("Player")[0].transform;
-        }
+        //if (GameObject.FindGameObjectsWithTag("Player")[0].transform != null)
+        //{
+        //    myMaster = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        //}
 
         switch (state)
         {

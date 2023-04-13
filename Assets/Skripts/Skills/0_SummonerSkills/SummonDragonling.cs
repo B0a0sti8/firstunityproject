@@ -28,6 +28,16 @@ public class SummonDragonling : SkillPrefab
         base.Update();
     }
 
+    public override void ConditionCheck()
+    {
+        //if (transform.GetComponent<SummonerClass>().myMainSummonerMinions.Count >= transform.GetComponent<SummonerClass>().maxNrOfMainSummonerMinions)
+        //{ Debug.Log("Zu viele Summoner Begleiter!"); return; }
+
+        if (playerStats.myMainMinions.Count >= playerStats.maxNrOfMainMinions)
+        { Debug.Log("Zu viele Begleiter!"); return; }
+        base.ConditionCheck();
+    }
+
     public override void SkillEffect()
     {
         base.SkillEffect();
@@ -43,6 +53,7 @@ public class SummonDragonling : SkillPrefab
         dragonl.GetComponent<NetworkObject>().Spawn();
         dragonl.GetComponent<MinionPetAI>().myMaster = PLAYER.transform;
 
-        PLAYER.GetComponent<PlayerStats>().myMinions.Add(dragonl);
+        PLAYER.GetComponent<PlayerStats>().myMainMinions.Add(dragonl);
+        //transform.GetComponent<SummonerClass>().myMainSummonerMinions.Add(dragonl);
     }
 }

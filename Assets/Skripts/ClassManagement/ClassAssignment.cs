@@ -52,6 +52,7 @@ public class ClassAssignment : MonoBehaviour
         }
 
         mySkillBook.UpdateCurrentSkills();
+        playerStats.HandleResetMinionCount();
     }
 
     public void ChangeAndSetClass(string whichOne, string newClass)
