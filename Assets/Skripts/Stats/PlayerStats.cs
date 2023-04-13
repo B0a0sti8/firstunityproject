@@ -101,6 +101,8 @@ public class PlayerStats : CharacterStats
 	private CharPanelButtonScript[] allEquipSlots;
 
 	public List<GameObject> myMinions;
+	public List<GameObject> myMainMinions;
+	public int maxNrOfMainMinions;
 
 	public bool MyIsTank { get => isTank; set => isTank = value; }
 
@@ -469,4 +471,24 @@ public class PlayerStats : CharacterStats
 		if (!IsOwner) { return; }
 		GainXP(505);
 	}
+
+	public void HandleResetMinionCount()
+    {
+		maxNrOfMainMinions = 0;
+		List<string> minionClasses = new List<string>();
+		minionClasses.Add("Summoner"); minionClasses.Add("Alchemist");
+
+        foreach (var str in minionClasses)
+        {
+			if (mainClassName == str) maxNrOfMainMinions += 1;
+			if (leftSubClassName == str) maxNrOfMainMinions += 1;
+			if (rightSubClassName == str) maxNrOfMainMinions += 1;
+		}
+    }
+
+	public void MinionHasDied(GameObject minion)
+    {
+		myMainMinions.Remove(minion);
+		myMinions.Remove(minion);
+    }
 }

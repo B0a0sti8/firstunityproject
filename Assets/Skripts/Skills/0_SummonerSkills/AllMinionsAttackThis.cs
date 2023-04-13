@@ -27,6 +27,12 @@ public class AllMinionsAttackThis : SkillPrefab
     {
         base.SkillEffect();
 
+        //foreach (var mn in PLAYER.GetComponent<PlayerStats>().myMinions)
+        //{
+        //    MinionPetAI minion = mn.GetComponent<MinionPetAI>();
+        //    minion.isInFight = true;
+        //    minion.ForceAggroToTarget(PLAYER.GetComponent<InteractionCharacter>().focus.transform);
+        //}
         PLAYER.GetComponent<PlayerStats>().myMinions.ForEach(k => k.GetComponent<MinionPetAI>().isInFight = true);
     }
 }

@@ -31,10 +31,18 @@ public class DarkBolt : SkillPrefab
         base.SkillEffect();
 
         Debug.Log("Firing DarkBolt");
+        float tOA = 0.2f;
 
         GameObject project = Instantiate(myProjectile, PLAYER.transform.position, Quaternion.identity);
         project.GetComponent<NetworkObject>().Spawn();
         project.GetComponent<ProjectileFlyToTarget>().target = PLAYER.GetComponent<InteractionCharacter>().focus.transform;
-        project.GetComponent<ProjectileFlyToTarget>().timeToArrive = 0.2f;
+        project.GetComponent<ProjectileFlyToTarget>().timeToArrive = tOA;
+        StartCoroutine(DelayedDamage(tOA));
+    }
+
+    IEnumerator DelayedDamage(float tOA)
+    {
+        yield return new WaitForSeconds(tOA);
+        DealDamage(damage);
     }
 }
