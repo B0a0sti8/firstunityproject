@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 3439966835867920617}
   m_Layer: 10
   m_Name: Dragonling
-  m_TagString: Enemy
+  m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
