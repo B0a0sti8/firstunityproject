@@ -21,6 +21,7 @@ public class SummonDragonling : SkillPrefab
 
         castTimeOriginal = 1f;
     }
+
     public override void Update()
     {
         tooltipSkillDescription = "Summons a Dragonling that helps you destroy things.";

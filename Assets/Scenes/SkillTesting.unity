@@ -14334,6 +14334,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 1
+--- !u!1001 &1461471462
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 647104670885987432, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 647104670885987432, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 647104670885987432, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 647104670885987432, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 647104670885987432, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.049999952
+      objectReference: {fileID: 0}
+    - target: {fileID: 647104670885987432, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.0000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 647104670885987432, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 647104670885987432, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 647104670885987432, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 647104670885987432, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 647104670885987432, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 647104670885987432, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 647104670885987432, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 647104670885987435, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_Name
+      value: DragonlingDMGAura
+      objectReference: {fileID: 0}
+    - target: {fileID: 647104670885987435, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
 --- !u!1 &1498293185
 GameObject:
   m_ObjectHideFlags: 0
