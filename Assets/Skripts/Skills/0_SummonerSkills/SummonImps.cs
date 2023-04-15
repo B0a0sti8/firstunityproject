@@ -34,6 +34,7 @@ public class SummonImps : SkillPrefab
         impCount = 6;
         impLifeTime = 10;
     }
+
     public override void Update()
     {
         tooltipSkillDescription = "Summons a bunch of Imps around target Enemy";

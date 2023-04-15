@@ -16,6 +16,7 @@ public class AllMinionsStopAttacking : SkillPrefab
         hasGlobalCooldown = false;
         ownCooldownTimeBase = 3f;
     }
+
     public override void Update()
     {
         tooltipSkillDescription = "All Minions stop attacking!";
