@@ -13,6 +13,7 @@
 /[Aa]ssets/AllIn1VfxToolkit
 /[Aa]ssets/BigSprites
 /[Aa]ssets/4000_Fantasy_Icons
+/[Aa]ssets/5000FantasyIcons
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
