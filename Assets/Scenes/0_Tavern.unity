@@ -18606,23 +18606,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593a2fe42fa9d37498c96f9a383b6521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RunInBackground: 1
-  LogLevel: 1
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 650275672}
     PlayerPrefab: {fileID: 4094875758603024536, guid: a4b60a4afe895e64185c7c2110c777ba, type: 3}
-    NetworkPrefabs:
-    - Override: 0
-      Prefab: {fileID: 4094875758603024536, guid: a4b60a4afe895e64185c7c2110c777ba, type: 3}
-      SourcePrefabToOverride: {fileID: 0}
-      SourceHashToOverride: 0
-      OverridingTargetPrefab: {fileID: 0}
-    - Override: 0
-      Prefab: {fileID: 2023599406339572345, guid: 3f1d2d8232d36a24d81a1f67c532680f, type: 3}
-      SourcePrefabToOverride: {fileID: 0}
-      SourceHashToOverride: 0
-      OverridingTargetPrefab: {fileID: 0}
+    Prefabs:
+      NetworkPrefabsLists: []
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
@@ -18638,6 +18627,19 @@ MonoBehaviour:
     LoadSceneTimeOut: 120
     SpawnTimeout: 1
     EnableNetworkLogs: 1
+    OldPrefabList:
+    - Override: 0
+      Prefab: {fileID: 4094875758603024536, guid: a4b60a4afe895e64185c7c2110c777ba, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+    - Override: 0
+      Prefab: {fileID: 2023599406339572345, guid: 3f1d2d8232d36a24d81a1f67c532680f, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+  RunInBackground: 1
+  LogLevel: 1
 --- !u!4 &650275671
 Transform:
   m_ObjectHideFlags: 0
@@ -22770,8 +22772,8 @@ GameObject:
   - component: {fileID: 748186249}
   - component: {fileID: 748186248}
   - component: {fileID: 748186247}
-  - component: {fileID: 748186246}
   - component: {fileID: 748186245}
+  - component: {fileID: 748186246}
   m_Layer: 0
   m_Name: QuestGiver
   m_TagString: Untagged
@@ -22793,6 +22795,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GlobalObjectIdHash: 475983736
   AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
 --- !u!114 &748186246
@@ -40712,6 +40718,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GlobalObjectIdHash: 4182318147
   AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
 --- !u!114 &1654392815

@@ -26,17 +26,21 @@ public class PlayerController : NetworkBehaviour
     {
         base.OnNetworkSpawn();
 
-        if (!IsOwner) { return; }
+        if (!IsOwner) { Debug.Log("Thou are not the owner"); return; }
 
+        //[SerializeField]
         PlayerStartPosition[] positions = GameObject.Find("PlayerSpawnPositions").GetComponentsInChildren<PlayerStartPosition>();
+        Debug.Log("Finding Start Position");
         foreach (PlayerStartPosition pos in positions)
         {
-            if (pos.hasSpawned)
-            {
-                pos.hasSpawned = false;
-                transform.position = pos.transform.position;
-                break;
-            }
+            Debug.Log(pos);
+            //if (pos.hasSpawned)
+            //{
+            pos.hasSpawned = false;
+            transform.position = pos.transform.position;
+            Debug.Log("Setting Player Position");
+            break;
+            //}
         }
     }
 
