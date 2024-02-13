@@ -183,6 +183,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GlobalObjectIdHash: 4030587053
   AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
 --- !u!114 &4996485
@@ -8040,7 +8044,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628591498}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 20.1, y: 10.2, z: -30.3}
+  m_LocalPosition: {x: 6.46, y: 5.05, z: -33.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14401,6 +14405,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8919368748646902973, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 168982372
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
 --- !u!1 &1498293185
@@ -15325,11 +15333,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6689280491225256453, guid: a4b60a4afe895e64185c7c2110c777ba, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.23
+      value: -12.31
       objectReference: {fileID: 0}
     - target: {fileID: 6689280491225256453, guid: a4b60a4afe895e64185c7c2110c777ba, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -5.15
+      value: -8.3
       objectReference: {fileID: 0}
     - target: {fileID: 6689280491225256453, guid: a4b60a4afe895e64185c7c2110c777ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15905,23 +15913,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593a2fe42fa9d37498c96f9a383b6521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RunInBackground: 1
-  LogLevel: 1
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 1710272297}
     PlayerPrefab: {fileID: 4094875758603024536, guid: a4b60a4afe895e64185c7c2110c777ba, type: 3}
-    NetworkPrefabs:
-    - Override: 0
-      Prefab: {fileID: 4094875758603024536, guid: a4b60a4afe895e64185c7c2110c777ba, type: 3}
-      SourcePrefabToOverride: {fileID: 0}
-      SourceHashToOverride: 0
-      OverridingTargetPrefab: {fileID: 0}
-    - Override: 0
-      Prefab: {fileID: 2023599406339572345, guid: 3f1d2d8232d36a24d81a1f67c532680f, type: 3}
-      SourcePrefabToOverride: {fileID: 0}
-      SourceHashToOverride: 0
-      OverridingTargetPrefab: {fileID: 0}
+    Prefabs:
+      NetworkPrefabsLists: []
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
@@ -15937,6 +15934,19 @@ MonoBehaviour:
     LoadSceneTimeOut: 120
     SpawnTimeout: 1
     EnableNetworkLogs: 1
+    OldPrefabList:
+    - Override: 0
+      Prefab: {fileID: 4094875758603024536, guid: a4b60a4afe895e64185c7c2110c777ba, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+    - Override: 0
+      Prefab: {fileID: 2023599406339572345, guid: 3f1d2d8232d36a24d81a1f67c532680f, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+  RunInBackground: 1
+  LogLevel: 1
 --- !u!4 &1710272299
 Transform:
   m_ObjectHideFlags: 0
