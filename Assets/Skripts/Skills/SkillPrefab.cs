@@ -537,7 +537,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         StartCasting();
     }
 
-    public void StartCasting()
+    public virtual void StartCasting()
     {
         if (castTimeOriginal <= 0)
         {
@@ -572,6 +572,25 @@ public class SkillPrefab : MonoBehaviour//, IUseable
             if (isSkillChanneling)
             {
                 SkillEffect();
+            }
+        }
+    }
+
+    public void PlaySkillAnimation(string className, string animationName)
+    {
+        Animator[] classAnimators = PLAYER.transform.Find("PlayerAnimation").GetComponentsInChildren<Animator>(true);
+        foreach (Animator clA in classAnimators)
+        {
+            Debug.Log("Alle Klassen auf falsch setzen");
+            if (clA.gameObject.activeSelf) { clA.gameObject.SetActive(false); }
+
+            Debug.Log(className);
+            Debug.Log(clA.gameObject.name);
+            if (clA.gameObject.name == className) 
+            {
+                Debug.Log("Klasse: " + className);
+                clA.gameObject.SetActive(true);
+                clA.Play(animationName); 
             }
         }
     }

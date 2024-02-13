@@ -58,6 +58,12 @@ public class SummonImps : SkillPrefab
         }
     }
 
+    public override void StartCasting()
+    {
+        PlaySkillAnimation("Summoner", "Summoner_summon2");
+        base.StartCasting();
+    }
+
     void SpawnImp()
     {
         Debug.Log("Summoning Dragonling");
