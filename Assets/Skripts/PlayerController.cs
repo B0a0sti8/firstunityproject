@@ -17,7 +17,8 @@ public class PlayerController : NetworkBehaviour
     private Vector3 currentDirection4 = Vector3.zero;
     public Vector3 upDirection = Vector3.zero;
 
-    public Transform rotationMeasurement;
+    public Transform rotationMeasurement; 
+    Transform playerAnimation;
 
     Rigidbody2D _Rigidbody; // get access to rigidbody
     public Animator animator; // Zugriff auf die Animationen
@@ -54,6 +55,7 @@ public class PlayerController : NetworkBehaviour
     {
         speed = GetComponent<PlayerStats>().movementSpeed;
         rotationMeasurement = transform.Find("RotationMeasurement");
+        playerAnimation = transform.Find("PlayerAnimation");
         upDirection.z = 1;
     }
 
@@ -88,6 +90,7 @@ public class PlayerController : NetworkBehaviour
             }
         }
         rotationMeasurement.eulerAngles = new Vector3 (0, 0, GetAngleFromVectorFloat(currentDirectionTrue));
+        playerAnimation.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(currentDirectionTrue) - 90f);
     }
 
     void Update()       // Ändert Animation je nach Bewegung
