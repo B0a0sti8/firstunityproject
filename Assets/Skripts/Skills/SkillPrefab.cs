@@ -20,6 +20,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     public PlayerStats playerStats;
 
     public string myClass;
+    public float animationTime = 1.5f;
 
     [Header("Target")]
     public bool needsTargetEnemy;
@@ -97,7 +98,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
     bool hasUnusedSpell = false;
     public float skillDuration;
 
-
+    Animator[] classAnimators;
 
     public void StartSkillChecks() // snjens beginnt sein abenteuer
     {
@@ -578,19 +579,35 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
     public void PlaySkillAnimation(string className, string animationName)
     {
-        Animator[] classAnimators = PLAYER.transform.Find("PlayerAnimation").GetComponentsInChildren<Animator>(true);
+        float animTime;
         foreach (Animator clA in classAnimators)
         {
-            Debug.Log("Alle Klassen auf falsch setzen");
+            //Debug.Log("Alle Klassen auf falsch setzen");
             if (clA.gameObject.activeSelf) { clA.gameObject.SetActive(false); }
 
-            Debug.Log(className);
-            Debug.Log(clA.gameObject.name);
+            //Debug.Log(className);
+            //Debug.Log(clA.gameObject.name);
             if (clA.gameObject.name == className) 
             {
-                Debug.Log("Klasse: " + className);
+                Debug.Log("Check1");
                 clA.gameObject.SetActive(true);
-                clA.Play(animationName); 
+                clA.Play(animationName);
+
+                AnimationClip[] clips = clA.runtimeAnimatorController.animationClips;
+                foreach (AnimationClip cli in clips)
+                {
+                    Debug.Log("Check2");
+                    if (cli.name == animationName)
+                    {
+                        Debug.Log("Check3");
+                        animTime = cli.length;
+                        clA.speed = 1 / ((animationTime / animTime) * 1 / (1+playerStats.actionSpeed.GetValue()));
+                        Debug.Log("Eigentlicher Anim Speed: " + animTime / clA.speed);
+
+                        Debug.Log("Animation Clip length = " + clA.GetCurrentAnimatorStateInfo(0).length);
+                        StartCoroutine(StopAnimation(animationTime, clA));
+                    }
+                }
             }
         }
     }
@@ -670,6 +687,7 @@ public class SkillPrefab : MonoBehaviour//, IUseable
 
     public virtual void Start()
     {
+        classAnimators = PLAYER.transform.Find("PlayerAnimation").GetComponentsInChildren<Animator>(true);
     }
 
     public void DealDamage(float damage)
@@ -706,6 +724,26 @@ public class SkillPrefab : MonoBehaviour//, IUseable
         frontSpriteColor2.a = 0.1f;
         PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().color = frontSpriteColor2;
         PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().size = normalSize;
+    }
+
+    public IEnumerator StopAnimation(float time, Animator lastAnim)
+    {
+        yield return new WaitForSeconds(time);
+        lastAnim.speed = 1;
+        foreach (Animator clA in classAnimators)
+        {
+            //Debug.Log("Alle Klassen auf falsch setzen");
+            if (clA.gameObject.activeSelf) { clA.gameObject.SetActive(false); }
+
+            //Debug.Log(className);
+            //Debug.Log(clA.gameObject.name);
+            if (clA.gameObject.name == "NoClass")
+            {
+                //Debug.Log("Klasse: " + className);
+                clA.gameObject.SetActive(true);
+                clA.Play("Guardian_idle");
+            }
+        }
     }
 
     public IEnumerator CircleAOEIndicator(float time)
