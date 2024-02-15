@@ -16,6 +16,7 @@ public class SummonImps : SkillPrefab
 
     public override void Start()
     {
+        animationTime = 2f;
         base.Start();
         myClass = "Summoner";
 
