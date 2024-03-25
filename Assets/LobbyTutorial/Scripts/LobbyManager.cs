@@ -68,6 +68,12 @@ public class LobbyManager : MonoBehaviour {
         Instance = this;
     }
 
+    
+    private async void Start() // Verbinde dich mit Unity Services und starte Lobby
+    {
+        await UnityServices.InitializeAsync();
+    }
+
     private void Update() {
         //HandleRefreshLobbyList(); // Disabled Auto Refresh for testing with multiple builds
         HandleLobbyHeartbeat();
@@ -90,14 +96,12 @@ public class LobbyManager : MonoBehaviour {
 
         await UnityServices.InitializeAsync(initializationOptions);
 
-        AuthenticationService.Instance.SignedIn += () => {
-            // do nothing
+        AuthenticationService.Instance.SignedIn += () => {          // Listener: Wartet bis eingeloggt, dann aktualisiert er die Lobby Liste. Info: PlayerID
             Debug.Log("Signed in! " + AuthenticationService.Instance.PlayerId);
-
             RefreshLobbyList();
         };
 
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        await AuthenticationService.Instance.SignInAnonymouslyAsync(); // Loggt sich bei Lobby ein, ohne Passwort oder Namen zu brauchen :)
     }
 
     private void HandleRefreshLobbyList() {
@@ -209,7 +213,8 @@ public class LobbyManager : MonoBehaviour {
     public async void CreateLobby(string lobbyName, int maxPlayers, bool isPrivate, GameMode gameMode) {
         Player player = GetPlayer();
 
-        CreateLobbyOptions options = new CreateLobbyOptions {
+        CreateLobbyOptions options = new CreateLobbyOptions // Verpackt alle möglichen Einstellungen in options, die für die Erstellung der Lobby nützlich sind.
+        {                    
             Player = player,
             IsPrivate = isPrivate,
             Data = new Dictionary<string, DataObject> 
@@ -219,7 +224,7 @@ public class LobbyManager : MonoBehaviour {
             }
         };
 
-        Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, options);
+        Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, options); // Erstellt die Lobby
 
         joinedLobby = lobby;
 
@@ -248,7 +253,7 @@ public class LobbyManager : MonoBehaviour {
                     field: QueryOrder.FieldOptions.Created)
             };
 
-            QueryResponse lobbyListQueryResponse = await Lobbies.Instance.QueryLobbiesAsync();
+            QueryResponse lobbyListQueryResponse = await Lobbies.Instance.QueryLobbiesAsync(); // Holt sich alle Lobbies die er findet, basierend auf den Optionen weiter oben
 
             OnLobbyListChanged?.Invoke(this, new OnLobbyListChangedEventArgs { lobbyList = lobbyListQueryResponse.Results });
         } catch (LobbyServiceException e) {
@@ -385,14 +390,6 @@ public class LobbyManager : MonoBehaviour {
         }
     }
 
-
-
-
-
-    private async void Start()
-    {
-        await UnityServices.InitializeAsync();
-    }
 
     private async Task<string> CreateRelay()
     {

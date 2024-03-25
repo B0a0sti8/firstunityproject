@@ -17,7 +17,7 @@ public class EditPlayerName : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI playerNameText;
 
 
-    private string playerName = "CodeMonkey";
+    private string playerName = "Enter Name ...";
 
 
     private void Awake() {
@@ -49,6 +49,18 @@ public class EditPlayerName : MonoBehaviour {
     }
 
     public string GetPlayerName() {
+
+        if (playerName== null || playerName == "Enter Name ..." )
+        {
+            playerName = "";
+            const string glyphs = "abcdefghijklmnopqrstuvxywzABCDEFGHIJKLMNOPQRSTUVXYWZ";
+
+            int charAmount = UnityEngine.Random.Range(7, 13); 
+            for (int i = 0; i < charAmount; i++)
+            {
+                playerName += glyphs[UnityEngine.Random.Range(0, glyphs.Length)];
+            }
+        }
         return playerName;
     }
 

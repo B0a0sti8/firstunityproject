@@ -23,6 +23,18 @@ public class PlayerController : NetworkBehaviour
     Rigidbody2D _Rigidbody; // get access to rigidbody
     public Animator animator; // Zugriff auf die Animationen
 
+
+    public struct SomethingToSend : INetworkSerializeByMemcpy
+    {
+        public List<ulong> playerIds;
+
+        public SomethingToSend(List<ulong> playerIds)
+        {
+            this.playerIds = playerIds;
+        }
+
+    }
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -43,6 +55,8 @@ public class PlayerController : NetworkBehaviour
             break;
             //}
         }
+
+        
     }
 
 
@@ -109,5 +123,44 @@ public class PlayerController : NetworkBehaviour
         if (n < 0) n += 360;
 
         return n;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void FetchAllPlayerObjectsServerRpc(ServerRpcParams serverRpcParams = default)
+    {
+        var clientId = serverRpcParams.Receive.SenderClientId;
+        ClientRpcParams clientRpcParams = new ClientRpcParams
+        {
+            Send = new ClientRpcSendParams
+            {
+                TargetClientIds = new ulong[] { clientId }
+            }
+        };
+        print("Bin auf dem Server");
+        //IReadOnlyList<ulong> allPlayerIds = NetworkManager.ConnectedClientsIds;
+        IReadOnlyList<ulong> allPlayerIds = NetworkManager.ConnectedClientsIds;
+
+        List<ulong> allPlayerIds2 = (List<ulong>)allPlayerIds;
+        //print(allPlayerIds2.Count);
+
+        SomethingToSend allThePlayerIds = new SomethingToSend(allPlayerIds2);
+        print(allThePlayerIds.playerIds.Count);
+        FetchAllPlayerObjectsClientRpc(allThePlayerIds, clientRpcParams);
+    }
+    
+    [ClientRpc]
+    public void FetchAllPlayerObjectsClientRpc(SomethingToSend allThePlayerIds, ClientRpcParams clientRpcParams = default)
+    {
+        print("Bin auf dem Client");
+        List<ulong> allPlayerIDlist = allThePlayerIds.playerIds;
+        //print(allPlayerIDlist);
+        print(allPlayerIDlist.Count);
+        //IReadOnlyList<ulong> allPlayerIds = NetworkManager.ConnectedClientsIds;
+        //print(allPlayerIds.Count);
+
+
+        // hol dir alle ClientIds, die gerade verbunden sind-
+        // NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject alle adden
+        //allPlayerObjects = 
     }
 }
