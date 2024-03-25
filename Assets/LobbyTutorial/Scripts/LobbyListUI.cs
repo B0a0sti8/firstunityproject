@@ -25,6 +25,7 @@ public class LobbyListUI : MonoBehaviour {
 
         refreshButton.onClick.AddListener(RefreshButtonClick);
         createLobbyButton.onClick.AddListener(CreateLobbyButtonClick);
+        Hide();
     }
 
     private void Start() {
@@ -77,7 +78,7 @@ public class LobbyListUI : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    private void Show() {
+    void Show() {
         gameObject.SetActive(true);
     }
 

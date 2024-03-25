@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2620507195689807168}
   - component: {fileID: 2620507195689807169}
   - component: {fileID: 8967638495666555400}
-  - component: {fileID: 6523927719472085976}
   - component: {fileID: 7017182940297785211}
+  - component: {fileID: 6523927719472085976}
   m_Layer: 0
   m_Name: TrainingsDummy
   m_TagString: Untagged
@@ -64,6 +64,26 @@ CircleCollider2D:
   m_Offset: {x: 0.029241592, y: 0.09976888}
   serializedVersion: 2
   m_Radius: 0.33759436
+--- !u!114 &7017182940297785211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2620507195689807171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3297849239
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!114 &6523927719472085976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,22 +133,6 @@ MonoBehaviour:
   XPForPlayer: 0
   groupNumber: 0
   enemyUIHealthActive: 0
---- !u!114 &7017182940297785211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2620507195689807171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!1 &3750981505260871431
 GameObject:
   m_ObjectHideFlags: 0
