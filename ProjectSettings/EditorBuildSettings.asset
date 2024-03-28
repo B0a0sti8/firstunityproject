@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/0_Tavern.unity
     guid: daa1bacb485f6ca4aad961aeb3ed030c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/0_Town.unity
     guid: 36ffba3e723c4cb40b57c4f5508d9d03
   - enabled: 0
@@ -35,7 +35,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: 95b8f569e38891043aa3c8193208a59f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SkillTesting.unity
     guid: 6117efba8849f4c4996fad087ebea3f2
   - enabled: 1

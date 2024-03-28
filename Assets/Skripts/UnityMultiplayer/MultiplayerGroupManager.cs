@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using System;
 
 public class MultiplayerGroupManager : NetworkBehaviour
 {
@@ -19,36 +20,42 @@ public class MultiplayerGroupManager : NetworkBehaviour
         }
     }
 
-    public List<GameObject> playerList;
+    private NetworkList<MultiplayerPlayerData> multiplayerPlayerDatas;
+
+    public event EventHandler OnMultiplayerPlayerDatasChanged;
+
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+
+        multiplayerPlayerDatas = new NetworkList<MultiplayerPlayerData>();
+        multiplayerPlayerDatas.OnListChanged += MultiplayerPlayerDatas_OnListChanged;
     }
 
-    public override void OnNetworkSpawn()
+    private void MultiplayerPlayerDatas_OnListChanged(NetworkListEvent<MultiplayerPlayerData> changeEvent)
     {
-        base.OnNetworkSpawn();
-        playerList = new List<GameObject>();
-
+        OnMultiplayerPlayerDatasChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    public void CalltoClientConnectedServerRPC(ulong id)
+    public void StartHost()
     {
-        ulong playerObj = NetworkManager.Singleton.ConnectedClients[id].PlayerObject.NetworkObjectId;
-        ClientConnectedClientRPC(playerObj);
+        NetworkManager.Singleton.OnClientConnectedCallback += NetworkManager_OnClientConnectedCallback;
+        NetworkManager.Singleton.StartHost();
     }
 
-    [ClientRpc]
-    private void ClientConnectedClientRPC(ulong playerObjectID)
-    {
-        print("Hallo ich bin da!");
-       // playerList.Add()
-    }
-
-    public void FetchAllClientIDs()
+    private void NetworkManager_OnClientConnectedCallback(ulong clientId)
     {
 
+
+        MultiplayerPlayerData mulDa = new MultiplayerPlayerData { clientId = clientId };
+        multiplayerPlayerDatas.Add(mulDa);
     }
+
+    public bool IsPlayerIndexConnected(int playerIndex)
+    {
+        Debug.Log("Anzahl verbundener Spieler: " + multiplayerPlayerDatas.Count);
+        return playerIndex < multiplayerPlayerDatas.Count;
+    }
+
 }
