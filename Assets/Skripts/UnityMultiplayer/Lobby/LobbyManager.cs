@@ -85,16 +85,20 @@ public class LobbyManager : MonoBehaviour {
  
     public async void Authenticate(string playerName)  // Erlaubt dem Spieler sich bei Lobby Services zu authentifizieren
     {
-        if (playerName == null)
-        {
-            for (int i = 0; i < 10; i++)
-            { playerName += glyphs[UnityEngine.Random.Range(0, glyphs.Length)]; }
-        }
+        //if (playerName == null)
+        //{
+        //    for (int i = 0; i < 10; i++)
+        //    { playerName += glyphs[UnityEngine.Random.Range(0, glyphs.Length)]; }
+        //}
 
         this.playerName = playerName;
         InitializationOptions initializationOptions = new InitializationOptions();
         initializationOptions.SetProfile(playerName);
+        Debug.Log(AuthenticationService.Instance.Profile);
+        AuthenticationService.Instance.SwitchProfile(playerName);
+        Debug.Log(AuthenticationService.Instance.Profile);
 
+        Debug.Log("Final Check Playername: " + playerName);
         await UnityServices.InitializeAsync(initializationOptions);
 
         AuthenticationService.Instance.SignedIn += () => {          // Listener: Wartet bis eingeloggt, dann aktualisiert er die Lobby Liste. Info: PlayerID
@@ -231,6 +235,8 @@ public class LobbyManager : MonoBehaviour {
             }
         } ;
 
+        Debug.Log("Creating Lobby with maximum of " + maxPlayers + " players.");
+
         Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, options); // Erstellt die Lobby
 
         joinedLobby = lobby;
@@ -283,6 +289,8 @@ public class LobbyManager : MonoBehaviour {
 
     public async void JoinLobby(Lobby lobby) // Tritt der gegebenen(?) Lobby bei
     {
+        Debug.Log("Trying to join Lobby... ");
+
         Player player = GetPlayer();
 
         joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id, new JoinLobbyByIdOptions {

@@ -5,6 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 95b8f569e38891043aa3c8193208a59f
+  - enabled: 1
+    path: Assets/Scenes/StartLobby.unity
+    guid: 339c281d30e38b94f905e11dff3baacd
+  - enabled: 1
+    path: Assets/Scenes/Tavern_New.unity
+    guid: bc103958bd85e354ea14a672e41cc845
   - enabled: 0
     path: Assets/Scenes/0_Tavern.unity
     guid: daa1bacb485f6ca4aad961aeb3ed030c
@@ -33,13 +42,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Sanctuary.unity
     guid: a88be7aff0ddff841b224c4a640e7b79
   - enabled: 0
-    path: Assets/Scenes/Menu.unity
-    guid: 95b8f569e38891043aa3c8193208a59f
-  - enabled: 0
     path: Assets/Scenes/SkillTesting.unity
     guid: 6117efba8849f4c4996fad087ebea3f2
-  - enabled: 1
-    path: Assets/Scenes/StartLobby.unity
-    guid: 339c281d30e38b94f905e11dff3baacd
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2cec48bd9f2049540b8131a96ba117ac, type: 2}

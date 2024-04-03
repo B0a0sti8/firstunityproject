@@ -20,6 +20,7 @@ public class AuthenticateUI : MonoBehaviour {
     private void ApplyAuthenticate()
     {
         string playerName = EditPlayerName.Instance.GetPlayerName();
+        Debug.Log("PlayerName for Authentification: " + playerName);
         LobbyManager.Instance.Authenticate(playerName);
         Hide();
         lobbyList.SetActive(true);
