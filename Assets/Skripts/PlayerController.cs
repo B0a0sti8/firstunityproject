@@ -105,6 +105,7 @@ public class PlayerController : NetworkBehaviour
         }
         rotationMeasurement.eulerAngles = new Vector3 (0, 0, GetAngleFromVectorFloat(currentDirectionTrue));
         playerAnimation.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(currentDirectionTrue) - 90f);
+        //transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(currentDirectionTrue) - 90f);
     }
 
     void Update()       // Ändert Animation je nach Bewegung

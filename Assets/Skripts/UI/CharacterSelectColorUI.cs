@@ -27,7 +27,7 @@ public class CharacterSelectColorUI : MonoBehaviour
 
     private void UpdateIsSelected()
     {
-        if(MultiplayerGroupManager.MyInstance.GetPlayerData().colorId == colorId)
+        if(MultiplayerGroupManager.MyInstance.GetPlayerData().colorId == colorId && selectedGameObject != null)
         {
             selectedGameObject.SetActive(true);
         }
@@ -35,5 +35,10 @@ public class CharacterSelectColorUI : MonoBehaviour
         {
             selectedGameObject.SetActive(false);
         }
+    }
+
+    private void OnDestroy()
+    {
+        MultiplayerGroupManager.MyInstance.OnMultiplayerPlayerDatasChanged -= MultiplayerGroupManager_OnMultiplayerPlayerDatasChanged;
     }
 }

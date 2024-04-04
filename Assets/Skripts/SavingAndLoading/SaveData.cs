@@ -16,6 +16,8 @@ public class SaveData
 
     public List<ActionButtonData> MyActionButtonData { get; set; }
 
+    //public QuestProgress MyPlayerData { get; set; }
+
     public SaveData()
     {
         MyInventoryData = new InventoryData();
@@ -124,4 +126,10 @@ public class ActionButtonData
         this.MyAction = action;
         this.MyIndex = index;
     }
+}
+
+[Serializable]
+public class QuestProgress
+{
+    public string[] my;
 }

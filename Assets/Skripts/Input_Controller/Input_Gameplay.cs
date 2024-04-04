@@ -63,10 +63,10 @@ public class Input_Gameplay : NetworkBehaviour
 
         inventoryScript.CheatCodeAddBag();
         playerStats.CheatCodeAddXP();
-        PLAYER.transform.Find("GameManager").GetComponent<SaveManager>().Save();
+        //PLAYER.transform.Find("GameManager").GetComponent<PlayerSaveLoad>().Save();
     }
 
     // Nur zum Debuggen. Wird Später auf nen Button im Hauptmenü gelegt oder so
     void OnLoadDebug() // V
-    { if (IsOwner) { PLAYER.transform.Find("GameManager").GetComponent<SaveManager>().Load(); Debug.Log("Load1"); } }
+    { if (IsOwner) { PLAYER.transform.Find("GameManager").GetComponent<PlayerSaveLoad>().Load(); Debug.Log("Load1"); } }
 }

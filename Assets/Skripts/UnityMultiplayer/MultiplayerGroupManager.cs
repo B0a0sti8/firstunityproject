@@ -6,6 +6,8 @@ using System;
 using Unity.Collections;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+using QFSW.QC;
 
 public class MultiplayerGroupManager : NetworkBehaviour
 {
@@ -23,13 +25,29 @@ public class MultiplayerGroupManager : NetworkBehaviour
         }
     }
 
-    private NetworkList<MultiplayerPlayerData> multiplayerPlayerDatas;
+    [SerializeField] private NetworkList<MultiplayerPlayerData> multiplayerPlayerDatas;
 
     public event EventHandler OnMultiplayerPlayerDatasChanged;
 
     [SerializeField] private List<Color> playerColorList;
 
     [SerializeField] GameObject playerNameTextField;
+    private FixedString128Bytes playerNameSet;
+
+    [SerializeField] private Transform Player_Prefab;
+
+    private string previousSceneName;
+
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        if (IsServer)
+        {
+            NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += SceneManager_OnLoadEventCompleted;
+        }
+
+        previousSceneName = SceneManager.GetActiveScene().name;
+    }
 
     private void Awake()
     {
@@ -66,15 +84,17 @@ public class MultiplayerGroupManager : NetworkBehaviour
 
     private void NetworkManager_Client_OnClientConnectedCallback(ulong clientId)
     {
-        string[] conversionText = playerNameTextField.GetComponent<TextMeshProUGUI>().text.Split(": ");
-        FixedString128Bytes thisPlayerName = new FixedString128Bytes(conversionText[1]);
-        MultiplayerPlayerData mulDa = new MultiplayerPlayerData { clientId = clientId, colorId = GetFirstUnusedColorId(), playerName = thisPlayerName };
-        multiplayerPlayerDatas.Add(mulDa);
+        SetNewNetworkList(clientId);
+
+        //string[] conversionText = playerNameTextField.GetComponent<TextMeshProUGUI>().text.Split(": ");
+        //FixedString128Bytes thisPlayerName = new FixedString128Bytes(conversionText[1]);
+
+        //MultiplayerPlayerData mulDa = new MultiplayerPlayerData { clientId = clientId, colorId = GetFirstUnusedColorId(), playerName = playerNameSet };
+        //multiplayerPlayerDatas.Add(mulDa);
     }
 
     public bool IsPlayerIndexConnected(int playerIndex)
     {
-        Debug.Log("Anzahl verbundener Spieler: " + multiplayerPlayerDatas.Count);
         return playerIndex < multiplayerPlayerDatas.Count;
     }
 
@@ -170,4 +190,129 @@ public class MultiplayerGroupManager : NetworkBehaviour
         NetworkManager.Singleton.DisconnectClient(clientId);
     }
 
+    private void SceneManager_OnLoadEventCompleted(string sceneName, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
+    {
+        if (previousSceneName == "StartLobby")
+        {
+            foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
+            {
+                Transform playerTransform = Instantiate(Player_Prefab);
+                playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, false);
+            }
+        }
+        previousSceneName = sceneName;
+    }
+
+    public void AddPlayerObjectToList(ulong clientId, NetworkObject player)
+    {
+        Debug.Log("Lokal: Versuche SpielerCharakter in Liste aufzunehmen.");
+        //NetworkObjectReference playerReference = player.GetComponent<NetworkObjectReference>();
+        NetworkObjectReference playerReference = (NetworkObjectReference)player;
+        AddPlayerObjectToListServerRpc(clientId, playerReference);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void AddPlayerObjectToListServerRpc(ulong clientId, NetworkObjectReference Player)
+    {
+        Debug.Log("ServerRpc: Versuche SpielerCharakter in Liste aufzunehmen.");
+        MultiplayerPlayerData mulDaPla = GetPlayerDataFromClientId(clientId);
+
+        mulDaPla.playerObject = Player;
+
+        int index = GetPlayerDataIndexFromClientId(clientId);
+        multiplayerPlayerDatas[index] = mulDaPla;
+    }
+
+    public void SetNewNetworkList(ulong clientId)
+    {
+        FixedString128Bytes characterName = new FixedString128Bytes("");
+        SetNewNetworkListServerRpc(clientId, characterName);
+    }
+
+    public void SetNewNetworkListString(string charName)
+    {
+        ulong myClientId = NetworkManager.Singleton.LocalClientId;
+
+        string[] conversionText = playerNameTextField.GetComponent<TextMeshProUGUI>().text.Split(": ");
+        FixedString128Bytes thisPlayerName = new FixedString128Bytes(conversionText[1]);
+
+        int myColorId = GetFirstUnusedColorId();
+
+        for (int i = 0; i < multiplayerPlayerDatas.Count; i++)
+        {
+            if (multiplayerPlayerDatas[i].clientId == myClientId)
+            {
+                myColorId = multiplayerPlayerDatas[i].colorId;
+            }
+        }
+        SetNewNetworkListStringServerRpc(myClientId, myColorId, thisPlayerName, charName);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SetNewNetworkListStringServerRpc(ulong clientId, int colorId, FixedString128Bytes playerName, FixedString128Bytes charName)
+    {
+        bool hasFoundElement = false;
+        for (int i = 0; i < multiplayerPlayerDatas.Count; i++)
+        {
+            if (multiplayerPlayerDatas[i].clientId == clientId)
+            {
+                MultiplayerPlayerData mulDa = new MultiplayerPlayerData { clientId = clientId, colorId = colorId, playerName = playerName, characterName = charName };
+                multiplayerPlayerDatas[i] = mulDa;
+                hasFoundElement = true;
+            }
+        }
+
+        if (!hasFoundElement)
+        {
+            MultiplayerPlayerData mulDa = new MultiplayerPlayerData { clientId = clientId, colorId = colorId, playerName = playerName, characterName = charName };
+            multiplayerPlayerDatas.Add(mulDa);
+        }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void SetNewNetworkListServerRpc(ulong newClientId, FixedString128Bytes charName)
+    {
+        ClientRpcParams clientRpcParams = new ClientRpcParams
+        {
+            Send = new ClientRpcSendParams
+            {
+                TargetClientIds = new ulong[] { newClientId }
+            }
+        };
+
+       SetNewNetworkListClientRpc(newClientId, charName, clientRpcParams);
+    }
+
+    [ClientRpc]
+    private void SetNewNetworkListClientRpc(ulong newClientId, FixedString128Bytes charName, ClientRpcParams clientRpcParams = default)
+    {
+        string[] conversionText = playerNameTextField.GetComponent<TextMeshProUGUI>().text.Split(": ");
+        FixedString128Bytes thisPlayerName = new FixedString128Bytes(conversionText[1]);
+        ReturnNetWorkListServerRpc(newClientId, thisPlayerName, charName);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void ReturnNetWorkListServerRpc(ulong newClientId, FixedString128Bytes thisPlayerName, FixedString128Bytes charName)
+    {
+        MultiplayerPlayerData mulDa = new MultiplayerPlayerData { clientId = newClientId, colorId = GetFirstUnusedColorId(), playerName = thisPlayerName, characterName = charName };
+        multiplayerPlayerDatas.Add(mulDa);
+    }
+
+    [Command]
+    private void QuantDebugEntry(int num)
+    {
+        Debug.Log(multiplayerPlayerDatas[num].clientId);
+        Debug.Log(multiplayerPlayerDatas[num].colorId);
+        Debug.Log(multiplayerPlayerDatas[num].playerName);
+        Debug.Log(multiplayerPlayerDatas[num].characterName);
+        bool hasFoundObject = multiplayerPlayerDatas[num].playerObject.TryGet(out NetworkObject playerObjectFromReference);
+        Debug.Log(hasFoundObject);
+        Debug.Log(playerObjectFromReference);
+    }
+
+    [Command]
+    private void QuantDebugCount()
+    {
+        Debug.Log(multiplayerPlayerDatas.Count);
+    }
 }

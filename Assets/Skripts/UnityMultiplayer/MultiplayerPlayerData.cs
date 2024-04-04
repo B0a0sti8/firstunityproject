@@ -11,10 +11,11 @@ public struct MultiplayerPlayerData : IEquatable<MultiplayerPlayerData>, INetwor
     public int colorId;
     public FixedString128Bytes playerName;
     public FixedString128Bytes characterName;
+    public NetworkObjectReference playerObject;
 
     public bool Equals(MultiplayerPlayerData other)
     {
-        return clientId == other.clientId && colorId == other.colorId && playerName == other.playerName && characterName == other.characterName;
+        return clientId == other.clientId && colorId == other.colorId && playerName == other.playerName && characterName == other.characterName && playerObject.Equals(other.playerObject);
     }
 
     public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
@@ -23,5 +24,6 @@ public struct MultiplayerPlayerData : IEquatable<MultiplayerPlayerData>, INetwor
         serializer.SerializeValue(ref colorId);
         serializer.SerializeValue(ref playerName);
         serializer.SerializeValue(ref characterName);
+        serializer.SerializeValue(ref playerObject);
     }
 }

@@ -2,26 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
-
+using Unity.Netcode;
+using Unity.Collections;
 
 public delegate void KillConfirmed(CharacterStats characterStats);
-public class StuffManagerScript : MonoBehaviour
+public class StuffManagerScript : NetworkBehaviour
 {
     public event KillConfirmed killConfirmedEvent;
 
     [SerializeField] private GameObject messagePrefab;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] public ulong myClientId;
+    [SerializeField] private NetworkVariable<FixedString128Bytes> characterName;
 
-    // Update is called once per frame
-    void Update()
+    public override void OnNetworkSpawn()
     {
-        
+        base.OnNetworkSpawn();
+
+        myClientId = OwnerClientId;
+
+        SetCharacterName(MultiplayerGroupManager.MyInstance.GetPlayerDataFromClientId(myClientId).characterName);
+        Debug.Log("MyCharacterName: ");
+        Debug.Log(characterName.Value);
+        transform.Find("PlayerAnimation").GetComponent<MultiplayerPlayerColor>().SettingPlayerColor();
+        transform.Find("Canvas World Space").GetComponent<PlayerNameWorldSpaceUI>().ShowPlayerName();
+
+        MultiplayerGroupManager.MyInstance.AddPlayerObjectToList(myClientId, gameObject.GetComponent<NetworkObject>());
+        SaveAndLoadManager.MyInstance.SetClientId(myClientId);
     }
 
     public void OnKillConfirmed(CharacterStats characterStats)
@@ -41,5 +48,15 @@ public class StuffManagerScript : MonoBehaviour
         go.transform.SetAsFirstSibling();
 
         Destroy(go, 2);
+    }
+
+    public void SetCharacterName(FixedString128Bytes newCharacterName)
+    {
+        characterName.Value = newCharacterName;
+    }
+
+    public FixedString128Bytes GetCharacterName()
+    {
+        return characterName.Value;
     }
 }

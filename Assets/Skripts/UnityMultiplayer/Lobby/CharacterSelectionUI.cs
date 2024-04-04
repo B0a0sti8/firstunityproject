@@ -13,6 +13,6 @@ public class CharacterSelectionUI : MonoBehaviour
     {
         readyButton.interactable = false;
         readyButton.onClick.AddListener(() => { CharacterSelectionManager.Instance.SetPlayerReady(); });
-        changeCharacterButton.onClick.AddListener(() => { readyButton.interactable = false; loadOrNewCharacterWindow.SetActive(true); });
+        changeCharacterButton.onClick.AddListener(() => { readyButton.interactable = false; loadOrNewCharacterWindow.GetComponent<LoadOrNewCharacterUI>().Show(); });
     }
 }

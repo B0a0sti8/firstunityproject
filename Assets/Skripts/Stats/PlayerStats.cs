@@ -143,7 +143,6 @@ public class PlayerStats : CharacterStats
 		transform.Find("Own Canvases").gameObject.SetActive(true);
 
 		xPBar = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("XPBar").GetComponent<XPBarScript>();
-
 		
 		manaBarUI = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("ManaBar").GetComponent<ManaBar>();
 

@@ -52,7 +52,6 @@ public class PlayerAvatarSelection1 : MonoBehaviour
     // Zeigt oder versteckt diesen Spieler Charakter. Ändert Farbe und ggf. Spielerdaten
     private void UpdatePlayer()
     {
-        Debug.Log("UpdatePlayer wird ausgeführt");
         if (MultiplayerGroupManager.MyInstance.IsPlayerIndexConnected(playerIndex))
         { 
             Show();
@@ -82,7 +81,10 @@ public class PlayerAvatarSelection1 : MonoBehaviour
 
     public void SetPlayerColor(Color color)
     {
+        float emissiveIntensity=0.3f;
         material.color = color;
+        material.EnableKeyword("_EMISSION");
+        material.SetColor("_EmissionColor", color * emissiveIntensity);
     }
 
     private void Show()
@@ -95,5 +97,10 @@ public class PlayerAvatarSelection1 : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void OnDestroy()
+    {
+        MultiplayerGroupManager.MyInstance.OnMultiplayerPlayerDatasChanged -= MultiplayerGroupManager_OnMultiplayerPlayerDatasChanged;
+        CharacterSelectionManager.Instance.OnReadyChanged -= CharacterSelectionManager_OnReadyChanged;
+    }
 
 }
