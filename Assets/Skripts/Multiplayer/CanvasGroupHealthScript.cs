@@ -7,31 +7,45 @@ public class CanvasGroupHealthScript : NetworkBehaviour
 {
     public List<NetworkObject> allPlayerObjects;
     NetworkObject Player;
-
-    public override void OnNetworkSpawn()
-    {
-        base.OnNetworkSpawn();
-        //MultiplayerGroupManager.MyInstance.CalltoClientConnectedServerRPC(OwnerClientId);
-    }
+    GroupHealthCanvas_GroupMember[] myGroupMemberScripts;
 
     // Start is called before the first frame update
     void Start()
     {
         allPlayerObjects = new List<NetworkObject>();
         Player = transform.parent.parent.GetComponent<NetworkObject>();
+        myGroupMemberScripts = GetComponentsInChildren<GroupHealthCanvas_GroupMember>();
+
+        GetPlayersAndUpdateUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GetPlayersAndUpdateUI()
     {
-        FetchAllPlayerObjects();
-    }
+        foreach (GroupHealthCanvas_GroupMember gm in myGroupMemberScripts)
+        {
+            gm.Hide();
+        }
 
-    public void FetchAllPlayerObjects()
-    {
-        if (!Player.IsOwner) { return; }
+        if (MultiplayerGroupManager.MyInstance != null)
+        {
+            int playerCount = MultiplayerGroupManager.MyInstance.GetCurrentPlayerCount();
 
-        GameObject[] pT1 = GameObject.FindGameObjectsWithTag("Player");
-        
+            for (int i = 0; i < playerCount; i++)
+            {
+                MultiplayerPlayerData playerData = MultiplayerGroupManager.MyInstance.GetPlayerDataFromPlayerIndex(i);
+                myGroupMemberScripts[i].myPlayerObject = playerData.playerObject;
+                myGroupMemberScripts[i].myPlayerName = playerData.characterName.ToString();
+                myGroupMemberScripts[i].Show();
+                myGroupMemberScripts[i].UpdateMyUI();
+            }
+        }
+        else // Singleplayer zum Testen von Sachen
+        {
+            myGroupMemberScripts[0].myPlayerObject = transform.parent.parent.gameObject;
+            myGroupMemberScripts[0].myPlayerName = "SinglePlayerTestName";
+            myGroupMemberScripts[0].Show();
+            myGroupMemberScripts[0].UpdateMyUI();
+
+        }
     }
 }

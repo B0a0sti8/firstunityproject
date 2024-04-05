@@ -85,12 +85,6 @@ public class MultiplayerGroupManager : NetworkBehaviour
     private void NetworkManager_Client_OnClientConnectedCallback(ulong clientId)
     {
         SetNewNetworkList(clientId);
-
-        //string[] conversionText = playerNameTextField.GetComponent<TextMeshProUGUI>().text.Split(": ");
-        //FixedString128Bytes thisPlayerName = new FixedString128Bytes(conversionText[1]);
-
-        //MultiplayerPlayerData mulDa = new MultiplayerPlayerData { clientId = clientId, colorId = GetFirstUnusedColorId(), playerName = playerNameSet };
-        //multiplayerPlayerDatas.Add(mulDa);
     }
 
     public bool IsPlayerIndexConnected(int playerIndex)
@@ -131,6 +125,11 @@ public class MultiplayerGroupManager : NetworkBehaviour
     public MultiplayerPlayerData GetPlayerDataFromPlayerIndex(int playerIndex)
     {
         return multiplayerPlayerDatas[playerIndex];
+    }
+
+    public int GetCurrentPlayerCount()
+    {
+        return multiplayerPlayerDatas.Count;
     }
 
     public Color GetPlayerColor(int colorId)
