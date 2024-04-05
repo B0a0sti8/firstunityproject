@@ -34,22 +34,4 @@ public class CanvasGroupHealthScript : NetworkBehaviour
         GameObject[] pT1 = GameObject.FindGameObjectsWithTag("Player");
         
     }
-
-    //[ServerRpc(RequireOwnership = false)]
-    //public void FetchAllPlayerObjectsServerRpc()
-    //{
-    //    //IReadOnlyList<ulong> allPlayerIds = NetworkManager.ConnectedClientsIds;
-    //    FetchAllPlayerObjectsClientRpc();
-    //}
-
-    //[ClientRpc]
-    //public void FetchAllPlayerObjectsClientRpc()
-    //{
-    //    print("Bin auf dem Client");
-    //    IReadOnlyList<ulong> allPlayerIds = NetworkManager.ConnectedClientsIds;
-    //    print(allPlayerIds.Count);
-    //    // hol dir alle ClientIds, die gerade verbunden sind-
-    //    // NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject alle adden
-    //    //allPlayerObjects = 
-    //}
 }

@@ -30,12 +30,14 @@ public class SaveAndLoadManager : MonoBehaviour
 
     public void SetClientId(ulong clientId)
     {
-        myClientId = clientId;
+        //myClientId = clientId;
     }
 
     private void SaveCurrentState()
     {
         Debug.Log("Speichern Step 1");
+        myClientId = NetworkManager.Singleton.LocalClientId;
+
         MultiplayerPlayerData mulPlaDa = MultiplayerGroupManager.MyInstance.GetPlayerDataFromClientId(myClientId);
         FixedString128Bytes playerCharacterName = mulPlaDa.characterName;
         bool hasFetchedPlayer = mulPlaDa.playerObject.TryGet(out NetworkObject localPlayerObject);

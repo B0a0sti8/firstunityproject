@@ -12,33 +12,69 @@ public class LoadOrNewCharacterUI : MonoBehaviour
     [SerializeField] private Button playerReadyButton;
     private string characterName;
     private Transform loadButtonParent;
-    private GameObject currentCharacterButton;
+    private Transform currentCharacterButton;
+    private Transform enterCharacterNameWindow;
+    private Button createNewCharacterButton;
+    private Button createNewCharacterOk;
+    private Button createNewCharacterCancel;
+
 
     private void Awake()
     {
         FetchAllCharacters();
         applyButton = transform.Find("ApplyButton").GetComponent<Button>();
         applyButton.onClick.AddListener(() => { ApplyButtonClick(); });
+
+        currentCharacterButton = transform.Find("CurrentCharacter");
+        enterCharacterNameWindow = transform.Find("EnterCharacterNameWindow");
+
+        enterCharacterNameWindow.gameObject.SetActive(false);
+
+        createNewCharacterButton = transform.Find("CreateNewCharacterButton").GetComponent<Button>(); 
+        createNewCharacterButton.onClick.AddListener(() => { CreateNewCharacterButtonClick(); });
+
+        createNewCharacterOk = enterCharacterNameWindow.Find("Image").Find("OKButton").GetComponent<Button>();
+        createNewCharacterOk.onClick.AddListener(() => { CreateNewCharacterOk(); });
+
+        createNewCharacterCancel = enterCharacterNameWindow.Find("Image").Find("CancelButton").GetComponent<Button>();
+        createNewCharacterCancel.onClick.AddListener(() => { CreateNewCharacterCancel(); });
     }
 
     private void ApplyButtonClick()
     {
-        characterName = "";
-        const string glyphs = "abcdefghijklmnopqrstuvxywzABCDEFGHIJKLMNOPQRSTUVXYWZ";
+        string[] convTex = currentCharacterButton.Find("Image1").Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text.Split("\n");
+        characterName = convTex[0];
 
-        int charAmount = UnityEngine.Random.Range(7, 13);
-        for (int i = 0; i < charAmount; i++)
+        if (characterName != "" && characterName != "Empty")
         {
-            characterName += glyphs[UnityEngine.Random.Range(0, glyphs.Length)];
+            playerReadyButton.interactable = true;
+
+            MultiplayerGroupManager.MyInstance.SetNewNetworkListString(characterName);
+            Hide();
         }
-
-        Hide(); 
-        playerReadyButton.interactable = true;
-
-        MultiplayerGroupManager.MyInstance.SetNewNetworkListString(characterName);
     }
 
-    [Command]
+    private void CreateNewCharacterButtonClick()
+    {
+        enterCharacterNameWindow.gameObject.SetActive(true);
+    }
+
+    private void CreateNewCharacterOk()
+    {
+        string newCharName = enterCharacterNameWindow.Find("Image").Find("InputField (TMP)").GetComponent<TMP_InputField>().text;
+        Debug.Log("Neuer Charaktername: " + newCharName);
+
+        currentCharacterButton.Find("Image1").Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = newCharName + "\n Level: 1";
+        currentCharacterButton.Find("Image2").Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Quest: " + "No quest yet";
+
+        enterCharacterNameWindow.gameObject.SetActive(false);
+    }
+
+    private void CreateNewCharacterCancel()
+    {
+        enterCharacterNameWindow.gameObject.SetActive(false);
+    }
+
     private void FetchAllCharacters()
     {
         // Hier wird der Neu-Erstell-Button aktiviert. Characterslots geladen usw.
@@ -85,6 +121,22 @@ public class LoadOrNewCharacterUI : MonoBehaviour
         }
     }
 
+    public void LoadCharacterOnButtonPress(Transform button)
+    {
+        loadButtonParent = transform.Find("LoadCharacter").Find("ExistingCharactersParent");
+
+        foreach(Transform child in loadButtonParent)
+        {
+            if (child == button)
+            {
+                string string1 = button.Find("Image1").Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text;
+                string string2 = button.Find("Image2").Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text;
+
+                currentCharacterButton.Find("Image1").Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = string1;
+                currentCharacterButton.Find("Image2").Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = string2;
+            }
+        }
+    }
 
     public void Show()
     {

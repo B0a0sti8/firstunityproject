@@ -99,7 +99,10 @@ public class PlayerAvatarSelection1 : MonoBehaviour
 
     private void OnDestroy()
     {
-        MultiplayerGroupManager.MyInstance.OnMultiplayerPlayerDatasChanged -= MultiplayerGroupManager_OnMultiplayerPlayerDatasChanged;
+        if (MultiplayerGroupManager.MyInstance != null)
+        {
+            MultiplayerGroupManager.MyInstance.OnMultiplayerPlayerDatasChanged -= MultiplayerGroupManager_OnMultiplayerPlayerDatasChanged;
+        }
         CharacterSelectionManager.Instance.OnReadyChanged -= CharacterSelectionManager_OnReadyChanged;
     }
 
