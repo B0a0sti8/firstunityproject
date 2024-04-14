@@ -44,5 +44,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SkillTesting.unity
     guid: 6117efba8849f4c4996fad087ebea3f2
+  - enabled: 1
+    path: Assets/Scenes/_UIOverlayTesting.unity
+    guid: e21affe1f8cedb84db1169a3a6b47bb4
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2cec48bd9f2049540b8131a96ba117ac, type: 2}

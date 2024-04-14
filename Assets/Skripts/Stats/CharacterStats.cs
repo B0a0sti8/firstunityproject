@@ -96,7 +96,8 @@ public class CharacterStats : NetworkBehaviour
     public virtual void Start()
     {
         if (!IsOwner) { return; }
-        healthBarWorldCanv = gameObject.transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>();
+
+        healthBarWorldCanv = transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>();
         currentHealth.OnValueChanged += (float previousValue, float newValue) => { OnHealthChange(); };
         maxHealthServer.OnValueChanged += (float previousValue, float newValue) => { OnHealthChange(); };
 
@@ -116,11 +117,6 @@ public class CharacterStats : NetworkBehaviour
     public void SetMultiplayerMaxHealthServerRpc(float healthValue)
     {
          maxHealthServer.Value = healthValue;
-    }
-
-    public override void OnNetworkSpawn()
-    {
-        base.OnNetworkSpawn();
     }
 
     public void OnHealthChange()
@@ -154,18 +150,19 @@ public class CharacterStats : NetworkBehaviour
         heBa.SetHealth(cuHe);
     }
 
-
     public virtual void Update()
     {
         if (!IsOwner)
         { return; }
+
         if (maxHealthServer.Value != maxHealth.GetValue())
         {
             Debug.Log("Updating Max Health");
+            Debug.Log(maxHealthServer.Value);
+            Debug.Log(maxHealth.GetValue());
             SetMultiplayerMaxHealthServerRpc(maxHealth.GetValue());
         }
     }
-
 
     public virtual void Die()
     {

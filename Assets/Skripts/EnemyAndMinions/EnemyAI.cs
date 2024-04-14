@@ -7,6 +7,9 @@ using System.Linq;
 
 public class EnemyAI : MonoBehaviour
 {
+    public string enemyName;
+    public int enemyLevel;
+
     [SerializeField]
     public enum State
     {

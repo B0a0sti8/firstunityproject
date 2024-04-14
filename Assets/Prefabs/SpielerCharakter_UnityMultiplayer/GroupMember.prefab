@@ -3690,7 +3690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8919667875327102852}
   - component: {fileID: 7433138784503333469}
-  - component: {fileID: 6466182375054794844}
+  - component: {fileID: 2868339358338549148}
   m_Layer: 5
   m_Name: GroupMemberHealth
   m_TagString: Untagged
@@ -3774,7 +3774,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6466182375054794844
+--- !u!114 &2868339358338549148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3786,21 +3786,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307c3103d1d37b44ebd1498b67c4efc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 7433138784503333469}
+  slider: {fileID: 0}
   gradient:
     serializedVersion: 2
-    key0: {r: 0.93725497, g: 0.058823533, b: 0.11764707, a: 1}
-    key1: {r: 0.96055615, g: 1, b: 0, a: 1}
-    key2: {r: 0.31924337, g: 0.8465602, b: 0, a: 0}
-    key3: {r: 0.09309777, g: 0.7924528, b: 0, a: 0}
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 21889
-    ctime2: 43640
-    ctime3: 65535
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
     ctime4: 0
     ctime5: 0
     ctime6: 0
@@ -3814,9 +3814,10 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_NumColorKeys: 4
+    m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  fill: {fileID: 65801538548392065}
+  fill: {fileID: 0}
+  myHealthText: {fileID: 0}
 --- !u!1 &7080971666703404966
 GameObject:
   m_ObjectHideFlags: 0
@@ -4445,7 +4446,7 @@ GameObject:
   - component: {fileID: 65801538548392065}
   - component: {fileID: 41920699497469546}
   m_Layer: 5
-  m_Name: HealthFill
+  m_Name: Health Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

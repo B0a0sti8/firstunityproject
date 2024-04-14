@@ -32,6 +32,7 @@ public class PlayerStats : CharacterStats
 	[Header("Mana")]
 	public Stat maxMana;
 	public NetworkVariable<float> currentMana = new NetworkVariable<float>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+	public NetworkVariable<float> maxManaServer = new NetworkVariable<float>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 	//public float currentMana;
 
 	//[Header("Health")]
@@ -81,7 +82,8 @@ public class PlayerStats : CharacterStats
 	float tickEveryXSecondsTimerMana = 0f;
 	float tickEveryXSecondsMana = 1f;
 
-
+	Transform healthbar;
+	Transform manaBar;
 
 	#region UI-Interface-Stuff
 	ManaBar manaBarWorldCanv;
@@ -122,6 +124,12 @@ public class PlayerStats : CharacterStats
 			Debug.Log("Stirb!");
 		}
 
+		if (maxManaServer.Value != maxMana.GetValue())
+		{
+			Debug.Log("Updating Max Mana");
+			SetMultiplayerMaxManaServerRpc(maxMana.GetValue());
+		}
+
 		SyncModifiedPlayerStats();
 
 		UpdateHealthAndMana();
@@ -142,12 +150,15 @@ public class PlayerStats : CharacterStats
 
 		transform.Find("Own Canvases").gameObject.SetActive(true);
 
-		xPBar = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("XPBar").GetComponent<XPBarScript>();
+		xPBar = transform.Find("Own Canvases").Find("CanvasHealth").Find("XPBarAndLevel").Find("XPBar").GetComponent<XPBarScript>();
 		
-		manaBarUI = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("ManaBar").GetComponent<ManaBar>();
+		manaBarUI = transform.Find("Own Canvases").Find("CanvasHealth").Find("OwnHealth").Find("ManaBar").GetComponent<ManaBar>();
 
-		healthText = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("HealthBar").Find("Health Text").GetComponent<TextMeshProUGUI>();
-		manaText = transform.Find("Own Canvases").Find("Canvas Healthbar UI").Find("ManaBar").Find("Mana Text").GetComponent<TextMeshProUGUI>();
+		healthbar = transform.Find("Own Canvases").Find("CanvasHealth").Find("OwnHealth").Find("HealthBar");
+		manaBar = transform.Find("Own Canvases").Find("CanvasHealth").Find("OwnHealth").Find("ManaBar");
+
+		healthText = transform.Find("Own Canvases").Find("CanvasHealth").Find("OwnHealth").Find("HealthBar").Find("Health Text").GetComponent<TextMeshProUGUI>();
+		manaText = transform.Find("Own Canvases").Find("CanvasHealth").Find("OwnHealth").Find("ManaBar").Find("Mana Text").GetComponent<TextMeshProUGUI>();
 
 		charPanel = transform.Find("Own Canvases").Find("CanvasCharacterPanel").Find("CharacterPanel").GetComponent<CharacterPanelScript>();
 		allEquipSlots = charPanel.allEquipmentSlots;
@@ -315,8 +326,8 @@ public class PlayerStats : CharacterStats
 		//transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
 		//transform.Find("Canvases").transform.Find("Canvas World Space").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)(currentHealth.Value));
 
-		transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
-		transform.Find("Own Canvases").transform.Find("Canvas Healthbar UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)(currentHealth.Value));
+		healthbar.GetComponent<HealthBar>().SetMaxHealth((int)maxHealth.GetValue());
+		healthbar.GetComponent<HealthBar>().SetHealth((int)(currentHealth.Value));
 		if (currentHealth.Value > maxHealth.GetValue())
 		{
 			SetCurrentHealthServerRpc(maxHealth.GetValue());
@@ -337,13 +348,18 @@ public class PlayerStats : CharacterStats
 			SetManaCurrentValueServerRPC(0);
 		}
 
-		string hText = currentHealth.Value.ToString().Replace(",", ".") + " / " + maxHealth.GetValue().ToString().Replace(",", ".");
-		string mText = currentMana.Value.ToString().Replace(",", ".") + " / " + maxMana.GetValue().ToString().Replace(",", ".");
+		//string hText = currentHealth.Value.ToString().Replace(",", ".") + " / " + maxHealth.GetValue().ToString().Replace(",", ".");
+		//string mText = currentMana.Value.ToString().Replace(",", ".") + " / " + maxMana.GetValue().ToString().Replace(",", ".");
 
-		healthText.SetText(hText);
-		manaText.SetText(mText);
+		//healthText.SetText(hText);
+		//manaText.SetText(mText);
 	}
 
+	[ServerRpc]
+	public void SetMultiplayerMaxManaServerRpc(float manaValue)
+	{
+		maxManaServer.Value = manaValue;
+	}
 
 	[ServerRpc]
 	private void SetManaCurrentValueServerRPC(float manaValue)
@@ -351,40 +367,11 @@ public class PlayerStats : CharacterStats
 		currentMana.Value = manaValue;
 	}
 
-
 	[ServerRpc]
 	private void ManageManaServerRPC(float manaCost)
 	{
 		currentMana.Value += manaCost;
 	}
-
-	//[ServerRpc]
-	//public override void GetHealingServerRpc(float healing, bool isCrit)
-	//{
-	//	base.GetHealingServerRpc(healing, isCrit);
-	//}
-
-	//[ServerRpc]
-	//public override void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
-	//{
-	//	base.TakeDamageServerRpc(damage, aggro, isCrit);
-	//}
-
-	//public void TakeDamage(float damage, int aggro, bool isCrit, GameObject source)
-	//{
-	//	if (IsOwner)
-	//	{
-	//		TakeDamageServerRpc(damage, aggro, isCrit);
-	//	}
-	//}
-
-	//public void TakeHealing(float healing, bool isCrit, GameObject source)
-	//{
-	//	if (IsOwner)
-	//	{
-	//		GetHealingServerRpc(healing, isCrit);
-	//	}
-	//}
 
 	public void ManageMana(float manaCost)
 	{
@@ -444,8 +431,6 @@ public class PlayerStats : CharacterStats
 		//Destroy(gameObject, 1f);
 		base.Die();
 	}
-
-
 
 	// Ab hier nur zum Debuggen
 

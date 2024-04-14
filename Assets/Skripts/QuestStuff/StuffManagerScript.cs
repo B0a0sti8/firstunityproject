@@ -19,16 +19,27 @@ public class StuffManagerScript : NetworkBehaviour
     {
         base.OnNetworkSpawn();
 
+
+        SetCharacterName((FixedString128Bytes)"DefaultName"); // Für den Fall dass es keinen MultiplayerGroupManager gibt (z.B. SinglePlayerTests)
+        Debug.Log(characterName.Value);
         myClientId = OwnerClientId;
 
-        SetCharacterName(MultiplayerGroupManager.MyInstance.GetPlayerDataFromClientId(myClientId).characterName);
-        Debug.Log("MyCharacterName: ");
-        Debug.Log(characterName.Value);
-        transform.Find("PlayerAnimation").GetComponent<MultiplayerPlayerColor>().SettingPlayerColor();
-        transform.Find("Canvas World Space").GetComponent<PlayerNameWorldSpaceUI>().ShowPlayerName();
+        if (MultiplayerGroupManager.MyInstance != null)
+        {
+            SetCharacterName(MultiplayerGroupManager.MyInstance.GetPlayerDataFromClientId(myClientId).characterName);
+            Debug.Log("MyCharacterName: ");
+            Debug.Log(characterName.Value);
+            transform.Find("PlayerAnimation").GetComponent<MultiplayerPlayerColor>().SettingPlayerColor();
+            transform.Find("Canvas World Space").GetComponent<PlayerNameWorldSpaceUI>().ShowPlayerName();
 
-        MultiplayerGroupManager.MyInstance.AddPlayerObjectToList(myClientId, gameObject.GetComponent<NetworkObject>());
-        SaveAndLoadManager.MyInstance.SetClientId(myClientId);
+            MultiplayerGroupManager.MyInstance.AddPlayerObjectToList(myClientId, gameObject.GetComponent<NetworkObject>());
+        }
+
+        if (SaveAndLoadManager.MyInstance != null)
+        {
+            SaveAndLoadManager.MyInstance.SetClientId(myClientId);
+        }
+
     }
 
     public void OnKillConfirmed(CharacterStats characterStats)
@@ -57,6 +68,7 @@ public class StuffManagerScript : NetworkBehaviour
 
     public FixedString128Bytes GetCharacterName()
     {
+        Debug.Log("Returning Character Name.");
         return characterName.Value;
     }
 }

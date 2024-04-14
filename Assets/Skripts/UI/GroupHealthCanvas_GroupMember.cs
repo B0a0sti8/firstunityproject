@@ -19,7 +19,7 @@ public class GroupHealthCanvas_GroupMember : MonoBehaviour, IPointerEnterHandler
     private void Awake()
     {
         playerNameTextField = transform.Find("GroupMemberHealth").Find("PlayerName").GetComponent<TextMeshProUGUI>();
-        healthBarImage = transform.Find("GroupMemberHealth").Find("HealthFill").GetComponent<Image>();
+        healthBarImage = transform.Find("GroupMemberHealth").Find("Health Fill").GetComponent<Image>();
         healthBorderImage = transform.Find("GroupMemberHealth").Find("HealthBorder").GetComponent<Image>();
         characterInteract = transform.parent.parent.parent.parent.GetComponent<InteractionCharacter>();
     }

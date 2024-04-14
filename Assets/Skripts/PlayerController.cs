@@ -41,22 +41,26 @@ public class PlayerController : NetworkBehaviour
 
         if (!IsOwner) { Debug.Log("Thou are not the owner"); return; }
 
-        //[SerializeField]
-        PlayerStartPosition[] positions = GameObject.Find("PlayerSpawnPositions").GetComponentsInChildren<PlayerStartPosition>();
-        Debug.Log("Finding Start Position");
-        foreach (PlayerStartPosition pos in positions)
+        if (GameObject.Find("PlayerSpawnPositions") != null)
         {
-            Debug.Log(pos);
-            //if (pos.hasSpawned)
-            //{
-            pos.hasSpawned = false;
-            transform.position = pos.transform.position;
-            Debug.Log("Setting Player Position");
-            break;
-            //}
-        }
+            PlayerStartPosition[] positions = GameObject.Find("PlayerSpawnPositions").GetComponentsInChildren<PlayerStartPosition>();
 
-        
+            if (positions.Length != 0)
+            {
+                Debug.Log("Finding Start Position");
+                foreach (PlayerStartPosition pos in positions)
+                {
+                    Debug.Log(pos);
+                    //if (pos.hasSpawned)
+                    //{
+                    pos.hasSpawned = false;
+                    transform.position = pos.transform.position;
+                    Debug.Log("Setting Player Position");
+                    break;
+                    //}
+                }
+            }
+        }
     }
 
 
