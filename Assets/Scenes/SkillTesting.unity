@@ -14014,7 +14014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1226550170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14027,7 +14027,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78b70a1df1e7604d875816f486df67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerList: []
+  playerColorList: []
+  playerNameTextField: {fileID: 0}
+  Player_Prefab: {fileID: 0}
 --- !u!4 &1226550171
 Transform:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.InputSystem;
 using Unity.Netcode;
 
-public class SkillPrefab : MonoBehaviour//, IUseable
+public class SkillPrefab : NetworkBehaviour//, IUseable
 {
     private Camera mainCam;
 
