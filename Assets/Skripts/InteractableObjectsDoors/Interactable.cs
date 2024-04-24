@@ -59,13 +59,14 @@ public class Interactable : NetworkBehaviour
             //Debug.Log("Focus enemy"); // 2x im Log
             transform.Find("Charakter").transform.localScale = new Vector3(8f, 1.5f, 1f); // wide boii
 
-            transform.Find("Canvas UI").gameObject.SetActive(true);
-            gameObject.GetComponent<EnemyStats>().enemyUIHealthActive = true;
+            //Das Lösen wir in Zukunft vermutlich anders...
+            //transform.Find("Canvas UI").gameObject.SetActive(true);
+            //gameObject.GetComponent<EnemyStats>().enemyUIHealthActive = true;
 
-            if (transform.Find("Canvas UI").Find("CanvasBuffsAndDebuffs") != null)
-            {
-                transform.Find("Canvas UI").Find("CanvasBuffsAndDebuffs").GetComponent<BuffDebuffUINPC>().UpdateUI();
-            }
+            //if (transform.Find("Canvas UI").Find("CanvasBuffsAndDebuffs") != null)
+            //{
+            //    transform.Find("Canvas UI").Find("CanvasBuffsAndDebuffs").GetComponent<BuffDebuffUINPC>().UpdateUI();
+            //}
         }
     }
 
@@ -81,7 +82,7 @@ public class Interactable : NetworkBehaviour
             gameObject.transform.Find("Charakter").transform.localScale = new Vector3(2.5f, 2.5f, 1f);
 
             gameObject.GetComponent<EnemyStats>().enemyUIHealthActive = false;
-            gameObject.transform.Find("Canvas UI").gameObject.SetActive(false);
+            //transform.Find("Canvas UI").gameObject.SetActive(false); wird jetzt anders gemacht!
         }
     }
 

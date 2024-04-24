@@ -38,7 +38,7 @@ public class SummonImps : SkillPrefab
 
     public override void Update()
     {
-        tooltipSkillDescription = "Summons a bunch of Imps around target Enemy";
+        tooltipSkillDescription = "Summons a bunch of Imps around the target Enemy";
 
         base.Update();
 
@@ -65,40 +65,76 @@ public class SummonImps : SkillPrefab
         base.StartCasting();
     }
 
-    void SpawnImp()
-    {
-        Debug.Log("Summoning Dragonling");
-        float x = Random.Range(2, 3);
-        float y = Random.Range(2, 3);
-        float signx = Random.Range(0, 2) * 2 - 1;       // Entweder -1 oder 1
-        float signy = Random.Range(0, 2) * 2 - 1;       // Entweder -1 oder 1
-
-        Vector2 posi = (Vector2)transform.position + new Vector2(x * signx, y * signy);
-        GameObject impling = Instantiate(imp, posi, Quaternion.identity);
-        impling.GetComponent<NetworkObject>().Spawn();
-        impling.GetComponent<MinionPetAI>().myMaster = PLAYER.transform;
-        impling.GetComponent<MinionPetAI>().isInFight = true;
-        impling.GetComponent<HasLifetime>().maxLifetime = impLifeTime;
-
-
-        PLAYER.GetComponent<PlayerStats>().myMinions.Add(impling);
-        //transform.GetComponent<SummonerClass>().mySummonerMinions.Add(impling);
-    }
-
-    public override void ConditionCheck()
-    {
-        //if (transform.GetComponent<SummonerClass>().myMainSummonerMinions.Count >= transform.GetComponent<SummonerClass>().maxNrOfMainSummonerMinions)
-        //{ Debug.Log("Zu viele Summoner Begleiter!"); return; }
-
-        //if (playerStats.myMainMinions.Count >= playerStats.maxNrOfMainMinions)
-        //{ Debug.Log("Zu viele Begleiter!"); return; }
-        base.ConditionCheck();
-    }
-
     public override void SkillEffect()
     {
         base.SkillEffect();
         elapsed = 0;
         skillEffektActive = true;
+    }
+
+    void SpawnImp()
+    {
+        // Bittet den Server um Spawn des Imps, schickt Referenz des Spielers. Wenn kein Target verfügbar ist, wird Imp um den Spieler herum gespawnt.
+        NetworkObjectReference playerReference = (NetworkObjectReference)PLAYER;
+        if (interactionCharacter.focus != null)
+        {
+            NetworkObjectReference enemyReference = (NetworkObjectReference)interactionCharacter.focus.gameObject;
+            SpawnImpServerRpc(enemyReference, playerReference);
+        }
+        else
+        {
+            NetworkObjectReference enemyReference = (NetworkObjectReference)PLAYER;
+            SpawnImpServerRpc(enemyReference, playerReference);
+        }
+    }
+
+    [ServerRpc]
+    private void SpawnImpServerRpc(NetworkObjectReference targetEnemy, NetworkObjectReference summoningPlayer, ServerRpcParams serverRpcParams = default)
+    {
+        // Holt sich den Summoning Player aus der Network-Referenz
+        Debug.Log("Summon Imp Server RPC!");
+        summoningPlayer.TryGet(out NetworkObject sour);
+        GameObject sumPla = sour.gameObject;
+
+        summoningPlayer.TryGet(out NetworkObject targE);
+        GameObject targEn = targE.gameObject;
+
+        // Erzeugt zufällige Koordinaten
+        float x = Random.Range(2, 5);
+        float y = Random.Range(2, 5);
+        float signx = Random.Range(0, 2) * 2 - 1;       // Entweder -1 oder 1
+        float signy = Random.Range(0, 2) * 2 - 1;       // Entweder -1 oder 1
+
+        if (sumPla != null)
+        {
+            // Baut aus den zufälligen Koordinaten den Spawnpunkt des Imps. Setzt das Herrchen fest und setzt den Imp in den Kampf. Spawnt den Imp Serverseitig
+            Vector2 posi = (Vector2)targEn.transform.position + new Vector2(x * signx, y * signy);
+            GameObject impling = Instantiate(imp, posi, Quaternion.identity);
+            impling.GetComponent<NetworkObject>().Spawn();
+            impling.GetComponent<MinionPetAI>().myMaster = PLAYER.transform;
+            impling.GetComponent<MinionPetAI>().isInFight = true;
+            impling.GetComponent<HasLifetime>().maxLifetime = impLifeTime;
+
+            sumPla.GetComponent<PlayerStats>().myMinions.Add(impling);
+
+            NetworkObjectReference implingRef = (NetworkObjectReference)impling;
+
+            // Die ClientRpc sagt allen Clients, wer das Herrchen ist und dass das Herrchen ein Pet hat.
+            SummonImpClientRpc(summoningPlayer, implingRef);
+        }
+    }
+
+    [ClientRpc]
+    private void SummonImpClientRpc(NetworkObjectReference summoningPlayer, NetworkObjectReference impling, ClientRpcParams clientRpcParams = default)
+    {
+        // Die ClientRpc sagt allen Clients, wer das Herrchen ist und dass das Herrchen ein Pet hat.
+        summoningPlayer.TryGet(out NetworkObject sour);
+        GameObject sumPla = sour.gameObject;
+
+        impling.TryGet(out NetworkObject impl);
+        GameObject impli = impl.gameObject;
+
+        impli.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
+        sumPla.GetComponent<PlayerStats>().myMinions.Add(impli);
     }
 }

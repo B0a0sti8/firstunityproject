@@ -13,15 +13,20 @@ public class SpawnTrainingsDummies : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
+
+        if (!IsServer)
         {
-            GameObject go = Instantiate(trainingsDummy, spawnPos1, Quaternion.identity);
-            go.GetComponent<NetworkObject>().Spawn();
-
-            GameObject go1 = Instantiate(trainingsDummy, spawnPos2, Quaternion.identity);
-            go1.GetComponent<NetworkObject>().Spawn();
-
-            GameObject go2 = Instantiate(trainingsDummy, spawnPos3, Quaternion.identity);
-            go2.GetComponent<NetworkObject>().Spawn();
+            return;
         }
+
+        GameObject go = Instantiate(trainingsDummy, spawnPos1, Quaternion.identity);
+        go.GetComponent<NetworkObject>().Spawn();
+
+        GameObject go1 = Instantiate(trainingsDummy, spawnPos2, Quaternion.identity);
+        go1.GetComponent<NetworkObject>().Spawn();
+
+        GameObject go2 = Instantiate(trainingsDummy, spawnPos3, Quaternion.identity);
+        go2.GetComponent<NetworkObject>().Spawn();
+        
     }
 }

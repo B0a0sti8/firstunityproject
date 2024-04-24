@@ -44,5 +44,13 @@ public class BuffMinionAttackSpeed : SkillPrefab
             clone.buffSource = PLAYER;
             minio.GetComponent<BuffManagerNPC>().AddBuff(clone, buffImage, duration, value);
         }
+
+        foreach (var minio in playerStats.myMainMinions)
+        {
+            Buff clone = buff.Clone();
+            clone.buffSource = PLAYER;
+            minio.GetComponent<BuffManagerNPC>().AddBuff(clone, buffImage, duration, value);
+        }
+
     }
 }

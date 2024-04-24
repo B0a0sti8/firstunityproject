@@ -63,12 +63,12 @@ public class PlayerTargetInfoUI : MonoBehaviour
             // Hier werden alle Parameter im Fenster initail gesetzt, falls es ein Gegner oder Ally ist.
             // Hier müssen nur Leben, Level und Name gemacht werden.
 
-            myTargetName.GetComponent<TextMeshProUGUI>().text = myTarget.GetComponent<EnemyAI>().enemyName;
+            myTargetName.GetComponent<TextMeshProUGUI>().text = myTarget.GetComponent<EnemyStats>().enemyName;
 
             myHealthBar.SetMaxHealth((int)myTarget.GetComponent<EnemyStats>().maxHealthServer.Value);
             myHealthBar.SetHealth((int)myTarget.GetComponent<EnemyStats>().currentHealth.Value);
 
-            myTargetLevel.GetComponent<TextMeshProUGUI>().text = myTarget.GetComponent<EnemyAI>().enemyLevel.ToString();
+            myTargetLevel.GetComponent<TextMeshProUGUI>().text = myTarget.GetComponent<EnemyStats>().enemyLevel.ToString();
 
             // Um Änderungen in Leben und Mana zu erfassen subscribed man auf Änderungen der Networkvariablen. Das sollte man rückgängig machen, wenn das Ziel gewechselt / entfernt wird.
             myTemporaryTarget.GetComponent<CharacterStats>().currentHealth.OnValueChanged += SetHealthValue;

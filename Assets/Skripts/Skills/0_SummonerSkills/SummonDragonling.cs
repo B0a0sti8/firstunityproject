@@ -46,22 +46,26 @@ public class SummonDragonling : SkillPrefab
         NetworkObjectReference playerReference = (NetworkObjectReference)PLAYER;
         Debug.Log("Summoning Dragonling");
         SpawnDragonlingServerRpc(playerReference);
-
-
     }
 
-    
+    public override void StartCasting()
+    {
+        PlaySkillAnimation("Summoner", "Summoner_summon3");
+        base.StartCasting();
+    }
+
+
     [ServerRpc]
     private void SpawnDragonlingServerRpc(NetworkObjectReference summoningPlayer, ServerRpcParams serverRpcParams = default)
     {
-        ulong sumPlaID = serverRpcParams.Receive.SenderClientId;
-        ClientRpcParams clientRpcParams = new ClientRpcParams
-        {
-            Send = new ClientRpcSendParams
-            {
-                TargetClientIds = new ulong[] { sumPlaID }
-            }
-        };
+        //ulong sumPlaID = serverRpcParams.Receive.SenderClientId;
+        //ClientRpcParams clientRpcParams = new ClientRpcParams
+        //{
+        //    Send = new ClientRpcSendParams
+        //    {
+        //        TargetClientIds = new ulong[] { sumPlaID }
+        //    }
+        //};
 
         Debug.Log("Summon Dragonling Server RPC!");
         summoningPlayer.TryGet(out NetworkObject sour);

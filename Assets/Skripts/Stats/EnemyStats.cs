@@ -30,6 +30,9 @@ public class EnemyStats : CharacterStats
     [HideInInspector]
     public bool enemyUIHealthActive = false;
 
+    public string enemyName;
+    public int enemyLevel;
+
 
 
     public override void Start()
