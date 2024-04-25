@@ -63,6 +63,12 @@ public class StuffManagerScript : NetworkBehaviour
 
     public void SetCharacterName(FixedString128Bytes newCharacterName)
     {
+        SetCharacterNameServerRpc(newCharacterName);
+    }
+
+    [ServerRpc]
+    public void SetCharacterNameServerRpc(FixedString128Bytes newCharacterName)
+    {
         characterName.Value = newCharacterName;
     }
 
