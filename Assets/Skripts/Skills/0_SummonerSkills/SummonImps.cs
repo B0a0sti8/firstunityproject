@@ -16,7 +16,7 @@ public class SummonImps : SkillPrefab
 
     public override void Start()
     {
-        animationTime = 2f;
+        animationTime = 5f;
         base.Start();
         myClass = "Summoner";
 
@@ -111,10 +111,10 @@ public class SummonImps : SkillPrefab
             Vector2 posi = (Vector2)targEn.transform.position + new Vector2(x * signx, y * signy);
             GameObject impling = Instantiate(imp, posi, Quaternion.identity);
             impling.GetComponent<NetworkObject>().Spawn();
-            impling.GetComponent<MinionPetAI>().myMaster = PLAYER.transform;
             impling.GetComponent<MinionPetAI>().isInFight = true;
             impling.GetComponent<HasLifetime>().maxLifetime = impLifeTime;
 
+            impling.GetComponent<MinionPetAI>().myMaster = PLAYER.transform;
             sumPla.GetComponent<PlayerStats>().myMinions.Add(impling);
 
             NetworkObjectReference implingRef = (NetworkObjectReference)impling;
@@ -135,6 +135,8 @@ public class SummonImps : SkillPrefab
         GameObject impli = impl.gameObject;
 
         impli.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
+
         sumPla.GetComponent<PlayerStats>().myMinions.Add(impli);
+        
     }
 }

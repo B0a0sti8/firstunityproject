@@ -6,7 +6,7 @@ using Unity.Netcode;
 public class HasLifetime : NetworkBehaviour
 {
     public float maxLifetime;
-    float startingTime;
+    public float startingTime;
 
     void Start()
     {
