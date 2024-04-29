@@ -197,8 +197,6 @@ public class TalentTree : MonoBehaviour
         }
     }
 
-
-
     void FetchAllTalents()
     {
         talents.Clear();

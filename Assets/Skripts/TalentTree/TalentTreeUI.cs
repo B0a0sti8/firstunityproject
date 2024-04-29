@@ -8,7 +8,7 @@ public class TalentTreeUI : MonoBehaviour
     void Start()
     {
         talentTreeUI = transform.Find("TalentTreeWindow").gameObject;
-        talentTreeUI = gameObject;
+        //talentTreeUI = gameObject;
         talentTreeUI.SetActive(false);
     }
 

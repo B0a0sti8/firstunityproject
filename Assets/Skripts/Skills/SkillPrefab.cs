@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 using Unity.Netcode;
+//using UnityEditor.Animations;
 
 public class SkillPrefab : NetworkBehaviour//, IUseable
 {
@@ -29,6 +30,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public bool targetsEnemiesOnly;
     public bool targetsAlliesOnly;
     public List<GameObject> currentTargets = new List<GameObject>();
+    protected GameObject mainTargetForCircleAoE;
 
     [Header("Mana")]
     public bool needsMana; // optional
@@ -98,7 +100,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     bool hasUnusedSpell = false;
     public float skillDuration;
 
-    Animator[] classAnimators;
+    Animator classAnimator;
 
     public void StartSkillChecks() // snjens beginnt sein abenteuer
     {
@@ -228,6 +230,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
                 foreach (Collider2D coll in hit)
                 {
                     currentTargets.Add(coll.gameObject);
+                    mainTargetForCircleAoE = circleAim.gameObject;
                 }
             }
             else if (needsTargetAlly)
@@ -580,20 +583,16 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public void PlaySkillAnimation(string className, string animationName)
     {
         float animTime;
-        foreach (Animator clA in classAnimators)
+        List<RuntimeAnimatorController> allClassAnims = classAnimator.gameObject.GetComponent<MultiplayerAnimationControl>().allClassAnimationControllers;
+
+        foreach (RuntimeAnimatorController mAC in allClassAnims)
         {
-            //Debug.Log("Alle Klassen auf falsch setzen");
-            if (clA.gameObject.activeSelf) { clA.gameObject.SetActive(false); }
-
-            //Debug.Log(className);
-            //Debug.Log(clA.gameObject.name);
-            if (clA.gameObject.name == className) 
+            if (mAC.name.Contains(className))
             {
-                Debug.Log("Check1");
-                clA.gameObject.SetActive(true);
-                clA.Play(animationName);
+                classAnimator.runtimeAnimatorController = mAC;
+                classAnimator.Play(animationName);
 
-                AnimationClip[] clips = clA.runtimeAnimatorController.animationClips;
+                AnimationClip[] clips = classAnimator.runtimeAnimatorController.animationClips;
                 foreach (AnimationClip cli in clips)
                 {
                     Debug.Log("Check2");
@@ -601,15 +600,36 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
                     {
                         Debug.Log("Check3");
                         animTime = cli.length;
-                        clA.speed = 1 / ((animationTime / animTime) * 1 / (1+playerStats.actionSpeed.GetValue()));
-                        Debug.Log("Eigentlicher Anim Speed: " + animTime / clA.speed);
+                        classAnimator.speed = 1 / ((animationTime / animTime) * 1 / (1 + playerStats.actionSpeed.GetValue()));
+                        Debug.Log("Eigentlicher Anim Speed: " + animTime / classAnimator.speed);
 
-                        Debug.Log("Animation Clip length = " + clA.GetCurrentAnimatorStateInfo(0).length);
-                        StartCoroutine(StopAnimation(animationTime, clA));
+                        Debug.Log("Animation Clip length = " + classAnimator.GetCurrentAnimatorStateInfo(0).length);
+                        StartCoroutine(StopAnimation(animationTime, classAnimator, className));
                     }
                 }
             }
         }
+    }
+
+    public IEnumerator StopAnimation(float time, Animator lastAnim, string className)
+    {
+        yield return new WaitForSeconds(time);
+        lastAnim.speed = 1;
+        classAnimator.Play(className + "_idle");
+        //foreach (Animator clA in classAnimator)
+        //{
+        //    //Debug.Log("Alle Klassen auf falsch setzen");
+        //    if (clA.gameObject.activeSelf) { clA.gameObject.SetActive(false); }
+
+        //    //Debug.Log(className);
+        //    //Debug.Log(clA.gameObject.name);
+        //    if (clA.gameObject.name == "NoClass")
+        //    {
+        //        //Debug.Log("Klasse: " + className);
+        //        clA.gameObject.SetActive(true);
+        //        clA.Play("Guardian_idle");
+        //    }
+        //}
     }
 
     public virtual void SkillEffect() // overridden by each skill seperately
@@ -687,7 +707,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
     public virtual void Start()
     {
-        classAnimators = PLAYER.transform.Find("PlayerAnimation").GetComponentsInChildren<Animator>(true);
+        classAnimator = PLAYER.transform.Find("PlayerAnimation").GetComponent<Animator>();
     }
 
     public void DealDamage(float damage)
@@ -726,25 +746,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().size = normalSize;
     }
 
-    public IEnumerator StopAnimation(float time, Animator lastAnim)
-    {
-        yield return new WaitForSeconds(time);
-        lastAnim.speed = 1;
-        foreach (Animator clA in classAnimators)
-        {
-            //Debug.Log("Alle Klassen auf falsch setzen");
-            if (clA.gameObject.activeSelf) { clA.gameObject.SetActive(false); }
 
-            //Debug.Log(className);
-            //Debug.Log(clA.gameObject.name);
-            if (clA.gameObject.name == "NoClass")
-            {
-                //Debug.Log("Klasse: " + className);
-                clA.gameObject.SetActive(true);
-                clA.Play("Guardian_idle");
-            }
-        }
-    }
 
     public IEnumerator CircleAOEIndicator(float time)
     {
