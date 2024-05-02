@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
+
 public class MainMinionAoe : SkillPrefab
 {
     [SerializeField] GameObject dragonAOEAnimation;
@@ -46,7 +47,13 @@ public class MainMinionAoe : SkillPrefab
 
         foreach (var mn in PLAYER.GetComponent<PlayerStats>().myMainMinions)
         {
-            MinionPetAI minion = mn.GetComponent<MinionPetAI>();
+            mn.TryGet(out NetworkObject minio);
+            if (minio == null)
+            {
+                return;
+            }
+
+            MinionPetAI minion = minio.GetComponent<MinionPetAI>();
 
             switch (minion.name)
             {

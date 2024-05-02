@@ -96,7 +96,7 @@ public class SummonImps : SkillPrefab
         summoningPlayer.TryGet(out NetworkObject sour);
         GameObject sumPla = sour.gameObject;
 
-        summoningPlayer.TryGet(out NetworkObject targE);
+        targetEnemy.TryGet(out NetworkObject targE);
         GameObject targEn = targE.gameObject;
 
         // Erzeugt zufällige Koordinaten
@@ -114,8 +114,9 @@ public class SummonImps : SkillPrefab
             impling.GetComponent<MinionPetAI>().isInFight = true;
             impling.GetComponent<HasLifetime>().maxLifetime = impLifeTime;
 
-            impling.GetComponent<MinionPetAI>().myMaster = PLAYER.transform;
+            impling.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
             sumPla.GetComponent<PlayerStats>().myMinions.Add(impling);
+            Debug.Log("Added Minion as Server" + sumPla.GetComponent<PlayerStats>().myMinions.Count);
 
             NetworkObjectReference implingRef = (NetworkObjectReference)impling;
 
@@ -135,8 +136,11 @@ public class SummonImps : SkillPrefab
         GameObject impli = impl.gameObject;
 
         impli.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
-
-        sumPla.GetComponent<PlayerStats>().myMinions.Add(impli);
-        
+        impli.GetComponent<MinionPetAI>().isInFight = true;
+        //if (!IsHost)
+        //{
+        //    sumPla.GetComponent<PlayerStats>().myMinions.Add(impli);
+        //    Debug.Log("Added Minion as Client" + sumPla.GetComponent<PlayerStats>().myMinions.Count);
+        //}
     }
 }

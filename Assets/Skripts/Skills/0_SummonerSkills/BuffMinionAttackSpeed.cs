@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class BuffMinionAttackSpeed : SkillPrefab
 {
@@ -40,16 +41,26 @@ public class BuffMinionAttackSpeed : SkillPrefab
 
         foreach (var minio in playerStats.myMinions)
         {
+            minio.TryGet(out NetworkObject mn);
             Buff clone = buff.Clone();
             clone.buffSource = PLAYER;
-            minio.GetComponent<BuffManagerNPC>().AddBuff(clone, buffImage, duration, value);
+            if (mn != null)
+            {
+                mn.GetComponent<BuffManagerNPC>().AddBuff(clone, buffImage, duration, value);
+            }
+            
         }
 
         foreach (var minio in playerStats.myMainMinions)
         {
+            minio.TryGet(out NetworkObject mn);
             Buff clone = buff.Clone();
             clone.buffSource = PLAYER;
-            minio.GetComponent<BuffManagerNPC>().AddBuff(clone, buffImage, duration, value);
+            if (mn  != null)
+            {
+                mn.GetComponent<BuffManagerNPC>().AddBuff(clone, buffImage, duration, value);
+            }
+           
         }
 
     }

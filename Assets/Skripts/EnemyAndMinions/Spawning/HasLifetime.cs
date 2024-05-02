@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
@@ -25,15 +25,25 @@ public class HasLifetime : NetworkBehaviour
             if (petAI != null)
             {
                 petAI.Dying();
+
+                RemoveOwnerServerRpc();
             }
             StartCoroutine(DelayedDestroy());
         }
+    }
+
+    [ServerRpc]
+    void RemoveOwnerServerRpc()
+    {
+        GetComponent<MinionPetAI>().myMaster.GetComponent<PlayerStats>().myMinions.Remove(this.gameObject);
     }
 
     IEnumerator DelayedDestroy()
     {
         yield return new WaitForSeconds(0.5f);
         //NetworkObject.Despawn(this);
-        GameObject.Destroy(gameObject);
+        gameObject.GetComponent<NetworkObject>().Despawn();
+        //GameObject.Destroy(gameObject);
+        
     }
 }
