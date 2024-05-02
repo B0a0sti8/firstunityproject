@@ -30,14 +30,16 @@ public class AllMinionsAttackThis : SkillPrefab
 
         foreach (var mn in PLAYER.GetComponent<PlayerStats>().myMinions)
         {
-            MinionPetAI minion = mn.GetComponent<MinionPetAI>();
+            mn.TryGet(out NetworkObject minio);
+            MinionPetAI minion = minio.GetComponent<MinionPetAI>();
             minion.isInFight = true;
             minion.ForceAggroToTarget(PLAYER.GetComponent<InteractionCharacter>().focus.transform);
         }
 
         foreach (var mn in PLAYER.GetComponent<PlayerStats>().myMainMinions)
         {
-            MinionPetAI minion = mn.GetComponent<MinionPetAI>();
+            mn.TryGet(out NetworkObject minio);
+            MinionPetAI minion = minio.GetComponent<MinionPetAI>();
             minion.isInFight = true;
             if (PLAYER.GetComponent<InteractionCharacter>().focus.transform!= null)
             {

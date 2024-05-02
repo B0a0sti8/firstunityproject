@@ -28,18 +28,26 @@ public class AllMinionsStopAttacking : SkillPrefab
     {
         base.SkillEffect();
 
-        PLAYER.GetComponent<PlayerStats>().myMinions.ForEach(k => k.GetComponent<MinionPetAI>().isInFight = false);
+        //foreach (var mn in PLAYER.GetComponent<PlayerStats>().myMinions)
+        //{
+        //    mn.TryGet(out NetworkObject minio);
+        //    minio.GetComponent<MinionPetAI>().isInFight = false;
+        //}
+
+        //PLAYER.GetComponent<PlayerStats>().myMinions.ForEach(k => k.GetComponent<MinionPetAI>().isInFight = false);
 
         foreach (var mn in PLAYER.GetComponent<PlayerStats>().myMinions)
         {
-            MinionPetAI minion = mn.GetComponent<MinionPetAI>();
+            mn.TryGet(out NetworkObject minio);
+            MinionPetAI minion = minio.GetComponent<MinionPetAI>();
             minion.isInFight = false;
             minion.DisableForcedAggro();
         }
 
         foreach (var mn in PLAYER.GetComponent<PlayerStats>().myMainMinions)
         {
-            MinionPetAI minion = mn.GetComponent<MinionPetAI>();
+            mn.TryGet(out NetworkObject minio);
+            MinionPetAI minion = minio.GetComponent<MinionPetAI>();
             minion.isInFight = false;
             minion.DisableForcedAggro();
         }

@@ -102,8 +102,8 @@ public class PlayerStats : CharacterStats
 	private CharacterPanelScript charPanel;
 	private CharPanelButtonScript[] allEquipSlots;
 
-	public List<GameObject> myMinions;
-	public List<GameObject> myMainMinions;
+	public NetworkList<NetworkObjectReference> myMinions;
+	public NetworkList<NetworkObjectReference> myMainMinions;
 	public int maxNrOfMainMinions;
 
 	public bool MyIsTank { get => isTank; set => isTank = value; }
@@ -185,6 +185,12 @@ public class PlayerStats : CharacterStats
 
 		base.Start();
 
+	}
+
+	public void Awake()
+    {
+		myMinions = new NetworkList<NetworkObjectReference>();
+		myMainMinions = new NetworkList<NetworkObjectReference>();
 	}
 
     public override void TakeHealing(float healing, bool isCrit, NetworkBehaviourReference nBref)

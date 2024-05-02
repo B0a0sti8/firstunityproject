@@ -5,7 +5,7 @@ using Unity.Netcode;
 
 public class ExplodeImps : SkillPrefab
 {
-    List<GameObject> myImps;
+    List<GameObject> myImps= new List<GameObject>();
     bool isFlingingImps = false;
     float elapsedFlingTime = 0f;
     float maxFlingTime = 0.3f;
@@ -98,9 +98,21 @@ public class ExplodeImps : SkillPrefab
         impRef.TryGet(out NetworkObject imp);
         if (imp != null)
         {
+            //imp.gameObject.SetActive(false);
             imp.GetComponent<HasLifetime>().startingTime = imp.GetComponent<HasLifetime>().maxLifetime;
+            //DespawnImpClientRpc(impRef);
         }
     }
+
+    //[ClientRpc]
+    //private void DespawnImpClientRpc(NetworkObjectReference impRef)
+    //{
+    //    impRef.TryGet(out NetworkObject imp);
+    //    if (imp != null)
+    //    {
+    //        imp.GetComponent<HasLifetime>().startingTime = imp.GetComponent<HasLifetime>().maxLifetime;
+    //    }
+    //}
 
     [ServerRpc]
     private void RemoveImpFromListServerRpc(NetworkObjectReference impRef, NetworkObjectReference playerRef, int impIndex)
@@ -110,33 +122,42 @@ public class ExplodeImps : SkillPrefab
 
         if (imp != null && myPlayer != null)
         {
-            imp.gameObject.SetActive(false);
             myPlayer.GetComponent<PlayerStats>().myMinions.RemoveAt(impIndex);
-            RemoveImpFromListClientRpc(impRef, playerRef, impIndex);
+            //RemoveImpFromListClientRpc(impRef, playerRef, impIndex);
         }
     }
 
-    [ClientRpc]
-    private void RemoveImpFromListClientRpc(NetworkObjectReference impRef, NetworkObjectReference playerRef, int impIndex)
-    {
-        if (IsHost)
-        {
-            return;
-        }
+    //[ClientRpc]
+    //private void RemoveImpFromListClientRpc(NetworkObjectReference impRef, NetworkObjectReference playerRef, int impIndex)
+    //{
+    //    if (IsHost)
+    //    {
+    //        return;
+    //    }
 
-        impRef.TryGet(out NetworkObject imp);
-        playerRef.TryGet(out NetworkObject myPlayer);
+    //    impRef.TryGet(out NetworkObject imp);
+    //    playerRef.TryGet(out NetworkObject myPlayer);
 
-        if (imp != null && myPlayer != null)
-        {
-            myPlayer.GetComponent<PlayerStats>().myMinions.RemoveAt(impIndex);
-        }
-    }
+    //    if (imp != null && myPlayer != null)
+    //    {
+    //        myPlayer.GetComponent<PlayerStats>().myMinions.RemoveAt(impIndex);
+    //    }
+    //}
 
     public override void SkillEffect()
     {
         base.SkillEffect();
-        myImps = PLAYER.GetComponent<PlayerStats>().myMinions;
+        myImps.Clear();
+        foreach (var impo in PLAYER.GetComponent<PlayerStats>().myMinions)
+        {
+            impo.TryGet(out NetworkObject impoo);
+            if (impoo != null)
+            {
+                myImps.Add(impoo.gameObject);
+            }
+        }
+
+        
         foreach (GameObject imp in myImps)
         {
             SetMinionOutOfFightServerRpc(imp);
