@@ -9,6 +9,7 @@ public class ExplodeImps : SkillPrefab
     bool isFlingingImps = false;
     float elapsedFlingTime = 0f;
     float maxFlingTime = 0.3f;
+    SummonerClass mySummonerClass;
 
     // Start is called before the first frame update
     public override void Start()
@@ -31,6 +32,8 @@ public class ExplodeImps : SkillPrefab
 
         elapsedFlingTime = 0f;
         maxFlingTime = 0.1f;
+
+        mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
     }
 
     public override void Update()
@@ -42,12 +45,12 @@ public class ExplodeImps : SkillPrefab
             {
                 isFlingingImps = false;
 
-                Debug.Log("Minions werden geworfen! Ziel: " + currentTargets.Count + currentTargets[0]);
+                //Debug.Log("Minions werden geworfen! Ziel: " + currentTargets.Count + currentTargets[0]);
                 for (int i = myImps.Count - 1; i >= 0; i--)
                 {
                     Debug.Log(i);
                     GameObject imp = myImps[i];
-                    DealDamage(288);
+                    DealDamage(200 * mySummonerClass.ExplodingImpsDamageModifier);
                     RemoveImpFromListServerRpc(imp.GetComponent<NetworkObject>(), PLAYER, i);
                     DespawnImpServerRpc(imp.GetComponent<NetworkObject>());
                 }

@@ -7,6 +7,8 @@ public class SummonDragonling : SkillPrefab
 {
     [SerializeField] private GameObject dragonling;
 
+    SummonerClass mySummonerClass;
+
     public override void Start()
     {
         base.Start();
@@ -21,6 +23,8 @@ public class SummonDragonling : SkillPrefab
 
         castTimeOriginal = 1f;
         isSkillChanneling = false;
+
+        mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
     }
 
     public override void Update()
@@ -46,6 +50,8 @@ public class SummonDragonling : SkillPrefab
         NetworkObjectReference playerReference = (NetworkObjectReference)PLAYER;
         Debug.Log("Summoning Dragonling");
         SpawnDragonlingServerRpc(playerReference);
+        mySummonerClass.SummonerClass_OnMinionSummoned();
+
     }
 
     public override void StartCasting()

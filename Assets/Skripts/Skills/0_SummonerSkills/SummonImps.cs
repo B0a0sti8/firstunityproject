@@ -6,6 +6,7 @@ using Unity.Netcode;
 public class SummonImps : SkillPrefab
 {
     [SerializeField] private GameObject imp;
+    SummonerClass mySummonerClass;
 
     private bool skillEffektActive = false;
 
@@ -34,6 +35,8 @@ public class SummonImps : SkillPrefab
         elapsed = 0;
         impCount = 6;
         impLifeTime = 10;
+
+        mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
     }
 
     public override void Update()
@@ -74,6 +77,8 @@ public class SummonImps : SkillPrefab
 
     void SpawnImp()
     {
+        mySummonerClass.SummonerClass_OnMinionSummoned();
+
         // Bittet den Server um Spawn des Imps, schickt Referenz des Spielers. Wenn kein Target verfügbar ist, wird Imp um den Spieler herum gespawnt.
         NetworkObjectReference playerReference = (NetworkObjectReference)PLAYER;
         if (interactionCharacter.focus != null)
@@ -92,7 +97,7 @@ public class SummonImps : SkillPrefab
     private void SpawnImpServerRpc(NetworkObjectReference targetEnemy, NetworkObjectReference summoningPlayer, ServerRpcParams serverRpcParams = default)
     {
         // Holt sich den Summoning Player aus der Network-Referenz
-        Debug.Log("Summon Imp Server RPC!");
+        //Debug.Log("Summon Imp Server RPC!");
         summoningPlayer.TryGet(out NetworkObject sour);
         GameObject sumPla = sour.gameObject;
 
@@ -116,7 +121,7 @@ public class SummonImps : SkillPrefab
 
             impling.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
             sumPla.GetComponent<PlayerStats>().myMinions.Add(impling);
-            Debug.Log("Added Minion as Server" + sumPla.GetComponent<PlayerStats>().myMinions.Count);
+            //Debug.Log("Added Minion as Server" + sumPla.GetComponent<PlayerStats>().myMinions.Count);
 
             NetworkObjectReference implingRef = (NetworkObjectReference)impling;
 
