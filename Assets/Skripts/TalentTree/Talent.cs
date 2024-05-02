@@ -14,14 +14,15 @@ public class Talent : MonoBehaviour
     TalentTree myTalentTree;
 
     [SerializeField]
-    private int maxCount;
+    public int maxCount;
 
     public int currentCount = 0;
 
     private TextMeshProUGUI talentPointTextOwn;
 
-    private void Awake()
+    protected virtual void Awake()
     {
+        PLAYER = transform.parent.parent.parent.parent.parent.parent.parent.parent.gameObject;
         button = GetComponent<Button>();
         sprite = GetComponent<Image>();
         button.onClick.AddListener(OnTalentButtonClick);

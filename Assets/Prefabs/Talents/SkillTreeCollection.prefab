@@ -5609,7 +5609,7 @@ GameObject:
   - component: {fileID: 1052558635788599186}
   - component: {fileID: 3425721887310070632}
   - component: {fileID: 6174343369646495708}
-  - component: {fileID: 2215706477013711729}
+  - component: {fileID: 1715938289}
   m_Layer: 5
   m_Name: Talent (2)
   m_TagString: Untagged
@@ -5666,8 +5666,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9f82a4554a1546b48b04bdc5ad317c3f, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5720,7 +5720,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2215706477013711729
+--- !u!114 &1715938289
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5729,7 +5729,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4983071583568442895}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1245aa1a3dc529347b3513b2f735f82e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PLAYER: {fileID: 0}
@@ -6472,7 +6472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -45.200157, y: 85.50005}
+  m_AnchoredPosition: {x: -52, y: 85}
   m_SizeDelta: {x: 15.4454, y: 16.6086}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9206273058747214409
@@ -7374,7 +7374,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 51.60009, y: 125.89996}
+  m_AnchoredPosition: {x: 110, y: 90}
   m_SizeDelta: {x: 15.4454, y: 16.6086}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1020381204629502075
@@ -7622,7 +7622,7 @@ GameObject:
   - component: {fileID: 8368222839946231269}
   - component: {fileID: 1667744911599008307}
   - component: {fileID: 5492906971390153918}
-  - component: {fileID: 1353683966383240045}
+  - component: {fileID: 1695210713145732301}
   m_Layer: 5
   m_Name: Talent (6)
   m_TagString: Untagged
@@ -7648,7 +7648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -45.2, y: 126.8}
+  m_AnchoredPosition: {x: -110, y: 90}
   m_SizeDelta: {x: 15.4454, y: 16.6086}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8368222839946231269
@@ -7679,8 +7679,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f8f3fe61d85d89041a12457e75a038c3, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7733,7 +7733,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1353683966383240045
+--- !u!114 &1695210713145732301
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7742,12 +7742,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6354588983258285689}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
+  m_Script: {fileID: 11500000, guid: a23375953ebe13049bc7f8b674d3b882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
-  maxCount: 0
+  maxCount: 3
   currentCount: 0
 --- !u!1 &6400530516801435712
 GameObject:
@@ -38647,7 +38647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 51.6, y: 84.6}
+  m_AnchoredPosition: {x: 52, y: 85}
   m_SizeDelta: {x: 15.4454, y: 16.6086}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5304403998715599940
