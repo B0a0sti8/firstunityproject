@@ -3370,7 +3370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6969395190577055744
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13887,13 +13887,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: Talent (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 46ffc726109cf65469bf9352e1e38c21, type: 3}
+    m_RemovedComponents:
+    - {fileID: 2724751766124865683, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
 --- !u!224 &1654214143082384830 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4511090131604294536, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
   m_PrefabInstance: {fileID: 2913387424473220662}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1654214143082384831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4511090131604294537, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
+  m_PrefabInstance: {fileID: 2913387424473220662}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6401562442018888034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654214143082384831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d21928e53b129448a6a3a06a6ac5216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  talentName: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
+  maxCount: 0
+  currentCount: 0
 --- !u!1001 &3261403162083707858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15825,8 +15856,39 @@ PrefabInstance:
       propertyPath: m_Name
       value: Talent
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 23c07b101ba00904686376b213e6da38, type: 3}
+    m_RemovedComponents:
+    - {fileID: 2724751766124865683, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
+--- !u!1 &8635120883606672652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4511090131604294537, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
+  m_PrefabInstance: {fileID: 5281737353896238725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1715938289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8635120883606672652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b103796c2a397b4ea7ef67169c0a042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  talentName: 
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
+  maxCount: 0
+  currentCount: 0
 --- !u!224 &8635120883606672653 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4511090131604294536, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
@@ -17763,6 +17825,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Talent (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f8f3fe61d85d89041a12457e75a038c3, type: 3}
     m_RemovedComponents:
     - {fileID: 2724751766124865683, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
@@ -17783,6 +17853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23375953ebe13049bc7f8b674d3b882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -18295,6 +18366,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Talent (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9f82a4554a1546b48b04bdc5ad317c3f, type: 3}
     m_RemovedComponents:
     - {fileID: 2724751766124865683, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
@@ -18320,6 +18399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1245aa1a3dc529347b3513b2f735f82e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0

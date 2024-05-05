@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
+//using Unity.Netcode;
 
-public class ProjectileFlyToTarget : NetworkBehaviour
+public class ProjectileFlyToTarget : MonoBehaviour
 {
     public Transform target;
     public float timeToArrive;
 
     void Update()
     {
-        if (!IsServer)
-        { return; }
+        //if (!IsServer)
+        //{ return; }
 
         if (timeToArrive > 0)
         {
@@ -22,8 +22,8 @@ public class ProjectileFlyToTarget : NetworkBehaviour
         }
         else
         {
-            NetworkObject.Despawn(this);
-            GameObject.Destroy(this);
+            //NetworkObject.Despawn(this);
+            Destroy(gameObject);
         }
     }
 }

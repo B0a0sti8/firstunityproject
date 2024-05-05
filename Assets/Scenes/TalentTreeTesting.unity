@@ -2302,6 +2302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -4762,6 +4763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -6040,6 +6042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -6308,6 +6311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0

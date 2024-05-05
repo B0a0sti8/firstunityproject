@@ -101,6 +101,8 @@ public class TalentTree : MonoBehaviour
 
     public void ResetSkillTree()
     {
+        ResetTalents();
+
         RemoveAllActiveTalents();
 
         ClearTalentOrientation();
