@@ -474,7 +474,12 @@ public class PlayerStats : CharacterStats
 			if (leftSubClassName == str) maxNrOfMainMinions += 1;
 			if (rightSubClassName == str) maxNrOfMainMinions += 1;
 		}
-    }
+
+		SummonerClass mySummonerClass = transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
+
+        if (mySummonerClass.hasAdditionalMainMinion1 == true) maxNrOfMainMinions += 1;
+		if (mySummonerClass.hasAdditionalMainMinion2 == true) maxNrOfMainMinions += 1;
+	}
 
 	public void MinionHasDied(GameObject minion)
     {

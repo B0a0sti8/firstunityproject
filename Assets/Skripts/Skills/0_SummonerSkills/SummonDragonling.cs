@@ -77,8 +77,8 @@ public class SummonDragonling : SkillPrefab
         summoningPlayer.TryGet(out NetworkObject sour);
         GameObject sumPla = sour.gameObject;
 
-        float x = Random.Range(2, 5);
-        float y = Random.Range(2, 5);
+        float x = Random.Range(2, 3);
+        float y = Random.Range(2, 3);
         float signx = Random.Range(0, 2) * 2 - 1;       // Entweder -1 oder 1
         float signy = Random.Range(0, 2) * 2 - 1;       // Entweder -1 oder 1
 

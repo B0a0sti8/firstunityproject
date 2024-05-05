@@ -42,9 +42,9 @@ public class TalentTree : MonoBehaviour
     public void TryUseTalent(Talent talent)
     {
         Debug.Log("Passt 1");
-        if (talentPoints > 0 && talent.TryAllocateTalent())
+        if (talentPoints > 0 + talent.pointCost && talent.TryAllocateTalent())
         {
-            talentPoints--;
+            talentPoints -= talent.pointCost;
             CheckUnlockTalent();
             //CheckUnlockPassive();
         }
@@ -152,6 +152,7 @@ public class TalentTree : MonoBehaviour
                 talent.Lock();
                 talent.RemoveActiveTalentEffect();
                 talent.currentCount = 0;
+                talent.RemoveActiveTalentEffectAfterPointCountReduced();
                 talent.UpdatePointCounter();
             }
         }

@@ -20,13 +20,13 @@ public class MainMinionAoe : SkillPrefab
 
         hasOwnCooldown = true;
         hasGlobalCooldown = false;
-        ownCooldownTimeBase = 10f;
+        ownCooldownTimeBase = 1f;
         dragonDamagePerTick = 10f;
     }
 
     public override void Update()
     {
-        tooltipSkillDescription = "Each main deals Area Damage";
+        tooltipSkillDescription = "Each main Minion deals Area Damage";
 
         base.Update();
     }
@@ -60,18 +60,29 @@ public class MainMinionAoe : SkillPrefab
                 case "Dragonling(Clone)":
                     // Drache soll Flächenschaden machen
                     Debug.Log("Dragonling");
-                    GameObject effect = Instantiate(dragonAOEAnimation, minion.transform);
-                    effect.transform.localEulerAngles = new Vector3(90, 0, 0);
-                    effect.transform.localPosition = new Vector3(0, 0, -2);
-                    StartCoroutine(DragonDamage(minion.transform, effect));
+                    GameObject effectDragonling = Instantiate(dragonAOEAnimation, minion.transform);
+                    effectDragonling.transform.localEulerAngles = new Vector3(90, 0, 0);
+                    effectDragonling.transform.localPosition = new Vector3(0, 0, -2);
+                    StartCoroutine(DragonDamage(minion.transform, effectDragonling));
                     break;
-                case "Stonegolem(Clone)":
+
+                case "StoneGolem(Clone)":
                     // Golem soll Flächenschaden machen
+                    // Golem soll zusätzlich Gegner verspotten?
                     Debug.Log("Stonegolem");
+                    GameObject effectStoneGolem = Instantiate(dragonAOEAnimation, minion.transform);
+                    effectStoneGolem.transform.localEulerAngles = new Vector3(90, 0, 0);
+                    effectStoneGolem.transform.localPosition = new Vector3(0, 0, -2);
+                    StartCoroutine(DragonDamage(minion.transform, effectStoneGolem));
                     break;
-                case "Waterspirit(Clone)":
+
+                case "TreeSpirit(Clone)":
                     // Wassergeist soll heilen
                     Debug.Log("Waterspirit");
+                    GameObject effectTreeSpirit = Instantiate(dragonAOEAnimation, minion.transform);
+                    effectTreeSpirit.transform.localEulerAngles = new Vector3(90, 0, 0);
+                    effectTreeSpirit.transform.localPosition = new Vector3(0, 0, -2);
+                    StartCoroutine(DragonDamage(minion.transform, effectTreeSpirit));
                     break;
                 default:
                     Debug.Log("Irgendwas anderes z.B. Jaegerpet. Macht normalen Flächenschaden machen");
