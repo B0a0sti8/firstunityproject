@@ -6,7 +6,6 @@ using TMPro;
 
 public class Talent : MonoBehaviour
 {
-
     public string talentName;
     Button button;
     Image sprite;
@@ -15,8 +14,8 @@ public class Talent : MonoBehaviour
     public PlayerStats statSkript;
     TalentTree myTalentTree;
 
-    [SerializeField]
-    public int maxCount;
+    [SerializeField] public int maxCount;
+    [SerializeField] public int pointCost=1;
 
     public int currentCount = 0;
 
@@ -86,6 +85,11 @@ public class Talent : MonoBehaviour
     }
 
     public virtual void RemoveActiveTalentEffect()
+    {
+
+    }
+
+    public virtual void RemoveActiveTalentEffectAfterPointCountReduced()
     {
 
     }

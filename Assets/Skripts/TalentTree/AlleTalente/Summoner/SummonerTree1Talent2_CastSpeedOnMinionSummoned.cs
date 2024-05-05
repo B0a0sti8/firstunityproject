@@ -24,14 +24,14 @@ public class SummonerTree1Talent2_CastSpeedOnMinionSummoned : Talent
         mySummonerClass.minionSummoned_CastSpeedModifier = 0.2f * currentCount;
     }
 
-    public override void RemoveActiveTalentEffect()
+    public override void RemoveActiveTalentEffectAfterPointCountReduced()
     {
-        base.RemoveActiveTalentEffect();
+        base.RemoveActiveTalentEffectAfterPointCountReduced();
 
         // Setzte Bool in Summoner Klasse, gib Modifier
         if (currentCount == 0)
         {
-            mySummonerClass.hasCastSpeedOnMinionSummonedTalent = true;
+            mySummonerClass.hasCastSpeedOnMinionSummonedTalent = false;
         }
 
         mySummonerClass.minionSummoned_CastSpeedModifier = 0.2f * currentCount;

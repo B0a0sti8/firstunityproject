@@ -11,6 +11,8 @@ public class SummonerClass : MonoBehaviour
     public float minionSummoned_CastSpeedModifier;
     public float darkBoltDamageModifier;
     public bool hasCastSpeedOnMinionSummonedTalent;
+    public bool hasAdditionalMainMinion1;
+    public bool hasAdditionalMainMinion2;
 
 
     private void Awake()
@@ -19,6 +21,8 @@ public class SummonerClass : MonoBehaviour
         darkBoltDamageModifier = 1;
         PLAYER = transform.parent.parent;
         hasCastSpeedOnMinionSummonedTalent = false;
+        hasAdditionalMainMinion1 = false;
+        hasAdditionalMainMinion2 = false;
     }
 
     public void SummonerClass_OnMinionSummoned()
