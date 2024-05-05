@@ -6,6 +6,8 @@ using TMPro;
 
 public class Talent : MonoBehaviour
 {
+
+    public string talentName;
     Button button;
     Image sprite;
 

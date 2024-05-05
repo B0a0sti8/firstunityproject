@@ -10,6 +10,7 @@ public class SummonerTree1Talent6_ExplodeImps : Talent
 
     protected override void Awake()
     {
+        talentName = "Explode Imps";
         maxCount = 3;
         base.Awake();
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
