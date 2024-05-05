@@ -9,6 +9,7 @@ public class SummonerTree1Talent2_CastSpeedOnMinionSummoned : Talent
 
     protected override void Awake()
     {
+        talentName = "Cast Speed On Minion Summoned";
         maxCount = 3;
         base.Awake();
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();

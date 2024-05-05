@@ -14,6 +14,7 @@
 /[Aa]ssets/BigSprites
 /[Aa]ssets/4000_Fantasy_Icons
 /[Aa]ssets/5000FantasyIcons
+/[Aa]ssets/SkillAndTalentSprites
 /[Aa]ssets/Animations
 /[Aa]ssets/Plugins
 
@@ -5231,3 +5232,5 @@ Assets/AllIn1VfxToolkit/Shaders/Resources/AllIn1VfxURP.shader.meta
 Assets/AllIn1VfxToolkit/UrpPackage.unitypackage.meta
 
 Assets/5000FantasyIcons.meta
+
+Assets/SkillAndTalentSprites.meta
