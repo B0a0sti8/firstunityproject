@@ -21,10 +21,5 @@ public class BlueMageTree1Talent1 : Talent
         {
             statSkript.maxHealth.RemoveModifierMultiply(1.0f + 0.1f * currentCount);
         }
-        
-        //for (int i = 0; i < currentCount; i++)
-        //{
-        //    statSkript.maxHealth.RemoveModifierMultiply(1.1f);
-        //}
     }
 }

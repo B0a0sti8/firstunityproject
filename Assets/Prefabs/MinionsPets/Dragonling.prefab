@@ -552,6 +552,7 @@ GameObject:
   - component: {fileID: 1927152444004544102}
   - component: {fileID: 8734622905316372997}
   - component: {fileID: 3439966835867920617}
+  - component: {fileID: -9130354156745127176}
   m_Layer: 10
   m_Name: Dragonling
   m_TagString: Ally
@@ -664,7 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2481849727
+  GlobalObjectIdHash: 3902579543
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -736,6 +737,8 @@ MonoBehaviour:
   XPForPlayer: 20
   groupNumber: 0
   enemyUIHealthActive: 0
+  enemyName: 
+  enemyLevel: 0
 --- !u!114 &3195896753731157457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,6 +802,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseAttackDamage: 0
+--- !u!114 &-9130354156745127176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023599406339572345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23c56fdb8c05c64c898ef99a9de5723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2023599406366343330
 GameObject:
   m_ObjectHideFlags: 0

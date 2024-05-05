@@ -96,7 +96,6 @@ public class SummonDragonling : SkillPrefab
             SpawnDragonlingClientRpc(summoningPlayer, dragonlingRef);
             // SpawnDragonlingClientRpc(summoningPlayer, clientRpcParams);
         }
-
     }
 
     [ClientRpc]
@@ -109,7 +108,7 @@ public class SummonDragonling : SkillPrefab
         GameObject drago = drag.gameObject;
 
         drago.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
-        sumPla.GetComponent<PlayerStats>().myMainMinions.Add(drago);
+        //sumPla.GetComponent<PlayerStats>().myMainMinions.Add(drago);
     }
 
 }

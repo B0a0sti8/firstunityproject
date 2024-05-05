@@ -9,12 +9,14 @@ public class SummonerClass : MonoBehaviour
 
     public float ExplodingImpsDamageModifier;
     public float minionSummoned_CastSpeedModifier;
+    public float darkBoltDamageModifier;
     public bool hasCastSpeedOnMinionSummonedTalent;
 
 
     private void Awake()
     {
         ExplodingImpsDamageModifier = 1;
+        darkBoltDamageModifier = 1;
         PLAYER = transform.parent.parent;
         hasCastSpeedOnMinionSummonedTalent = false;
     }

@@ -6,6 +6,7 @@ using Unity.Netcode;
 using Unity.Collections;
 
 public delegate void KillConfirmed(CharacterStats characterStats);
+
 public class StuffManagerScript : NetworkBehaviour
 {
     public event KillConfirmed killConfirmedEvent;
@@ -19,18 +20,23 @@ public class StuffManagerScript : NetworkBehaviour
     {
         base.OnNetworkSpawn();
 
+        //if (!IsOwner)
+        //{
+        //    return;
+        //}
+
 
         SetCharacterName((FixedString128Bytes)"DefaultName"); // Für den Fall dass es keinen MultiplayerGroupManager gibt (z.B. SinglePlayerTests)
-        Debug.Log(characterName.Value);
+        //Debug.Log(characterName.Value);
         myClientId = OwnerClientId;
 
         if (MultiplayerGroupManager.MyInstance != null)
         {
             SetCharacterName(MultiplayerGroupManager.MyInstance.GetPlayerDataFromClientId(myClientId).characterName);
-            Debug.Log("MyCharacterName: ");
-            Debug.Log(characterName.Value);
+
             transform.Find("PlayerAnimation").GetComponent<MultiplayerPlayerColor>().SettingPlayerColor();
-            transform.Find("Canvas World Space").GetComponent<PlayerNameWorldSpaceUI>().ShowPlayerName();
+            Debug.Log("Trying to set Playername ffs...");
+            transform.Find("Canvas World Space").GetComponent<PlayerNameWorldSpaceUI>().ShowPlayerNameWithString(MultiplayerGroupManager.MyInstance.GetPlayerDataFromClientId(myClientId).characterName);
 
             MultiplayerGroupManager.MyInstance.AddPlayerObjectToList(myClientId, gameObject.GetComponent<NetworkObject>());
         }
@@ -63,7 +69,10 @@ public class StuffManagerScript : NetworkBehaviour
 
     public void SetCharacterName(FixedString128Bytes newCharacterName)
     {
-        SetCharacterNameServerRpc(newCharacterName);
+        if (IsOwner)
+        {
+            SetCharacterNameServerRpc(newCharacterName);
+        }
     }
 
     [ServerRpc]
