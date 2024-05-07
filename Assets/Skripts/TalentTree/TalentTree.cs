@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TalentTree : MonoBehaviour
 {
@@ -126,6 +127,7 @@ public class TalentTree : MonoBehaviour
                     GameObject cTalent = classTrees.Find(cName).Find("MaskLayer").Find("TalentTree").Find("Tier" + (i + 1).ToString()).GetChild(k).gameObject;
                     GameObject cTalentNew = Instantiate(cTalent, myCurrentTier);
                     cTalentNew.transform.rotation = Quaternion.identity;
+                    //cTalentNew.GetComponent<Image>().color = new Color(255,0,0);
 
                     if (n == 1)
                     { cTalentNew.transform.localPosition = Quaternion.Euler(0, 0, 120) * cTalentNew.transform.localPosition; }
