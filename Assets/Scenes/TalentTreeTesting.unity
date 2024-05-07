@@ -2306,6 +2306,7 @@ MonoBehaviour:
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &593298452
 MonoBehaviour:
@@ -4767,6 +4768,7 @@ MonoBehaviour:
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1231392842
 MonoBehaviour:
@@ -6046,6 +6048,7 @@ MonoBehaviour:
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!1 &1581785488
 GameObject:
@@ -6315,6 +6318,7 @@ MonoBehaviour:
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1593905677
 MonoBehaviour:
