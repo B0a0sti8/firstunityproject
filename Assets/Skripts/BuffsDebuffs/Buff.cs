@@ -27,6 +27,11 @@ public abstract class Buff
     public float tickTimeElapsed;
     public float tickValue;
 
+    public float additionalValue1;
+    public float additionalValue2;
+    public float additionalValue3;
+
+
     public virtual void InitializeBuff(GameObject source)
     {
 

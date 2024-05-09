@@ -9597,6 +9597,141 @@ MonoBehaviour:
   skillCosts: 
   skillRange: 
   skillRadius: 
+--- !u!1 &500849479717942472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3693540876796525086}
+  - component: {fileID: 2902481696717553357}
+  - component: {fileID: 50412213260489766}
+  m_Layer: 8
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3693540876796525086
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500849479717942472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1606452789381186048}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2902481696717553357
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500849479717942472}
+  m_CullTransparentMesh: 1
+--- !u!114 &50412213260489766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500849479717942472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &508936402724144692
 GameObject:
   m_ObjectHideFlags: 0
@@ -14941,7 +15076,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 536833264136320812}
   m_HandleRect: {fileID: 536833264136320813}
   m_Direction: 2
-  m_Value: 0.00000006746684
+  m_Value: 0.00000011244474
   m_Size: 0.40829694
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -48654,6 +48789,7 @@ RectTransform:
   - {fileID: 3150035767997860068}
   - {fileID: 3786048265041319871}
   - {fileID: 8691344149923550101}
+  - {fileID: 1606452789381186048}
   m_Father: {fileID: 6438617500635706878}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58806,9 +58942,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
-  className: 
-  skillAvailable: 0
+  skillName: SummonInsectsOnEnemyDeath
+  className: Summoner
+  skillAvailable: 1
 --- !u!114 &4337501339548850107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92382,6 +92518,164 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Next
+--- !u!1 &5795689527321362208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1606452789381186048}
+  - component: {fileID: 5812565674525199717}
+  - component: {fileID: 797498853949475803}
+  - component: {fileID: 8742676699141693257}
+  - component: {fileID: 2250422056391500928}
+  - component: {fileID: 4122728510703323460}
+  m_Layer: 8
+  m_Name: SummonInsectsOnEnemyDeath
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1606452789381186048
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5795689527321362208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3693540876796525086}
+  m_Father: {fileID: 8523466882783658339}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 42, y: -42}
+  m_SizeDelta: {x: 64, y: 64}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5812565674525199717
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5795689527321362208}
+  m_CullTransparentMesh: 1
+--- !u!114 &797498853949475803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5795689527321362208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 0cad3efa974ead843a0e97442ac1280a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8742676699141693257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5795689527321362208}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 797498853949475803}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2250422056391500928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5795689527321362208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: SummonInsectsOnEnemyDeath
+--- !u!114 &4122728510703323460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5795689527321362208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &5803080176041883614
 GameObject:
   m_ObjectHideFlags: 0
@@ -99954,6 +100248,7 @@ GameObject:
   - component: {fileID: 2069624952473487591}
   - component: {fileID: 3327228784054228821}
   - component: {fileID: 8877811282560271444}
+  - component: {fileID: 170508135099420369}
   m_Layer: 8
   m_Name: Summoner
   m_TagString: Untagged
@@ -99997,6 +100292,8 @@ MonoBehaviour:
   minionSummoned_CastSpeedModifier: 0
   darkBoltDamageModifier: 0
   hasCastSpeedOnMinionSummonedTalent: 0
+  hasAdditionalMainMinion1: 0
+  hasAdditionalMainMinion2: 0
 --- !u!114 &5963205471414507062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100172,8 +100469,8 @@ MonoBehaviour:
   unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
-  duration: 10
-  value: 0
+  buffDuration: 10
+  buffValue: 0
   buffImage: {fileID: 21300000, guid: 8652ad2807e03b141aed1bc5f9751505, type: 3}
 --- !u!114 &2442224389826764528
 MonoBehaviour:
@@ -100645,6 +100942,70 @@ MonoBehaviour:
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
   treeSpirit: {fileID: 2023599406339572345, guid: 6c589c66bd1ea964eb666b522cc15403, type: 3}
+--- !u!114 &170508135099420369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478835394022496323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08bcfbaf3b194d941a2d6819e8bd38e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterChecks: {fileID: 0}
+  PLAYER: {fileID: 0}
+  interactionCharacter: {fileID: 0}
+  playerStats: {fileID: 0}
+  myClass: 
+  animationTime: 1.5
+  needsTargetEnemy: 0
+  needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
+  needsMana: 0
+  manaCost: 0
+  skillRange: 0
+  skillRadius: 0
+  hasOwnCooldown: 0
+  ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
+  hasGlobalCooldown: 0
+  isSuperInstant: 0
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
+  castTimeOriginal: 0
+  castTimeModified: 0
+  castStarted: 0
+  isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  isSelfCast: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
+  isPlacableAoE: 0
+  unusedSpell: {fileID: 0}
+  PlacableAOEIndicator: {fileID: 0}
+  skillDuration: 0
+  buffDuration: 15
+  buffTickValue: 0
+  buffTickTime: 0
+  buffValue: 0
+  myInsectPrefab: {fileID: 2023599406339572345, guid: 62bcba0ead38d9342be44d1645d3522a, type: 3}
+  buffImage: {fileID: 21300000, guid: b60b2f5619c1c3e48b8223111c8eaf0d, type: 3}
 --- !u!1 &6484973489908793764
 GameObject:
   m_ObjectHideFlags: 0

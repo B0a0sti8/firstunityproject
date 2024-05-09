@@ -570,7 +570,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
             masterChecks.castTimeCurrent = castTimeModified;
             masterChecks.castTimeMax = castTimeModified;
             castStarted = true;
-            Debug.Log("Skloss");
+            //Debug.Log("Skloss");
             playerStats.isCurrentlyCasting = true;
 
             if (isSkillChanneling)

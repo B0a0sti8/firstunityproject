@@ -13,46 +13,53 @@ public class BuffManager : NetworkBehaviour
     List<Buff> newBuffs = new List<Buff>();
     List<Buff> expiredBuffs = new List<Buff>();
 
-    public void AddBuffProcedure(NetworkBehaviourReference target, NetworkBehaviourReference source, string buffName, string buffImageName, bool isDamageOrHealing, float duration, float tickTime, float value)
+    public void AddBuffProcedure(NetworkObjectReference target, NetworkObjectReference source, string buffName, string buffImageName, bool hasTicks, float duration, float tickTime, float value, float additionalValue1 = 0, float additionalValue2 = 0, float additionalValue3 = 0)
     {
-         AddBuffServerRpc(target, source, buffName, buffImageName, isDamageOrHealing, duration, tickTime, value);
+         AddBuffServerRpc(target, source, buffName, buffImageName, hasTicks, duration, tickTime, value, additionalValue1, additionalValue2, additionalValue3);
     }
 
     [ServerRpc(RequireOwnership = false)]
-    void AddBuffServerRpc(NetworkBehaviourReference target, NetworkBehaviourReference source, string buffName, string buffImageName, bool isDamageOrHealing, float duration, float tickTime, float value)
+    void AddBuffServerRpc(NetworkObjectReference target, NetworkObjectReference source, string buffName, string buffImageName, bool hasTicks, float duration, float tickTime, float value, float additionalValue1 = 0, float additionalValue2 = 0, float additionalValue3 = 0)
     {
-        AddBuffClientRpc(target, source, buffName, buffImageName, isDamageOrHealing, duration, tickTime, value);     
+        AddBuffClientRpc(target, source, buffName, buffImageName, hasTicks, duration, tickTime, value, additionalValue1, additionalValue2, additionalValue3);     
     }
 
     [ClientRpc]
-    void AddBuffClientRpc(NetworkBehaviourReference target, NetworkBehaviourReference source, string buffName, string buffImageName, bool isDamageOrHealing, float duration, float tickTime, float value)
+    void AddBuffClientRpc(NetworkObjectReference target, NetworkObjectReference source, string buffName, string buffImageName, bool hasTicks, float duration, float tickTime, float value, float additionalValue1 = 0, float additionalValue2 = 0, float additionalValue3 = 0)
     {
-        target.TryGet<NetworkBehaviour>(out NetworkBehaviour tar);
-        source.TryGet<NetworkBehaviour>(out NetworkBehaviour sor);
+        target.TryGet(out NetworkObject tar);
+        source.TryGet(out NetworkObject sor);
 
         var buff = BuffMasterManager.MyInstance.ListOfAllBuffs[buffName];
         Buff clone = buff.Clone();
         clone.buffSource = sor.gameObject;
         Sprite buffIcon = Resources.Load<Sprite>("BuffDebuffSprites/" + buffImageName);
 
-        if (isDamageOrHealing)
-        { tar.gameObject.GetComponent<BuffManager>().AddBuff(clone, buffIcon, duration, tickTime, value); }
+        if (hasTicks)
+        { tar.gameObject.GetComponent<BuffManager>().AddBuff(clone, buffIcon, duration, tickTime, value, additionalValue1, additionalValue2, additionalValue3); }
         else
-        { tar.gameObject.GetComponent<BuffManager>().AddBuff(clone, buffIcon, duration, value); }
+        { tar.gameObject.GetComponent<BuffManager>().AddBuff(clone, buffIcon, duration, value, additionalValue1, additionalValue2, additionalValue3); }
     }
 
-    public void AddBuff(Buff buff, Sprite buffImage, float duration, float value)
+    // Gedacht für z.B. Stärkungen und Schwächungen.
+    public void AddBuff(Buff buff, Sprite buffImage, float duration, float value, float additionalValue1 = 0, float additionalValue2 = 0, float additionalValue3 = 0)
     {
         newBuffs.Add(buff);
         buff.icon = buffImage;
         buff.duration = duration;
         buff.value = value;
+
+        buff.additionalValue1 = additionalValue1;
+        buff.additionalValue2 = additionalValue2;
+        buff.additionalValue3 = additionalValue3;
+
         buff.StartBuffUI();
 
         if (IsServer) { buff.StartBuffEffect(gameObject.GetComponent<PlayerStats>()); }
     }
 
-    public void AddBuff(Buff buff, Sprite buffImage, float duration, float tickTime, float tickValue)
+    // Gedacht für z.B. Schaden und Heilung über Zeit.
+    public void AddBuff(Buff buff, Sprite buffImage, float duration, float tickTime, float tickValue, float additionalValue1 = 0, float additionalValue2 = 0, float additionalValue3 = 0)
     {
         Debug.Log("BuffManager: Added Buff");
         newBuffs.Add(buff);
@@ -60,6 +67,11 @@ public class BuffManager : NetworkBehaviour
         buff.duration = duration + 0.01f;
         buff.tickTime = tickTime;
         buff.tickValue = tickValue;
+
+        buff.additionalValue1 = additionalValue1;
+        buff.additionalValue2 = additionalValue2;
+        buff.additionalValue3 = additionalValue3;
+
         buff.StartBuffUI();
 
         if (IsServer) { buff.StartBuffEffect(gameObject.GetComponent<PlayerStats>()); }

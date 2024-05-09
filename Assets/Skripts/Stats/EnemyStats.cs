@@ -71,48 +71,46 @@ public class EnemyStats : CharacterStats
             gameObject.transform.Find("Canvas UI").transform.Find("HealthBar").GetComponent<HealthBar>().SetHealth((int)currentHealth.Value);
         }
 
-        if (currentHealth.Value > maxHealth.GetValue())
+        if (IsServer)
         {
-            currentHealth.Value = maxHealth.GetValue();
-        }
+            if (currentHealth.Value > maxHealth.GetValue())
+            {
+                currentHealth.Value = maxHealth.GetValue();
+            }
 
-        if (currentHealth.Value < 0)
-        {
-            currentHealth.Value = 0;
+            if (currentHealth.Value < 0)
+            {
+                currentHealth.Value = 0;
+            }
         }
     }
 
-    //[ServerRpc]
-    //public override void TakeDamageServerRpc(float damage, int aggro, bool isCrit)
-    //{
-    //    Debug.Log("Enemy takes damage " + damage);
-    //    base.TakeDamageServerRpc(damage, aggro, isCrit);
-    //    FindObjectOfType<AudioManager>().Play("Oof");
-    //}
-
-    //[ServerRpc]
-    //public override void GetHealingServerRpc(float healing, bool isCrit)
-    //{
-    //    Debug.Log("Enemy gets healing " + healing);
-    //    base.GetHealingServerRpc(healing, isCrit);
-    //    //FindObjectOfType<AudioManager>().Play("Oof");
-    //}
 
     public override void Die()
     {
-        gameObject.transform.Find("Charakter").GetComponent<SpriteRenderer>().flipY = true;
-        GameObject[] players = GetComponent<EnemyAI>().aggroTable.Keys.ToArray();
-        if (players != null)
+        if (IsServer)
         {
-            foreach (GameObject p in players)
+            isAlive.Value = false;
+        }
+
+        gameObject.transform.Find("Charakter").GetComponent<SpriteRenderer>().flipY = true;
+        if (GetComponent<EnemyAI>() != null)
+        {
+            GameObject[] players = GetComponent<EnemyAI>().aggroTable.Keys.ToArray();
+            if (players != null)
             {
-                p.GetComponent<StuffManagerScript>().OnKillConfirmed(this);
-                p.GetComponent<PlayerStats>().GainXP(XPForPlayer);
+                foreach (GameObject p in players)
+                {
+                    p.GetComponent<StuffManagerScript>().OnKillConfirmed(this);
+                    p.GetComponent<PlayerStats>().GainXP(XPForPlayer);
+                }
             }
         }
-        Destroy(gameObject, 1f);
+
+        if (IsServer)
+        {
+            Destroy(gameObject, 1f);
+        }
         base.Die();
-
-
     }
 }

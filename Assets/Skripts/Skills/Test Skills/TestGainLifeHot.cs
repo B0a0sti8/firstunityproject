@@ -51,13 +51,13 @@ public class TestGainLifeHot : SkillPrefab
         if (interactionCharacter.focus == null)
         {
             //PLAYER.GetComponent<BuffManager>().AddBuff(clone, buffImage, duration, tickTime, tickHealing);
-            GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(PLAYER.GetComponent<NetworkBehaviour>(), PLAYER.GetComponent<NetworkBehaviour>(), "HoTBuff", "HoTBuff", true, duration, tickTime, tickHealing);
+            GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(PLAYER.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "HoTBuff", "HoTBuff", true, duration, tickTime, tickHealing);
         }
         else
         {
             Debug.Log("Anderer Charakter");
             //interactionCharacter.focus.GetComponent<BuffManager>().AddBuff(clone, buffImage, duration, tickTime, tickHealing);
-            GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(interactionCharacter.focus.gameObject.GetComponent<NetworkBehaviour>(), PLAYER.GetComponent<NetworkBehaviour>(), "HoTBuff", "HoTBuff", true, duration, tickTime, tickHealing);
+            GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(interactionCharacter.focus.gameObject.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "HoTBuff", "HoTBuff", true, duration, tickTime, tickHealing);
         }
 
         

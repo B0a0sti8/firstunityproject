@@ -8,6 +8,8 @@ public class CharacterStats : NetworkBehaviour
     public NetworkVariable<bool> isAlive = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     //public bool isAlive = true;
     public bool isCurrentlyCasting = false;
+    public delegate void OnDeath();
+    public event OnDeath onDeath;
 
     [SerializeField]
     private string type;
@@ -167,10 +169,13 @@ public class CharacterStats : NetworkBehaviour
     public virtual void Die()
     {
         if (!IsOwner) { return; }
+        Debug.Log(gameObject.name + " has died.");
 
         FindObjectOfType<AudioManager>().Play("OoOof");
         //Debug.Log("He dead");
         isAlive.Value = false;
         // To be overwritten in Child Class
+
+        onDeath?.Invoke();
     }
 }

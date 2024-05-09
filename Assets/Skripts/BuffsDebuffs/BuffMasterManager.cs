@@ -28,10 +28,17 @@ public class BuffMasterManager : MonoBehaviour
         SpeedBoostBuff speedBoostBuff = new SpeedBoostBuff();
         TheWayOfTheChickenDamageDebuff testWayOfTheChickenDamageDebuff = new TheWayOfTheChickenDamageDebuff();
         AttackSpeedBoostBuff attackSpeedBoostBuff = new AttackSpeedBoostBuff();
+        SummonInsectsOnEnemyDeathBuff summonInsectsOnEnemyDeathBuff = new SummonInsectsOnEnemyDeathBuff();
 
+        // Allgemeine Buffs
         ListOfAllBuffs.Add("HoTBuff", hoTBuff);
         ListOfAllBuffs.Add("speedBoostBuff", speedBoostBuff);
-        ListOfAllBuffs.Add("TestWayOfTheChickenDamageDebuff", testWayOfTheChickenDamageDebuff);
         ListOfAllBuffs.Add("AttackSpeedBoostBuff", attackSpeedBoostBuff);
+
+        // Buffs zum Testen 
+        ListOfAllBuffs.Add("TestWayOfTheChickenDamageDebuff", testWayOfTheChickenDamageDebuff);
+
+        // Spezifisch für Summoner-Classe
+        ListOfAllBuffs.Add("SummonInsectsOnEnemyDeathBuff", summonInsectsOnEnemyDeathBuff);
     }
 }

@@ -5,8 +5,8 @@ using Unity.Netcode;
 
 public class BuffMinionAttackSpeed : SkillPrefab
 {
-    public float duration = 10f;
-    public float value;
+    public float buffDuration = 10f;
+    public float buffValue;
 
     public Sprite buffImage;
     AttackSpeedBoostBuff buff = new AttackSpeedBoostBuff();
@@ -19,25 +19,22 @@ public class BuffMinionAttackSpeed : SkillPrefab
         isSelfCast = true;
         ownCooldownTimeBase = 10f;
         castTimeOriginal = 1.5f;
-        value = 2f;
+        buffValue = 2f;
 
-        value *= playerStats.buffInc.GetValue();
-
-    }
-
-    public override void Update()
-    {
+        buffValue *= playerStats.buffInc.GetValue();
         tooltipSkillDescription = "Buffs all your Minions and your Action speed";
-
-        base.Update();
     }
+
+    //public override void Update()
+    //{
+    //    base.Update();
+    //}
 
     public override void SkillEffect()
     {
         base.SkillEffect();
 
         Debug.Log("Buffing all my Minions!");
-
 
         foreach (var minio in playerStats.myMinions)
         {
@@ -46,9 +43,10 @@ public class BuffMinionAttackSpeed : SkillPrefab
             clone.buffSource = PLAYER;
             if (mn != null)
             {
-                mn.GetComponent<BuffManagerNPC>().AddBuff(clone, buffImage, duration, value);
+                //mn.GetComponent<BuffManagerNPC>().AddBuff(clone, buffImage, duration, value);
+                //mn.GetComponent<BuffManagerNPC>().AddBuffProcedure(mn.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "AttackSpeedBoostBuff", "AttackSpeedBoostBuff", false, 0, 0, buffValue);
+                GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(mn.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "AttackSpeedBoostBuff", "AttackSpeedBoostBuff", false, buffDuration, 0, buffValue);
             }
-            
         }
 
         foreach (var minio in playerStats.myMainMinions)
@@ -58,10 +56,10 @@ public class BuffMinionAttackSpeed : SkillPrefab
             clone.buffSource = PLAYER;
             if (mn  != null)
             {
-                mn.GetComponent<BuffManagerNPC>().AddBuff(clone, buffImage, duration, value);
+                //mn.GetComponent<BuffManagerNPC>().AddBuff(clone, buffImage, duration, value);
+                //mn.GetComponent<BuffManagerNPC>().AddBuffProcedure(mn.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "BuffMinionAttackSpeed", "BuffMinionAttackSpeed", false, 0, 0, buffValue);
+                GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(mn.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "AttackSpeedBoostBuff", "AttackSpeedBoostBuff", false, buffDuration, 0, buffValue);
             }
-           
         }
-
     }
 }

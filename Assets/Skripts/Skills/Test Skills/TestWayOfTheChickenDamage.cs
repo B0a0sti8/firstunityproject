@@ -43,7 +43,7 @@ public class TestWayOfTheChickenDamage : SkillPrefab
         {
             Buff clone = buff.Clone();
             clone.buffSource = PLAYER;
-            currentTargets[i].GetComponent<BuffManagerNPC>().AddBuff(clone, buffImage, duration, tickTime, tickDamage);
+            //currentTargets[i].GetComponent<BuffManagerNPC>().AddBuff(clone, buffImage, duration, tickTime, tickDamage);
         }
     }
 }
