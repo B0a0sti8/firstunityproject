@@ -15,7 +15,7 @@ public class MeleeEnemyAttackTest : EnemyAttack
 
         //Debug.Log(gameObject.GetComponent<EnemyStats>().actionSpeed.GetValue());
 
-        DamageOrHealing.DealDamage(gameObject.GetComponent<NetworkBehaviour>(), target.GetComponent<NetworkBehaviour>(), 50, false, false); 
+        DamageOrHealing.DealDamage(gameObject.GetComponent<NetworkBehaviour>(), target.GetComponent<NetworkBehaviour>(), baseAttackDamage, false, false); 
         // Attack
         // Animation
     }

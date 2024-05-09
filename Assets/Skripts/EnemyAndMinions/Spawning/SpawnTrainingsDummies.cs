@@ -9,6 +9,7 @@ public class SpawnTrainingsDummies : NetworkBehaviour
     [SerializeField] Vector3 spawnPos1;
     [SerializeField] Vector3 spawnPos2;
     [SerializeField] Vector3 spawnPos3;
+    [SerializeField] Vector3 spawnPos4;
 
     public override void OnNetworkSpawn()
     {
@@ -27,6 +28,9 @@ public class SpawnTrainingsDummies : NetworkBehaviour
 
         GameObject go2 = Instantiate(trainingsDummy, spawnPos3, Quaternion.identity);
         go2.GetComponent<NetworkObject>().Spawn();
-        
+
+        GameObject go3 = Instantiate(trainingsDummy, spawnPos4, Quaternion.identity);
+        go3.GetComponent<NetworkObject>().Spawn();
+        go3.GetComponent<EnemyStats>().maxHealth.baseValue = 1;
     }
 }
