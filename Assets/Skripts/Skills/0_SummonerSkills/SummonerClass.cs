@@ -10,6 +10,11 @@ public class SummonerClass : MonoBehaviour
     public float ExplodingImpsDamageModifier;
     public float minionSummoned_CastSpeedModifier;
     public float darkBoltDamageModifier;
+
+
+    public int increasedInsectSummon;
+
+
     public bool hasCastSpeedOnMinionSummonedTalent;
     public bool hasAdditionalMainMinion1;
     public bool hasAdditionalMainMinion2;

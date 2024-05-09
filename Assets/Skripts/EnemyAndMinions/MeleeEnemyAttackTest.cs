@@ -7,8 +7,9 @@ public class MeleeEnemyAttackTest : EnemyAttack
 {
     private void Start()
     {
-        baseAttackDamage = 50;
+
     }
+
     public override void EnemyAtkEffect(GameObject target)
     {
         base.EnemyAtkEffect(target);
