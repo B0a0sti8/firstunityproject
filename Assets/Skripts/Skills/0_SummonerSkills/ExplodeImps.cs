@@ -154,7 +154,7 @@ public class ExplodeImps : SkillPrefab
         foreach (var impo in PLAYER.GetComponent<PlayerStats>().myMinions)
         {
             impo.TryGet(out NetworkObject impoo);
-            if (impoo != null)
+            if (impoo != null && impoo.gameObject.name == "Imp(Clone)")
             {
                 myImps.Add(impoo.gameObject);
             }

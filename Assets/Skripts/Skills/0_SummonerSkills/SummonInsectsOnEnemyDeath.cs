@@ -10,6 +10,8 @@ public class SummonInsectsOnEnemyDeath : SkillPrefab
     public float buffTickTime;
     public float buffValue;
 
+    SummonerClass mySummonerClass;
+
     public GameObject myInsectPrefab;
 
     public Sprite buffImage;
@@ -32,6 +34,8 @@ public class SummonInsectsOnEnemyDeath : SkillPrefab
 
         buffTickValue *= playerStats.buffInc.GetValue();
         tooltipSkillDescription = "Summons Insects on Enemy Death";
+
+        mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
     }
 
     public override void SkillEffect()
@@ -45,8 +49,8 @@ public class SummonInsectsOnEnemyDeath : SkillPrefab
 
         // Zwei zusätzliche Parameter für den Schaden und die Anzahl der minions
         float insectDamage = 10f;
-        float insectCount = 3f;
-        float insectLifetime = 150000f;
+        float insectCount = 3f + mySummonerClass.increasedInsectSummon;
+        float insectLifetime = 10f;
 
         GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(currentTargets[0].GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "SummonInsectsOnEnemyDeathBuff", "SummonInsectsOnEnemyDeathBuff", false, buffDuration, 0, buffValue, insectDamage, insectCount, insectLifetime);
         //currentTargets[0].GetComponent<BuffManagerNPC>().AddBuff(clone, buffImage, duration, buffTickTime, buffTickValue);
@@ -89,13 +93,13 @@ public class SummonInsectsOnEnemyDeath : SkillPrefab
                 GameObject summonerInsec = GameObject.Instantiate(summonerInsect, posi, Quaternion.identity);
                 summonerInsec.GetComponent<NetworkObject>().Spawn();
                 summonerInsec.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
+                summonerInsec.GetComponent<MinionPetAI>().isInFight = true;
                 summonerInsec.GetComponent<HasLifetime>().maxLifetime = insectLifetime;
                 summonerInsec.GetComponent<MeleeEnemyAttackTest>().baseAttackDamage = insectDamage;
 
                 sumPla.GetComponent<PlayerStats>().myMinions.Add(summonerInsec);
 
                 NetworkObjectReference insectRef = (NetworkObjectReference)summonerInsec;
-                Debug.Log("Trying to send a fucking client rpc...");
                 SpawnInsectsClientRpc(summoningPlayer, insectRef);
             }
         }
@@ -113,8 +117,15 @@ public class SummonInsectsOnEnemyDeath : SkillPrefab
 
         Debug.Log(summIns.gameObject);
         Debug.Log(sumPla);
+
+        if (sour.GetComponent<NetworkObject>().IsOwner)
+        {
+            if (mySummonerClass.hasCastSpeedOnMinionSummonedTalent)
+            {
+                mySummonerClass.SummonerClass_OnMinionSummoned();
+                Debug.Log("I'm the owner, I get cast speed.");
+            }
+
+        }
     }
-
-
-
 }

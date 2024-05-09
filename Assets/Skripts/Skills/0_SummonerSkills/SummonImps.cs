@@ -9,6 +9,7 @@ public class SummonImps : SkillPrefab
     SummonerClass mySummonerClass;
 
     private bool skillEffektActive = false;
+    private float impBaseDamage;
 
     int impCount;
     float impLifeTime;
@@ -20,6 +21,8 @@ public class SummonImps : SkillPrefab
         animationTime = 5f;
         base.Start();
         myClass = "Summoner";
+
+        impBaseDamage = 12f;
 
         hasGlobalCooldown = true;
 
@@ -84,17 +87,17 @@ public class SummonImps : SkillPrefab
         if (interactionCharacter.focus != null)
         {
             NetworkObjectReference enemyReference = (NetworkObjectReference)interactionCharacter.focus.gameObject;
-            SpawnImpServerRpc(enemyReference, playerReference);
+            SpawnImpServerRpc(enemyReference, playerReference, impBaseDamage);
         }
         else
         {
             NetworkObjectReference enemyReference = (NetworkObjectReference)PLAYER;
-            SpawnImpServerRpc(enemyReference, playerReference);
+            SpawnImpServerRpc(enemyReference, playerReference, impBaseDamage);
         }
     }
 
     [ServerRpc]
-    private void SpawnImpServerRpc(NetworkObjectReference targetEnemy, NetworkObjectReference summoningPlayer, ServerRpcParams serverRpcParams = default)
+    private void SpawnImpServerRpc(NetworkObjectReference targetEnemy, NetworkObjectReference summoningPlayer, float impDamage)
     {
         // Holt sich den Summoning Player aus der Network-Referenz
         //Debug.Log("Summon Imp Server RPC!");
@@ -118,6 +121,7 @@ public class SummonImps : SkillPrefab
             impling.GetComponent<NetworkObject>().Spawn();
             impling.GetComponent<MinionPetAI>().isInFight = true;
             impling.GetComponent<HasLifetime>().maxLifetime = impLifeTime;
+            impling.GetComponent<MeleeEnemyAttackTest>().baseAttackDamage = impDamage;
 
             impling.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
             sumPla.GetComponent<PlayerStats>().myMinions.Add(impling);
