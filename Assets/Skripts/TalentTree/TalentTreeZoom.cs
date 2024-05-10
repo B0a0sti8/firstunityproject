@@ -4,13 +4,18 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class TalentTreeZoom : MonoBehaviour
+public class TalentTreeZoom : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     [SerializeField] TextMeshProUGUI myTextMesh;
     [SerializeField] TextMeshProUGUI myTextMeshRect;
     RectTransform myRect;
     Vector3 originalScale;
     Vector3 orignalPosition;
+
+    Vector3 myCorrectionVector;
+
+    Vector3 dragSnapPos;
+    bool isDragging;
 
     private void Start()
     {
@@ -86,12 +91,95 @@ public class TalentTreeZoom : MonoBehaviour
 
         Debug.Log("Checking if Mouse in Rect");
         if (Mathf.Abs(anchorPos.x) < (myRect.rect.xMax - myRect.rect.xMin) / 2 && Mathf.Abs(anchorPos.y) < (myRect.rect.yMax - myRect.rect.yMin) / 2)
-        {
-
-            
+        { 
             Debug.Log("Mouse in Rect");
             Vector2 normalizedPoint = Rect.PointToNormalized(myRect.rect, anchorPos);
             SetPivot(normalizedPoint);
         }
     }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        //Vector2 screen_pos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        //Vector2 anchorPos = screen_pos - new Vector2(myRect.position.x, myRect.position.y);
+        //anchorPos = new Vector2(anchorPos.x / myRect.lossyScale.x, anchorPos.y / myRect.lossyScale.y);
+
+        //if (Mathf.Abs(anchorPos.x) < (myRect.rect.xMax - myRect.rect.xMin) / 2 && Mathf.Abs(anchorPos.y) < (myRect.rect.yMax - myRect.rect.yMin) / 2)
+        //{
+           
+        //}
+
+
+        DragTalentTree(eventData);
+    }
+
+    private void DragTalentTree(PointerEventData eventData)
+    {
+        if (!isDragging) return;
+
+        Vector3 screen_pos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
+        Vector3 anchorPos = screen_pos - new Vector3(myRect.position.x, myRect.position.y, myRect.position.z);
+        anchorPos = new Vector3(anchorPos.x / myRect.lossyScale.x, anchorPos.y / myRect.lossyScale.y, anchorPos.y / myRect.lossyScale.z);
+
+        if (Mathf.Abs(anchorPos.x) < (myRect.rect.xMax - myRect.rect.xMin) / 2 && Mathf.Abs(anchorPos.y) < (myRect.rect.yMax - myRect.rect.yMin) / 2)
+        {
+            Vector2 normalizedPoint = Rect.PointToNormalized(myRect.rect, anchorPos);
+            Vector3 deltaPosition = myRect.pivot - normalizedPoint;    // get change in pivot
+            deltaPosition.Scale(myRect.rect.size);           // apply sizing
+            deltaPosition.Scale(myRect.localScale);          // apply scaling
+            deltaPosition = myRect.rotation * deltaPosition; // apply rotation
+
+            myRect.localPosition = - deltaPosition;
+
+
+            isDragging = true;
+            //Vector2 localMousePos;
+            //if (RectTransformUtility.ScreenPointToLocalPointInRectangle(myRect, eventData.position, eventData.pressEventCamera, out localMousePos))
+            //{
+            //    //myCorrectionVector = new Vector3(localMousePos.x, localMousePos.y, 0f) - myRect.localPosition;
+
+            //}
+        }
+
+
+
+        //Vector2 localMousePois;
+        //if (RectTransformUtility.ScreenPointToLocalPointInRectangle(myRect, eventData.position, eventData.pressEventCamera, out localMousePois))
+        //{
+        //    Debug.Log(localMousePois);    // - new Vector3(myRect.pivot.x * myRect.rect.width, myRect.pivot.y * myRect.rect.width, 0f));
+
+        //    myRect.localPosition = (Vector2)localMousePois;// - (Vector2)myCorrectionVector;    // + new Vector3(myRect.pivot.x * myRect.rect.width, myRect.pivot.y * myRect.rect.width, 0f);
+        //}
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        Vector3 screen_pos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
+        Vector3 anchorPos = screen_pos - new Vector3(myRect.position.x, myRect.position.y, myRect.position.z);
+        anchorPos = new Vector3(anchorPos.x / myRect.lossyScale.x, anchorPos.y / myRect.lossyScale.y, anchorPos.y / myRect.lossyScale.z);
+
+        if (Mathf.Abs(anchorPos.x) < (myRect.rect.xMax - myRect.rect.xMin) / 2 && Mathf.Abs(anchorPos.y) < (myRect.rect.yMax - myRect.rect.yMin) / 2)
+        {
+
+            isDragging = true;
+            //Vector2 localMousePos;
+            //if (RectTransformUtility.ScreenPointToLocalPointInRectangle(myRect, eventData.position, eventData.pressEventCamera, out localMousePos))
+            //{
+            //    //myCorrectionVector = new Vector3(localMousePos.x, localMousePos.y, 0f) - myRect.localPosition;
+
+            //}
+        }
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        isDragging = false;
+    }
 }
+
+
+// 1270 für loS = 4
+// 800 für los = 3
+// 370 für los = 2
+// 0 für los = 1
+// 
