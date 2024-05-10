@@ -28,7 +28,6 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
 
     bool moveWithMouse = false;
 
-
     private void Awake()
     {
         Instance = this;
@@ -36,14 +35,14 @@ public class TooltipScreenSpaceUIAdvanced : MonoBehaviour
         backgroundRectTransform = transform.Find("Tooltip Background").GetComponent<RectTransform>();
         rectTransform = transform.GetComponent<RectTransform>();
 
-        textMeshProName = transform.Find("Tooltip Text Skillname").GetComponent<TextMeshProUGUI>();
-        textMeshProDescription = transform.Find("Tooltip Text Description").GetComponent<TextMeshProUGUI>();
-        image = transform.Find("Tooltip Image").GetComponent<Image>();
-        textMeshProType = transform.Find("Tooltip Text Skilltype").GetComponent<TextMeshProUGUI>();
-        textMeshProCooldown = transform.Find("Tooltip Text Skillcooldown").GetComponent<TextMeshProUGUI>();
-        textMeshProCosts = transform.Find("Tooltip Text Skillcosts").GetComponent<TextMeshProUGUI>();
-        textMeshProRange = transform.Find("Tooltip Text Skillrange").GetComponent<TextMeshProUGUI>();
-        textMeshProRadius = transform.Find("Tooltip Text Skillradius").GetComponent<TextMeshProUGUI>();
+        textMeshProName = backgroundRectTransform.Find("Tooltip Text Skillname").GetComponent<TextMeshProUGUI>();
+        textMeshProDescription = backgroundRectTransform.Find("Tooltip Text Description").GetComponent<TextMeshProUGUI>();
+        image = backgroundRectTransform.Find("Tooltip Image").GetComponent<Image>();
+        textMeshProType = backgroundRectTransform.Find("Tooltip Text Skilltype").GetComponent<TextMeshProUGUI>();
+        textMeshProCooldown = backgroundRectTransform.Find("Tooltip Text Skillcooldown").GetComponent<TextMeshProUGUI>();
+        textMeshProCosts = backgroundRectTransform.Find("Tooltip Text Skillcosts").GetComponent<TextMeshProUGUI>();
+        textMeshProRange = backgroundRectTransform.Find("Tooltip Text Skillrange").GetComponent<TextMeshProUGUI>();
+        textMeshProRadius = backgroundRectTransform.Find("Tooltip Text Skillradius").GetComponent<TextMeshProUGUI>();
 
         HideTooltip();
     }

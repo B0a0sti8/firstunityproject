@@ -12670,14 +12670,14 @@ PrefabInstance:
     - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e1d8c4a4e6aec2b4bac4f55edd50f75e, type: 3}
+      objectReference: {fileID: 21300000, guid: a0786fa5ee0422b4aab84c2f7d26e1b2, type: 3}
     - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_Color.r
-      value: 0.53839636
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
@@ -13312,6 +13312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentName: 
+  talentDescription: 
+  predecessor: ' - '
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -13658,6 +13660,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentName: 
+  talentDescription: 
+  predecessor: ' - '
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -14001,6 +14005,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentName: 
+  talentDescription: 
+  predecessor: ' - '
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -14653,6 +14659,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentName: 
+  talentDescription: 
+  predecessor: ' - '
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -14991,6 +14999,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentName: 
+  talentDescription: 
+  predecessor: ' - '
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -16016,14 +16026,14 @@ PrefabInstance:
     - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e1d8c4a4e6aec2b4bac4f55edd50f75e, type: 3}
+      objectReference: {fileID: 21300000, guid: 427fe4996271506429c29cf747f18f4b, type: 3}
     - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_Color.b
-      value: 0.84178114
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_Color.g
-      value: 0.08018869
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2724751766124865683, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
@@ -16046,6 +16056,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentName: 
+  talentDescription: 
+  predecessor: ' - '
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -18016,6 +18028,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentName: 
+  talentDescription: 
+  predecessor: ' - '
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -18563,6 +18577,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentName: 
+  talentDescription: 
+  predecessor: ' - '
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -19792,14 +19808,14 @@ PrefabInstance:
     - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e1d8c4a4e6aec2b4bac4f55edd50f75e, type: 3}
+      objectReference: {fileID: 21300000, guid: 67fa15d07a8e51d4c8fb6c782d53250c, type: 3}
     - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_Color.b
-      value: 0.28152847
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2724751766124865683, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
@@ -19822,6 +19838,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentName: 
+  talentDescription: 
+  predecessor: ' - '
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0

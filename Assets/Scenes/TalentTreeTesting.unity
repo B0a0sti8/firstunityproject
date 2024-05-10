@@ -2303,6 +2303,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentName: 
+  talentDescription: 
+  predecessor: ' - '
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -4765,6 +4767,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentName: 
+  talentDescription: 
+  predecessor: ' - '
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -6045,6 +6049,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentName: 
+  talentDescription: 
+  predecessor: ' - '
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
@@ -6315,6 +6321,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentName: 
+  talentDescription: 
+  predecessor: ' - '
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0

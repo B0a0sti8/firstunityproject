@@ -9,6 +9,8 @@ public class Talent : MonoBehaviour
     public string talentName;
     Button button;
     Image sprite;
+    public string talentDescription = "";
+    public string predecessor = " - ";
 
     public GameObject PLAYER;
     public PlayerStats statSkript;
@@ -81,16 +83,16 @@ public class Talent : MonoBehaviour
 
     public virtual void ActiveTalentEffect()
     {
-        
+        GetComponent<MasterEventTriggerTalent>().GetTalentInfo();
     }
 
     public virtual void RemoveActiveTalentEffect()
     {
-
+        GetComponent<MasterEventTriggerTalent>().GetTalentInfo();
     }
 
     public virtual void RemoveActiveTalentEffectAfterPointCountReduced()
     {
-
+        GetComponent<MasterEventTriggerTalent>().GetTalentInfo();
     }
 }
