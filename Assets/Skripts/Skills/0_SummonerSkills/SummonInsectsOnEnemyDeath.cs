@@ -10,6 +10,11 @@ public class SummonInsectsOnEnemyDeath : SkillPrefab
     public float buffTickTime;
     public float buffValue;
 
+    private float insectDamage;
+    private float insectCount;
+    private float insectLifetime;
+
+
     SummonerClass mySummonerClass;
 
     public GameObject myInsectPrefab;
@@ -36,29 +41,36 @@ public class SummonInsectsOnEnemyDeath : SkillPrefab
         tooltipSkillDescription = "Summons Insects on Enemy Death";
 
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
+
+        insectDamage = 10f;
+        insectCount = 3f;
+        insectLifetime = 5f;
     }
 
     public override void SkillEffect()
     {
+
         base.SkillEffect();
 
-        Debug.Log("Placing Insect summon. Count: " + buffTickTime);
+        float insectCountModified = insectCount + mySummonerClass.increasedInsectSummon;
+        float insectLifeTimeModified = (insectLifetime + mySummonerClass.increasedMinionDuration) * playerStats.skillDurInc.GetValue();
+        float insectDamageModified = insectDamage * (1+ mySummonerClass.increasedMinionDamage);
 
         Buff clone = buff.Clone();
         clone.buffSource = PLAYER;
 
         // Zwei zusätzliche Parameter für den Schaden und die Anzahl der minions
-        float insectDamage = 10f;
-        float insectCount = 3f + mySummonerClass.increasedInsectSummon;
-        float insectLifetime = 10f;
-
-        GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(currentTargets[0].GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "SummonInsectsOnEnemyDeathBuff", "SummonInsectsOnEnemyDeathBuff", false, buffDuration, 0, buffValue, insectDamage, insectCount, insectLifetime);
+        GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(currentTargets[0].GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "SummonInsectsOnEnemyDeathBuff", "SummonInsectsOnEnemyDeathBuff", false, buffDuration, 0, buffValue, insectDamageModified, insectCountModified, insectLifeTimeModified);
         //currentTargets[0].GetComponent<BuffManagerNPC>().AddBuff(clone, buffImage, duration, buffTickTime, buffTickValue);
     }
 
 
     // Dieser Code wird hier laufen gelassen, weil Buffs nicht wirklich Rpcs senden können...
 
+    public void SpawnInsects(NetworkObjectReference summoningPlayer, NetworkObjectReference targetRef, int insectCount, float insectDamage, float insectLifetime)
+    {
+        SpawnInsectsServerRpc(summoningPlayer, targetRef, insectCount, insectDamage, insectLifetime);
+    }
 
 
     [ServerRpc(RequireOwnership = false)]
@@ -71,7 +83,7 @@ public class SummonInsectsOnEnemyDeath : SkillPrefab
         targetRef.TryGet(out NetworkObject target);
         GameObject mTarget = target.gameObject;
 
-        Debug.Log("Server Rpc:  Trying to summon insects: " + insectCount);
+        //Debug.Log("Server Rpc:  Trying to summon insects: " + insectCount);
 
         for (int i = 0; i < insectCount; i++)
         {

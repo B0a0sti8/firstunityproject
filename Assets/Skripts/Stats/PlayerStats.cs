@@ -227,19 +227,19 @@ public class PlayerStats : CharacterStats
 	void InitializeBaseStats()
 	{
 		maxHealth.baseValue = maxHealthStart;	maxMana.baseValue = 1000;
-		armor.baseValue = 10;					mastery.baseValue = 10;
-		toughness.baseValue = 10;				intellect.baseValue = 10;
-		charisma.baseValue = 10;				tempo.baseValue = 10;
+		armor.baseValue = 0;					mastery.baseValue = 0;
+		toughness.baseValue = 0;				intellect.baseValue = 0;
+		charisma.baseValue = 0;					tempo.baseValue = 0;
 
 		movementSpeed.baseValue = 7;			actionSpeed.baseValue = 1;
 		critChance.baseValue = 5;				critMultiplier.baseValue = 1.5f;
-		healInc.baseValue = 0;					dmgInc.baseValue = 0;
-		physRed.baseValue = 0;					magRed.baseValue = 0;
-		incHealInc.baseValue = 0;				lifesteal.baseValue = 0;
-		blockChance.baseValue = 0;				evadeChance.baseValue = 0;
-		skillDurInc.baseValue = 0;				skillRadInc.baseValue = 0;
-		buffInc.baseValue = 0;					debuffInc.baseValue = 0;
-		tickRateMod.baseValue = 0;
+		healInc.baseValue = 1;					dmgInc.baseValue = 1;
+		physRed.baseValue = 1;					magRed.baseValue = 1;
+		incHealInc.baseValue = 1;				lifesteal.baseValue = 1;
+		blockChance.baseValue = 1;				evadeChance.baseValue = 1;
+		skillDurInc.baseValue = 1;				skillRadInc.baseValue = 1;
+		buffInc.baseValue = 1;					debuffInc.baseValue = 1;
+		tickRateMod.baseValue = 1;
 	}
 
 	// Modifiziert den Base

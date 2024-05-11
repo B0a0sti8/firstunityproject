@@ -11,6 +11,8 @@ public class SummonerClass : MonoBehaviour
     public float minionSummoned_CastSpeedModifier;
     public float darkBoltDamageModifier;
 
+    public float increasedMinionDuration;
+    public float increasedMinionDamage;
 
     public int increasedInsectSummon;
 
@@ -22,6 +24,10 @@ public class SummonerClass : MonoBehaviour
 
     private void Awake()
     {
+        increasedMinionDuration = 0;
+        increasedMinionDamage = 0;
+
+
         ExplodingImpsDamageModifier = 1;
         darkBoltDamageModifier = 1;
         PLAYER = transform.parent.parent;

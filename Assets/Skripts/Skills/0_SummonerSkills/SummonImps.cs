@@ -13,11 +13,13 @@ public class SummonImps : SkillPrefab
 
     int impCount;
     float impLifeTime;
+    float impLifeTimeBase;
 
     float elapsed;
 
     public override void Start()
     {
+        mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
         animationTime = 5f;
         base.Start();
         myClass = "Summoner";
@@ -37,9 +39,7 @@ public class SummonImps : SkillPrefab
 
         elapsed = 0;
         impCount = 6;
-        impLifeTime = 10;
-
-        mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
+        impLifeTimeBase = 10;
     }
 
     public override void Update()
@@ -80,6 +80,9 @@ public class SummonImps : SkillPrefab
 
     void SpawnImp()
     {
+        impLifeTime = (impLifeTimeBase + mySummonerClass.increasedMinionDuration) * playerStats.skillDurInc.GetValue();
+        float impDamage = impBaseDamage * (1 + mySummonerClass.increasedMinionDamage);
+
         mySummonerClass.SummonerClass_OnMinionSummoned();
 
         // Bittet den Server um Spawn des Imps, schickt Referenz des Spielers. Wenn kein Target verfügbar ist, wird Imp um den Spieler herum gespawnt.
@@ -87,17 +90,23 @@ public class SummonImps : SkillPrefab
         if (interactionCharacter.focus != null)
         {
             NetworkObjectReference enemyReference = (NetworkObjectReference)interactionCharacter.focus.gameObject;
-            SpawnImpServerRpc(enemyReference, playerReference, impBaseDamage);
+            SpawnImpServerRpc(enemyReference, playerReference, impDamage, impLifeTime);
+            //Debug.Log("MyImpLifetime = " + impLifeTime);
+            //Debug.Log("Skill duration charakterstats: " + playerStats.skillDurInc.GetValue());
+            Debug.Log("Additional damage Summoner class: " + mySummonerClass.increasedMinionDamage);
         }
         else
         {
             NetworkObjectReference enemyReference = (NetworkObjectReference)PLAYER;
-            SpawnImpServerRpc(enemyReference, playerReference, impBaseDamage);
+            SpawnImpServerRpc(enemyReference, playerReference, impDamage, impLifeTime);
+            //Debug.Log("MyImpLifetime = " + impLifeTime);
+            //Debug.Log("Skill duration charakterstats: " + playerStats.skillDurInc.GetValue());
+            //Debug.Log("Additional Duration Summoner class: " + mySummonerClass.increasedMinionDuration);
         }
     }
 
     [ServerRpc]
-    private void SpawnImpServerRpc(NetworkObjectReference targetEnemy, NetworkObjectReference summoningPlayer, float impDamage)
+    private void SpawnImpServerRpc(NetworkObjectReference targetEnemy, NetworkObjectReference summoningPlayer, float impDamage, float impDuration)
     {
         // Holt sich den Summoning Player aus der Network-Referenz
         //Debug.Log("Summon Imp Server RPC!");
@@ -120,7 +129,8 @@ public class SummonImps : SkillPrefab
             GameObject impling = Instantiate(imp, posi, Quaternion.identity);
             impling.GetComponent<NetworkObject>().Spawn();
             impling.GetComponent<MinionPetAI>().isInFight = true;
-            impling.GetComponent<HasLifetime>().maxLifetime = impLifeTime;
+            impling.GetComponent<HasLifetime>().maxLifetime = impDuration;
+            //Debug.Log("MyImpLifetime = " + impDuration);
             impling.GetComponent<MeleeEnemyAttackTest>().baseAttackDamage = impDamage;
 
             impling.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
@@ -146,10 +156,5 @@ public class SummonImps : SkillPrefab
 
         impli.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
         impli.GetComponent<MinionPetAI>().isInFight = true;
-        //if (!IsHost)
-        //{
-        //    sumPla.GetComponent<PlayerStats>().myMinions.Add(impli);
-        //    Debug.Log("Added Minion as Client" + sumPla.GetComponent<PlayerStats>().myMinions.Count);
-        //}
     }
 }

@@ -9,6 +9,7 @@ public class SummonerTree3Talent1_AdditionalMainMinion1 : Talent
     protected override void Awake()
     {
         talentName = "Additional Main Minion 1";
+        talentDescription = "Allows you to control one additional main minion";
         maxCount = 1;
         pointCost = 5;
         base.Awake();
