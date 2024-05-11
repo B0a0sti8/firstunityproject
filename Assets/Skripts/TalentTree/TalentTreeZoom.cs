@@ -9,6 +9,7 @@ public class TalentTreeZoom : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     [SerializeField] TextMeshProUGUI myTextMesh;
     [SerializeField] TextMeshProUGUI myTextMeshRect;
     RectTransform myRect;
+    RectTransform myMask;
     Vector3 originalScale;
     Vector3 orignalPosition;
 
@@ -20,6 +21,7 @@ public class TalentTreeZoom : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     private void Start()
     {
         myRect = GetComponent<RectTransform>();
+        myMask = transform.parent.GetComponent<RectTransform>();
         originalScale = myRect.localScale;
         orignalPosition = myRect.localPosition;
     }
@@ -100,16 +102,6 @@ public class TalentTreeZoom : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
     public void OnDrag(PointerEventData eventData)
     {
-        //Vector2 screen_pos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        //Vector2 anchorPos = screen_pos - new Vector2(myRect.position.x, myRect.position.y);
-        //anchorPos = new Vector2(anchorPos.x / myRect.lossyScale.x, anchorPos.y / myRect.lossyScale.y);
-
-        //if (Mathf.Abs(anchorPos.x) < (myRect.rect.xMax - myRect.rect.xMin) / 2 && Mathf.Abs(anchorPos.y) < (myRect.rect.yMax - myRect.rect.yMin) / 2)
-        //{
-           
-        //}
-
-
         DragTalentTree(eventData);
     }
 
@@ -117,57 +109,32 @@ public class TalentTreeZoom : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     {
         if (!isDragging) return;
 
-        Vector3 screen_pos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
-        Vector3 anchorPos = screen_pos - new Vector3(myRect.position.x, myRect.position.y, myRect.position.z);
-        anchorPos = new Vector3(anchorPos.x / myRect.lossyScale.x, anchorPos.y / myRect.lossyScale.y, anchorPos.y / myRect.lossyScale.z);
-
-        if (Mathf.Abs(anchorPos.x) < (myRect.rect.xMax - myRect.rect.xMin) / 2 && Mathf.Abs(anchorPos.y) < (myRect.rect.yMax - myRect.rect.yMin) / 2)
+        Vector3 worldMousePos;
+        if (RectTransformUtility.ScreenPointToWorldPointInRectangle(myRect, eventData.position, eventData.pressEventCamera, out worldMousePos))
         {
-            Vector2 normalizedPoint = Rect.PointToNormalized(myRect.rect, anchorPos);
-            Vector3 deltaPosition = myRect.pivot - normalizedPoint;    // get change in pivot
-            deltaPosition.Scale(myRect.rect.size);           // apply sizing
-            deltaPosition.Scale(myRect.localScale);          // apply scaling
-            deltaPosition = myRect.rotation * deltaPosition; // apply rotation
-
-            myRect.localPosition = - deltaPosition;
-
-
-            isDragging = true;
-            //Vector2 localMousePos;
-            //if (RectTransformUtility.ScreenPointToLocalPointInRectangle(myRect, eventData.position, eventData.pressEventCamera, out localMousePos))
-            //{
-            //    //myCorrectionVector = new Vector3(localMousePos.x, localMousePos.y, 0f) - myRect.localPosition;
-
-            //}
+            //Debug.Log(worldMousePos);    // - new Vector3(myRect.pivot.x * myRect.rect.width, myRect.pivot.y * myRect.rect.width, 0f));
+            myRect.position = (Vector3)worldMousePos + myCorrectionVector;// - (Vector2)myCorrectionVector;    // + new Vector3(myRect.pivot.x * myRect.rect.width, myRect.pivot.y * myRect.rect.width, 0f);
         }
 
+        Vector3[] myRectWorldCorners = new Vector3[4];
+        Vector3[] myMaskWorldCorners = new Vector3[4];
 
+        myRect.GetWorldCorners(myRectWorldCorners);
+        myMask.GetWorldCorners(myMaskWorldCorners);
 
-        //Vector2 localMousePois;
-        //if (RectTransformUtility.ScreenPointToLocalPointInRectangle(myRect, eventData.position, eventData.pressEventCamera, out localMousePois))
-        //{
-        //    Debug.Log(localMousePois);    // - new Vector3(myRect.pivot.x * myRect.rect.width, myRect.pivot.y * myRect.rect.width, 0f));
-
-        //    myRect.localPosition = (Vector2)localMousePois;// - (Vector2)myCorrectionVector;    // + new Vector3(myRect.pivot.x * myRect.rect.width, myRect.pivot.y * myRect.rect.width, 0f);
-        //}
+        if (myMaskWorldCorners[0].x < myRectWorldCorners[0].x) myRect.position += new Vector3(myMaskWorldCorners[0].x - myRectWorldCorners[0].x, 0, 0);
+        if (myMaskWorldCorners[2].x > myRectWorldCorners[2].x) myRect.position += new Vector3(myMaskWorldCorners[2].x - myRectWorldCorners[2].x, 0, 0);
+        if (myMaskWorldCorners[3].y < myRectWorldCorners[3].y) myRect.position += new Vector3(0, myMaskWorldCorners[3].y - myRectWorldCorners[3].y, 0);
+        if (myMaskWorldCorners[1].y > myRectWorldCorners[1].y) myRect.position += new Vector3(0, myMaskWorldCorners[1].y - myRectWorldCorners[1].y, 0);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Vector3 screen_pos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
-        Vector3 anchorPos = screen_pos - new Vector3(myRect.position.x, myRect.position.y, myRect.position.z);
-        anchorPos = new Vector3(anchorPos.x / myRect.lossyScale.x, anchorPos.y / myRect.lossyScale.y, anchorPos.y / myRect.lossyScale.z);
-
-        if (Mathf.Abs(anchorPos.x) < (myRect.rect.xMax - myRect.rect.xMin) / 2 && Mathf.Abs(anchorPos.y) < (myRect.rect.yMax - myRect.rect.yMin) / 2)
+        Vector3 worldMousePos;
+        if (RectTransformUtility.ScreenPointToWorldPointInRectangle(myRect, eventData.position, eventData.pressEventCamera, out worldMousePos))
         {
-
+            myCorrectionVector = myRect.position - worldMousePos;
             isDragging = true;
-            //Vector2 localMousePos;
-            //if (RectTransformUtility.ScreenPointToLocalPointInRectangle(myRect, eventData.position, eventData.pressEventCamera, out localMousePos))
-            //{
-            //    //myCorrectionVector = new Vector3(localMousePos.x, localMousePos.y, 0f) - myRect.localPosition;
-
-            //}
         }
     }
 
