@@ -13,11 +13,11 @@ public class SummonerTree1Talent0_IncreasedActionSpeed : Talent
         actionSpeedModifier = 0.2f;
         talentName = "Increased Action Speed";
         talentDescription = " Increases action speed by " 
-            + ((int)actionSpeedModifier * 100).ToString() + " / " 
-            + ((int)2 * actionSpeedModifier * 100).ToString() + " / " 
-            + ((int)3 * actionSpeedModifier * 100).ToString() + " / " 
-            + ((int)4 * actionSpeedModifier * 100).ToString() + " / "
-            + ((int)5 * actionSpeedModifier * 100).ToString() 
+            + (actionSpeedModifier * 100).ToString() + " / " 
+            + (2 * actionSpeedModifier * 100).ToString() + " / " 
+            + (3 * actionSpeedModifier * 100).ToString() + " / " 
+            + (4 * actionSpeedModifier * 100).ToString() + " / "
+            + (5 * actionSpeedModifier * 100).ToString() 
             +  " %.";
         maxCount = 5;
         base.Awake();

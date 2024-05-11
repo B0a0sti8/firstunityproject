@@ -11,6 +11,7 @@ public class SummonerTree2Talent5_SummonInsectsOnEnemyDeath : Talent
     protected override void Awake()
     {
         talentName = "Summon Insects on Enemy Death";
+        talentDescription = "Inflicts a Debuff on target Enemy. When that enemy dies, insects spawn from its body, fighting for you.";
         maxCount = 3;
         pointCost = 3;
         base.Awake();

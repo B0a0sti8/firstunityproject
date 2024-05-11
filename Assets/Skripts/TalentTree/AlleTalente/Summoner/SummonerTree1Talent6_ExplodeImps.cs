@@ -7,16 +7,17 @@ public class SummonerTree1Talent6_ExplodeImps : Talent
 {
     private GameObject mySkill;
     private SummonerClass mySummonerClass;
-
+    private float expImpDamageMod;
     protected override void Awake()
     {
+        expImpDamageMod = 0.2f;
         talentName = "Explode Imps";
+        talentDescription = "Allows you to throw your imps on target enemy and makes them explode. Higher stages increase damage by " + ((int)(expImpDamageMod*100)).ToString() + " % each.";
         maxCount = 3;
         base.Awake();
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
-
-
     }
+
     public override void ActiveTalentEffect()
     {
         base.ActiveTalentEffect();
@@ -26,7 +27,7 @@ public class SummonerTree1Talent6_ExplodeImps : Talent
         PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").GetComponent<SkillbookMaster>().UpdateCurrentSkills();
 
         // Für höhere Stufen: Erhöhe Schaden des Skills.
-        mySummonerClass.ExplodingImpsDamageModifier = (float)( 1 + (currentCount - 1) * 0.2);
+        mySummonerClass.ExplodingImpsDamageModifier = (float)( 1 + (currentCount - 1) * expImpDamageMod);
 
     }
 
@@ -40,7 +41,7 @@ public class SummonerTree1Talent6_ExplodeImps : Talent
             mySkill.GetComponent<Button>().enabled = false;
         }
         PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").GetComponent<SkillbookMaster>().UpdateCurrentSkills();
-        mySummonerClass.ExplodingImpsDamageModifier = (float)(1 + (currentCount - 1) * 0.2);
+        mySummonerClass.ExplodingImpsDamageModifier = (float)(1 + (currentCount - 1) * expImpDamageMod);
 
     }
 }

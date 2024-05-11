@@ -41,6 +41,6 @@ public class SummonInsectsOnEnemyDeathBuff : Buff
         Debug.Log("Spawning Insects.");
         Debug.Log(tickTime);
         Debug.Log((int)tickTime);
-        buffSource.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonInsectsOnEnemyDeath>().SpawnInsectsServerRpc(buffSource.gameObject.GetComponent<NetworkObject>(), myCurrentEnemyStats.gameObject.GetComponent<NetworkObject>(), (int)additionalValue2, additionalValue1, additionalValue3);
+        buffSource.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonInsectsOnEnemyDeath>().SpawnInsects(buffSource.gameObject.GetComponent<NetworkObject>(), myCurrentEnemyStats.gameObject.GetComponent<NetworkObject>(), (int)additionalValue2, additionalValue1, additionalValue3);
     }
 }
