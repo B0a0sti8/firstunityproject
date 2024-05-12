@@ -24,6 +24,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public float animationTime = 1.5f;
 
     [Header("Target")]
+    public bool isSelfCast = false;
     public bool needsTargetEnemy;
     public bool needsTargetAlly;
     public bool canSelfCastIfNoTarget;
@@ -58,8 +59,6 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public bool isSuperInstant; // can not be true if hasGlobalCooldown is true
     bool isSkillInOwnSuperInstantQueue = false;
 
-    private Interactable zwischenSpeicher;
-
     [Header("Tooltip")]
     [HideInInspector]
     public MasterEventTrigger masterET;
@@ -90,17 +89,20 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public bool isAOECircle = false;
     public bool isAOEFrontCone = false;
     public bool isAOELine = false;
-    public bool isSelfCast = false;
     public Vector3 coneAOEDirection;
     public float coneAOEAngle = 50;
     private Interactable circleAim;
     public bool isPlacableAoE;
-    public GameObject unusedSpell;
     public GameObject PlacableAOEIndicator;
+
+    public GameObject unusedSpell;
     bool hasUnusedSpell = false;
+
     public float skillDuration;
 
     Animator classAnimator;
+
+    private Interactable zwischenSpeicher;
 
     public void StartSkillChecks() // snjens beginnt sein abenteuer
     {
@@ -220,6 +222,8 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
             isAOEFrontCone = false; isAOELine = false; // Nur sicherheitshalber, falls jmd mehrere Sachen angekreuzt hat.
 
             if (canSelfCastIfNoTarget && interactionCharacter.focus == null)
+            { circleAim = PLAYER.GetComponent<Interactable>(); }
+            else if (isSelfCast)
             { circleAim = PLAYER.GetComponent<Interactable>(); }
             else
             { circleAim = interactionCharacter.focus; }
@@ -716,6 +720,11 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         {
             DamageOrHealing.DealDamage(PLAYER.GetComponent<NetworkBehaviour>(), currentTargets[i].GetComponent<NetworkBehaviour>(), damage, false, false);
         }
+    }
+
+    public void DealDamage(GameObject extraTarget, float damage)
+    {
+         DamageOrHealing.DealDamage(PLAYER.GetComponent<NetworkBehaviour>(), extraTarget.GetComponent<NetworkBehaviour>(), damage, false, false);
     }
 
     public void DoHealing(float healing)

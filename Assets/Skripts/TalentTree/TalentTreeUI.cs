@@ -15,6 +15,10 @@ public class TalentTreeUI : MonoBehaviour
     public void OpenTalentTree()
     {
         Debug.Log("Talent Tree An/Aus");
+        if (talentTreeUI.activeSelf)
+        {
+            transform.parent.Find("Canvas Tooltips").Find("TooltipScreenSpaceUI_Talents").GetComponent<TooltipScreenSpaceUITalent>().HideTooltip();
+        }
         talentTreeUI.SetActive(!talentTreeUI.activeSelf);
     }
 }

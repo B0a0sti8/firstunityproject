@@ -35,7 +35,9 @@ public class BuffManagerNPC : NetworkBehaviour
         var buff = BuffMasterManager.MyInstance.ListOfAllBuffs[buffName];
         Buff clone = buff.Clone();
         clone.buffSource = sor.gameObject;
-        Sprite buffIcon = Resources.Load<Sprite>("BuffDebuffSprites/" + buffImageName);
+        //Sprite buffIcon = Resources.Load<Sprite>("BuffDebuffSprites/" + buffImageName);
+        Sprite buffIcon = BuffMasterManager.MyInstance.ListOfAllBuffSprites[buffImageName];
+        buffIcon.name = buffImageName;
 
         if (hasTicks)
         { tar.gameObject.GetComponent<BuffManagerNPC>().AddBuff(clone, buffIcon, duration, tickTime, value, additionalValue1, additionalValue2, additionalValue3); }

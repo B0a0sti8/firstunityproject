@@ -40,7 +40,9 @@ public class BuffDebuffUINPC : NetworkBehaviour
             Buff clone = slotBuff.Clone();
             clone.buffName = buffName;
             clone.buffDescription = buffDescription;
-            clone.icon = Resources.Load<Sprite>("BuffDebuffSprites/" + buffSpriteName);
+            //clone.icon = Resources.Load<Sprite>("BuffDebuffSprites/" + buffSpriteName);
+            //Sprite buffIcon = Resources.Load<Sprite>("BuffDebuffSprites/" + buffImageName);
+            clone.icon = BuffMasterManager.MyInstance.ListOfAllBuffSprites[buffSpriteName];
             clone.duration = buffDur;
             clone.durationTimeLeft = buffDur;
             StartCoroutine(ReduceTime((DummyBuffMultiplayer)clone, 0.3f));
@@ -76,7 +78,7 @@ public class BuffDebuffUINPC : NetworkBehaviour
                 string buffSpN = buffManager.buffs[i].icon.name;
                 float buffDur = buffManager.buffs[i].durationTimeLeft;
                 UpdateUIServerRpc(nBref, i, buffN, buffDes, buffSpN, buffDur);
-                Debug.Log("BuffSprite heiﬂt: " +  buffSpN);
+                //Debug.Log("BuffSprite heiﬂt: " +  buffSpN);
             }
             else
             {

@@ -24,7 +24,6 @@ public class SummonInsectsOnEnemyDeathBuff : Buff
     public override void EndBuffEffect(CharacterStats enemyStats)
     {
         base.EndBuffEffect(enemyStats);
-        enemyStats.actionSpeed.RemoveModifierAdd(value);
         enemyStats.onDeath -= SpawnInsects;
     }
 

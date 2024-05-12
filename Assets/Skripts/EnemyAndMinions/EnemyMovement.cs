@@ -101,5 +101,11 @@ public class EnemyMovement : MonoBehaviour
         float distance = Vector2.Distance(rb2d.position, path.vectorPath[currentWypoint]);
         if (distance < nextWypointDistance)
         { currentWypoint++; }
+
+        if (eAI.target != null)
+        {
+            Vector2 lookDir = (Vector2)(transform.position - eAI.target.position).normalized;
+            transform.Find("Charakter").localRotation = Quaternion.LookRotation(lookDir, Vector3.back);
+        }
     }
 }
