@@ -7,6 +7,12 @@ public class ProjectileFlyToTarget : MonoBehaviour
 {
     public Transform target;
     public float timeToArrive;
+    public bool isDestroyedWhenTargetHit;
+
+    private void Start()
+    {
+        isDestroyedWhenTargetHit = true;
+    }
 
     void Update()
     {
@@ -23,7 +29,11 @@ public class ProjectileFlyToTarget : MonoBehaviour
         else
         {
             //NetworkObject.Despawn(this);
-            Destroy(gameObject);
+            if (isDestroyedWhenTargetHit)
+            {
+                Destroy(gameObject);
+            }
+           
         }
     }
 }

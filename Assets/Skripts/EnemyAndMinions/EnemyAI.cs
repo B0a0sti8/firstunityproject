@@ -48,6 +48,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     public Dictionary<GameObject, int> aggroTable = new Dictionary<GameObject, int>();
 
+    public List<Buff> listOfStunSources = new List<Buff>();
+
     void HandleTargetAggro()
     {
         GameObject[] pT1 = GameObject.FindGameObjectsWithTag("Player");  // Sucht alle Spieler in der Scene
@@ -273,6 +275,7 @@ public class EnemyAI : MonoBehaviour
     private void Attacking() 
     {
         //Debug.Log("Ich mach dich fertig!");
+        transform.GetComponent<EnemyAttack>().StartEnemyAtk(target.gameObject);
         state = State.Chasing;
     }
 
@@ -286,12 +289,10 @@ public class EnemyAI : MonoBehaviour
         //Debug.Log(state);
         //if (GetComponent<CharacterStats>().isAlive == false)
         //{ state = State.Dying; }
-        if (target != null)
-        {
-            Vector2 lookDir = (Vector2)(transform.position - target.position).normalized;
-            transform.localRotation = Quaternion.LookRotation(lookDir, Vector3.back);
-        }
+        //if (target != null)
+        //{
 
+        //}
 
         switch (state)
         {
@@ -318,6 +319,8 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case State.DoNothing:
+                // Zum Beispiel wenn der Gegner gestunnt ist.
+
                 break;
 
             case State.Dying:

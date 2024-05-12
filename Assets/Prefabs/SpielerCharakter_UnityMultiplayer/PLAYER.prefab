@@ -44119,6 +44119,141 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &1799161126844104075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2761679117135249812}
+  - component: {fileID: 5735959638648636219}
+  - component: {fileID: 2228125738233052261}
+  m_Layer: 8
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2761679117135249812
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799161126844104075}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6880427046429331263}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5735959638648636219
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799161126844104075}
+  m_CullTransparentMesh: 1
+--- !u!114 &2228125738233052261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799161126844104075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1800967409531241573
 GameObject:
   m_ObjectHideFlags: 0
@@ -48858,6 +48993,8 @@ RectTransform:
   - {fileID: 3786048265041319871}
   - {fileID: 8691344149923550101}
   - {fileID: 1606452789381186048}
+  - {fileID: 6880427046429331263}
+  - {fileID: 6210009456265396378}
   m_Father: {fileID: 6438617500635706878}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50416,6 +50553,164 @@ Transform:
   m_Father: {fileID: 6368479068754677197}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2309435067187326778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6210009456265396378}
+  - component: {fileID: 781771002139097291}
+  - component: {fileID: 4264172506505618786}
+  - component: {fileID: 1629584942640620839}
+  - component: {fileID: 5009219728576615722}
+  - component: {fileID: 7369726313638827195}
+  m_Layer: 8
+  m_Name: SummonAstralSnake
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6210009456265396378
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2309435067187326778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 473255698852144297}
+  m_Father: {fileID: 8523466882783658339}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 42, y: -42}
+  m_SizeDelta: {x: 64, y: 64}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &781771002139097291
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2309435067187326778}
+  m_CullTransparentMesh: 1
+--- !u!114 &4264172506505618786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2309435067187326778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 0cad3efa974ead843a0e97442ac1280a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1629584942640620839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2309435067187326778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 4264172506505618786}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5009219728576615722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2309435067187326778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: SummonInsectsOnEnemyDeath
+--- !u!114 &7369726313638827195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2309435067187326778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &2354185026913722335
 GameObject:
   m_ObjectHideFlags: 0
@@ -57125,8 +57420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
-  className: 
+  skillName: SummonAstralSnake
+  className: Summoner
   skillAvailable: 0
 --- !u!114 &5891398844394810946
 MonoBehaviour:
@@ -77771,6 +78066,164 @@ Transform:
   m_Father: {fileID: 3134056076112226013}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4611442791530980249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6880427046429331263}
+  - component: {fileID: 1388962675171466859}
+  - component: {fileID: 1540986739994085922}
+  - component: {fileID: 3404635629336710618}
+  - component: {fileID: 8960005514378653304}
+  - component: {fileID: 6694937952268389058}
+  m_Layer: 8
+  m_Name: StunEnemiesAroundSummoner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6880427046429331263
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4611442791530980249}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2761679117135249812}
+  m_Father: {fileID: 8523466882783658339}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 42, y: -42}
+  m_SizeDelta: {x: 64, y: 64}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1388962675171466859
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4611442791530980249}
+  m_CullTransparentMesh: 1
+--- !u!114 &1540986739994085922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4611442791530980249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 0cad3efa974ead843a0e97442ac1280a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3404635629336710618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4611442791530980249}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1540986739994085922}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8960005514378653304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4611442791530980249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: SummonInsectsOnEnemyDeath
+--- !u!114 &6694937952268389058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4611442791530980249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &4612319611135093418
 GameObject:
   m_ObjectHideFlags: 0
@@ -82985,6 +83438,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 1
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -83018,12 +83472,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   damage: 100
 --- !u!114 &1057949729613587128
@@ -83044,6 +83497,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 1
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -83077,12 +83531,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   baseDamage: 100
   comboDamage: 120
@@ -83104,6 +83557,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 1
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -83137,12 +83591,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   baseDamage: 100
   comboDamage: 150
@@ -83164,6 +83617,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 1
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -83197,12 +83651,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   damage: 400
 --- !u!114 &4132811638230271047
@@ -83223,6 +83676,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 1
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -83256,12 +83710,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   damage: 200
 --- !u!114 &203713702215444478
@@ -83282,6 +83735,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -83315,12 +83769,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   duration: 0
   value: 0
@@ -83343,6 +83796,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 1
@@ -83376,12 +83830,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   duration: 30
   value: 50
@@ -83404,6 +83857,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 1
   canSelfCastIfNoTarget: 1
@@ -83437,12 +83891,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   healing: 75
 --- !u!114 &8408333702287430284
@@ -83463,6 +83916,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 1
   canSelfCastIfNoTarget: 1
@@ -83496,12 +83950,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   instantHealing: 50
   tickTime: 2
@@ -83526,6 +83979,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -83559,12 +84013,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   duration: 8
   value: 5
@@ -83587,6 +84040,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -83620,12 +84074,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   heal: 100
 --- !u!114 &8215493504788211074
@@ -83646,6 +84099,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 1
   canSelfCastIfNoTarget: 1
@@ -83679,12 +84133,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   totalHeal: 10000
   healTick: 0
@@ -83706,6 +84159,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -83739,12 +84193,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   damage: 100
   tickTime: 1
@@ -83769,6 +84222,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -83802,12 +84256,11 @@ MonoBehaviour:
   isAOECircle: 1
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 1
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 488976138668359019, guid: 453e29a18b589c240851511041c34cb8, type: 3}
+  unusedSpell: {fileID: 0}
   skillDuration: 3
 --- !u!1 &5085567595039653821
 GameObject:
@@ -92397,6 +92850,141 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5746515359121145053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 473255698852144297}
+  - component: {fileID: 5207602895056620028}
+  - component: {fileID: 9152525155758430662}
+  m_Layer: 8
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &473255698852144297
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5746515359121145053}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6210009456265396378}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5207602895056620028
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5746515359121145053}
+  m_CullTransparentMesh: 1
+--- !u!114 &9152525155758430662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5746515359121145053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5756898839396616121
 GameObject:
   m_ObjectHideFlags: 0
@@ -100706,6 +101294,8 @@ GameObject:
   - component: {fileID: 3327228784054228821}
   - component: {fileID: 8877811282560271444}
   - component: {fileID: 170508135099420369}
+  - component: {fileID: 5280402464420567817}
+  - component: {fileID: 5706242085448769072}
   m_Layer: 8
   m_Name: Summoner
   m_TagString: Untagged
@@ -100748,6 +101338,9 @@ MonoBehaviour:
   ExplodingImpsDamageModifier: 0
   minionSummoned_CastSpeedModifier: 0
   darkBoltDamageModifier: 0
+  increasedMinionDuration: 0
+  increasedMinionDamage: 0
+  summonerAoEStunDuration: 0
   increasedInsectSummon: 0
   hasCastSpeedOnMinionSummonedTalent: 0
   hasAdditionalMainMinion1: 0
@@ -100770,6 +101363,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: Summoner
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -100803,12 +101397,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   dragonling: {fileID: 2023599406339572345, guid: f407b2ef94e5e224585d8fdc5bbc96c7, type: 3}
 --- !u!114 &7307744708454236220
@@ -100829,6 +101422,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: Summoner
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -100862,12 +101456,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
 --- !u!114 &2666061716428747962
 MonoBehaviour:
@@ -100887,6 +101480,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -100920,12 +101514,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   buffDuration: 10
   buffValue: 0
@@ -100948,6 +101541,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -100981,12 +101575,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
 --- !u!114 &6869431587684373569
 MonoBehaviour:
@@ -101006,6 +101599,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -101039,12 +101633,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   damage: 400
   myProjectile: {fileID: 8206478290439211267, guid: 932cb1930abada740a476b079dc1d69b, type: 3}
@@ -101066,6 +101659,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -101099,12 +101693,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   imp: {fileID: 2023599406339572345, guid: 8b60f533911b45045a297c3be5168537, type: 3}
 --- !u!114 &7751839050863941291
@@ -101125,6 +101718,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -101158,12 +101752,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   dragonAOEAnimation: {fileID: 647104670885987435, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
 --- !u!114 &472482984243538107
@@ -101184,6 +101777,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: Summoner
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 1
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -101217,12 +101811,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
 --- !u!114 &2069624952473487591
 MonoBehaviour:
@@ -101242,6 +101835,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -101275,12 +101869,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
 --- !u!114 &3327228784054228821
 MonoBehaviour:
@@ -101300,6 +101893,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -101333,12 +101927,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   stoneGolem: {fileID: 2023599406339572345, guid: 0f63cd95e293b934dab93a93ae6b3448, type: 3}
 --- !u!114 &8877811282560271444
@@ -101359,6 +101952,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -101392,12 +101986,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   treeSpirit: {fileID: 2023599406339572345, guid: 6c589c66bd1ea964eb666b522cc15403, type: 3}
 --- !u!114 &170508135099420369
@@ -101418,6 +102011,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
+  isSelfCast: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -101451,12 +102045,11 @@ MonoBehaviour:
   isAOECircle: 0
   isAOEFrontCone: 0
   isAOELine: 0
-  isSelfCast: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
   isPlacableAoE: 0
-  unusedSpell: {fileID: 0}
   PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
   skillDuration: 0
   buffDuration: 15
   buffTickValue: 0
@@ -101464,6 +102057,126 @@ MonoBehaviour:
   buffValue: 0
   myInsectPrefab: {fileID: 2023599406339572345, guid: 62bcba0ead38d9342be44d1645d3522a, type: 3}
   buffImage: {fileID: 21300000, guid: b60b2f5619c1c3e48b8223111c8eaf0d, type: 3}
+--- !u!114 &5280402464420567817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478835394022496323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a49c1357270c3843a694b1089f30706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterChecks: {fileID: 0}
+  PLAYER: {fileID: 0}
+  interactionCharacter: {fileID: 0}
+  playerStats: {fileID: 0}
+  myClass: 
+  animationTime: 1.5
+  isSelfCast: 0
+  needsTargetEnemy: 0
+  needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
+  needsMana: 0
+  manaCost: 0
+  skillRange: 0
+  skillRadius: 0
+  hasOwnCooldown: 0
+  ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
+  hasGlobalCooldown: 0
+  isSuperInstant: 0
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
+  castTimeOriginal: 0
+  castTimeModified: 0
+  castStarted: 0
+  isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
+  isPlacableAoE: 0
+  PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
+  skillDuration: 0
+  buffDuration: 5
+  buffImage: {fileID: 0}
+--- !u!114 &5706242085448769072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478835394022496323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c45e972f7088ec54dac8e637a26ccc76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterChecks: {fileID: 0}
+  PLAYER: {fileID: 0}
+  interactionCharacter: {fileID: 0}
+  playerStats: {fileID: 0}
+  myClass: 
+  animationTime: 1.5
+  isSelfCast: 0
+  needsTargetEnemy: 0
+  needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
+  needsMana: 0
+  manaCost: 0
+  skillRange: 0
+  skillRadius: 0
+  hasOwnCooldown: 0
+  ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  ownCooldownActive: 0
+  hasGlobalCooldown: 0
+  isSuperInstant: 0
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
+  castTimeOriginal: 0
+  castTimeModified: 0
+  castStarted: 0
+  isSkillChanneling: 0
+  isAOECircle: 0
+  isAOEFrontCone: 0
+  isAOELine: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
+  isPlacableAoE: 0
+  PlacableAOEIndicator: {fileID: 0}
+  unusedSpell: {fileID: 0}
+  skillDuration: 0
+  damage: 400
+  mySnake: {fileID: 8206478290439211267, guid: 056fcd46548790a469e8bc72f6dcc3eb, type: 3}
 --- !u!1 &6484973489908793764
 GameObject:
   m_ObjectHideFlags: 0
@@ -104077,8 +104790,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
-  className: 
+  skillName: StunEnemiesAroundSummoner
+  className: Summoner
   skillAvailable: 0
 --- !u!114 &8906947525490920002
 MonoBehaviour:

@@ -14,6 +14,8 @@ public class SummonerClass : MonoBehaviour
     public float increasedMinionDuration;
     public float increasedMinionDamage;
 
+    public float summonerAoEStunDuration;
+
     public int increasedInsectSummon;
 
 
@@ -27,6 +29,7 @@ public class SummonerClass : MonoBehaviour
         increasedMinionDuration = 0;
         increasedMinionDamage = 0;
 
+        summonerAoEStunDuration = 0;
 
         ExplodingImpsDamageModifier = 1;
         darkBoltDamageModifier = 1;

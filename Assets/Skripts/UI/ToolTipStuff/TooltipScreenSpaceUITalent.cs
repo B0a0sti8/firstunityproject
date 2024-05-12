@@ -87,7 +87,7 @@ public class TooltipScreenSpaceUITalent : MonoBehaviour
         }
     }
 
-    private void HideTooltip()
+    public void HideTooltip()
     {
         gameObject.SetActive(false);
     }

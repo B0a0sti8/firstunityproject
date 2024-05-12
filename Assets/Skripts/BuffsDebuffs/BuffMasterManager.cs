@@ -19,26 +19,50 @@ public class BuffMasterManager : MonoBehaviour
     }
 
     public Dictionary<string, Buff> ListOfAllBuffs = new Dictionary<string, Buff>();
+    public Dictionary<string, Sprite> ListOfAllBuffSprites = new Dictionary<string, Sprite>();
+
+    // Für allgemeine Buffs
+    [SerializeField ]Sprite hoTBuffSprite;
+    [SerializeField] Sprite speedBoostBuffSprite;
+    [SerializeField] Sprite attackSpeedBoostBuffSprite;
+    [SerializeField] Sprite stunnedEffectOnEnemiesSprite;
+
+    // Zum testen
+    [SerializeField] Sprite testWayOfTheChickenDamageDebuffSprite;
+
+    // Für Summoner-spezifische Buffs
+    [SerializeField] Sprite summonInsectsOnEnemyDeathBuffSprite;
+
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
 
-        HoTBuff hoTBuff = new HoTBuff();
-        SpeedBoostBuff speedBoostBuff = new SpeedBoostBuff();
-        TheWayOfTheChickenDamageDebuff testWayOfTheChickenDamageDebuff = new TheWayOfTheChickenDamageDebuff();
-        AttackSpeedBoostBuff attackSpeedBoostBuff = new AttackSpeedBoostBuff();
-        SummonInsectsOnEnemyDeathBuff summonInsectsOnEnemyDeathBuff = new SummonInsectsOnEnemyDeathBuff();
-
         // Allgemeine Buffs
+        HoTBuff hoTBuff = new HoTBuff();
         ListOfAllBuffs.Add("HoTBuff", hoTBuff);
+        ListOfAllBuffSprites.Add("HoTBuff", hoTBuffSprite);
+
+        SpeedBoostBuff speedBoostBuff = new SpeedBoostBuff();
         ListOfAllBuffs.Add("speedBoostBuff", speedBoostBuff);
+        ListOfAllBuffSprites.Add("speedBoostBuff", speedBoostBuffSprite);
+
+        AttackSpeedBoostBuff attackSpeedBoostBuff = new AttackSpeedBoostBuff();
         ListOfAllBuffs.Add("AttackSpeedBoostBuff", attackSpeedBoostBuff);
+        ListOfAllBuffSprites.Add("AttackSpeedBoostBuff", attackSpeedBoostBuffSprite);
+
+        StunnedEffectOnEnemies stunnedEffectOnEnemies = new StunnedEffectOnEnemies();
+        ListOfAllBuffs.Add("StunnedEffectOnEnemies", stunnedEffectOnEnemies);
+        ListOfAllBuffSprites.Add("StunnedEffectOnEnemies", stunnedEffectOnEnemiesSprite);
 
         // Buffs zum Testen 
+        TheWayOfTheChickenDamageDebuff testWayOfTheChickenDamageDebuff = new TheWayOfTheChickenDamageDebuff();
         ListOfAllBuffs.Add("TestWayOfTheChickenDamageDebuff", testWayOfTheChickenDamageDebuff);
+        ListOfAllBuffSprites.Add("TestWayOfTheChickenDamageDebuff", testWayOfTheChickenDamageDebuffSprite);
 
         // Spezifisch für Summoner-Classe
+        SummonInsectsOnEnemyDeathBuff summonInsectsOnEnemyDeathBuff = new SummonInsectsOnEnemyDeathBuff();
         ListOfAllBuffs.Add("SummonInsectsOnEnemyDeathBuff", summonInsectsOnEnemyDeathBuff);
+        ListOfAllBuffSprites.Add("SummonInsectsOnEnemyDeathBuff", summonInsectsOnEnemyDeathBuffSprite);
     }
 }
