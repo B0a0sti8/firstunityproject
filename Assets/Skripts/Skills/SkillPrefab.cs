@@ -638,7 +638,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
     public virtual void SkillEffect() // overridden by each skill seperately
     {
-        
+        playerStats.OnCastedSkillCallback();
     }
 
     public virtual void Update()
@@ -724,7 +724,10 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
     public void DealDamage(GameObject extraTarget, float damage)
     {
-         DamageOrHealing.DealDamage(PLAYER.GetComponent<NetworkBehaviour>(), extraTarget.GetComponent<NetworkBehaviour>(), damage, false, false);
+        if (extraTarget != null)
+        {
+            DamageOrHealing.DealDamage(PLAYER.GetComponent<NetworkBehaviour>(), extraTarget.GetComponent<NetworkBehaviour>(), damage, false, false);
+        }
     }
 
     public void DoHealing(float healing)

@@ -112,6 +112,10 @@ public class PlayerStats : CharacterStats
     public int MyCurrentXP { get => currentXP; set => currentXP = value; }
     public int MyCurrentPlayerLvl { get => currentPlayerLvl; set => currentPlayerLvl = value; }
 
+
+	public delegate void OnCastedSkill(PlayerStats playerStats);
+	public event OnCastedSkill onCastedSkill;
+
     public override void Update()
 	{
 		base.Update();
@@ -142,6 +146,8 @@ public class PlayerStats : CharacterStats
 	public override void Start()
 	{
 		if (!IsOwner) { return; }
+
+		onCastedSkill += OnCastedSkillCallbackInvoked;
 
 		manaBarWorldCanv = transform.Find("Canvas World Space").Find("ManaBar").GetComponent<ManaBar>();
 		currentMana.OnValueChanged += (float previousValue, float newValue) => { OnManaChange(); };
@@ -485,5 +491,29 @@ public class PlayerStats : CharacterStats
     {
 		myMainMinions.Remove(minion);
 		myMinions.Remove(minion);
+    }
+
+	public void OnCastedSkillCallback()
+    {
+		OnCastedSkillCallbackServerRpc();
+	}
+
+	[ServerRpc]
+	public void OnCastedSkillCallbackServerRpc()
+    {
+		OnCastedSkillCallbackClientRpc();
+	}
+
+	[ClientRpc]
+	public void OnCastedSkillCallbackClientRpc()
+	{
+		onCastedSkill?.Invoke(this);
+        //if (IsServer) Debug.Log("Should be seen on all clients. Invoking. I am Server");
+		//else Debug.Log("Should be seen on all clients. Invoking. I am Client");
+	}
+
+	public void OnCastedSkillCallbackInvoked(PlayerStats playerstats)
+    {
+		//Debug.Log("Habe geskkillt");
     }
 }
