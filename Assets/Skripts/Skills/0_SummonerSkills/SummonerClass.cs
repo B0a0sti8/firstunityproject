@@ -18,6 +18,11 @@ public class SummonerClass : MonoBehaviour
 
     public int increasedInsectSummon;
 
+    public bool astralSnakeHasDoT;
+    public float astralSnakeDotMod;
+    public int astralSnakeAdditionalBounces;
+    public bool astralSnakeHasDebuff;
+
 
     public bool hasCastSpeedOnMinionSummonedTalent;
     public bool hasAdditionalMainMinion1;
@@ -30,6 +35,11 @@ public class SummonerClass : MonoBehaviour
         increasedMinionDamage = 0;
 
         summonerAoEStunDuration = 0;
+
+        astralSnakeAdditionalBounces = 0;
+        astralSnakeHasDoT = false;
+        astralSnakeDotMod = 0f;
+        astralSnakeHasDebuff = true;
 
         ExplodingImpsDamageModifier = 1;
         darkBoltDamageModifier = 1;

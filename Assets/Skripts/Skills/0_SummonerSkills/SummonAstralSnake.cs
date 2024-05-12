@@ -12,6 +12,17 @@ public class SummonAstralSnake : SkillPrefab
     float bounceRange;
     List<GameObject> potSnaketargets;
 
+    //[SerializeField] Sprite astralSnakeDoTBuffSprite;
+
+    //SummonAstralSnakeDoT snakeDotBuff = new SummonAstralSnakeDoT();
+    float snakeDoTDuration;
+    float snakeDotTickTime;
+    float snakeDotDamage;
+
+    //SummonAstralSnakeDebuff snakeDebuff = new SummonAstralSnakeDebuff();
+    float snakeDebuffDuration;
+    float snakeDebuffValue;
+
     public override void Start()
     {
         snakeBounceCount = 5;
@@ -24,6 +35,15 @@ public class SummonAstralSnake : SkillPrefab
         hasGlobalCooldown = true;
 
         potSnaketargets = new List<GameObject>();
+
+        // Für den eventuellen Dot der Schlange
+        snakeDoTDuration = 9f * playerStats.skillDurInc.GetValue();
+        snakeDotTickTime = 3f;// * playerStats.tickRateMod.GetValue();
+        snakeDotDamage = 100f;
+
+        // Für den eventuellen Debuff der Schlange
+        snakeDebuffDuration = 9f * playerStats.skillDurInc.GetValue();
+        snakeDebuffValue = -0.05f * playerStats.debuffInc.GetValue();
 
         base.Start();
     }
@@ -44,8 +64,8 @@ public class SummonAstralSnake : SkillPrefab
         GameObject myTarget = currentTargets[0];
         GameObject mySource = PLAYER;
 
-        StartCoroutine(SnakeBouncer(myTarget, mySource, tOA, snakeBounceCount));
-        Debug.Log("Summoning snake. Remaining bounces: " + snakeBounceCount);
+        StartCoroutine(SnakeBouncer(myTarget, mySource, tOA, snakeBounceCount + mySummonerClass.astralSnakeAdditionalBounces -1));
+        //Debug.Log("Summoning snake. Remaining bounces: " + (snakeBounceCount + mySummonerClass.astralSnakeAdditionalBounces) + "1");
     }
 
     [ServerRpc]
@@ -77,12 +97,42 @@ public class SummonAstralSnake : SkillPrefab
     {
         yield return new WaitForSeconds(tOA);
         DealDamage(target, damage);
-        Debug.Log("Trying to deal Damage snake bounce...");
+
+        // Wenn geskillt fügt die Schlange einen Dot zu.
+        if (mySummonerClass.astralSnakeHasDoT)
+        {
+            //Buff clone = snakeDotBuff.Clone();
+            //clone.buffSource = PLAYER;
+
+            //foreach (Buff bu in target.GetComponent<BuffManagerNPC>().buffs)
+            //{
+            //    if (bu.buffName == "Astral Snake DoT" & bu.buffSource == PLAYER) bu.Dispell();
+            //}
+            //Debug.Log("Trying to remove existing Debuff.");
+            target.GetComponent<BuffManagerNPC>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "SummonAstralSnakeDoT", false);
+            GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(target.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "SummonAstralSnakeDoT", "SummonAstralSnakeDoT", true, snakeDoTDuration, snakeDotTickTime, snakeDotDamage * mySummonerClass.astralSnakeDotMod);
+        }
+
+        // Wenn geskillt fügt die Schlange einen Debuff zu.
+        if (mySummonerClass.astralSnakeHasDebuff)
+        {
+            //Buff clone = snakeDebuff.Clone();
+            //clone.buffSource = PLAYER;
+
+            //foreach (Buff bu in target.GetComponent<BuffManagerNPC>().buffs)
+            //{
+            //    if (bu.buffName == "Astral Snake Debuff" & bu.buffSource == PLAYER) bu.Dispell();
+            //}
+
+            //Debug.Log("Trying to remove existing Debuff.");
+            target.GetComponent<BuffManagerNPC>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "SummonAstralSnakeDebuff", false);
+            GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(target.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "SummonAstralSnakeDebuff", "SummonAstralSnakeDebuff", false, snakeDebuffDuration, 0, snakeDebuffValue);
+        }
     }
 
     IEnumerator SnakeBouncer(GameObject myTarget, GameObject mySource, float tOA, int remainingBounces)
     {
-        Debug.Log("Summoning snake. Remaining bounces: " + remainingBounces); 
+        //Debug.Log("Summoning snake. Remaining bounces: " + remainingBounces); 
         //Lässt eine Schlange zum Gegner fliegen und dealt nach Wartezeit damage.
         SpawnAstralSnakeServerRpc(mySource.GetComponent<NetworkObject>(), tOA, myTarget.GetComponent<NetworkObject>());
         StartCoroutine(DelayedDamage(myTarget, tOA));

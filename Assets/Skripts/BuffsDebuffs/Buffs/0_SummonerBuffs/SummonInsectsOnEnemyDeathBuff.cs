@@ -9,10 +9,15 @@ public class SummonInsectsOnEnemyDeathBuff : Buff
     //[SerializeField] private GameObject summonerInsect;
     CharacterStats myCurrentEnemyStats;
 
+    public override void StartBuffUI()
+    {
+        base.StartBuffUI();
+        buffName = "SummonInsectsOnEnemyDeathBuff";
+        buffDescription = "Insects will spawn when this enemy dies";
+    }
+
     public override void StartBuffEffect(CharacterStats enemyStats)
     {
-        buffName = "Summon Insects On Death";
-        buffDescription = "Insects will spawn when this enemy dies";
         base.StartBuffEffect(enemyStats);
         //playerStats.actionSpeed.AddModifierAdd(value);
         isRemovable = false;

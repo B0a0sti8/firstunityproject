@@ -32,7 +32,9 @@ public class BuffMasterManager : MonoBehaviour
 
     // Für Summoner-spezifische Buffs
     [SerializeField] Sprite summonInsectsOnEnemyDeathBuffSprite;
-
+    [SerializeField] Sprite summonAstralSnakeDoTSprite;
+    [SerializeField] Sprite summonAstralSnakeDebuffSprite;
+    [SerializeField] Sprite summonSpiritWolfOnSkillBuffSprite;
 
     private void Awake()
     {
@@ -64,5 +66,17 @@ public class BuffMasterManager : MonoBehaviour
         SummonInsectsOnEnemyDeathBuff summonInsectsOnEnemyDeathBuff = new SummonInsectsOnEnemyDeathBuff();
         ListOfAllBuffs.Add("SummonInsectsOnEnemyDeathBuff", summonInsectsOnEnemyDeathBuff);
         ListOfAllBuffSprites.Add("SummonInsectsOnEnemyDeathBuff", summonInsectsOnEnemyDeathBuffSprite);
+
+        SummonAstralSnakeDoT summonAstralSnakeDoT = new SummonAstralSnakeDoT();
+        ListOfAllBuffs.Add("SummonAstralSnakeDoT", summonAstralSnakeDoT);
+        ListOfAllBuffSprites.Add("SummonAstralSnakeDoT", summonAstralSnakeDoTSprite);
+
+        SummonAstralSnakeDebuff summonAstralSnakeDebuff = new SummonAstralSnakeDebuff();
+        ListOfAllBuffs.Add("SummonAstralSnakeDebuff", summonAstralSnakeDebuff);
+        ListOfAllBuffSprites.Add("SummonAstralSnakeDebuff", summonAstralSnakeDebuffSprite);
+
+        SummonSpiritWolfOnSkillBuff summonSpiritWolfOnSkillBuff = new SummonSpiritWolfOnSkillBuff();
+        ListOfAllBuffs.Add("SummonSpiritWolfOnSkillBuff", summonSpiritWolfOnSkillBuff);
+        ListOfAllBuffSprites.Add("SummonSpiritWolfOnSkillBuff", summonSpiritWolfOnSkillBuffSprite);
     }
 }

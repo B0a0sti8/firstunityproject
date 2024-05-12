@@ -67,7 +67,6 @@ public abstract class Buff
         }
     }
 
-
     public virtual void Dispell()
     {
         if (isRemovable)
@@ -88,7 +87,7 @@ public abstract class Buff
         {
             durationTimeLeft = 0;
             EndBuffUI(playerStats);
-            EndBuffEffect(playerStats);
+            //EndBuffEffect(playerStats);
         }
     }
 
@@ -96,6 +95,7 @@ public abstract class Buff
     {
         if (elapsed >= duration)
         {
+            // Sollte eigentlisch schon durch durch die Schleife Update -> EndBuffUI -> RemoveBuff -> EndBuffEffect erledigt werden und ist hier nicht mehr nötig...
             //EndBuffEffect(playerStats);
         }
     }

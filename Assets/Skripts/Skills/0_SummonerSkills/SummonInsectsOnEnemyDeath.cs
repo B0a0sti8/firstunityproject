@@ -74,7 +74,7 @@ public class SummonInsectsOnEnemyDeath : SkillPrefab
 
 
     [ServerRpc(RequireOwnership = false)]
-    public void SpawnInsectsServerRpc(NetworkObjectReference summoningPlayer, NetworkObjectReference targetRef, int insectCount, float insectDamage, float insectLifetime)
+    public void SpawnInsectsServerRpc(NetworkObjectReference summoningPlayer, NetworkObjectReference targetRef, int myInsectCount, float myInsectDamage, float myInsectLifetime)
     {
         //Debug.Log("Summon Stone Golem Server RPC!");
         summoningPlayer.TryGet(out NetworkObject sour);
@@ -85,7 +85,7 @@ public class SummonInsectsOnEnemyDeath : SkillPrefab
 
         //Debug.Log("Server Rpc:  Trying to summon insects: " + insectCount);
 
-        for (int i = 0; i < insectCount; i++)
+        for (int i = 0; i < myInsectCount; i++)
         {
             Debug.Log("Creating Postiion");
 
@@ -106,8 +106,8 @@ public class SummonInsectsOnEnemyDeath : SkillPrefab
                 summonerInsec.GetComponent<NetworkObject>().Spawn();
                 summonerInsec.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
                 summonerInsec.GetComponent<MinionPetAI>().isInFight = true;
-                summonerInsec.GetComponent<HasLifetime>().maxLifetime = insectLifetime;
-                summonerInsec.GetComponent<MeleeEnemyAttackTest>().baseAttackDamage = insectDamage;
+                summonerInsec.GetComponent<HasLifetime>().maxLifetime = myInsectLifetime;
+                summonerInsec.GetComponent<MeleeEnemyAttackTest>().baseAttackDamage = myInsectDamage;
 
                 sumPla.GetComponent<PlayerStats>().myMinions.Add(summonerInsec);
 

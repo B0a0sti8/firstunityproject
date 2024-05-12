@@ -77,20 +77,52 @@ public class BuffManagerNPC : NetworkBehaviour
         if (IsServer) { buff.StartBuffEffect(gameObject.GetComponent<CharacterStats>()); }
     }
 
+    public void RemoveBuffProcedure(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false)
+    {
+        RemoveBuffServerRpc(sourceRef, refBuffName);
+        //Debug.Log("Trying to remove existing Debuff. Procedure");
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void RemoveBuffServerRpc(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false)
+    {
+        RemoveBuffClientRpc(sourceRef, refBuffName);
+        //Debug.Log("Trying to remove existing Debuff. ServerRpc");
+    }
+
+    [ClientRpc]
+    public void RemoveBuffClientRpc(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false)
+    {
+        sourceRef.TryGet(out NetworkObject source);
+        //Debug.Log("Trying to remove existing Debuff. ClientRpc");
+        foreach (Buff myBu in buffs)
+        {
+            //Debug.Log(source, myBu.buffSource);
+            //Debug.Log(refBuffName);
+            //Debug.Log(myBu.buffName);
+
+            if (myBu.buffSource == source.gameObject && myBu.buffName == refBuffName)
+            {
+                RemoveBuff(myBu);
+                if (singlebuff) break;
+            }
+        }
+    }
+
+
 
     public void RemoveBuff(Buff buff)
     {
         expiredBuffs.Add(buff);
+        if (IsServer) buff.EndBuffEffect(gameObject.GetComponent<CharacterStats>());
     }
 
     public void HandleBuffs()
     {
-        //Debug.Log(buffs.Count);
-        //Debug.Log(newBuffs.Count);
         foreach (Buff buff in buffs)
         {
             buff.Update(gameObject.GetComponent<CharacterStats>());
-            //if (IsServer) { buff.Update(gameObject.GetComponent<CharacterStats>()); }
+            if (IsServer) { buff.UpdateEffect(gameObject.GetComponent<CharacterStats>()); }
         }
 
         if (newBuffs.Count > 0)

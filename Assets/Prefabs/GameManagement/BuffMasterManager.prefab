@@ -50,3 +50,6 @@ MonoBehaviour:
   stunnedEffectOnEnemiesSprite: {fileID: 21300000, guid: 3a51c41f73405eb4499e0ab7bb3cad92, type: 3}
   testWayOfTheChickenDamageDebuffSprite: {fileID: 21300000, guid: 516aa69cf1d7a784cba916a357da25b0, type: 3}
   summonInsectsOnEnemyDeathBuffSprite: {fileID: 21300000, guid: ba81a8f7faeafed4ebcfa39ce9560c1b, type: 3}
+  summonAstralSnakeDoTSprite: {fileID: 21300000, guid: 809f2375bc360304b93de4b11e5c13a6, type: 3}
+  summonAstralSnakeDebuffSprite: {fileID: 21300000, guid: 38c4f450dd2f87b41bf62906b765b0f4, type: 3}
+  summonSpiritWolfOnSkillBuffSprite: {fileID: 21300000, guid: e51bca6148a594c44a191fe705bc9d36, type: 3}

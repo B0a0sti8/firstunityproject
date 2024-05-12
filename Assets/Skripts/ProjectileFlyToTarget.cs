@@ -21,9 +21,17 @@ public class ProjectileFlyToTarget : MonoBehaviour
 
         if (timeToArrive > 0)
         {
-            Vector3 direction = (target.position - transform.position);
-            transform.position += direction * Time.deltaTime / timeToArrive;
-            transform.rotation = Quaternion.LookRotation(direction.normalized, Vector3.back);
+            if (target != null)
+            {
+                Vector3 direction = (target.position - transform.position);
+                transform.position += direction * Time.deltaTime / timeToArrive;
+
+                if (direction != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.LookRotation(direction.normalized, Vector3.back);
+                }
+            }
+           
             timeToArrive -= Time.deltaTime;
         }
         else
@@ -33,7 +41,6 @@ public class ProjectileFlyToTarget : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-           
         }
     }
 }

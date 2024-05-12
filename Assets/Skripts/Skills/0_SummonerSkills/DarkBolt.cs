@@ -31,7 +31,6 @@ public class DarkBolt : SkillPrefab
     {
         base.SkillEffect();
 
-        Debug.Log("Firing DarkBolt");
         float tOA = 0.2f;
 
         GameObject targetRefe = currentTargets[0];

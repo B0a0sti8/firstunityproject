@@ -62,7 +62,7 @@ public static class DamageOrHealing
         if (target.GetComponent<EnemyStats>() != null)                   // Target = Enemy
         {
             enemyStats = target.GetComponent<EnemyStats>();
-            tempDamage *= (100 - enemyStats.armor.GetValue()) / 100;
+            tempDamage *= Mathf.Abs((100 - enemyStats.armor.GetValue())) / 100;
 
             if (!isUnavoidable)
             {
@@ -77,7 +77,7 @@ public static class DamageOrHealing
         else if (target.GetComponent<PlayerStats>() != null)            // Target = Player
         {
             playerStats = target.GetComponent<PlayerStats>();
-            tempDamage *= (100 - playerStats.armor.GetValue()) / 100;
+            tempDamage *= Mathf.Abs((100 - playerStats.armor.GetValue())) / 100;
 
             if (isMagical)
             { tempDamage *= (100 - playerStats.magRed.GetValue()) / 100; }

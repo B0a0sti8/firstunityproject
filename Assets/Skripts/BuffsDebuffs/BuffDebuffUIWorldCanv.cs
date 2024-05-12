@@ -40,7 +40,8 @@ public class BuffDebuffUIWorldCanv : NetworkBehaviour
             Buff clone = slotBuff.Clone();
             clone.buffName = buffName;
             clone.buffDescription = buffDescription;
-            clone.icon = Resources.Load<Sprite>("BuffDebuffSprites/" + buffSpriteName);
+            //clone.icon = Resources.Load<Sprite>("BuffDebuffSprites/" + buffSpriteName);
+            clone.icon = BuffMasterManager.MyInstance.ListOfAllBuffSprites[buffSpriteName];
             clone.duration = buffDur;
             clone.durationTimeLeft = buffDur;
             StartCoroutine(ReduceTime((DummyBuffMultiplayer)clone, 0.3f));

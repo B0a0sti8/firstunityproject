@@ -79,21 +79,49 @@ public class TalentTree : MonoBehaviour
                 {
                     if (mainAbsPointCount >= 10 * i)
                     {
-                        myCurrentTier.GetChild(k).GetComponent<Talent>().Unlock();
+                        if (myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent == null)
+                        {
+                            myCurrentTier.GetChild(k).GetComponent<Talent>().Unlock();
+                        }
+                        else
+                        {
+                            Debug.Log("Talent has Predecessor!");
+                            Debug.Log(myCurrentTier.GetChild(k).GetComponent<Talent>().talentName);
+                            Debug.Log(myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent.GetComponent<Talent>().talentName);
+                            Debug.Log(myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent.GetComponent<Talent>().currentCount);
+                            if (myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent.GetComponent<Talent>().currentCount > 0)
+                            {
+                                myCurrentTier.GetChild(k).GetComponent<Talent>().Unlock();
+                            }
+                        }
                     }
                 }
                 else if (talentsRight.Contains(myCurrentTier.GetChild(k).gameObject))
                 {
                     if (rightAbsPointCount >= 10 * i)
                     {
-                        myCurrentTier.GetChild(k).GetComponent<Talent>().Unlock();
+                        if (myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent == null)
+                        {
+                            myCurrentTier.GetChild(k).GetComponent<Talent>().Unlock();
+                        }
+                        else if (myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent.GetComponent<Talent>().currentCount > 0)
+                        {
+                            myCurrentTier.GetChild(k).GetComponent<Talent>().Unlock();
+                        }
                     }
                 }
                 else if (talentsLeft.Contains(myCurrentTier.GetChild(k).gameObject))
                 {
                     if (leftAbsPointCount >= 10 * i)
                     {
-                        myCurrentTier.GetChild(k).GetComponent<Talent>().Unlock();
+                        if (myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent == null)
+                        {
+                            myCurrentTier.GetChild(k).GetComponent<Talent>().Unlock();
+                        }
+                        else if (myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent.GetComponent<Talent>().currentCount > 0)
+                        {
+                            myCurrentTier.GetChild(k).GetComponent<Talent>().Unlock();
+                        }
                     }
                 }
             }
@@ -156,6 +184,7 @@ public class TalentTree : MonoBehaviour
                 talent.currentCount = 0;
                 talent.RemoveActiveTalentEffectAfterPointCountReduced();
                 talent.UpdatePointCounter();
+                talent.FindMyPredecessor();
             }
         }
 

@@ -31,7 +31,6 @@ public class CharacterStats : NetworkBehaviour
     public Stat critMultiplier; // 100(%) - Inf(%) /// 130 -> Angriff macht 130% Schaden
     public Stat evadeChance;
 
-
     #endregion
 
     HealthBar healthBarWorldCanv;
@@ -55,7 +54,7 @@ public class CharacterStats : NetworkBehaviour
     [ClientRpc]
     public virtual void TakeDamageClientRpc(float damage, int aggro, bool isCrit, NetworkBehaviourReference source, NetworkObjectReference targetPosition)
     {
-        Debug.Log("TakeDamageClientRpc");
+        //Debug.Log("TakeDamageClientRpc");
         targetPosition.TryGet(out NetworkObject g);
         DamagePopup.Create(g.transform.position, (int)damage, false, isCrit);
 

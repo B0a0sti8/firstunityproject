@@ -11,6 +11,7 @@ public class Talent : MonoBehaviour
     Image sprite;
     public string talentDescription = "";
     public string predecessor = " - ";
+    public GameObject myPredecessorTalent;
 
     public GameObject PLAYER;
     public PlayerStats statSkript;
@@ -37,6 +38,7 @@ public class Talent : MonoBehaviour
         {
             maxCount = 5;
         }
+        FindMyPredecessor();
     }
 
     void OnTalentButtonClick()
@@ -94,5 +96,10 @@ public class Talent : MonoBehaviour
     public virtual void RemoveActiveTalentEffectAfterPointCountReduced()
     {
         GetComponent<MasterEventTriggerTalent>().GetTalentInfo();
+    }
+
+    public virtual void FindMyPredecessor()
+    {
+
     }
 }

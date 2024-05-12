@@ -9,10 +9,15 @@ public class StunnedEffectOnEnemies : Buff
     //[SerializeField] private GameObject summonerInsect;
     CharacterStats myCurrentEnemyStats;
 
-    public override void StartBuffEffect(CharacterStats enemyStats)
+    public override void StartBuffUI()
     {
+        base.StartBuffUI();
         buffName = "Summon Insects On Death";
         buffDescription = "Insects will spawn when this enemy dies";
+    }
+
+    public override void StartBuffEffect(CharacterStats enemyStats)
+    {
         base.StartBuffEffect(enemyStats);
         isRemovable = false;
         myCurrentEnemyStats = enemyStats;

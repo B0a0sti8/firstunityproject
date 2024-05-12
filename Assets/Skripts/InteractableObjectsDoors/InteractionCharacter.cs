@@ -32,6 +32,12 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
     {
         if (!IsOwner) { return; }
 
+        if(EventSystem.current.IsPointerOverGameObject()) return;
+
+        if (true)
+        {
+
+        }
 
         if (focus != null)
         {
@@ -152,5 +158,40 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
             Interactable closestEnemy = viableEnemies[minIndex].gameObject.GetComponent<Interactable>();
             SetFocus(closestEnemy);
         }
+    }
+
+    public void GetCurrentTargetForMultiplayer()
+    {
+        GetCurrentTargetForMultiplayerServerRpc();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void GetCurrentTargetForMultiplayerServerRpc()
+    {
+        GetCurrentTargetForMultiplayerClientRpc();
+    }
+
+    [ClientRpc]
+    public void GetCurrentTargetForMultiplayerClientRpc()
+    {
+        if (!IsOwner) return;
+        Debug.Log("Ich bin der owner. Aktualisiere Fokus.");
+        SendCurrentTargetForMultiplayerServerRpc(focus.gameObject.GetComponent<NetworkObject>());
+    }
+
+    [ServerRpc]
+    public void SendCurrentTargetForMultiplayerServerRpc(NetworkObjectReference myCurrentFocusRef)
+    {
+        Debug.Log("Ich bin der server. Aktualisiere Fokus.");
+        SendCurrentTargetForMultiplayerClientRpc(myCurrentFocusRef);
+    }
+
+    [ClientRpc]
+    public void SendCurrentTargetForMultiplayerClientRpc(NetworkObjectReference myCurrentFocusRef)
+    {
+        if (IsOwner) return;
+        Debug.Log("Das sollten alle auﬂer der Owner kriegen.");
+        myCurrentFocusRef.TryGet(out NetworkObject myCurrentFocus);
+        focus = myCurrentFocus.gameObject.GetComponent<Interactable>();
     }
 }

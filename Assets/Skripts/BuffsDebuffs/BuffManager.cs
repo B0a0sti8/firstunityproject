@@ -79,9 +79,36 @@ public class BuffManager : NetworkBehaviour
         if (IsServer) { buff.StartBuffEffect(gameObject.GetComponent<PlayerStats>()); }
     }
 
+    public void RemoveBuffProcedure(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false)
+    {
+        RemoveBuffServerRpc(sourceRef, refBuffName);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void RemoveBuffServerRpc(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false)
+    {
+        RemoveBuffClientRpc(sourceRef, refBuffName);
+    }
+
+    [ClientRpc]
+    public void RemoveBuffClientRpc(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false)
+    {
+        sourceRef.TryGet(out NetworkObject source);
+
+        foreach (Buff myBu in buffs)
+        {
+            if (myBu.buffSource == source.gameObject && myBu.buffName == refBuffName)
+            {
+                RemoveBuff(myBu);
+                if (singlebuff) break;
+            }
+        }
+    }
+
     public void RemoveBuff(Buff buff)
     {
         expiredBuffs.Add(buff);
+        if(IsServer) buff.EndBuffEffect(gameObject.GetComponent<CharacterStats>());
     }
 
     public void DispellBuffs()
