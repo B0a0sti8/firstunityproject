@@ -5,7 +5,7 @@ using Unity.Netcode;
 
 public class SummonSpiritWolfOnSkill : SkillPrefab
 {
-    public float buffDuration;
+    public float buffDurationBase;
     public float buffValueBase;
 
     float wolfDamage;
@@ -21,17 +21,20 @@ public class SummonSpiritWolfOnSkill : SkillPrefab
     public override void Start()
     {
         base.Start();
-        buffDuration = 10f;
+        buffDurationBase = 15f;
         hasGlobalCooldown = true;
+        hasOwnCooldown = true;
+        ownCooldownTimeBase = 60f;
+
         canSelfCastIfNoTarget = true;
         isSelfCast = false;
         needsTargetAlly = true;
-        ownCooldownTimeBase = 10f;
+
         castTimeOriginal = 0f;
         skillRange = 10f;
 
         wolfLifetime = 10f;
-        wolfDamage = 100f;
+        wolfDamage = 10f;
 
         buffValueBase = 0.52f;
 
@@ -41,9 +44,17 @@ public class SummonSpiritWolfOnSkill : SkillPrefab
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
     }
 
+    public override void ConditionCheck()
+    {
+        //ownCooldownTimeBase = mySummonerClass.summonerSummonSpiritWolfOnSkillCooldown;
+        base.ConditionCheck();
+    }
+
     public override void SkillEffect()
     {
         base.SkillEffect();
+
+        float buffDuration = (buffDurationBase + mySummonerClass.summonerSummonSpiritWolfOnSkillDurationInc) * playerStats.skillDurInc.GetValue();
 
         float buffValue = buffValueBase * playerStats.buffInc.GetValue();
         if (currentTargets[0].tag == "Player")
@@ -125,7 +136,7 @@ public class SummonSpiritWolfOnSkill : SkillPrefab
     public void SummonSpiritWolf(NetworkObjectReference summoningPlayer, NetworkObjectReference targetRef)
     {
         //Debug.Log("Das hier sollte nur einer sehen. Summone Wolf 2.");
-        SummonSpiritWolfServerRpc(summoningPlayer, targetRef, wolfDamage, wolfLifetime);
+        SummonSpiritWolfServerRpc(summoningPlayer, targetRef, wolfDamage * (1 + mySummonerClass.summonerSummonSpiritWolfOnSkillWolfDamageInc) * playerStats.dmgInc.GetValue(), (wolfLifetime + mySummonerClass.summonerSummonSpiritWolfOnSkillWolfDurationInc) * playerStats.skillDurInc.GetValue());
         targetRef.TryGet(out NetworkObject test);
         //Debug.Log("Erhalte und gebe weiter: " + test.gameObject);
     }

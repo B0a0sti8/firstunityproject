@@ -31,7 +31,7 @@ public class SummonerTree1Talent6_ExplodeImps : Talent
 
     }
 
-    public override void RemoveActiveTalentEffect()
+    public override void RemoveActiveTalentEffectAfterPointCountReduced()
     {
         base.RemoveActiveTalentEffect();
         // Entferne Skill

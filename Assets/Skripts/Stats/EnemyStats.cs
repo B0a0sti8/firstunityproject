@@ -37,8 +37,10 @@ public class EnemyStats : CharacterStats
 
     public override void Start()
     {
-        actionSpeed.baseValue = 1f;        
-        
+        actionSpeed.baseValue = 1f;
+        dmgModifier.baseValue = 1f;
+
+
         isAlive.Value = true;
         baseDamage = 10f;
         baseAttackSpeed = 2f;
