@@ -53,3 +53,4 @@ MonoBehaviour:
   summonAstralSnakeDoTSprite: {fileID: 21300000, guid: 809f2375bc360304b93de4b11e5c13a6, type: 3}
   summonAstralSnakeDebuffSprite: {fileID: 21300000, guid: 38c4f450dd2f87b41bf62906b765b0f4, type: 3}
   summonSpiritWolfOnSkillBuffSprite: {fileID: 21300000, guid: e51bca6148a594c44a191fe705bc9d36, type: 3}
+  mainMinionBuffDamageAndHealingSprite: {fileID: 21300000, guid: 7903d7fcc1bb7ce479d976edb3bd930d, type: 3}

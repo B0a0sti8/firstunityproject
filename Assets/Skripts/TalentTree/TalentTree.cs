@@ -85,10 +85,10 @@ public class TalentTree : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("Talent has Predecessor!");
-                            Debug.Log(myCurrentTier.GetChild(k).GetComponent<Talent>().talentName);
-                            Debug.Log(myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent.GetComponent<Talent>().talentName);
-                            Debug.Log(myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent.GetComponent<Talent>().currentCount);
+                            //Debug.Log("Talent has Predecessor!");
+                            //Debug.Log(myCurrentTier.GetChild(k).GetComponent<Talent>().talentName);
+                            //Debug.Log(myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent.GetComponent<Talent>().talentName);
+                            //Debug.Log(myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent.GetComponent<Talent>().currentCount);
                             if (myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent.GetComponent<Talent>().currentCount > 0)
                             {
                                 myCurrentTier.GetChild(k).GetComponent<Talent>().Unlock();

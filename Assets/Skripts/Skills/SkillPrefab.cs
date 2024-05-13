@@ -794,6 +794,11 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
             Debug.Log("Gubl Gubl");
         }
     }
+
+    public virtual void SetMyCooldown(float coolDown)
+    {
+        ownCooldownTimeBase = coolDown;
+    }
 }
 
 

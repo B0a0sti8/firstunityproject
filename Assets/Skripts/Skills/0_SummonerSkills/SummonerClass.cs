@@ -16,6 +16,12 @@ public class SummonerClass : MonoBehaviour
 
     public float summonerAoEStunDuration;
 
+    public float summonerSummonSpiritWolfOnSkillChance;
+    public float summonerSummonSpiritWolfOnSkillDurationInc;
+    //public float summonerSummonSpiritWolfOnSkillCooldown;
+    public float summonerSummonSpiritWolfOnSkillWolfDamageInc;
+    public float summonerSummonSpiritWolfOnSkillWolfDurationInc;
+
     public int increasedInsectSummon;
 
     public bool astralSnakeHasDoT;
@@ -35,6 +41,12 @@ public class SummonerClass : MonoBehaviour
         increasedMinionDamage = 0;
 
         summonerAoEStunDuration = 0;
+
+        summonerSummonSpiritWolfOnSkillChance = 0;
+        summonerSummonSpiritWolfOnSkillDurationInc = 0;
+        //summonerSummonSpiritWolfOnSkillCooldown = 60;
+        summonerSummonSpiritWolfOnSkillWolfDamageInc = 0;
+        summonerSummonSpiritWolfOnSkillWolfDurationInc = 0;
 
         astralSnakeAdditionalBounces = 0;
         astralSnakeHasDoT = false;
