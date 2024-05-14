@@ -12926,11 +12926,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4511090131604294536, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -256.3
+      value: -208
       objectReference: {fileID: 0}
     - target: {fileID: 4511090131604294536, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 215.5
+      value: 240.3
       objectReference: {fileID: 0}
     - target: {fileID: 4511090131604294536, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -13471,11 +13471,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4511090131604294536, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -86.5
+      value: -149.4
       objectReference: {fileID: 0}
     - target: {fileID: 4511090131604294536, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 301
+      value: 237.4
       objectReference: {fileID: 0}
     - target: {fileID: 4511090131604294536, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -13493,13 +13493,48 @@ PrefabInstance:
       propertyPath: m_Name
       value: Talent (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511090131604294581, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0e41f13783dcf074a99a3361dcb5e034, type: 3}
+    m_RemovedComponents:
+    - {fileID: 2724751766124865683, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
 --- !u!224 &2302833448541748382 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4511090131604294536, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
   m_PrefabInstance: {fileID: 2409375501765097238}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2302833448541748383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4511090131604294537, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
+  m_PrefabInstance: {fileID: 2409375501765097238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &474522364837090033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302833448541748383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4330b721e4b84ec4dae4c4070dd2ffdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
+  PLAYER: {fileID: 0}
+  statSkript: {fileID: 0}
+  maxCount: 0
+  pointCost: 1
+  currentCount: 0
 --- !u!1001 &2505880766920539108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18753,11 +18788,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4511090131604294536, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -176.4
+      value: -118.1
       objectReference: {fileID: 0}
     - target: {fileID: 4511090131604294536, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 261
+      value: 286
       objectReference: {fileID: 0}
     - target: {fileID: 4511090131604294536, guid: 22c34f4b5d26ae949a022800f0d9433d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

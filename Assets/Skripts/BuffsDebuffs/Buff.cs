@@ -89,6 +89,8 @@ public abstract class Buff
             EndBuffUI(playerStats);
             //EndBuffEffect(playerStats);
         }
+        //Debug.Log(duration);
+        //Debug.Log(durationTimeLeft);
     }
 
     public virtual void UpdateEffect(CharacterStats playerStats)

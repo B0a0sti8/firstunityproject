@@ -45,6 +45,7 @@ public class BuffSlot : MonoBehaviour
         if (buff.durationTimeLeft >= 0)
         {
             timeText.text = Mathf.Round(buff.durationTimeLeft).ToString();
+            Debug.Log(buff.durationTimeLeft);
         }
         
         MasterETStuffAssignment();

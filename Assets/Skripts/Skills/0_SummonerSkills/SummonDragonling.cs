@@ -8,6 +8,7 @@ public class SummonDragonling : SkillPrefab
     [SerializeField] private GameObject dragonling;
 
     SummonerClass mySummonerClass;
+    float myMinionDamageBase;
 
     public override void Start()
     {
@@ -25,6 +26,7 @@ public class SummonDragonling : SkillPrefab
         isSkillChanneling = false;
 
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
+        myMinionDamageBase = 40;
     }
 
     public override void Update()
@@ -49,7 +51,7 @@ public class SummonDragonling : SkillPrefab
         base.SkillEffect();
         NetworkObjectReference playerReference = (NetworkObjectReference)PLAYER;
         Debug.Log("Summoning Dragonling");
-        SpawnDragonlingServerRpc(playerReference);
+        SpawnDragonlingServerRpc(playerReference, myMinionDamageBase);
         mySummonerClass.SummonerClass_OnMinionSummoned();
 
     }
@@ -62,7 +64,7 @@ public class SummonDragonling : SkillPrefab
 
 
     [ServerRpc]
-    private void SpawnDragonlingServerRpc(NetworkObjectReference summoningPlayer, ServerRpcParams serverRpcParams = default)
+    private void SpawnDragonlingServerRpc(NetworkObjectReference summoningPlayer, float minionDamage)
     {
         //ulong sumPlaID = serverRpcParams.Receive.SenderClientId;
         //ClientRpcParams clientRpcParams = new ClientRpcParams
@@ -88,6 +90,7 @@ public class SummonDragonling : SkillPrefab
             GameObject dragonl = Instantiate(dragonling, posi, Quaternion.identity);
             dragonl.GetComponent<NetworkObject>().Spawn();
             dragonl.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
+            dragonl.GetComponent<MeleeEnemyAttackTest>().baseAttackDamage = minionDamage;
 
             sumPla.GetComponent<PlayerStats>().myMainMinions.Add(dragonl);
             //transform.GetComponent<SummonerClass>().myMainSummonerMinions.Add(dragonl);
