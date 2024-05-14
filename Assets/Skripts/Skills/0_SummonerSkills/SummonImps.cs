@@ -93,7 +93,7 @@ public class SummonImps : SkillPrefab
             SpawnImpServerRpc(enemyReference, playerReference, impDamage, impLifeTime);
             //Debug.Log("MyImpLifetime = " + impLifeTime);
             //Debug.Log("Skill duration charakterstats: " + playerStats.skillDurInc.GetValue());
-            Debug.Log("Additional damage Summoner class: " + mySummonerClass.increasedMinionDamage);
+            //Debug.Log("Additional damage Summoner class: " + mySummonerClass.increasedMinionDamage);
         }
         else
         {

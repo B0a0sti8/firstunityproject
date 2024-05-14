@@ -101515,6 +101515,9 @@ MonoBehaviour:
   hasCastSpeedOnMinionSummonedTalent: 0
   hasAdditionalMainMinion1: 0
   hasAdditionalMainMinion2: 0
+  buffMainMinionDmgAndHealIsConsuming: 0
+  buffMainMinionDmgAndHealIsConsumingCooldownDec: 0
+  buffMainMinionDmgAndHealIsConsumingDurationInc: 0
 --- !u!114 &5963205471414507062
 MonoBehaviour:
   m_ObjectHideFlags: 0

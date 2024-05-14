@@ -34,6 +34,10 @@ public class SummonerClass : MonoBehaviour
     public bool hasAdditionalMainMinion1;
     public bool hasAdditionalMainMinion2;
 
+    public bool buffMainMinionDmgAndHealIsConsuming;
+    public float buffMainMinionDmgAndHealIsConsumingCooldownDec;
+    public float buffMainMinionDmgAndHealIsConsumingDurationInc;
+
 
     private void Awake()
     {
@@ -44,9 +48,12 @@ public class SummonerClass : MonoBehaviour
 
         summonerSummonSpiritWolfOnSkillChance = 0;
         summonerSummonSpiritWolfOnSkillDurationInc = 0;
-        //summonerSummonSpiritWolfOnSkillCooldown = 60;
         summonerSummonSpiritWolfOnSkillWolfDamageInc = 0;
         summonerSummonSpiritWolfOnSkillWolfDurationInc = 0;
+
+        buffMainMinionDmgAndHealIsConsuming = true;
+        buffMainMinionDmgAndHealIsConsumingDurationInc = 3;
+        buffMainMinionDmgAndHealIsConsumingCooldownDec = 3;
 
         astralSnakeAdditionalBounces = 0;
         astralSnakeHasDoT = false;

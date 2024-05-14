@@ -8,6 +8,7 @@ public class SummonStoneGolem : SkillPrefab
     [SerializeField] private GameObject stoneGolem;
 
     SummonerClass mySummonerClass;
+    float myMinionDamageBase;
 
     public override void Start()
     {
@@ -25,6 +26,7 @@ public class SummonStoneGolem : SkillPrefab
         isSkillChanneling = false;
 
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
+        myMinionDamageBase = 30f;
     }
 
     public override void Update()
@@ -46,7 +48,7 @@ public class SummonStoneGolem : SkillPrefab
         base.SkillEffect();
         NetworkObjectReference playerReference = (NetworkObjectReference)PLAYER;
         //Debug.Log("Summoning stone Golem");
-        SpawnStoneGolemServerRpc(playerReference);
+        SpawnStoneGolemServerRpc(playerReference, myMinionDamageBase);
         mySummonerClass.SummonerClass_OnMinionSummoned();
 
     }
@@ -59,7 +61,7 @@ public class SummonStoneGolem : SkillPrefab
 
 
     [ServerRpc]
-    private void SpawnStoneGolemServerRpc(NetworkObjectReference summoningPlayer, ServerRpcParams serverRpcParams = default)
+    private void SpawnStoneGolemServerRpc(NetworkObjectReference summoningPlayer, float minionDamage)
     {
         //Debug.Log("Summon Stone Golem Server RPC!");
         summoningPlayer.TryGet(out NetworkObject sour);
@@ -76,6 +78,7 @@ public class SummonStoneGolem : SkillPrefab
             GameObject stonGo = Instantiate(stoneGolem, posi, Quaternion.identity);
             stonGo.GetComponent<NetworkObject>().Spawn();
             stonGo.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
+            stonGo.GetComponent<MeleeEnemyAttackTest>().baseAttackDamage = minionDamage;
 
             sumPla.GetComponent<PlayerStats>().myMainMinions.Add(stonGo);
 

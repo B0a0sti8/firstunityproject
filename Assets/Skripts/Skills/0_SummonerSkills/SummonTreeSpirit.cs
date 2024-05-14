@@ -8,6 +8,7 @@ public class SummonTreeSpirit : SkillPrefab
     [SerializeField] private GameObject treeSpirit;
 
     SummonerClass mySummonerClass;
+    float myMinionDamageBase;
 
     public override void Start()
     {
@@ -25,6 +26,7 @@ public class SummonTreeSpirit : SkillPrefab
         isSkillChanneling = false;
 
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
+        myMinionDamageBase = 20f;
     }
 
     public override void Update()
@@ -46,7 +48,7 @@ public class SummonTreeSpirit : SkillPrefab
         base.SkillEffect();
         NetworkObjectReference playerReference = (NetworkObjectReference)PLAYER;
         //Debug.Log("Summoning tree Spirit");
-        SpawnTreeSpiritServerRpc(playerReference);
+        SpawnTreeSpiritServerRpc(playerReference, myMinionDamageBase);
         mySummonerClass.SummonerClass_OnMinionSummoned();
 
     }
@@ -59,7 +61,7 @@ public class SummonTreeSpirit : SkillPrefab
 
 
     [ServerRpc]
-    private void SpawnTreeSpiritServerRpc(NetworkObjectReference summoningPlayer, ServerRpcParams serverRpcParams = default)
+    private void SpawnTreeSpiritServerRpc(NetworkObjectReference summoningPlayer, float minionDamage)
     {
         //Debug.Log("Summon Tree Spirit Server RPC!");
         summoningPlayer.TryGet(out NetworkObject sour);
@@ -76,6 +78,7 @@ public class SummonTreeSpirit : SkillPrefab
             GameObject treeSpir = Instantiate(treeSpirit, posi, Quaternion.identity);
             treeSpir.GetComponent<NetworkObject>().Spawn();
             treeSpir.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
+            treeSpir.GetComponent<MeleeEnemyAttackTest>().baseAttackDamage = minionDamage;
 
             sumPla.GetComponent<PlayerStats>().myMainMinions.Add(treeSpir);
 
