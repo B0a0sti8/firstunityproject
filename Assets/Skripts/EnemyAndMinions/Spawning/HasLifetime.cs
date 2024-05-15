@@ -42,8 +42,8 @@ public class HasLifetime : NetworkBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         //NetworkObject.Despawn(this);
-        gameObject.GetComponent<NetworkObject>().Despawn();
-        //GameObject.Destroy(gameObject);
+        //gameObject.GetComponent<NetworkObject>().Despawn();
+        GameObject.Destroy(gameObject);
         
     }
 }

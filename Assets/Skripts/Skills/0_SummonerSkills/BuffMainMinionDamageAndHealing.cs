@@ -29,7 +29,7 @@ public class BuffMainMinionDamageAndHealing : SkillPrefab
         ownCooldownTimeBase = 120f;
         castTimeOriginal = 1.5f;
         buffBaseValue = 0.5f;
-        buffBaseDuration = 10f;
+        buffBaseDuration = 15f;
 
         tooltipSkillDescription = "";
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
@@ -125,7 +125,7 @@ public class BuffMainMinionDamageAndHealing : SkillPrefab
                     Buff minionBuff = bfMng.buffs[i];
                     if (minionBuff.buffName == "MainMinionBuffDamageAndHealingBuff" & minionBuff.buffSource == PLAYER)
                     {
-                        myNewBuffDuration = minionBuff.durationTimeLeft + mySummonerClass.buffMainMinionDmgAndHealIsConsumingDurationInc;
+                        myNewBuffDuration = minionBuff.durationTimeLeft + mySummonerClass.buffMainMinionDmgAndHealIsConsumingDurationInc * playerStats.skillDurInc.GetValue();
                         myNewBuffValue = minionBuff.value;
                     }
                 }

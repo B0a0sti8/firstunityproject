@@ -32,7 +32,7 @@ public class SummonerTree1Talent4_DarkBoltDamageIncrease : Talent
         mySummonerClass.darkBoltDamageModifier = 1 + darkboltDamageInc * currentCount;
     }
 
-    public override void RemoveActiveTalentEffect()
+    public override void RemoveActiveTalentEffectAfterPointCountReduced()
     {
         base.RemoveActiveTalentEffect();
 
