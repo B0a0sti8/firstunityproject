@@ -36,6 +36,11 @@ public class DarkBolt : SkillPrefab
         GameObject targetRefe = currentTargets[0];
         SpawnDarkBoltServerRpc(PLAYER.GetComponent<NetworkObject>(), tOA, targetRefe.GetComponent<NetworkObject>());
 
+        if (mySummonerClass.doesDarkboltIncreaseMinionLifetime)
+        {
+            mySummonerClass.SummonerClass_IncreaseLivingMinionDuration(mySummonerClass.darkBoltLifeTimeIncrease);
+        }
+
         StartCoroutine(DelayedDamage(tOA));
     }
 

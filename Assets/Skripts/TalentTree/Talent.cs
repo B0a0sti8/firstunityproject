@@ -29,7 +29,7 @@ public class Talent : MonoBehaviour
         PLAYER = transform.parent.parent.parent.parent.parent.parent.parent.parent.gameObject;
         button = GetComponent<Button>();
         statSkript = PLAYER.GetComponent<PlayerStats>();
-        sprite = GetComponent<Image>();
+        sprite = transform.Find("TalentImage").GetComponent<Image>();
         button.onClick.AddListener(OnTalentButtonClick);
         talentPointTextOwn = transform.Find("Image").Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
         myTalentTree = transform.parent.parent.parent.parent.parent.GetComponent<TalentTree>();
@@ -53,10 +53,17 @@ public class Talent : MonoBehaviour
 
     public bool TryAllocateTalent()
     {
+        if (currentCount == maxCount)
+        {
+            Color32 myNewColor = transform.Find("Background").GetComponent<Image>().color;
+            myNewColor.a = 255;
+            transform.Find("Background").GetComponent<Image>().color = myNewColor;
+        }
+
         if (currentCount < maxCount)
         {
             currentCount++;
-            UpdatePointCounter();
+            UpdatePointCounterAndBackground();
             ActiveTalentEffect();
             return true;
         }
@@ -69,17 +76,31 @@ public class Talent : MonoBehaviour
     public void Lock()
     {
         button.interactable = false;
-        sprite.color = Color.grey;
+        Color32 newColor = sprite.color;
+        newColor.a = 175;
+        sprite.color = newColor;
+
+        //sprite.color = Color.grey;
     }
 
     public void Unlock()
     {
         button.interactable = true;
-        sprite.color = Color.white;
+        Color32 newColor = sprite.color;
+        newColor.a = 255;
+        sprite.color = newColor;
+        //sprite.color = Color.white;
     }
 
-    public void UpdatePointCounter()
+    public void UpdatePointCounterAndBackground()
     {
+        if (currentCount == maxCount)
+        {
+            Color32 myNewColor = transform.Find("Background").GetComponent<Image>().color;
+            myNewColor.a = 255;
+            transform.Find("Background").GetComponent<Image>().color = myNewColor;
+        }
+
         talentPointTextOwn.text = currentCount.ToString() + " / " + maxCount.ToString();
     }
 

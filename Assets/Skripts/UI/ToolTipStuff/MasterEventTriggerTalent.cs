@@ -46,7 +46,7 @@ public class MasterEventTriggerTalent : EventTrigger
     {
         talentName = GetComponent<Talent>().talentName;
         skillDescription = GetComponent<Talent>().talentDescription;
-        talentSprite = GetComponent<Image>().sprite;
+        talentSprite = transform.Find("TalentImage").GetComponent<Image>().sprite;
         tooltipCost = "Talent cost: " + GetComponent<Talent>().pointCost.ToString();
         tooltipSkilled = "Already skilled: " + GetComponent<Talent>().currentCount.ToString() + " / " + GetComponent<Talent>().maxCount;
         tooltipPredecessor = "Predecessor: " + GetComponent<Talent>().predecessor;

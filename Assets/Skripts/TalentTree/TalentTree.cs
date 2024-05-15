@@ -155,7 +155,11 @@ public class TalentTree : MonoBehaviour
                     GameObject cTalent = classTrees.Find(cName).Find("MaskLayer").Find("TalentTree").Find("Tier" + (i + 1).ToString()).GetChild(k).gameObject;
                     GameObject cTalentNew = Instantiate(cTalent, myCurrentTier);
                     cTalentNew.transform.rotation = Quaternion.identity;
-                    //cTalentNew.GetComponent<Image>().color = new Color(255,0,0);
+
+                    Color32 myNewColor = cTalent.transform.Find("TalentImage").GetComponent<Image>().color;
+                    Debug.Log("my color component: " + cTalent.GetComponent<Image>());
+                    Debug.Log("my color: " + myNewColor);
+                    cTalentNew.transform.Find("TalentImage").GetComponent<Image>().color = myNewColor;
 
                     if (n == 1)
                     { cTalentNew.transform.localPosition = Quaternion.Euler(0, 0, 120) * cTalentNew.transform.localPosition; }
@@ -183,7 +187,7 @@ public class TalentTree : MonoBehaviour
                 talent.RemoveActiveTalentEffect();
                 talent.currentCount = 0;
                 talent.RemoveActiveTalentEffectAfterPointCountReduced();
-                talent.UpdatePointCounter();
+                talent.UpdatePointCounterAndBackground();
                 talent.FindMyPredecessor();
             }
         }
