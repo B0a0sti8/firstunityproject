@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class TestGainLifeHot : SkillPrefab
+public class TestGainLifeHot : SkillPrefabOld
 {
     [Header("Hot-Stats")]
     public float instantHealing = 50f;

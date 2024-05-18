@@ -1114,9 +1114,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &54822255
 MonoBehaviour:
@@ -1336,9 +1341,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &60376123
 MonoBehaviour:
@@ -1866,7 +1876,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8021,6 +8031,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a14259dc4bfdeef4db5654c97251127d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasCharacterSelection: {fileID: 0}
+  canvasLobby: {fileID: 0}
 --- !u!4 &89527612
 Transform:
   m_ObjectHideFlags: 0
@@ -8089,9 +8101,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &90559319
 MonoBehaviour:
@@ -8363,9 +8380,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &120436136
 MonoBehaviour:
@@ -10163,9 +10185,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &219400990
 MonoBehaviour:
@@ -10437,9 +10464,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &275157132
 MonoBehaviour:
@@ -10790,9 +10822,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &280288468
 MonoBehaviour:
@@ -12068,9 +12105,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &391355152
 MonoBehaviour:
@@ -12341,7 +12383,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12627,9 +12669,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &426124556
 MonoBehaviour:
@@ -12766,9 +12813,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &427122335
 MonoBehaviour:
@@ -12905,9 +12957,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &428734515
 MonoBehaviour:
@@ -13179,9 +13236,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &435475537
 MonoBehaviour:
@@ -13895,9 +13957,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &473274604
 MonoBehaviour:
@@ -14970,9 +15037,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &517725717
 MonoBehaviour:
@@ -15109,9 +15181,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &524494674
 MonoBehaviour:
@@ -15910,9 +15987,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &569939208
 MonoBehaviour:
@@ -17255,9 +17337,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &639686514
 MonoBehaviour:
@@ -17394,7 +17481,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18734,6 +18821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   authenticateButton: {fileID: 55093069}
+  lobbyList: {fileID: 0}
 --- !u!1 &687340280
 GameObject:
   m_ObjectHideFlags: 0
@@ -19315,7 +19403,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22895,7 +22983,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23236,7 +23324,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25919,9 +26007,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &848691404
 MonoBehaviour:
@@ -26058,9 +26151,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &849714910
 MonoBehaviour:
@@ -26504,9 +26602,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &907216990
 MonoBehaviour:
@@ -27529,9 +27632,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &985649286
 MonoBehaviour:
@@ -27977,6 +28085,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3767d9eee58f74ebafe0476becf62f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoTBuffSprite: {fileID: 0}
+  speedBoostBuffSprite: {fileID: 0}
+  attackSpeedBoostBuffSprite: {fileID: 0}
+  stunnedEffectOnEnemiesSprite: {fileID: 0}
+  testWayOfTheChickenDamageDebuffSprite: {fileID: 0}
+  summonInsectsOnEnemyDeathBuffSprite: {fileID: 0}
+  summonAstralSnakeDoTSprite: {fileID: 0}
+  summonAstralSnakeDebuffSprite: {fileID: 0}
+  summonSpiritWolfOnSkillBuffSprite: {fileID: 0}
+  mainMinionBuffDamageAndHealingSprite: {fileID: 0}
 --- !u!4 &1011906956
 Transform:
   m_ObjectHideFlags: 0
@@ -28045,9 +28163,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1016236128
 MonoBehaviour:
@@ -29355,9 +29478,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1075229089
 MonoBehaviour:
@@ -29499,6 +29627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createButton: {fileID: 1788423724}
+  cancelButton: {fileID: 0}
   lobbyNameButton: {fileID: 687340282}
   publicPrivateButton: {fileID: 1647944926}
   maxPlayersButton: {fileID: 1467823265}
@@ -29507,6 +29636,7 @@ MonoBehaviour:
   publicPrivateText: {fileID: 616116562}
   maxPlayersText: {fileID: 639256812}
   gameModeText: {fileID: 1827924106}
+  lobbyListUI: {fileID: 0}
 --- !u!1 &1107281675
 GameObject:
   m_ObjectHideFlags: 0
@@ -29698,9 +29828,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1124081020
 MonoBehaviour:
@@ -30508,9 +30643,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1165098761
 MonoBehaviour:
@@ -32213,9 +32353,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1180230609
 MonoBehaviour:
@@ -32352,9 +32497,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1189495407
 MonoBehaviour:
@@ -32705,9 +32855,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1217322419
 MonoBehaviour:
@@ -34527,9 +34682,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1344225944
 MonoBehaviour:
@@ -35018,9 +35178,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1371643844
 MonoBehaviour:
@@ -36775,9 +36940,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1408221702
 MonoBehaviour:
@@ -37107,9 +37277,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1423268786
 MonoBehaviour:
@@ -38379,9 +38554,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1509497017
 MonoBehaviour:
@@ -39542,9 +39722,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1593605530
 MonoBehaviour:
@@ -39758,9 +39943,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1602631770
 MonoBehaviour:
@@ -40032,9 +40222,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1616948768
 MonoBehaviour:
@@ -40772,7 +40967,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -41087,9 +41282,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1678721918
 MonoBehaviour:
@@ -43389,9 +43589,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1838917412
 MonoBehaviour:
@@ -44492,9 +44697,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1916369398
 MonoBehaviour:
@@ -45363,9 +45573,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1965992370
 MonoBehaviour:
@@ -45486,7 +45701,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -45586,9 +45801,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &1997146196
 MonoBehaviour:
@@ -46074,7 +46294,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -49056,9 +49276,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &2085014306
 MonoBehaviour:
@@ -49407,9 +49632,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &2093605698
 MonoBehaviour:
@@ -49988,9 +50218,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17623d23931704a478b867d93e22091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talentName: 
+  talentDescription: 
+  predecessor: ' - '
+  myPredecessorTalent: {fileID: 0}
   PLAYER: {fileID: 0}
   statSkript: {fileID: 0}
   maxCount: 0
+  pointCost: 1
   currentCount: 0
 --- !u!114 &2120070762
 MonoBehaviour:

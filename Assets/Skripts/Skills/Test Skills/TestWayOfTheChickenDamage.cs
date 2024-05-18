@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestWayOfTheChickenDamage : SkillPrefab
+public class TestWayOfTheChickenDamage : SkillPrefabOld
 {
     [Header("Hot-Stats")]
     public float damage = 100f;

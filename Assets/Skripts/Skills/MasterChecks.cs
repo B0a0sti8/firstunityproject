@@ -32,7 +32,7 @@ public class MasterChecks : MonoBehaviour
     PlayerStats playerStats;
     private void Start()
     {
-        PLAYER = transform.parent.transform.parent.gameObject;
+        PLAYER = transform.parent.parent.gameObject;
         playerStats = PLAYER.GetComponent<PlayerStats>();
     }
 
