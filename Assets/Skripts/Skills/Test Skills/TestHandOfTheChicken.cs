@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestHandOfTheChicken : SkillPrefab
+public class TestHandOfTheChicken : SkillPrefabOld
 {
     public override void Start()
     {

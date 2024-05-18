@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestOverHeal : SkillPrefab
+public class TestOverHeal : SkillPrefabOld
 {
     public float duration = 30f;
     public float value = 100f; // Overhealing

@@ -32,6 +32,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public bool targetsAlliesOnly;
     public List<GameObject> currentTargets = new List<GameObject>();
     protected GameObject mainTargetForCircleAoE;
+    bool forceTargetPlayer;
 
     [Header("Mana")]
     public bool needsMana; // optional
@@ -85,6 +86,19 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public bool castStarted = false;
     public bool isSkillChanneling;
 
+
+    public enum AreaType
+    {
+        SingleTarget,
+        SingleTargetSelf,
+        CircleAroundTarget,
+        Front,
+        Line,
+        CirclePlacable
+    }
+
+    public AreaType myAreaType;
+
     [Header("Area of Effect")]
     public bool isAOECircle = false;
     public bool isAOEFrontCone = false;
@@ -104,343 +118,223 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
     private Interactable zwischenSpeicher;
 
-    public void StartSkillChecks() // snjens beginnt sein abenteuer
+    public void StartSkillChecks() // Checks if Player is alive.
     {
-        if (PLAYER.GetComponent<PlayerStats>().isAlive.Value)
-        {
-            ConditionCheck();
-        }
-        else
-        {
-            Debug.Log("ERROR: You are dead!");
-        }
+        if (PLAYER.GetComponent<PlayerStats>().isAlive.Value) ConditionCheck();
+        else Debug.Log("ERROR: You are dead!");
+        forceTargetPlayer = false;
     }
 
     public virtual void ConditionCheck() // checks for conditions (Mana, Aufladungen, ...)
     {
-        if (needsMana)
-        {
-            if (playerStats.currentMana.Value >= manaCost)
-            {
-                TargetCheck();
-            }
-            else
-            {
-                Debug.Log("ERROR: not enough mana (Current: " + playerStats.currentMana.Value + ", Needed: " + manaCost + ")");
-            }
-        }
-        else
-        {
-            TargetCheck();
-        }
+        // In den spezifischen Skills kann diese Methode überschrieben werden um andere Voraussetzungen hinzuzufügen.
+
+        if (needsMana && playerStats.currentMana.Value < manaCost) return; // Schaut ob der Spieler Mana braucht und genug hat.
+        TargetCheck();
     }
 
     public void TargetCheck() // checks for fitting target
     {
-        if (needsTargetEnemy) // for skills that need a enemy target
+        // Wenn er ein gegnerisches Target braucht, und entweder keines oder keinen Gegner hat, und nicht auf sich selbst casten kann, wird abgebrochen.
+        if (needsTargetEnemy) 
         {
-            if (interactionCharacter.focus != null)
-            {
-                if (LayerMask.NameToLayer("Enemy") == interactionCharacter.focus.gameObject.layer) // if enemy in focus
-                {
-                    AOECheck();
-                }
-                else
-                {
-                    Debug.Log("No fitting target");
-                    FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-                }
-            }
-            else
-            {
-                Debug.Log("Target needed");
-                FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-            }
+            if ((interactionCharacter.focus == null || LayerMask.NameToLayer("Enemy") != interactionCharacter.focus.gameObject.layer) & !canSelfCastIfNoTarget) return;
         }
-        else if (needsTargetAlly) // for skill that need a friendly target
+
+        // Wenn er ein freundliches Target braucht, und entweder keines oder keinen freundliches hat, und nicht auf sich selbst casten kann, wird abgebrochen.
+        if (needsTargetAlly) 
         {
-            if (interactionCharacter.focus != null)
-            {
-                if (LayerMask.NameToLayer("Action") == interactionCharacter.focus.gameObject.layer || 
-                    LayerMask.NameToLayer("Ally") == interactionCharacter.focus.gameObject.layer) // if ally in focus
-                {
-                    Debug.Log("Ally target");
-                    AOECheck();
-                }
-                else
-                {
-                    if (canSelfCastIfNoTarget) // Hier weitermachen! Freund gebraucht, Gegner drinnen, selfcastable, heilt gegner.
-                    {
-                        zwischenSpeicher = interactionCharacter.focus;
-                        interactionCharacter.focus = null;
-                        AOECheck();
-                        interactionCharacter.focus = zwischenSpeicher;
-                    }
-                    else
-                    {
-                        Debug.Log("No fitting target");
-                        FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-                    }
-                }
-            }
-            else
-            {
-                if (canSelfCastIfNoTarget)
-                {
-                    AOECheck();
-                }
-                else
-                {
-                    Debug.Log("Target needed");
-                    FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-                }
-            }
+            if (interactionCharacter == null) return;
+            else if (LayerMask.NameToLayer("Action") != interactionCharacter.focus.gameObject.layer 
+                & LayerMask.NameToLayer("Ally") != interactionCharacter.focus.gameObject.layer 
+                & !canSelfCastIfNoTarget) return;
         }
-        else // for skills that don't need a target
-        {
-            AOECheck();
-        }
+
+        // Wenn er bis hier her kommt, braucht er kein Target, kann den Skill auf sich selbst casten, falls er keines hat oder er hat ein passendes Target.
+        RangeCheck();
     }
 
+    // Eine Helferfunktion, die alle Ziele innerhalb eines Kreises findet.
+    public List<GameObject> GetTargetsInCircleHelper(Vector3 circleCenter, float circleRadius)
+    {
+        List <GameObject> listOfMatches = new List<GameObject>();
+
+        Collider2D[] hit = Physics2D.OverlapCircleAll(circleCenter, circleRadius, (1 << LayerMask.NameToLayer("Enemy")) | (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
+        foreach (Collider2D coll in hit) listOfMatches.Add(coll.gameObject);
+        
+        return listOfMatches;
+    }
+
+    // Holt sich alle Ziele, die vom Skill betroffen werden. Basierend auf dem AreaType (z.B. singletarget, Front AoE, Cirle AoE) und den parametern targetsAlliesOnly und targetsEnemiesOnly
+    // Anmerkung SONDERFALL!!: Es gibt den eigenartigen Fall, dass der Spieler ein freundliches Target braucht, aber ein gegnerisches hat. Durch canSelfCastIfNoTarget aber eigentlich auf sich selbst casten könnte.
+    // Dieser Sonderfall wird durch die Variable forceTargetPlayer abgedeckt und die entsprechenden Zeilen sind mit "SONDERFALL!!" markiert.
     public void AOECheck()
     {
-        currentTargets.Clear();
-        if (!isAOECircle && !isAOEFrontCone && !isAOELine) // Skill ist singletarget
+        currentTargets.Clear(); // Leert die Liste an Targets.
+
+        // Hier werden alle Fälle durchgegangen, die an Zielen Vorhanden sind: Single Target / Skills auf einen Selbst / FrontAoE / Einen Kreis um das Ziel / Eine Linie / Einen setzbaren Kreis.
+        switch (myAreaType)
         {
-            if (interactionCharacter.focus != null)
-            { currentTargets.Add(interactionCharacter.focus.gameObject); }
+            // Skills die nur auf den Spieler gehen
+            case AreaType.SingleTargetSelf:
+                currentTargets.Add(PLAYER);
+                break;
 
-            if (canSelfCastIfNoTarget && interactionCharacter.focus == null)
-            { currentTargets.Add(PLAYER); }
+            // Skills die nur auf ein Ziel gehen
+            case AreaType.SingleTarget:
+                if (forceTargetPlayer) currentTargets.Add(interactionCharacter.focus.gameObject); // SONDERFALL!! Siehe Funktionsbeschreibung.
+                else if (interactionCharacter.focus != null) currentTargets.Add(interactionCharacter.focus.gameObject);
+                else if (canSelfCastIfNoTarget) currentTargets.Add(PLAYER);
+                break;
 
-            if (isSelfCast)
-            { currentTargets.Add(PLAYER); }
-        }
+            // Skills die einen Kreis um ein Ziel herum betreffen
+            case AreaType.CircleAroundTarget:
+                // Holt sich alle Targets um das Ziel (Oder um den Spieler falls der Skill ohne passendes Ziel gecastet werden kann).
+                List<GameObject> prelimTargetsCírcle = new List<GameObject>(); prelimTargetsCírcle.Clear();
 
-        if (isAOECircle) // Kreisförmiger Flächenzauber. Um Gegner, um freundliches Ziel oder um den Spieler selbst. Noch nicht implementiert: Bei Mausklick an entsprechende Stelle
-        {
-            isAOEFrontCone = false; isAOELine = false; // Nur sicherheitshalber, falls jmd mehrere Sachen angekreuzt hat.
+                if (isSelfCast) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // Ein Selbst-Skill um den Spieler
+                if (forceTargetPlayer) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // SONDERFALL!! Siehe Funktionsbeschreibung.
+                else if (interactionCharacter.focus != null) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(interactionCharacter.focus.transform.position, skillRadius)); // Skills die ein Ziel brauchen
+                else if (canSelfCastIfNoTarget) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // Skills die ein Ziel bräuchten, aber notfalls den SPieler nehmen können.
 
-            if (canSelfCastIfNoTarget && interactionCharacter.focus == null)
-            { circleAim = PLAYER.GetComponent<Interactable>(); }
-            else if (isSelfCast)
-            { circleAim = PLAYER.GetComponent<Interactable>(); }
-            else
-            { circleAim = interactionCharacter.focus; }
-
-            if (needsTargetEnemy) 
-            {
-                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
-                foreach (Collider2D coll in hit)
-                {
-                    currentTargets.Add(coll.gameObject);
-                    mainTargetForCircleAoE = circleAim.gameObject;
-                }
-            }
-            else if (needsTargetAlly)
-            {
-                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
-                foreach (Collider2D coll in hit)
-                {
-                    currentTargets.Add(coll.gameObject);
-                }
-            }
-            else if (isSelfCast)
-            {
+                // Sammelt nur Freunde aus den Zielen
                 if (targetsAlliesOnly)
                 {
-                    Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
-                    foreach (Collider2D coll in hit)
-                    {
-                        currentTargets.Add(coll.gameObject);
-                    }
+                    foreach (GameObject preTa in prelimTargetsCírcle)
+                    { if (preTa.layer == LayerMask.NameToLayer("Action") || preTa.layer == LayerMask.NameToLayer("Ally")) currentTargets.Add(preTa); }
                 }
+
+                // Sammelt alle Feinde aus den Zielen
                 else if (targetsEnemiesOnly)
                 {
-                    Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
-                    foreach (Collider2D coll in hit)
-                    {
-                        currentTargets.Add(coll.gameObject);
-                    }
+                    foreach (GameObject preTa in prelimTargetsCírcle)
+                    { if (preTa.layer == LayerMask.NameToLayer("Enemy")) currentTargets.Add(preTa); }
                 }
-                else
+
+                // Wenn der Skill sowohl Freunde als auch Partner betrifft, nimmt er alle.
+                else currentTargets.AddRange(prelimTargetsCírcle);
+
+                break;
+
+            // Skills die alles in einem Winkel vor dem Spieler betreffen
+            case AreaType.Front:
+                // Vorgehen bisschen komisch: Schnappt sich erstmal alle Ziele in einem Kreis um den Spieler rum. Schaut dann, ob der Winkel zwischen der Spieler-Blickrichtung und der Richtung zum Gegner kleiner ist, als der ConeAOEAngle des Skills.
+                List<GameObject> prelimTargetsFront = new List<GameObject>(); prelimTargetsFront.Clear();
+                List<GameObject> prelimTargetsFront2 = new List<GameObject>(); prelimTargetsFront2.Clear();
+
+                prelimTargetsFront.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius));
+                foreach (GameObject preTa in prelimTargetsFront)
                 {
-                    Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
-                    foreach (Collider2D coll in hit)
-                    {
-                        currentTargets.Add(coll.gameObject);
-                    }
-
-                    Collider2D[] hit2 = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
-                    foreach (Collider2D coll in hit2)
-                    {
-                        currentTargets.Add(coll.gameObject);
-                    }
+                    Vector2 newVector = (preTa.transform.position - PLAYER.transform.position);
+                    if (Vector2.SignedAngle(PLAYER.GetComponent<PlayerController>().currentDirectionTrue, newVector) <= coneAOEAngle / 2) prelimTargetsFront2.Add(preTa); // Vergleicht ob der Winkel passt und schreibt alle Ziele in eine Liste
                 }
-            }
-            else if(isPlacableAoE) // Platzierbarer Flächenzauber. Kommt später
-            {
-                QueueCheck();
-            }
-        }
 
-        else if (isAOEFrontCone)
-        {
-            isAOELine = false; // Nur sicherheitshalber, falls jmd mehrere Sachen angekreuzt hat.
-            circleAim = PLAYER.GetComponent<Interactable>();
-
-            if (targetsAlliesOnly)
-            {
-                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
-                foreach (Collider2D coll in hit)
+                // Sammelt nur Freunde aus den Zielen
+                if (targetsAlliesOnly)
                 {
-                    Vector2 newVector = (coll.transform.position - PLAYER.transform.position);
-                    if (Vector2.SignedAngle(PLAYER.GetComponent<PlayerController>().currentDirectionTrue, newVector) <= coneAOEAngle)
-                    {
-                        currentTargets.Add(coll.gameObject);
-                    }
+                    foreach (GameObject preTa in prelimTargetsFront2)
+                    { if (preTa.layer == LayerMask.NameToLayer("Action") || preTa.layer == LayerMask.NameToLayer("Ally")) currentTargets.Add(preTa); }
                 }
-            }
-            else if (targetsEnemiesOnly)
-            {
-                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
-                foreach (Collider2D coll in hit)
+
+                // Sammelt alle Feinde aus den Zielen
+                else if (targetsEnemiesOnly)
                 {
-                    Vector2 newVector = (coll.transform.position - PLAYER.transform.position);
-                    if (Vector2.SignedAngle(PLAYER.GetComponent<PlayerController>().currentDirectionTrue, newVector) <= coneAOEAngle)
-                    {
-                        currentTargets.Add(coll.gameObject);
-                    }
+                    foreach (GameObject preTa in prelimTargetsFront2)
+                    { if (preTa.layer == LayerMask.NameToLayer("Enemy")) currentTargets.Add(preTa); }
                 }
-            }
-            else
-            {
-                Collider2D[] hit = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Action")));
-                foreach (Collider2D coll in hit)
+
+                // Wenn der Skill sowohl Freunde als auch Partner betrifft, nimmt er alle.
+                else currentTargets.AddRange(prelimTargetsFront2);
+
+                break;
+
+            case AreaType.CirclePlacable:
+                // Schnappt sich alle Ziele in einem Kreis um die derzeitige Position des Mauszeigers.
+                List<GameObject> prelimTargetsCircPlacable = new List<GameObject>(); prelimTargetsCircPlacable.Clear();
+                prelimTargetsCircPlacable.AddRange(GetTargetsInCircleHelper(mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue()), skillRadius));
+
+                // Sammelt nur Freunde aus den Zielen
+                if (targetsAlliesOnly)
                 {
-                    Vector2 newVector = (coll.transform.position - PLAYER.transform.position);
-                    if (Vector2.SignedAngle(PLAYER.GetComponent<PlayerController>().currentDirectionTrue, newVector) <= coneAOEAngle)
-                    {
-                        currentTargets.Add(coll.gameObject);
-                    }
+                    foreach (GameObject preTa in prelimTargetsCircPlacable)
+                    { if (preTa.layer == LayerMask.NameToLayer("Action") || preTa.layer == LayerMask.NameToLayer("Ally")) currentTargets.Add(preTa); }
                 }
 
-                Collider2D[] hit2 = Physics2D.OverlapCircleAll(circleAim.gameObject.transform.position, skillRadius, (1 << LayerMask.NameToLayer("Enemy")));
-                foreach (Collider2D coll in hit2)
+                // Sammelt alle Feinde aus den Zielen
+                else if (targetsEnemiesOnly)
                 {
-                    Vector2 newVector = (coll.transform.position - PLAYER.transform.position);
-                    if (Vector2.SignedAngle(PLAYER.GetComponent<PlayerController>().currentDirectionTrue, newVector) <= coneAOEAngle)
-                    {
-                        currentTargets.Add(coll.gameObject);
-                    }
+                    foreach (GameObject preTa in prelimTargetsCircPlacable)
+                    { if (preTa.layer == LayerMask.NameToLayer("Enemy")) currentTargets.Add(preTa); }
                 }
-            }
-        }
 
-        else if (isAOELine)
-        {
-            
-        }
+                // Wenn der Skill sowohl Freunde als auch Partner betrifft, nimmt er alle.
+                else currentTargets.AddRange(prelimTargetsCircPlacable);
 
+                break;
 
-        if(isPlacableAoE != true)
-        {
-            RangeCheck();
+            case AreaType.Line:
+                // Wird später implementiert.
+                break;
+
+            default:
+                Debug.Log("Kein AreaType angegeben. Skill wird nichts. ");
+                break;
         }
     }
 
     public void RangeCheck() // check for range and line of sight
     {
-        if (needsTargetEnemy || needsTargetAlly) // // for skills that need a target
+        // Für Skills die kein Ziel brauchen
+        if (!needsTargetAlly && !needsTargetEnemy) QueueCheck();
+
+
+        // Falls kein Target aber selbst castable
+        if (interactionCharacter.focus == null && canSelfCastIfNoTarget) QueueCheck();
+
+        // Spezialfall: Wenn eigentlich freundliches Target gebraucht wird, aber ein Gegner im Target ist, das jedoch nicht gemerkt wird, weil der Skill selfcastable ist, muss die Range nicht gecheckt werden.
+        if (LayerMask.NameToLayer("Enemy") == interactionCharacter.focus.gameObject.layer && needsTargetAlly && canSelfCastIfNoTarget)
         {
-            if (interactionCharacter.focus == null && canSelfCastIfNoTarget)        // Falls kein Target aber selbst castable
-            {
-                QueueCheck();
-            }
-            else
-            {
-                float distance = Vector2.Distance(PLAYER.transform.position,
-                interactionCharacter.focus.gameObject.transform.position);
-                if (distance <= skillRange) // target in range
-                {
-                    RaycastHit2D[] hit = Physics2D.LinecastAll(PLAYER.transform.position,
-                        interactionCharacter.focus.gameObject.transform.position, (1 << LayerMask.NameToLayer("Borders")) |
-                        (1 << LayerMask.NameToLayer("Action")) | (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Enemy")));
-                    targetInSight = true;
-                    for (int i = 0; i < hit.Length; i++)
-                    {
-                        if (hit[i].collider.gameObject.layer == LayerMask.NameToLayer("Borders"))
-                        {
-                            targetInSight = false;
-                        }
-                    }
-                    if (targetInSight) // target in sight
-                    {
-                        QueueCheck();
-                    }
-                    else // target not in sight
-                    {
-                        Debug.Log("Target in range but NOT in sight");
-                        FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-                    }
-                }
-                else // target not in range
-                {
-                    if (LayerMask.NameToLayer("Enemy") == interactionCharacter.focus.gameObject.layer && needsTargetAlly && canSelfCastIfNoTarget) // Spezialfall: Wenn eigentlich freundliches Target gebraucht wird, aber ein Gegner im Target ist, das jedoch nicht gemerkt wird, weil der Skill selfcastable ist, muss die Range nicht gecheckt werden.
-                    {
-                        currentTargets.Clear();
-                        currentTargets.Add(PLAYER);
-                        QueueCheck();
-                    }
-                    else
-                    {
-                        Debug.Log("Target not in range: Distance " + distance + " > " + skillRange);
-                        FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-                    }
-                }
-            }
-        }
-        else // for skills that don't need a target
-        {
+            forceTargetPlayer = true;
             QueueCheck();
         }
+
+        // Bestimmt den Abstand zwischen Ziel und Spieler
+        float distance = Vector2.Distance(PLAYER.transform.position, interactionCharacter.focus.transform.position);
+        if (distance <= skillRange) // target in range
+        {
+            // Versucht einen Raycast, ob Blickfeld durch Mauern o.ä. blockiert ist.
+            RaycastHit2D[] hit = Physics2D.LinecastAll(PLAYER.transform.position,
+                interactionCharacter.focus.gameObject.transform.position, (1 << LayerMask.NameToLayer("Borders")) |
+                (1 << LayerMask.NameToLayer("Action")) | (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Enemy")));
+
+            targetInSight = true;
+            for (int i = 0; i < hit.Length; i++)
+            {
+                if (hit[i].collider.gameObject.layer == LayerMask.NameToLayer("Borders")) targetInSight = false;
+            }
+
+            if (targetInSight) QueueCheck(); // target in sight
+            else Debug.Log("Target in range but NOT in sight"); // target not in sight
+
+        }
+        else Debug.Log("Target not in range: Distance " + distance + " > " + skillRange); // target not in range
     }
 
     public void QueueCheck() // checks if queue is empty
     {
-        if ((!isSuperInstant && !masterChecks.masterIsSkillInQueue) || (isSuperInstant && !isSkillInOwnSuperInstantQueue))
-        {
-            OwnCooldownCheck();
-        }
-        else
-        {
-            Debug.Log("ERROR: queue full");
-            FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-        }
+        if ((!isSuperInstant && !masterChecks.masterIsSkillInQueue) || (isSuperInstant && !isSkillInOwnSuperInstantQueue)) OwnCooldownCheck();
+        else Debug.Log("ERROR: queue full");
     }
 
     public void OwnCooldownCheck() // checks for own cooldown
     {
         if (hasOwnCooldown) // has own cooldown
         {
-            if (!ownCooldownActive) // own cooldown not active
-            {
-                SuperInstantCheck(); // UseSkill1
-            }
-            else if (ownCooldownTimeLeft <= masterChecks.masterOwnCooldownEarlyTime) // time left <= 0.5
-            {
-                SuperInstantCheck(); // UseSkill2
-            }
-            else // own cooldown active
-            {
-                Debug.Log("ERROR: Own cooldown active " + ownCooldownTimeLeft);
-                FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-            }
+            if (!ownCooldownActive) SuperInstantCheck(); // own cooldown not active
+            else if (ownCooldownTimeLeft <= masterChecks.masterOwnCooldownEarlyTime) SuperInstantCheck(); // time left <= 0.5
+            else Debug.Log("ERROR: Own cooldown active " + ownCooldownTimeLeft); // own cooldown active
         }
-        else // has no own cooldown
-        {
-            SuperInstantCheck(); // UseSkill1
-        }
+        else SuperInstantCheck(); // has no own cooldown
     }
 
     public void SuperInstantCheck() // checks if skill is a SuperInstant
@@ -463,33 +357,24 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         }
         else
         {
-            UseSkill3();
+            GlobalCooldownCheck();
         }
     }
 
-    public void UseSkill3() // checks for GlobalCooldown and skill casting times and waits for skill
+    public void GlobalCooldownCheck() // checks for GlobalCooldown and skill casting times and waits for skill
     {
         if ((!hasGlobalCooldown || (hasGlobalCooldown && !masterChecks.masterGCActive)) && !playerStats.isCurrentlyCasting) // no GC and casting trouble
         {
-            //if (isPlacableAoE)
-            //{ PlacableAoESkillProcedure(); }
-            //else
             StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterAnimTimeLeft)));
         }
         else if ((masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime) && (masterChecks.castTimeCurrent <= masterChecks.masterGCEarlyTime)) // GC early cast
         {
-            //if (isPlacableAoE)
-            //{ PlacableAoESkillProcedure(); }
-            //else
             StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterGCTimeLeft, masterChecks.masterAnimTimeLeft, masterChecks.castTimeCurrent)));
         }
         else // hasGlobalCooldown && globalCooldownActive // GC active (too early)
         {
-            if (masterChecks.castTimeCurrent > masterChecks.masterGCEarlyTime)
-            { Debug.Log("ERROR: Casting"); }
-            else
-            { Debug.Log("ERROR A: GC active (too early) " + masterChecks.masterGCTimeLeft + " > " + masterChecks.masterGCEarlyTime); }
-            
+            if (masterChecks.castTimeCurrent > masterChecks.masterGCEarlyTime) Debug.Log("ERROR: Casting");
+            else Debug.Log("ERROR A: GC active (too early) " + masterChecks.masterGCTimeLeft + " > " + masterChecks.masterGCEarlyTime);            
             FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
         }
     }
@@ -509,6 +394,20 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         else
         {
             TriggerSkill();
+        }
+    }
+
+    public void PlacableAoESkillProcedure()
+    {
+        if (!hasUnusedSpell)
+        {
+            unusedSpell = Instantiate(PlacableAOEIndicator, mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
+            hasUnusedSpell = true;
+            Debug.Log("Labl Labl");
+        }
+        else // Wenn Unused Spell
+        {
+            Debug.Log("Gubl Gubl");
         }
     }
 
@@ -549,6 +448,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     {
         if (castTimeOriginal <= 0)
         {
+            AOECheck();
             SkillEffect();
             if (isPlacableAoE)
             {
@@ -579,6 +479,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
             if (isSkillChanneling)
             {
+                AOECheck();
                 SkillEffect();
             }
         }
@@ -620,20 +521,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         yield return new WaitForSeconds(time);
         lastAnim.speed = 1;
         classAnimator.Play(className + "_idle");
-        //foreach (Animator clA in classAnimator)
-        //{
-        //    //Debug.Log("Alle Klassen auf falsch setzen");
-        //    if (clA.gameObject.activeSelf) { clA.gameObject.SetActive(false); }
 
-        //    //Debug.Log(className);
-        //    //Debug.Log(clA.gameObject.name);
-        //    if (clA.gameObject.name == "NoClass")
-        //    {
-        //        //Debug.Log("Klasse: " + className);
-        //        clA.gameObject.SetActive(true);
-        //        clA.Play("Guardian_idle");
-        //    }
-        //}
     }
 
     public virtual void SkillEffect() // overridden by each skill seperately
@@ -653,6 +541,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
                 hasUnusedSpell = false;
                 Debug.Log("Zahle Mana");
             }
+            AOECheck();
             SkillEffect();
             castStarted = false;
             if (!isSkillChanneling)
@@ -698,46 +587,35 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
     void Awake()
     {
-        PLAYER = transform.parent.parent.gameObject;
-
-        masterChecks = PLAYER.transform.Find("Own Canvases").Find("Canvas Action Skills").GetComponent<MasterChecks>();
-
-        interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
-
-        playerStats = PLAYER.GetComponent<PlayerStats>();
-        
         mainCam = GameObject.Find("CameraMama").transform.Find("MainKamera").GetComponent<Camera>();
+
+        PLAYER = transform.parent.parent.gameObject;
+        masterChecks = PLAYER.transform.Find("Own Canvases").Find("Canvas Action Skills").GetComponent<MasterChecks>();
+        interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
+        playerStats = PLAYER.GetComponent<PlayerStats>();
+        classAnimator = PLAYER.transform.Find("PlayerAnimation").GetComponent<Animator>();
     }
 
     public virtual void Start()
     {
-        classAnimator = PLAYER.transform.Find("PlayerAnimation").GetComponent<Animator>();
+        
     }
 
     public void DealDamage(float damage)
     {
         for (int i = 0; i < currentTargets.Count; i++)
-        {
-            DamageOrHealing.DealDamage(PLAYER.GetComponent<NetworkBehaviour>(), currentTargets[i].GetComponent<NetworkBehaviour>(), damage, false, false);
-        }
+        { DamageOrHealing.DealDamage(PLAYER.GetComponent<NetworkBehaviour>(), currentTargets[i].GetComponent<NetworkBehaviour>(), damage, false, false); }
     }
 
     public void DealDamage(GameObject extraTarget, float damage)
     {
-        if (extraTarget != null)
-        {
-            DamageOrHealing.DealDamage(PLAYER.GetComponent<NetworkBehaviour>(), extraTarget.GetComponent<NetworkBehaviour>(), damage, false, false);
-        }
+        if (extraTarget != null) DamageOrHealing.DealDamage(PLAYER.GetComponent<NetworkBehaviour>(), extraTarget.GetComponent<NetworkBehaviour>(), damage, false, false);
     }
 
     public void DoHealing(float healing)
     {
-        
         for (int i = 0; i < currentTargets.Count; i++)
-        {
-            DamageOrHealing.DoHealing(PLAYER.GetComponent<NetworkBehaviour>(), currentTargets[i].GetComponent<NetworkBehaviour>(), healing);
-            //currentTargets[i].GetComponent<CharacterStats>().view.RPC("GetHealing", RpcTarget.All, healing, critRandom, critChance, critMultiplier);
-        }
+        { DamageOrHealing.DoHealing(PLAYER.GetComponent<NetworkBehaviour>(), currentTargets[i].GetComponent<NetworkBehaviour>(), healing); }
     }
 
     public IEnumerator FrontAOEIndicator(float time)
@@ -781,147 +659,10 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().enabled = false;
     }
 
-    public void PlacableAoESkillProcedure()
-    {
-        if (!hasUnusedSpell)
-        {
-            unusedSpell = Instantiate(PlacableAOEIndicator, mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
-            hasUnusedSpell = true;
-            Debug.Log("Labl Labl");
-        }
-        else // Wenn Unused Spell
-        {
-            Debug.Log("Gubl Gubl");
-        }
-    }
+
 
     public virtual void SetMyCooldown(float coolDown)
     {
         ownCooldownTimeBase = coolDown;
     }
 }
-
-
-//public void Use()
-//{
-//    throw new System.NotImplementedException();
-//}
-
-#region UseSkill1()
-//public void UseSkill() // checks for time between skill (e.g. Animation, GlobalCooldown) (+ stuff)
-//{
-//    if (!masterChecks.masterAnimationActive)
-//    {
-//        if (hasGlobalCooldown)
-//        {
-//            if (!masterChecks.masterGCActive)
-//            {
-//                Debug.Log("Use GCSkill normal");
-//                FindObjectOfType<AudioManager>().Play("HoverClick");
-//                TriggerSkill();
-//            }
-//            else // GlobalCooldown Activ
-//            {
-//                if (masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime) //&& !masterChecks.masterIsSkillInQueue)
-//                {
-//                    Debug.Log("Global Cooldown. Waiting for GCSkill ...  " + masterChecks.masterGCTimeLeft + "  " + masterChecks.masterGCTime);
-//                    masterChecks.masterIsSkillInQueue = true;
-//                    FindObjectOfType<AudioManager>().Play("HoverClickUpPitch");
-//                    StartCoroutine(Wait(masterChecks.masterGCTimeLeft));
-//                    IEnumerator Wait(float time)
-//                    {
-//                        yield return new WaitForSeconds(time);
-//                        masterChecks.masterIsSkillInQueue = false;
-//                        Debug.Log("... Use GCSkill");
-//                        TriggerSkill();
-//                    }
-//                }
-//                else if (masterChecks.masterIsSkillInQueue)
-//                {
-//                    Debug.Log("ERROR GC: queue full ????????????????????");
-//                    FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-//                }
-//                else
-//                {
-//                    Debug.Log("ERROR GC: too early   " + masterChecks.masterGCTimeLeft);
-//                    FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-//                }
-//            }
-//        }
-//        else // kein GlobalCooldown Skill
-//        {
-//            Debug.Log("Use InstantSkill normal");
-//            FindObjectOfType<AudioManager>().Play("HoverClick");
-//            TriggerSkill();
-//        }
-//    }
-//    else // Animation wait active
-//    {
-//        if (!hasGlobalCooldown) //&& !masterChecks.masterIsSkillInQueue)
-//        {
-//            masterChecks.masterIsSkillInQueue = true;
-//            FindObjectOfType<AudioManager>().Play("HoverClickUpPitch");
-//            Debug.Log("Animation wait active ... " + masterChecks.masterAnimTimeLeft);
-//            StartCoroutine(Wait(masterChecks.masterAnimTimeLeft)); // wait until animation is over
-//            IEnumerator Wait(float time)
-//            {
-//                yield return new WaitForSeconds(time);
-//                masterChecks.masterIsSkillInQueue = false;
-//                Debug.Log("... Use InstantSkill");
-//                TriggerSkill();
-//            }
-//        }
-//        else if (!masterChecks.masterGCActive) //&& hasGlobalCooldown) //&& !masterChecks.masterIsSkillInQueue) //???
-//        {
-//            masterChecks.masterIsSkillInQueue = true;
-//            FindObjectOfType<AudioManager>().Play("HoverClickUpPitch");
-//            Debug.Log("Animation wait active ... " + masterChecks.masterAnimTimeLeft);
-//            StartCoroutine(Wait(masterChecks.masterAnimTimeLeft)); // wait until animation is over
-//            IEnumerator Wait(float time)
-//            {
-//                yield return new WaitForSeconds(time);
-//                masterChecks.masterIsSkillInQueue = false;
-//                Debug.Log("... Use GCSkill");
-//                TriggerSkill();
-//            }
-//        }
-//        else if (masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime)
-//        {
-//            masterChecks.masterIsSkillInQueue = true;
-//            FindObjectOfType<AudioManager>().Play("HoverClickUpPitch");
-//            Debug.Log("CDTimeLeft: " + masterChecks.masterGCTimeLeft + "    AnimTimeLeft: " + masterChecks.masterAnimTimeLeft);
-//            if (masterChecks.masterGCTimeLeft >= masterChecks.masterAnimTimeLeft)
-//            {
-//                Debug.Log("Global Cooldown. Waiting for GCSkill ..." + masterChecks.masterGCTimeLeft);
-//                StartCoroutine(Wait(masterChecks.masterGCTimeLeft)); // wait until global cooldown is over
-//            }
-//            else // AnimTimeLeft > GCTimeLeft
-//            {
-//                Debug.Log("Animation wait active ... " + masterChecks.masterAnimTimeLeft);
-//                StartCoroutine(Wait(masterChecks.masterAnimTimeLeft)); // wait until animation is over
-//            }
-//            IEnumerator Wait(float time)
-//            {
-//                yield return new WaitForSeconds(time);
-//                masterChecks.masterIsSkillInQueue = false;
-//                Debug.Log("... Use GCSkill");
-//                TriggerSkill();
-//            }
-//        }
-//        else if (masterChecks.masterIsSkillInQueue)
-//        {
-//            Debug.Log("ERROR A: queue full ?????????????");
-//            FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-//        }
-//        else // !skillInQueue && hasGlobalCooldown && globalCooldownActive
-//        {
-//            Debug.Log("ERROR A: GC active   " + masterChecks.masterGCTimeLeft);
-//            FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-//        }
-//    }
-//}
-#endregion
-
-// different Metod of getting a distance (might be better or not)
-// float distance2 = (playerSkillSkript.transform.position - interactionCharacter.focus.gameObject.transform.position).sqrMagnitude;
-// if (distance2 <= skillRange * skillRange)

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestHeal : SkillPrefab
+public class TestHeal : SkillPrefabOld
 {
     public float heal = 100f;
 

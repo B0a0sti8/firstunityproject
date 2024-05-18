@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestBurningHeart : SkillPrefab
+public class TestBurningHeart : SkillPrefabOld
 {
     public float totalHeal;
     public float healTick;

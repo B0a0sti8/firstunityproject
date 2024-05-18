@@ -171,7 +171,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &25874521
 MonoBehaviour:
@@ -372,7 +372,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -590,7 +590,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -689,7 +689,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1437,7 +1437,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5402,6 +5402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTransform: {fileID: 482923340}
   radius: 3
+  player: {fileID: 0}
   lootTable: {fileID: 0}
 --- !u!212 &482923339
 SpriteRenderer:
@@ -5563,7 +5564,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5645,6 +5646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTransform: {fileID: 638461074}
   radius: 3
+  player: {fileID: 0}
   lootTable: {fileID: 638461078}
 --- !u!61 &638461076
 BoxCollider2D:
@@ -5900,7 +5902,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6016,6 +6018,7 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   fill: {fileID: 311784019}
+  myHealthText: {fileID: 0}
 --- !u!114 &656279937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6126,6 +6129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTransform: {fileID: 712281986}
   radius: 3
+  player: {fileID: 0}
   item: {fileID: 0}
 --- !u!212 &712281985
 SpriteRenderer:
@@ -6227,6 +6231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda4207442b0d40e890057bdeca6d441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: 
+  enemyLevel: 0
   aggroRange: 12
   targetRange: 2
   attackRange: 6
@@ -6250,6 +6256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTransform: {fileID: 842559106}
   radius: 30
+  player: {fileID: 0}
 --- !u!114 &842559105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6664,7 +6671,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6733,7 +6740,7 @@ Transform:
   - {fileID: 162280474}
   - {fileID: 1891833330}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &959026865
 GameObject:
@@ -6828,6 +6835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTransform: {fileID: 1040648471}
   radius: 3
+  player: {fileID: 0}
   lootTable: {fileID: 0}
 --- !u!212 &1040648470
 SpriteRenderer:
@@ -6944,7 +6952,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1067345705
 GameObject:
@@ -6995,6 +7003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTransform: {fileID: 1067345706}
   radius: 3
+  player: {fileID: 0}
   spriteRenderer: {fileID: 1067345710}
   openSprite: {fileID: 21300000, guid: b629e92e923f4f34f937b8f429e7344c, type: 3}
   closedSprite: {fileID: 21300000, guid: a16fff721e13a8644a9fda6924b49e99, type: 3}
@@ -7207,7 +7216,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1268794720
 GameObject:
@@ -8049,6 +8058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTransform: {fileID: 1458119420}
   radius: 3
+  player: {fileID: 0}
   item: {fileID: 0}
 --- !u!212 &1458119419
 SpriteRenderer:
@@ -8070,7 +8080,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8532,6 +8542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTransform: {fileID: 1695976297}
   radius: 3
+  player: {fileID: 0}
   item: {fileID: 0}
 --- !u!212 &1695976296
 SpriteRenderer:
@@ -8553,7 +8564,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8653,7 +8664,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -28491,6 +28502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTransform: {fileID: 1767997623}
   radius: 3
+  player: {fileID: 0}
   item: {fileID: 0}
 --- !u!212 &1767997622
 SpriteRenderer:
@@ -28813,7 +28825,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1850578015
 PrefabInstance:
@@ -30120,7 +30132,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30297,7 +30309,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30415,7 +30427,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30462,7 +30474,7 @@ Transform:
   - {fileID: 1369298095}
   - {fileID: 92204761}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1915132756
 MonoBehaviour:
@@ -30478,23 +30490,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTransform: {fileID: 1915132755}
   radius: 3
+  player: {fileID: 0}
   window: {fileID: 0}
   quests:
-  - title: Gather health potions
+  - myQuestLog: {fileID: 0}
+    title: Gather health potions
     description: I want you to collect 5 health potions for me.
     xPGiven: 100
     collectObjectives:
-    - amount: 5
+    - myQuest:
+        myQuestLog: {fileID: 0}
+        title: 
+        description: 
+        xPGiven: 0
+        collectObjectives: []
+        killObjectives: []
+      myInventory: {fileID: 0}
+      myQuestLog: {fileID: 0}
+      amount: 5
       currentAmount: 0
       type: Healthpotion
     killObjectives: []
-  - title: Kill creepy monster dudes
+  - myQuestLog: {fileID: 0}
+    title: Kill creepy monster dudes
     description: Please help! Kill them all. Well... or at least three of the melee
       ones!
     xPGiven: 100
     collectObjectives: []
     killObjectives:
-    - amount: 3
+    - myQuest:
+        myQuestLog: {fileID: 0}
+        title: 
+        description: 
+        xPGiven: 0
+        collectObjectives: []
+        killObjectives: []
+      myInventory: {fileID: 0}
+      myQuestLog: {fileID: 0}
+      amount: 3
       currentAmount: 0
       type: MeleeEnemy
   question: {fileID: 8165799536955124612, guid: 4fbc7b7102383bf4b97c6ac202f52e66, type: 3}
@@ -30560,6 +30593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTransform: {fileID: 1928858366}
   radius: 3
+  player: {fileID: 0}
   item: {fileID: 0}
 --- !u!212 &1928858365
 SpriteRenderer:
@@ -30695,7 +30729,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30861,6 +30895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTransform: {fileID: 2054671848}
   radius: 3
+  player: {fileID: 0}
   window: {fileID: 0}
   items:
   - item: {fileID: 11400000, guid: 35dcf8b81d9873b4f843e8ecb9417fa8, type: 2}
@@ -30941,7 +30976,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30987,7 +31022,7 @@ Transform:
   m_Children:
   - {fileID: 280405942}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &488976139928480425
 PrefabInstance:
@@ -31294,6 +31329,10 @@ PrefabInstance:
     - target: {fileID: 744988942635506932, guid: 471d28fe515d5314d98cb82a1fe63d92, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 881642826683701115, guid: 471d28fe515d5314d98cb82a1fe63d92, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3864298891
       objectReference: {fileID: 0}
     - target: {fileID: 956921952456763677, guid: 471d28fe515d5314d98cb82a1fe63d92, type: 3}
       propertyPath: m_AnchorMax.y
