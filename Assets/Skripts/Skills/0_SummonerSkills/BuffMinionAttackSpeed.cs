@@ -16,7 +16,7 @@ public class BuffMinionAttackSpeed : SkillPrefab
         base.Start();
 
         hasGlobalCooldown = true;
-        isSelfCast = true;
+        isCastOnSelf = true;
         ownCooldownTimeBase = 10f;
         castTimeOriginal = 1.5f;
         buffValue = 2f;

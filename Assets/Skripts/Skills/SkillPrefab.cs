@@ -24,7 +24,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public float animationTime = 1.5f;
 
     [Header("Target")]
-    public bool isSelfCast = false;
+    public bool isCastOnSelf = false;
     public bool needsTargetEnemy;
     public bool needsTargetAlly;
     public bool canSelfCastIfNoTarget;
@@ -56,7 +56,6 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
     [Header("Skilltype")]
     public bool hasGlobalCooldown;
-
     public bool isSuperInstant; // can not be true if hasGlobalCooldown is true
     bool isSkillInOwnSuperInstantQueue = false;
 
@@ -86,7 +85,6 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public bool castStarted = false;
     public bool isSkillChanneling;
 
-
     public enum AreaType
     {
         SingleTarget,
@@ -100,23 +98,22 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public AreaType myAreaType;
 
     [Header("Area of Effect")]
-    public bool isAOECircle = false;
-    public bool isAOEFrontCone = false;
-    public bool isAOELine = false;
+    //public bool isAOECircle = false;
+    //public bool isAOEFrontCone = false;
+    //public bool isAOELine = false;
     public Vector3 coneAOEDirection;
     public float coneAOEAngle = 50;
     private Interactable circleAim;
-    public bool isPlacableAoE;
+    //public bool isPlaceableAoE;
     public GameObject PlacableAOEIndicator;
+    float indicatorScaleFactor = 1;
 
-    public GameObject unusedSpell;
-    bool hasUnusedSpell = false;
+    //public GameObject unusedSpell;
+    //bool hasUnusedSpell = false;
 
     public float skillDuration;
 
     Animator classAnimator;
-
-    private Interactable zwischenSpeicher;
 
     public void StartSkillChecks() // Checks if Player is alive.
     {
@@ -130,6 +127,8 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         // In den spezifischen Skills kann diese Methode überschrieben werden um andere Voraussetzungen hinzuzufügen.
 
         if (needsMana && playerStats.currentMana.Value < manaCost) return; // Schaut ob der Spieler Mana braucht und genug hat.
+        if (masterChecks.hasUnusedSpell) return; // Schaut ob der Spieler einen ungenutzten Skill in der Schwebe hat (v.a. Flächeneffekte die gezielt werden. Das sieht man mit der entsprechenden Fläche an der Maus. Wer macht überhaupt sowas behindertes?!)
+
         TargetCheck();
     }
 
@@ -165,6 +164,193 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         return listOfMatches;
     }
 
+    public void RangeCheck() // check for range and line of sight
+    {
+        // Für Skills die kein Ziel brauchen
+        if (!needsTargetAlly && !needsTargetEnemy) { QueueCheck(); return; }
+
+
+        // Falls kein Target aber selbst castable
+        else if (interactionCharacter.focus == null && canSelfCastIfNoTarget) { QueueCheck(); return; }
+
+        // Spezialfall: Wenn eigentlich freundliches Target gebraucht wird, aber ein Gegner im Target ist, das jedoch nicht gemerkt wird, weil der Skill selfcastable ist, muss die Range nicht gecheckt werden.
+        else if (LayerMask.NameToLayer("Enemy") == interactionCharacter.focus.gameObject.layer && needsTargetAlly && canSelfCastIfNoTarget)
+        {
+            forceTargetPlayer = true;
+            QueueCheck();
+        }
+
+        // Bestimmt den Abstand zwischen Ziel und Spieler
+        float distance = Vector2.Distance(PLAYER.transform.position, interactionCharacter.focus.transform.position);
+        if (distance <= skillRange) // target in range
+        {
+            // Versucht einen Raycast, ob Blickfeld durch Mauern o.ä. blockiert ist.
+            RaycastHit2D[] hit = Physics2D.LinecastAll(PLAYER.transform.position,
+                interactionCharacter.focus.gameObject.transform.position, (1 << LayerMask.NameToLayer("Borders")) |
+                (1 << LayerMask.NameToLayer("Action")) | (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Enemy")));
+
+            targetInSight = true;
+            for (int i = 0; i < hit.Length; i++)
+            {
+                if (hit[i].collider.gameObject.layer == LayerMask.NameToLayer("Borders")) targetInSight = false;
+            }
+
+            if (targetInSight) QueueCheck(); // target in sight
+            else Debug.Log("Target in range but NOT in sight"); // target not in sight
+
+        }
+        else Debug.Log("Target not in range: Distance " + distance + " > " + skillRange); // target not in range
+    }
+
+    public void QueueCheck() // checks if queue is empty
+    {
+        Debug.Log("QueueCheck");
+        if ((!isSuperInstant && !masterChecks.masterIsSkillInQueue) || (isSuperInstant && !isSkillInOwnSuperInstantQueue)) OwnCooldownCheck();
+        else Debug.Log("ERROR: queue full");
+    }
+
+    public void OwnCooldownCheck() // checks for own cooldown
+    {
+        Debug.Log("OwnCDCheck");
+        if (hasOwnCooldown) // has own cooldown
+        {
+            if (!ownCooldownActive) SuperInstantCheck(); // own cooldown not active
+            else if (ownCooldownTimeLeft <= masterChecks.masterOwnCooldownEarlyTime) SuperInstantCheck(); // time left <= 0.5
+            else Debug.Log("ERROR: Own cooldown active " + ownCooldownTimeLeft); // own cooldown active
+        }
+        else SuperInstantCheck(); // has no own cooldown
+    }
+
+    public void SuperInstantCheck() // checks if skill is a SuperInstant
+    {
+        Debug.Log("SuperInstantCheck");
+        if (isSuperInstant) StartCoroutine(WaitForSkillSuperInstant(ownCooldownTimeLeft));
+        else GlobalCooldownCheck();
+    }
+
+    public void GlobalCooldownCheck() // checks for GlobalCooldown and skill casting times and waits for skill
+    {
+        Debug.Log("GlobalCDCheck");
+        if ((!hasGlobalCooldown || (hasGlobalCooldown && !masterChecks.masterGCActive)) && !playerStats.isCurrentlyCasting) // no GC and casting trouble
+        {
+            StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterAnimTimeLeft)));
+        }
+        else if ((masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime) && (masterChecks.castTimeCurrent <= masterChecks.masterGCEarlyTime)) // GC early cast
+        {
+            StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterGCTimeLeft, masterChecks.masterAnimTimeLeft, masterChecks.castTimeCurrent)));
+        }
+        else // hasGlobalCooldown && globalCooldownActive // GC active (too early)
+        {
+            if (masterChecks.castTimeCurrent > masterChecks.masterGCEarlyTime) Debug.Log("ERROR: Casting");
+            else Debug.Log("ERROR A: GC active (too early) " + masterChecks.masterGCTimeLeft + " > " + masterChecks.masterGCEarlyTime);            
+            FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
+        }
+    }
+
+    IEnumerator WaitForSkillSuperInstant(float time)
+    {
+        isSkillInOwnSuperInstantQueue = true;
+        if (time > 0) { FindObjectOfType<AudioManager>().Play("HoverClickUpPitch"); }
+        else { FindObjectOfType<AudioManager>().Play("HoverClick"); }
+        yield return new WaitForSeconds(time);
+        isSkillInOwnSuperInstantQueue = false;
+        ownCooldownActive = true;
+        ownCooldownTimeLeft = ownCooldownTimeModified;
+        if (needsMana) { playerStats.ManageMana(-manaCost); }
+        StartCasting();
+    }
+
+    private IEnumerator WaitForSkill(float time)
+    {
+        masterChecks.masterIsSkillInQueue = true;
+        if (time > 0) { FindObjectOfType<AudioManager>().Play("HoverClickUpPitch"); }
+        else { FindObjectOfType<AudioManager>().Play("HoverClick"); }
+        yield return new WaitForSeconds(time);
+        masterChecks.masterIsSkillInQueue = false;
+        //Debug.Log("... Use Skill");
+        PlaceableAoECheck();
+    }
+
+    public void PlaceableAoECheck()
+    {
+        Debug.Log("PlaceableAoECheck");
+        if (myAreaType == AreaType.CirclePlacable) PlaceableAoESkillProcedure(); // Für Placeable AoEs wird StartCasting() im MasterChecks Skript aufgerufen.
+        else StartCasting();
+    }
+
+    // Hier werden die Parameter in MasterChecks gesetzt, dass eine Fläche erscheint die mit Linksklick bestätigt werden kann. Wenn das passiert, wird StartCasting() aufgerufen.
+    public void PlaceableAoESkillProcedure()
+    {
+        Debug.Log("PlaceableAoEProcedure");
+        masterChecks.myUnusedSpellIndicator = Instantiate(PlacableAOEIndicator, mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
+        masterChecks.myUnusedSpellIndicator.transform.localScale *= skillRadius / indicatorScaleFactor;
+        masterChecks.myUnusedSpell = this;
+        masterChecks.hasUnusedSpell = true;
+        //Debug.Log("Labl Labl");
+    }
+
+    public virtual void StartCasting()
+    {
+        TriggerSkillCooldown();
+        if (castTimeOriginal <= 0)
+        {
+            AOECheck();
+            SkillEffect();
+        }
+        else
+        {
+            if (isSkillChanneling) playerStats.castingBarChanneling = true;
+            else playerStats.castingBarChanneling = false;
+
+            playerStats.castingBarImage = tooltipSkillSprite;
+            playerStats.castingBarText = tooltipSkillName;
+            PLAYER.transform.Find("PlayerParticleSystems").Find("CastingParticles").gameObject.GetComponent<ParticleSystem>().Play();
+
+            castTimeModified = castTimeOriginal / playerStats.actionSpeed.GetValue();
+            
+            masterChecks.isSkillInterrupted = false;
+            masterChecks.castTimeCurrent = castTimeModified;
+            masterChecks.castTimeMax = castTimeModified;
+            castStarted = true;
+            playerStats.isCurrentlyCasting = true;
+
+            if (isSkillChanneling)
+            {
+                AOECheck();
+                SkillEffect();
+            }
+        }
+    }
+
+    public void TriggerSkillCooldown()
+    {
+        // Modifiziert den Cooldown basierend auf aktuellem Tempo
+        float attackSpeedModifier = 1 / (1 + playerStats.actionSpeed.GetValue());
+        ownCooldownTimeModified = ownCooldownTimeBase * attackSpeedModifier;
+
+        // TriggerSkillAnimation
+        masterChecks.masterAnimationActive = true;
+        masterChecks.masterAnimTimeLeft = masterChecks.masterAnimTime;
+
+        // TriggerGlobalCooldown
+        if (hasGlobalCooldown)
+        {
+            masterChecks.masterGCActive = true;
+            masterChecks.masterGCTimeLeft = masterChecks.masterGCTimeModified;
+        }
+
+        // TriggerOwnCooldown
+        if (hasOwnCooldown)
+        {
+            ownCooldownActive = true;
+            ownCooldownTimeLeft = ownCooldownTimeModified;
+        }
+
+        if (needsMana) playerStats.ManageMana(-manaCost);
+
+        if (myAreaType == AreaType.Front) StartCoroutine(FrontAOEIndicator(0.2f));
+    }
+
     // Holt sich alle Ziele, die vom Skill betroffen werden. Basierend auf dem AreaType (z.B. singletarget, Front AoE, Cirle AoE) und den parametern targetsAlliesOnly und targetsEnemiesOnly
     // Anmerkung SONDERFALL!!: Es gibt den eigenartigen Fall, dass der Spieler ein freundliches Target braucht, aber ein gegnerisches hat. Durch canSelfCastIfNoTarget aber eigentlich auf sich selbst casten könnte.
     // Dieser Sonderfall wird durch die Variable forceTargetPlayer abgedeckt und die entsprechenden Zeilen sind mit "SONDERFALL!!" markiert.
@@ -192,7 +378,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
                 // Holt sich alle Targets um das Ziel (Oder um den Spieler falls der Skill ohne passendes Ziel gecastet werden kann).
                 List<GameObject> prelimTargetsCírcle = new List<GameObject>(); prelimTargetsCírcle.Clear();
 
-                if (isSelfCast) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // Ein Selbst-Skill um den Spieler
+                if (isCastOnSelf) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // Ein Selbst-Skill um den Spieler
                 if (forceTargetPlayer) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // SONDERFALL!! Siehe Funktionsbeschreibung.
                 else if (interactionCharacter.focus != null) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(interactionCharacter.focus.transform.position, skillRadius)); // Skills die ein Ziel brauchen
                 else if (canSelfCastIfNoTarget) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // Skills die ein Ziel bräuchten, aber notfalls den SPieler nehmen können.
@@ -282,207 +468,66 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         }
     }
 
-    public void RangeCheck() // check for range and line of sight
+    public virtual void SkillEffect() // overridden by each skill seperately
     {
-        // Für Skills die kein Ziel brauchen
-        if (!needsTargetAlly && !needsTargetEnemy) QueueCheck();
-
-
-        // Falls kein Target aber selbst castable
-        if (interactionCharacter.focus == null && canSelfCastIfNoTarget) QueueCheck();
-
-        // Spezialfall: Wenn eigentlich freundliches Target gebraucht wird, aber ein Gegner im Target ist, das jedoch nicht gemerkt wird, weil der Skill selfcastable ist, muss die Range nicht gecheckt werden.
-        if (LayerMask.NameToLayer("Enemy") == interactionCharacter.focus.gameObject.layer && needsTargetAlly && canSelfCastIfNoTarget)
-        {
-            forceTargetPlayer = true;
-            QueueCheck();
-        }
-
-        // Bestimmt den Abstand zwischen Ziel und Spieler
-        float distance = Vector2.Distance(PLAYER.transform.position, interactionCharacter.focus.transform.position);
-        if (distance <= skillRange) // target in range
-        {
-            // Versucht einen Raycast, ob Blickfeld durch Mauern o.ä. blockiert ist.
-            RaycastHit2D[] hit = Physics2D.LinecastAll(PLAYER.transform.position,
-                interactionCharacter.focus.gameObject.transform.position, (1 << LayerMask.NameToLayer("Borders")) |
-                (1 << LayerMask.NameToLayer("Action")) | (1 << LayerMask.NameToLayer("Ally")) | (1 << LayerMask.NameToLayer("Enemy")));
-
-            targetInSight = true;
-            for (int i = 0; i < hit.Length; i++)
-            {
-                if (hit[i].collider.gameObject.layer == LayerMask.NameToLayer("Borders")) targetInSight = false;
-            }
-
-            if (targetInSight) QueueCheck(); // target in sight
-            else Debug.Log("Target in range but NOT in sight"); // target not in sight
-
-        }
-        else Debug.Log("Target not in range: Distance " + distance + " > " + skillRange); // target not in range
+        playerStats.OnCastedSkillCallback();
     }
 
-    public void QueueCheck() // checks if queue is empty
+    public virtual void Update()
     {
-        if ((!isSuperInstant && !masterChecks.masterIsSkillInQueue) || (isSuperInstant && !isSkillInOwnSuperInstantQueue)) OwnCooldownCheck();
-        else Debug.Log("ERROR: queue full");
-    }
-
-    public void OwnCooldownCheck() // checks for own cooldown
-    {
-        if (hasOwnCooldown) // has own cooldown
-        {
-            if (!ownCooldownActive) SuperInstantCheck(); // own cooldown not active
-            else if (ownCooldownTimeLeft <= masterChecks.masterOwnCooldownEarlyTime) SuperInstantCheck(); // time left <= 0.5
-            else Debug.Log("ERROR: Own cooldown active " + ownCooldownTimeLeft); // own cooldown active
-        }
-        else SuperInstantCheck(); // has no own cooldown
-    }
-
-    public void SuperInstantCheck() // checks if skill is a SuperInstant
-    {
-        if (isSuperInstant)
-        {
-            StartCoroutine(Wait(ownCooldownTimeLeft));
-            IEnumerator Wait(float time)
-            {
-                isSkillInOwnSuperInstantQueue = true;
-                if (time > 0) { FindObjectOfType<AudioManager>().Play("HoverClickUpPitch"); }
-                else { FindObjectOfType<AudioManager>().Play("HoverClick"); }
-                yield return new WaitForSeconds(time);
-                isSkillInOwnSuperInstantQueue = false;
-                ownCooldownActive = true;
-                ownCooldownTimeLeft = ownCooldownTimeModified;
-                if (needsMana) { playerStats.ManageMana(-manaCost); }
-                StartCasting();
-            }
-        }
-        else
-        {
-            GlobalCooldownCheck();
-        }
-    }
-
-    public void GlobalCooldownCheck() // checks for GlobalCooldown and skill casting times and waits for skill
-    {
-        if ((!hasGlobalCooldown || (hasGlobalCooldown && !masterChecks.masterGCActive)) && !playerStats.isCurrentlyCasting) // no GC and casting trouble
-        {
-            StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterAnimTimeLeft)));
-        }
-        else if ((masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime) && (masterChecks.castTimeCurrent <= masterChecks.masterGCEarlyTime)) // GC early cast
-        {
-            StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterGCTimeLeft, masterChecks.masterAnimTimeLeft, masterChecks.castTimeCurrent)));
-        }
-        else // hasGlobalCooldown && globalCooldownActive // GC active (too early)
-        {
-            if (masterChecks.castTimeCurrent > masterChecks.masterGCEarlyTime) Debug.Log("ERROR: Casting");
-            else Debug.Log("ERROR A: GC active (too early) " + masterChecks.masterGCTimeLeft + " > " + masterChecks.masterGCEarlyTime);            
-            FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
-        }
-    }
-
-    private IEnumerator WaitForSkill(float time)
-    {
-        masterChecks.masterIsSkillInQueue = true;
-        if (time > 0) { FindObjectOfType<AudioManager>().Play("HoverClickUpPitch"); }
-        else { FindObjectOfType<AudioManager>().Play("HoverClick"); }
-        yield return new WaitForSeconds(time);
-        masterChecks.masterIsSkillInQueue = false;
-        //Debug.Log("... Use Skill");
-        if (isPlacableAoE)
-        {
-            PlacableAoESkillProcedure();
-        }
-        else
-        {
-            TriggerSkill();
-        }
-    }
-
-    public void PlacableAoESkillProcedure()
-    {
-        if (!hasUnusedSpell)
-        {
-            unusedSpell = Instantiate(PlacableAOEIndicator, mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
-            hasUnusedSpell = true;
-            Debug.Log("Labl Labl");
-        }
-        else // Wenn Unused Spell
-        {
-            Debug.Log("Gubl Gubl");
-        }
-    }
-
-    public void TriggerSkill()
-    {
-        // TriggerGlobalCooldown
-        if (hasGlobalCooldown)
-        {
-            masterChecks.masterGCActive = true;
-            masterChecks.masterGCTimeLeft = masterChecks.masterGCTimeModified;
-        }
-
-        // TriggerSkillAnimation
-        masterChecks.masterAnimationActive = true;
-        masterChecks.masterAnimTimeLeft = masterChecks.masterAnimTime;
-
-        // TriggerOwnCooldown
-        if (hasOwnCooldown)
-        {
-            ownCooldownActive = true;
-            ownCooldownTimeLeft = ownCooldownTimeModified;
-        }
-
-        if (needsMana)
-        {
-            playerStats.ManageMana(-manaCost);
-        }
-
-        if (isAOEFrontCone)
-        {
-            StartCoroutine(FrontAOEIndicator(0.2f));
-        }
-
-        StartCasting();
-    }
-
-    public virtual void StartCasting()
-    {
-        if (castTimeOriginal <= 0)
+        if (masterChecks.masterIsCastFinished && castStarted)
         {
             AOECheck();
             SkillEffect();
-            if (isPlacableAoE)
+            castStarted = false;
+            if (!isSkillChanneling)
             {
-                unusedSpell.GetComponent<AoESpellIndicator>().duration = skillDuration;
-                unusedSpell.GetComponent<AoESpellIndicator>().isIndicatorActive = true;
-                unusedSpell = null;
-                hasUnusedSpell = false;
-                Debug.Log("Zahle Mana");
+                masterChecks.masterIsCastFinished = false;
             }
         }
+
+        if (ownCooldownTimeLeft > 0) ownCooldownTimeLeft -= Time.deltaTime;
         else
         {
-            if (isSkillChanneling)
-            { playerStats.castingBarChanneling = true; }
-            else
-            { playerStats.castingBarChanneling = false; }
-            playerStats.castingBarImage = tooltipSkillSprite;
-            playerStats.castingBarText = tooltipSkillName;
-            
-            PLAYER.transform.Find("PlayerParticleSystems").Find("CastingParticles").gameObject.GetComponent<ParticleSystem>().Play();
-            masterChecks.isSkillInterrupted = false;
-            castTimeModified = castTimeOriginal / playerStats.actionSpeed.GetValue();
-            masterChecks.castTimeCurrent = castTimeModified;
-            masterChecks.castTimeMax = castTimeModified;
-            castStarted = true;
-            //Debug.Log("Skloss");
-            playerStats.isCurrentlyCasting = true;
-
-            if (isSkillChanneling)
+            if (ownCooldownActive)
             {
-                AOECheck();
-                SkillEffect();
+                ownCooldownActive = false;
+                ownCooldownTimeLeft = 0;
             }
         }
+    }
+
+    void Awake()
+    {
+        mainCam = GameObject.Find("CameraMama").transform.Find("MainKamera").GetComponent<Camera>();
+
+        PLAYER = transform.parent.parent.gameObject;
+        masterChecks = PLAYER.transform.Find("Own Canvases").Find("Canvas Action Skills").GetComponent<MasterChecks>();
+        interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
+        playerStats = PLAYER.GetComponent<PlayerStats>();
+        classAnimator = PLAYER.transform.Find("PlayerAnimation").GetComponent<Animator>();
+    }
+
+    public virtual void Start()
+    {
+        
+    }
+
+    public void DealDamage(float damage)
+    {
+        for (int i = 0; i < currentTargets.Count; i++)
+        { DamageOrHealing.DealDamage(PLAYER.GetComponent<NetworkBehaviour>(), currentTargets[i].GetComponent<NetworkBehaviour>(), damage, false, false); }
+    }
+
+    public void DealDamage(GameObject extraTarget, float damage)
+    {
+        if (extraTarget != null) DamageOrHealing.DealDamage(PLAYER.GetComponent<NetworkBehaviour>(), extraTarget.GetComponent<NetworkBehaviour>(), damage, false, false);
+    }
+
+    public void DoHealing(float healing)
+    {
+        for (int i = 0; i < currentTargets.Count; i++)
+        { DamageOrHealing.DoHealing(PLAYER.GetComponent<NetworkBehaviour>(), currentTargets[i].GetComponent<NetworkBehaviour>(), healing); }
     }
 
     public void PlaySkillAnimation(string className, string animationName)
@@ -524,100 +569,6 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
     }
 
-    public virtual void SkillEffect() // overridden by each skill seperately
-    {
-        playerStats.OnCastedSkillCallback();
-    }
-
-    public virtual void Update()
-    {
-        if (masterChecks.masterIsCastFinished && castStarted)
-        {
-            if (isPlacableAoE)
-            {
-                unusedSpell.GetComponent<AoESpellIndicator>().duration = skillDuration;
-                unusedSpell.GetComponent<AoESpellIndicator>().isIndicatorActive = true;
-                unusedSpell = null;
-                hasUnusedSpell = false;
-                Debug.Log("Zahle Mana");
-            }
-            AOECheck();
-            SkillEffect();
-            castStarted = false;
-            if (!isSkillChanneling)
-            {
-                masterChecks.masterIsCastFinished = false;
-            }
-        }
-        
-
-        if (ownCooldownTimeLeft > 0)
-        {
-            ownCooldownTimeLeft -= Time.deltaTime;
-        }
-        else
-        {
-            if (ownCooldownActive)
-            {
-                ownCooldownActive = false;
-                ownCooldownTimeLeft = 0;
-            }
-        }
-
-        float attackSpeedModifier = 1 - (playerStats.actionSpeed.GetValue() / 100);
-        ownCooldownTimeModified = ownCooldownTimeBase * attackSpeedModifier;
-
-        if (unusedSpell != null || hasUnusedSpell == true)
-        {
-            Vector3 mouseScreenposition = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            unusedSpell.transform.position = new Vector3(mouseScreenposition.x, mouseScreenposition.y, 0);
-
-            if (Mouse.current.rightButton.wasPressedThisFrame)
-            {
-                Destroy(unusedSpell);
-                unusedSpell = null;
-                hasUnusedSpell = false;
-            }
-            else if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
-                TriggerSkill();
-            }
-        }
-    }
-
-    void Awake()
-    {
-        mainCam = GameObject.Find("CameraMama").transform.Find("MainKamera").GetComponent<Camera>();
-
-        PLAYER = transform.parent.parent.gameObject;
-        masterChecks = PLAYER.transform.Find("Own Canvases").Find("Canvas Action Skills").GetComponent<MasterChecks>();
-        interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
-        playerStats = PLAYER.GetComponent<PlayerStats>();
-        classAnimator = PLAYER.transform.Find("PlayerAnimation").GetComponent<Animator>();
-    }
-
-    public virtual void Start()
-    {
-        
-    }
-
-    public void DealDamage(float damage)
-    {
-        for (int i = 0; i < currentTargets.Count; i++)
-        { DamageOrHealing.DealDamage(PLAYER.GetComponent<NetworkBehaviour>(), currentTargets[i].GetComponent<NetworkBehaviour>(), damage, false, false); }
-    }
-
-    public void DealDamage(GameObject extraTarget, float damage)
-    {
-        if (extraTarget != null) DamageOrHealing.DealDamage(PLAYER.GetComponent<NetworkBehaviour>(), extraTarget.GetComponent<NetworkBehaviour>(), damage, false, false);
-    }
-
-    public void DoHealing(float healing)
-    {
-        for (int i = 0; i < currentTargets.Count; i++)
-        { DamageOrHealing.DoHealing(PLAYER.GetComponent<NetworkBehaviour>(), currentTargets[i].GetComponent<NetworkBehaviour>(), healing); }
-    }
-
     public IEnumerator FrontAOEIndicator(float time)
     {
         Vector2 normalSize = PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().size;
@@ -635,8 +586,6 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().color = frontSpriteColor2;
         PLAYER.transform.Find("RotationMeasurement").GetComponent<SpriteRenderer>().size = normalSize;
     }
-
-
 
     public IEnumerator CircleAOEIndicator(float time)
     {
@@ -658,8 +607,6 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().size = normalSize;
         PLAYER.transform.Find("RotationMeasurement").Find("CircleAOEIndicator").GetComponent<SpriteRenderer>().enabled = false;
     }
-
-
 
     public virtual void SetMyCooldown(float coolDown)
     {

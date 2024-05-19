@@ -22,10 +22,12 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
     float maxFocusRange = 20f;
 
     private PlayerTargetInfoUI myTargetUI;
+    private MasterChecks myMasterChecks;
 
     private void Start()
     {
         myTargetUI = transform.Find("Own Canvases").Find("CanvasHealth").Find("TargetHealth").GetComponent<PlayerTargetInfoUI>();
+        myMasterChecks = transform.Find("Own Canvases").Find("Canvas Action Skills").GetComponent<MasterChecks>();
     }
 
     void Update()
@@ -33,11 +35,6 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
         if (!IsOwner) { return; }
 
         if(EventSystem.current.IsPointerOverGameObject()) return;
-
-        if (true)
-        {
-
-        }
 
         if (focus != null)
         {
@@ -52,7 +49,9 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
 
         if (Mouse.current.rightButton.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)  // Wenn rechte Maustaste gedrückt
         {
-            if (!EventSystem.current.IsPointerOverGameObject()) // Wenn Mauszeiger nicht über UI Element ist.
+            if (myMasterChecks.hasUnusedSpell != false) return;
+
+            if (!EventSystem.current.IsPointerOverGameObject()) // Wenn Mauszeiger nicht über UI Element ist. Und der Spieler keinen unverwendeten Skill hat.
             {
                 RemoveFocus();
             }
