@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestAttack2 : SkillPrefabOld
+public class TestAttack2 : SkillPrefab
 {
     public float baseDamage = 100f;
     public float comboDamage = 120f;

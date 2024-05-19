@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestSkill : SkillPrefabOld
+public class TestSkill : SkillPrefab
 {
     public float duration;
     public float value;

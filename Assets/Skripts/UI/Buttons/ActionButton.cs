@@ -92,7 +92,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         }
         else
         {
-            if (buttonSkill.ownCooldownActive)
+            if (buttonSkill.ownCooldownTimeLeft > 0)
             {
                 buttonText.text = "";
                 if (!buttonSkill.hasGlobalCooldown || (buttonSkill.masterChecks.masterGCTimeLeft <= 0))

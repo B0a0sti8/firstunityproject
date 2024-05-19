@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class TestEnergyDrain : SkillPrefabOld
+public class TestEnergyDrain : SkillPrefab
 {
     public float damage = 200f;
 

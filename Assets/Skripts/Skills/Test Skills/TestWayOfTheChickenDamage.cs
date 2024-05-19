@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestWayOfTheChickenDamage : SkillPrefabOld
+public class TestWayOfTheChickenDamage : SkillPrefab
 {
     [Header("Hot-Stats")]
     public float damage = 100f;
@@ -16,7 +16,7 @@ public class TestWayOfTheChickenDamage : SkillPrefabOld
     public override void Start()
     {
         base.Start();
-        isAOEFrontCone = true;
+        //isAOEFrontCone = true;
         needsTargetAlly = false;
         needsTargetEnemy = false;
         targetsEnemiesOnly = true;

@@ -23,7 +23,6 @@ public class SummonStoneGolem : SkillPrefab
         ownCooldownTimeBase = 3f;
 
         castTimeOriginal = 1f;
-        isSkillChanneling = false;
 
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
         myMinionDamageBase = 30f;

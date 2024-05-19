@@ -24132,13 +24132,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterAnimationActive: 0
-  masterAnimTime: 0.5
+  masterAnimTime: 0
   masterAnimTimeLeft: 0
   masterGCActive: 0
-  masterGCTimeModified: 1.5
+  masterGCTimeModified: 0
   masterGCTimeLeft: 0
-  masterGCEarlyTime: 0.5
-  masterOwnCooldownEarlyTime: 0.5
+  masterGCEarlyTime: 0
+  masterOwnCooldownEarlyTime: 0
   masterIsSkillInQueue: 0
   castTimeMax: 0
   castTimeCurrent: 0
@@ -83889,13 +83889,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31df3e342ea5d8449157f094c10c246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
-  isSelfCast: 0
+  isCastOnSelf: 0
   needsTargetEnemy: 1
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -83926,14 +83927,11 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
-  isAOECircle: 0
-  isAOEFrontCone: 0
-  isAOELine: 0
+  myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlacableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
-  unusedSpell: {fileID: 0}
   skillDuration: 0
   damage: 100
 --- !u!114 &1057949729613587128
@@ -83948,13 +83946,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2002c1d39c6a4b94abaee1fce9463564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
-  isSelfCast: 0
+  isCastOnSelf: 0
   needsTargetEnemy: 1
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -83985,14 +83984,11 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
-  isAOECircle: 0
-  isAOEFrontCone: 0
-  isAOELine: 0
+  myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlacableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
-  unusedSpell: {fileID: 0}
   skillDuration: 0
   baseDamage: 100
   comboDamage: 120
@@ -84008,13 +84004,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a2995d4291f1f443b026fefcdb33af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
-  isSelfCast: 0
+  isCastOnSelf: 0
   needsTargetEnemy: 1
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -84045,14 +84042,11 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
-  isAOECircle: 0
-  isAOEFrontCone: 0
-  isAOELine: 0
+  myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlacableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
-  unusedSpell: {fileID: 0}
   skillDuration: 0
   baseDamage: 100
   comboDamage: 150
@@ -84068,13 +84062,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daed0c328b8684648abdebeef7fafe7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
-  isSelfCast: 0
+  isCastOnSelf: 0
   needsTargetEnemy: 1
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -84105,14 +84100,11 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
-  isAOECircle: 0
-  isAOEFrontCone: 0
-  isAOELine: 0
+  myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlacableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
-  unusedSpell: {fileID: 0}
   skillDuration: 0
   damage: 400
 --- !u!114 &4132811638230271047
@@ -84127,13 +84119,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf914e7c11d493945b9c7bdb809e7ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
-  isSelfCast: 0
+  isCastOnSelf: 0
   needsTargetEnemy: 1
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -84164,14 +84157,11 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
-  isAOECircle: 0
-  isAOEFrontCone: 0
-  isAOELine: 0
+  myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlacableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
-  unusedSpell: {fileID: 0}
   skillDuration: 0
   damage: 200
 --- !u!114 &203713702215444478
@@ -84186,13 +84176,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7951b4df8850b4aacffbf8c2d46421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
-  isSelfCast: 0
+  isCastOnSelf: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -84223,14 +84214,11 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
-  isAOECircle: 0
-  isAOEFrontCone: 0
-  isAOELine: 0
+  myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlacableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
-  unusedSpell: {fileID: 0}
   skillDuration: 0
   duration: 0
   value: 0
@@ -84247,13 +84235,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4625079c262c7242b5ee01b48a58ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
-  isSelfCast: 0
+  isCastOnSelf: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 1
@@ -84284,14 +84273,11 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
-  isAOECircle: 0
-  isAOEFrontCone: 0
-  isAOELine: 0
+  myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlacableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
-  unusedSpell: {fileID: 0}
   skillDuration: 0
   duration: 30
   value: 50
@@ -84308,13 +84294,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48aed6df567d7847b49192619df94bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
-  isSelfCast: 0
+  isCastOnSelf: 0
   needsTargetEnemy: 0
   needsTargetAlly: 1
   canSelfCastIfNoTarget: 1
@@ -84345,14 +84332,11 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
-  isAOECircle: 0
-  isAOEFrontCone: 0
-  isAOELine: 0
+  myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlacableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
-  unusedSpell: {fileID: 0}
   skillDuration: 0
   healing: 75
 --- !u!114 &8408333702287430284
@@ -84367,13 +84351,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de889c88ee79fa439d9291169b620f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
-  isSelfCast: 0
+  isCastOnSelf: 0
   needsTargetEnemy: 0
   needsTargetAlly: 1
   canSelfCastIfNoTarget: 1
@@ -84404,14 +84389,11 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
-  isAOECircle: 0
-  isAOEFrontCone: 0
-  isAOELine: 0
+  myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlacableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
-  unusedSpell: {fileID: 0}
   skillDuration: 0
   instantHealing: 50
   tickTime: 2
@@ -84430,13 +84412,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f894270ec9a234c48897bb9ec647ff5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
-  isSelfCast: 0
+  isCastOnSelf: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -84467,14 +84450,11 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
-  isAOECircle: 0
-  isAOEFrontCone: 0
-  isAOELine: 0
+  myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlacableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
-  unusedSpell: {fileID: 0}
   skillDuration: 0
   duration: 8
   value: 5
@@ -84491,13 +84471,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80e0b18765ccd647aaffebe6022c4fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
-  isSelfCast: 0
+  isCastOnSelf: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -84528,14 +84509,11 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
-  isAOECircle: 0
-  isAOEFrontCone: 0
-  isAOELine: 0
+  myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlacableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
-  unusedSpell: {fileID: 0}
   skillDuration: 0
   heal: 100
 --- !u!114 &8215493504788211074
@@ -84550,13 +84528,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae58debcfcd18446af92508e8efa10a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
-  isSelfCast: 0
+  isCastOnSelf: 0
   needsTargetEnemy: 0
   needsTargetAlly: 1
   canSelfCastIfNoTarget: 1
@@ -84587,17 +84566,12 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
-  isAOECircle: 0
-  isAOEFrontCone: 0
-  isAOELine: 0
+  myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlacableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
-  unusedSpell: {fileID: 0}
   skillDuration: 0
-  totalHeal: 10000
-  healTick: 0
 --- !u!114 &4166195230893305512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84610,13 +84584,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7294bd058d554a45b65055f10083978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
-  isSelfCast: 0
+  isCastOnSelf: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -84647,14 +84622,11 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
-  isAOECircle: 0
-  isAOEFrontCone: 0
-  isAOELine: 0
+  myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlacableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
-  unusedSpell: {fileID: 0}
   skillDuration: 0
   damage: 100
   tickTime: 1
@@ -84673,13 +84645,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 904c9a55daf961744a399e56a969d134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
   playerStats: {fileID: 0}
   myClass: 
   animationTime: 1.5
-  isSelfCast: 0
+  isCastOnSelf: 0
   needsTargetEnemy: 0
   needsTargetAlly: 0
   canSelfCastIfNoTarget: 0
@@ -84710,14 +84683,11 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
-  isAOECircle: 1
-  isAOEFrontCone: 0
-  isAOELine: 0
+  myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlacableAoE: 1
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 488976138668359019, guid: 453e29a18b589c240851511041c34cb8, type: 3}
-  unusedSpell: {fileID: 0}
   skillDuration: 3
 --- !u!1 &5085567595039653821
 GameObject:
@@ -101830,6 +101800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59051229e9d8ab4f8aa5f7b81e36569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -101870,7 +101841,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
   dragonling: {fileID: 2023599406339572345, guid: f407b2ef94e5e224585d8fdc5bbc96c7, type: 3}
@@ -101886,6 +101857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7391cd8229bec7947951140980eca4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -101926,7 +101898,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
 --- !u!114 &2666061716428747962
@@ -101941,6 +101913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee738e969445d54689e2262c29fb694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -101981,7 +101954,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
   buffDuration: 10
@@ -101999,6 +101972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff81c30a9e6cbca46bc21103e42cdbc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -102039,7 +102013,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
 --- !u!114 &6869431587684373569
@@ -102054,6 +102028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c1689c0e8ad8d4c8a7a1279b2bbe51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -102094,7 +102069,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
   damage: 400
@@ -102111,6 +102086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892ea7439a00b1d45b27ab0a9a336938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -102151,7 +102127,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
   imp: {fileID: 2023599406339572345, guid: 8b60f533911b45045a297c3be5168537, type: 3}
@@ -102167,6 +102143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9084c0ac197c06a4cb06a5000628c5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -102207,7 +102184,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
   dragonAOEAnimation: {fileID: 647104670885987435, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
@@ -102223,6 +102200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e07c26c30de244da11fd649a81daeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -102263,7 +102241,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
 --- !u!114 &2069624952473487591
@@ -102278,6 +102256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b73eca3b90c5b4a8a0353217ade907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -102318,7 +102297,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
 --- !u!114 &3327228784054228821
@@ -102333,6 +102312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95ed707eacf7ea469532e020a99fb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -102373,7 +102353,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
   stoneGolem: {fileID: 2023599406339572345, guid: 0f63cd95e293b934dab93a93ae6b3448, type: 3}
@@ -102389,6 +102369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e96d8af890483941ac42722e771cbfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -102429,7 +102410,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
   treeSpirit: {fileID: 2023599406339572345, guid: 6c589c66bd1ea964eb666b522cc15403, type: 3}
@@ -102445,6 +102426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08bcfbaf3b194d941a2d6819e8bd38e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -102485,7 +102467,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
   buffDuration: 15
@@ -102506,6 +102488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a49c1357270c3843a694b1089f30706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -102546,7 +102529,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
   buffDuration: 5
@@ -102563,6 +102546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45e972f7088ec54dac8e637a26ccc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -102603,7 +102587,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
   damage: 400
@@ -102620,6 +102604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b0232f49a22c824f86ca0fb571e596a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -102660,7 +102645,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
   buffDurationBase: 0
@@ -102678,6 +102663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5744438fdb1134794f02438ef39fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -102718,7 +102704,7 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   skillDuration: 0
   buffBaseDuration: 0
@@ -102735,6 +102721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365b8f6936257ed41a12e6531f3e1b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   masterChecks: {fileID: 0}
   PLAYER: {fileID: 0}
   interactionCharacter: {fileID: 0}
@@ -102775,9 +102762,10 @@ MonoBehaviour:
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
-  isPlaceableAoE: 0
+  circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 8178936376505829310, guid: 79ccdfd4556f2774eaa2acc3c585f85d, type: 3}
   skillDuration: 0
+  myFireImpactAnim: {fileID: 416251089823111746, guid: 90f7cae453562b94892b7df049ac9d41, type: 3}
 --- !u!1 &6484973489908793764
 GameObject:
   m_ObjectHideFlags: 0

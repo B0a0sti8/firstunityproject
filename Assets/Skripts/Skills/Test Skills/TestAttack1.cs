@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestAttack1 : SkillPrefabOld
+public class TestAttack1 : SkillPrefab
 {
     public float damage = 100f;
 
     public override void Start()
     {
         base.Start();
-        isAOECircle = true;
+        //isAOECircle = true;
         skillRadius = 10;
     }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestHeal : SkillPrefabOld
+public class TestHeal : SkillPrefab
 {
     public float heal = 100f;
 
@@ -14,7 +14,7 @@ public class TestHeal : SkillPrefabOld
         canSelfCastIfNoTarget = true;
         skillRadius = 10f;
         skillRange = 10f;
-        isAOECircle = true;
+        //isAOECircle = true;
 }
 
     public override void Update()
