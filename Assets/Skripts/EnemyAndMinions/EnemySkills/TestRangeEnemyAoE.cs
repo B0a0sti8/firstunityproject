@@ -12,9 +12,6 @@ public class TestRangeEnemyAoE : EnemySkillPrefab
     public Sprite buffImage;
     TheWayOfTheChickenDamageDebuff buff = new TheWayOfTheChickenDamageDebuff();
 
-    //float baseDotDamage;
-    //float dotDuration;
-
     private void Start()
     {
         cooldown = 10f;
@@ -22,8 +19,6 @@ public class TestRangeEnemyAoE : EnemySkillPrefab
         range = 10f;
         radius = 2f;
         baseDamage = 200;
-        //baseDotDamage = 20;
-        //dotDuration = 10;
     }
 
     public override void AtSkillStart()
@@ -50,7 +45,6 @@ public class TestRangeEnemyAoE : EnemySkillPrefab
         foreach (GameObject tar in myTargets)
         {
             DamageOrHealing.DealDamage(transform.parent.gameObject.GetComponent<NetworkBehaviour>(), tar.GetComponent<NetworkBehaviour>(), baseDamage);
-            //tar.GetComponent<BuffManager>().AddBuff(clone, buffImage, dotDuration, 1f, baseDotDamage);
         }
         myTargets.Clear();
 

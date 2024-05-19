@@ -8959,7 +8959,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f8f3fe61d85d89041a12457e75a038c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 584fa7e3173d105489106953fb195ba2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15211,7 +15211,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 536833264136320812}
   m_HandleRect: {fileID: 536833264136320813}
   m_Direction: 2
-  m_Value: 0.00000006746684
+  m_Value: 0.00000011244474
   m_Size: 0.40829694
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -50055,7 +50055,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e317a35f96341be4cae4ca616823fc05, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad18b74c7ccfa4f47b21ef2eee3edf1d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -50072,7 +50072,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2254598432581092208}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -50922,7 +50922,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0cad3efa974ead843a0e97442ac1280a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f15b55432014caa4ab118de445e4cc9f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -62200,7 +62200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e2ee5a2e01fd6a94eabd6e683572a2c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cfce91c88491df64b83c4292fd25b04c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -77772,7 +77772,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e2ee5a2e01fd6a94eabd6e683572a2c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd374cdd5802ed44aaa374a9c625144b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -78593,7 +78593,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0cad3efa974ead843a0e97442ac1280a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f4b194442d4833846b3ebcd405b5447d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -83911,7 +83911,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 1
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -83927,6 +83926,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -83968,7 +83968,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 1
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -83984,6 +83983,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -84026,7 +84026,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 1
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -84042,6 +84041,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -84084,7 +84084,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 1
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -84100,6 +84099,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -84141,7 +84141,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -84157,6 +84156,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -84198,7 +84198,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 1
   masterET: {fileID: 0}
@@ -84214,6 +84213,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -84257,7 +84257,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -84273,6 +84272,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -84316,7 +84316,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -84332,6 +84331,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -84373,7 +84373,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -84389,6 +84388,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -84434,7 +84434,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -84450,6 +84449,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -84493,7 +84493,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -84509,6 +84508,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -84550,7 +84550,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -84566,6 +84565,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -84606,7 +84606,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -84622,6 +84621,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -84667,7 +84667,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 4
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 1
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -84683,6 +84682,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -101822,7 +101822,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -101838,6 +101837,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -101879,7 +101879,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -101895,6 +101894,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -101935,7 +101935,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -101951,6 +101950,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -101994,7 +101994,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -102010,6 +102009,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -102050,7 +102050,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -102066,6 +102065,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -102108,7 +102108,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -102124,6 +102123,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -102165,7 +102165,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -102181,6 +102180,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -102222,7 +102222,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -102238,6 +102237,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -102278,7 +102278,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -102294,6 +102293,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -102334,7 +102334,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -102350,6 +102349,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -102391,7 +102391,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -102407,6 +102406,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -102448,7 +102448,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -102464,6 +102463,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -102510,7 +102510,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -102526,6 +102525,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -102568,7 +102568,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -102584,6 +102583,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -102626,7 +102626,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -102642,6 +102641,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -102685,7 +102685,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -102701,6 +102700,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -102743,7 +102743,6 @@ MonoBehaviour:
   ownCooldownTimeBase: 0
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
-  ownCooldownActive: 0
   hasGlobalCooldown: 0
   isSuperInstant: 0
   masterET: {fileID: 0}
@@ -102759,6 +102758,7 @@ MonoBehaviour:
   castTimeModified: 0
   castStarted: 0
   isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
   myAreaType: 0
   coneAOEDirection: {x: 0, y: 0, z: 0}
   coneAOEAngle: 50
@@ -102766,6 +102766,7 @@ MonoBehaviour:
   PlacableAOEIndicator: {fileID: 8178936376505829310, guid: 79ccdfd4556f2774eaa2acc3c585f85d, type: 3}
   skillDuration: 0
   myFireImpactAnim: {fileID: 416251089823111746, guid: 90f7cae453562b94892b7df049ac9d41, type: 3}
+  myFireDemonPrefab: {fileID: 2023599406339572345, guid: 0580a3561befec2418606804084ea75c, type: 3}
 --- !u!1 &6484973489908793764
 GameObject:
   m_ObjectHideFlags: 0
@@ -106068,7 +106069,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e317a35f96341be4cae4ca616823fc05, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e59c9649cf7b5ba4eb52d9b71f6922b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

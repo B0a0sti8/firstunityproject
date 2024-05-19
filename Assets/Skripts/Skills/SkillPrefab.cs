@@ -287,8 +287,6 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         StartCasting();
     }
 
-
-
     public virtual void StartCasting()
     {
         TriggerSkillCooldown();
