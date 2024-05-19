@@ -17,7 +17,7 @@ public class SummonDragonling : SkillPrefab
 
         hasGlobalCooldown = true;
 
-        isSelfCast = true;
+        isCastOnSelf = true;
 
         hasOwnCooldown = true;
         ownCooldownTimeBase = 3f;
@@ -66,15 +66,6 @@ public class SummonDragonling : SkillPrefab
     [ServerRpc]
     private void SpawnDragonlingServerRpc(NetworkObjectReference summoningPlayer, float minionDamage)
     {
-        //ulong sumPlaID = serverRpcParams.Receive.SenderClientId;
-        //ClientRpcParams clientRpcParams = new ClientRpcParams
-        //{
-        //    Send = new ClientRpcSendParams
-        //    {
-        //        TargetClientIds = new ulong[] { sumPlaID }
-        //    }
-        //};
-
         Debug.Log("Summon Dragonling Server RPC!");
         summoningPlayer.TryGet(out NetworkObject sour);
         GameObject sumPla = sour.gameObject;

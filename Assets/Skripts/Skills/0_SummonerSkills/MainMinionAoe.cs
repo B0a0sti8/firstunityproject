@@ -14,7 +14,7 @@ public class MainMinionAoe : SkillPrefab
         base.Start();
         myClass = "Summoner";
 
-        isSelfCast = true;
+        isCastOnSelf = true;
 
         skillRadius = 5f;
 

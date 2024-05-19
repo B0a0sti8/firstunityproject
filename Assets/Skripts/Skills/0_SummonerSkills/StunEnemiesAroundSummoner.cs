@@ -18,11 +18,12 @@ public class StunEnemiesAroundSummoner : SkillPrefab
         hasGlobalCooldown = true;
         ownCooldownTimeBase = 10f;
 
-        isSelfCast = true;
+        isCastOnSelf = true;
 
         castTimeOriginal = 0f;
 
-        isAOECircle = true;
+        myAreaType = AreaType.CircleAroundTarget;
+        isCastOnSelf = true;
         skillRadius = 10f;
 
         needsTargetAlly = false;

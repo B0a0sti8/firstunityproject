@@ -27,7 +27,7 @@ public class SummonSpiritWolfOnSkill : SkillPrefab
         ownCooldownTimeBase = 60f;
 
         canSelfCastIfNoTarget = true;
-        isSelfCast = false;
+        isCastOnSelf = false;
         needsTargetAlly = true;
 
         castTimeOriginal = 0f;

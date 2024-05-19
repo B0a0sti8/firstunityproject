@@ -28,7 +28,7 @@ public class ExplodeImps : SkillPrefab
 
         castTimeOriginal = 1f;
         animationTime = 1f;
-        isAOECircle = true;
+        myAreaType = AreaType.CircleAroundTarget;
 
         elapsedFlingTime = 0f;
         maxFlingTime = 0.1f;

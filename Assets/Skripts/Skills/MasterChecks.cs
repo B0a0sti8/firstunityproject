@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 // AnimTime = GCEarlyTime = OwnCooldownEarlyTime
@@ -9,43 +10,49 @@ using UnityEngine.UI;
 
 public class MasterChecks : MonoBehaviour
 {
+    // Parameter für die Animationen
     public bool masterAnimationActive = false;
     public float masterAnimTime = 0.5f;
     public float masterAnimTimeLeft;
 
+    // Parameter für Global Cooldown und Einreihung, wenn ein Skill etwas zu früh gedrückt wird
     public bool masterGCActive = false;
     float masterGCTimeBase = 1.5f;
     public float masterGCTimeModified = 1.5f;
     public float masterGCTimeLeft;
     public float masterGCEarlyTime = 0.5f;
-
-    //public float masterOwnCooldownModifier = 1f;
     public float masterOwnCooldownEarlyTime = 0.5f;
 
+    // Parameter wenn momentan ein Skill gecastet wird.
     public bool masterIsSkillInQueue = false;
     public float castTimeMax;
     public float castTimeCurrent;
     public bool isSkillInterrupted = false;
     public bool masterIsCastFinished = false;
-    GameObject PLAYER;
 
+    public bool hasUnusedSpell = false;
+    public GameObject myUnusedSpellIndicator;
+    public SkillPrefab myUnusedSpell;
+
+    GameObject PLAYER;
     PlayerStats playerStats;
+    private Camera mainCam;
+
     private void Start()
     {
+        mainCam = GameObject.Find("CameraMama").transform.Find("MainKamera").GetComponent<Camera>();
         PLAYER = transform.parent.parent.gameObject;
         playerStats = PLAYER.GetComponent<PlayerStats>();
     }
 
-    void Update()
+    void LateUpdate()
     {
         float attackSpeedModifier = 1 - (playerStats.actionSpeed.GetValue() / 100);
         masterGCTimeModified = masterGCTimeBase * attackSpeedModifier;
 
-        if (masterAnimTimeLeft > 0)
-        {
-            masterAnimTimeLeft -= Time.deltaTime;
-        }
-        else // time <= 0
+        // Schaut ob ein AnimationsCooldown am laufen ist. Und lässt Zeit runterticken, wenn ja
+        if (masterAnimTimeLeft > 0) masterAnimTimeLeft -= Time.deltaTime;
+        else 
         {
             if (masterAnimationActive)
             {
@@ -54,11 +61,9 @@ public class MasterChecks : MonoBehaviour
             }
         }
 
-        if (masterGCTimeLeft > 0)
-        {
-            masterGCTimeLeft -= Time.deltaTime;
-        }
-        else // time <= 0
+        // Schaut ob der Global Cooldown am laufen ist. Und lässt Zeit runterticken, wenn ja
+        if (masterGCTimeLeft > 0) masterGCTimeLeft -= Time.deltaTime;
+        else 
         {
             if (masterGCActive)
             {
@@ -67,14 +72,12 @@ public class MasterChecks : MonoBehaviour
             }
         }
 
+        // Schaut ob der Skill unterbrochen wurde. Wenn nicht, wird die Zeit weiterlaufen gelassen. Wenn die Zeit um ist, wird SkillEffekt ausgelöst?
         if (playerStats.isCurrentlyCasting)
         {
             if (!isSkillInterrupted)
             {
-                if (castTimeCurrent > 0)
-                {
-                    castTimeCurrent -= Time.deltaTime;
-                }
+                if (castTimeCurrent > 0) castTimeCurrent -= Time.deltaTime;
                 else
                 {
                     playerStats.isCurrentlyCasting = false;
@@ -92,6 +95,29 @@ public class MasterChecks : MonoBehaviour
                 castTimeCurrent = 0;
                 castTimeMax = 0f;
                 PLAYER.transform.Find("PlayerParticleSystems").Find("CastingParticles").gameObject.GetComponent<ParticleSystem>().Stop();
+            }
+        }
+
+        if (myUnusedSpell != null || myUnusedSpellIndicator != null || hasUnusedSpell == true)
+        {
+            Vector3 mouseScreenposition = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            myUnusedSpellIndicator.transform.position = new Vector3(mouseScreenposition.x, mouseScreenposition.y, 0);
+
+            if (Mouse.current.rightButton.wasPressedThisFrame)
+            {
+                Destroy(myUnusedSpellIndicator);
+                myUnusedSpell = null;
+                myUnusedSpellIndicator = null;
+                hasUnusedSpell = false;
+            }
+            else if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                myUnusedSpell.StartCasting();
+
+                Destroy(myUnusedSpellIndicator);
+                myUnusedSpell = null;
+                myUnusedSpellIndicator = null;
+                hasUnusedSpell = false;
             }
         }
     }

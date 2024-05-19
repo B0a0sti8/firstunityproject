@@ -30,7 +30,7 @@ public class SummonInsectsOnEnemyDeath : SkillPrefab
 
         needsTargetEnemy = true;
         hasGlobalCooldown = true;
-        isSelfCast = false;
+        isCastOnSelf = false;
         ownCooldownTimeBase = 10f;
         castTimeOriginal = 0f;
         buffTickValue = 2f;

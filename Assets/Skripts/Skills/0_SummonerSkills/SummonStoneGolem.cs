@@ -17,7 +17,7 @@ public class SummonStoneGolem : SkillPrefab
 
         hasGlobalCooldown = true;
 
-        isSelfCast = true;
+        isCastOnSelf = true;
 
         hasOwnCooldown = true;
         ownCooldownTimeBase = 3f;

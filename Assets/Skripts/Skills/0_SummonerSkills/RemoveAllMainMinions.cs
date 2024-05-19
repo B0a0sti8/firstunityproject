@@ -21,7 +21,8 @@ public class RemoveAllMainMinions : SkillPrefab
 
         castTimeOriginal = 0;
         animationTime = 0f;
-        isAOECircle = false;
+        myAreaType = AreaType.CircleAroundTarget;
+        isCastOnSelf = true;
 
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
     }
