@@ -9,7 +9,7 @@ using Unity.Netcode;
 
 public class SkillPrefab : NetworkBehaviour//, IUseable
 {
-    private Camera mainCam;
+    public Camera mainCam;
 
     [HideInInspector]
     public MasterChecks masterChecks;
@@ -33,6 +33,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public List<GameObject> currentTargets = new List<GameObject>();
     protected GameObject mainTargetForCircleAoE;
     bool forceTargetPlayer;
+    GameObject targetSnapShot;
 
     [Header("Mana")]
     public bool needsMana; // optional
@@ -51,8 +52,6 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public float ownCooldownTimeModified;
     [HideInInspector]
     public float ownCooldownTimeLeft;
-    [HideInInspector]
-    public bool ownCooldownActive = false;
 
     [Header("Skilltype")]
     public bool hasGlobalCooldown;
@@ -83,7 +82,8 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public float castTimeOriginal = 0f;
     public float castTimeModified;
     public bool castStarted = false;
-    public bool isSkillChanneling;
+    public bool isSkillChanneling = false;
+    public bool isChannelingSkillEffectActive;
 
     public enum AreaType
     {
@@ -98,12 +98,9 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public AreaType myAreaType;
 
     [Header("Area of Effect")]
-    //public bool isAOECircle = false;
-    //public bool isAOEFrontCone = false;
-    //public bool isAOELine = false;
     public Vector3 coneAOEDirection;
     public float coneAOEAngle = 50;
-    private Interactable circleAim;
+    public Vector3 circleAim;
     //public bool isPlaceableAoE;
     public GameObject PlacableAOEIndicator;
     float indicatorScaleFactor = 1;
@@ -150,6 +147,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         }
 
         // Wenn er bis hier her kommt, braucht er kein Target, kann den Skill auf sich selbst casten, falls er keines hat oder er hat ein passendes Target.
+        if (interactionCharacter.focus != null) targetSnapShot = interactionCharacter.focus.gameObject;
         RangeCheck();
     }
 
@@ -167,17 +165,17 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public void RangeCheck() // check for range and line of sight
     {
         // Für Skills die kein Ziel brauchen
-        if (!needsTargetAlly && !needsTargetEnemy) { QueueCheck(); return; }
+        if (!needsTargetAlly && !needsTargetEnemy) { OwnCooldownCheck(); return; } // QueueCheck
 
 
         // Falls kein Target aber selbst castable
-        else if (interactionCharacter.focus == null && canSelfCastIfNoTarget) { QueueCheck(); return; }
+        else if (interactionCharacter.focus == null && canSelfCastIfNoTarget) { OwnCooldownCheck(); return; } // QueueCheck
 
         // Spezialfall: Wenn eigentlich freundliches Target gebraucht wird, aber ein Gegner im Target ist, das jedoch nicht gemerkt wird, weil der Skill selfcastable ist, muss die Range nicht gecheckt werden.
         else if (LayerMask.NameToLayer("Enemy") == interactionCharacter.focus.gameObject.layer && needsTargetAlly && canSelfCastIfNoTarget)
         {
             forceTargetPlayer = true;
-            QueueCheck();
+            OwnCooldownCheck(); // QueueCheck
         }
 
         // Bestimmt den Abstand zwischen Ziel und Spieler
@@ -195,53 +193,72 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
                 if (hit[i].collider.gameObject.layer == LayerMask.NameToLayer("Borders")) targetInSight = false;
             }
 
-            if (targetInSight) QueueCheck(); // target in sight
+            if (targetInSight) OwnCooldownCheck(); // target in sight // QueueCheck
             else Debug.Log("Target in range but NOT in sight"); // target not in sight
 
         }
         else Debug.Log("Target not in range: Distance " + distance + " > " + skillRange); // target not in range
     }
 
-    public void QueueCheck() // checks if queue is empty
-    {
-        Debug.Log("QueueCheck");
-        if ((!isSuperInstant && !masterChecks.masterIsSkillInQueue) || (isSuperInstant && !isSkillInOwnSuperInstantQueue)) OwnCooldownCheck();
-        else Debug.Log("ERROR: queue full");
-    }
-
     public void OwnCooldownCheck() // checks for own cooldown
     {
-        Debug.Log("OwnCDCheck");
+        //Debug.Log("OwnCDCheck");
         if (hasOwnCooldown) // has own cooldown
         {
-            if (!ownCooldownActive) SuperInstantCheck(); // own cooldown not active
-            else if (ownCooldownTimeLeft <= masterChecks.masterOwnCooldownEarlyTime) SuperInstantCheck(); // time left <= 0.5
+            if (ownCooldownTimeLeft <=0) QueueCheck(); // own cooldown not active //SuperInstantCheck
+            else if (ownCooldownTimeLeft <= masterChecks.masterOwnCooldownEarlyTime) QueueCheck(); // time left <= 0.5 //SuperInstantCheck
             else Debug.Log("ERROR: Own cooldown active " + ownCooldownTimeLeft); // own cooldown active
         }
-        else SuperInstantCheck(); // has no own cooldown
+        else QueueCheck(); // has no own cooldown //SuperInstantCheck
+    }
+
+    public void QueueCheck() // checks if queue is empty
+    {
+        //Debug.Log("QueueCheck");
+        if ((!isSuperInstant && !masterChecks.masterIsSkillInQueue) || (isSuperInstant && !isSkillInOwnSuperInstantQueue)) SuperInstantCheck(); // OwnCooldownCheck
+        else Debug.Log("ERROR: queue full");
     }
 
     public void SuperInstantCheck() // checks if skill is a SuperInstant
     {
-        Debug.Log("SuperInstantCheck");
+        //Debug.Log("SuperInstantCheck");
         if (isSuperInstant) StartCoroutine(WaitForSkillSuperInstant(ownCooldownTimeLeft));
+        else PlaceableAoECheck();
+    }
+
+    public void PlaceableAoECheck()
+    {
+        //Debug.Log("PlaceableAoECheck");
+        if (myAreaType == AreaType.CirclePlacable) PlaceableAoESkillProcedure(); // Für Placeable AoEs wird StartCasting() im MasterChecks Skript aufgerufen.
         else GlobalCooldownCheck();
+    }
+
+    // Hier werden die Parameter in MasterChecks gesetzt, dass eine Fläche erscheint die mit Linksklick bestätigt werden kann. Wenn das passiert, wird StartCasting() aufgerufen.
+    public void PlaceableAoESkillProcedure()
+    {
+        //Debug.Log("PlaceableAoEProcedure");
+        masterChecks.myUnusedSpellIndicator = Instantiate(PlacableAOEIndicator, mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
+        masterChecks.myUnusedSpellIndicator.transform.localScale *= skillRadius / indicatorScaleFactor;
+        masterChecks.myUnusedSpell = this;
+        masterChecks.hasUnusedSpell = true;
+        //Debug.Log("Labl Labl");
     }
 
     public void GlobalCooldownCheck() // checks for GlobalCooldown and skill casting times and waits for skill
     {
         Debug.Log("GlobalCDCheck");
-        if ((!hasGlobalCooldown || (hasGlobalCooldown && !masterChecks.masterGCActive)) && !playerStats.isCurrentlyCasting) // no GC and casting trouble
+        if ((!hasGlobalCooldown  || !masterChecks.masterGCActive) && !playerStats.isCurrentlyCasting) // no GC and casting trouble
         {
             StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterAnimTimeLeft)));
         }
         else if ((masterChecks.masterGCTimeLeft <= masterChecks.masterGCEarlyTime) && (masterChecks.castTimeCurrent <= masterChecks.masterGCEarlyTime)) // GC early cast
         {
+            Debug.Log("Early Cast.");
             StartCoroutine(WaitForSkill(Mathf.Max(ownCooldownTimeLeft, masterChecks.masterGCTimeLeft, masterChecks.masterAnimTimeLeft, masterChecks.castTimeCurrent)));
         }
         else // hasGlobalCooldown && globalCooldownActive // GC active (too early)
         {
-            if (masterChecks.castTimeCurrent > masterChecks.masterGCEarlyTime) Debug.Log("ERROR: Casting");
+            if (masterChecks.castTimeCurrent > masterChecks.masterGCEarlyTime) Debug.Log("ERROR: Casting" + masterChecks.castTimeCurrent+ masterChecks.masterGCEarlyTime);
             else Debug.Log("ERROR A: GC active (too early) " + masterChecks.masterGCTimeLeft + " > " + masterChecks.masterGCEarlyTime);            
             FindObjectOfType<AudioManager>().Play("HoverClickDownPitch");
         }
@@ -254,7 +271,6 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         else { FindObjectOfType<AudioManager>().Play("HoverClick"); }
         yield return new WaitForSeconds(time);
         isSkillInOwnSuperInstantQueue = false;
-        ownCooldownActive = true;
         ownCooldownTimeLeft = ownCooldownTimeModified;
         if (needsMana) { playerStats.ManageMana(-manaCost); }
         StartCasting();
@@ -265,29 +281,13 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         masterChecks.masterIsSkillInQueue = true;
         if (time > 0) { FindObjectOfType<AudioManager>().Play("HoverClickUpPitch"); }
         else { FindObjectOfType<AudioManager>().Play("HoverClick"); }
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(time+ 0.01f);
         masterChecks.masterIsSkillInQueue = false;
         //Debug.Log("... Use Skill");
-        PlaceableAoECheck();
+        StartCasting();
     }
 
-    public void PlaceableAoECheck()
-    {
-        Debug.Log("PlaceableAoECheck");
-        if (myAreaType == AreaType.CirclePlacable) PlaceableAoESkillProcedure(); // Für Placeable AoEs wird StartCasting() im MasterChecks Skript aufgerufen.
-        else StartCasting();
-    }
 
-    // Hier werden die Parameter in MasterChecks gesetzt, dass eine Fläche erscheint die mit Linksklick bestätigt werden kann. Wenn das passiert, wird StartCasting() aufgerufen.
-    public void PlaceableAoESkillProcedure()
-    {
-        Debug.Log("PlaceableAoEProcedure");
-        masterChecks.myUnusedSpellIndicator = Instantiate(PlacableAOEIndicator, mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
-        masterChecks.myUnusedSpellIndicator.transform.localScale *= skillRadius / indicatorScaleFactor;
-        masterChecks.myUnusedSpell = this;
-        masterChecks.hasUnusedSpell = true;
-        //Debug.Log("Labl Labl");
-    }
 
     public virtual void StartCasting()
     {
@@ -317,7 +317,8 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
             if (isSkillChanneling)
             {
                 AOECheck();
-                SkillEffect();
+                // SkillEffect();
+                isChannelingSkillEffectActive = true;
             }
         }
     }
@@ -340,11 +341,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         }
 
         // TriggerOwnCooldown
-        if (hasOwnCooldown)
-        {
-            ownCooldownActive = true;
-            ownCooldownTimeLeft = ownCooldownTimeModified;
-        }
+        if (hasOwnCooldown) ownCooldownTimeLeft = ownCooldownTimeModified;
 
         if (needsMana) playerStats.ManageMana(-manaCost);
 
@@ -368,9 +365,9 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
             // Skills die nur auf ein Ziel gehen
             case AreaType.SingleTarget:
-                if (forceTargetPlayer) currentTargets.Add(interactionCharacter.focus.gameObject); // SONDERFALL!! Siehe Funktionsbeschreibung.
-                else if (interactionCharacter.focus != null) currentTargets.Add(interactionCharacter.focus.gameObject);
+                if (forceTargetPlayer) currentTargets.Add(PLAYER); // SONDERFALL!! Siehe Funktionsbeschreibung.
                 else if (canSelfCastIfNoTarget) currentTargets.Add(PLAYER);
+                else if (targetSnapShot != null) currentTargets.Add(targetSnapShot);
                 break;
 
             // Skills die einen Kreis um ein Ziel herum betreffen
@@ -379,9 +376,9 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
                 List<GameObject> prelimTargetsCírcle = new List<GameObject>(); prelimTargetsCírcle.Clear();
 
                 if (isCastOnSelf) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // Ein Selbst-Skill um den Spieler
-                if (forceTargetPlayer) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // SONDERFALL!! Siehe Funktionsbeschreibung.
-                else if (interactionCharacter.focus != null) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(interactionCharacter.focus.transform.position, skillRadius)); // Skills die ein Ziel brauchen
+                else if (forceTargetPlayer) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // SONDERFALL!! Siehe Funktionsbeschreibung. 
                 else if (canSelfCastIfNoTarget) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // Skills die ein Ziel bräuchten, aber notfalls den SPieler nehmen können.
+                else if (targetSnapShot != null) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(targetSnapShot.transform.position, skillRadius)); // Skills die ein Ziel brauchen
 
                 // Sammelt nur Freunde aus den Zielen
                 if (targetsAlliesOnly)
@@ -437,7 +434,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
             case AreaType.CirclePlacable:
                 // Schnappt sich alle Ziele in einem Kreis um die derzeitige Position des Mauszeigers.
                 List<GameObject> prelimTargetsCircPlacable = new List<GameObject>(); prelimTargetsCircPlacable.Clear();
-                prelimTargetsCircPlacable.AddRange(GetTargetsInCircleHelper(mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue()), skillRadius));
+                prelimTargetsCircPlacable.AddRange(GetTargetsInCircleHelper(circleAim, skillRadius));
 
                 // Sammelt nur Freunde aus den Zielen
                 if (targetsAlliesOnly)
@@ -479,22 +476,14 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         {
             AOECheck();
             SkillEffect();
+
+            masterChecks.masterIsCastFinished = false;
             castStarted = false;
-            if (!isSkillChanneling)
-            {
-                masterChecks.masterIsCastFinished = false;
-            }
+            isChannelingSkillEffectActive = false;
         }
 
         if (ownCooldownTimeLeft > 0) ownCooldownTimeLeft -= Time.deltaTime;
-        else
-        {
-            if (ownCooldownActive)
-            {
-                ownCooldownActive = false;
-                ownCooldownTimeLeft = 0;
-            }
-        }
+        else ownCooldownTimeLeft = 0;
     }
 
     void Awake()

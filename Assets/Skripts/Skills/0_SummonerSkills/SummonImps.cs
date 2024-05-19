@@ -8,7 +8,6 @@ public class SummonImps : SkillPrefab
     [SerializeField] private GameObject imp;
     SummonerClass mySummonerClass;
 
-    private bool skillEffektActive = false;
     private float impBaseDamage;
 
     int impCount;
@@ -49,12 +48,9 @@ public class SummonImps : SkillPrefab
         base.Update();
 
         if (masterChecks.isSkillInterrupted)
-        { skillEffektActive = false; }
+        { isChannelingSkillEffectActive = false; }
 
-        if (masterChecks.masterIsCastFinished && skillEffektActive)
-        { skillEffektActive = false; masterChecks.masterIsCastFinished = false; return; }
-
-        if (skillEffektActive)
+        if (isChannelingSkillEffectActive)
         {
             if (elapsed >= castTimeModified / impCount)
             {
@@ -75,7 +71,6 @@ public class SummonImps : SkillPrefab
     {
         base.SkillEffect();
         elapsed = 0;
-        skillEffektActive = true;
     }
 
     void SpawnImp()

@@ -12,16 +12,16 @@ public class MasterChecks : MonoBehaviour
 {
     // Parameter für die Animationen
     public bool masterAnimationActive = false;
-    public float masterAnimTime = 0.5f;
+    public float masterAnimTime;
     public float masterAnimTimeLeft;
 
     // Parameter für Global Cooldown und Einreihung, wenn ein Skill etwas zu früh gedrückt wird
     public bool masterGCActive = false;
-    float masterGCTimeBase = 1.5f;
-    public float masterGCTimeModified = 1.5f;
+    float masterGCTimeBase;
+    public float masterGCTimeModified;
     public float masterGCTimeLeft;
-    public float masterGCEarlyTime = 0.5f;
-    public float masterOwnCooldownEarlyTime = 0.5f;
+    public float masterGCEarlyTime;
+    public float masterOwnCooldownEarlyTime;
 
     // Parameter wenn momentan ein Skill gecastet wird.
     public bool masterIsSkillInQueue = false;
@@ -43,6 +43,12 @@ public class MasterChecks : MonoBehaviour
         mainCam = GameObject.Find("CameraMama").transform.Find("MainKamera").GetComponent<Camera>();
         PLAYER = transform.parent.parent.gameObject;
         playerStats = PLAYER.GetComponent<PlayerStats>();
+
+        masterGCTimeBase = 0.5f;
+        masterGCTimeModified = 0.5f;
+        masterGCEarlyTime = 1f;
+        masterOwnCooldownEarlyTime = 1f;
+        masterAnimTime = 0.5f;
     }
 
     void LateUpdate()
@@ -84,7 +90,7 @@ public class MasterChecks : MonoBehaviour
                     castTimeCurrent = 0f;
                     castTimeMax = 0f;
                     masterIsCastFinished = true;
-                    Debug.Log("Gubl!" + masterIsCastFinished);
+                    //Debug.Log("Gubl!" + masterIsCastFinished);
                     PLAYER.transform.Find("PlayerParticleSystems").Find("CastingParticles").gameObject.GetComponent<ParticleSystem>().Stop();
                 }
             }
@@ -112,7 +118,9 @@ public class MasterChecks : MonoBehaviour
             }
             else if (Mouse.current.leftButton.wasPressedThisFrame)
             {
-                myUnusedSpell.StartCasting();
+                myUnusedSpell.circleAim = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                myUnusedSpell.GlobalCooldownCheck();
+
 
                 Destroy(myUnusedSpellIndicator);
                 myUnusedSpell = null;

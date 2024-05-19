@@ -23,7 +23,6 @@ public class SummonDragonling : SkillPrefab
         ownCooldownTimeBase = 3f;
 
         castTimeOriginal = 1f;
-        isSkillChanneling = false;
 
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
         myMinionDamageBase = 40;
