@@ -43,6 +43,8 @@ public class SummonerClass : NetworkBehaviour
     public bool buffMainMinionDmgAndHealIsConsuming;
     public float buffMainMinionDmgAndHealIsConsumingCooldownDec;
     public float buffMainMinionDmgAndHealIsConsumingDurationInc;
+    public float fireDemonExplosionCooldown;
+    public float fireDemonDamageModifier;
 
 
     private void Awake()
@@ -78,6 +80,9 @@ public class SummonerClass : NetworkBehaviour
         hasCastSpeedOnMinionSummonedTalent = false;
         hasAdditionalMainMinion1 = false;
         hasAdditionalMainMinion2 = false;
+
+        fireDemonExplosionCooldown = 10f;
+        fireDemonDamageModifier = 0f;
     }
 
     public void SummonerClass_OnMinionSummoned()

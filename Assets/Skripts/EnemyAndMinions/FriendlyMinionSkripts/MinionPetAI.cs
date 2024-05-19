@@ -93,6 +93,24 @@ public class MinionPetAI : MonoBehaviour
         }
     }
 
+    //public void GetRandomTargetNearby()
+    //{
+    //    GameObject[] pT1 = GameObject.FindGameObjectsWithTag("Enemy");  // Sucht alle Spieler in der Scene
+    //    List<GameObject> potentialTargets = pT1.ToList();                     // Schmeißt alle Ziele in ein Array
+    //    Dictionary<GameObject, float> enemyDistance = new Dictionary<GameObject, float>();
+
+    //    foreach (GameObject pT in potentialTargets)     // Fügt alle aktuellen Ziele in ein Dictionary, mit Aggrowert 0
+    //    {
+    //        if (pT.GetComponent<CharacterStats>().isAlive.Value && (pT.transform.position - transform.position).magnitude < 6)
+    //        {
+    //            target = pT.transform;
+    //            Chasing();
+    //            break;
+    //        }
+    //        Idle();
+    //    }
+    //}
+
     void Idle()
     {
         target = myMaster;
