@@ -19,7 +19,6 @@ public class SummonStoneGolem : SkillPrefab
 
         isCastOnSelf = true;
 
-        hasOwnCooldown = true;
         ownCooldownTimeBase = 3f;
 
         castTimeOriginal = 1f;
@@ -87,7 +86,7 @@ public class SummonStoneGolem : SkillPrefab
     }
 
     [ClientRpc]
-    private void SpawnStoneGolemClientRpc(NetworkObjectReference summoningPlayer, NetworkObjectReference stoneGoRef, ClientRpcParams clientRpcParams = default)
+    private void SpawnStoneGolemClientRpc(NetworkObjectReference summoningPlayer, NetworkObjectReference stoneGoRef)
     {
         summoningPlayer.TryGet(out NetworkObject sour);
         stoneGoRef.TryGet(out NetworkObject stoGo);

@@ -39,7 +39,7 @@ public class EnemyStats : CharacterStats
     {
         actionSpeed.baseValue = 1f;
         dmgModifier.baseValue = 1f;
-
+        movementSpeed.baseValue = 2f;
 
         isAlive.Value = true;
         baseDamage = 10f;

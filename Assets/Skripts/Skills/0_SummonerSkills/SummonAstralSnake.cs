@@ -101,14 +101,6 @@ public class SummonAstralSnake : SkillPrefab
         // Wenn geskillt fügt die Schlange einen Dot zu.
         if (mySummonerClass.astralSnakeHasDoT)
         {
-            //Buff clone = snakeDotBuff.Clone();
-            //clone.buffSource = PLAYER;
-
-            //foreach (Buff bu in target.GetComponent<BuffManagerNPC>().buffs)
-            //{
-            //    if (bu.buffName == "Astral Snake DoT" & bu.buffSource == PLAYER) bu.Dispell();
-            //}
-            //Debug.Log("Trying to remove existing Debuff.");
             target.GetComponent<BuffManagerNPC>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "SummonAstralSnakeDoT", false);
             GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(target.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "SummonAstralSnakeDoT", "SummonAstralSnakeDoT", true, snakeDoTDuration, snakeDotTickTime, snakeDotDamage * mySummonerClass.astralSnakeDotMod);
         }
@@ -116,15 +108,6 @@ public class SummonAstralSnake : SkillPrefab
         // Wenn geskillt fügt die Schlange einen Debuff zu.
         if (mySummonerClass.astralSnakeHasDebuff)
         {
-            //Buff clone = snakeDebuff.Clone();
-            //clone.buffSource = PLAYER;
-
-            //foreach (Buff bu in target.GetComponent<BuffManagerNPC>().buffs)
-            //{
-            //    if (bu.buffName == "Astral Snake Debuff" & bu.buffSource == PLAYER) bu.Dispell();
-            //}
-
-            //Debug.Log("Trying to remove existing Debuff.");
             target.GetComponent<BuffManagerNPC>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "SummonAstralSnakeDebuff", false);
             GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(target.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "SummonAstralSnakeDebuff", "SummonAstralSnakeDebuff", false, snakeDebuffDuration, 0, snakeDebuffValue);
         }

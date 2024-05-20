@@ -14,7 +14,6 @@ public class RemoveAllMainMinions : SkillPrefab
         base.Start();
         myClass = "Summoner";
 
-        hasOwnCooldown = false;
         hasGlobalCooldown = false;
 
         needsTargetEnemy = false;

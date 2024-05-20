@@ -18,7 +18,6 @@ public class MainMinionAoe : SkillPrefab
 
         skillRadius = 5f;
 
-        hasOwnCooldown = true;
         hasGlobalCooldown = false;
         ownCooldownTimeBase = 1f;
         dragonDamagePerTick = 10f;

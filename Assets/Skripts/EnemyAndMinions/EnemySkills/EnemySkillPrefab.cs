@@ -26,7 +26,7 @@ public abstract class EnemySkillPrefab : MonoBehaviour
         isInCast = StartCoroutine(CastDelay(duration));
         isInAnimation = StartCoroutine(AnimationDelay(animationDuration));
         this.skillReady = false;
-        Debug.Log("Casting Skill");
+        //Debug.Log("Casting Skill");
     }
 
     public virtual void AtSkillStart()
@@ -59,11 +59,11 @@ public abstract class EnemySkillPrefab : MonoBehaviour
 
     IEnumerator AnimationDelay(float delayTime)
     {
-        Debug.Log("Starting Animation");
+        //Debug.Log("Starting Animation");
         startedAnimation = true;
         yield return new WaitForSeconds(delayTime);
         endedAnimation = true;
-        Debug.Log("Ending Animation");
+        //Debug.Log("Ending Animation");
     }
 
 }

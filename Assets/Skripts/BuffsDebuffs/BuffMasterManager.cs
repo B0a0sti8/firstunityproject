@@ -36,6 +36,7 @@ public class BuffMasterManager : MonoBehaviour
     [SerializeField] Sprite summonAstralSnakeDebuffSprite;
     [SerializeField] Sprite summonSpiritWolfOnSkillBuffSprite;
     [SerializeField] Sprite mainMinionBuffDamageAndHealingSprite;
+    [SerializeField] Sprite summonSpiderSlowEffectBuffSprite;
 
     private void Awake()
     {
@@ -83,5 +84,9 @@ public class BuffMasterManager : MonoBehaviour
         MainMinionBuffDamageAndHealingBuff mainMinionBuffDamageAndHealingBuff = new MainMinionBuffDamageAndHealingBuff();
         ListOfAllBuffs.Add("MainMinionBuffDamageAndHealingBuff", mainMinionBuffDamageAndHealingBuff);
         ListOfAllBuffSprites.Add("MainMinionBuffDamageAndHealingBuff", mainMinionBuffDamageAndHealingSprite);
+
+        SummonerSpiderSlowEffectBuff summonerSpiderSlowEffecBuff = new SummonerSpiderSlowEffectBuff();
+        ListOfAllBuffs.Add("SummonerSpiderSlowEffectDebuff", summonerSpiderSlowEffecBuff);
+        ListOfAllBuffSprites.Add("SummonerSpiderSlowEffectDebuff", summonSpiderSlowEffectBuffSprite);
     }
 }

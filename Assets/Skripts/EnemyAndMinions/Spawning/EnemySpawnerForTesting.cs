@@ -10,12 +10,14 @@ public class EnemySpawnerForTesting : NetworkBehaviour
     [SerializeField] GameObject meleeEnemy;
     List<GameObject> myEnemies;
     public bool spawnInf;
+    public int spawnLimit;
 
     private void Start()
     {
         spawnTime = 2f;
         myEnemies = new List<GameObject>();
         spawnInf = false;
+        spawnLimit = 1;
     }
 
     // Update is called once per frame
@@ -33,7 +35,7 @@ public class EnemySpawnerForTesting : NetworkBehaviour
 
     void SpawnMeleeEnemyTest()
     {
-        if (spawnInf || myEnemies.Count < 4)
+        if (spawnInf || myEnemies.Count < spawnLimit)
         {
             GameObject myMeleeEnemy = Instantiate(meleeEnemy, transform.position, Quaternion.identity);
             myMeleeEnemy.GetComponent<NetworkObject>().Spawn();

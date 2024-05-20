@@ -13,6 +13,7 @@ public class CameraFollow : NetworkBehaviour
     GameObject cameera;
     GameObject CameraMama;
     GameObject vcam1;
+    bool isMouseOverGameObject;
 
     private void Start()
     {
@@ -37,23 +38,20 @@ public class CameraFollow : NetworkBehaviour
         if (!IsOwner) { return; }
 
         vcam1.GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = gameObject.transform;
+
+        isMouseOverGameObject = MouseOverGameObj();
     }
 
     bool MouseOverGameObj()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        if (EventSystem.current.IsPointerOverGameObject()) return true;
+        else return false;
+
     }
 
     public void CameraZoom()
     {
-        if (MouseOverGameObj()) return; // no zoom when mouse over UI element
+        if (isMouseOverGameObject) return; // no zoom when mouse over UI element
 
         Vector2 vec = Mouse.current.scroll.ReadValue(); // either 120 and 0, or -120 and 0
 

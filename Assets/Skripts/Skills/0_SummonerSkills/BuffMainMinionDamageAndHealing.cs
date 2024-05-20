@@ -25,7 +25,6 @@ public class BuffMainMinionDamageAndHealing : SkillPrefab
 
         hasGlobalCooldown = true;
         isCastOnSelf = true;
-        hasOwnCooldown = true;
         ownCooldownTimeBase = 120f;
         castTimeOriginal = 1.5f;
         buffBaseValue = 0.5f;

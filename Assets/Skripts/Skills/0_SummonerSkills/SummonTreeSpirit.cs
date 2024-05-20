@@ -19,7 +19,6 @@ public class SummonTreeSpirit : SkillPrefab
 
         isCastOnSelf = true;
 
-        hasOwnCooldown = true;
         ownCooldownTimeBase = 3f;
 
         castTimeOriginal = 1f;
