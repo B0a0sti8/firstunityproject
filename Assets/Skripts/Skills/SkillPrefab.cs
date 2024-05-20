@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using UnityEngine.InputSystem;
 using Unity.Netcode;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 //using UnityEditor.Animations;
 
 public class SkillPrefab : NetworkBehaviour//, IUseable
@@ -104,6 +104,11 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public GameObject PlacableAOEIndicator;
     float indicatorScaleFactor = 1;
 
+    public bool isUltimateSpell;
+    public Sprite ultimateSpellIcon;
+    public string ultimateSpellName;
+    public List<GameObject> myUltimateSpellHelpers;
+
     //public GameObject unusedSpell;
     //bool hasUnusedSpell = false;
 
@@ -139,7 +144,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         // Wenn er ein freundliches Target braucht, und entweder keines oder keinen freundliches hat, und nicht auf sich selbst casten kann, wird abgebrochen.
         if (needsTargetAlly) 
         {
-            if (interactionCharacter == null) return;
+            if (interactionCharacter.focus == null && !canSelfCastIfNoTarget) return;
             else if (LayerMask.NameToLayer("Action") != interactionCharacter.focus.gameObject.layer 
                 & LayerMask.NameToLayer("Ally") != interactionCharacter.focus.gameObject.layer 
                 & !canSelfCastIfNoTarget) return;
@@ -201,6 +206,11 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
     public void OwnCooldownCheck() // checks for own cooldown
     {
+        if (isUltimateSpell)
+        {
+            if (masterChecks.masterUltimateSpellGCcurrent <= 0) QueueCheck();
+            return;
+        }
         //Debug.Log("OwnCDCheck");
         if (ownCooldownTimeBase > 0) // has own cooldown
         {
@@ -213,6 +223,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
     public void QueueCheck() // checks if queue is empty
     {
+        if (isUltimateSpell) { UltimateSpellProtocol(); return; }
         //Debug.Log("QueueCheck");
         if ((!isSuperInstant && !masterChecks.masterIsSkillInQueue) || (isSuperInstant && !isSkillInOwnSuperInstantQueue)) SuperInstantCheck(); // OwnCooldownCheck
         else Debug.Log("ERROR: queue full");
@@ -323,6 +334,8 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
     public void TriggerSkillCooldown()
     {
+        if (isUltimateSpell) { masterChecks.masterUltimateSpellGCcurrent = masterChecks.masterUltimateSpellGCtotal; return; }
+
         // Modifiziert den Cooldown basierend auf aktuellem Tempo
         float attackSpeedModifier = 1 / (1 + playerStats.actionSpeed.GetValue());
         ownCooldownTimeModified = ownCooldownTimeBase * attackSpeedModifier;
@@ -483,6 +496,8 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
         if (ownCooldownTimeLeft > 0) ownCooldownTimeLeft -= Time.deltaTime;
         else ownCooldownTimeLeft = 0;
+
+        if (hasGlobalCooldown && isUltimateSpell) hasGlobalCooldown = false; 
     }
 
     void Awake()
@@ -494,6 +509,8 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         interactionCharacter = PLAYER.GetComponent<InteractionCharacter>();
         playerStats = PLAYER.GetComponent<PlayerStats>();
         classAnimator = PLAYER.transform.Find("PlayerAnimation").GetComponent<Animator>();
+
+        if (isUltimateSpell) myUltimateSpellHelpers = new List<GameObject>();
     }
 
     public virtual void Start()
@@ -533,15 +550,15 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
                 AnimationClip[] clips = classAnimator.runtimeAnimatorController.animationClips;
                 foreach (AnimationClip cli in clips)
                 {
-                    Debug.Log("Check2");
+                    //Debug.Log("Check2");
                     if (cli.name == animationName)
                     {
-                        Debug.Log("Check3");
+                        //Debug.Log("Check3");
                         animTime = cli.length;
                         classAnimator.speed = 1 / ((animationTime / animTime) * 1 / (1 + playerStats.actionSpeed.GetValue()));
-                        Debug.Log("Eigentlicher Anim Speed: " + animTime / classAnimator.speed);
+                        //Debug.Log("Eigentlicher Anim Speed: " + animTime / classAnimator.speed);
 
-                        Debug.Log("Animation Clip length = " + classAnimator.GetCurrentAnimatorStateInfo(0).length);
+                        //Debug.Log("Animation Clip length = " + classAnimator.GetCurrentAnimatorStateInfo(0).length);
                         StartCoroutine(StopAnimation(animationTime, classAnimator, className));
                     }
                 }
@@ -599,5 +616,142 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public virtual void SetMyCooldown(float coolDown)
     {
         ownCooldownTimeBase = coolDown;
+    }
+
+    // Läuft auf dem Auslösenden Spieler.
+    public void UltimateSpellProtocol()
+    {
+        myUltimateSpellHelpers.Clear();
+        myUltimateSpellHelpers.Add(PLAYER);
+        float myWaitingPeriodDuration = 2.5f;
+        StartCoroutine(WaitForUltimateSpellWaitingPeriodToBeFinished(myWaitingPeriodDuration * 0.3f));
+
+        ulong initiatorClientID = PLAYER.GetComponent<StuffManagerScript>().myClientId;
+
+        int currentPlayerCount;
+        GameObject myPotHelperPlayerGo;
+        if (MultiplayerGroupManager.MyInstance != null)
+        {
+            currentPlayerCount = MultiplayerGroupManager.MyInstance.GetCurrentPlayerCount();
+            for (int i = 0; i < currentPlayerCount; i++)
+            {
+                //Debug.Log("Spieler Nummer " + i);
+                MultiplayerPlayerData myMultData = MultiplayerGroupManager.MyInstance.GetPlayerDataFromPlayerIndex(i);
+                myMultData.playerObject.TryGet(out NetworkObject myPotHelperPlayer);
+                myPotHelperPlayerGo = myPotHelperPlayer.gameObject;
+
+                if (myPotHelperPlayerGo != null)
+                {
+                    //Debug.Log("Spieler Nummer " + i + " Clear.");
+                    Component[] allmMyComponents = myPotHelperPlayer.transform.Find("SkillManager").Find(myClass).GetComponents<SkillPrefab>();
+                    for (int k = 0; k < allmMyComponents.Length; k++)
+                    {
+                        //Debug.Log(allmMyComponents[k].GetType() + "   " + this.GetComponent(this.GetType()).GetType());
+                        if (allmMyComponents[k].GetType() == this.GetType())//this.GetComponent(this.GetType()).GetType())
+                        {
+                            //Debug.Log("We got a Mad Match bitches!");
+                            // Läuft NICHT auf dem Auslösenden Spieler, sondern auf dem dem ZielSpieler. (hoffentlich.)
+                            ((SkillPrefab)allmMyComponents[k]).UltimateSpellProtocolServerRpc(initiatorClientID, myWaitingPeriodDuration);
+                        }
+                    }
+                }
+            }
+        }
+        else // Für singlePlayerTests...
+        {
+            if (PLAYER != null)
+            {
+                Component[] allmMyComponents = PLAYER.transform.Find("SkillManager").Find(myClass).GetComponents<SkillPrefab>();
+                for (int k = 0; k < allmMyComponents.Length; k++)
+                {
+                    if (allmMyComponents[k] == this.GetComponent(this.GetType()))
+                    {
+                        //Debug.Log("We got a Mad Match bitches!");
+                        ((SkillPrefab)allmMyComponents[k]).UltimateSpellProtocolServerRpc(initiatorClientID, myWaitingPeriodDuration);
+                    }
+                }
+            }
+        }
+    }
+
+    IEnumerator WaitForUltimateSpellWaitingPeriodToBeFinished(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Debug.Log("Anzahl meiner Helfer: " + myUltimateSpellHelpers.Count);
+
+        TriggerSkillCooldown();
+        AOECheck();
+        SkillEffect();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    // Läuft NICHT auf dem Auslösenden Spieler, sondern auf dem dem ZielSpieler. Genauer: Auf der Server-Instanz des ZielSpielers.
+    public void UltimateSpellProtocolServerRpc(ulong initiatorClientID, float waitingPeriod)
+    {
+        UltimateSpellProtocolClientRpc(initiatorClientID, waitingPeriod);
+    }
+
+    // Läuft hoffentlich auf allen Instanzen des Ziel Spielers. Durch die For-Schleife: Auf jeder Instanz eines jeden Zielspielers.
+    [ClientRpc]
+    public void UltimateSpellProtocolClientRpc(ulong initiatorClientID, float waitingPeriod)
+    {
+        GameObject myUltimateSpellWindow = PLAYER.transform.Find("Own Canvases").Find("Canvas Action Skills").Find("UltimateSpellWindow").gameObject;
+        Button mySkillButton = myUltimateSpellWindow.transform.Find("Main").Find("SkillIcon").GetComponent<Button>();
+        float newTimeScale = 0.3f;
+        Time.timeScale = newTimeScale;
+        StartCoroutine(UltimateSpellSetWorldTimeToNormal(waitingPeriod * newTimeScale, myUltimateSpellWindow, mySkillButton));
+
+        if (initiatorClientID == PLAYER.GetComponent<StuffManagerScript>().myClientId) return;
+
+        mySkillButton.interactable = true;
+        myUltimateSpellWindow.SetActive(true);
+        myUltimateSpellWindow.transform.Find("Main").Find("SkillIcon").GetComponent<Image>().sprite = ultimateSpellIcon;
+        myUltimateSpellWindow.transform.Find("Main").Find("Spellname").GetComponent<TextMeshProUGUI>().text = ultimateSpellName;
+
+        mySkillButton.onClick.AddListener(() => OnUltimateSpellButtonPress(mySkillButton, initiatorClientID));
+    }
+
+    public void OnUltimateSpellButtonPress(Button myButton, ulong initiatorClientID)
+    {
+        myButton.interactable = false;
+        UltimateSpellReturnHelpersServerRpc(initiatorClientID, PLAYER.GetComponent<NetworkObject>());
+    }
+
+    [ServerRpc]
+    public void UltimateSpellReturnHelpersServerRpc(ulong initiatorClientID, NetworkObjectReference supportPlayerRef)
+    {
+        ClientRpcParams clientRpcParams = new ClientRpcParams { Send = new ClientRpcSendParams { TargetClientIds = new ulong[] { initiatorClientID } } };
+        UltimateSpellReturnHelpersClientRpc(supportPlayerRef, initiatorClientID, clientRpcParams);
+    }
+
+    [ClientRpc]
+    public void UltimateSpellReturnHelpersClientRpc(NetworkObjectReference supportPlayerRef, ulong initiatorClientID, ClientRpcParams clientRpcParams = default)
+    {
+        supportPlayerRef.TryGet(out NetworkObject supportPlayer);
+        GameObject supportPlayerGo = supportPlayer.gameObject;
+        GameObject startingPlayerGo = null;
+
+        if (MultiplayerGroupManager.MyInstance != null) startingPlayerGo = MultiplayerGroupManager.MyInstance.GetPlayerDataFromClientId(initiatorClientID).playerObject;
+        else startingPlayerGo = PLAYER;
+
+        if (supportPlayerGo != null)
+        {
+            Component[] allmMyComponents = startingPlayerGo.transform.Find("SkillManager").Find(myClass).GetComponents<SkillPrefab>();
+            for (int k = 0; k < allmMyComponents.Length; k++)
+            {
+                if (allmMyComponents[k].GetType() == this.GetType())//this.GetComponent(this.GetType()).GetType())
+                {
+                    ((SkillPrefab)allmMyComponents[k]).myUltimateSpellHelpers.Add(supportPlayerGo);
+                }
+            }
+        }
+    }
+
+    IEnumerator UltimateSpellSetWorldTimeToNormal(float time, GameObject spellWindow, Button mySkillButtonRef)
+    {
+        yield return new WaitForSeconds(time);
+        Time.timeScale = 1;
+        spellWindow.SetActive(false);
+        mySkillButtonRef.onClick.RemoveAllListeners();
     }
 }

@@ -73,6 +73,6 @@ public class DarkBolt : SkillPrefab
     IEnumerator DelayedDamage(float tOA)
     {
         yield return new WaitForSeconds(tOA);
-        DealDamage(damage * mySummonerClass.darkBoltDamageModifier);
+        DealDamage(damage * mySummonerClass.darkBoltDamageModifier * playerStats.dmgInc.GetValue());
     }
 }

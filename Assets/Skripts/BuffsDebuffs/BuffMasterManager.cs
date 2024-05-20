@@ -21,22 +21,23 @@ public class BuffMasterManager : MonoBehaviour
     public Dictionary<string, Buff> ListOfAllBuffs = new Dictionary<string, Buff>();
     public Dictionary<string, Sprite> ListOfAllBuffSprites = new Dictionary<string, Sprite>();
 
-    // Für allgemeine Buffs
+    [Header("Allgemeine Buffs")]// Für allgemeine Buffs
     [SerializeField ]Sprite hoTBuffSprite;
     [SerializeField] Sprite speedBoostBuffSprite;
     [SerializeField] Sprite attackSpeedBoostBuffSprite;
     [SerializeField] Sprite stunnedEffectOnEnemiesSprite;
 
-    // Zum testen
+    [Header("Buffs zum Testen und Spielen")]// Zum testen
     [SerializeField] Sprite testWayOfTheChickenDamageDebuffSprite;
 
-    // Für Summoner-spezifische Buffs
+    [Header("Summoner Buffs")]// Für Summoner-spezifische Buffs
     [SerializeField] Sprite summonInsectsOnEnemyDeathBuffSprite;
     [SerializeField] Sprite summonAstralSnakeDoTSprite;
     [SerializeField] Sprite summonAstralSnakeDebuffSprite;
     [SerializeField] Sprite summonSpiritWolfOnSkillBuffSprite;
     [SerializeField] Sprite mainMinionBuffDamageAndHealingSprite;
     [SerializeField] Sprite summonSpiderSlowEffectBuffSprite;
+    [SerializeField] Sprite theGreatSacrificeBuffSprite;
 
     private void Awake()
     {
@@ -88,5 +89,9 @@ public class BuffMasterManager : MonoBehaviour
         SummonerSpiderSlowEffectBuff summonerSpiderSlowEffecBuff = new SummonerSpiderSlowEffectBuff();
         ListOfAllBuffs.Add("SummonerSpiderSlowEffectDebuff", summonerSpiderSlowEffecBuff);
         ListOfAllBuffSprites.Add("SummonerSpiderSlowEffectDebuff", summonSpiderSlowEffectBuffSprite);
+
+        TheGreatSacrificeBuff theGreatSacrificeBuff = new TheGreatSacrificeBuff();
+        ListOfAllBuffs.Add("TheGreatSacrificeBuff", theGreatSacrificeBuff);
+        ListOfAllBuffSprites.Add("TheGreatSacrificeBuff", theGreatSacrificeBuffSprite);
     }
 }

@@ -174,14 +174,14 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
     public void GetCurrentTargetForMultiplayerClientRpc()
     {
         if (!IsOwner) return;
-        Debug.Log("Ich bin der owner. Aktualisiere Fokus.");
+        //Debug.Log("Ich bin der owner. Aktualisiere Fokus.");
         SendCurrentTargetForMultiplayerServerRpc(focus.gameObject.GetComponent<NetworkObject>());
     }
 
     [ServerRpc]
     public void SendCurrentTargetForMultiplayerServerRpc(NetworkObjectReference myCurrentFocusRef)
     {
-        Debug.Log("Ich bin der server. Aktualisiere Fokus.");
+        //Debug.Log("Ich bin der server. Aktualisiere Fokus.");
         SendCurrentTargetForMultiplayerClientRpc(myCurrentFocusRef);
     }
 
@@ -189,7 +189,7 @@ public class InteractionCharacter : NetworkBehaviour // Sorry Marcus, ist echt n
     public void SendCurrentTargetForMultiplayerClientRpc(NetworkObjectReference myCurrentFocusRef)
     {
         if (IsOwner) return;
-        Debug.Log("Das sollten alle auﬂer der Owner kriegen.");
+        //Debug.Log("Das sollten alle auﬂer der Owner kriegen.");
         myCurrentFocusRef.TryGet(out NetworkObject myCurrentFocus);
         focus = myCurrentFocus.gameObject.GetComponent<Interactable>();
     }

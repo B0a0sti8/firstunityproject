@@ -290,7 +290,7 @@ public class PlayerStats : CharacterStats
 
 	}
 
-	private void ComputeSideStats()
+	public void ComputeSideStats()
     {
 		// Mastery Based
 		healInc.baseValue += 0.01f * mastery.GetValue();
