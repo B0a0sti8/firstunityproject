@@ -23,7 +23,6 @@ public class ExplodeImps : SkillPrefab
         skillRange = 20;
         skillRadius = 0.5f;
 
-        hasOwnCooldown = true;
         ownCooldownTimeBase = 3f;
 
         castTimeOriginal = 1f;

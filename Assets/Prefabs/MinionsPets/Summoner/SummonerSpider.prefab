@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2023599405424776253
 Transform:
   m_ObjectHideFlags: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2023599405509759013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2023599405647954621
 Transform:
   m_ObjectHideFlags: 0
@@ -552,8 +552,9 @@ GameObject:
   - component: {fileID: 1927152444004544102}
   - component: {fileID: 8734622905316372997}
   - component: {fileID: 3439966835867920617}
+  - component: {fileID: 5911088455583622406}
   m_Layer: 10
-  m_Name: TreeSpirit
+  m_Name: SummonerSpider
   m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -664,7 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3520156615
+  GlobalObjectIdHash: 1776148878
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -801,6 +802,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseAttackDamage: 0
+--- !u!114 &5911088455583622406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023599406339572345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42624e2398cbfc14b9a08594a6c4aa40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLifetime: 0
+  startingTime: 0
 --- !u!1 &2023599406366343330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,7 +1105,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: bd374cdd5802ed44aaa374a9c625144b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 21cbf7bd8ecc61f4298a089b393cbc7f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1190,6 +1205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7361840813213336678}
+  - component: {fileID: 7733670318041464503}
   m_Layer: 10
   m_Name: Skills
   m_TagString: Untagged
@@ -1212,6 +1228,31 @@ Transform:
   m_Father: {fileID: 190823479186715083}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7733670318041464503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8414547341760501568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5c7ec08d3cd314dbeebce3f71e09fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  remainingCD: 0
+  animationDuration: 0
+  startedAnimation: 0
+  endedAnimation: 0
+  skillReady: 1
+  duration: 0
+  range: 0
+  radius: 0
+  baseDamage: 0
+  baseHealing: 0
+  myFireImpactAnim: {fileID: 0}
+  slowValue: 0
 --- !u!1 &8554366325215099153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,7 +1279,7 @@ RectTransform:
   m_GameObject: {fileID: 8554366325215099153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 804630442741327009}
@@ -1291,7 +1332,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: bd374cdd5802ed44aaa374a9c625144b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 21cbf7bd8ecc61f4298a089b393cbc7f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -25,6 +25,7 @@ public class SummonFireDemon : SkillPrefab
         myMinionDamageBase = 20f;
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
         fireDemonDuration = 15f;
+        ownCooldownTimeBase = 30;
     }
 
     public override void SkillEffect()
@@ -40,7 +41,7 @@ public class SummonFireDemon : SkillPrefab
         FireImpactServerRpc(myPosition);
 
         NetworkObjectReference playerReference = (NetworkObjectReference)PLAYER;
-        SpawnFireDemonServerRpc(playerReference, minionDamageMod, myPosition, fireDemonDuration * playerStats.skillDurInc.GetValue(), demonExplosionCooldown);
+        SpawnFireDemonServerRpc(playerReference, minionDamageMod, myPosition, (fireDemonDuration + mySummonerClass.increasedMinionDuration) * playerStats.skillDurInc.GetValue(), demonExplosionCooldown);
         mySummonerClass.SummonerClass_OnMinionSummoned();
     }
 
@@ -58,10 +59,9 @@ public class SummonFireDemon : SkillPrefab
             fireDe.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
             fireDe.GetComponent<MeleeEnemyAttackTest>().baseAttackDamage = minionDamage;
             fireDe.transform.Find("Skills").GetComponent<FireDemonAoESkill>().baseDamage = minionDamage*10;
-            fireDe.GetComponent<MinionPetAI>().isInFight = true;
             fireDe.GetComponent<HasLifetime>().maxLifetime = minionDuration;
             fireDe.transform.Find("Skills").GetComponent<FireDemonAoESkill>().cooldown = explosionCooldown;
-            //fireDe.GetComponent<MinionPetAI>().GetRandomTargetNearby();
+            
 
             sumPla.GetComponent<PlayerStats>().myMinions.Add(fireDe);
 
@@ -79,6 +79,7 @@ public class SummonFireDemon : SkillPrefab
         GameObject sumPla = sour.gameObject;
         fireDe.GetComponent<MinionPetAI>().myMaster = sumPla.transform;
         fireDe.transform.Find("Skills").GetComponent<FireDemonAoESkill>().cooldown = explosionCooldown;
+        fireDe.GetComponent<MinionPetAI>().GetRandomTargetNearby(1);
         fireDe.GetComponent<MinionPetAI>().isInFight = true;
     }
 

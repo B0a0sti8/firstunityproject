@@ -22,7 +22,7 @@ public class MinionPetMovement : MonoBehaviour
     MinionPetAI eAI;
     Transform target;
 
-    void Start()
+    void Awake()
     {
         eAI = GetComponent<MinionPetAI>();
         seeker = GetComponent<Seeker>();

@@ -12,7 +12,6 @@ public class AllMinionsStopAttacking : SkillPrefab
 
         skillRange = 30f;
 
-        hasOwnCooldown = true;
         hasGlobalCooldown = false;
         ownCooldownTimeBase = 3f;
     }

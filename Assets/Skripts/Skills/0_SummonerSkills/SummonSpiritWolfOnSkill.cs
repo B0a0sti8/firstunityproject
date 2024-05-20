@@ -23,7 +23,7 @@ public class SummonSpiritWolfOnSkill : SkillPrefab
         base.Start();
         buffDurationBase = 15f;
         hasGlobalCooldown = true;
-        hasOwnCooldown = true;
+
         ownCooldownTimeBase = 60f;
 
         canSelfCastIfNoTarget = true;

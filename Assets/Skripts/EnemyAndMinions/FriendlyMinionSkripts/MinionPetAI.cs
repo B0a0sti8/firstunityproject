@@ -49,11 +49,15 @@ public class MinionPetAI : MonoBehaviour
     [SerializeField]
     public Dictionary<GameObject, int> aggroTable = new Dictionary<GameObject, int>();
 
+    private void Awake()
+    {
+        mySkills = transform.Find("Skills").GetComponents<EnemySkillPrefab>();
+        eMove = GetComponent<MinionPetMovement>();
+    }
+
     void Start()
     {
         state = State.Idle;
-        eMove = GetComponent<MinionPetMovement>();
-        mySkills = transform.Find("Skills").GetComponents<EnemySkillPrefab>();
     }
 
     public void ForceAggroToTarget(Transform forcTar)
@@ -93,23 +97,33 @@ public class MinionPetAI : MonoBehaviour
         }
     }
 
-    //public void GetRandomTargetNearby()
-    //{
-    //    GameObject[] pT1 = GameObject.FindGameObjectsWithTag("Enemy");  // Sucht alle Spieler in der Scene
-    //    List<GameObject> potentialTargets = pT1.ToList();                     // Schmeißt alle Ziele in ein Array
-    //    Dictionary<GameObject, float> enemyDistance = new Dictionary<GameObject, float>();
+    public void GetRandomTargetNearby(int randomSeed)
+    {
+        GameObject[] pT1 = GameObject.FindGameObjectsWithTag("Enemy");  // Sucht alle Spieler in der Scene
+        List<GameObject> potentialTargets = pT1.ToList();                     // Schmeißt alle Ziele in ein Array
 
-    //    foreach (GameObject pT in potentialTargets)     // Fügt alle aktuellen Ziele in ein Dictionary, mit Aggrowert 0
-    //    {
-    //        if (pT.GetComponent<CharacterStats>().isAlive.Value && (pT.transform.position - transform.position).magnitude < 6)
-    //        {
-    //            target = pT.transform;
-    //            Chasing();
-    //            break;
-    //        }
-    //        Idle();
-    //    }
-    //}
+        for (int i = potentialTargets.Count - 1; i > 0 ; i--)
+        {
+            Random.InitState(randomSeed);
+            int j = Random.Range(0, i + 1);
+            GameObject temp = potentialTargets[i];
+            potentialTargets[i] = potentialTargets[j];
+            potentialTargets[j] = temp;
+        }
+
+        foreach (GameObject pT in potentialTargets)     // Fügt alle aktuellen Ziele in ein Dictionary, mit Aggrowert 0
+        {
+            if (pT.GetComponent<CharacterStats>().isAlive.Value && (pT.transform.position - transform.position).magnitude < 6)
+            {
+                target = pT.transform;
+                forcedTarget = pT.transform;
+                Chasing();
+                isAggroForced = true;
+                break;
+            }
+            Idle();
+        }
+    }
 
     void Idle()
     {
@@ -248,14 +262,6 @@ public class MinionPetAI : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(state);
-        //if (GetComponent<CharacterStats>().isAlive == false)
-        //{ state = State.Dying; }
-        //if (GameObject.FindGameObjectsWithTag("Player")[0].transform != null)
-        //{
-        //    myMaster = GameObject.FindGameObjectsWithTag("Player")[0].transform;
-        //}
-
         switch (state)
         {
             default:

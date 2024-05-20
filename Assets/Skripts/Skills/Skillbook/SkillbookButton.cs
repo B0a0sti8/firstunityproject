@@ -80,7 +80,7 @@ public class SkillbookButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler
             skill.tooltipSkillType = "Instant";
         }
 
-        if (skill.hasOwnCooldown)
+        if (skill.ownCooldownTimeBase > 0)
         {
             skill.tooltipSkillCooldown = "Cooldown: <color=yellow>" + skill.ownCooldownTimeModified.ToString().Replace(",", ".") + "s</color>";
         }

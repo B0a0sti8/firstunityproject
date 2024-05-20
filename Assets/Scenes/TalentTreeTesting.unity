@@ -8506,6 +8506,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6969395190577055751, guid: da0b9895c441e0d4c942fbedcde33950, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6969395190695909313, guid: da0b9895c441e0d4c942fbedcde33950, type: 3}
       propertyPath: m_Name
       value: SkillTreeCollection

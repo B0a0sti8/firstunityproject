@@ -30,7 +30,7 @@ public class SummonImps : SkillPrefab
         needsTargetEnemy = true;
         skillRange = 20;
 
-        hasOwnCooldown = true;
+
         ownCooldownTimeBase = 3f;
 
         castTimeOriginal = 5f;
@@ -86,17 +86,11 @@ public class SummonImps : SkillPrefab
         {
             NetworkObjectReference enemyReference = (NetworkObjectReference)interactionCharacter.focus.gameObject;
             SpawnImpServerRpc(enemyReference, playerReference, impDamage, impLifeTime);
-            //Debug.Log("MyImpLifetime = " + impLifeTime);
-            //Debug.Log("Skill duration charakterstats: " + playerStats.skillDurInc.GetValue());
-            //Debug.Log("Additional damage Summoner class: " + mySummonerClass.increasedMinionDamage);
         }
         else
         {
             NetworkObjectReference enemyReference = (NetworkObjectReference)PLAYER;
             SpawnImpServerRpc(enemyReference, playerReference, impDamage, impLifeTime);
-            //Debug.Log("MyImpLifetime = " + impLifeTime);
-            //Debug.Log("Skill duration charakterstats: " + playerStats.skillDurInc.GetValue());
-            //Debug.Log("Additional Duration Summoner class: " + mySummonerClass.increasedMinionDuration);
         }
     }
 

@@ -46,8 +46,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public float skillRadius; // unbenutzt bisher (außer für tooltip)
 
     [Header("Own Cooldown")]
-    public bool hasOwnCooldown;
-    public float ownCooldownTimeBase; // 0 if hasOwnCooldown = false
+    public float ownCooldownTimeBase;
     [HideInInspector]
     public float ownCooldownTimeModified;
     [HideInInspector]
@@ -203,7 +202,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public void OwnCooldownCheck() // checks for own cooldown
     {
         //Debug.Log("OwnCDCheck");
-        if (hasOwnCooldown) // has own cooldown
+        if (ownCooldownTimeBase > 0) // has own cooldown
         {
             if (ownCooldownTimeLeft <=0) QueueCheck(); // own cooldown not active //SuperInstantCheck
             else if (ownCooldownTimeLeft <= masterChecks.masterOwnCooldownEarlyTime) QueueCheck(); // time left <= 0.5 //SuperInstantCheck
@@ -289,9 +288,9 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
     public virtual void StartCasting()
     {
-        TriggerSkillCooldown();
         if (castTimeOriginal <= 0)
         {
+            TriggerSkillCooldown();
             AOECheck();
             SkillEffect();
         }
@@ -314,6 +313,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
             if (isSkillChanneling)
             {
+                TriggerSkillCooldown();
                 AOECheck();
                 // SkillEffect();
                 isChannelingSkillEffectActive = true;
@@ -339,7 +339,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         }
 
         // TriggerOwnCooldown
-        if (hasOwnCooldown) ownCooldownTimeLeft = ownCooldownTimeModified;
+        if (ownCooldownTimeBase > 0) ownCooldownTimeLeft = ownCooldownTimeModified;
 
         if (needsMana) playerStats.ManageMana(-manaCost);
 
@@ -474,6 +474,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
         {
             AOECheck();
             SkillEffect();
+            TriggerSkillCooldown();
 
             masterChecks.masterIsCastFinished = false;
             castStarted = false;

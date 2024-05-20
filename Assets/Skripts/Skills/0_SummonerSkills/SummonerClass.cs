@@ -35,7 +35,6 @@ public class SummonerClass : NetworkBehaviour
     public int astralSnakeAdditionalBounces;
     public bool astralSnakeHasDebuff;
 
-
     public bool hasCastSpeedOnMinionSummonedTalent;
     public bool hasAdditionalMainMinion1;
     public bool hasAdditionalMainMinion2;
@@ -43,8 +42,14 @@ public class SummonerClass : NetworkBehaviour
     public bool buffMainMinionDmgAndHealIsConsuming;
     public float buffMainMinionDmgAndHealIsConsumingCooldownDec;
     public float buffMainMinionDmgAndHealIsConsumingDurationInc;
+
     public float fireDemonExplosionCooldown;
     public float fireDemonDamageModifier;
+
+    public float spiderCount;
+    public float spiderSlowEffect;
+
+    public int assembleTheMinionsCount;
 
 
     private void Awake()
@@ -83,7 +88,12 @@ public class SummonerClass : NetworkBehaviour
 
         fireDemonExplosionCooldown = 10f;
         fireDemonDamageModifier = 0f;
-    }
+
+        spiderCount = 5;
+        spiderSlowEffect = -0.1f;
+
+        assembleTheMinionsCount = 2;
+}
 
     public void SummonerClass_OnMinionSummoned()
     {
