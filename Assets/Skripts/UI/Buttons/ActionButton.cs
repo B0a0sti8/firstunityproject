@@ -80,8 +80,20 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     void UpdateButton()
     {
-        if (buttonSkill == null)
+        if (buttonSkill == null) return;
+
+        if (buttonSkill.isUltimateSpell)
         {
+            if (buttonSkill.masterChecks.masterUltimateSpellGCcurrent > 0)
+            {
+                buttonText.text = Mathf.Round(buttonSkill.masterChecks.masterUltimateSpellGCcurrent).ToString();
+                buttonImage.color = new Color32(120, 120, 120, 255);
+            }
+            else
+            {
+                buttonText.text = "";
+                buttonImage.color = new Color32(255, 255, 255, 255);
+            }
             return;
         }
 
@@ -116,6 +128,8 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
                 }
             }
         }
+
+
     }
 
     public void UseSkillOnClick()

@@ -23,6 +23,10 @@ public class MasterChecks : MonoBehaviour
     public float masterGCEarlyTime;
     public float masterOwnCooldownEarlyTime;
 
+    // Parameter für den Cooldown der Ultimate Spells
+    public float masterUltimateSpellGCtotal;
+    public float masterUltimateSpellGCcurrent;
+
     // Parameter wenn momentan ein Skill gecastet wird.
     public bool masterIsSkillInQueue = false;
     public float castTimeMax;
@@ -49,6 +53,8 @@ public class MasterChecks : MonoBehaviour
         masterGCEarlyTime = 1f;
         masterOwnCooldownEarlyTime = 1f;
         masterAnimTime = 0.5f;
+
+        masterUltimateSpellGCtotal = 300f;
     }
 
     void LateUpdate()
@@ -77,6 +83,10 @@ public class MasterChecks : MonoBehaviour
                 masterGCTimeLeft = 0f;
             }
         }
+
+        // Schaut ob der Ultimate Cooldown am laufen ist. Und lässt Zeit runterticken, wenn ja
+        if (masterUltimateSpellGCcurrent > 0) masterUltimateSpellGCcurrent -= Time.deltaTime;
+        else if (masterUltimateSpellGCcurrent != 0)  masterUltimateSpellGCcurrent = 0;
 
         // Schaut ob der Skill unterbrochen wurde. Wenn nicht, wird die Zeit weiterlaufen gelassen. Wenn die Zeit um ist, wird SkillEffekt ausgelöst?
         if (playerStats.isCurrentlyCasting)
@@ -120,7 +130,6 @@ public class MasterChecks : MonoBehaviour
             {
                 myUnusedSpell.circleAim = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 myUnusedSpell.GlobalCooldownCheck();
-
 
                 Destroy(myUnusedSpellIndicator);
                 myUnusedSpell = null;

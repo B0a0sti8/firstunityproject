@@ -55,3 +55,4 @@ MonoBehaviour:
   summonSpiritWolfOnSkillBuffSprite: {fileID: 21300000, guid: e51bca6148a594c44a191fe705bc9d36, type: 3}
   mainMinionBuffDamageAndHealingSprite: {fileID: 21300000, guid: 7903d7fcc1bb7ce479d976edb3bd930d, type: 3}
   summonSpiderSlowEffectBuffSprite: {fileID: 21300000, guid: d132e0b5eb72bdb42a274874cadda8e7, type: 3}
+  theGreatSacrificeBuffSprite: {fileID: 21300000, guid: 06cb280117b4c82418f6bffba1df5fab, type: 3}

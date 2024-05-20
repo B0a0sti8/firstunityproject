@@ -16,6 +16,7 @@ public class SummonerClass : NetworkBehaviour
     public float darkBoltDamageModifier;
     public bool doesDarkboltIncreaseMinionLifetime;
     public float darkBoltLifeTimeIncrease;
+    public float darkBoltChanceToSpawnImp;
 
     public float increasedMinionDuration;
     public float increasedMinionDamage;
@@ -81,6 +82,7 @@ public class SummonerClass : NetworkBehaviour
         darkBoltDamageModifier = 1;
         doesDarkboltIncreaseMinionLifetime = false;
         darkBoltLifeTimeIncrease = 0;
+        darkBoltChanceToSpawnImp = 0;
 
         hasCastSpeedOnMinionSummonedTalent = false;
         hasAdditionalMainMinion1 = false;

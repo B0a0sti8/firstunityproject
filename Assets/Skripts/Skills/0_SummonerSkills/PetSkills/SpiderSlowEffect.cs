@@ -20,7 +20,7 @@ public class SpiderSlowEffect : EnemySkillPrefab
 
     public override void SkillEffect()
     {
-        Debug.Log("Ich caste brav" + transform.parent);
+        //Debug.Log("Ich caste brav" + transform.parent);
         Collider2D[] hit = Physics2D.OverlapCircleAll(transform.parent.position, radius, (1 << LayerMask.NameToLayer("Enemy")));
 
         foreach (Collider2D coll in hit)
