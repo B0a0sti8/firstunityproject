@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SummonerTree3Talent0_SummonFireDemon : Talent
+public class SummonerTree2Talent7_TheGreatSacrifice : Talent
 {
     private GameObject mySkill;
     private SummonerClass mySummonerClass;
 
     protected override void Awake()
     {
-        talentName = "Summon Fire Demon";
-        talentDescription = "Summons a fire demon. The demon causes an explosion on spawn and every 10 seconds.";
+        talentName = "Ultimate Spell: The Great Sacrifice";
+        talentDescription = "Sacrifices all your minions to grant 20 % more Mastery, Toughness, Intellect, Charisma and Tempo to all helping Players. ";
 
         maxCount = 1;
         pointCost = 5;
@@ -23,7 +23,7 @@ public class SummonerTree3Talent0_SummonFireDemon : Talent
     {
         base.ActiveTalentEffect();
         // Füge Skill Hinzu
-        mySkill = PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").Find("Skillbook").Find("Classes").Find("SummonerSkills").Find("SummonFireDemon").gameObject;
+        mySkill = PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").Find("Skillbook").Find("Classes").Find("SummonerSkills").Find("Summoner_TheGreatSacrifice").gameObject;
         mySkill.GetComponent<Button>().enabled = true;
         PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").GetComponent<SkillbookMaster>().UpdateCurrentSkills();
     }
@@ -32,7 +32,7 @@ public class SummonerTree3Talent0_SummonFireDemon : Talent
     {
         base.RemoveActiveTalentEffectAfterPointCountReduced();
         // Entferne Skill
-        mySkill = PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").Find("Skillbook").Find("Classes").Find("SummonerSkills").Find("SummonFireDemon").gameObject;
+        mySkill = PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").Find("Skillbook").Find("Classes").Find("SummonerSkills").Find("Summoner_TheGreatSacrifice").gameObject;
         if (currentCount == 0) mySkill.GetComponent<Button>().enabled = false;
 
         PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").GetComponent<SkillbookMaster>().UpdateCurrentSkills();

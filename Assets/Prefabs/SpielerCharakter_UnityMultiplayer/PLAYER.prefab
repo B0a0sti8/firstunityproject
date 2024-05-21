@@ -24140,6 +24140,8 @@ MonoBehaviour:
   masterGCTimeLeft: 0
   masterGCEarlyTime: 0
   masterOwnCooldownEarlyTime: 0
+  masterUltimateSpellGCtotal: 0
+  masterUltimateSpellGCcurrent: 0
   masterIsSkillInQueue: 0
   castTimeMax: 0
   castTimeCurrent: 0
@@ -49377,6 +49379,7 @@ RectTransform:
   - {fileID: 2956998438033483284}
   - {fileID: 6667037490679920566}
   - {fileID: 7568762959660761590}
+  - {fileID: 5181687495014668444}
   m_Father: {fileID: 6438617500635706878}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -54962,6 +54965,141 @@ Transform:
   m_Father: {fileID: 3461071107643213135}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2708828224933878676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6187548302293954025}
+  - component: {fileID: 4955523589805641092}
+  - component: {fileID: 3396804364679404986}
+  m_Layer: 8
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6187548302293954025
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2708828224933878676}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5181687495014668444}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4955523589805641092
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2708828224933878676}
+  m_CullTransparentMesh: 1
+--- !u!114 &3396804364679404986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2708828224933878676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2709842904480259298
 GameObject:
   m_ObjectHideFlags: 0
@@ -73210,8 +73348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
-  className: 
+  skillName: Summoner_DragonStrike
+  className: Summoner
   skillAvailable: 0
 --- !u!114 &3829686451071925336
 MonoBehaviour:
@@ -84445,6 +84583,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   damage: 100
 --- !u!114 &1057949729613587128
@@ -84504,6 +84643,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   baseDamage: 100
   comboDamage: 120
@@ -84564,6 +84704,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   baseDamage: 100
   comboDamage: 150
@@ -84624,6 +84765,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   damage: 400
 --- !u!114 &4132811638230271047
@@ -84683,6 +84825,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   damage: 200
 --- !u!114 &203713702215444478
@@ -84742,6 +84885,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   duration: 0
   value: 0
@@ -84803,6 +84947,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   duration: 30
   value: 50
@@ -84864,6 +85009,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   healing: 75
 --- !u!114 &8408333702287430284
@@ -84923,6 +85069,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   instantHealing: 50
   tickTime: 2
@@ -84986,6 +85133,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   duration: 8
   value: 5
@@ -85047,6 +85195,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   heal: 100
 --- !u!114 &8215493504788211074
@@ -85106,6 +85255,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
 --- !u!114 &4166195230893305512
 MonoBehaviour:
@@ -85164,6 +85314,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   damage: 100
   tickTime: 1
@@ -85227,6 +85378,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 3
 --- !u!1 &5085567595039653821
 GameObject:
@@ -96520,6 +96672,164 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5945730262445625372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5181687495014668444}
+  - component: {fileID: 7238900028573617626}
+  - component: {fileID: 8123944949802569808}
+  - component: {fileID: 7069072982507354408}
+  - component: {fileID: 1004484595253180820}
+  - component: {fileID: 7737993061845998540}
+  m_Layer: 8
+  m_Name: Summoner_DragonStrike
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5181687495014668444
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945730262445625372}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6187548302293954025}
+  m_Father: {fileID: 8523466882783658339}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 42, y: -42}
+  m_SizeDelta: {x: 64, y: 64}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7238900028573617626
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945730262445625372}
+  m_CullTransparentMesh: 1
+--- !u!114 &8123944949802569808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945730262445625372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c089b465950f3ad469fbe4420199396f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7069072982507354408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945730262445625372}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 8123944949802569808}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1004484595253180820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945730262445625372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: SummonSpiders
+--- !u!114 &7737993061845998540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945730262445625372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141e5d874c5de6a46bc3e6102d9d493d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  skillName: 
+  skillDescription: 
+  skillSprite: {fileID: 0}
+  skillType: 
+  skillCooldown: 
+  skillCosts: 
+  skillRange: 
+  skillRadius: 
 --- !u!1 &5964866403938163810
 GameObject:
   m_ObjectHideFlags: 0
@@ -99566,7 +99876,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6215869114247417968}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -102426,6 +102736,7 @@ GameObject:
   - component: {fileID: 6120153652896389923}
   - component: {fileID: 5734583589892912492}
   - component: {fileID: 4573689075175833725}
+  - component: {fileID: 3687163620629750738}
   m_Layer: 8
   m_Name: Summoner
   m_TagString: Untagged
@@ -102551,6 +102862,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   dragonling: {fileID: 2023599406339572345, guid: f407b2ef94e5e224585d8fdc5bbc96c7, type: 3}
 --- !u!114 &7307744708454236220
@@ -102610,6 +102922,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
 --- !u!114 &2666061716428747962
 MonoBehaviour:
@@ -102668,6 +102981,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   buffDuration: 10
   buffValue: 0
@@ -102729,6 +103043,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
 --- !u!114 &6869431587684373569
 MonoBehaviour:
@@ -102787,9 +103102,11 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   damage: 400
   myProjectile: {fileID: 8206478290439211267, guid: 932cb1930abada740a476b079dc1d69b, type: 3}
+  myImp: {fileID: 2023599406339572345, guid: 8b60f533911b45045a297c3be5168537, type: 3}
 --- !u!114 &2906210572607539381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102847,6 +103164,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   imp: {fileID: 2023599406339572345, guid: 8b60f533911b45045a297c3be5168537, type: 3}
 --- !u!114 &7751839050863941291
@@ -102906,6 +103224,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   dragonAOEAnimation: {fileID: 647104670885987435, guid: 29aeca72a872f324b8e029ed134c7bd6, type: 3}
 --- !u!114 &472482984243538107
@@ -102965,6 +103284,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
 --- !u!114 &2069624952473487591
 MonoBehaviour:
@@ -103023,6 +103343,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
 --- !u!114 &3327228784054228821
 MonoBehaviour:
@@ -103081,6 +103402,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   stoneGolem: {fileID: 2023599406339572345, guid: 0f63cd95e293b934dab93a93ae6b3448, type: 3}
 --- !u!114 &8877811282560271444
@@ -103140,6 +103462,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   treeSpirit: {fileID: 2023599406339572345, guid: 6c589c66bd1ea964eb666b522cc15403, type: 3}
 --- !u!114 &170508135099420369
@@ -103199,6 +103522,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   buffDuration: 15
   buffTickValue: 0
@@ -103263,6 +103587,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   buffDuration: 5
   buffImage: {fileID: 0}
@@ -103323,6 +103648,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   damage: 400
   mySnake: {fileID: 8206478290439211267, guid: 056fcd46548790a469e8bc72f6dcc3eb, type: 3}
@@ -103383,6 +103709,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   buffDurationBase: 0
   buffValueBase: 0
@@ -103444,6 +103771,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   buffBaseDuration: 0
   buffBaseValue: 0
@@ -103504,6 +103832,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   myFireImpactAnim: {fileID: 416251089823111746, guid: 90f7cae453562b94892b7df049ac9d41, type: 3}
   myFireDemonPrefab: {fileID: 2023599406339572345, guid: 0580a3561befec2418606804084ea75c, type: 3}
@@ -103564,6 +103893,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   mySpiderPrefab: {fileID: 2023599406339572345, guid: 25d5e1855a65620418a8dd30e0444b2d, type: 3}
 --- !u!114 &5734583589892912492
@@ -103623,6 +103953,7 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 0}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
   imp: {fileID: 2023599406339572345, guid: 8b60f533911b45045a297c3be5168537, type: 3}
   insect: {fileID: 2023599406339572345, guid: 62bcba0ead38d9342be44d1645d3522a, type: 3}
@@ -103684,6 +104015,66 @@ MonoBehaviour:
   isUltimateSpell: 0
   ultimateSpellIcon: {fileID: 21300000, guid: fc8390f419aad74469604b5899444821, type: 3}
   ultimateSpellName: 
+  myUltimateSpellHelpers: []
+  skillDuration: 0
+--- !u!114 &3687163620629750738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478835394022496323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683987a1448f8604a88888f2c0f8acc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
+  masterChecks: {fileID: 0}
+  PLAYER: {fileID: 0}
+  interactionCharacter: {fileID: 0}
+  playerStats: {fileID: 0}
+  myClass: 
+  animationTime: 1.5
+  isCastOnSelf: 0
+  needsTargetEnemy: 0
+  needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
+  needsMana: 0
+  manaCost: 0
+  skillRange: 0
+  skillRadius: 0
+  ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  hasGlobalCooldown: 0
+  isSuperInstant: 0
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
+  castTimeOriginal: 0
+  castTimeModified: 0
+  castStarted: 0
+  isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
+  myAreaType: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
+  circleAim: {x: 0, y: 0, z: 0}
+  PlacableAOEIndicator: {fileID: 0}
+  isUltimateSpell: 0
+  ultimateSpellIcon: {fileID: 0}
+  ultimateSpellName: 
+  myUltimateSpellHelpers: []
   skillDuration: 0
 --- !u!1 &6484973489908793764
 GameObject:
