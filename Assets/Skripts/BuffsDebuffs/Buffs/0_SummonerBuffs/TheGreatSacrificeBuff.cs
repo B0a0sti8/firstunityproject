@@ -9,11 +9,11 @@ public class TheGreatSacrificeBuff : Buff
         buffName = "The great sacrifice";
         buffDescription = "Buffs all main stats";
         base.StartBuffEffect(playerStats);
-        ((PlayerStats)playerStats).mastery.baseValue += value;
-        ((PlayerStats)playerStats).toughness.baseValue += value;
-        ((PlayerStats)playerStats).intellect.baseValue += value;
-        ((PlayerStats)playerStats).charisma.baseValue += value;
-        ((PlayerStats)playerStats).tempo.baseValue += value;
+        ((PlayerStats)playerStats).mastery.AddModifierMultiply(value);
+        ((PlayerStats)playerStats).toughness.AddModifierMultiply(value);
+        ((PlayerStats)playerStats).intellect.AddModifierMultiply(value);
+        ((PlayerStats)playerStats).charisma.AddModifierMultiply(value);
+        ((PlayerStats)playerStats).tempo.AddModifierMultiply(value);
         ((PlayerStats)playerStats).ComputeSideStats();
         isRemovable = false;
     }
@@ -21,11 +21,11 @@ public class TheGreatSacrificeBuff : Buff
     public override void EndBuffEffect(CharacterStats playerStats)
     {
         base.EndBuffEffect(playerStats);
-        ((PlayerStats)playerStats).mastery.baseValue -= value;
-        ((PlayerStats)playerStats).toughness.baseValue -= value;
-        ((PlayerStats)playerStats).intellect.baseValue -= value;
-        ((PlayerStats)playerStats).charisma.baseValue -= value;
-        ((PlayerStats)playerStats).tempo.baseValue -= value;
+        ((PlayerStats)playerStats).mastery.RemoveModifierMultiply(value);
+        ((PlayerStats)playerStats).toughness.RemoveModifierMultiply(value);
+        ((PlayerStats)playerStats).intellect.RemoveModifierMultiply(value);
+        ((PlayerStats)playerStats).charisma.RemoveModifierMultiply(value);
+        ((PlayerStats)playerStats).tempo.RemoveModifierMultiply(value);
     }
 
     public override Buff Clone()
