@@ -45790,8 +45790,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
-  className: 
+  skillName: Warrior_WideSlash
+  className: Warrior
   skillAvailable: 0
 --- !u!114 &5170354190067813695
 MonoBehaviour:
@@ -61541,7 +61541,7 @@ GameObject:
   - component: {fileID: 5780847151949259211}
   - component: {fileID: 9148663250167443968}
   m_Layer: 8
-  m_Name: TestAttack1
+  m_Name: Warrior_WideSlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61662,7 +61662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: TestAttack1
+  skillName: Warrior_WideSlash
 --- !u!114 &9148663250167443968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65591,7 +65591,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bf8e4e5737f4dac4b8504afc7487faa5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 353b1a1eead0b6140887dfb9be78d0d7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -65657,7 +65657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: TestAttack2
+  skillName: WideSlash
 --- !u!114 &1220381965651141100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70011,6 +70011,116 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3967506863302354146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2807353353262223535}
+  - component: {fileID: 8719658032798055745}
+  - component: {fileID: 1754308796815411200}
+  m_Layer: 8
+  m_Name: Warrior
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2807353353262223535
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967506863302354146}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 596999222448207036}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8719658032798055745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967506863302354146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b973159fb13509a4e86c915011cc6f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1754308796815411200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967506863302354146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99cb81ae8b4704a49a845581d86c4041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
+  masterChecks: {fileID: 0}
+  PLAYER: {fileID: 0}
+  interactionCharacter: {fileID: 0}
+  playerStats: {fileID: 0}
+  myClass: 
+  animationTime: 1.5
+  isCastOnSelf: 0
+  needsTargetEnemy: 0
+  needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
+  targetSnapShot: {fileID: 0}
+  needsMana: 0
+  manaCost: 0
+  skillRange: 0
+  skillRadius: 0
+  ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  hasGlobalCooldown: 0
+  isSuperInstant: 0
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
+  castTimeOriginal: 0
+  castTimeModified: 0
+  castStarted: 0
+  isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
+  myAreaType: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
+  circleAim: {x: 0, y: 0, z: 0}
+  PlacableAOEIndicator: {fileID: 0}
+  isUltimateSpell: 0
+  ultimateSpellIcon: {fileID: 0}
+  ultimateSpellName: 
+  myUltimateSpellHelpers: []
+  skillDuration: 0
 --- !u!1 &3969240152044522947
 GameObject:
   m_ObjectHideFlags: 0
@@ -84552,6 +84662,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 1
   manaCost: 100
   skillRange: 10
@@ -84612,6 +84723,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 3
@@ -84673,6 +84785,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 3
@@ -84734,6 +84847,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 3
@@ -84794,6 +84908,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 1
   manaCost: 50
   skillRange: 20
@@ -84854,6 +84969,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -84916,6 +85032,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 1
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 1
   manaCost: 250
   skillRange: 0
@@ -84978,6 +85095,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 1
   manaCost: 200
   skillRange: 0
@@ -85038,6 +85156,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 1
   manaCost: 150
   skillRange: 0
@@ -85102,6 +85221,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -85164,6 +85284,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 50
   skillRange: 10
@@ -85224,6 +85345,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -85283,6 +85405,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -85347,6 +85470,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 1
   manaCost: 50
   skillRange: 0
@@ -99152,6 +99276,7 @@ RectTransform:
   - {fileID: 3442146574142620496}
   - {fileID: 5569896643652025387}
   - {fileID: 3504674462977951939}
+  - {fileID: 2807353353262223535}
   m_Father: {fileID: 6689280491225256453}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -102831,6 +102956,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -102891,6 +103017,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -102950,6 +103077,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103012,6 +103140,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103071,6 +103200,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103133,6 +103263,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103193,6 +103324,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103253,6 +103385,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 1
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103312,6 +103445,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103371,6 +103505,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103431,6 +103566,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103491,6 +103627,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103556,6 +103693,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103617,6 +103755,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103678,6 +103817,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103740,6 +103880,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103801,6 +103942,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103862,6 +104004,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103922,6 +104065,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -103984,6 +104128,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -104043,6 +104188,7 @@ MonoBehaviour:
   targetsEnemiesOnly: 0
   targetsAlliesOnly: 0
   currentTargets: []
+  targetSnapShot: {fileID: 0}
   needsMana: 0
   manaCost: 0
   skillRange: 0
@@ -104072,10 +104218,11 @@ MonoBehaviour:
   circleAim: {x: 0, y: 0, z: 0}
   PlacableAOEIndicator: {fileID: 0}
   isUltimateSpell: 0
-  ultimateSpellIcon: {fileID: 0}
+  ultimateSpellIcon: {fileID: 21300000, guid: c089b465950f3ad469fbe4420199396f, type: 3}
   ultimateSpellName: 
   myUltimateSpellHelpers: []
   skillDuration: 0
+  myFireImpactAnim: {fileID: 416251089823111746, guid: 663bbd1e773234f429416e87fd975cdb, type: 3}
 --- !u!1 &6484973489908793764
 GameObject:
   m_ObjectHideFlags: 0

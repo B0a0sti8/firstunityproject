@@ -54,7 +54,7 @@ public class MasterChecks : MonoBehaviour
         masterOwnCooldownEarlyTime = 1f;
         masterAnimTime = 0.5f;
 
-        masterUltimateSpellGCtotal = 300f;
+        masterUltimateSpellGCtotal = 1f;
     }
 
     void LateUpdate()
