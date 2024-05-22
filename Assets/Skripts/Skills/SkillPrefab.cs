@@ -31,9 +31,9 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public bool targetsEnemiesOnly;
     public bool targetsAlliesOnly;
     public List<GameObject> currentTargets = new List<GameObject>();
-    protected GameObject mainTargetForCircleAoE;
+    //public GameObject mainTargetForCircleAoE;
     bool forceTargetPlayer;
-    GameObject targetSnapShot;
+    public GameObject targetSnapShot;
 
     [Header("Mana")]
     public bool needsMana; // optional
@@ -83,6 +83,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public bool castStarted = false;
     public bool isSkillChanneling = false;
     public bool isChannelingSkillEffectActive;
+    bool isCastingThisSameSpellAlready = false;
 
     public enum AreaType
     {
@@ -223,6 +224,8 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
     public void QueueCheck() // checks if queue is empty
     {
+        if (isCastingThisSameSpellAlready && ownCooldownTimeBase > 1.5f) return;
+
         if (isUltimateSpell) { UltimateSpellProtocol(); return; }
         //Debug.Log("QueueCheck");
         if ((!isSuperInstant && !masterChecks.masterIsSkillInQueue) || (isSuperInstant && !isSkillInOwnSuperInstantQueue)) SuperInstantCheck(); // OwnCooldownCheck
@@ -299,6 +302,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
     public virtual void StartCasting()
     {
+        isCastingThisSameSpellAlready = true;
         if (castTimeOriginal <= 0)
         {
             TriggerSkillCooldown();
@@ -334,6 +338,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
     public void TriggerSkillCooldown()
     {
+        isCastingThisSameSpellAlready = false;
         if (isUltimateSpell) { masterChecks.masterUltimateSpellGCcurrent = masterChecks.masterUltimateSpellGCtotal; return; }
 
         // Modifiziert den Cooldown basierend auf aktuellem Tempo
@@ -621,6 +626,8 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     // Läuft auf dem Auslösenden Spieler.
     public void UltimateSpellProtocol()
     {
+        TriggerSkillCooldown();
+
         myUltimateSpellHelpers.Clear();
         myUltimateSpellHelpers.Add(PLAYER);
         float myWaitingPeriodDuration = 2.5f;

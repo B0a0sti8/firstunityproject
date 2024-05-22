@@ -26,12 +26,12 @@ public class ClassAssignment : MonoBehaviour
         mySkillBook = PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").GetComponent<SkillbookMaster>();
         myTalentTree = PLAYER.transform.Find("Own Canvases").Find("CanvasTalentTree").Find("TalentTreeWindow").GetComponent<TalentTree>();
 
-        playerStats.mainClassName = "Summoner";
-        playerStats.leftSubClassName = "Dummy";
+        playerStats.mainClassName = "Warrior";
+        playerStats.leftSubClassName = "Summoner";
         playerStats.rightSubClassName = "Dummy";
 
-        myTalentTree.subClassMain = "Summoner";
-        myTalentTree.subClassLeft = "Dummy";
+        myTalentTree.subClassMain = "Warrior";
+        myTalentTree.subClassLeft = "Summoner";
         myTalentTree.subClassRight = "Dummy";
 
         ResetClasses();

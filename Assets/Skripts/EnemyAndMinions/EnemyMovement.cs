@@ -94,8 +94,6 @@ public class EnemyMovement : MonoBehaviour
         { return; }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWypoint] - rb2d.position).normalized;
-        //transform.localRotation *= Quaternion.FromToRotation(-transform.up, direction);
-        Debug.Log(GetComponent<EnemyStats>().movementSpeed.GetValue());
         Vector2 force = direction * speed * GetComponent<EnemyStats>().movementSpeed.GetValue() * Time.deltaTime;
         rb2d.AddForce(force);
 

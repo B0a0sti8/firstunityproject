@@ -63,7 +63,7 @@ public class ExplodeImps : SkillPrefab
             {
                 foreach (GameObject imp in myImps)
                 {
-                    Vector3 targetVector = mainTargetForCircleAoE.transform.position - imp.transform.position;
+                    Vector3 targetVector = targetSnapShot.transform.position - imp.transform.position;
                     if (targetVector.magnitude >= 1)
                     {
                         FlingImpServerRpc(targetVector, imp);
