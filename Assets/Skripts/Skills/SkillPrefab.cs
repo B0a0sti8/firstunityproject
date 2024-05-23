@@ -24,7 +24,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public float animationTime = 1.5f;
 
     [Header("Target")]
-    public bool isCastOnSelf = false;
+    public bool isCastOnSelf;
     public bool needsTargetEnemy;
     public bool needsTargetAlly;
     public bool canSelfCastIfNoTarget;
@@ -53,7 +53,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     public float ownCooldownTimeLeft;
 
     [Header("Skilltype")]
-    public bool hasGlobalCooldown;
+    public bool hasGlobalCooldown = true;
     public bool isSuperInstant; // can not be true if hasGlobalCooldown is true
     bool isSkillInOwnSuperInstantQueue = false;
 
@@ -391,7 +391,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
                 // Holt sich alle Targets um das Ziel (Oder um den Spieler falls der Skill ohne passendes Ziel gecastet werden kann).
                 List<GameObject> prelimTargetsCírcle = new List<GameObject>(); prelimTargetsCírcle.Clear();
 
-                if (isCastOnSelf) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // Ein Selbst-Skill um den Spieler
+                if (isCastOnSelf) { prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); } // Ein Selbst-Skill um den Spieler
                 else if (forceTargetPlayer) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // SONDERFALL!! Siehe Funktionsbeschreibung. 
                 else if (canSelfCastIfNoTarget) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // Skills die ein Ziel bräuchten, aber notfalls den SPieler nehmen können.
                 else if (targetSnapShot != null) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(targetSnapShot.transform.position, skillRadius)); // Skills die ein Ziel brauchen
@@ -684,7 +684,7 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
     IEnumerator WaitForUltimateSpellWaitingPeriodToBeFinished(float time)
     {
         yield return new WaitForSeconds(time);
-        Debug.Log("Anzahl meiner Helfer: " + myUltimateSpellHelpers.Count);
+        //Debug.Log("Anzahl meiner Helfer: " + myUltimateSpellHelpers.Count);
 
         TriggerSkillCooldown();
         AOECheck();

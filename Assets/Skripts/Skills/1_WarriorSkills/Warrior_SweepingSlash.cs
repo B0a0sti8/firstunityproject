@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class Warrior_WideSlash : SkillPrefab
+public class Warrior_SweepingSlash : SkillPrefab
 {
     WarriorClass myWarriorClass;
     private float damageBase;
@@ -14,18 +14,19 @@ public class Warrior_WideSlash : SkillPrefab
         base.Start();
 
         myWarriorClass = PLAYER.transform.Find("SkillManager").Find("Warrior").GetComponent<WarriorClass>();
-        tooltipSkillDescription = "A slash, dealing damage to enemies in front of you. Makes your next Sweeping Slash within 5 seconds deal double damage. ";
+        tooltipSkillDescription = "Whirling your blade around you, you deal damage to all enemies in range. Deals double damage, when you used WildSlash in the last 5 seconds. ";
 
         ownCooldownTimeBase = 0f;
 
         needsTargetEnemy = false;
         targetsEnemiesOnly = true;
+        isCastOnSelf = true;
 
         skillRadiusBase = 5f;
         coneAOEAngle = 120;
-        myAreaType = AreaType.Front;
+        myAreaType = AreaType.CircleAroundTarget;
 
-        damageBase = 200;
+        damageBase = 150;
     }
 
     public override void StartCasting()
@@ -38,10 +39,9 @@ public class Warrior_WideSlash : SkillPrefab
     {
         base.SkillEffect();
         float damageModified = damageBase * playerStats.dmgInc.GetValue();
+        if (myWarriorClass.hasSweepingSlashComboBuff) { damageModified *= 2; myWarriorClass.hasSweepingSlashComboBuff = false; } // Bildet combo mit WideSlash: Doppelter Schaden.
 
         DealDamage(damageModified);
-        myWarriorClass.hasSweepingSlashComboBuff = true;
-
-        GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(PLAYER.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "Warrior_SweepingSlash_ComboBuff", "Warrior_SweepingSlash_ComboBuff", false, 5, 0, 0);
+        PLAYER.GetComponent<BuffManager>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "Warrior_SweepingSlash_ComboBuff", false);
     }
 }
