@@ -39,6 +39,10 @@ public class BuffMasterManager : MonoBehaviour
     [SerializeField] Sprite summonSpiderSlowEffectBuffSprite;
     [SerializeField] Sprite theGreatSacrificeBuffSprite;
 
+    [Header("Warrior Buffs")]// Für Warrior-spezifische Buffs
+    [SerializeField] Sprite warrior_BrutalStrike_ComboBuff_Sprite;
+    [SerializeField] Sprite warrior_SweepingSlash_ComboBuff_Sprite;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -65,7 +69,7 @@ public class BuffMasterManager : MonoBehaviour
         ListOfAllBuffs.Add("TestWayOfTheChickenDamageDebuff", testWayOfTheChickenDamageDebuff);
         ListOfAllBuffSprites.Add("TestWayOfTheChickenDamageDebuff", testWayOfTheChickenDamageDebuffSprite);
 
-        // Spezifisch für Summoner-Classe
+        // Spezifisch für Summoner-Klasse
         SummonInsectsOnEnemyDeathBuff summonInsectsOnEnemyDeathBuff = new SummonInsectsOnEnemyDeathBuff();
         ListOfAllBuffs.Add("SummonInsectsOnEnemyDeathBuff", summonInsectsOnEnemyDeathBuff);
         ListOfAllBuffSprites.Add("SummonInsectsOnEnemyDeathBuff", summonInsectsOnEnemyDeathBuffSprite);
@@ -93,5 +97,14 @@ public class BuffMasterManager : MonoBehaviour
         TheGreatSacrificeBuff theGreatSacrificeBuff = new TheGreatSacrificeBuff();
         ListOfAllBuffs.Add("TheGreatSacrificeBuff", theGreatSacrificeBuff);
         ListOfAllBuffSprites.Add("TheGreatSacrificeBuff", theGreatSacrificeBuffSprite);
+
+        // Spezifisch für Warrior-Klasse
+        Warrior_BrutalStrike_ComboBuff warrior_BrutalStrike_ComboBuff = new Warrior_BrutalStrike_ComboBuff();
+        ListOfAllBuffs.Add("Warrior_BrutalStrike_ComboBuff", warrior_BrutalStrike_ComboBuff);
+        ListOfAllBuffSprites.Add("Warrior_BrutalStrike_ComboBuff", warrior_BrutalStrike_ComboBuff_Sprite);
+
+        Warrior_SweepingSlash_ComboBuff warrior_SweepingSlash_ComboBuff = new Warrior_SweepingSlash_ComboBuff();
+        ListOfAllBuffs.Add("Warrior_SweepingSlash_ComboBuff", warrior_SweepingSlash_ComboBuff);
+        ListOfAllBuffSprites.Add("Warrior_SweepingSlash_ComboBuff", warrior_SweepingSlash_ComboBuff_Sprite);
     }
 }

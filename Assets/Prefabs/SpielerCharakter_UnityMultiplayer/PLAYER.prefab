@@ -8466,7 +8466,7 @@ GameObject:
   - component: {fileID: 5335952158956236456}
   - component: {fileID: 2455310074997237853}
   m_Layer: 8
-  m_Name: TestBigAttack
+  m_Name: Warrior_SweepingSlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8521,7 +8521,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3689d3cf363b868439cfa37205a6cf53, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3485a4fd2a24aac47ae38de91536d931, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8587,7 +8587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: TestBigAttack
+  skillName: Warrior_SweepingSlash
 --- !u!114 &2455310074997237853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46085,8 +46085,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
-  className: 
+  skillName: Warrior_BrutalStrike
+  className: Warrior
   skillAvailable: 0
 --- !u!114 &2301123760559401784
 MonoBehaviour:
@@ -63184,8 +63184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
-  className: 
+  skillName: Warrior_SweepingSlash
+  className: Warrior
   skillAvailable: 0
 --- !u!114 &723567863973368921
 MonoBehaviour:
@@ -65536,7 +65536,7 @@ GameObject:
   - component: {fileID: 5962317472044169999}
   - component: {fileID: 1220381965651141100}
   m_Layer: 8
-  m_Name: TestAttack2
+  m_Name: Warrior_WildStrike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65591,7 +65591,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 353b1a1eead0b6140887dfb9be78d0d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 29c81de3bc29c59489c6ef4fb8d663d3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -65657,7 +65657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: WideSlash
+  skillName: WildStrike
 --- !u!114 &1220381965651141100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66576,7 +66576,7 @@ GameObject:
   - component: {fileID: 2904998889535400229}
   - component: {fileID: 2372625139300450274}
   m_Layer: 8
-  m_Name: TestEnergyDrain
+  m_Name: Warrior_BrutalStrike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66631,7 +66631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 39fc3301bb743c847a32c3a33688dcfa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4136f4c34b9d5e54682706c8e9e1e485, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -66697,7 +66697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: TestEnergyDrain
+  skillName: Warrior_BrutalStrike
 --- !u!114 &2372625139300450274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70022,6 +70022,10 @@ GameObject:
   - component: {fileID: 2807353353262223535}
   - component: {fileID: 8719658032798055745}
   - component: {fileID: 1754308796815411200}
+  - component: {fileID: 6469836945637921919}
+  - component: {fileID: 2863544710219954693}
+  - component: {fileID: 5400352735995961932}
+  - component: {fileID: 8785604869071340754}
   m_Layer: 8
   m_Name: Warrior
   m_TagString: Untagged
@@ -70061,6 +70065,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b973159fb13509a4e86c915011cc6f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meleeSkillsRadiusIncrease: 0
+  hasSweepingSlashComboBuff: 0
+  hasBrutalStrikeComboBuff: 0
 --- !u!114 &1754308796815411200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70096,6 +70103,246 @@ MonoBehaviour:
   ownCooldownTimeModified: 0
   ownCooldownTimeLeft: 0
   hasGlobalCooldown: 0
+  isSuperInstant: 0
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
+  castTimeOriginal: 0
+  castTimeModified: 0
+  castStarted: 0
+  isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
+  myAreaType: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
+  circleAim: {x: 0, y: 0, z: 0}
+  PlacableAOEIndicator: {fileID: 0}
+  isUltimateSpell: 0
+  ultimateSpellIcon: {fileID: 0}
+  ultimateSpellName: 
+  myUltimateSpellHelpers: []
+  skillDuration: 0
+--- !u!114 &6469836945637921919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967506863302354146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa484f7fd9fc0744a92ba266788557f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
+  masterChecks: {fileID: 0}
+  PLAYER: {fileID: 0}
+  interactionCharacter: {fileID: 0}
+  playerStats: {fileID: 0}
+  myClass: 
+  animationTime: 1.5
+  isCastOnSelf: 0
+  needsTargetEnemy: 0
+  needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
+  targetSnapShot: {fileID: 0}
+  needsMana: 0
+  manaCost: 0
+  skillRange: 0
+  skillRadius: 0
+  ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  hasGlobalCooldown: 1
+  isSuperInstant: 0
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
+  castTimeOriginal: 0
+  castTimeModified: 0
+  castStarted: 0
+  isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
+  myAreaType: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
+  circleAim: {x: 0, y: 0, z: 0}
+  PlacableAOEIndicator: {fileID: 0}
+  isUltimateSpell: 0
+  ultimateSpellIcon: {fileID: 0}
+  ultimateSpellName: 
+  myUltimateSpellHelpers: []
+  skillDuration: 0
+--- !u!114 &2863544710219954693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967506863302354146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb591f4f9b8b64e44997dddf430c6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
+  masterChecks: {fileID: 0}
+  PLAYER: {fileID: 0}
+  interactionCharacter: {fileID: 0}
+  playerStats: {fileID: 0}
+  myClass: 
+  animationTime: 1.5
+  isCastOnSelf: 0
+  needsTargetEnemy: 0
+  needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
+  targetSnapShot: {fileID: 0}
+  needsMana: 0
+  manaCost: 0
+  skillRange: 0
+  skillRadius: 0
+  ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  hasGlobalCooldown: 1
+  isSuperInstant: 0
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
+  castTimeOriginal: 0
+  castTimeModified: 0
+  castStarted: 0
+  isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
+  myAreaType: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
+  circleAim: {x: 0, y: 0, z: 0}
+  PlacableAOEIndicator: {fileID: 0}
+  isUltimateSpell: 0
+  ultimateSpellIcon: {fileID: 0}
+  ultimateSpellName: 
+  myUltimateSpellHelpers: []
+  skillDuration: 0
+--- !u!114 &5400352735995961932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967506863302354146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f777eb4e729624f8c7aa765cdce63b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
+  masterChecks: {fileID: 0}
+  PLAYER: {fileID: 0}
+  interactionCharacter: {fileID: 0}
+  playerStats: {fileID: 0}
+  myClass: 
+  animationTime: 1.5
+  isCastOnSelf: 0
+  needsTargetEnemy: 0
+  needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
+  targetSnapShot: {fileID: 0}
+  needsMana: 0
+  manaCost: 0
+  skillRange: 0
+  skillRadius: 0
+  ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  hasGlobalCooldown: 1
+  isSuperInstant: 0
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
+  castTimeOriginal: 0
+  castTimeModified: 0
+  castStarted: 0
+  isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
+  myAreaType: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
+  circleAim: {x: 0, y: 0, z: 0}
+  PlacableAOEIndicator: {fileID: 0}
+  isUltimateSpell: 0
+  ultimateSpellIcon: {fileID: 0}
+  ultimateSpellName: 
+  myUltimateSpellHelpers: []
+  skillDuration: 0
+--- !u!114 &8785604869071340754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967506863302354146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8283c0cf4a4a74ebe3e86ac32214b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
+  masterChecks: {fileID: 0}
+  PLAYER: {fileID: 0}
+  interactionCharacter: {fileID: 0}
+  playerStats: {fileID: 0}
+  myClass: 
+  animationTime: 1.5
+  isCastOnSelf: 0
+  needsTargetEnemy: 0
+  needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
+  targetSnapShot: {fileID: 0}
+  needsMana: 0
+  manaCost: 0
+  skillRange: 0
+  skillRadius: 0
+  ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  hasGlobalCooldown: 1
   isSuperInstant: 0
   masterET: {fileID: 0}
   tooltipSkillName: 
@@ -110661,7 +110908,7 @@ GameObject:
   - component: {fileID: 83088716146376471}
   - component: {fileID: 217963017463058677}
   m_Layer: 8
-  m_Name: TestAttack3
+  m_Name: Warrior_Sting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110716,7 +110963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ed439f7e2f828d6418cf45776fb7ed05, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1876e99929d311c40a546dc07e7fbae6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -110782,7 +111029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: TestAttack3
+  skillName: Warrior_Sting
 --- !u!114 &217963017463058677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125897,8 +126144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
-  className: 
+  skillName: Warrior_WildStrike
+  className: Warrior
   skillAvailable: 0
 --- !u!114 &3499015977246439449
 MonoBehaviour:
@@ -132597,8 +132844,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
-  className: 
+  skillName: Warrior_Sting
+  className: Warrior
   skillAvailable: 0
 --- !u!114 &3747087360965385154
 MonoBehaviour:

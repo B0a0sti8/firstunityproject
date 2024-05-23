@@ -81,22 +81,25 @@ public class BuffManager : NetworkBehaviour
 
     public void RemoveBuffProcedure(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false)
     {
-        RemoveBuffServerRpc(sourceRef, refBuffName);
+        RemoveBuffServerRpc(sourceRef, refBuffName, singlebuff);
     }
 
     [ServerRpc(RequireOwnership = false)]
     public void RemoveBuffServerRpc(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false)
     {
-        RemoveBuffClientRpc(sourceRef, refBuffName);
+        RemoveBuffClientRpc(sourceRef, refBuffName, singlebuff);
     }
 
     [ClientRpc]
     public void RemoveBuffClientRpc(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false)
     {
         sourceRef.TryGet(out NetworkObject source);
+        Debug.Log("Removing Buff 1");
 
         foreach (Buff myBu in buffs)
         {
+            Debug.Log(myBu.buffSource + "   " + source);
+            Debug.Log(myBu.buffName + "   " + refBuffName);
             if (myBu.buffSource == source.gameObject && myBu.buffName == refBuffName)
             {
                 RemoveBuff(myBu);
