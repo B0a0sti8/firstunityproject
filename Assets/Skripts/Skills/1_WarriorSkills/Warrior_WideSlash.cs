@@ -42,6 +42,7 @@ public class Warrior_WideSlash : SkillPrefab
         DealDamage(damageModified);
         myWarriorClass.hasSweepingSlashComboBuff = true;
 
+        PLAYER.GetComponent<BuffManager>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "Warrior_SweepingSlash_ComboBuff", false);
         GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(PLAYER.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "Warrior_SweepingSlash_ComboBuff", "Warrior_SweepingSlash_ComboBuff", false, 5, 0, 0);
     }
 }

@@ -23,7 +23,6 @@ public class Warrior_SweepingSlash : SkillPrefab
         isCastOnSelf = true;
 
         skillRadiusBase = 5f;
-        coneAOEAngle = 120;
         myAreaType = AreaType.CircleAroundTarget;
 
         damageBase = 150;
