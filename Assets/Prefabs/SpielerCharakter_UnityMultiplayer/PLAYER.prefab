@@ -43949,8 +43949,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5bdc9126f0fc64d9912150c28a8f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
-  className: 
+  skillName: Warrior_RagingBlade
+  className: Warrior
   skillAvailable: 0
 --- !u!114 &5042444782347029496
 MonoBehaviour:
@@ -70026,6 +70026,7 @@ GameObject:
   - component: {fileID: 2863544710219954693}
   - component: {fileID: 5400352735995961932}
   - component: {fileID: 8785604869071340754}
+  - component: {fileID: 4966814993842568906}
   m_Layer: 8
   m_Name: Warrior
   m_TagString: Untagged
@@ -70318,6 +70319,66 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b8283c0cf4a4a74ebe3e86ac32214b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
+  masterChecks: {fileID: 0}
+  PLAYER: {fileID: 0}
+  interactionCharacter: {fileID: 0}
+  playerStats: {fileID: 0}
+  myClass: 
+  animationTime: 1.5
+  isCastOnSelf: 0
+  needsTargetEnemy: 0
+  needsTargetAlly: 0
+  canSelfCastIfNoTarget: 0
+  targetsEnemiesOnly: 0
+  targetsAlliesOnly: 0
+  currentTargets: []
+  targetSnapShot: {fileID: 0}
+  needsMana: 0
+  manaCost: 0
+  skillRange: 0
+  skillRadius: 0
+  ownCooldownTimeBase: 0
+  ownCooldownTimeModified: 0
+  ownCooldownTimeLeft: 0
+  hasGlobalCooldown: 1
+  isSuperInstant: 0
+  masterET: {fileID: 0}
+  tooltipSkillName: 
+  tooltipSkillDescription: 
+  tooltipSkillSprite: {fileID: 0}
+  tooltipSkillType: 
+  tooltipSkillCooldown: 
+  tooltipSkillCosts: 
+  tooltipSkillRange: 
+  tooltipSkillRadius: 
+  castTimeOriginal: 0
+  castTimeModified: 0
+  castStarted: 0
+  isSkillChanneling: 0
+  isChannelingSkillEffectActive: 0
+  myAreaType: 0
+  coneAOEDirection: {x: 0, y: 0, z: 0}
+  coneAOEAngle: 50
+  circleAim: {x: 0, y: 0, z: 0}
+  PlacableAOEIndicator: {fileID: 0}
+  isUltimateSpell: 0
+  ultimateSpellIcon: {fileID: 0}
+  ultimateSpellName: 
+  myUltimateSpellHelpers: []
+  skillDuration: 0
+--- !u!114 &4966814993842568906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967506863302354146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90f011416aa8455418a475f5d4e0122f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
@@ -120406,7 +120467,7 @@ GameObject:
   - component: {fileID: 6966166682705331499}
   - component: {fileID: 8171500067999331986}
   m_Layer: 8
-  m_Name: TestSkill
+  m_Name: Warrior_RagingBlade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120461,7 +120522,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ba3791824ad59854094534af6a0217fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebb1a53cec664fc47a03e3bbeb36ef64, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -120527,7 +120588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd587a5d3e721a47ad52367d926a1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: TestSkill
+  skillName: Warrior_RagingBlade
 --- !u!114 &8171500067999331986
 MonoBehaviour:
   m_ObjectHideFlags: 0

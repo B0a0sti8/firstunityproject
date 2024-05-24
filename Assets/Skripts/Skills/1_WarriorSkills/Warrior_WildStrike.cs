@@ -34,6 +34,7 @@ public class Warrior_WildStrike : SkillPrefab
         DealDamage(damageModified);
         myWarriorClass.hasBrutalStrikeComboBuff = true;
 
+        PLAYER.GetComponent<BuffManager>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "Warrior_BrutalStrike_ComboBuff", false);
         GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(PLAYER.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "Warrior_BrutalStrike_ComboBuff", "Warrior_BrutalStrike_ComboBuff", false, 5, 0, 0);
     }
 }

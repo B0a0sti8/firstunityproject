@@ -393,8 +393,8 @@ public class SkillPrefab : NetworkBehaviour//, IUseable
 
                 if (isCastOnSelf) { prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); } // Ein Selbst-Skill um den Spieler
                 else if (forceTargetPlayer) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // SONDERFALL!! Siehe Funktionsbeschreibung. 
-                else if (canSelfCastIfNoTarget) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // Skills die ein Ziel bräuchten, aber notfalls den SPieler nehmen können.
                 else if (targetSnapShot != null) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(targetSnapShot.transform.position, skillRadius)); // Skills die ein Ziel brauchen
+                else if (canSelfCastIfNoTarget) prelimTargetsCírcle.AddRange(GetTargetsInCircleHelper(PLAYER.transform.position, skillRadius)); // Skills die ein Ziel bräuchten, aber notfalls den SPieler nehmen können.
 
                 // Sammelt nur Freunde aus den Zielen
                 if (targetsAlliesOnly)
