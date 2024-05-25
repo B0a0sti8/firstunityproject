@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Unity.Netcode;
 using UnityEngine;
 
 public class PlayerSaveLoad : MonoBehaviour
@@ -13,12 +14,16 @@ public class PlayerSaveLoad : MonoBehaviour
     [SerializeField]
     private ActionButton[] actionButtons;
 
+    bool talentTreeHasToCheck = false;
+
     Transform PLAYER;
     Transform ownCanvases;
     PlayerStats playerStats;
     StorageChestCanvasScript storageChest; // Falls mal mehrere storageChests existieren: private StorageChest[] storageChests;
     InventoryScript inventoryScript;
     CharacterPanelScript characterPanel;
+    Transform talentTree;
+    ClassAssignment classAssignment;
     
 
     void Awake()
@@ -30,6 +35,17 @@ public class PlayerSaveLoad : MonoBehaviour
         inventoryScript = ownCanvases.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
         characterPanel = ownCanvases.Find("CanvasCharacterPanel").Find("CharacterPanel").GetComponent<CharacterPanelScript>();
         actionButtons = ownCanvases.Find("Canvas Action Skills").Find("SkillSlots").GetComponentsInChildren<ActionButton>();
+        talentTree = ownCanvases.Find("CanvasTalentTree").Find("TalentTreeWindow");
+        classAssignment = ownCanvases.Find("CanvasClassChoice").GetComponent<ClassAssignment>();
+    }
+
+    private void LateUpdate()
+    {
+        if (talentTreeHasToCheck)
+        {
+            talentTreeHasToCheck = false;
+            talentTree.GetComponent<TalentTree>().HasToCheckAfterReset();
+        }
     }
 
     public void Save(string characterName)
@@ -45,11 +61,13 @@ public class PlayerSaveLoad : MonoBehaviour
 
             SaveData data = new SaveData();
 
-            SaveEquipment(data);
-            SaveBags(data);
+
             SavePlayer(data);
-            SaveStorageChest(data);
-            SaveActionButtons(data);
+            SaveTalents(data);
+            //SaveEquipment(data);
+            //SaveBags(data);
+            //SaveStorageChest(data);
+            //SaveActionButtons(data);
 
             bf.Serialize(file, data);
 
@@ -66,8 +84,10 @@ public class PlayerSaveLoad : MonoBehaviour
 
     private void SavePlayer(SaveData data)
     {
+        Debug.Log("Saving Player.");
+        Debug.Log(playerStats.mainClassName + "  " + playerStats.leftSubClassName + "  " + playerStats.rightSubClassName);
         data.MyPlayerData = new PlayerData(playerStats.MyCurrentPlayerLvl,
-            playerStats.MyCurrentXP, playerStats.goldAmount, playerStats.transform.position, playerStats.mainClassName);
+            playerStats.MyCurrentXP, playerStats.goldAmount, playerStats.transform.position, playerStats.mainClassName, playerStats.leftSubClassName, playerStats.rightSubClassName);
     }
 
     private void SaveStorageChest(SaveData data)
@@ -85,7 +105,7 @@ public class PlayerSaveLoad : MonoBehaviour
         }
     }
 
-    public void SaveBags(SaveData data)
+    private void SaveBags(SaveData data)
     {
         for (int i = 1; i < inventoryScript.MyBags.Count; i++)
         {
@@ -93,7 +113,7 @@ public class PlayerSaveLoad : MonoBehaviour
         }
     }
 
-    public void SaveEquipment(SaveData data)
+    private void SaveEquipment(SaveData data)
     {
         foreach (CharPanelButtonScript charButton in characterPanel.allEquipmentSlots)
         {
@@ -104,7 +124,7 @@ public class PlayerSaveLoad : MonoBehaviour
         }
     }
 
-    public void SaveActionButtons(SaveData data)
+    private void SaveActionButtons(SaveData data)
     {
         ActionButtonData a;
         for (int i = 0; i < actionButtons.Length; i++)
@@ -114,52 +134,108 @@ public class PlayerSaveLoad : MonoBehaviour
         }
     }
 
-
-
-
-
-
-
-    public void Load()
+    private void SaveTalents(SaveData data)
     {
+        TalentTreeData tData;
+        TalentTree myTaTree = talentTree.GetComponent<TalentTree>();
+        foreach (Talent talent in myTaTree.GetTalentsForSaving())
+        {
+            tData = new TalentTreeData(talent.currentCount);
+            data.MyTalenTreeData.Add(tData);
+        }
+        Debug.Log(data.MyTalenTreeData.Count);
+    }
 
-        Debug.Log("Load2");
+
+    private string FindRightFileToLoad(string charName)
+    {
+        string myRightFileName = "";
+
+        var info = new DirectoryInfo(Application.persistentDataPath);
+        var fileInfo = info.GetFiles();
+
+        foreach (FileInfo fInfo in fileInfo)
+        {
+            string[] ident = fInfo.Name.Split("_");
+            if (ident[0] == "SaveFile")
+            {
+                //Debug.Log(fInfo.Name);
+                string characterName = ident[1];
+
+                if (characterName == charName) { myRightFileName = fInfo.Name; break; }
+            }
+        }
+        return myRightFileName;
+    }
+
+
+    public void Load(string characterName)
+    {
+        if (!PLAYER.GetComponent<NetworkObject>().IsOwner) return;
+
+        Debug.Log("Loading Character... :" + characterName);
+        string myFileName = FindRightFileToLoad(characterName);
+        if (myFileName == "") { Debug.Log("No File Found! "); return; }
+
+        SaveData data = new SaveData();
+
         try
         {
             BinaryFormatter bf = new BinaryFormatter();
-
-            FileStream file = File.Open(Application.persistentDataPath + "/" + "SaveTest.dat", FileMode.Open);
-
-            SaveData data = (SaveData)bf.Deserialize(file);
-
+            FileStream file = File.Open(Application.persistentDataPath + "/" + myFileName, FileMode.Open);
+            data = (SaveData)bf.Deserialize(file);
             file.Close();
-
-            LoadEquipment(data);
-            LoadBags(data);
-            LoadPlayer(data);
-            LoadStorageChests(data);
-            LoadActionButtons(data);
-
-
         }
         catch (System.Exception)
         {
             // Handling Errors
             throw;
         }
+
+        LoadPlayer(data);
+        classAssignment.ChangeAndSetClass("main", playerStats.mainClassName);
+        classAssignment.ChangeAndSetClass("left", playerStats.leftSubClassName);
+        classAssignment.ChangeAndSetClass("right", playerStats.rightSubClassName);
+
+        Debug.Log("Loading Character...  player classes loaded.");
+
+        LoadTalents(data);
+
+
+        //LoadEquipment(data);
+        //LoadBags(data);
+        //LoadStorageChests(data);
+        //LoadActionButtons(data);
+
     }
 
-    public void LoadPlayer(SaveData data)
+    private void LoadPlayer(SaveData data)
     {
         playerStats.MyCurrentPlayerLvl = data.MyPlayerData.MyLevel;                                         // Setzt geladenes Level   
         playerStats.MyCurrentXP = data.MyPlayerData.MyCurrentXP;
         playerStats.goldAmount = data.MyPlayerData.MyPlayerGold;
-        playerStats.transform.position = new Vector2(data.MyPlayerData.MyX, data.MyPlayerData.MyY);         // Position des Spielers
+        playerStats.LoadPlayerLevel();// Aktualisiert Level-UI 
+        //playerStats.transform.position = new Vector2(data.MyPlayerData.MyX, data.MyPlayerData.MyY);         // Position des Spielers
 
-        playerStats.LoadPlayerLevel();                                                                      // Aktualisiert Level-UI 
+        // Spieler Klassen
+        playerStats.mainClassName = data.MyPlayerData.MyMainClassName;
+        playerStats.leftSubClassName = data.MyPlayerData.MyLefSubClassName;
+        playerStats.rightSubClassName = data.MyPlayerData.MyRightSubClassName;
+
+        Debug.Log("Loading PlayerDataFile " + data.MyPlayerData.MyMainClassName + "  " + data.MyPlayerData.MyLefSubClassName + "  " + data.MyPlayerData.MyRightSubClassName);                                                 
     }
 
-    public void LoadStorageChests(SaveData data)
+    private void LoadTalents(SaveData data)
+    {
+        List<int> talentCurrentCounts = new List<int>();
+        for (int i = 0; i < data.MyTalenTreeData.Count; i++) talentCurrentCounts.Add(data.MyTalenTreeData[i].myCount);
+        //talentTree.gameObject.SetActive(true);
+        talentTree.GetComponent<TalentTree>().AutoSkillWhenLoading(talentCurrentCounts);
+        talentTreeHasToCheck = true;
+        //talentTree.gameObject.SetActive(false);
+    }
+
+    private void LoadStorageChests(SaveData data)
     {
         StorageChestCanvasScript chest = ownCanvases.Find("CanvasStorageChest").Find("StorageChest").GetComponent<StorageChestCanvasScript>();
 
@@ -171,7 +247,7 @@ public class PlayerSaveLoad : MonoBehaviour
         }
     }
 
-    public void LoadBags(SaveData data)
+    private void LoadBags(SaveData data)
     {
         int bagIndexInArray = 0; int ix = 0;
         foreach (Item item in allItemsInTheFuckingGameBecauseTheLoadManagerNeedsToKnowWhatHeCanLoad)
@@ -192,7 +268,7 @@ public class PlayerSaveLoad : MonoBehaviour
         }
     }
 
-    public void LoadEquipment(SaveData data)
+    private void LoadEquipment(SaveData data)
     {
         foreach (EquipmentData equipmentData in data.MyEquipmentData)
         {
@@ -201,7 +277,7 @@ public class PlayerSaveLoad : MonoBehaviour
         }
     }
 
-    public void LoadActionButtons(SaveData data)
+    private void LoadActionButtons(SaveData data)
     {
         for (int i = 0; i < data.MyActionButtonData.Count; i++)
         {

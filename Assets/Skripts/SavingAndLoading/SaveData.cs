@@ -16,6 +16,8 @@ public class SaveData
 
     public List<ActionButtonData> MyActionButtonData { get; set; }
 
+    public List<TalentTreeData> MyTalenTreeData { get; set; }
+
     //public QuestProgress MyPlayerData { get; set; }
 
     public SaveData()
@@ -23,6 +25,7 @@ public class SaveData
         MyInventoryData = new InventoryData();
         MyEquipmentData = new List<EquipmentData>();
         MyActionButtonData = new List<ActionButtonData>();
+        MyTalenTreeData = new List<TalentTreeData>();
     }
 }
 
@@ -32,19 +35,25 @@ public class PlayerData
     public int MyLevel { get; set; }
     public int MyCurrentXP { get; set; }
     public int MyPlayerGold { get; set; }
-    public string MyClassName { get; set; }
+    public string MyMainClassName { get; set; }
+    public string MyLefSubClassName { get; set; }
+    public string MyRightSubClassName { get; set; }
     public float MyX { get; set; }
     public float MyY { get; set; }
 
 
-    public PlayerData(int level, int currentXP, int playerGold, Vector2 position, string className)
+    public PlayerData(int level, int currentXP, int playerGold, Vector2 position, string mainClassName, string leftSubClassName, string rightSubClassName)
     {
         this.MyLevel = level;
         this.MyCurrentXP = currentXP;
         this.MyPlayerGold = playerGold;
-        this.MyClassName = className;
+        this.MyMainClassName = mainClassName;
+        this.MyLefSubClassName = leftSubClassName;
+        this.MyRightSubClassName = rightSubClassName;
         this.MyX = position.x;
         this.MyY = position.y;
+
+        Debug.Log("Saving PlayerDataFile " + mainClassName + "  " + leftSubClassName + "  " + rightSubClassName);
     }
 }
 
@@ -125,6 +134,18 @@ public class ActionButtonData
     {
         this.MyAction = action;
         this.MyIndex = index;
+    }
+}
+
+
+[Serializable]
+public class TalentTreeData
+{
+    public int myCount { get; set; }
+
+    public TalentTreeData(int curCount)
+    {
+        this.myCount = curCount;
     }
 }
 

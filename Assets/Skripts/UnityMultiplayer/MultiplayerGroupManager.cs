@@ -198,6 +198,7 @@ public class MultiplayerGroupManager : NetworkBehaviour
                 Transform playerTransform = Instantiate(Player_Prefab);
                 playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, false);
             }
+            SaveAndLoadManager.MyInstance.LoadCharacterServerRpc();
         }
         previousSceneName = sceneName;
     }

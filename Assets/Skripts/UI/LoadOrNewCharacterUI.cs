@@ -17,6 +17,7 @@ public class LoadOrNewCharacterUI : MonoBehaviour
     private Button createNewCharacterButton;
     private Button createNewCharacterOk;
     private Button createNewCharacterCancel;
+    private GameObject characterAlreadyExistsWindow;
 
 
     private void Awake()
@@ -38,6 +39,11 @@ public class LoadOrNewCharacterUI : MonoBehaviour
 
         createNewCharacterCancel = enterCharacterNameWindow.Find("Image").Find("CancelButton").GetComponent<Button>();
         createNewCharacterCancel.onClick.AddListener(() => { CreateNewCharacterCancel(); });
+
+        characterAlreadyExistsWindow = transform.Find("CharacterAlreadyExistsWindow").gameObject;
+        characterAlreadyExistsWindow.SetActive(false);
+        characterAlreadyExistsWindow.transform.Find("Image").Find("OKButton").GetComponent<Button>().onClick.AddListener(() => CloseCharacterAlreadyExistsWindow());
+
     }
 
     private void ApplyButtonClick()
@@ -61,8 +67,18 @@ public class LoadOrNewCharacterUI : MonoBehaviour
 
     private void CreateNewCharacterOk()
     {
+        
+        characterAlreadyExistsWindow.SetActive(false);
+
         string newCharName = enterCharacterNameWindow.Find("Image").Find("InputField (TMP)").GetComponent<TMP_InputField>().text;
         Debug.Log("Neuer Charaktername: " + newCharName);
+        bool doesCharacterAlreadyExist = CheckIfCharacterNameExistsAlready(newCharName);
+
+        if (doesCharacterAlreadyExist)
+        {
+            characterAlreadyExistsWindow.SetActive(true);
+            return;
+        }
 
         currentCharacterButton.Find("Image1").Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = newCharName + "\n Level: 1";
         currentCharacterButton.Find("Image2").Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Quest: " + "No quest yet";
@@ -138,6 +154,26 @@ public class LoadOrNewCharacterUI : MonoBehaviour
         }
     }
 
+
+    private bool CheckIfCharacterNameExistsAlready(string newCharacterName)
+    {
+        bool characterExists = false;
+
+        // Sammle alle gespeicherten Charactere und hole dir den Namen, vergleiche alle mit dem neuen Namen. Wenn der neue name schon existiert, wird die Funktion false zurück geben. Ansonsten True
+        var info = new DirectoryInfo(Application.persistentDataPath);
+        var fileInfo = info.GetFiles();
+        foreach (FileInfo fInfo in fileInfo)
+        {
+            string[] ident = fInfo.Name.Split("_");
+            if (ident[0] == "SaveFile")
+            {
+                string characterName = ident[1];
+                if (characterName == newCharacterName) { characterExists = true; break; }
+            }
+        }
+        return characterExists;
+    }
+
     public void Show()
     {
         FetchAllCharacters();
@@ -147,5 +183,10 @@ public class LoadOrNewCharacterUI : MonoBehaviour
     private void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    private void CloseCharacterAlreadyExistsWindow()
+    {
+        characterAlreadyExistsWindow.SetActive(false);
     }
 }

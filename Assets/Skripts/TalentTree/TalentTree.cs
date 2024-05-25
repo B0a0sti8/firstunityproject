@@ -1,7 +1,9 @@
+using QFSW.QC;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,24 +20,31 @@ public class TalentTree : MonoBehaviour
     //[SerializeField] PassiveTalent[] pTalentsMain, pTalentsLeft, pTalentsRight;
     int mainAbsPointCount, leftAbsPointCount, rightAbsPointCount;
 
-    bool checkAfterReset;
+    public bool checkAfterReset;
 
     Transform classTrees;
     Transform myTalentTree;
 
     float turningDuration = 2f;
     bool isTurning = false;
+    GameObject PLAYER;
 
+    TalentTreeUI myTalentTreeUI;
+
+    List<int> talentCountForLoading;
 
     [SerializeField] TextMeshProUGUI talentPointText;
 
-    void Start()
+    void Awake()
     {
+        PLAYER = transform.parent.parent.parent.gameObject;
         classTrees = GameObject.Find("SkillTreeCollection").transform.Find("CanvasAllSkillTrees").Find("TalentTree");
         myTalentTree = transform.Find("MainBody").Find("MaskLayer").Find("TalentTree");
         talentPointText = transform.Find("MainBody").Find("TalentPointText").Find("TalentPointCount").GetComponent<TextMeshProUGUI>();
 
         checkAfterReset = false;
+
+        myTalentTreeUI = transform.parent.GetComponent<TalentTreeUI>();
 
         ResetSkillTree();
     }
@@ -85,10 +94,6 @@ public class TalentTree : MonoBehaviour
                         }
                         else
                         {
-                            //Debug.Log("Talent has Predecessor!");
-                            //Debug.Log(myCurrentTier.GetChild(k).GetComponent<Talent>().talentName);
-                            //Debug.Log(myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent.GetComponent<Talent>().talentName);
-                            //Debug.Log(myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent.GetComponent<Talent>().currentCount);
                             if (myCurrentTier.GetChild(k).GetComponent<Talent>().myPredecessorTalent.GetComponent<Talent>().currentCount > 0)
                             {
                                 myCurrentTier.GetChild(k).GetComponent<Talent>().Unlock();
@@ -130,6 +135,10 @@ public class TalentTree : MonoBehaviour
 
     public void ResetSkillTree()
     {
+        if (!PLAYER.GetComponent<NetworkObject>().IsOwner) return;
+
+        myTalentTree = transform.Find("MainBody").Find("MaskLayer").Find("TalentTree");
+
         ResetTalents();
 
         RemoveAllActiveTalents();
@@ -147,9 +156,12 @@ public class TalentTree : MonoBehaviour
             else
             { cName = subClassRight; }
 
+            if (cName == "") continue;
+
             for (int i = 0; i < 4; i++)
             {
                 Transform myCurrentTier = myTalentTree.Find("Tier" + (i + 1).ToString());
+
                 for (int k = 0; k < classTrees.Find(cName).Find("MaskLayer").Find("TalentTree").Find("Tier" + (i + 1).ToString()).childCount; k++)
                 {
                     GameObject cTalent = classTrees.Find(cName).Find("MaskLayer").Find("TalentTree").Find("Tier" + (i + 1).ToString()).GetChild(k).gameObject;
@@ -157,8 +169,8 @@ public class TalentTree : MonoBehaviour
                     cTalentNew.transform.rotation = Quaternion.identity;
 
                     Color32 myNewColor = cTalent.transform.Find("TalentImage").GetComponent<Image>().color;
-                    Debug.Log("my color component: " + cTalent.GetComponent<Image>());
-                    Debug.Log("my color: " + myNewColor);
+                    //Debug.Log("my color component: " + cTalent.GetComponent<Image>());
+                    //Debug.Log("my color: " + myNewColor);
                     cTalentNew.transform.Find("TalentImage").GetComponent<Image>().color = myNewColor;
 
                     if (n == 1)
@@ -175,18 +187,21 @@ public class TalentTree : MonoBehaviour
     public void ResetTalents()
     {
         talentPoints = talentPointsMax;
-        UpdateTalentPointText();
+        //UpdateTalentPointText();
 
         GetUnlockedByDefaultTalents();
 
         foreach (Talent talent in talents)
         {
+            bool hasToDoEverything = false;
             if (talent != null)
             {
+                if (talent.currentCount > 0) hasToDoEverything = true;
+
                 talent.Lock();
-                talent.RemoveActiveTalentEffect();
+                if (hasToDoEverything) talent.RemoveActiveTalentEffect();
                 talent.currentCount = 0;
-                talent.RemoveActiveTalentEffectAfterPointCountReduced();
+                if (hasToDoEverything) talent.RemoveActiveTalentEffectAfterPointCountReduced();
                 talent.UpdatePointCounterAndBackground();
                 talent.FindMyPredecessor();
             }
@@ -219,26 +234,39 @@ public class TalentTree : MonoBehaviour
     {
         if (checkAfterReset)
         {
-            checkAfterReset = false;
-            for (int i = 0; i < 4; i++)
-            {
-                Transform myCurrentTier = myTalentTree.Find("Tier" + (i + 1).ToString());
-                CheckTalentOrientation(myCurrentTier);
-
-                talentsMain = talentsMain.Where(k => k != null).ToList();
-                talentsLeft = talentsLeft.Where(k => k != null).ToList();
-                talentsRight = talentsRight.Where(k => k != null).ToList();
-            }
-
-            FetchAllTalents();
-            ResetTalents();
+            HasToCheckAfterReset();
         }
+    }
+
+    public void HasToCheckAfterReset()
+    {
+        bool isGoActive = gameObject.activeSelf;
+        gameObject.SetActive(true);
+        Debug.Log("Doing HasToCheck");
+        checkAfterReset = false;
+        for (int i = 0; i < 4; i++)
+        {
+            Transform myCurrentTier = myTalentTree.Find("Tier" + (i + 1).ToString());
+            CheckTalentOrientation(myCurrentTier);
+
+            talentsMain = talentsMain.Where(k => k != null).ToList();
+            talentsLeft = talentsLeft.Where(k => k != null).ToList();
+            talentsRight = talentsRight.Where(k => k != null).ToList();
+        }
+
+        FetchAllTalents();
+        ResetTalents();
+
+        gameObject.SetActive(isGoActive);
     }
 
     void FetchAllTalents()
     {
+        if (!PLAYER.GetComponent<NetworkObject>().IsOwner) return;
+
         talents.Clear();
         talents = myTalentTree.GetComponentsInChildren<Talent>().ToList();
+        talents.RemoveAll(item => item == null);
     }
 
     public void ShowClassWindow(string subClassPosition)
@@ -263,6 +291,8 @@ public class TalentTree : MonoBehaviour
             talentsToDestroy.ForEach(k => talentsRight.Remove(k));
             talentsToDestroy.ForEach(k => talentsLeft.Remove(k));
 
+            //talentsToDestroy.ForEach(k => talents.Remove(k.GetComponent<Talent>()));
+
             talentsToDestroy.ForEach(k => GameObject.Destroy(k));
             talentsToDestroy.Clear();
         }
@@ -270,13 +300,10 @@ public class TalentTree : MonoBehaviour
 
     public void ResetRingTuning()
     {
-        if (isTurning)
-        {
-            return;
-        }
+        if (isTurning) return;
 
         ResetSkillTree();
-        ResetTalents();
+        //ResetTalents();
 
         for (int i = 0; i < 4; i++)
         {
@@ -297,10 +324,7 @@ public class TalentTree : MonoBehaviour
 
     public void TurnRing(int ringNr)
     {
-        if (isTurning)
-        {
-            return;
-        }
+        if (isTurning) return;
 
         ResetSkillTree();
         ResetTalents();
@@ -382,6 +406,50 @@ public class TalentTree : MonoBehaviour
 
     public void BtnResetTalents()
     {
+        UpdateTalentPointText();
         ResetSkillTree();
+    }
+
+    public List<Talent> GetTalentsForSaving()
+    {
+        FetchAllTalents();
+        return talents;
+    }
+
+
+    public void AutoSkillWhenLoading(List<int> loadedTalentCount)
+    {
+        talentCountForLoading = loadedTalentCount;
+        myTalentTreeUI = transform.parent.GetComponent<TalentTreeUI>();
+        myTalentTreeUI.isLoadingTalentTree = true;
+        bool isGoActive = gameObject.activeSelf;
+        gameObject.SetActive(true);
+        ResetSkillTree();
+        FetchAllTalents();
+
+        gameObject.SetActive(isGoActive);
+    }
+
+    public void AutoSkillWhenLoading2()
+    {
+        bool isGoActive = gameObject.activeSelf;
+        gameObject.SetActive(true);
+        ResetSkillTree();
+        //talents.RemoveAll(item => item == null);
+        Debug.Log(talentCountForLoading.Count);
+        Debug.Log(talents.Count);
+        gameObject.SetActive(isGoActive);
+    }
+
+    [Command]
+    public void ClearMyTalents()
+    {
+        talents.Clear();
+    }
+
+    [Command]
+    public void ClearMyTalents2()
+    {
+        talents.RemoveAll(item => item == null);
     }
 }
