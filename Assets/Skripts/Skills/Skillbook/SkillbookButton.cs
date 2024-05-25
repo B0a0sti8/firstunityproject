@@ -33,6 +33,7 @@ public class SkillbookButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     GameObject PLAYER;
     GameObject skillManager;
     SkillPrefab buttonSkill;
+
     void Start()
     {
         PLAYER = transform.parent.parent.parent.parent.parent.parent.gameObject;
@@ -42,6 +43,8 @@ public class SkillbookButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 
         string myClassName = transform.parent.name.Substring(0, transform.parent.name.Length - 6);
         SkillPrefab[] skills = skillManager.transform.Find(myClassName).GetComponents<SkillPrefab>();
+
+        //Debug.Log(skillName);
 
         for (int i = 0; i < skills.Length; i++)
         {
@@ -105,29 +108,3 @@ public class SkillbookButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         skill.masterET.skillRadius = skill.tooltipSkillRadius;
     }
 }
-
-
-//private Sprite icon;
-//public Sprite MyIcon
-//{
-//    get
-//    {
-//        return icon;
-//    }
-//}
-
-//private void Start()
-//{
-//    //icon = GetComponent<Image>().sprite;
-//}
-
-//public void OnPointerClick(PointerEventData eventData)
-//{
-//    if (eventData.button == PointerEventData.InputButton.Left)
-//    {
-//        Debug.Log("Button clicked: " + skillName);
-//        //HandScript.MyInstance.TakeMoveable(Skillbook.MyInstance.GetSkill(skillName));
-//        //HandScript.MyInstance.TakeMoveable(this);
-//        HandScript.MyInstance.handSkillName = skillName;
-//    }
-//}

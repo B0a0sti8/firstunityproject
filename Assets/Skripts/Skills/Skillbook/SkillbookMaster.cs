@@ -12,12 +12,15 @@ public class SkillbookMaster : MonoBehaviour
     public List<GameObject> actionSkillSlots;
     public string skillName;
     public List<string> currentActiveSkillNames;
-    public string className;
+    private string classNameMain;
+    private string classNameLeft;
+    private string classNameRight;
+
 
 
     void Start()
     {
-        className = transform.parent.parent.GetComponent<PlayerStats>().mainClassName;
+        classNameMain = transform.parent.parent.GetComponent<PlayerStats>().mainClassName;
         skillbook = transform.Find("Skillbook").gameObject;
         actionSkill = transform.parent.Find("Canvas Action Skills").Find("SkillSlots");
         UpdateCurrentSkills();
@@ -39,49 +42,46 @@ public class SkillbookMaster : MonoBehaviour
 
     public void UpdateCurrentSkills()
     {
-        className = transform.parent.parent.GetComponent<PlayerStats>().mainClassName;
+        classNameMain = transform.parent.parent.GetComponent<PlayerStats>().mainClassName;
+        classNameLeft = transform.parent.parent.GetComponent<PlayerStats>().leftSubClassName;
+        classNameRight = transform.parent.parent.GetComponent<PlayerStats>().rightSubClassName;
 
-        if (className.ToString() == "")
-        { return; }
-
-        for (int i = 0; i < skillbook.transform.Find("Classes").childCount; i++)
-        {
-            skillbook.transform.Find("Classes").GetChild(i).gameObject.SetActive(false);
-        }
-
-        allClassesSkills = skillbook.transform.Find("Classes").Find(className.ToString() + "Skills");
+        // Setzt erstmal alle Klassen auf aus und reseted alle Skillslots.
+        for (int i = 0; i < skillbook.transform.Find("Classes").childCount; i++) { skillbook.transform.Find("Classes").GetChild(i).gameObject.SetActive(false); } 
         currentSkills.Clear();
         actionSkillSlots.Clear();
         currentActiveSkillNames.Clear();
 
-        if (className.ToString() == "Dummy")
-        { return; }
+        // Holt sich alles AktionSkillSlots in die Liste actionSkillSlots.
+        for (int i = 0; i < actionSkill.childCount; i++) { actionSkillSlots.Add(actionSkill.GetChild(i).gameObject); }
 
-        for (int i = 0; i < actionSkill.childCount; i++)
-        {
-            actionSkillSlots.Add(actionSkill.GetChild(i).gameObject);
-        }
+        List<string> clNames = new List<string>();
+        clNames.Add(classNameMain); clNames.Add(classNameLeft); clNames.Add(classNameRight);
 
-        for (int i = 0; i < allClassesSkills.transform.childCount; i++)
+        foreach (string clName in clNames)
         {
-            if (allClassesSkills.GetChild(i).gameObject.GetComponent<Button>().enabled == true)
+            Debug.Log(clName);
+            if (clName == "" || clName == "Dummy") continue;
+
+            allClassesSkills = skillbook.transform.Find("Classes").Find(clName.ToString() + "Skills");
+
+            for (int i = 0; i < allClassesSkills.transform.childCount; i++)
             {
-                currentSkills.Add(allClassesSkills.GetChild(i).gameObject);
-                allClassesSkills.GetChild(i).gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                if (allClassesSkills.GetChild(i).gameObject.GetComponent<Button>().enabled == true)
+                {
+                    currentSkills.Add(allClassesSkills.GetChild(i).gameObject);
+                    allClassesSkills.GetChild(i).gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                }
+                else allClassesSkills.GetChild(i).gameObject.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
             }
-            else
-            {
-                allClassesSkills.GetChild(i).gameObject.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
-            }
+            allClassesSkills.gameObject.SetActive(true);
+            Debug.Log(currentSkills.Count);
         }
 
-        allClassesSkills.gameObject.SetActive(true);
 
-        foreach (GameObject currentSkill in currentSkills)
-        {
-            currentActiveSkillNames.Add(currentSkill.name);
-        }
+        foreach (GameObject currentSkill in currentSkills) { currentActiveSkillNames.Add(currentSkill.name); }
 
+        // Übergibt die Änderungen an alle ActionSkillSlots.
         foreach (GameObject actionSkillSlot in actionSkillSlots)
         {
             skillName = actionSkillSlot.GetComponent<ActionButton>().skillName;
@@ -101,5 +101,9 @@ public class SkillbookMaster : MonoBehaviour
                 actionSkillSlot.GetComponent<Button>().colors = cb;
             }
         }
+
+
+        //if (classNameMain.ToString() == "Dummy")
+        //{ return; }
     }
 }

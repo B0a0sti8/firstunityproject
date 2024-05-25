@@ -11,7 +11,7 @@ public class Warrior_BrutalStrike : SkillPrefab
     public override void Start()
     {
         base.Start();
-
+        myClass = "Warrior";
         myWarriorClass = PLAYER.transform.Find("SkillManager").Find("Warrior").GetComponent<WarriorClass>();
         tooltipSkillDescription = "Strikes your target. Deals double damage, when you used WildStrike in the last 5 seconds. ";
 

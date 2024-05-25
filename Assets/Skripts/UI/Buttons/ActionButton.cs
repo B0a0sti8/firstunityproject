@@ -24,6 +24,9 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     HandScript myHandScript;
 
 
+    Transform mySkillBook;
+
+
 
     void Start()
     {
@@ -31,6 +34,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         buttonImage = GetComponent<Image>();
         PLAYER = transform.parent.parent.parent.parent.gameObject;
         skillManager = PLAYER.transform.Find("SkillManager").gameObject;
+        mySkillBook = PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook");
 
         myHandScript = PLAYER.transform.Find("Own Canvases").Find("Canvas Hand").Find("Hand Image").GetComponent<HandScript>();
 
@@ -72,10 +76,19 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
             if (skills[i].GetType().ToString() == skillName) // Script-Name == skillName
             {
                 buttonSkill = skills[i];
+                className = buttonSkill.myClass;
             }
         }
 
-        buttonImage.sprite = Resources.Load<Sprite>("SkillSprites/" + buttonSkill.GetType().ToString());
+        //Debug.Log(className);
+        //Debug.Log(mySkillBook);
+
+        //Debug.Log(mySkillBook.Find("Skillbook").Find("Classes").Find(className + "Skills"));
+        //Debug.Log(buttonSkill.GetType().ToString());
+
+        Transform mySkillbookButton = mySkillBook.Find("Skillbook").Find("Classes").Find(className + "Skills").Find(buttonSkill.GetType().ToString());
+
+        buttonImage.sprite = mySkillbookButton.GetComponent<Image>().sprite;//  Resources.Load<Sprite>("SkillSprites/" + buttonSkill.GetType().ToString());
     }
 
     void UpdateButton()

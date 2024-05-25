@@ -16,6 +16,7 @@ public class SummonFireDemon : SkillPrefab
 
     public override void Start()
     {
+        myClass = "Summoner";
         impactDamage = 1200;
         myAreaType = AreaType.CirclePlacable;
         hasGlobalCooldown = true;

@@ -13,7 +13,8 @@ public class DarkBolt : SkillPrefab
     float impLifeTimeBase;
 
     public override void Start()
-    { 
+    {
+        myClass = "Summoner";
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
         castTimeOriginal = 1.5f;
         ownCooldownTimeBase = 3f;

@@ -22,7 +22,7 @@ public class BuffMainMinionDamageAndHealing : SkillPrefab
     public override void Start()
     {
         base.Start();
-
+        myClass = "Summoner";
         hasGlobalCooldown = true;
         isCastOnSelf = true;
         ownCooldownTimeBase = 120f;
