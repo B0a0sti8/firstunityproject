@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SkillbookMaster : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class SkillbookMaster : MonoBehaviour
     private string classNameMain;
     private string classNameLeft;
     private string classNameRight;
+    private bool hasToArangeTextField;
+    private int hasToArangeTextFieldCounter;
 
 
 
@@ -58,9 +61,9 @@ public class SkillbookMaster : MonoBehaviour
         List<string> clNames = new List<string>();
         clNames.Add(classNameMain); clNames.Add(classNameLeft); clNames.Add(classNameRight);
 
+
         foreach (string clName in clNames)
         {
-            Debug.Log(clName);
             if (clName == "" || clName == "Dummy") continue;
 
             allClassesSkills = skillbook.transform.Find("Classes").Find(clName.ToString() + "Skills");
@@ -75,8 +78,9 @@ public class SkillbookMaster : MonoBehaviour
                 else allClassesSkills.GetChild(i).gameObject.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
             }
             allClassesSkills.gameObject.SetActive(true);
-            Debug.Log(currentSkills.Count);
         }
+
+        
 
 
         foreach (GameObject currentSkill in currentSkills) { currentActiveSkillNames.Add(currentSkill.name); }
@@ -101,9 +105,41 @@ public class SkillbookMaster : MonoBehaviour
                 actionSkillSlot.GetComponent<Button>().colors = cb;
             }
         }
-
+        hasToArangeTextFieldCounter = 0;
+        hasToArangeTextField = true;
 
         //if (classNameMain.ToString() == "Dummy")
         //{ return; }
+    }
+
+    // Nachdem Die Klassenin einer Vertical LayoutGroup liegen, ändert sich ihre Position am Ende eines Frame-Updates. Um dann die Position der TextFelder mit den 
+    // Klassennamen anzupassen, warten wir ein Update und machen es dann.
+    private void Update()
+    {
+        if (!hasToArangeTextField) return;
+
+        if (hasToArangeTextFieldCounter > 1) { hasToArangeTextField = false; return; }
+
+        hasToArangeTextFieldCounter++;
+
+        List<string> clNames = new List<string>();
+        clNames.Add(classNameMain); clNames.Add(classNameLeft); clNames.Add(classNameRight);
+
+        int classNameTextFieldNum = 0;
+        foreach (string clName in clNames)
+        {
+            if (clName == "" || clName == "Dummy") continue;
+            classNameTextFieldNum += 1;
+            Transform myTextField = skillbook.transform.Find("MyClassNamesText").Find("ClassName" + classNameTextFieldNum.ToString());
+
+            allClassesSkills = skillbook.transform.Find("Classes").Find(clName.ToString() + "Skills");
+            Debug.Log(myTextField);
+            Debug.Log(myTextField.GetComponent<TextMeshProUGUI>());
+            Debug.Log(allClassesSkills);
+            if (!allClassesSkills.gameObject.activeSelf) { myTextField.GetComponent<TextMeshProUGUI>().text = ""; return; }
+
+            myTextField.GetComponent<TextMeshProUGUI>().text = clName;
+            myTextField.localPosition = allClassesSkills.localPosition - new Vector3(650f, 0f, 0f);
+        }
     }
 }

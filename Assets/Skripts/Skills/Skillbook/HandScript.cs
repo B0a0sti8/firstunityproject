@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class HandScript : MonoBehaviour
 { 
-    Image handImage;
+    public Image handImage;
     public string handSkillName;
     public GameObject handButtonSwap;
     public bool actionButtonDragOn = true;
@@ -47,7 +47,7 @@ public class HandScript : MonoBehaviour
         {
             handImage.transform.position = Mouse.current.position.ReadValue();
 
-            handImage.sprite = Resources.Load<Sprite>("SkillSprites/" + handSkillName);
+            //handImage.sprite = Resources.Load<Sprite>("SkillSprites/" + handSkillName);
             handImage.color = Color.white;
         }
     }
