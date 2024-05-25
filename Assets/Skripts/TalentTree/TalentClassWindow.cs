@@ -20,20 +20,17 @@ public class TalentClassWindow : MonoBehaviour
     {
         if (subClassPosition == "Main")
         { 
-            myTalentTree.subClassMain = newClassName;
-            Debug.Log(newClassName);
+            //Debug.Log(newClassName);
             myClassManager.ChangeAndSetClass("main", newClassName);
         }
 
         if (subClassPosition == "Left")
         { 
-            myTalentTree.subClassLeft = newClassName;
             myClassManager.ChangeAndSetClass("left", newClassName);
         }
 
         if (subClassPosition == "Right")
         { 
-            myTalentTree.subClassRight = newClassName;
             myClassManager.ChangeAndSetClass("right", newClassName);
         }
 

@@ -75,6 +75,9 @@ public class Talent : MonoBehaviour
 
     public void Lock()
     {
+        if (button == null) button = GetComponent<Button>();
+        if (sprite == null) sprite = transform.Find("TalentImage").GetComponent<Image>();
+
         button.interactable = false;
         Color32 newColor = sprite.color;
         newColor.a = 175;
@@ -85,6 +88,9 @@ public class Talent : MonoBehaviour
 
     public void Unlock()
     {
+        if (button == null) button = GetComponent<Button>();
+        if (sprite == null) sprite = transform.Find("TalentImage").GetComponent<Image>();
+
         button.interactable = true;
         Color32 newColor = sprite.color;
         newColor.a = 255;
@@ -94,6 +100,8 @@ public class Talent : MonoBehaviour
 
     public void UpdatePointCounterAndBackground()
     {
+        if (talentPointTextOwn == null) talentPointTextOwn = transform.Find("Image").Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
+
         if (currentCount == maxCount)
         {
             Color32 myNewColor = transform.Find("Background").GetComponent<Image>().color;

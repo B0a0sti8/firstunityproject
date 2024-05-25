@@ -133,9 +133,9 @@ public class SkillbookMaster : MonoBehaviour
             Transform myTextField = skillbook.transform.Find("MyClassNamesText").Find("ClassName" + classNameTextFieldNum.ToString());
 
             allClassesSkills = skillbook.transform.Find("Classes").Find(clName.ToString() + "Skills");
-            Debug.Log(myTextField);
-            Debug.Log(myTextField.GetComponent<TextMeshProUGUI>());
-            Debug.Log(allClassesSkills);
+            //Debug.Log(myTextField);
+            //Debug.Log(myTextField.GetComponent<TextMeshProUGUI>());
+            //Debug.Log(allClassesSkills);
             if (!allClassesSkills.gameObject.activeSelf) { myTextField.GetComponent<TextMeshProUGUI>().text = ""; return; }
 
             myTextField.GetComponent<TextMeshProUGUI>().text = clName;

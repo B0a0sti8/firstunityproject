@@ -15212,7 +15212,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 536833264136320812}
   m_HandleRect: {fileID: 536833264136320813}
   m_Direction: 2
-  m_Value: 0.00000006746684
+  m_Value: 0.00000011244474
   m_Size: 0.40829694
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -47880,7 +47880,7 @@ GameObject:
   - component: {fileID: 4206256472905612994}
   - component: {fileID: 8242101108474037489}
   m_Layer: 5
-  m_Name: PriestButton
+  m_Name: DummyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47998,7 +47998,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: Priest
+          m_StringArgument: Dummy
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &2103054322213971875
@@ -48136,7 +48136,7 @@ GameObject:
   - component: {fileID: 1179923982742634645}
   - component: {fileID: 289779415573830789}
   m_Layer: 5
-  m_Name: ArchmageButton
+  m_Name: DummyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48254,7 +48254,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: Archmage
+          m_StringArgument: Dummy
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &2118960066290721802
@@ -57739,7 +57739,7 @@ GameObject:
   - component: {fileID: 9220203346499914433}
   - component: {fileID: 3997633519279936050}
   m_Layer: 5
-  m_Name: AlchemistButton
+  m_Name: WarriorButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57857,7 +57857,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: Alchemist
+          m_StringArgument: Warrior
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &2940454622202324840
@@ -58406,6 +58406,7 @@ GameObject:
   - component: {fileID: 6557924835146114053}
   - component: {fileID: 5393893305283116398}
   - component: {fileID: 9020350529889587248}
+  - component: {fileID: 2320277069054598428}
   m_Layer: 5
   m_Name: CanvasTalentTree
   m_TagString: Untagged
@@ -58508,6 +58509,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentTreeUI: {fileID: 0}
+  isLoadingTalentTree: 0
+--- !u!114 &2320277069054598428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2997506855903147936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 196fe2e889a2ee54b85841c96c1a6905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subClassMain: 
+  subClassLeft: 
+  subClassRight: 
+  talentPoints: 500
+  talentPointsMax: 500
+  talents: []
+  unlockedByDefault: []
+  passiveTalents: []
+  talentsMain: []
+  talentsLeft: []
+  talentsRight: []
+  checkAfterReset: 0
+  talentPointText: {fileID: 0}
 --- !u!1 &2999559845403683729
 GameObject:
   m_ObjectHideFlags: 0
@@ -60726,7 +60753,7 @@ GameObject:
   - component: {fileID: 5148520793861255533}
   - component: {fileID: 3743349663343028793}
   m_Layer: 5
-  m_Name: BlueMageButton
+  m_Name: DummyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60844,7 +60871,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: BlueMage
+          m_StringArgument: Dummy
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &3162167776911351565
@@ -70900,7 +70927,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Archmage
+  m_text: Dummy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -72011,7 +72038,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Alchemist
+  m_text: Warrior
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -101507,7 +101534,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BlueMage
+  m_text: Dummy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -103033,6 +103060,7 @@ MonoBehaviour:
   talentsMain: []
   talentsLeft: []
   talentsRight: []
+  checkAfterReset: 0
   talentPointText: {fileID: 0}
 --- !u!1 &6460737386792669037
 GameObject:
@@ -113487,9 +113515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Priest
-
-'
+  m_text: Dummy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

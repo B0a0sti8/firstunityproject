@@ -26,30 +26,17 @@ public class ClassAssignment : MonoBehaviour
         mySkillBook = PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").GetComponent<SkillbookMaster>();
         myTalentTree = PLAYER.transform.Find("Own Canvases").Find("CanvasTalentTree").Find("TalentTreeWindow").GetComponent<TalentTree>();
 
-        playerStats.mainClassName = "Warrior";
-        playerStats.leftSubClassName = "Summoner";
-        playerStats.rightSubClassName = "Dummy";
-
-        myTalentTree.subClassMain = "Warrior";
-        myTalentTree.subClassLeft = "Summoner";
-        myTalentTree.subClassRight = "Dummy";
+        if (playerStats.mainClassName == "" || myTalentTree.subClassMain == "") { playerStats.mainClassName = "Dummy"; myTalentTree.subClassMain = "Dummy"; }
+        if (playerStats.leftSubClassName == "" || myTalentTree.subClassLeft == "") { playerStats.leftSubClassName = "Dummy"; myTalentTree.subClassLeft = "Dummy"; }
+        if (playerStats.rightSubClassName == "" || myTalentTree.subClassRight == "") { playerStats.rightSubClassName = "Dummy"; myTalentTree.subClassRight = "Dummy"; }
 
         ResetClasses();
 
-        if (classes.Find(playerStats.mainClassName) != null)
-        {
-            classes.Find(playerStats.mainClassName).gameObject.SetActive(true);
-        }
+        if (classes.Find(playerStats.mainClassName) != null) classes.Find(playerStats.mainClassName).gameObject.SetActive(true);
 
-        if (classes.Find(playerStats.rightSubClassName) != null)
-        {
-            classes.Find(playerStats.rightSubClassName).gameObject.SetActive(true);
-        }
+        if (classes.Find(playerStats.rightSubClassName) != null) classes.Find(playerStats.rightSubClassName).gameObject.SetActive(true);
 
-        if (classes.Find(playerStats.leftSubClassName) != null)
-        {
-            classes.Find(playerStats.leftSubClassName).gameObject.SetActive(true);
-        }
+        if (classes.Find(playerStats.leftSubClassName) != null) classes.Find(playerStats.leftSubClassName).gameObject.SetActive(true);
 
         mySkillBook.UpdateCurrentSkills();
         playerStats.HandleResetMinionCount();
@@ -57,37 +44,37 @@ public class ClassAssignment : MonoBehaviour
 
     public void ChangeAndSetClass(string whichOne, string newClass)
     {
+        bool isTalentTreeActive = myTalentTree.gameObject.activeSelf; // Beim Spieler laden wird der Talenttree geupdated ohne offen zu sein. Der Trick um fehler zu vermeiden ist, ihn innerhalb eines Frames zu öffnen, updaten und wieder zu schließen.
+        Debug.Log("Changing Class.  " + whichOne + "  " + newClass);
         ResetClasses();
 
         switch (whichOne)
         {
             case "main":
                 playerStats.mainClassName = newClass;
-                    break;
+                myTalentTree.subClassMain = newClass;
+                break;
 
             case "right":
                 playerStats.rightSubClassName = newClass;
+                myTalentTree.subClassRight = newClass;
                 break;
 
             case "left":
                 playerStats.leftSubClassName = newClass;
+                myTalentTree.subClassLeft = newClass;
                 break;
         }
 
-        if (classes.Find(playerStats.mainClassName) != null)
-        {
-            classes.Find(playerStats.mainClassName).gameObject.SetActive(true);
-        }
+        //myTalentTree.gameObject.SetActive(true);
+        //myTalentTree.ResetSkillTree();
+        //myTalentTree.ResetTalents();
+        //myTalentTree.HasToCheckAfterReset();
+        //myTalentTree.gameObject.SetActive(isTalentTreeActive);
 
-        if (classes.Find(playerStats.rightSubClassName) != null)
-        {
-            classes.Find(playerStats.rightSubClassName).gameObject.SetActive(true);
-        }
-
-        if (classes.Find(playerStats.leftSubClassName) != null)
-        {
-            classes.Find(playerStats.leftSubClassName).gameObject.SetActive(true);
-        }
+        if (classes.Find(playerStats.mainClassName) != null) classes.Find(playerStats.mainClassName).gameObject.SetActive(true);
+        if (classes.Find(playerStats.rightSubClassName) != null) classes.Find(playerStats.rightSubClassName).gameObject.SetActive(true);
+        if (classes.Find(playerStats.leftSubClassName) != null) classes.Find(playerStats.leftSubClassName).gameObject.SetActive(true);
     }
 
     public void ResetClasses()

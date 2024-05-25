@@ -67,6 +67,6 @@ public class Input_Gameplay : NetworkBehaviour
     }
 
     // Nur zum Debuggen. Wird Später auf nen Button im Hauptmenü gelegt oder so
-    void OnLoadDebug() // V
-    { if (IsOwner) { PLAYER.transform.Find("GameManager").GetComponent<PlayerSaveLoad>().Load(); Debug.Log("Load1"); } }
+    //void OnLoadDebug() // V
+    //{ if (IsOwner) { PLAYER.transform.Find("GameManager").GetComponent<PlayerSaveLoad>().Load(); Debug.Log("Load1"); } }
 }
