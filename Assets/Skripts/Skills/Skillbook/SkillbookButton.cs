@@ -10,11 +10,16 @@ public class SkillbookButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     string skillName;
     HandScript myHandScript;
 
+    GameObject PLAYER;
+    GameObject skillManager;
+    SkillPrefab buttonSkill;
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             myHandScript.handSkillName = skillName;
+            myHandScript.handImage.sprite = GetComponent<Image>().sprite;
         }
     }
 
@@ -26,13 +31,11 @@ public class SkillbookButton : MonoBehaviour, IBeginDragHandler, IEndDragHandler
             {
                 myHandScript.handButtonSwap = null;
                 myHandScript.handSkillName = "";
+                myHandScript.handImage.sprite = null;
             }
         }
     }
 
-    GameObject PLAYER;
-    GameObject skillManager;
-    SkillPrefab buttonSkill;
 
     void Start()
     {

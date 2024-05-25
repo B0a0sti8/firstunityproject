@@ -190,6 +190,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         {
             myHandScript.handButtonSwap = gameObject;
             myHandScript.handSkillName = skillName;
+            myHandScript.handImage.sprite = GetComponent<Image>().sprite;
             skillName = "";
         }
 
@@ -221,6 +222,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         if (myHandScript.handSkillName == "") return;
         myHandScript.handButtonSwap = null;
         myHandScript.handSkillName = "";
+        myHandScript.handImage.sprite = null;
 
         for (int i = 0; i < allActionButtons.Length; i++)
         { allActionButtons[i].RemoteUpdateThisButton(); }
