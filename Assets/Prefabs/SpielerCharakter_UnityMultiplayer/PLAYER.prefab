@@ -95472,7 +95472,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0cad3efa974ead843a0e97442ac1280a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c1c771da123836c4d86caf68f96e8ae0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -110978,6 +110978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee540f6cde749bd4aaddc2205dcce975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handImage: {fileID: 0}
   handSkillName: 
   handButtonSwap: {fileID: 0}
   actionButtonDragOn: 1
