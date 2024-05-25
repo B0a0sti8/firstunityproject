@@ -11,7 +11,7 @@ public class Warrior_Sting : SkillPrefab
     public override void Start()
     {
         base.Start();
-
+        myClass = "Warrior";
         myWarriorClass = PLAYER.transform.Find("SkillManager").Find("Warrior").GetComponent<WarriorClass>();
         tooltipSkillDescription = "Swiftly stings your target. Can be used in between other skills. ";
 

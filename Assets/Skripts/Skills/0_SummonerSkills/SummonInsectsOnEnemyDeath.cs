@@ -25,7 +25,7 @@ public class SummonInsectsOnEnemyDeath : SkillPrefab
     public override void Start()
     {
         base.Start();
-
+        myClass = "Summoner";
         buffValue = 0;
 
         needsTargetEnemy = true;

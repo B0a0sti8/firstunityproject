@@ -12,7 +12,7 @@ public class Warrior_WideSlash : SkillPrefab
     public override void Start()
     {
         base.Start();
-
+        myClass = "Warrior";
         myWarriorClass = PLAYER.transform.Find("SkillManager").Find("Warrior").GetComponent<WarriorClass>();
         tooltipSkillDescription = "A slash, dealing damage to enemies in front of you. Makes your next Sweeping Slash within 5 seconds deal double damage. ";
 

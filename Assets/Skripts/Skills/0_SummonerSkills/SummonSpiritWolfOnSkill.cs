@@ -20,6 +20,7 @@ public class SummonSpiritWolfOnSkill : SkillPrefab
 
     public override void Start()
     {
+        myClass = "Summoner";
         base.Start();
         buffDurationBase = 15f;
         hasGlobalCooldown = true;

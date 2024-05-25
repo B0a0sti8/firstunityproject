@@ -14,7 +14,7 @@ public class StunEnemiesAroundSummoner : SkillPrefab
     public override void Start()
     {
         base.Start();
-
+        myClass = "Summoner";
         hasGlobalCooldown = true;
         ownCooldownTimeBase = 10f;
 

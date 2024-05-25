@@ -14,7 +14,7 @@ public class BuffMinionAttackSpeed : SkillPrefab
     public override void Start()
     {
         base.Start();
-
+        myClass = "Summoner";
         hasGlobalCooldown = true;
         isCastOnSelf = true;
         ownCooldownTimeBase = 10f;

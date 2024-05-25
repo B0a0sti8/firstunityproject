@@ -25,6 +25,7 @@ public class SummonAstralSnake : SkillPrefab
 
     public override void Start()
     {
+        myClass = "Summoner";
         snakeBounceCount = 5;
         mySummonerClass = PLAYER.transform.Find("SkillManager").Find("Summoner").GetComponent<SummonerClass>();
         castTimeOriginal = 1.5f;

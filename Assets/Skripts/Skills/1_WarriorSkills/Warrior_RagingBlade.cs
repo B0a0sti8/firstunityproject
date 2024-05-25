@@ -12,7 +12,7 @@ public class Warrior_RagingBlade : SkillPrefab
     public override void Start()
     {
         base.Start();
-
+        myClass = "Warrior";
         myWarriorClass = PLAYER.transform.Find("SkillManager").Find("Warrior").GetComponent<WarriorClass>();
         tooltipSkillDescription = "Whirling your blade around you, you deal damage to all enemies in range. Teleport to target enemy and deals double damage, when you used Sweeping Slash in the last 5 seconds. ";
 
