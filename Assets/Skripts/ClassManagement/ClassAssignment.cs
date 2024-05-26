@@ -24,7 +24,7 @@ public class ClassAssignment : MonoBehaviour
         playerStats = PLAYER.GetComponent<PlayerStats>();
         classes = PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").Find("Skillbook").Find("Classes");
         mySkillBook = PLAYER.transform.Find("Own Canvases").Find("Canvas Skillbook").GetComponent<SkillbookMaster>();
-        myTalentTree = PLAYER.transform.Find("Own Canvases").Find("CanvasTalentTree").Find("TalentTreeWindow").GetComponent<TalentTree>();
+        myTalentTree = PLAYER.transform.Find("Own Canvases").Find("CanvasTalentTree").GetComponent<TalentTree>();
 
         if (playerStats.mainClassName == "" || myTalentTree.subClassMain == "") { playerStats.mainClassName = "Dummy"; myTalentTree.subClassMain = "Dummy"; }
         if (playerStats.leftSubClassName == "" || myTalentTree.subClassLeft == "") { playerStats.leftSubClassName = "Dummy"; myTalentTree.subClassLeft = "Dummy"; }

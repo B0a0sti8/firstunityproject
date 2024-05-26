@@ -26,18 +26,20 @@ public class Talent : MonoBehaviour
 
     protected virtual void Awake()
     {
+        UpdateTalent();
+        button.onClick.AddListener(OnTalentButtonClick);
+    }
+
+    public virtual void UpdateTalent()
+    {
         PLAYER = transform.parent.parent.parent.parent.parent.parent.parent.parent.gameObject;
         button = GetComponent<Button>();
         statSkript = PLAYER.GetComponent<PlayerStats>();
         sprite = transform.Find("TalentImage").GetComponent<Image>();
-        button.onClick.AddListener(OnTalentButtonClick);
         talentPointTextOwn = transform.Find("Image").Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
-        myTalentTree = transform.parent.parent.parent.parent.parent.GetComponent<TalentTree>();
+        myTalentTree = transform.parent.parent.parent.parent.parent.parent.GetComponent<TalentTree>();
         //PLAYER = transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.gameObject;
-        if (maxCount == 0)
-        {
-            maxCount = 5;
-        }
+        if (maxCount == 0) maxCount = 5;
         FindMyPredecessor();
     }
 

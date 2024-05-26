@@ -14,8 +14,6 @@ public class PlayerSaveLoad : MonoBehaviour
     [SerializeField]
     private ActionButton[] actionButtons;
 
-    bool talentTreeHasToCheck = false;
-
     Transform PLAYER;
     Transform ownCanvases;
     PlayerStats playerStats;
@@ -24,7 +22,8 @@ public class PlayerSaveLoad : MonoBehaviour
     CharacterPanelScript characterPanel;
     Transform talentTree;
     ClassAssignment classAssignment;
-    
+    SkillbookMaster mySkillBookMaster;
+
 
     void Awake()
     {
@@ -35,18 +34,12 @@ public class PlayerSaveLoad : MonoBehaviour
         inventoryScript = ownCanvases.Find("Canvas Inventory").Find("Inventory").GetComponent<InventoryScript>();
         characterPanel = ownCanvases.Find("CanvasCharacterPanel").Find("CharacterPanel").GetComponent<CharacterPanelScript>();
         actionButtons = ownCanvases.Find("Canvas Action Skills").Find("SkillSlots").GetComponentsInChildren<ActionButton>();
-        talentTree = ownCanvases.Find("CanvasTalentTree").Find("TalentTreeWindow");
+        talentTree = ownCanvases.Find("CanvasTalentTree");
         classAssignment = ownCanvases.Find("CanvasClassChoice").GetComponent<ClassAssignment>();
+        mySkillBookMaster = ownCanvases.Find("Canvas Skillbook").GetComponent<SkillbookMaster>();
+
     }
 
-    private void LateUpdate()
-    {
-        if (talentTreeHasToCheck)
-        {
-            talentTreeHasToCheck = false;
-            talentTree.GetComponent<TalentTree>().HasToCheckAfterReset();
-        }
-    }
 
     public void Save(string characterName)
     {
@@ -64,10 +57,11 @@ public class PlayerSaveLoad : MonoBehaviour
 
             SavePlayer(data);
             SaveTalents(data);
+            SaveTalentTreeRingRotation(data);
             //SaveEquipment(data);
             //SaveBags(data);
             //SaveStorageChest(data);
-            //SaveActionButtons(data);
+            SaveActionButtons(data);
 
             bf.Serialize(file, data);
 
@@ -146,6 +140,20 @@ public class PlayerSaveLoad : MonoBehaviour
         Debug.Log(data.MyTalenTreeData.Count);
     }
 
+    private void SaveTalentTreeRingRotation(SaveData data)
+    {
+        TalentTreeRingRotationData tRotData;
+        TalentTree myTaTree = talentTree.GetComponent<TalentTree>();
+        for (int i = 0; i < 4; i++)
+        {
+            Transform detunedRing = myTaTree.transform.Find("TalentTreeWindow").Find("MainBody").Find("MaskLayer").Find("TalentTree").Find("Tier" + (i + 1).ToString());
+            float myRotation = detunedRing.rotation.eulerAngles.z;
+            tRotData = new TalentTreeRingRotationData(myRotation);
+            data.MyTalentTreeRotationData.Add(tRotData);
+        }
+
+        Debug.Log(data.MyTalentTreeRotationData.Count);
+    }
 
     private string FindRightFileToLoad(string charName)
     {
@@ -167,7 +175,6 @@ public class PlayerSaveLoad : MonoBehaviour
         }
         return myRightFileName;
     }
-
 
     public void Load(string characterName)
     {
@@ -197,16 +204,26 @@ public class PlayerSaveLoad : MonoBehaviour
         classAssignment.ChangeAndSetClass("left", playerStats.leftSubClassName);
         classAssignment.ChangeAndSetClass("right", playerStats.rightSubClassName);
 
-        Debug.Log("Loading Character...  player classes loaded.");
+        talentTree.GetComponent<TalentTree>().ResetSkillTree();
+        StartCoroutine(ContinueLoading(data));
 
-        LoadTalents(data);
+
+        Debug.Log("Loading Character...  player classes loaded.");
 
 
         //LoadEquipment(data);
         //LoadBags(data);
         //LoadStorageChests(data);
-        //LoadActionButtons(data);
 
+
+    }
+
+    IEnumerator ContinueLoading(SaveData data)
+    {
+        yield return 1;
+        LoadTalentTreeRingRotation(data);
+        LoadTalents(data);
+        LoadActionButtons(data);
     }
 
     private void LoadPlayer(SaveData data)
@@ -231,8 +248,15 @@ public class PlayerSaveLoad : MonoBehaviour
         for (int i = 0; i < data.MyTalenTreeData.Count; i++) talentCurrentCounts.Add(data.MyTalenTreeData[i].myCount);
         //talentTree.gameObject.SetActive(true);
         talentTree.GetComponent<TalentTree>().AutoSkillWhenLoading(talentCurrentCounts);
-        talentTreeHasToCheck = true;
         //talentTree.gameObject.SetActive(false);
+    }
+
+    private void LoadTalentTreeRingRotation(SaveData data)
+    {
+        List<float> myRingRotations = new List<float>();
+        for (int i = 0; i < data.MyTalentTreeRotationData.Count; i++) myRingRotations.Add(data.MyTalentTreeRotationData[i].myRingRotation);
+        talentTree.GetComponent<TalentTree>().SetRingRotationWhenLoading(myRingRotations);
+
     }
 
     private void LoadStorageChests(SaveData data)
@@ -282,6 +306,8 @@ public class PlayerSaveLoad : MonoBehaviour
         for (int i = 0; i < data.MyActionButtonData.Count; i++)
         {
             actionButtons[data.MyActionButtonData[i].MyIndex].skillName = data.MyActionButtonData[i].MyAction;
+            actionButtons[data.MyActionButtonData[i].MyIndex].RemoteUpdateThisButton();
+            mySkillBookMaster.UpdateCurrentSkills();
         }
     }
 }

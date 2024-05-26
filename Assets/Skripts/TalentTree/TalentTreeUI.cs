@@ -17,26 +17,9 @@ public class TalentTreeUI : MonoBehaviour
     public void OpenTalentTree()
     {
         Debug.Log("Talent Tree An/Aus");
-        if (talentTreeUI.activeSelf)
-        {
-            transform.parent.Find("Canvas Tooltips").Find("TooltipScreenSpaceUI_Talents").GetComponent<TooltipScreenSpaceUITalent>().HideTooltip();
-        }
+        if (talentTreeUI.activeSelf) transform.parent.Find("Canvas Tooltips").Find("TooltipScreenSpaceUI_Talents").GetComponent<TooltipScreenSpaceUITalent>().HideTooltip();
+
         talentTreeUI.SetActive(!talentTreeUI.activeSelf);
-        if (talentTreeUI.activeSelf) talentTreeUI.GetComponent<TalentTree>().UpdateTalentPointText();
-    }
-
-    public void LateUpdate()
-    {
-        if (talentTreeUI.GetComponent<TalentTree>().checkAfterReset)
-        {
-            talentTreeUI.GetComponent<TalentTree>().HasToCheckAfterReset();
-        }
-
-        if (isLoadingTalentTree)
-        {
-            Debug.Log("Doing Something!");
-            isLoadingTalentTree = false;
-            talentTreeUI.GetComponent<TalentTree>().AutoSkillWhenLoading2();
-        }
+        if (talentTreeUI.activeSelf) GetComponent<TalentTree>().UpdateTalentPointText();
     }
 }
