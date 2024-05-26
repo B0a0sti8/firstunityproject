@@ -18,6 +18,8 @@ public class SaveData
 
     public List<TalentTreeData> MyTalenTreeData { get; set; }
 
+    public List<TalentTreeRingRotationData> MyTalentTreeRotationData { get; set; }
+
     //public QuestProgress MyPlayerData { get; set; }
 
     public SaveData()
@@ -26,6 +28,7 @@ public class SaveData
         MyEquipmentData = new List<EquipmentData>();
         MyActionButtonData = new List<ActionButtonData>();
         MyTalenTreeData = new List<TalentTreeData>();
+        MyTalentTreeRotationData = new List<TalentTreeRingRotationData>();
     }
 }
 
@@ -143,9 +146,21 @@ public class TalentTreeData
 {
     public int myCount { get; set; }
 
+
     public TalentTreeData(int curCount)
     {
         this.myCount = curCount;
+    }
+}
+
+[Serializable]
+public class TalentTreeRingRotationData
+{
+    public float myRingRotation { get; set; }
+
+    public TalentTreeRingRotationData(float curRot)
+    {
+        this.myRingRotation = curRot;
     }
 }
 

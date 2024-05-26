@@ -11,7 +11,7 @@ public class TalentClassWindow : MonoBehaviour
 
     void Start()
     {
-        myTalentTree = transform.parent.GetComponent<TalentTree>();
+        myTalentTree = transform.parent.parent.GetComponent<TalentTree>();
         myClassManager = transform.parent.parent.parent.Find("CanvasClassChoice").GetComponent<ClassAssignment>();
         mySkillBook = transform.parent.parent.parent.Find("Canvas Skillbook").GetComponent<SkillbookMaster>();
     }

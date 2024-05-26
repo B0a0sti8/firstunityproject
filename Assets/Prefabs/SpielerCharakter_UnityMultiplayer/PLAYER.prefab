@@ -29174,7 +29174,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2713746432023209406}
+      - m_Target: {fileID: 2320277069054598428}
         m_TargetAssemblyTypeName: TalentTree, Assembly-CSharp
         m_MethodName: BtnResetTalents
         m_Mode: 1
@@ -40483,7 +40483,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2713746432023209406}
+      - m_Target: {fileID: 2320277069054598428}
         m_TargetAssemblyTypeName: TalentTree, Assembly-CSharp
         m_MethodName: ShowClassWindow
         m_Mode: 5
@@ -58824,7 +58824,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2713746432023209406}
+      - m_Target: {fileID: 2320277069054598428}
         m_TargetAssemblyTypeName: TalentTree, Assembly-CSharp
         m_MethodName: TurnRing
         m_Mode: 3
@@ -59772,7 +59772,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2713746432023209406}
+      - m_Target: {fileID: 2320277069054598428}
         m_TargetAssemblyTypeName: TalentTree, Assembly-CSharp
         m_MethodName: ResetRingTuning
         m_Mode: 1
@@ -62395,7 +62395,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2713746432023209406}
+      - m_Target: {fileID: 2320277069054598428}
         m_TargetAssemblyTypeName: TalentTree, Assembly-CSharp
         m_MethodName: TurnRing
         m_Mode: 3
@@ -80300,7 +80300,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2713746432023209406}
+      - m_Target: {fileID: 2320277069054598428}
         m_TargetAssemblyTypeName: TalentTree, Assembly-CSharp
         m_MethodName: ShowClassWindow
         m_Mode: 5
@@ -86320,10 +86320,10 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5100352431797923896}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7491023162971266023}
   m_Father: {fileID: 480624303142361498}
@@ -86416,7 +86416,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2713746432023209406}
+      - m_Target: {fileID: 2320277069054598428}
         m_TargetAssemblyTypeName: TalentTree, Assembly-CSharp
         m_MethodName: TurnRing
         m_Mode: 3
@@ -92540,7 +92540,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2713746432023209406}
+      - m_Target: {fileID: 2320277069054598428}
         m_TargetAssemblyTypeName: TalentTree, Assembly-CSharp
         m_MethodName: ShowClassWindow
         m_Mode: 5
@@ -102968,7 +102968,6 @@ GameObject:
   - component: {fileID: 7463427286480965763}
   - component: {fileID: 487360107474824909}
   - component: {fileID: 9153718882428288633}
-  - component: {fileID: 2713746432023209406}
   m_Layer: 5
   m_Name: TalentTreeWindow
   m_TagString: Untagged
@@ -103037,31 +103036,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2713746432023209406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6441519655411511386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 196fe2e889a2ee54b85841c96c1a6905, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  subClassMain: 
-  subClassLeft: 
-  subClassRight: 
-  talentPoints: 500
-  talentPointsMax: 500
-  talents: []
-  unlockedByDefault: []
-  passiveTalents: []
-  talentsMain: []
-  talentsLeft: []
-  talentsRight: []
-  checkAfterReset: 0
-  talentPointText: {fileID: 0}
 --- !u!1 &6460737386792669037
 GameObject:
   m_ObjectHideFlags: 0
@@ -105814,7 +105788,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2713746432023209406}
+      - m_Target: {fileID: 2320277069054598428}
         m_TargetAssemblyTypeName: TalentTree, Assembly-CSharp
         m_MethodName: TurnRing
         m_Mode: 3

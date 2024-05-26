@@ -37,21 +37,21 @@ public class TalentTree : MonoBehaviour
 
     void Awake()
     {
-        PLAYER = transform.parent.parent.parent.gameObject;
+        PLAYER = transform.parent.parent.gameObject;
         classTrees = GameObject.Find("SkillTreeCollection").transform.Find("CanvasAllSkillTrees").Find("TalentTree");
-        myTalentTree = transform.Find("MainBody").Find("MaskLayer").Find("TalentTree");
-        talentPointText = transform.Find("MainBody").Find("TalentPointText").Find("TalentPointCount").GetComponent<TextMeshProUGUI>();
+        myTalentTree = transform.Find("TalentTreeWindow").Find("MainBody").Find("MaskLayer").Find("TalentTree");
+        talentPointText = transform.Find("TalentTreeWindow").Find("MainBody").Find("TalentPointText").Find("TalentPointCount").GetComponent<TextMeshProUGUI>();
 
         checkAfterReset = false;
 
-        myTalentTreeUI = transform.parent.GetComponent<TalentTreeUI>();
+        myTalentTreeUI = transform.GetComponent<TalentTreeUI>();
 
         ResetSkillTree();
     }
 
     public void TryUseTalent(Talent talent)
     {
-        Debug.Log("Passt 1");
+        //Debug.Log("Passt 1");
         if (talentPoints > 0 + talent.pointCost && talent.TryAllocateTalent())
         {
             talentPoints -= talent.pointCost;
@@ -137,7 +137,7 @@ public class TalentTree : MonoBehaviour
     {
         if (!PLAYER.GetComponent<NetworkObject>().IsOwner) return;
 
-        myTalentTree = transform.Find("MainBody").Find("MaskLayer").Find("TalentTree");
+        myTalentTree = transform.Find("TalentTreeWindow").Find("MainBody").Find("MaskLayer").Find("TalentTree");
 
         ResetTalents();
 
@@ -181,7 +181,8 @@ public class TalentTree : MonoBehaviour
                 }
             }
         }
-        checkAfterReset = true;
+        //checkAfterReset = true;
+        StartCoroutine(CheckNextUpdate());
     }
 
     public void ResetTalents()
@@ -193,11 +194,12 @@ public class TalentTree : MonoBehaviour
 
         foreach (Talent talent in talents)
         {
-            bool hasToDoEverything = false;
+            bool hasToDoEverything = true;
             if (talent != null)
             {
-                if (talent.currentCount > 0) hasToDoEverything = true;
+                if (talent.currentCount == 0) hasToDoEverything = false;
 
+                talent.UpdateTalent();
                 talent.Lock();
                 if (hasToDoEverything) talent.RemoveActiveTalentEffect();
                 talent.currentCount = 0;
@@ -230,6 +232,12 @@ public class TalentTree : MonoBehaviour
         talentPointText.text = talentPoints.ToString() + " / " + talentPointsMax.ToString();
     }
 
+    IEnumerator CheckNextUpdate()
+    {
+        yield return 1;
+        HasToCheckAfterReset();
+    }
+
     void LateUpdate()
     {
         if (checkAfterReset)
@@ -240,8 +248,6 @@ public class TalentTree : MonoBehaviour
 
     public void HasToCheckAfterReset()
     {
-        bool isGoActive = gameObject.activeSelf;
-        gameObject.SetActive(true);
         Debug.Log("Doing HasToCheck");
         checkAfterReset = false;
         for (int i = 0; i < 4; i++)
@@ -256,8 +262,6 @@ public class TalentTree : MonoBehaviour
 
         FetchAllTalents();
         ResetTalents();
-
-        gameObject.SetActive(isGoActive);
     }
 
     void FetchAllTalents()
@@ -319,6 +323,25 @@ public class TalentTree : MonoBehaviour
                 StartCoroutine(turningRingCoroutine(detunedRing, detunedRing.rotation.eulerAngles.z, true));
                 isTurning = true;
             }
+        }
+    }
+
+    public void SetRingRotationWhenLoading(List<float> myRotAngles)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            Transform movingRing = myTalentTree.Find("Tier" + (i + 1).ToString());
+            movingRing.rotation = Quaternion.Euler(0, 0, myRotAngles[i]);
+
+            if (movingRing.rotation.eulerAngles.z == 360 || Mathf.Abs(movingRing.rotation.eulerAngles.z) < 0.01)
+            {
+                movingRing.rotation = Quaternion.Euler(0, 0, 0);
+            }
+
+            for (int k = 0; k < movingRing.childCount; k++)
+            { movingRing.GetChild(k).rotation = Quaternion.Euler(0, 0, 0); }
+
+            CheckTalentOrientation(movingRing);
         }
     }
 
@@ -416,40 +439,33 @@ public class TalentTree : MonoBehaviour
         return talents;
     }
 
-
     public void AutoSkillWhenLoading(List<int> loadedTalentCount)
     {
-        talentCountForLoading = loadedTalentCount;
-        myTalentTreeUI = transform.parent.GetComponent<TalentTreeUI>();
-        myTalentTreeUI.isLoadingTalentTree = true;
-        bool isGoActive = gameObject.activeSelf;
-        gameObject.SetActive(true);
-        ResetSkillTree();
-        FetchAllTalents();
+        Debug.Log(loadedTalentCount.Count);
+        Debug.Log(talents.Count);
 
-        gameObject.SetActive(isGoActive);
+        bool isWindowActive = transform.Find("TalentTreeWindow").gameObject.activeSelf;
+        if (!isWindowActive) transform.Find("TalentTreeWindow").gameObject.SetActive(true);
+
+        for (int i = 0; i < talents.Count-1; i++)
+        {
+            int myCurCount = loadedTalentCount[i];
+            if (myCurCount == 0) continue;
+
+            for (int k = 0; k < myCurCount; k++)
+            {
+                TryUseTalent(talents[i]);
+            }
+        }
+
+        transform.Find("TalentTreeWindow").gameObject.SetActive(isWindowActive);
     }
 
     public void AutoSkillWhenLoading2()
     {
-        bool isGoActive = gameObject.activeSelf;
-        gameObject.SetActive(true);
         ResetSkillTree();
         //talents.RemoveAll(item => item == null);
         Debug.Log(talentCountForLoading.Count);
         Debug.Log(talents.Count);
-        gameObject.SetActive(isGoActive);
-    }
-
-    [Command]
-    public void ClearMyTalents()
-    {
-        talents.Clear();
-    }
-
-    [Command]
-    public void ClearMyTalents2()
-    {
-        talents.RemoveAll(item => item == null);
     }
 }
