@@ -31,9 +31,16 @@ public class Warrior_BrutalStrike : SkillPrefab
         base.SkillEffect();
         
         float damageModified = damageBase * playerStats.dmgInc.GetValue();
-        if (myWarriorClass.hasBrutalStrikeComboBuff) { damageModified *= 2; myWarriorClass.hasBrutalStrikeComboBuff = false; }  // Bildet combo mit WildStrike: Doppelter Schaden.
 
+        PLAYER.GetComponent<BuffManager>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "Warrior_StrikeComboBuff2", false);
+        if (myWarriorClass.hasStrikeCombo1Buff) // Bildet combo mit WildStrike: Doppelter Schaden.
+        { 
+            damageModified *= 2; 
+            myWarriorClass.hasStrikeCombo1Buff = false;
+            myWarriorClass.hasStrikeCombo2Buff = true;
+            PLAYER.GetComponent<BuffManager>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "Warrior_StrikeComboBuff1", false);
+            GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(PLAYER.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "Warrior_StrikeComboBuff2", "Warrior_StrikeComboBuff2", false, 5, 0, 0);
+        }
         DealDamage(damageModified);
-        PLAYER.GetComponent<BuffManager>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "Warrior_BrutalStrike_ComboBuff", false);
     }
 }

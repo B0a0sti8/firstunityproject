@@ -79,19 +79,19 @@ public class BuffManager : NetworkBehaviour
         if (IsServer) { buff.StartBuffEffect(gameObject.GetComponent<PlayerStats>()); }
     }
 
-    public void RemoveBuffProcedure(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false)
+    public void RemoveBuffProcedure(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false, bool triggerEndBuffEffect = false)
     {
-        RemoveBuffServerRpc(sourceRef, refBuffName, singlebuff);
+        RemoveBuffServerRpc(sourceRef, refBuffName, singlebuff, triggerEndBuffEffect);
     }
 
     [ServerRpc(RequireOwnership = false)]
-    public void RemoveBuffServerRpc(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false)
+    public void RemoveBuffServerRpc(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false, bool triggerEndBuffEffect = false)
     {
-        RemoveBuffClientRpc(sourceRef, refBuffName, singlebuff);
+        RemoveBuffClientRpc(sourceRef, refBuffName, singlebuff, triggerEndBuffEffect);
     }
 
     [ClientRpc]
-    public void RemoveBuffClientRpc(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false)
+    public void RemoveBuffClientRpc(NetworkObjectReference sourceRef, string refBuffName, bool singlebuff = false, bool triggerEndBuffEffect = false)
     {
         sourceRef.TryGet(out NetworkObject source);
         Debug.Log("Removing Buff 1");
@@ -102,6 +102,8 @@ public class BuffManager : NetworkBehaviour
             Debug.Log(myBu.buffName + "   " + refBuffName);
             if (myBu.buffSource == source.gameObject && myBu.buffName == refBuffName)
             {
+                // if (triggerEndBuffEffect) myBu.EndBuffEffect(gameObject.GetComponent<CharacterStats>());
+
                 RemoveBuff(myBu);
                 if (singlebuff) break;
             }

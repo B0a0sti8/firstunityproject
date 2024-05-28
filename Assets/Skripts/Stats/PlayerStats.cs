@@ -232,9 +232,9 @@ public class PlayerStats : CharacterStats
 	void InitializeBaseStats()
 	{
 		maxHealth.baseValue = maxHealthStart;	maxMana.baseValue = 1000;
-		armor.baseValue = 0;					mastery.baseValue = 10;
-		toughness.baseValue = 10;				intellect.baseValue = 10;
-		charisma.baseValue = 10;				tempo.baseValue = 10;
+		armor.baseValue = 0;					mastery.baseValue = 100;
+		toughness.baseValue = 100;				intellect.baseValue = 100;
+		charisma.baseValue = 100;				tempo.baseValue = 100;
 
 		movementSpeed.baseValue = 7;			actionSpeed.baseValue = 1;
 		critChance.baseValue = 5;				critMultiplier.baseValue = 1.5f;
@@ -292,31 +292,31 @@ public class PlayerStats : CharacterStats
 	public void ComputeSideStats()
     {
 		// Mastery Based
-		healInc.baseValue += 0.01f * mastery.GetValue();
-		dmgInc.baseValue += 0.01f * mastery.GetValue();
+		healInc.baseValue = 0.01f * mastery.GetValue();
+		dmgInc.baseValue = 0.01f * mastery.GetValue();
 
 		// Toughness Based
-		physRed.baseValue += 0.002f * toughness.GetValue();
-		magRed.baseValue += 0.002f * toughness.GetValue();
-		incHealInc.baseValue += 0.01f * toughness.GetValue();
-		blockChance.baseValue += 0.002f * toughness.GetValue();
-		maxHealth.baseValue += 10f * toughness.GetValue();
+		physRed.baseValue = 0.002f * toughness.GetValue();
+		magRed.baseValue = 0.002f * toughness.GetValue();
+		incHealInc.baseValue = 0.01f * toughness.GetValue();
+		blockChance.baseValue = 0.002f * toughness.GetValue();
+		maxHealth.baseValue = 10f * toughness.GetValue();
 
 		// Intellect Based
-		skillDurInc.baseValue += 0.002f * intellect.GetValue();
-		skillRadInc.baseValue += 0.002f * intellect.GetValue();
-		critChance.baseValue += 0.002f * intellect.GetValue();
-		critMultiplier.baseValue += 0.002f * intellect.GetValue();
-		maxMana.baseValue += 10f * intellect.GetValue();
+		skillDurInc.baseValue = 0.002f * intellect.GetValue();
+		skillRadInc.baseValue = 0.002f * intellect.GetValue();
+		critChance.baseValue = 0.002f * intellect.GetValue();
+		critMultiplier.baseValue = 0.002f * intellect.GetValue();
+		maxMana.baseValue = 10f * intellect.GetValue();
 
 		// Charisma
-		buffInc.baseValue += 0.002f * charisma.GetValue();
-		debuffInc.baseValue += 0.002f * charisma.GetValue();
+		buffInc.baseValue = 0.002f * charisma.GetValue();
+		debuffInc.baseValue = 0.002f * charisma.GetValue();
 
 		// Tempo
-		tickRateMod.baseValue += 0.02f * tempo.GetValue();
-		evadeChance.baseValue += 0.02f * tempo.GetValue();
-		actionSpeed.baseValue += 0.02f * tempo.GetValue();
+		tickRateMod.baseValue = 0.02f * tempo.GetValue();
+		evadeChance.baseValue = 0.02f * tempo.GetValue();
+		actionSpeed.baseValue = 0.02f * tempo.GetValue();
     }
 
 	void SyncModifiedPlayerStats()

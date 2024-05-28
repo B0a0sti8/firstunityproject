@@ -18,8 +18,8 @@ public class Warrior_WideSlash : SkillPrefab
 
         ownCooldownTimeBase = 0f;
 
-        needsTargetEnemy = false;
         targetsEnemiesOnly = true;
+        hasGlobalCooldown = true;
 
         skillRadiusBase = 5f;
         coneAOEAngle = 120;
@@ -40,9 +40,9 @@ public class Warrior_WideSlash : SkillPrefab
         float damageModified = damageBase * playerStats.dmgInc.GetValue();
 
         DealDamage(damageModified);
-        myWarriorClass.hasSweepingSlashComboBuff = true;
 
-        PLAYER.GetComponent<BuffManager>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "Warrior_SweepingSlash_ComboBuff", false);
-        GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(PLAYER.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "Warrior_SweepingSlash_ComboBuff", "Warrior_SweepingSlash_ComboBuff", false, 5, 0, 0);
+        myWarriorClass.hasSlashCombo1Buff = true;
+        PLAYER.GetComponent<BuffManager>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "Warrior_SlashComboBuff1", false);
+        GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(PLAYER.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "Warrior_SlashComboBuff1", "Warrior_SlashComboBuff1", false, 5, 0, 0);
     }
 }

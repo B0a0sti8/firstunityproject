@@ -32,5 +32,9 @@ public class Warrior_Sting : SkillPrefab
         base.SkillEffect();
         float damageModified = damageBase * playerStats.dmgInc.GetValue();
         DealDamage(damageModified);
+
+        myWarriorClass.hasStingCombo1Buff = true;
+        PLAYER.GetComponent<BuffManager>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "Warrior_StingComboBuff1", false);
+        GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(PLAYER.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "Warrior_StingComboBuff1", "Warrior_StingComboBuff1", false, 5, 0, 0);
     }
 }
