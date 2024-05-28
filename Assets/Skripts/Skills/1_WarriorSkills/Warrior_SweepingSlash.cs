@@ -37,10 +37,19 @@ public class Warrior_SweepingSlash : SkillPrefab
     public override void SkillEffect()
     {
         base.SkillEffect();
+
         float damageModified = damageBase * playerStats.dmgInc.GetValue();
-        if (myWarriorClass.hasSweepingSlashComboBuff) { damageModified *= 2; myWarriorClass.hasSweepingSlashComboBuff = false; } // Bildet combo mit WideSlash: Doppelter Schaden.
+
+        PLAYER.GetComponent<BuffManager>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "Warrior_SlashComboBuff2", false);
+        if (myWarriorClass.hasSlashCombo1Buff) // Bildet combo mit WideSlash: Doppelter Schaden.
+        { 
+            damageModified *= 2; 
+            myWarriorClass.hasSlashCombo1Buff = false;
+            myWarriorClass.hasSlashCombo2Buff = true;
+            PLAYER.GetComponent<BuffManager>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "Warrior_SlashComboBuff1", false);
+            GiveBuffOrDebuffToTarget.GiveBuffOrDebuff(PLAYER.GetComponent<NetworkObject>(), PLAYER.GetComponent<NetworkObject>(), "Warrior_SlashComboBuff2", "Warrior_SlashComboBuff2", false, 5, 0, 0);
+        }
 
         DealDamage(damageModified);
-        PLAYER.GetComponent<BuffManager>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "Warrior_SweepingSlash_ComboBuff", false);
     }
 }

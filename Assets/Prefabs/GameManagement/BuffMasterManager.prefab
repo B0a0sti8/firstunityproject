@@ -56,5 +56,13 @@ MonoBehaviour:
   mainMinionBuffDamageAndHealingSprite: {fileID: 21300000, guid: 7903d7fcc1bb7ce479d976edb3bd930d, type: 3}
   summonSpiderSlowEffectBuffSprite: {fileID: 21300000, guid: d132e0b5eb72bdb42a274874cadda8e7, type: 3}
   theGreatSacrificeBuffSprite: {fileID: 21300000, guid: 06cb280117b4c82418f6bffba1df5fab, type: 3}
-  warrior_BrutalStrike_ComboBuff_Sprite: {fileID: 21300000, guid: 4136f4c34b9d5e54682706c8e9e1e485, type: 3}
-  warrior_SweepingSlash_ComboBuff_Sprite: {fileID: 21300000, guid: 7b0bc8ebbdf2d114094ed8bd4ac28a36, type: 3}
+  warrior_StrikeComboBuff1_Sprite: {fileID: 21300000, guid: 4136f4c34b9d5e54682706c8e9e1e485, type: 3}
+  warrior_SlashComboBuff1_Sprite: {fileID: 21300000, guid: 7b0bc8ebbdf2d114094ed8bd4ac28a36, type: 3}
+  warrior_StingComboBuff1_Sprite: {fileID: 21300000, guid: a719a0a687b378441859825cc67a9762, type: 3}
+  warrior_StrikeComboBuff2_Sprite: {fileID: 21300000, guid: 4d9b157d443dba843a3b0a46eed3c4c0, type: 3}
+  warrior_StingComboBuff2_Sprite: {fileID: 21300000, guid: ece5b6ef680c99448898a7417ec9ed49, type: 3}
+  warrior_SlashComboBuff2_Sprite: {fileID: 21300000, guid: 40fb8eb4d84814d469382e9671b07dbc, type: 3}
+  warrior_OffensiveStanceBuff_Sprite: {fileID: 21300000, guid: 5f615333ee598a0418c442c235c2cf66, type: 3}
+  warrior_DefensiveStanceBuff_Sprite: {fileID: 21300000, guid: 9093b194d9857a34fb3d812521828e8a, type: 3}
+  warrior_TearingSlashDoT_Sprite: {fileID: 21300000, guid: a1ccda572f83ab244b6eb02d7db784e9, type: 3}
+  warrior_DevastatingStrikeDebuff_Sprite: {fileID: 21300000, guid: 5d7c2e168c775d746b96ef09971b3076, type: 3}

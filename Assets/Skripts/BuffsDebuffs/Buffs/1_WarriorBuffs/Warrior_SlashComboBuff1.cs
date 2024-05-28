@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Warrior_SweepingSlash_ComboBuff : Buff
+public class Warrior_SlashComboBuff1 : Buff
 {
     public override void StartBuffEffect(CharacterStats playerStats)
     {
-        buffName = "Warrior_SweepingSlash_ComboBuff";
+        buffName = "Warrior_SlashComboBuff1";
         buffDescription = "Your next Sweeping Slash deals double damage. ";
         base.StartBuffEffect(playerStats);
 
@@ -20,7 +20,7 @@ public class Warrior_SweepingSlash_ComboBuff : Buff
 
     public override Buff Clone()
     {
-        Warrior_SweepingSlash_ComboBuff clone = (Warrior_SweepingSlash_ComboBuff)this.MemberwiseClone();
+        Warrior_SlashComboBuff1 clone = (Warrior_SlashComboBuff1)this.MemberwiseClone();
         return clone;
     }
 }

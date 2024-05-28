@@ -32,20 +32,27 @@ public class Warrior_RagingBlade : SkillPrefab
     public override void StartCasting()
     {
         skillRadius = skillRadiusBase + myWarriorClass.meleeSkillsRadiusIncrease;
+        if (!myWarriorClass.hasSlashCombo2Buff) targetSnapShot = PLAYER;
+
         base.StartCasting();
     }
 
     public override void SkillEffect()
     {
         base.SkillEffect();
-        TeleportToTargetEnemy();
 
         float damageModified = damageBase * playerStats.dmgInc.GetValue();
-        if (myWarriorClass.hasSweepingSlashComboBuff) { damageModified *= 2; myWarriorClass.hasSweepingSlashComboBuff = false; } // Bildet combo mit WideSlash: Doppelter Schaden.
+
+        if (myWarriorClass.hasSlashCombo2Buff)// Bildet combo mit WideSlash: Doppelter Schaden.
+        {
+            damageModified *= 2;
+            TeleportToTargetEnemy();
+            myWarriorClass.hasSlashCombo2Buff = false;
+
+            PLAYER.GetComponent<BuffManager>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "Warrior_SlashCombo2Buff", false);
+        } 
 
         DealDamage(damageModified);
-        //PLAYER.GetComponent<BuffManager>().RemoveBuffProcedure(PLAYER.GetComponent<NetworkObject>(), "Warrior_SweepingSlash_ComboBuff", false);
-
     }
 
     public void TeleportToTargetEnemy()

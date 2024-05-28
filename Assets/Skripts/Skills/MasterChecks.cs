@@ -48,8 +48,8 @@ public class MasterChecks : MonoBehaviour
         PLAYER = transform.parent.parent.gameObject;
         playerStats = PLAYER.GetComponent<PlayerStats>();
 
-        masterGCTimeBase = 0.5f;
-        masterGCTimeModified = 0.5f;
+        masterGCTimeBase = 1.5f;
+        masterGCTimeModified = 1.5f;
         masterGCEarlyTime = 1f;
         masterOwnCooldownEarlyTime = 1f;
         masterAnimTime = 0.5f;

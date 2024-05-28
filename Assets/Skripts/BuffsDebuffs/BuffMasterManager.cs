@@ -40,8 +40,16 @@ public class BuffMasterManager : MonoBehaviour
     [SerializeField] Sprite theGreatSacrificeBuffSprite;
 
     [Header("Warrior Buffs")]// Für Warrior-spezifische Buffs
-    [SerializeField] Sprite warrior_BrutalStrike_ComboBuff_Sprite;
-    [SerializeField] Sprite warrior_SweepingSlash_ComboBuff_Sprite;
+    [SerializeField] Sprite warrior_StrikeComboBuff1_Sprite;
+    [SerializeField] Sprite warrior_SlashComboBuff1_Sprite;
+    [SerializeField] Sprite warrior_StingComboBuff1_Sprite;
+    [SerializeField] Sprite warrior_StrikeComboBuff2_Sprite;
+    [SerializeField] Sprite warrior_StingComboBuff2_Sprite;
+    [SerializeField] Sprite warrior_SlashComboBuff2_Sprite;
+    [SerializeField] Sprite warrior_OffensiveStanceBuff_Sprite;
+    [SerializeField] Sprite warrior_DefensiveStanceBuff_Sprite;
+    [SerializeField] Sprite warrior_TearingSlashDoT_Sprite;
+    [SerializeField] Sprite warrior_DevastatingStrikeDebuff_Sprite;
 
     private void Awake()
     {
@@ -99,12 +107,44 @@ public class BuffMasterManager : MonoBehaviour
         ListOfAllBuffSprites.Add("TheGreatSacrificeBuff", theGreatSacrificeBuffSprite);
 
         // Spezifisch für Warrior-Klasse
-        Warrior_BrutalStrike_ComboBuff warrior_BrutalStrike_ComboBuff = new Warrior_BrutalStrike_ComboBuff();
-        ListOfAllBuffs.Add("Warrior_BrutalStrike_ComboBuff", warrior_BrutalStrike_ComboBuff);
-        ListOfAllBuffSprites.Add("Warrior_BrutalStrike_ComboBuff", warrior_BrutalStrike_ComboBuff_Sprite);
+        Warrior_StrikeComboBuff1 warrior_StrikeComboBuff1 = new Warrior_StrikeComboBuff1();
+        ListOfAllBuffs.Add("Warrior_StrikeComboBuff1", warrior_StrikeComboBuff1);
+        ListOfAllBuffSprites.Add("Warrior_StrikeComboBuff1", this.warrior_StrikeComboBuff1_Sprite);
 
-        Warrior_SweepingSlash_ComboBuff warrior_SweepingSlash_ComboBuff = new Warrior_SweepingSlash_ComboBuff();
-        ListOfAllBuffs.Add("Warrior_SweepingSlash_ComboBuff", warrior_SweepingSlash_ComboBuff);
-        ListOfAllBuffSprites.Add("Warrior_SweepingSlash_ComboBuff", warrior_SweepingSlash_ComboBuff_Sprite);
+        Warrior_SlashComboBuff1 warrior_SlashComboBuff1 = new Warrior_SlashComboBuff1();
+        ListOfAllBuffs.Add("Warrior_SlashComboBuff1", warrior_SlashComboBuff1);
+        ListOfAllBuffSprites.Add("Warrior_SlashComboBuff1", warrior_SlashComboBuff1_Sprite);
+
+        Warrior_StingComboBuff1 warrior_StingComboBuff1 = new Warrior_StingComboBuff1();
+        ListOfAllBuffs.Add("Warrior_StingComboBuff1", warrior_StingComboBuff1);
+        ListOfAllBuffSprites.Add("Warrior_StingComboBuff1", warrior_StingComboBuff1_Sprite);
+
+        Warrior_StrikeComboBuff2 warrior_StrikeComboBuff2 = new Warrior_StrikeComboBuff2();
+        ListOfAllBuffs.Add("Warrior_StrikeComboBuff2", warrior_StrikeComboBuff2);
+        ListOfAllBuffSprites.Add("Warrior_StrikeComboBuff2", this.warrior_StrikeComboBuff2_Sprite);
+
+        Warrior_SlashComboBuff2 warrior_SlashComboBuff2 = new Warrior_SlashComboBuff2();
+        ListOfAllBuffs.Add("Warrior_SlashComboBuff2", warrior_SlashComboBuff2);
+        ListOfAllBuffSprites.Add("Warrior_SlashComboBuff2", warrior_SlashComboBuff2_Sprite);
+
+        Warrior_StingComboBuff2 warrior_StingComboBuff2 = new Warrior_StingComboBuff2();
+        ListOfAllBuffs.Add("Warrior_StingComboBuff2", warrior_StingComboBuff2);
+        ListOfAllBuffSprites.Add("Warrior_StingComboBuff2", warrior_StingComboBuff2_Sprite);
+
+        Warrior_OffensiveStanceBuff warrior_OffensiveStanceBuff = new Warrior_OffensiveStanceBuff();
+        ListOfAllBuffs.Add("Warrior_OffensiveStanceBuff", warrior_OffensiveStanceBuff);
+        ListOfAllBuffSprites.Add("Warrior_OffensiveStanceBuff", warrior_OffensiveStanceBuff_Sprite);
+
+        Warrior_DefensiveStanceBuff warrior_DefensiveStanceBuff = new Warrior_DefensiveStanceBuff();
+        ListOfAllBuffs.Add("Warrior_DefensiveStanceBuff", warrior_DefensiveStanceBuff);
+        ListOfAllBuffSprites.Add("Warrior_DefensiveStanceBuff", warrior_DefensiveStanceBuff_Sprite);
+
+        Warrior_TearingSlashDoT warrior_TearingSlashDoT = new Warrior_TearingSlashDoT();
+        ListOfAllBuffs.Add("Warrior_TearingSlashDoT", warrior_TearingSlashDoT);
+        ListOfAllBuffSprites.Add("Warrior_TearingSlashDoT", warrior_TearingSlashDoT_Sprite);
+
+        Warrior_DevastatingStrikeDebuff warrior_DevastatingStrikeDebuff = new Warrior_DevastatingStrikeDebuff();
+        ListOfAllBuffs.Add("Warrior_DevastatingStrikeDebuff", warrior_DevastatingStrikeDebuff);
+        ListOfAllBuffSprites.Add("Warrior_DevastatingStrikeDebuff", warrior_DevastatingStrikeDebuff_Sprite);
     }
 }
