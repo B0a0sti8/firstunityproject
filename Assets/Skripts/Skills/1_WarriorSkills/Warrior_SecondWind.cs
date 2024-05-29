@@ -20,14 +20,12 @@ public class Warrior_SecondWind : SkillPrefab
         isCastOnSelf = true;
 
         myAreaType = AreaType.SingleTargetSelf;
-
-        baseHealing = 250;
     }
 
     public override void SkillEffect()
     {
         base.SkillEffect();
-
+        baseHealing = myWarriorClass.secondWindPercentMissingHeal * (playerStats.maxHealth.GetValue() - playerStats.currentHealth.Value);
         float healingModified = baseHealing * playerStats.healInc.GetValue();
 
         DoHealing(healingModified);
