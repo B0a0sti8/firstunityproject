@@ -34,6 +34,8 @@ public class WarriorClass : NetworkBehaviour
 
     public bool hasTearingSlashBleed;
 
+    public float secondWindPercentMissingHeal = 0.15f;
+
 
     private void Awake()
     {

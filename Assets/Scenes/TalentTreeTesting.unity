@@ -6058,6 +6058,7 @@ MonoBehaviour:
   talentsMain: []
   talentsLeft: []
   talentsRight: []
+  checkAfterReset: 0
   talentPointText: {fileID: 0}
 --- !u!114 &1223069226
 MonoBehaviour:
@@ -6072,6 +6073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentTreeUI: {fileID: 0}
+  isLoadingTalentTree: 0
 --- !u!1 &1231392839
 GameObject:
   m_ObjectHideFlags: 0

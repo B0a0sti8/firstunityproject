@@ -7963,7 +7963,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289554995344951659}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -15370,7 +15370,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 536833264136320812}
   m_HandleRect: {fileID: 536833264136320813}
   m_Direction: 2
-  m_Value: 0.00000006746684
+  m_Value: 0.00000011244474
   m_Size: 0.40829694
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -49965,7 +49965,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2230308173597276496}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -70563,6 +70563,7 @@ MonoBehaviour:
   defensiveStanceOn: 0
   offensiveStanceOn: 0
   hasTearingSlashBleed: 0
+  secondWindPercentMissingHeal: 0.15
 --- !u!114 &1754308796815411200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72067,7 +72068,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4007008244833137857}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
